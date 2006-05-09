@@ -228,5 +228,5 @@
 		</cobertura-report>
 	</target>
 
-	<target name="reports" depends="reports-source-java, reports-style, reports-findbugs, reports-testcoverage"/>
+	<target name="reports" depends="reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs"/>
 </project>
