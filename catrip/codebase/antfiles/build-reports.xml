@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+
+<!-- ================================================================= -->
+<!-- caTRIP reporting build file                                       -->
+<!-- ================================================================= -->
+<project name="catrip-1.0-reports" default="reports" basedir=".">
+
+	<property file="${basedir}/antfiles/reports.properties"/>
+
+	<property name="reports.dir" location="${basedir}/reports"/>
+
+
+	<!-- =============================================================== -->
+	<!-- Call check-style for each project log results                   -->
+	<!-- =============================================================== -->
+
+	<target name="reports-style" description="Check the style of all the projects.">
+		<property name="checkstyle.home" location="${basedir}/share/checkstyle-4.1"/>
+		<property name="style.dir" location="${reports.dir}/style"/>
+
+		<taskdef resource="checkstyletask.properties">
+			<classpath>
+				<fileset dir="${checkstyle.home}/lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</taskdef>
+
+		<!-- clean -->
+		<delete dir="${style.dir}"/>
+		<mkdir dir="${style.dir}"/>
+
+		<!-- call run-report-style for each project or call checkstyle directly -->
+
+		<antcall target="run-report-style">
+			<param name="project" value="queryengine"/>
+		</antcall>
+
+		<antcall target="run-report-style">
+			<param name="project" value="gui"/>
+		</antcall>
+	</target>
+
+	<target name="run-report-style">
+		<checkstyle config="${checkstyle.home}/catrip_checks.xml" failOnViolation="false">
+			<fileset dir="${projects.dir}/${project}/src" includes="**/*.java"/>
+			<formatter type="plain" toFile="${style.dir}/${project}.txt"/>
+			<formatter type="xml" toFile="${style.dir}/${project}.xml"/>
+		</checkstyle>
+
+		<xslt in="${style.dir}/${project}.xml" out="${style.dir}/${project}.html" 
+			style="${checkstyle.home}/checkstyle.xsl"
+		>
+			<param name="project" expression="${project}"/>
+		</xslt>
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- Call findbugs for each project log results                      -->
+	<!-- =============================================================== -->
+	
+	<target name="reports-findbugs">
+		<property name="findbugs.home" location="${basedir}/share/findbugs-0.9.6"/>
+		<property name="findbugs.dir" location="${reports.dir}/findbugs"/>
+
+		<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask">
+			<classpath>
+				<fileset dir="${findbugs.home}/lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</taskdef>
+
+		<!-- clean -->
+		<delete dir="${findbugs.dir}"/>
+		<mkdir dir="${findbugs.dir}"/>
+
+		<!-- call run-report-findbugs for each project or call findbugs directly -->
+
+		<antcall target="run-report-findbugs">
+			<param name="project" value="queryengine"/>
+		</antcall>
+
+		<antcall target="run-report-findbugs">
+			<param name="project" value="gui"/>
+		</antcall>
+	</target>
+
+	<target name="run-report-findbugs">
+		<findbugs home="${findbugs.home}"
+			output="xml"
+			outputFile="${findbugs.dir}/${project}.xml"
+			failOnError="true"
+			excludeFilter="${findbugs.home}/findbugs-filter.xml"
+			jvmargs="-Xmx512m"
+		>
+			<auxClasspath>
+				<fileset dir="${projects.dir}/${project}/lib">
+					<include name="**/*.jar"/>
+				</fileset>
+				<fileset dir="${projects.dir}/${project}/ext/lib">
+					<include name="**/*.jar"/>
+				</fileset>
+				<fileset dir="${projects.dir}/${project}/ext/test/lib">
+					<include name="**/*.jar"/>
+				</fileset>
+				<fileset dir="${env.GLOBUS_LOCATION}">
+					<include name="**/*.jar"/>
+				</fileset>
+			</auxClasspath>
+			<sourcePath path="${projects.dir}/${project}/src/java" />
+			<class location="${projects.dir}/${project}/build/jars/catrip-${project}-1.0.jar" />
+		</findbugs>
+
+		<xslt in="${findbugs.dir}/${project}.xml" out="${findbugs.dir}/${project}.html" 
+			style="${findbugs.home}/src/xsl/plain.xsl"
+		/>
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- Call source-java for each project log results                   -->
+	<!-- =============================================================== -->
+
+	<target name="reports-source-java">
+		<property name="javancss.home" location="${basedir}/share/javancss-24.44"/>
+		<property name="source-java.dir" location="${reports.dir}/source-java"/>
+
+		<taskdef name="javancss" classname="javancss.JavancssAntTask">
+			<classpath>
+				<fileset dir="${javancss.home}/lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>		
+		</taskdef>
+
+		<!-- clean -->
+		<delete dir="${source-java.dir}"/>
+		<mkdir dir="${source-java.dir}"/>
+
+		<!-- call run-report-source-java for each project or call javancss directly -->
+
+		<antcall target="run-report-source-java">
+			<param name="project" value="queryengine"/>
+		</antcall>
+
+		<antcall target="run-report-source-java">
+			<param name="project" value="gui"/>
+		</antcall>
+	</target>
+
+	<target name="run-report-source-java">
+		<javancss srcdir="${projects.dir}/${project}/src/java"
+			generateReport="true"
+			outputfile="${source-java.dir}/${project}.xml"
+			format="xml"
+			includes="**/*.java"
+		/>		
+		<javancss srcdir="${projects.dir}/${project}/src"
+			generateReport="true"
+			outputfile="${source-java.dir}/${project}.txt"
+			format="plain"
+			includes="**/*.java"
+		/>		
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- Call cvs                                                        -->
+	<!-- =============================================================== -->
+
+	<target name="reports-cvs">
+		<property name="statcvs.home" location="${basedir}/share/statcvs-0.2.2"/>
+		<property name="cvs.dir" location="${reports.dir}/statcvs"/>
+
+		<delete dir="${cvs.dir}"/>
+		<mkdir dir="${cvs.dir}"/>
+
+		<cvs 
+			command="-d:${cvs.method}:${cvs.user}@${cvs.server}:${cvs.path} log"
+			output="${cvs.dir}/cvs.log"
+		/>
+		<java jar="${statcvs.home}/statcvs.jar" fork="true" dir="${cvs.dir}">
+			<arg value="-title"/>
+			<arg value="rproteomics-1-0"/>
+			<arg value="-viewcvs"/>
+			<arg value="http://gforge.nci.nih.gov/plugins/scmcvs/cvsweb.php/?cvsroot=catrip"/>
+			<arg value="${cvs.dir}/cvs.log"/> 
+			<arg value="${basedir}"/> 
+		</java>
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- Call testcoverage for each project log results                  -->
+	<!-- =============================================================== -->
+
+	<target name="reports-testcoverage" depends="prepare, defineArtifacts">
+		<property name="testcoverage.dir" location="${reports.dir}/testcoverage"/>
+		
+		<taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+
+		<delete>
+			<fileset dir="${testcoverage.dir}">
+				<exclude name="*.ser"/>
+				<include name="*"/>
+			</fileset>
+		</delete>
+		<mkdir dir="${testcoverage.dir}"/>
+
+		<antcall target="run-report-testcoverage">
+			<param name="project" value="queryengine"/>
+		</antcall>		
+
+		<antcall target="run-report-testcoverage">
+			<param name="project" value="gui"/>
+		</antcall>		
+	</target>
+
+	<target name="run-report-testcoverage">
+		<mkdir dir="${testcoverage.dir}/${project}"/>
+		<cobertura-report format="html" destdir="${testcoverage.dir}/${project}"
+			datafile="${testcoverage.dir}/${project}.ser"  
+		>
+			<fileset dir="${projects.dir}/${project}/src/java">
+				<include name="**/*.java"/>
+			</fileset>
+			<fileset dir="${projects.dir}/${project}/test/src/java">
+				<include name="**/*.java"/>
+			</fileset>
+		</cobertura-report>
+	</target>
+
+	<target name="reports" depends="reports-source-java, reports-style, reports-findbugs, reports-testcoverage"/>
+</project>

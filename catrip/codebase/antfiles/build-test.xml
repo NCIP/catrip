@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<!-- ================================================================= -->
+<!-- caTRIP Master test build file                                     -->
+<!-- ================================================================= -->
+
+<project name="catrip-1.0-test" default="test" basedir=".">
+
+	<property name="junit.results.dir" location="${test.dir}/logs"/>
+
+	<!-- =============================================================== -->
+	<!-- Call test for each project and aggregates the log resutls       -->
+	<!-- =============================================================== -->
+	<target name="test" depends="test-prepare" description="Test all the projects.">
+		<mkdir dir="${junit.results.dir}"/>
+		<mkdir dir="${testcoverage.dir}"/>
+		<sequential>
+			<!-- Clean out old logs first -->
+			<delete>
+				<fileset dir="${junit.results.dir}">
+					<include name="*" />
+				</fileset>
+			</delete>
+
+			<!-- TEST QUERY ENGINE -->
+			<instrument tempDir="${instrumentation.temp.dir}" datafile="${testcoverage.dir}/queryengine.ser">
+				<artifact refid="queryengine.jars" />
+			</instrument>
+			<ant inheritall="false" dir="${projects.dir}/queryengine" antfile="build.xml" target="test">
+				<property name="junit.results.dir" value="${junit.results.dir}" />
+				<property name="testcoverage.datafile" location="${testcoverage.dir}/queryengine.ser"/>
+				<property name="cobertura.home" location="${cobertura.home}"/>
+			</ant>
+			<deinstrument tempDir="${instrumentation.temp.dir}">
+				<artifact refid="queryengine.jars" />
+			</deinstrument>
+
+			<!-- TEST GUI -->
+			<instrument tempDir="${instrumentation.temp.dir}" datafile="${testcoverage.dir}/gui.ser">
+				<artifact refid="gui.jars" />
+			</instrument>
+			<ant inheritall="false" dir="${projects.dir}/gui" antfile="build.xml" target="test">
+				<property name="junit.results.dir" value="${junit.results.dir}" />
+				<property name="testcoverage.datafile" location="${testcoverage.dir}/gui.ser"/>
+				<property name="cobertura.home" location="${cobertura.home}"/>
+			</ant>
+			<deinstrument tempDir="${instrumentation.temp.dir}">
+				<artifact refid="gui.jars" />
+			</deinstrument>
+
+			<!-- clean up instrumentation -->
+			<delete dir="${instrumentation.temp.dir}"/>
+		</sequential>
+	</target>
+
+	<target name="test-prepare" depends="prepare, defineArtifacts">
+		<property name="testcoverage.dir" location="${reports.dir}/testcoverage"/>
+		<property name="testcoverage.temp.dir" location="${reports.dir}/testcoverage"/>
+		<property name="instrumentation.temp.dir" location="${basedir}/temp"/>
+		
+		<taskdef name="instrument" classname="gov.nih.nci.cagrid.ant.Instrument" loaderref="artifact">
+			<classpath>
+				<pathelement location="${management.dir}/build" />
+				<path refid="cobertura.classpath"/>
+			</classpath>
+		</taskdef>
+		<taskdef name="deinstrument" classname="gov.nih.nci.cagrid.ant.Deinstrument" loaderref="artifact">
+			<classpath>
+				<pathelement location="${management.dir}/build" />
+				<path refid="cobertura.classpath"/>
+			</classpath>
+		</taskdef>
+
+		<mkdir dir="${testcoverage.dir}"/>
+		<delete>
+			<fileset dir="${testcoverage.dir}">
+				<include name="*.ser"/>
+			</fileset>
+		</delete>
+		<mkdir dir="${testcoverage.dir}"/>
+
+		<delete dir="${instrumentation.temp.dir}"/>
+		<mkdir dir="${instrumentation.temp.dir}"/>
+	</target>
+</project>
