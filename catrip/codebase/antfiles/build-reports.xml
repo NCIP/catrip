@@ -180,7 +180,7 @@
 		/>
 		<java jar="${statcvs.home}/statcvs.jar" fork="true" dir="${cvs.dir}">
 			<arg value="-title"/>
-			<arg value="rproteomics-1-0"/>
+			<arg value="caTRIP"/>
 			<arg value="-viewcvs"/>
 			<arg value="http://gforge.nci.nih.gov/plugins/scmcvs/cvsweb.php/?cvsroot=catrip"/>
 			<arg value="${cvs.dir}/cvs.log"/> 
