@@ -31,14 +31,15 @@
 		<mkdir dir="${style.dir}"/>
 
 		<!-- call run-report-style for each project or call checkstyle directly -->
+		<for list="${reportable.projects.list}" parallel="false" param="project.name" trim="true">
+			<sequential>
+				<echo message="Reporting style for project @{project.name}." />
 
-		<antcall target="run-report-style">
-			<param name="project" value="queryengine"/>
-		</antcall>
-
-		<antcall target="run-report-style">
-			<param name="project" value="gui"/>
-		</antcall>
+				<antcall target="run-report-style">
+					<param name="project" value="@{project.name}"/>
+				</antcall>
+			</sequential>
+		</for>
 	</target>
 
 	<target name="run-report-style">
@@ -76,14 +77,15 @@
 		<mkdir dir="${findbugs.dir}"/>
 
 		<!-- call run-report-findbugs for each project or call findbugs directly -->
+		<for list="${reportable.projects.list}" parallel="false" param="project.name" trim="true">
+			<sequential>
+				<echo message="Reporting findbugs for project @{project.name}." />
 
-		<antcall target="run-report-findbugs">
-			<param name="project" value="queryengine"/>
-		</antcall>
-
-		<antcall target="run-report-findbugs">
-			<param name="project" value="gui"/>
-		</antcall>
+				<antcall target="run-report-findbugs">
+					<param name="project" value="@{project.name}"/>
+				</antcall>
+			</sequential>
+		</for>
 	</target>
 
 	<target name="run-report-findbugs">
@@ -138,14 +140,15 @@
 		<mkdir dir="${source-java.dir}"/>
 
 		<!-- call run-report-source-java for each project or call javancss directly -->
+		<for list="${reportable.projects.list}" parallel="false" param="project.name" trim="true">
+			<sequential>
+				<echo message="Reporting source-java for project @{project.name}." />
 
-		<antcall target="run-report-source-java">
-			<param name="project" value="queryengine"/>
-		</antcall>
-
-		<antcall target="run-report-source-java">
-			<param name="project" value="gui"/>
-		</antcall>
+				<antcall target="run-report-source-java">
+					<param name="project" value="@{project.name}"/>
+				</antcall>
+			</sequential>
+		</for>
 	</target>
 
 	<target name="run-report-source-java">
@@ -205,13 +208,16 @@
 		</delete>
 		<mkdir dir="${testcoverage.dir}"/>
 
-		<antcall target="run-report-testcoverage">
-			<param name="project" value="queryengine"/>
-		</antcall>		
+		<!-- call run-report-testcoverage for each project or call cobertura directly -->
+		<for list="${reportable.projects.list}" parallel="false" param="project.name" trim="true">
+			<sequential>
+				<echo message="Reporting testcoverage for project @{project.name}." />
 
-		<antcall target="run-report-testcoverage">
-			<param name="project" value="gui"/>
-		</antcall>		
+				<antcall target="run-report-testcoverage">
+					<param name="project" value="@{project.name}"/>
+				</antcall>
+			</sequential>
+		</for>
 	</target>
 
 	<target name="run-report-testcoverage">
@@ -228,5 +234,5 @@
 		</cobertura-report>
 	</target>
 
-	<target name="reports" depends="reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs"/>
+	<target name="reports" depends="prepare, reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs"/>
 </project>

@@ -34,6 +34,22 @@
 	    </fileset>
 	</path>
 
+	<!-- ================================================================================ -->
+	<!--                          DEFINE THE SUB PROJECTS                                 -->
+	<!-- ================================================================================ -->
+	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout -->
+	<property name="projects.list" value="queryengine, gui" />
+	<!-- ================================================================================ -->
+	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
+	<!-- ================================================================================ -->
+	<!-- This should be a subset of the projects above -->
+	<property name="testable.projects.list" value="queryengine, gui" />
+	<!-- ================================================================================ -->
+	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
+	<!-- ================================================================================ -->
+	<!-- This should be a subset of the projects above -->
+	<property name="reportable.projects.list" value="queryengine, gui" />
+
 	<!-- =============================================================== -->
 	<!-- Bootstrap the build by setting up the structure and building    -->
 	<!-- our custom ant tasks.                                           -->
@@ -60,6 +76,12 @@
 			<classpath>
 				<pathelement location="${management.dir}/build" />
 				<path refid="cobertura.classpath"/>
+			</classpath>
+		</taskdef>
+
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement location="${share.dir}/ant-contrib/ant-contrib.jar" />
 			</classpath>
 		</taskdef>
 	</target>
@@ -130,21 +152,39 @@
 	<!-- ============================================================== -->
 	<!-- Cleans up generated stuff                                      -->
 	<!-- ============================================================== -->
-	<target name="clean" description="Cleans all projects.">
-		<delete dir="${antfiles.dir}/build" />
+	<target name="clean" depends="prepare" description="Cleans all projects.">
+		<for list="${projects.list}" parallel="true" param="project.name" trim="true">
+			<sequential>
+				<echo message="Cleaning project @{project.name}." />
+				<delete dir="${projects.dir}/@{project.name}/ext" />
+				<ant dir="${projects.dir}/@{project.name}" inheritAll="false" antfile="build.xml" target="clean" />
+			</sequential>
+		</for>
 
-		<delete dir="${projects.dir}/gui/ext" />
-		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="clean" />
-
-		<delete dir="${projects.dir}/queryengine/ext" />
-		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="clean" />
+		<delete failonerror="false">
+			<fileset dir="${junit.results.dir}">
+				<include name="*" />
+			</fileset>
+		</delete>
 	</target>
 
+	<!-- ============================================================== -->
+	<!-- Builds the projects                                            -->
+	<!-- ============================================================== -->
+	<target name="build" depends="prepare" description="Builds all projects.">
+		<for list="${projects.list}" parallel="false" param="project.name" trim="true">
+			<sequential>
+				<echo message="Building project @{project.name}." />
+				<runtarget target="build-@{project.name}" />
+				<echo message="Built project @{project.name}." />
+			</sequential>
+		</for>
+	</target>
 
 	<!-- ============================================================== -->
 	<!-- Builds caTRIP from scratch                                     -->
 	<!-- ============================================================== -->
-	<target name="all" depends="clean, build-queryengine, build-gui" />
+	<target name="all" depends="clean, build" />
 
 </project>
 
