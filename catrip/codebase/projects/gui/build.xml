@@ -134,10 +134,15 @@
 
 
 	<!-- ============================================================== -->
-	<!-- Creates the test jar files                                     -->
+	<!-- Creates the jar files                                     -->
 	<!-- ============================================================== -->
 	<target name="jar" depends="compile" description="Builds the Jar Files">
 		<mkdir dir="${jar.dir}" />
+                <copy todir="${classes.dir}">
+                  <fileset dir="${src.dir}">
+                     <exclude name="**/*.java"/>
+                  </fileset>
+                </copy>
 		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
@@ -147,7 +152,7 @@
 	</target>
 
 	<!-- ============================================================== -->
-	<!-- Creates the jar files                                          -->
+	<!-- Creates the test jar files                                          -->
 	<!-- ============================================================== -->
 	<target name="jar-tests" depends="compile-tests" description="Builds the Jar Files">
 		<mkdir dir="${jar.dir}" />
@@ -157,6 +162,15 @@
 			</manifest>
 		</jar>
 	</target>
+
+        <!-- ============================================================== -->
+	<!-- Run the GUI                                                    -->
+	<!-- ============================================================== -->
+	<target name="run" depends="all" description="Run the GUI">
+	<java classname="${main.class}" fork="true" >
+		<classpath refid="run.classpath" />
+        </java>
+        </target>
 
 	<!-- ============================================================== -->
 	<!-- Builds from scratch                                                -->
