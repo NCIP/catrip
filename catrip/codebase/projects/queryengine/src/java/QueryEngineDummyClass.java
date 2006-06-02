@@ -8,9 +8,11 @@ public class QueryEngineDummyClass
 	/**
 	 * This is a dummy method for testing
 	 * @return "this is dumb"
+         * 
 	 */
 	public String dummyMethod()
 	{
 		return "this is dumb";
 	}
 }
+
