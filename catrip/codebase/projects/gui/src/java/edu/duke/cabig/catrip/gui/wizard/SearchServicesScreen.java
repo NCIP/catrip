@@ -7,6 +7,7 @@
 package edu.duke.cabig.catrip.gui.wizard;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
+import edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel;
 
 /**
  *
@@ -17,8 +18,15 @@ public class SearchServicesScreen extends CJFrame {
     /** Creates new form SearchServicesScreen */
     public SearchServicesScreen() {
         initComponents();
+        init();
     }
     
+    
+    private void init(){
+        ServicesSearchPanel ss = new ServicesSearchPanel(this);
+        getContentPane().add(ss);
+        setBounds(10,10,850,450);
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -26,21 +34,10 @@ public class SearchServicesScreen extends CJFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 400, Short.MAX_VALUE)
-                );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 300, Short.MAX_VALUE)
-                );
         pack();
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
     
     /**
      * @param args the command line arguments
