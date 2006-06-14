@@ -17,6 +17,8 @@ public class WelcomeScreen extends CJFrame {
     /** Creates new form WelcomeScreen */
     public WelcomeScreen() {
         initComponents();
+        
+        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
     }
     
     /** This method is called from within the constructor to
@@ -26,22 +28,108 @@ public class WelcomeScreen extends CJFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
-        this.setLayout(layout);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+
+        setTitle("Cancer Translational Research Informatics Platform (caTRIP)");
+        setLocationRelativeTo(null);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\tmp\\footer_nci.gif"));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\tmp\\footer_nih.gif"));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\tmp\\cabig_logo.jpg"));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\tmp\\caGrid_small.gif"));
+
+        jLabel5.setText("Cancer Translational Research Informatics Platform (caTRIP)");
+
+        jButton1.setText("Proceed for Login");
+
+        jButton2.setText("Exit");
+
+        jLabel6.setText("Federated Query Execution Interface for caGrid");
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 400, Short.MAX_VALUE)
-                );
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel3))
+                    .add(layout.createSequentialGroup()
+                        .add(109, 109, 109)
+                        .add(jLabel5))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabel2)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(84, 84, 84)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(jLabel6)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                                        .add(jButton1)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 94, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(layout.createSequentialGroup()
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel1))))
+                    .add(layout.createSequentialGroup()
+                        .add(207, 207, 207)
+                        .add(jLabel4)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 300, Short.MAX_VALUE)
-                );
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel4)
+                .add(16, 16, 16)
+                .add(jLabel5)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel6)
+                .add(24, 24, 24)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton1)
+                    .add(jButton2))
+                .add(15, 15, 15)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jLabel1))
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
+    
+     public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               WelcomeScreen ws= new WelcomeScreen();
+               ws.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+               ws.setBounds(10,10,550,365);
+               ws.setVisible(true);
+            }
+        });
     }
-    // </editor-fold>//GEN-END:initComponents
-    
-    
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
     
 }
