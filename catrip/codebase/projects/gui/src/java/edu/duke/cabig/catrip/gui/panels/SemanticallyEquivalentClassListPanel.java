@@ -8,6 +8,7 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import java.util.ResourceBundle;
+import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,30 +34,82 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
         classListTable = new javax.swing.JTable();
         dropBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
+        cdePanel = new javax.swing.JPanel();
+        classNameTwo = new javax.swing.JLabel();
+        classNameOne = new javax.swing.JLabel();
+        scrollPane1 = new javax.swing.JScrollPane();
+        cdeListOne = new javax.swing.JList();
+        scrollPane2 = new javax.swing.JScrollPane();
+        cdeListTwo = new javax.swing.JList();
 
         lbl1.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEMANTICALLY_EQUIVALENT_CLASS_LIST_PANEL_STR1"));
 
         classListTable.setModel(getTableModel());
         scrollPane.setViewportView(classListTable);
 
-        dropBtn.setText("Drop");
+        dropBtn.setText("Drop Class");
 
         exitBtn.setText("Exit");
+
+        cdePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEMANTICALLY_EQUIVALENT_CLASS_LIST_PANEL_BORDER_STR1")));
+        classNameTwo.setText("class_name_two");
+
+        classNameOne.setText("class_name_one");
+
+        cdeListOne.setModel(getListModel());
+        cdeListOne.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        scrollPane1.setViewportView(cdeListOne);
+
+        cdeListTwo.setModel(getListModel());
+        cdeListTwo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        scrollPane2.setViewportView(cdeListTwo);
+
+        org.jdesktop.layout.GroupLayout cdePanelLayout = new org.jdesktop.layout.GroupLayout(cdePanel);
+        cdePanel.setLayout(cdePanelLayout);
+        cdePanelLayout.setHorizontalGroup(
+            cdePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(cdePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(cdePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(classNameTwo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(scrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
+                .add(cdePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(classNameOne, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(scrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        cdePanelLayout.setVerticalGroup(
+            cdePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(cdePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(cdePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(classNameTwo)
+                    .add(classNameOne))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cdePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(scrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(scrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
-                        .add(19, 19, 19)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(dropBtn)
-                            .add(exitBtn)))
-                    .add(lbl1))
+                        .addContainerGap()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, cdePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, lbl1)))
+                    .add(layout.createSequentialGroup()
+                        .add(255, 255, 255)
+                        .add(dropBtn)
+                        .add(27, 27, 27)
+                        .add(exitBtn)))
                 .addContainerGap())
         );
 
@@ -67,15 +120,14 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(lbl1)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(51, 51, 51)
-                        .add(dropBtn)
-                        .add(37, 37, 37)
-                        .add(exitBtn))
-                    .add(layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(scrollPane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 171, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cdePanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(dropBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(exitBtn))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -86,7 +138,7 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new SemanticallyEquivalentClassListPanel());
                 cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                cf.setBounds(10,10,600,220);
+                cf.setBounds(10,10,750,500);
                 cf.setVisible(true);
                 
             }
@@ -99,8 +151,8 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
         DefaultTableModel tb =
                 new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                    {null, null},
-                    {null, null}
+//                    {null, null},
+//                    {null, null}
         },
                 new String [] {
             "Class Name", "Class Description"
@@ -111,12 +163,35 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
         return tb;
     }
     
+    
+    private AbstractListModel getListModel(){
+        AbstractListModel lm =   new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2"};
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+        
+        return lm;
+        
+    }
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList cdeListOne;
+    private javax.swing.JList cdeListTwo;
+    private javax.swing.JPanel cdePanel;
     private javax.swing.JTable classListTable;
+    private javax.swing.JLabel classNameOne;
+    private javax.swing.JLabel classNameTwo;
     private javax.swing.JButton dropBtn;
     private javax.swing.JButton exitBtn;
     private javax.swing.JLabel lbl1;
     private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JScrollPane scrollPane1;
+    private javax.swing.JScrollPane scrollPane2;
     // End of variables declaration//GEN-END:variables
     
 }

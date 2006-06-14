@@ -8,6 +8,7 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,129 +32,84 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
     private void initComponents() {
         buttonGroup = new javax.swing.ButtonGroup();
         addServiceURLPanel = new javax.swing.JPanel();
-        addRadioBtn = new javax.swing.JRadioButton();
-        urlLbl = new javax.swing.JLabel();
-        serviceURL = new javax.swing.JTextField();
-        nameLbl = new javax.swing.JLabel();
-        serviceName = new javax.swing.JTextField();
-        setDefaultChkBox = new javax.swing.JCheckBox();
-        addBtn = new javax.swing.JButton();
+        scrollPane = new javax.swing.JScrollPane();
+        serviceListTable = new javax.swing.JTable();
         searchPanel = new javax.swing.JPanel();
-        searchRadioBtn = new javax.swing.JRadioButton();
         indexServiceListCombo = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        addBtn = new javax.swing.JButton();
 
         addServiceURLPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        buttonGroup.add(addRadioBtn);
-        addRadioBtn.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("QUERY_ENGINE_SERVICE_SEARCH_PANEL_RADIO_BTN1"));
-        addRadioBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        addRadioBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        urlLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("QUERY_ENGINE_SERVICE_SEARCH_PANEL_LBL1"));
-
-        nameLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("QUERY_ENGINE_SERVICE_SEARCH_PANEL_LBL2"));
-
-        setDefaultChkBox.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("QUERY_ENGINE_SERVICE_SEARCH_PANEL_CHECKBOX"));
-        setDefaultChkBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        setDefaultChkBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        addBtn.setText("Add Service");
+        serviceListTable.setModel(getTableModel());
+        scrollPane.setViewportView(serviceListTable);
 
         org.jdesktop.layout.GroupLayout addServiceURLPanelLayout = new org.jdesktop.layout.GroupLayout(addServiceURLPanel);
         addServiceURLPanel.setLayout(addServiceURLPanelLayout);
         addServiceURLPanelLayout.setHorizontalGroup(
             addServiceURLPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(addServiceURLPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(addServiceURLPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(addRadioBtn)
-                    .add(urlLbl)
-                    .add(nameLbl)
-                    .add(serviceURL, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                    .add(serviceName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                    .add(addServiceURLPanelLayout.createSequentialGroup()
-                        .add(setDefaultChkBox)
-                        .add(61, 61, 61)
-                        .add(addBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 102, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
         );
         addServiceURLPanelLayout.setVerticalGroup(
             addServiceURLPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(addServiceURLPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(addRadioBtn)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(urlLbl)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(serviceURL, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
-                .add(nameLbl)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(serviceName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(15, 15, 15)
-                .add(addServiceURLPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(setDefaultChkBox)
-                    .add(addBtn))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
         );
 
         searchPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        buttonGroup.add(searchRadioBtn);
-        searchRadioBtn.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("QUERY_ENGINE_SERVICE_SEARCH_PANEL_RADIO_BTN2"));
-        searchRadioBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        searchRadioBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
         indexServiceListCombo.setModel(getComboBoxModel());
 
         jButton1.setText("Search");
+
+        jLabel1.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("QUERY_ENGINE_SERVICE_SEARCH_PANEL_LBL0"));
 
         org.jdesktop.layout.GroupLayout searchPanelLayout = new org.jdesktop.layout.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .add(searchPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(searchPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(searchPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(indexServiceListCombo, 0, 497, Short.MAX_VALUE)
-                            .add(searchRadioBtn)))
-                    .add(searchPanelLayout.createSequentialGroup()
-                        .add(147, 147, 147)
-                        .add(jButton1)))
+                    .add(indexServiceListCombo, 0, 638, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton1)
+                    .add(jLabel1))
                 .addContainerGap())
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(searchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(searchRadioBtn)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel1)
+                .add(7, 7, 7)
                 .add(indexServiceListCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(15, 15, 15)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        addBtn.setText("Add Service");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, searchPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, addServiceURLPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(addServiceURLPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(searchPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, addBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 102, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(addServiceURLPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(searchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(addServiceURLPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(addBtn)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -163,9 +119,8 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new QueryEngineServiceSearchPanel());
                 cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                cf.setBounds(10,10,650,450);
+                cf.setBounds(10,10,850,450);
                 cf.setVisible(true);
-                
             }
         });
     }
@@ -173,26 +128,39 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
     
     
     
-    private DefaultComboBoxModel getComboBoxModel (){
+    private DefaultComboBoxModel getComboBoxModel(){
         DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2" });
         return cb;
     }
     
     
+    private DefaultTableModel getTableModel(){
+        
+        DefaultTableModel tb =
+                new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null, null,null,null},
+                    {null, null, null,null,null}
+        },
+                new String [] {
+            "  ", "Service Name", "Service Description", "Institution", "View MetaData"
+        }
+        );
+        
+        
+        return tb;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JRadioButton addRadioBtn;
     private javax.swing.JPanel addServiceURLPanel;
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JComboBox indexServiceListCombo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel nameLbl;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JPanel searchPanel;
-    private javax.swing.JRadioButton searchRadioBtn;
-    private javax.swing.JTextField serviceName;
-    private javax.swing.JTextField serviceURL;
-    private javax.swing.JCheckBox setDefaultChkBox;
-    private javax.swing.JLabel urlLbl;
+    private javax.swing.JTable serviceListTable;
     // End of variables declaration//GEN-END:variables
     
 }

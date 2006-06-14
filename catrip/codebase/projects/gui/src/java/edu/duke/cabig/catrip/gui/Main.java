@@ -23,7 +23,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // This can be the first entry to the GUI module.
     }
     
 }

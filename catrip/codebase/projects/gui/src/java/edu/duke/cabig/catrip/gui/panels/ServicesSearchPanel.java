@@ -171,7 +171,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new ServicesSearchPanel(cf));
                 cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                cf.setBounds(10,10,650,450);
+                cf.setBounds(10,10,850,450);
                 cf.setVisible(true);
                 
             }
@@ -184,11 +184,11 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         DefaultTableModel tb =
                 new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-//                    {null, null, null},
-//                    {null, null, null}
+//                    {null, null, null,null,null},
+//                    {null, null, null,null,null}
         },
                 new String [] {
-            "  ", "Service Name", "Service Description"
+            "  ", "Service Name", "Service Description", "Institution", "View MetaData"
         }
         );
         
