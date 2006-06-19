@@ -23,7 +23,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // This can be the first entry to the GUI module.
+        // This is the entry point to the GUI module.
+        // Perform few basic check on the settings of the GUI and launch the Welcome Screen.
+        // Check:
+        // caTRIP_config.xml for Index service and Dorian Urls.
     }
     
 }
