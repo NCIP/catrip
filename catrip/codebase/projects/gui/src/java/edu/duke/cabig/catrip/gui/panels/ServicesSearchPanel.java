@@ -8,7 +8,15 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import java.awt.Component;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -16,16 +24,49 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ServicesSearchPanel extends javax.swing.JPanel {
     
-    Component parent;
-    
+    CJFrame parentFrame;
+    JDialog parentDialog;
+    private boolean dialogParent = false;
     /** Creates new form ServicesSearchPanel */
     public ServicesSearchPanel() {
         initComponents();
+        init();
     }
     
-    public ServicesSearchPanel(Component parent) {
-        initComponents();
-        this.parent = parent;
+    public ServicesSearchPanel(CJFrame parent) {
+        this();
+        this.parentFrame = parent;
+        setDialogParent(false);
+    }
+    
+    public ServicesSearchPanel(JDialog parent) {
+        this();
+        this.parentDialog = parent;
+        setDialogParent(true);
+    }
+    
+    
+    private void init(){
+
+        
+        
+        TableColumn column = null;
+for (int i = 0; i < 5; i++) {
+    column = resultTable.getColumnModel().getColumn(i);
+    if (i == 0) {
+        column.setPreferredWidth(32);  
+    }else if (i == 4) {
+        column.setPreferredWidth(90);
+    } 
+    else {
+        column.setPreferredWidth(220);
+    }
+}
+        
+
+        
+        
+        
     }
     
     /** This method is called from within the constructor to
@@ -49,16 +90,17 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         selectBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
 
-        searchPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEARCH_SERVICES_PANEL_BORDER_STR_1")));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        searchPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("SEARCH_SERVICES_PANEL_BORDER_STR_1"))); // NOI18N
         searchBtn.setText("Search");
 
         showAllBtn.setText("Show All");
 
         clearBtn.setText("Clear");
 
-        lbl1.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEARCH_SERVICES_PANEL_STR_1"));
+        lbl1.setText(bundle.getString("SEARCH_SERVICES_PANEL_STR_1")); // NOI18N
 
-        lbl2.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEARCH_SERVICES_PANEL_STR_2"));
+        lbl2.setText(bundle.getString("SEARCH_SERVICES_PANEL_STR_2")); // NOI18N
 
         org.jdesktop.layout.GroupLayout searchPanelLayout = new org.jdesktop.layout.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -99,8 +141,9 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        resultPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEARCH_SERVICES_PANEL_BORDER_STR_2")));
+        resultPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("SEARCH_SERVICES_PANEL_BORDER_STR_2"))); // NOI18N
         resultTable.setModel(getTableModel());
+        resultTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scrollPane.setViewportView(resultTable);
 
         org.jdesktop.layout.GroupLayout resultPanelLayout = new org.jdesktop.layout.GroupLayout(resultPanel);
@@ -120,6 +163,11 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         );
 
         selectBtn.setText("Select");
+        selectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectBtnActionPerformed(evt);
+            }
+        });
 
         exitBtn.setText("Exit");
         exitBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -161,8 +209,17 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
+// TODO add your handling code here
+        parentFrame.fwdAction();
+    }//GEN-LAST:event_selectBtnActionPerformed
+    
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
-        parent.setVisible(false);
+        if (isDialogParent()){
+            parentDialog.setVisible(false);
+        } else {
+            parentFrame.exit();
+        }
     }//GEN-LAST:event_exitBtnActionPerformed
     
     public static void main(String args[]) {
@@ -171,7 +228,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new ServicesSearchPanel(cf));
                 cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                cf.setBounds(10,10,850,450);
+                cf.setBounds(10,10,850,450);cf.center();
                 cf.setVisible(true);
                 
             }
@@ -181,19 +238,56 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     
     private DefaultTableModel getTableModel(){
         
+        
         DefaultTableModel tb =
                 new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-//                    {null, null, null,null,null},
-//                    {null, null, null,null,null}
+                    {new Boolean(false), null, null,null,new JButton()},
+                    {new Boolean(false), null, null,null,new JButton()}
         },
                 new String [] {
             "  ", "Service Name", "Service Description", "Institution", "View MetaData"
         }
-        );
+        
+        ){
+            // few custom methods.. here..
+            public boolean isCellEditable(int row, int col) {
+                if (col > 0) // only first column is editable with CheckBox Editor.
+                    return false;
+                
+                return true;
+            }
+            
+            public Class getColumnClass(int c) {
+                if (c == 0) {// only first column is editable with CheckBox Editor.
+                    return getValueAt(0, 0).getClass();
+                } else if (c == 4){
+                    return getValueAt(0, 4).getClass();
+                }
+
+            return new String().getClass();
+        }
+            
+            
+        };
         
         
         return tb;
+    }
+    
+
+    
+    
+    public boolean isDialogParent() {
+        return dialogParent;
+    }
+    
+    public void setDialogParent(boolean dialogParent) {
+        this.dialogParent = dialogParent;
+    }
+    
+    public javax.swing.JTable getResultTable() {
+        return resultTable;
     }
     
     

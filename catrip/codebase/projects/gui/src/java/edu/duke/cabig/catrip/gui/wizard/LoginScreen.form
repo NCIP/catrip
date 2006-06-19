@@ -2,8 +2,10 @@
 
 <Form version="1.3" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="caGrid Login"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
+    <Property name="title" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+      <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="TITLE_LOGIN_SCREEN" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+    </Property>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
     <Property name="name" type="java.lang.String" value="LoginScreen"/>
     <Property name="resizable" type="boolean" value="false"/>
@@ -37,9 +39,9 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="exitBtn" pref="87" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="identityProvider" alignment="0" pref="320" max="32767" attributes="2"/>
-                  <Component id="userId" alignment="0" pref="320" max="32767" attributes="2"/>
                   <Component id="password" alignment="0" pref="320" max="32767" attributes="2"/>
+                  <Component id="userId" alignment="0" pref="320" max="32767" attributes="2"/>
+                  <Component id="identityProvider" alignment="0" pref="320" max="32767" attributes="2"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -56,12 +58,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="passwordLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="identityProvider" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="identityProviderLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="identityProvider" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -78,19 +80,25 @@
     <Component class="javax.swing.JLabel" name="loginIdLbl">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Login ID"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="passwordLbl">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Password"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="LOGIN_SCREEN_WIZARD_LBL_PASSWORD" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="identityProviderLbl">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="Identity Provider"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="userId">
@@ -98,17 +106,14 @@
         <Property name="text" type="java.lang.String" value="User ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="password">
+    <Component class="javax.swing.JComboBox" name="identityProvider">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Duke Identity Provider"/>
-            <StringItem index="1" value="NCICB Identity Provider"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="getComboBoxModel()" type="code"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="identityProvider">
+    <Component class="javax.swing.JPasswordField" name="password">
       <Properties>
         <Property name="text" type="java.lang.String" value="User Password"/>
       </Properties>
@@ -125,6 +130,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Clear"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exitBtn">
       <Properties>

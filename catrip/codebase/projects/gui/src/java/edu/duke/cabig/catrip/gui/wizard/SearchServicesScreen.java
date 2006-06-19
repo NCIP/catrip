@@ -35,9 +35,23 @@ public class SearchServicesScreen extends CJFrame {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("TITLE_SEARCH_SERVICES_SCREEN"));
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+     public void fwdAction(){
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               MainFrame ws= new MainFrame();
+               ws.center();
+               ws.main(null);
+            }
+        });
+        this.dispose();
+    }
+    
+    
     
     /**
      * @param args the command line arguments

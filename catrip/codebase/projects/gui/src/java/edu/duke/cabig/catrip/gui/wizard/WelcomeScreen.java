@@ -28,32 +28,45 @@ public class WelcomeScreen extends CJFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        nciIcon = new javax.swing.JLabel();
+        nihIcon = new javax.swing.JLabel();
+        caBIGIcon = new javax.swing.JLabel();
+        caGridIcon = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        loginBtn = new javax.swing.JButton();
+        exitBtn = new javax.swing.JButton();
+        lbl2 = new javax.swing.JLabel();
 
-        setTitle("Cancer Translational Research Informatics Platform (caTRIP)");
-        setLocationRelativeTo(null);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\tmp\\footer_nci.gif"));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        setTitle(bundle.getString("TITLE_WELCOME_SCREEN")); // NOI18N
+        setAlwaysOnTop(true);
+        setResizable(false);
+        nciIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/footer_nci.gif")));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\tmp\\footer_nih.gif"));
+        nihIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/footer_nih.gif")));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\tmp\\cabig_logo.jpg"));
+        caBIGIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/cabig_logo.jpg")));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\tmp\\caGrid_small.gif"));
+        caGridIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/caGrid_small.gif")));
 
-        jLabel5.setText("Cancer Translational Research Informatics Platform (caTRIP)");
+        lbl1.setText("Cancer Translational Research Informatics Platform (caTRIP)");
 
-        jButton1.setText("Proceed for Login");
+        loginBtn.setText("Proceed for Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Exit");
+        exitBtn.setText("Exit");
+        exitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitBtnActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setText("Federated Query Execution Interface for caGrid");
+        lbl2.setText("Federated Query Execution Interface for caGrid");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,73 +76,99 @@ public class WelcomeScreen extends CJFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jLabel3))
+                        .add(caBIGIcon))
                     .add(layout.createSequentialGroup()
                         .add(109, 109, 109)
-                        .add(jLabel5))
+                        .add(lbl1))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jLabel2)
+                        .add(nihIcon)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
                                 .add(84, 84, 84)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(jLabel6)
+                                    .add(lbl2)
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                                        .add(jButton1)
+                                        .add(loginBtn)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 94, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                                        .add(exitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 94, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                             .add(layout.createSequentialGroup()
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel1))))
+                                .add(nciIcon))))
                     .add(layout.createSequentialGroup()
                         .add(207, 207, 207)
-                        .add(jLabel4)))
+                        .add(caGridIcon)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel3)
+                .add(caBIGIcon)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4)
+                .add(caGridIcon)
                 .add(16, 16, 16)
-                .add(jLabel5)
+                .add(lbl1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel6)
+                .add(lbl2)
                 .add(24, 24, 24)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2))
+                    .add(loginBtn)
+                    .add(exitBtn))
                 .add(15, 15, 15)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jLabel1))
+                    .add(nihIcon)
+                    .add(nciIcon))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     
-     public static void main(String args[]) {
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+// TODO add your handling code here:
+        
+        LoginScreen loginScreen= new LoginScreen();
+        loginScreen.setVisible(true);
+        loginScreen.center();
+        this.dispose();
+        
+        
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                LoginScreen ws= new LoginScreen();
+//                ws.main(null);
+//            }
+//        });
+//        this.dispose();
+        
+    }//GEN-LAST:event_loginBtnActionPerformed
+    
+    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+// TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnActionPerformed
+    
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               WelcomeScreen ws= new WelcomeScreen();
-               ws.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-               ws.setBounds(10,10,550,365);
-               ws.setVisible(true);
+                WelcomeScreen ws= new WelcomeScreen();
+                //ws.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                ws.setBounds(10,10,550,365);
+                ws.center();
+                ws.setVisible(true);
+                
             }
         });
     }
-     
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel caBIGIcon;
+    private javax.swing.JLabel caGridIcon;
+    private javax.swing.JButton exitBtn;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JLabel nciIcon;
+    private javax.swing.JLabel nihIcon;
     // End of variables declaration//GEN-END:variables
     
 }

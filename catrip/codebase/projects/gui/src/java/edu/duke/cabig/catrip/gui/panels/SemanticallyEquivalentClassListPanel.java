@@ -137,7 +137,7 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
             public void run() {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new SemanticallyEquivalentClassListPanel());
-                cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                cf.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
                 cf.setBounds(10,10,750,500);
                 cf.setVisible(true);
                 

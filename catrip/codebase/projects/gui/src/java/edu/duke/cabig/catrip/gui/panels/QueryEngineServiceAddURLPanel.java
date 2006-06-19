@@ -104,7 +104,7 @@ public class QueryEngineServiceAddURLPanel extends javax.swing.JPanel {
             public void run() {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel"); 
                 cf.getContentPane().add(new QueryEngineServiceAddURLPanel());
-                cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                cf.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
                 cf.setBounds(10,10,650,220);
                 cf.setVisible(true);
             }

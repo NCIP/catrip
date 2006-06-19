@@ -40,7 +40,7 @@ public class CommandPanel extends CPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
-    getMainFrame().getOutputPanel().getOutPutArea().append("Result will be shown here in Tabular format..");
+    getMainFrame().getOutputPanel().getOutPutArea().append("\n Result will be shown here in Tabular format..");
         // call the test client here and run that...
         
         

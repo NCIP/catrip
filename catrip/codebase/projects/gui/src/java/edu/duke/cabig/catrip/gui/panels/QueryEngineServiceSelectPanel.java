@@ -79,7 +79,7 @@ public class QueryEngineServiceSelectPanel extends javax.swing.JPanel {
             public void run() {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new QueryEngineServiceSelectPanel());
-                cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                cf.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
                 cf.setBounds(10,10,650,142);
                 cf.setVisible(true);
             }

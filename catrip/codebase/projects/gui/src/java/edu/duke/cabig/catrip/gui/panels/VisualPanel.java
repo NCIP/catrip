@@ -52,9 +52,9 @@ public class VisualPanel extends CPanel {
         setLayout(new java.awt.GridLayout(1, 0));
 
         tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        tabbedPane.addTab("Visual Query Designer", visualQueryDesignerPanel);
+        tabbedPane.addTab(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("VISUAL_PANEL_TAB_ONE"), visualQueryDesignerPanel);
 
-        tabbedPane.addTab("CQL Designer", cQLDesignerPanel);
+        tabbedPane.addTab(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("VISUAL_PANEL_TAB_TWO"), cQLDesignerPanel);
 
         add(tabbedPane);
 
