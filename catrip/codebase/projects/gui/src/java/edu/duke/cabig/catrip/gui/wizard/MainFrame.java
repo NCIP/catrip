@@ -7,8 +7,9 @@
 package edu.duke.cabig.catrip.gui.wizard;
 
 
+import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
-
+import edu.duke.cabig.catrip.gui.panels.*;
 
 /**
  *
@@ -36,6 +37,7 @@ public class MainFrame extends CJFrame {
         outputPanel.setMainFrame(this);
         propertiesPanel.setMainFrame(this);
         
+        setExtendedState(MAXIMIZED_BOTH);
     }
     
     
@@ -64,17 +66,20 @@ public class MainFrame extends CJFrame {
         add = new javax.swing.JMenuItem();
         delete = new javax.swing.JMenuItem();
         queryMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        retrieve = new javax.swing.JMenuItem();
+        create = new javax.swing.JMenuItem();
+        save = new javax.swing.JMenuItem();
+        deleteQuery = new javax.swing.JMenuItem();
+        execute = new javax.swing.JMenuItem();
         preferencesMenu = new javax.swing.JMenu();
+        addSearchEngineServices = new javax.swing.JMenuItem();
+        selectSearchEngine = new javax.swing.JMenuItem();
+        addSearchEngineURL = new javax.swing.JMenuItem();
 
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("caTRIP Federated Query Builder");
+        setTitle(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("TITLE_MAIN_FRAME"));
         rootpanel.setPreferredSize(new java.awt.Dimension(1024, 768));
         jSplitPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jSplitPane1.setDividerLocation(200);
@@ -152,40 +157,117 @@ public class MainFrame extends CJFrame {
         );
         getContentPane().add(rootpanel);
 
-        servicesMenu.setText("Services");
-        add.setText("Add Services");
+        servicesMenu.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_SERVICE_MENU"));
+        add.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_SERVICE_MENU_ADD"));
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+
         servicesMenu.add(add);
 
-        delete.setText("Delete Services");
+        delete.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_SERVICE_MENU_DELETE"));
         servicesMenu.add(delete);
 
         menuBar.add(servicesMenu);
 
-        queryMenu.setText("Query");
-        jMenuItem1.setText("Retrieve Query");
-        queryMenu.add(jMenuItem1);
+        queryMenu.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU"));
+        retrieve.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_RETRIEVE"));
+        queryMenu.add(retrieve);
 
-        jMenuItem2.setText("Create Query");
-        queryMenu.add(jMenuItem2);
+        create.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_CREATE"));
+        queryMenu.add(create);
 
-        jMenuItem3.setText("Save Query");
-        queryMenu.add(jMenuItem3);
+        save.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_SAVE"));
+        queryMenu.add(save);
 
-        jMenuItem4.setText("Delete Query");
-        queryMenu.add(jMenuItem4);
+        deleteQuery.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_DELETE"));
+        queryMenu.add(deleteQuery);
 
-        jMenuItem5.setText("Execute Query");
-        queryMenu.add(jMenuItem5);
+        execute.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_EXECUTE"));
+        queryMenu.add(execute);
 
         menuBar.add(queryMenu);
 
-        preferencesMenu.setText("Preferences");
+        preferencesMenu.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU"));
+        addSearchEngineServices.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_ADD"));
+        addSearchEngineServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSearchEngineServicesActionPerformed(evt);
+            }
+        });
+
+        preferencesMenu.add(addSearchEngineServices);
+
+        selectSearchEngine.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_SELECT"));
+        selectSearchEngine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectSearchEngineActionPerformed(evt);
+            }
+        });
+
+        preferencesMenu.add(selectSearchEngine);
+
+        addSearchEngineURL.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_ADD_URL"));
+        addSearchEngineURL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSearchEngineURLActionPerformed(evt);
+            }
+        });
+
+        preferencesMenu.add(addSearchEngineURL);
+
         menuBar.add(preferencesMenu);
 
         setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void addSearchEngineURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSearchEngineURLActionPerformed
+        
+        QueryEngineServiceAddURLPanel ws= new QueryEngineServiceAddURLPanel();
+        CJDialog jd = new CJDialog(this, "Add Search Engine Service URL");
+        jd.add(ws);
+        jd.setBounds(10,10,650,220);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+        
+        
+    }//GEN-LAST:event_addSearchEngineURLActionPerformed
+    
+    private void selectSearchEngineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSearchEngineActionPerformed
+        
+        QueryEngineServiceSelectPanel ws= new QueryEngineServiceSelectPanel();
+        CJDialog jd = new CJDialog(this, "Search Services");
+        jd.add(ws);
+        jd.setBounds(10,10,650,142);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+    }//GEN-LAST:event_selectSearchEngineActionPerformed
+    
+    private void addSearchEngineServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSearchEngineServicesActionPerformed
+        
+        QueryEngineServiceSearchPanel ws= new QueryEngineServiceSearchPanel();
+        CJDialog jd = new CJDialog(this, "Search Services");
+        jd.add(ws);
+        jd.setBounds(10,10,850,450);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+    }//GEN-LAST:event_addSearchEngineServicesActionPerformed
+    
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // here open this panel into a new Dialog instead of a JFrame... and set the panel parent type to Dialog.
+
+        CJDialog jd = new CJDialog(this, "Search Services");
+        ServicesSearchPanel ws= new ServicesSearchPanel(jd);
+        jd.add(ws);
+        jd.setBounds(10,10,850,450);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+        
+    }//GEN-LAST:event_addActionPerformed
     
     /**
      * @param args the command line arguments
@@ -197,32 +279,32 @@ public class MainFrame extends CJFrame {
             }
         });
     }
-
+    
     public edu.duke.cabig.catrip.gui.panels.CommandPanel getCommandPanel() {
         return commandPanel;
     }
-
+    
     public edu.duke.cabig.catrip.gui.panels.ListServicesPanel getListServicesPanel() {
         return listServicesPanel;
     }
-
+    
     public edu.duke.cabig.catrip.gui.panels.OutputPanel getOutputPanel() {
         return outputPanel;
     }
-
+    
     public edu.duke.cabig.catrip.gui.panels.PropertiesPanel getPropertiesPanel() {
         return propertiesPanel;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem add;
+    private javax.swing.JMenuItem addSearchEngineServices;
+    private javax.swing.JMenuItem addSearchEngineURL;
     private edu.duke.cabig.catrip.gui.panels.CommandPanel commandPanel;
+    private javax.swing.JMenuItem create;
     private javax.swing.JMenuItem delete;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem deleteQuery;
+    private javax.swing.JMenuItem execute;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
@@ -234,8 +316,11 @@ public class MainFrame extends CJFrame {
     private javax.swing.JMenu preferencesMenu;
     private edu.duke.cabig.catrip.gui.panels.PropertiesPanel propertiesPanel;
     private javax.swing.JMenu queryMenu;
+    private javax.swing.JMenuItem retrieve;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel rootpanel;
+    private javax.swing.JMenuItem save;
+    private javax.swing.JMenuItem selectSearchEngine;
     private javax.swing.JMenu servicesMenu;
     private edu.duke.cabig.catrip.gui.panels.VisualPanel visualPanel;
     // End of variables declaration//GEN-END:variables
