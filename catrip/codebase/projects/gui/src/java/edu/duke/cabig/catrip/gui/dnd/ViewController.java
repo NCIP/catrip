@@ -12,10 +12,8 @@
  */
 package edu.duke.cabig.catrip.gui.dnd;
 
-import edu.duke.cabig.catrip.gui.panels.PropertiesPanel;
-import edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel;
+import edu.duke.cabig.catrip.gui.panels.*;
 import org.netbeans.graph.api.control.builtin.DefaultViewController;
-import org.netbeans.graph.api.model.builtin.GraphLink;
 import org.netbeans.graph.api.model.builtin.GraphNode;
 import org.netbeans.graph.api.model.IGraphNode;
 import org.netbeans.graph.api.model.IGraphLink;
@@ -35,6 +33,13 @@ public class ViewController extends DefaultViewController implements ActionListe
     private JPopupMenu popup;
     private JMenuItem miDelete;
     private JMenuItem miViewProp;
+    private JMenuItem miShowClass;
+    
+    
+    
+    private JPopupMenu popup2;
+    private JMenuItem miLinkCDE;
+    
     
     private VisualQueryDesignerPanel test;
     
@@ -52,17 +57,31 @@ public class ViewController extends DefaultViewController implements ActionListe
         
         popup.add(new JMenuItem("Get Associated Domain Model Classes"));
         popup.add(new JMenuItem("Get All Domain Model Classes"));
-        popup.add(new JMenuItem("Retrieve Semantically Equivalent Classes"));
-        popup.add(new JMenuItem("Link Classes via CDE"));
         
+        miShowClass = new JMenuItem("Retrieve Semantically Equivalent Classes");
+        miShowClass.addActionListener(this);
+        popup.add(miShowClass);
+        
+        
+        
+        popup2 = new JPopupMenu();
+        miLinkCDE = new JMenuItem("Link Classes via CDE");
+        miLinkCDE.addActionListener(this);
+        popup2.add(miLinkCDE);
         
     }
     
     protected JPopupMenu getPopupMenu() {
         // these 3 lines were added by sanjeev.
         Object[] selectedComponents = getHelper().getSelectedComponents();
+        
+        if (selectedComponents != null  &&  selectedComponents.length == 2 &&  (selectedComponents[0] instanceof IGraphNode) && (selectedComponents[1] instanceof IGraphNode))
+            return popup2; 
+        
         if (selectedComponents == null  ||  selectedComponents.length != 1 ||  !(selectedComponents[0] instanceof IGraphNode))
             return null; // no popup menu
+        
+        
         // there is only one component selected and the component is a node, so let's create a popup menu
         
         //useful code here..
@@ -85,23 +104,23 @@ public class ViewController extends DefaultViewController implements ActionListe
                     nodes.add(selectedComponent);
                     // sanjeev
                     GraphNode gn = (GraphNode) selectedComponent;
-                    GraphPort[] gp = (GraphPort[]) gn.getPorts(); 
+                    GraphPort[] gp = (GraphPort[]) gn.getPorts();
                     
-                    for (int ii = 0; ii < gp.length; ii++){  
+                    for (int ii = 0; ii < gp.length; ii++){
                         GraphPort gpp = gp[ii];
                         IGraphLink[] gpl = null;
                         try{
-                        gpl = gpp.getLinks();
+                            gpl = gpp.getLinks();
                         } catch (Exception nulle){
                             gpl = null;
                         }
                         if(!(gpl == null)){
-                        for (int jj = 0; jj < gpl.length; jj++){
-                            links.add(gpl[jj]);
-                        } 
-                        }  
-                    }  
-                     // sanjeev
+                            for (int jj = 0; jj < gpl.length; jj++){
+                                links.add(gpl[jj]);
+                            }
+                        }
+                    }
+                    // sanjeev
                     
                     // TODO - delete all links that leads in or out from any ports of the node
                 } else if (selectedComponent instanceof IGraphLink)
@@ -128,9 +147,24 @@ public class ViewController extends DefaultViewController implements ActionListe
                     
                 }
             }
+            
+        // Remove later : sanjeev dummy stitching code...    
+        } else if(e.getSource() == miShowClass){
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    SemanticallyEquivalentClassListPanel ws= new SemanticallyEquivalentClassListPanel();
+                    ws.main(null);
+                }
+            });
+        } else if(e.getSource() == miLinkCDE){
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    LinkCDEPanel ws= new LinkCDEPanel();
+                    ws.main(null);
+                }
+            });
         }
-        
-        
+        // Remove later : sanjeev dummy stitching code...    
         
         
         
@@ -151,7 +185,7 @@ public class ViewController extends DefaultViewController implements ActionListe
         button.setText("Ok");
         button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jf.setVisible(false); 
+                jf.setVisible(false);
             }
         });
         jPanel.add(button);
