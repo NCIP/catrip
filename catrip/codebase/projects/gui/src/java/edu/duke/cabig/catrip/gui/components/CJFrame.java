@@ -7,7 +7,9 @@
 package edu.duke.cabig.catrip.gui.components;
 
 import edu.duke.cabig.catrip.gui.util.*;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 
 /**
@@ -21,7 +23,7 @@ public class CJFrame extends javax.swing.JFrame {
         init();
     }
     
-    private void init(){ 
+    private void init(){
         setIconImage(getIconImage());
     }
     
@@ -34,6 +36,20 @@ public class CJFrame extends javax.swing.JFrame {
     public void exit(){
         System.exit(0);
     }
-          
     
+    
+    public void fwdAction(){
+        // to be implemented in each window..
+    }
+    
+    
+    public void center(){
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = toolkit.getScreenSize();
+        
+        int x = (screenSize.width - this.getWidth()) / 2;
+        int y = (screenSize.height - this.getHeight()) / 2;
+        
+        this.setLocation(x, y); 
+    }
 }
