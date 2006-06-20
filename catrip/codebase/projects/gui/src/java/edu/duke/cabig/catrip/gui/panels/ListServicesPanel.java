@@ -111,6 +111,8 @@ public class ListServicesPanel extends CPanel {
         
         tree = new JTree (root);
         tree.getSelectionModel ().setSelectionMode (DefaultTreeSelectionModel.SINGLE_TREE_SELECTION);
+        
+        
         MyRenderer rr = new MyRenderer (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_cde.png")));
         tree.setCellRenderer (rr);
         ToolTipManager.sharedInstance ().registerComponent (tree);
@@ -294,19 +296,34 @@ public class ListServicesPanel extends CPanel {
                     tree, value, sel,
                     expanded, leaf, row,
                     hasFocus);
-            if (leaf ) {
-                setIcon (tutorialIcon);
-                setToolTipText ("CDE Named : "+value.toString ());
-            } else if( value.toString ().equalsIgnoreCase ("Attrinbutes") ){
-                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_attributes.png")));
-            }else if( value.toString ().equalsIgnoreCase ("Associations") ){
-                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_associations.png")));
-            }else {
-                setToolTipText (null); //no tool tip
-            }
-//            System.out.println ("###### row is :"+row);
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
             
-            return this; 
+//            if (leaf ) {
+//                setIcon (tutorialIcon);
+//                setToolTipText ("CDE Named : "+value.toString ());
+//            } else if( value.toString ().equalsIgnoreCase ("Attrinbutes") ){
+//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_attributes.png")));
+//            }else if( value.toString ().equalsIgnoreCase ("Associations") ){
+//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_associations.png")));
+//            }else if ( node.getLevel() == 2){
+//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_class_.png")));
+//            }else if ( node.getLevel() == 1){
+//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_service.png")));
+//            }else {
+//                setToolTipText (value.toString ()); //no tool tip
+//            }
+//
+//            
+//            if ( (node.getLevel() == 4) && (node.getParent ().toString ().equalsIgnoreCase ("Associations"))  ){
+//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_association.png")));
+////                System.out.println ("###### node is :"+node.getParent ());
+//            }
+//            
+            
+            
+            
+            
+            return this;
         }
         
         
@@ -325,7 +342,7 @@ public class ListServicesPanel extends CPanel {
     
     
     
-        
+    
     
     
     
