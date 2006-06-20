@@ -6,16 +6,11 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.components.ButtonRenderer;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
-import java.awt.Component;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 /**
@@ -28,43 +23,42 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     JDialog parentDialog;
     private boolean dialogParent = false;
     /** Creates new form ServicesSearchPanel */
-    public ServicesSearchPanel() {
-        initComponents();
-        init();
+    public ServicesSearchPanel () {
+        initComponents ();
+        init ();
     }
     
-    public ServicesSearchPanel(CJFrame parent) {
-        this();
+    public ServicesSearchPanel (CJFrame parent) {
+        this ();
         this.parentFrame = parent;
-        setDialogParent(false);
+        setDialogParent (false);
     }
     
-    public ServicesSearchPanel(JDialog parent) {
-        this();
+    public ServicesSearchPanel (JDialog parent) {
+        this ();
         this.parentDialog = parent;
-        setDialogParent(true);
+        setDialogParent (true);
     }
     
     
-    private void init(){
-
+    private void init (){
+        
         
         
         TableColumn column = null;
-for (int i = 0; i < 5; i++) {
-    column = resultTable.getColumnModel().getColumn(i);
-    if (i == 0) {
-        column.setPreferredWidth(32);  
-    }else if (i == 4) {
-        column.setPreferredWidth(90);
-    } 
-    else {
-        column.setPreferredWidth(220);
-    }
-}
+        for (int i = 0; i < 5; i++) {
+            column = resultTable.getColumnModel ().getColumn (i);
+            if (i == 0) {
+                column.setPreferredWidth (32);
+            }else if (i == 4) {
+                column.setPreferredWidth (90);
+            } else {
+                column.setPreferredWidth (220);
+            }
+        }
         
-
-        
+        column = resultTable.getColumnModel ().getColumn (4);
+        column.setCellRenderer (new ButtonRenderer ());
         
         
     }
@@ -211,82 +205,71 @@ for (int i = 0; i < 5; i++) {
     
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
 // TODO add your handling code here
-        parentFrame.fwdAction();
+        parentFrame.fwdAction ();
     }//GEN-LAST:event_selectBtnActionPerformed
     
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
-        if (isDialogParent()){
-            parentDialog.setVisible(false);
+        if (isDialogParent ()){
+            parentDialog.setVisible (false);
         } else {
-            parentFrame.exit();
+            parentFrame.exit ();
         }
     }//GEN-LAST:event_exitBtnActionPerformed
     
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
-                cf.getContentPane().add(new ServicesSearchPanel(cf));
-                cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                cf.setBounds(10,10,850,450);cf.center();
-                cf.setVisible(true);
+    public static void main (String args[]) {
+        java.awt.EventQueue.invokeLater (new Runnable () {
+            public void run () {
+                CJFrame cf = new CJFrame ();cf.setTitle ("Testing this panel");
+                cf.getContentPane ().add (new ServicesSearchPanel (cf));
+                cf.setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                cf.setBounds (10,10,850,450);cf.center ();
+                cf.setVisible (true);
                 
             }
         });
     }
     
     
-    private DefaultTableModel getTableModel(){
+    private DefaultTableModel getTableModel (){
         
+        Object [][] data = new Object [][] {
+            {new Boolean (false), null, null,null,new JButton ("View")},
+            {new Boolean (false), null, null,null,new JButton ("View")}  };
+        String [] columNames = new String [] {"  ", "Service Name", "Service Description", "Institution", "View MetaData"};
         
-        DefaultTableModel tb =
-                new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {new Boolean(false), null, null,null,new JButton()},
-                    {new Boolean(false), null, null,null,new JButton()}
-        },
-                new String [] {
-            "  ", "Service Name", "Service Description", "Institution", "View MetaData"
-        }
-        
-        ){
-            // few custom methods.. here..
-            public boolean isCellEditable(int row, int col) {
+        DefaultTableModel tb = new javax.swing.table.DefaultTableModel (data, columNames) {
+            // implemented methods..
+            
+            public boolean isCellEditable (int row, int col) {
                 if (col > 0) // only first column is editable with CheckBox Editor.
                     return false;
                 
                 return true;
             }
             
-            public Class getColumnClass(int c) {
-                if (c == 0) {// only first column is editable with CheckBox Editor.
-                    return getValueAt(0, 0).getClass();
-                } else if (c == 4){
-                    return getValueAt(0, 4).getClass();
-                }
-
-            return new String().getClass();
-        }
-            
+            public Class getColumnClass (int c) {
+                if (c == 0 || c == 4)
+                    return getValueAt (0, c).getClass ();
+                
+                return new String ().getClass ();
+            };
             
         };
-        
-        
         return tb;
     }
     
-
     
     
-    public boolean isDialogParent() {
+    
+    public boolean isDialogParent () {
         return dialogParent;
     }
     
-    public void setDialogParent(boolean dialogParent) {
+    public void setDialogParent (boolean dialogParent) {
         this.dialogParent = dialogParent;
     }
     
-    public javax.swing.JTable getResultTable() {
+    public javax.swing.JTable getResultTable () {
         return resultTable;
     }
     
@@ -308,3 +291,6 @@ for (int i = 0; i < 5; i++) {
     // End of variables declaration//GEN-END:variables
     
 }
+
+
+

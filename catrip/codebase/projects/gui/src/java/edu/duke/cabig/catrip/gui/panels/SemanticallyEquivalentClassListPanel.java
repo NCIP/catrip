@@ -6,21 +6,47 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.components.ButtonRenderer;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import java.util.ResourceBundle;
 import javax.swing.AbstractListModel;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
  * @author  Sanjeev Agarwal
  */
 public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
-    public static final ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle");
+    public static final ResourceBundle bundle = java.util.ResourceBundle.getBundle ("edu/duke/cabig/catrip/gui/resources/ResourceBundle");
     /** Creates new form SemanticallyEquivalentClassListPanel */
-    public SemanticallyEquivalentClassListPanel() {
-        initComponents();
+    public SemanticallyEquivalentClassListPanel () {
+        initComponents ();
+        init();
     }
+    
+    
+    private void init(){
+        
+        
+        TableColumn column = null;
+        for (int i = 0; i < 3; i++) {
+            column = classListTable.getColumnModel ().getColumn (i);
+            if (i == 2) {
+                column.setPreferredWidth (105);
+            } else {
+                column.setPreferredWidth (305);
+            }
+        }
+        
+        column = classListTable.getColumnModel ().getColumn (2);
+        column.setCellRenderer (new ButtonRenderer ());
+        
+        
+        
+    }
+    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -42,16 +68,18 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
         scrollPane2 = new javax.swing.JScrollPane();
         cdeListTwo = new javax.swing.JList();
 
-        lbl1.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEMANTICALLY_EQUIVALENT_CLASS_LIST_PANEL_STR1"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        lbl1.setText(bundle.getString("SEMANTICALLY_EQUIVALENT_CLASS_LIST_PANEL_STR1")); // NOI18N
 
         classListTable.setModel(getTableModel());
+        classListTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scrollPane.setViewportView(classListTable);
 
         dropBtn.setText("Drop Class");
 
         exitBtn.setText("Exit");
 
-        cdePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("SEMANTICALLY_EQUIVALENT_CLASS_LIST_PANEL_BORDER_STR1")));
+        cdePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("SEMANTICALLY_EQUIVALENT_CLASS_LIST_PANEL_BORDER_STR1"))); // NOI18N
         classNameTwo.setText("class_name_two");
 
         classNameOne.setText("class_name_one");
@@ -132,43 +160,49 @@ public class SemanticallyEquivalentClassListPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
-                cf.getContentPane().add(new SemanticallyEquivalentClassListPanel());
-                cf.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-                cf.setBounds(10,10,750,500);
-                cf.setVisible(true);
+    public static void main (String args[]) {
+        java.awt.EventQueue.invokeLater (new Runnable () {
+            public void run () {
+                CJFrame cf = new CJFrame ();cf.setTitle ("Testing this panel");
+                cf.getContentPane ().add (new SemanticallyEquivalentClassListPanel ());
+                cf.setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                cf.setBounds (10,10,750,500);
+                cf.setVisible (true);
                 
             }
         });
     }
     
     
-    private DefaultTableModel getTableModel(){
+    private DefaultTableModel getTableModel (){
         
         DefaultTableModel tb =
-                new javax.swing.table.DefaultTableModel(
+                new javax.swing.table.DefaultTableModel (
                 new Object [][] {
-//                    {null, null},
-//                    {null, null}
+                    {null, null, new JButton ("View")}, 
+                    {null, null, new JButton ("View")} 
         },
                 new String [] {
-            "Class Name", "Class Description"
-        }
-        );
+            "Class Name", "Class Description", "View MetaData"
+        }){
+            
+            public boolean isCellEditable (int row, int col) {
+                return false;
+            }
+            
+            
+        };
         
         
         return tb;
     }
     
     
-    private AbstractListModel getListModel(){
-        AbstractListModel lm =   new javax.swing.AbstractListModel() {
+    private AbstractListModel getListModel (){
+        AbstractListModel lm =   new javax.swing.AbstractListModel () {
             String[] strings = { "Item 1", "Item 2"};
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public int getSize () { return strings.length; }
+            public Object getElementAt (int i) { return strings[i]; }
         };
         
         return lm;

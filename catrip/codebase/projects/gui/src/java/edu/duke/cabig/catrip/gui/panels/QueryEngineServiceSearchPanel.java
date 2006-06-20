@@ -6,9 +6,12 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.components.ButtonRenderer;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -21,7 +24,34 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
      */
     public QueryEngineServiceSearchPanel() {
         initComponents();
+        init();
     }
+    
+    
+    private void init (){
+        
+        
+        
+        TableColumn column = null;
+        for (int i = 0; i < 5; i++) {
+            column = serviceListTable.getColumnModel ().getColumn (i);
+            if (i == 0) {
+                column.setPreferredWidth (32);
+            }else if (i == 4) {
+                column.setPreferredWidth (90);
+            } else {
+                column.setPreferredWidth (220);
+            }
+        }
+        
+        column = serviceListTable.getColumnModel ().getColumn (4);
+        column.setCellRenderer (new ButtonRenderer ());
+        
+        
+    }
+    
+    
+    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -118,7 +148,7 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
             public void run() {
                 CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
                 cf.getContentPane().add(new QueryEngineServiceSearchPanel());
-                cf.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+                cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 cf.setBounds(10,10,850,450);
                 cf.setVisible(true);
             }
@@ -134,22 +164,34 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
     }
     
     
-    private DefaultTableModel getTableModel(){
+   private DefaultTableModel getTableModel (){
         
-        DefaultTableModel tb =
-                new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {null, null, null,null,null},
-                    {null, null, null,null,null}
-        },
-                new String [] {
-            "  ", "Service Name", "Service Description", "Institution", "View MetaData"
-        }
-        );
+        Object [][] data = new Object [][] {
+            {new Boolean (false), null, null,null,new JButton ("View")},
+            {new Boolean (false), null, null,null,new JButton ("View")}  };
+        String [] columNames = new String [] {"  ", "Service Name", "Service Description", "Institution", "View MetaData"};
         
-        
+        DefaultTableModel tb = new javax.swing.table.DefaultTableModel (data, columNames) {
+            // implemented methods..
+            
+            public boolean isCellEditable (int row, int col) {
+                if (col > 0) // only first column is editable with CheckBox Editor.
+                    return false;
+                
+                return true;
+            }
+            
+            public Class getColumnClass (int c) {
+                if (c == 0 || c == 4)
+                    return getValueAt (0, c).getClass ();
+                
+                return new String ().getClass ();
+            };
+            
+        };
         return tb;
     }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
