@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.pitt.cabig.cae.domain.breast.BreastSurgicalPathologySpecimen"
+        table="BREAST_SURGICAL_PATHOLOGY_SPECIMANS"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.Long"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-BreastSurgicalPathologySpecimen.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="otherSurgicalProcedure"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="OTHER_SURGICAL_PROCEDURE"
+        />
+
+        <property
+            name="lymphNodeSamplingProcedure"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="LYMPH_NODE_SAMPLING_PROCEDURE"
+        />
+
+        <property
+            name="laterality"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="LATERALITY"
+        />
+
+        <property
+            name="lateralityMVR"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="LATERALITY_MVR"
+        />
+
+        <property
+            name="surgicalProcedureMVR"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="SURGICAL_PROCEDURE_MVR"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-BreastSurgicalPathologySpecimen.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
