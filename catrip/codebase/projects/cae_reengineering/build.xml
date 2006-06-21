@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Cadsr API" default="compile" basedir=".">
+
+  <property file="build.properties"/>
+
+  <property name="src.dir" value="./src" />
+  <property name="class.dir" value="./classes" /> 
+  <property name="lib.dir" value="./lib" />
+  <property name="dist.dir" value="./dist" />
+  <property name="docs.dir" value="./docs" />
+  <property name="config.dir" value="properties" />
+  <property name="hibernate.mapping" value="hibernate-mapping" />
+
+  <path id="xdoclet.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="xdoclet/*.jar"/>
+    </fileset>
+  </path>
+  
+  <path id="compile.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="compile/*.jar"/>
+    </fileset>
+    <fileset dir="${lib.dir}">
+      <include name="rt/*.jar"/>
+    </fileset>
+    <pathelement location="${class.dir}"/>
+  </path>
+
+
+
+  <target name="clean"> 
+    <delete dir="${class.dir}" failonerror="true" />
+    <delete dir="${hibernate.mapping}" failonerror="true" />
+ </target>
+
+ <target name="init">
+    <mkdir dir="${class.dir}"/> 
+    <mkdir dir="${dist.dir}"/> 
+    <mkdir dir="${hibernate.mapping}"/>
+ </target>
+ 
+
+ <target name="doc">
+   <mkdir dir="${docs.dir}"/>
+   <mkdir dir="${docs.dir}/api"/>
+
+  <javadoc
+    destdir="{$docs}/api"
+    author="true"
+    version="true"
+    use="true"
+    windowtitle="caDSR API">
+
+    <packageset dir="src" defaultexcludes="yes">
+      <include name="edu/pitt/cabig/cae/domain/general/*" />
+      <include name="edu/pitt/cabig/cae/domain/breast/*" />
+    </packageset>
+
+    <doctitle><![CDATA[<h1>caDSR API</h1>]]></doctitle>
+    <bottom><![CDATA[<i>Support OSS.</i>]]></bottom>
+    <tag name="todo" scope="all" description="To do:" />
+    <link href="http://java.sun.com/products/jdk/1.4/docs/api/" />
+    <link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+  </javadoc>
+
+ </target>
+
+  <target name="hibernate" depends="init" description="Standard Hibernate">
+    <taskdef classpathref="xdoclet.classpath"
+      classname="xdoclet.modules.hibernate.HibernateDocletTask" 
+      name="hibernatedoclet"/>
+    
+    
+    <hibernatedoclet excludedTags="@version,@author,@todo,@see" 
+      destDir="${hibernate.mapping}"
+      addedTags="@xdoclet-generated at ${TODAY}, @author cludet" >
+      
+      <fileset dir="${src.dir}"  includes="**/*.java"/>
+      <hibernate version="3.0" >
+        
+      </hibernate>
+    </hibernatedoclet>
+  </target>
+
+  <target name="compile" depends="hibernate">
+    <javac
+      destdir="${class.dir}"
+      debug="on"
+      srcdir="${src.dir}"
+      deprecation="true"
+      >
+      <classpath refid="compile.classpath"/>
+    </javac>
+    
+    <copy todir="${class.dir}">
+      <fileset dir="${hibernate.mapping}">
+        <include name="**/*.hbm.xml"/>
+      </fileset>
+    </copy>
+
+
+
+  </target>
+
+
+
+</project>
