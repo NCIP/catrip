@@ -13,37 +13,37 @@ import java.lang.String;
 
 public class InvasiveBreastCarcinoma extends Neoplasm {
 
-    private Collection locations;
+    private Collection location;
     private String locationMVR;
     private String venousLymphaticInvasion;
-    private Collection microcalcificationLocations;
+    private Collection microcalcificationLocation;
 
     public InvasiveBreastCarcinoma(){
 
     }
 
 
-    public void setLocation(Collection locations) {
-        this.locations = locations;
+    public void setLocation(Collection location) {
+        this.location = location;
     }
 
     /**
      *
-     * @hibernate.bag  
-     *            name="locations"
+     * @hibernate.bag
+     *            name="location"
      *            lazy="false"
      *            table="BREAST_LOCATIONS"
-     * 
-     * @hibernate.collection-key 
+     *
+     * @hibernate.collection-key
      *            column="ID"
-     * 
+     *
      * @hibernate.collection-element
      *            column="LOCATION"
      *            type="java.lang.String"
-     * 
+     *
      */
     public Collection getLocation() {
-        return locations;
+        return location;
     }
 
     public void setLocationMVR(String locationMVR) {
@@ -74,26 +74,26 @@ public class InvasiveBreastCarcinoma extends Neoplasm {
         return venousLymphaticInvasion;
     }
 
-    public void setMicrocalcificationLocation(Collection microcalcificationLocations) {
-        this.microcalcificationLocations = microcalcificationLocations;
+    public void setMicrocalcificationLocation(Collection microcalcificationLocation) {
+        this.microcalcificationLocation = microcalcificationLocation;
     }
 
     /**
      *
-     * @hibernate.bag  
-     *            name="microcalcificationLocations"
+     * @hibernate.bag
+     *            name="microcalcificationLocation"
      *            lazy="false"
      *            table="BREAST_MICROCALCIFICATION_LOCATIONS"
-     * 
-     * @hibernate.collection-key 
+     *
+     * @hibernate.collection-key
      *            column="ID"
-     * 
+     *
      * @hibernate.collection-element
      *            column="MICROCALCIFICATION_LOCATION"
      *            type="java.lang.String"
-     * 
+     *
      */
     public Collection getMicrocalcificationLocation() {
-        return microcalcificationLocations;
+        return microcalcificationLocation;
     }
 }
