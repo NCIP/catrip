@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="Cadsr API" default="compile" basedir=".">
+<project name="Cae API" default="compile" basedir=".">
 
   <property file="build.properties"/>
 
@@ -57,7 +57,7 @@
       <include name="edu/pitt/cabig/cae/domain/breast/*" />
     </packageset>
 
-    <doctitle><![CDATA[<h1>caDSR API</h1>]]></doctitle>
+    <doctitle><![CDATA[<h1>cae API</h1>]]></doctitle>
     <bottom><![CDATA[<i>Support OSS.</i>]]></bottom>
     <tag name="todo" scope="all" description="To do:" />
     <link href="http://java.sun.com/products/jdk/1.4/docs/api/" />
