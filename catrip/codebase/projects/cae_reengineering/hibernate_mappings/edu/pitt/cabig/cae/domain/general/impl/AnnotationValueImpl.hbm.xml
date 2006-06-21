@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="edu.pitt.cabig.cae.domain.general.impl.AnnotationValueImpl"
+      table="ANNOTATION_VALUE" lazy="false">
+      <id name="id" type="java.lang.Long" column="ANNOTATION_VALUE_ID">
+		  <generator class="native"/>
+	  </id>
+	  <property name="type" column="TYPE"/>
+	  <many-to-one name="annotation" class="edu.pitt.cabig.cae.domain.general.impl.AnnotationImpl" column="ANNOTATION_ID" lazy="false"/>
+ 	  <join table="ANNOTATIONS_STRING_DATA" optional="true">
+        <key column="ANNOTATION_ID"/>
+        <property name="stringValue" column="VALUE"/>
+	  </join> 
+	  <join table="ANNOTATIONS_DATE_DATA"  optional="true">
+        <key column="ANNOTATION_ID"/>
+        <property name="dateValue" column="VALUE"/>
+	  </join>
+	  <join table="ANNOTATIONS_LONG_DATA"  optional="true">
+        <key column="ANNOTATION_ID"/>
+        <property name="longValue" column="VALUE"/>
+	  </join>
+	  <join table="ANNOTATIONS_DOUBLE_DATA"  optional="true">
+        <key column="ANNOTATION_ID"/>
+        <property name="doubleValue" column="VALUE"/>
+	  </join>
+   </class>
+</hibernate-mapping>

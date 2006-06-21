@@ -1,0 +1,17 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="edu.pitt.cabig.cae.domain.general.impl.AnnotationImpl"
+      table="ANNOTATIONS" lazy="false">
+      <id name="id" column="ANNOTATION_ID">
+		  <generator class="native"/>
+	  </id>
+	  <property name="type" column="TYPE"/>
+	  <property name="name" column="NAME"/>
+	  <many-to-one name="annotationSet" class="edu.pitt.cabig.cae.domain.general.impl.AnnotationSetImpl" column="ANNOTATION_SET_ID" lazy="false"/>
+	  <set name="annotationValues" lazy ="false" inverse="true" cascade="save-update">
+		 <key column="ANNOTATION_ID"/>
+		 <one-to-many class="edu.pitt.cabig.cae.domain.general.impl.AnnotationValueImpl"/>
+	 </set>
+   </class>
+</hibernate-mapping>
