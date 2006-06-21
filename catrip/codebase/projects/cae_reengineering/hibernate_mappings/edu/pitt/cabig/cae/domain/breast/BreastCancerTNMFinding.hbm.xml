@@ -41,6 +41,27 @@
             column="NUMBER_LYMPH_NODES_INVOLVED"
         />
 
+        <bag
+            name="metastasisAnatomicSite"
+            table="BREAST_METASTASIS_ANATOMIC_SITES"
+            lazy="false"
+            cascade="none"
+        >
+
+            <key
+                column="ID"
+            >
+            </key>
+
+            <element
+                column="METASTASIS_ANATOMIC_SITE"
+                type="java.lang.String"
+                not-null="false"
+                unique="false"
+            />
+
+      </bag>
+
         <property
             name="otherMetastaticAnatomicSite"
             type="java.lang.Integer"

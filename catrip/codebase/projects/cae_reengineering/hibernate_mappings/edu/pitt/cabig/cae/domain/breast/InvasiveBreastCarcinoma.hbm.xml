@@ -25,6 +25,27 @@
             </generator>
         </id>
 
+        <bag
+            name="location"
+            table="BREAST_LOCATIONS"
+            lazy="false"
+            cascade="none"
+        >
+
+            <key
+                column="ID"
+            >
+            </key>
+
+            <element
+                column="LOCATION"
+                type="java.lang.String"
+                not-null="false"
+                unique="false"
+            />
+
+      </bag>
+
         <property
             name="locationMVR"
             type="java.lang.String"
@@ -40,6 +61,27 @@
             insert="true"
             column="VENOUS_LYMPHATIC_INVASION"
         />
+
+        <bag
+            name="microcalcificationLocation"
+            table="BREAST_MICROCALCIFICATION_LOCATIONS"
+            lazy="false"
+            cascade="none"
+        >
+
+            <key
+                column="ID"
+            >
+            </key>
+
+            <element
+                column="MICROCALCIFICATION_LOCATION"
+                type="java.lang.String"
+                not-null="false"
+                unique="false"
+            />
+
+      </bag>
 
         <!--
             To add non XDoclet property mappings, create a file named

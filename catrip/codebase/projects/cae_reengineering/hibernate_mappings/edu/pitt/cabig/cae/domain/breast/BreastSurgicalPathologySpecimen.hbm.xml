@@ -57,6 +57,27 @@
             column="LATERALITY_MVR"
         />
 
+        <bag
+            name="surgicalProcedure"
+            table="BREAST_SURGICAL_PROCEDURES"
+            lazy="false"
+            cascade="none"
+        >
+
+            <key
+                column="ID"
+            >
+            </key>
+
+            <element
+                column="SURGICAL_PROCEDURE"
+                type="java.lang.String"
+                not-null="false"
+                unique="false"
+            />
+
+      </bag>
+
         <property
             name="surgicalProcedureMVR"
             type="java.lang.String"
