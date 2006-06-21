@@ -58,6 +58,21 @@ public class BreastCancerTNMFinding extends CancerTNMFinding {
         this.metastasisAnatomicSite = metastasisAnatomicSite;
     }
 
+    /**
+     *
+     * @hibernate.bag  
+     *            name="metastasisAnatomicSite"
+     *            lazy="false"
+     *            table="BREAST_METASTASIS_ANATOMIC_SITES"
+     * 
+     * @hibernate.collection-key 
+     *            column="ID"
+     * 
+     * @hibernate.collection-element
+     *            column="METASTASIS_ANATOMIC_SITE"
+     *            type="java.lang.String"
+     * 
+     */
     public Collection getMetastasisAnatomicSite() {
         return metastasisAnatomicSite;
     }

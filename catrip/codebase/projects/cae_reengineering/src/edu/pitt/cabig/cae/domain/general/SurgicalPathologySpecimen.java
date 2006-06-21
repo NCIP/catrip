@@ -24,6 +24,21 @@ public class SurgicalPathologySpecimen extends AnnotationSet {
         this.surgicalProcedure = surgicalProcedure;
     }
 
+    /**
+     *
+     * @hibernate.bag  
+     *            name="surgicalProcedure"
+     *            lazy="false"
+     *            table="BREAST_SURGICAL_PROCEDURES"
+     * 
+     * @hibernate.collection-key 
+     *            column="ID"
+     * 
+     * @hibernate.collection-element
+     *            column="SURGICAL_PROCEDURE"
+     *            type="java.lang.String"
+     * 
+     */
     public Collection getSurgicalProcedure() {
         return surgicalProcedure;
     }
