@@ -27,7 +27,7 @@
     <pathelement location="${class.dir}"/>
   </path>
 
-
+  <target name="all" description="Builds the entire application" depends="create-cae-tables,compile" />
 
   <target name="clean"> 
     <delete dir="${class.dir}" failonerror="true" />
