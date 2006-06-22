@@ -64,7 +64,7 @@
 
         <bag
             name="microcalcificationLocation"
-            table="BREAST_MICROCALCIFICATION_LOCATIONS"
+            table="BREAST_MC_LOCATIONS"
             lazy="false"
             cascade="none"
         >

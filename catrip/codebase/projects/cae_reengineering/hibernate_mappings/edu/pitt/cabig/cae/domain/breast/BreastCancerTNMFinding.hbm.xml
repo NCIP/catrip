@@ -30,7 +30,7 @@
             type="java.lang.Integer"
             update="true"
             insert="true"
-            column="NUMBER_LYMPH_NODES_EXAMINED"
+            column="NUMBER_NODES_EXAMINED"
         />
 
         <property
@@ -38,12 +38,12 @@
             type="java.lang.Integer"
             update="true"
             insert="true"
-            column="NUMBER_LYMPH_NODES_INVOLVED"
+            column="NUMBER_NODES_INVOLVED"
         />
 
         <bag
             name="metastasisAnatomicSite"
-            table="BREAST_METASTASIS_ANATOMIC_SITES"
+            table="BREAST_MET_ANATOMIC_SITES"
             lazy="false"
             cascade="none"
         >
@@ -67,7 +67,7 @@
             type="java.lang.Integer"
             update="true"
             insert="true"
-            column="OTHER_METASTASIS_ANATOMIC_SITE"
+            column="OTHER_MET_ANATOMIC_SITE"
         />
 
         <property
@@ -91,7 +91,7 @@
             type="java.lang.String"
             update="true"
             insert="true"
-            column="REGIONAL_LYMPH_NODES_FINDING"
+            column="REGIONAL_NODES_FINDING"
         />
 
         <property
@@ -99,7 +99,7 @@
             type="java.lang.String"
             update="true"
             insert="true"
-            column="DISTANT_METASTASIS_FINDING"
+            column="DISTANT_MET_FINDING"
         />
 
         <!--

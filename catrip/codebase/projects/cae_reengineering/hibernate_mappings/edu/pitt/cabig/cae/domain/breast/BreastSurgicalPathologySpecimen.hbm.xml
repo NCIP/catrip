@@ -8,7 +8,7 @@
 >
     <class
         name="edu.pitt.cabig.cae.domain.breast.BreastSurgicalPathologySpecimen"
-        table="BREAST_SURGICAL_PATHOLOGY_SPECIMANS"
+        table="BREAST_SUR_PATHO_SPECIMANS"
     >
 
         <id
@@ -38,7 +38,7 @@
             type="java.lang.String"
             update="true"
             insert="true"
-            column="LYMPH_NODE_SAMPLING_PROCEDURE"
+            column="LYMPH_NODE_PROCEDURE"
         />
 
         <property

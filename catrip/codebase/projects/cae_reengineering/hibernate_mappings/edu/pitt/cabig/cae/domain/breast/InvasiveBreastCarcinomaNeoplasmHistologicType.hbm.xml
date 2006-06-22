@@ -8,7 +8,7 @@
 >
     <class
         name="edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinomaNeoplasmHistologicType"
-        table="BREAST_NEOPLASM_HISTOPATHALOGIC_TYPES"
+        table="BREAST_NEO_HSTOPTHLGC_TYPES"
     >
 
         <id

@@ -34,7 +34,7 @@
             type="java.lang.String"
             update="true"
             insert="true"
-            column="SPATIAL_RELATIONSHIP_TO_PATIENT"
+            column="SPATIAL_REL_TO_PATIENT"
         />
 
         <property
@@ -42,7 +42,7 @@
             type="java.lang.String"
             update="true"
             insert="true"
-            column="OTHER_SPATIAL_RELATIONSHIP_TO_PATIENT"
+            column="OTHER_SPA_REL_TO_PATIENT"
         />
 
         <property
@@ -94,7 +94,7 @@
 	            type="float"
 	            update="true"
 	            insert="true"
-	            column="DISTANCE_TO_CLOSEST_NEOPLASM"
+	            column="DIS_TO_CLOSEST_NEOPLASM"
 	        />
 	</subclass>
 	
