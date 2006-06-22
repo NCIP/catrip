@@ -4,7 +4,13 @@ import java.lang.String;
 
 
 
-
+ /**
+  *
+  * @hibernate.subclass
+  *           discriminator-value="BNSM" 
+  *
+  */
+  
 public class BreastPositiveSurgicalMargin extends SurgicalMargin {
 
     private String neoplasmPresent;

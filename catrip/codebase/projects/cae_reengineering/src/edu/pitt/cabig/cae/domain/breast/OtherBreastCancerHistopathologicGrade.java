@@ -4,7 +4,12 @@ import java.lang.String;
 import java.lang.Integer;
 
 
-
+ /**
+  *
+  * @hibernate.subclass
+  *           discriminator-value="OTGR" 
+  *
+  */
 
 public class OtherBreastCancerHistopathologicGrade extends HistopathologicGrade {
 

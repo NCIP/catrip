@@ -5,7 +5,12 @@ import java.lang.Float;
 
 
 
-
+ /**
+  *
+  * @hibernate.subclass
+  *           discriminator-value="BPSM" 
+  *
+  */
 
 public class BreastNegativeSurgicalMargin extends SurgicalMargin {
 

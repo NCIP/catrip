@@ -1,7 +1,15 @@
 package edu.pitt.cabig.cae.domain.general;
 import java.lang.String;
 
-
+ /**
+  *
+  * @hibernate.class
+  *           table="BREAST_SURGICAL_MARGINS"
+  *           @hibernate.discriminator column="discriminator"
+  *
+  *
+  */
+  
 public class SurgicalMargin extends AnnotationSet {
 
     private String spatialRelationshipToPatient;

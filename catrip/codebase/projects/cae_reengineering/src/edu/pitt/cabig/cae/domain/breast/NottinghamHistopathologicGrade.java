@@ -4,7 +4,13 @@ import java.lang.Integer;
 import java.lang.String;
 
 
-
+ /**
+  *
+  * @hibernate.subclass
+  *           discriminator-value="NHGR" 
+  *
+  */
+  
 public class NottinghamHistopathologicGrade extends HistopathologicGrade {
 
     private Integer tubuleFormation;
