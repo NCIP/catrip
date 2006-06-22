@@ -29,18 +29,18 @@ public class InvasiveBreastCarcinoma extends Neoplasm {
 
     /**
      *
-     * @hibernate.bag
+     * @hibernate.bag  
      *            name="location"
      *            lazy="false"
      *            table="BREAST_LOCATIONS"
-     *
-     * @hibernate.collection-key
+     * 
+     * @hibernate.collection-key 
      *            column="ID"
-     *
+     * 
      * @hibernate.collection-element
      *            column="LOCATION"
      *            type="java.lang.String"
-     *
+     * 
      */
     public Collection getLocation() {
         return location;
@@ -80,18 +80,18 @@ public class InvasiveBreastCarcinoma extends Neoplasm {
 
     /**
      *
-     * @hibernate.bag
+     * @hibernate.bag  
      *            name="microcalcificationLocation"
      *            lazy="false"
-     *            table="BREAST_MICROCALCIFICATION_LOCATIONS"
-     *
-     * @hibernate.collection-key
+     *            table="BREAST_MC_LOCATIONS"
+     * 
+     * @hibernate.collection-key 
      *            column="ID"
-     *
+     * 
      * @hibernate.collection-element
      *            column="MICROCALCIFICATION_LOCATION"
      *            type="java.lang.String"
-     *
+     * 
      */
     public Collection getMicrocalcificationLocation() {
         return microcalcificationLocation;

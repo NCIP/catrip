@@ -57,7 +57,7 @@ public class CancerTNMFinding extends AnnotationSet {
 
     /**
      * @hibernate.property
-     *   column="REGIONAL_LYMPH_NODES_FINDING"
+     *   column="REGIONAL_NODES_FINDING"
      *   type="java.lang.String"
      *
      */
@@ -71,7 +71,7 @@ public class CancerTNMFinding extends AnnotationSet {
 
     /**
      * @hibernate.property
-     *   column="DISTANT_METASTASIS_FINDING"
+     *   column="DISTANT_MET_FINDING"
      *   type="java.lang.String"
      *
      */

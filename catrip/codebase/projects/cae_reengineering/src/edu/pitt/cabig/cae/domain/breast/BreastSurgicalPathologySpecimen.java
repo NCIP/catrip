@@ -6,7 +6,7 @@ import java.lang.String;
  /**
   *
   * @hibernate.class
-  *           table="BREAST_SURGICAL_PATHOLOGY_SPECIMANS"
+  *           table="BREAST_SUR_PATHO_SPECIMANS"
   *
   *
   */
@@ -41,7 +41,7 @@ public class BreastSurgicalPathologySpecimen extends SurgicalPathologySpecimen {
 
     /**
      * @hibernate.property
-     *   column="LYMPH_NODE_SAMPLING_PROCEDURE"
+     *   column="LYMPH_NODE_PROCEDURE"
      *   type="java.lang.String"
      *
      */

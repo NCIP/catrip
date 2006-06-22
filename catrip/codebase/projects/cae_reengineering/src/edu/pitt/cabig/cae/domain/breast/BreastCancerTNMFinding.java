@@ -32,7 +32,7 @@ public class BreastCancerTNMFinding extends CancerTNMFinding {
 
     /**
      * @hibernate.property
-     *   column="NUMBER_LYMPH_NODES_EXAMINED"
+     *   column="NUMBER_NODES_EXAMINED"
      *   type="java.lang.Integer"
      *
      */
@@ -46,7 +46,7 @@ public class BreastCancerTNMFinding extends CancerTNMFinding {
 
     /**
      * @hibernate.property
-     *   column="NUMBER_LYMPH_NODES_INVOLVED"
+     *   column="NUMBER_NODES_INVOLVED"
      *   type="java.lang.Integer"
      *
      */
@@ -63,7 +63,7 @@ public class BreastCancerTNMFinding extends CancerTNMFinding {
      * @hibernate.bag  
      *            name="metastasisAnatomicSite"
      *            lazy="false"
-     *            table="BREAST_METASTASIS_ANATOMIC_SITES"
+     *            table="BREAST_MET_ANATOMIC_SITES"
      * 
      * @hibernate.collection-key 
      *            column="ID"
@@ -83,7 +83,7 @@ public class BreastCancerTNMFinding extends CancerTNMFinding {
 
     /**
      * @hibernate.property
-     *   column="OTHER_METASTASIS_ANATOMIC_SITE"
+     *   column="OTHER_MET_ANATOMIC_SITE"
      *   type="java.lang.Integer"
      *
      */

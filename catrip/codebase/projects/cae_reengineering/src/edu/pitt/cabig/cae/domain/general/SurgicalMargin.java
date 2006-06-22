@@ -18,7 +18,7 @@ public class SurgicalMargin extends AnnotationSet {
 
     /**
      * @hibernate.property
-     *   column="SPATIAL_RELATIONSHIP_TO_PATIENT"
+     *   column="SPATIAL_REL_TO_PATIENT"
      *   type="java.lang.String"
      *
      */
@@ -32,7 +32,7 @@ public class SurgicalMargin extends AnnotationSet {
 
     /**
      * @hibernate.property
-     *   column="OTHER_SPATIAL_RELATIONSHIP_TO_PATIENT"
+     *   column="OTHER_SPA_REL_TO_PATIENT"
      *   type="java.lang.String"
      *
      */
