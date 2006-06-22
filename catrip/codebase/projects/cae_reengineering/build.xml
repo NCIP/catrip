@@ -9,7 +9,7 @@
   <property name="dist.dir" value="./dist" />
   <property name="docs.dir" value="./docs" />
   <property name="config.dir" value="properties" />
-  <property name="hibernate.mapping" value="hibernate-mapping" />
+  <property name="hibernate.mapping" value="hibernate_mappings" />
 
   <path id="xdoclet.classpath">
     <fileset dir="${lib.dir}">
@@ -98,11 +98,24 @@
         <include name="**/*.hbm.xml"/>
       </fileset>
     </copy>
-
-
-
   </target>
 
+<target name="update-db-scripts">	
+	<replaceregexp file="db/cae_catrip_tables.sql"
+				match="@CAEDBA.USERNAME"
+				replace="${cae.db.user.name}"
+				byline="true"/>
+	<replaceregexp file="db/cae_catrip_tables.sql"
+				match="@CAEDBA.PASSWORD"
+				replace="${cae.db.user.password}"
+				byline="true"/>
+</target>
+
+<target name="create-cae-tables" description="Create cae catrip tables .">
+	<exec executable="${oracle.sqlplus.path}" dir="db" failonerror="true">
+		<arg line="${cae.db.user.name}/${cae.db.user.password}@${db.server} @cae_catrip_tables.sql"/>
+	</exec>
+</target>
 
 
 </project>
