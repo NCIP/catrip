@@ -138,6 +138,19 @@
 		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
+
+	<!-- =============================================================== -->
+	<!-- CAE                                                             -->
+	<!-- =============================================================== -->
+
+	<target name="build-cae" depends="prepare" description="Builds the cae project">
+		<resolveDependencies extdir="${projects.dir}/cae_reengineering/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/cae_reengineering" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
+	
 	<!-- =============================================================== -->
 	<!-- QUERYENGINE                                                     -->
 	<!-- =============================================================== -->
