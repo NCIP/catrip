@@ -1,6 +1,9 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
+     <!-- copied from cae -->
+
+   
    <class name="edu.pitt.cabig.cae.domain.general.impl.AnnotationImpl"
       table="ANNOTATIONS" lazy="false">
       <id name="id" column="ANNOTATION_ID">
