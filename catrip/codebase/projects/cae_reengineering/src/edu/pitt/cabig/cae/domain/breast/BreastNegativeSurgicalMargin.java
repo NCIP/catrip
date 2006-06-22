@@ -8,7 +8,7 @@ import java.lang.Float;
  /**
   *
   * @hibernate.subclass
-  *           discriminator-value="BPSM" 
+  *           discriminator-value="BPSM"
   *
   */
 
@@ -45,7 +45,7 @@ public class BreastNegativeSurgicalMargin extends SurgicalMargin {
 
     /**
      * @hibernate.property
-     *   column="DISTANCE_TO_CLOSEST_NEOPLASM"
+     *   column="DIS_TO_CLOSEST_NEOPLASM"
      *   type="float"
      *
      */
