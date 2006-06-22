@@ -5,11 +5,11 @@ import java.lang.String;
   *
   * @hibernate.class
   *           table="BREAST_SURGICAL_MARGINS"
-  *           @hibernate.discriminator column="discriminator"
+  *           @hibernate.discriminator column="DISCRIMINATOR"
   *
   *
   */
-  
+
 public class SurgicalMargin extends AnnotationSet {
 
     private String spatialRelationshipToPatient;
