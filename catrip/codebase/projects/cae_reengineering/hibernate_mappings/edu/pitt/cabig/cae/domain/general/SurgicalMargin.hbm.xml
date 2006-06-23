@@ -16,7 +16,7 @@
             column="ID"
             type="java.lang.Long"
         >
-            <generator class="native">
+            <generator class="assigned">
               <!--  
                   To add non XDoclet generator parameters, create a file named 
                   hibernate-generator-params-SurgicalMargin.xml 
@@ -60,7 +60,7 @@
         -->
         <subclass
             name="edu.pitt.cabig.cae.domain.breast.BreastNegativeSurgicalMargin"
-            discriminator-value="BPSM"
+            discriminator-value="BNSM"
         >
 
         <property
@@ -88,7 +88,7 @@
         </subclass>
         <subclass
             name="edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin"
-            discriminator-value="BNSM"
+            discriminator-value="BPSM"
         >
 
         <property

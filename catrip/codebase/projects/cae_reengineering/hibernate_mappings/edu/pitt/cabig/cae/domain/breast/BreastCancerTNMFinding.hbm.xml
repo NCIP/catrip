@@ -16,7 +16,7 @@
             column="ID"
             type="java.lang.Long"
         >
-            <generator class="native">
+            <generator class="assigned">
               <!--  
                   To add non XDoclet generator parameters, create a file named 
                   hibernate-generator-params-BreastCancerTNMFinding.xml 
@@ -64,7 +64,7 @@
 
         <property
             name="otherMetastaticAnatomicSite"
-            type="java.lang.Integer"
+            type="java.lang.String"
             update="true"
             insert="true"
             column="OTHER_MET_ANATOMIC_SITE"
