@@ -29,6 +29,7 @@ public class AnnotationSet {
            *
            * @hibernate.id
            *    column="ID"
+           *    generator-class="assigned"
         */
         public Long getId() {
             return id;
