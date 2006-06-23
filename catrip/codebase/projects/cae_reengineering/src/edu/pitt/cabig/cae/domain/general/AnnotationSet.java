@@ -24,12 +24,11 @@ public class AnnotationSet {
         public void setId(Long id) {
             this.id = id;
         }
-        
+
         /**
            *
            * @hibernate.id
            *    column="ID"
-           *    generator-class="native"
         */
         public Long getId() {
             return id;
