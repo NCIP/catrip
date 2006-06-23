@@ -7,7 +7,7 @@ import java.lang.String;
  /**
   *
   * @hibernate.subclass
-  *           discriminator-value="BNSM" 
+  *           discriminator-value="BPSM" 
   *
   */
   

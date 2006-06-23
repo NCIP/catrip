@@ -8,7 +8,7 @@ import java.lang.Float;
  /**
   *
   * @hibernate.subclass
-  *           discriminator-value="BPSM"
+  *           discriminator-value="BNSM"
   *
   */
 

@@ -84,7 +84,7 @@ public class BreastCancerTNMFinding extends CancerTNMFinding {
     /**
      * @hibernate.property
      *   column="OTHER_MET_ANATOMIC_SITE"
-     *   type="java.lang.Integer"
+     *   type="java.lang.String"
      *
      */
     public String getOtherMetastaticAnatomicSite() {
