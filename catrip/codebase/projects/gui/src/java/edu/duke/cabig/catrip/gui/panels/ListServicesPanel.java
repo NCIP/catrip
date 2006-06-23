@@ -298,27 +298,27 @@ public class ListServicesPanel extends CPanel {
                     hasFocus);
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
             
-//            if (leaf ) {
-//                setIcon (tutorialIcon);
-//                setToolTipText ("CDE Named : "+value.toString ());
-//            } else if( value.toString ().equalsIgnoreCase ("Attrinbutes") ){
-//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_attributes.png")));
-//            }else if( value.toString ().equalsIgnoreCase ("Associations") ){
-//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_associations.png")));
-//            }else if ( node.getLevel() == 2){
-//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_class_.png")));
-//            }else if ( node.getLevel() == 1){
-//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_service.png")));
-//            }else {
-//                setToolTipText (value.toString ()); //no tool tip
-//            }
-//
-//            
-//            if ( (node.getLevel() == 4) && (node.getParent ().toString ().equalsIgnoreCase ("Associations"))  ){
-//                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_association.png")));
-////                System.out.println ("###### node is :"+node.getParent ());
-//            }
-//            
+            if (leaf ) {
+                setIcon (tutorialIcon);
+                setToolTipText ("CDE Named : "+value.toString ());
+            } else if( value.toString ().equalsIgnoreCase ("Attrinbutes") ){
+                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_attributes.png")));
+            }else if( value.toString ().equalsIgnoreCase ("Associations") ){
+                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_associations.png")));
+            }else if ( node.getLevel() == 2){
+                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_class_.png")));
+            }else if ( node.getLevel() == 1){
+                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_service.png")));
+            }else {
+                setToolTipText (value.toString ()); //no tool tip
+            }
+
+            
+            if ( (node.getLevel() == 4) && (node.getParent ().toString ().equalsIgnoreCase ("Associations"))  ){
+                setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/edu/duke/cabig/catrip/gui/resources/tree/icon_association.png")));
+//                System.out.println ("###### node is :"+node.getParent ());
+            }
+            
             
             
             
