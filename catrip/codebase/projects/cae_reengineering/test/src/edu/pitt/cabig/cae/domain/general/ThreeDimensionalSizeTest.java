@@ -22,82 +22,76 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ThreeDimensionalSizeTest extends TestCase {
-  private static Log log = LogFactory.getLog(ThreeDimensionalSizeTest.class); 
-  
+  private static Log log = LogFactory.getLog(ThreeDimensionalSizeTest.class);
+
   public ThreeDimensionalSizeTest(String sTestName) {
       super(sTestName);
   }
 
-  
+
    public void setUp() {
 
    }
 
    public void tearDown() {
    }
-  
-   
+
+
    public static Test suite() {
        return new TestSuite(ThreeDimensionalSizeTest.class);
    }
 
 
-   public void testInsert(){
-       try {
+   public void testInsert() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-           
-           ThreeDimensionalSize obj = null; 
-           
+
+           ThreeDimensionalSize obj = null;
+
            for (int i=7;i<=8;i++)  {
                obj = new ThreeDimensionalSize();
                obj.setId(new Long(i));
                obj.setAdditionalDimensionY(123);
                obj.setAdditionalDimensionZ(456);
                obj.setMVR("1 mvr");
-               
-               session.delete(obj);
-               session.save(obj);
-           }
-           
 
-       
+               //session.delete(obj);
+               session.saveOrUpdate(obj);
+           }
+
+
+
            tx.commit();
            //dbCleanup(session);
            HibernateUtil.closeSession();
+       System.out.println("Inserted/Updated successfully ");
 
-
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
-   
-   public void testSelect() {
-       try {
+
+   public void testSelect() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-                      
-           List result = new ArrayList(); 
+
+           List result = new ArrayList();
            result = session.createQuery("from ThreeDimensionalSize").list();
-           
+
            tx.commit();
            HibernateUtil.closeSession();
-           
+
            for (int i = 0; i<result.size(); i++) {
                ThreeDimensionalSize obj = (ThreeDimensionalSize) result.get(i);
                System.out.println("ID is " + obj.getId());
                System.out.println("getAdditionalDimensionY is " + obj.getAdditionalDimensionY());
-               
-               
-               
-           } 
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
+
+
+
+           }
+
    }
 }
-  
 
-  
-          
-  
+
+
+

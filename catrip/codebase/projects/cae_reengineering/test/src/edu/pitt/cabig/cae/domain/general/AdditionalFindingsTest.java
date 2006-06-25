@@ -22,77 +22,70 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class AdditionalFindingsTest extends TestCase {
-  private static Log log = LogFactory.getLog(AdditionalFindingsTest.class); 
-  
+  private static Log log = LogFactory.getLog(AdditionalFindingsTest.class);
+
   public AdditionalFindingsTest(String sTestName) {
       super(sTestName);
   }
 
-  
+
    public void setUp() {
 
    }
 
    public void tearDown() {
    }
-  
-   
+
+
    public static Test suite() {
        return new TestSuite(AdditionalFindingsTest.class);
    }
 
 
-   public void testInsert(){
-       try {
+   public void testInsert() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-           
-           AdditionalFindings obj = null; 
-           
+
+           AdditionalFindings obj = null;
+
            for (int i=9;i<=10;i++)  {
                obj = new AdditionalFindings();
                obj.setId(new Long(i));
                obj.setOtherFindings("of123");
 
-               session.delete(obj);
-               session.save(obj);
+              // session.delete(obj);
+               session.saveOrUpdate(obj);
            }
-           
 
-       
+
+
            tx.commit();
            //dbCleanup(session);
            HibernateUtil.closeSession();
+       System.out.println("Inserted/Updated successfully ");
 
-
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
-   
-   public void testSelect() {
-       try {
+
+   public void testSelect() throws Exception {
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-                      
-           List result = new ArrayList(); 
+
+           List result = new ArrayList();
            result = session.createQuery("from AdditionalFindings").list();
-           
+
            tx.commit();
            HibernateUtil.closeSession();
-           
+
            for (int i = 0; i<result.size(); i++) {
                AdditionalFindings obj = (AdditionalFindings) result.get(i);
                System.out.println("ID is " + obj.getId());
                System.out.println("getOtherFindings is " + obj.getOtherFindings());
-           } 
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
+           }
+
    }
 }
-  
 
-  
-          
-  
+
+
+

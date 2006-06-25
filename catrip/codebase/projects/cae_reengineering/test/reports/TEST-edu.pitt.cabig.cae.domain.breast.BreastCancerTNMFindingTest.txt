@@ -1,0 +1,21 @@
+Testsuite: edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest
+Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 2.422 sec
+------------- Standard Output ---------------
+Inserted/Updated successfully 
+ID is 1
+getDistantMetastasisFinding is dis
+LOCATIONS : 
+one
+two
+ID is 2
+getDistantMetastasisFinding is dis
+LOCATIONS : 
+one
+two
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@121f1d [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1aa57fb [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1ab28fe [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 121f1d ] 
+------------- ---------------- ---------------
+
+Testcase: testInsert took 2.266 sec
+Testcase: testSelect took 0.156 sec

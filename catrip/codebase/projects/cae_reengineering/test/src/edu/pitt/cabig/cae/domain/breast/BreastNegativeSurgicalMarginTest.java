@@ -22,79 +22,72 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class BreastNegativeSurgicalMarginTest extends TestCase {
-  private static Log log = LogFactory.getLog(BreastNegativeSurgicalMarginTest.class); 
-  
+  private static Log log = LogFactory.getLog(BreastNegativeSurgicalMarginTest.class);
+
   public BreastNegativeSurgicalMarginTest(String sTestName) {
       super(sTestName);
   }
 
-  
+
    public void setUp() {
 
    }
 
    public void tearDown() {
    }
-  
-   
+
+
    public static Test suite() {
        return new TestSuite(BreastNegativeSurgicalMarginTest.class);
    }
 
 
-   public void testInsert(){
-       try {
+   public void testInsert() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-           
+
            BreastNegativeSurgicalMargin obj = null;
-           
+
            for (int i=3;i<=4;i++)  {
-               obj = new BreastNegativeSurgicalMargin();         
-               
+               obj = new BreastNegativeSurgicalMargin();
+
                obj.setId(new Long(i));
                obj.setMVR("mvr");
                obj.setSpatialRelationshipToPatient("rel");
-               obj.setClosestNeoplasmPresent("clo");   
-               
-               session.delete(obj);
-               session.save(obj);
+               obj.setClosestNeoplasmPresent("clo");
+
+              // session.delete(obj);
+               session.saveOrUpdate(obj);
            }
-                  
+
            tx.commit();
            //dbCleanup(session);
            HibernateUtil.closeSession();
+            System.out.println("Inserted/Updated successfully ");
 
-
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
-   
-   public void testSelect() {
-       try {
+
+   public void testSelect() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-                      
-           List result = new ArrayList(); 
+
+           List result = new ArrayList();
            result = session.createQuery("from BreastNegativeSurgicalMargin").list();
-           
+
            tx.commit();
            HibernateUtil.closeSession();
-           
+
                for (int i = 0; i<result.size(); i++) {
                    BreastNegativeSurgicalMargin obj = (BreastNegativeSurgicalMargin) result.get(i);
                    System.out.println(obj.getId());
                    System.out.println(obj.getMVR());
                }
 
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
 }
-  
 
-  
-          
-  
+
+
+

@@ -22,78 +22,70 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class OtherBreastCancerHistopathologicGradeTest extends TestCase {
-  private static Log log = LogFactory.getLog(OtherBreastCancerHistopathologicGradeTest.class); 
-  
+  private static Log log = LogFactory.getLog(OtherBreastCancerHistopathologicGradeTest.class);
+
   public OtherBreastCancerHistopathologicGradeTest(String sTestName) {
       super(sTestName);
   }
 
-  
+
    public void setUp() {
 
    }
 
    public void tearDown() {
    }
-  
-   
+
+
    public static Test suite() {
        return new TestSuite(OtherBreastCancerHistopathologicGradeTest.class);
    }
 
 
-   public void testInsert(){
-       try {
+   public void testInsert() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-           
+
            OtherBreastCancerHistopathologicGrade obj = null;
-           
+
            for (int i=13;i<=14;i++)  {
-               obj = new OtherBreastCancerHistopathologicGrade();         
-               
+               obj = new OtherBreastCancerHistopathologicGrade();
+
                obj.setId(new Long(i));
                obj.setScoreMVR("mvr");
                obj.setSystemName("sys");
-               
-               session.delete(obj);
-               session.save(obj);
+
+               //session.delete(obj);
+               session.saveOrUpdate(obj);
            }
-                  
+
            tx.commit();
            //dbCleanup(session);
            HibernateUtil.closeSession();
+       System.out.println("Inserted/Updated successfully ");
 
-
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
-   
-   public void testSelect() {
-       try {
+
+   public void testSelect() throws Exception {
+
            Session session = HibernateUtil.currentSession();
            Transaction tx = session.beginTransaction();
-                      
-           List result = new ArrayList(); 
+
+           List result = new ArrayList();
            result = session.createQuery("from OtherBreastCancerHistopathologicGrade").list();
-           
+
            tx.commit();
            HibernateUtil.closeSession();
-           
+
                for (int i = 0; i<result.size(); i++) {
                    OtherBreastCancerHistopathologicGrade obj = (OtherBreastCancerHistopathologicGrade) result.get(i);
                    System.out.println(obj.getId());
                    System.out.println(obj.getSystemName());
                }
-
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
    }
 }
-  
 
-  
-          
-  
+
+
+

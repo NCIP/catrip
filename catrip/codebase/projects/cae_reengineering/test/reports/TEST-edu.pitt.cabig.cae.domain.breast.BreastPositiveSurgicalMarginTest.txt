@@ -1,0 +1,15 @@
+Testsuite: edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMarginTest
+Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 2.391 sec
+------------- Standard Output ---------------
+Inserted/Updated successfully 
+5
+mvr
+6
+mvr
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@910040 [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@186768e [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1bfc93a [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 910040 ] 
+------------- ---------------- ---------------
+
+Testcase: testInsert took 2.234 sec
+Testcase: testSelect took 0.157 sec
