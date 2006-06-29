@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.ObservationRelationship" table="observation_relationship">
+   		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">observation_relationship_seq</param>
+        	</generator>
+		</id>
+        <property name="commentText" column="comment_Text" type="string"/>
+        <property name="typeCode" column="type_code" type="string"/>
+     	<many-to-one name="observation_1" class="gov.nih.nci.ctom.domain.Observation" column="observation_id_1" cascade="all"/>
+ 		<many-to-one name="observation_2" class="gov.nih.nci.ctom.domain.Observation" column="observation_id_2" cascade="all"/>
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.AdverseEventReport" table="adverse_event_report">
+ 	<id name="id" type="long" column="id">
+        <generator class="sequence">
+                <param name="sequence">Adverse_Event_Report_Seq</param>
+        </generator>
+	</id>
+     <set name="adverseEventCollection" lazy="false" inverse="false" cascade="all">
+        <key column="adverse_event_id" /> <!-- not-null="true"  !!!!!!!!!!!!!!! -->
+        <one-to-many class="gov.nih.nci.ctom.domain.AdverseEvent" />
+      </set>
+
+        <property name="submissionDate" column="submission_date" type="date"/>
+        <property name="filedIndicator" column="filed_Indicator" type="boolean"/>
+    </class>
+
+</hibernate-mapping>

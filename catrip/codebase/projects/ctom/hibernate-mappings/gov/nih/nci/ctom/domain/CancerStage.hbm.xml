@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.CancerStage" table="cancer_stage">
+	<id name="id" type="long" column="id">
+        <generator class="sequence">
+                <param name="sequence">cancer_stage_Seq</param>
+        </generator>
+	</id>
+    <set name="metastasisSiteCollection" lazy="false"  inverse="false" cascade="all">
+      <key column="cancer_stage_id" not-null="true"/>
+      <one-to-many class="gov.nih.nci.ctom.domain.MetastasisSite" />
+    </set>
+    <property name="stageCode" column="stage_Code" type="string"/>
+    <property name="stageCodeSystem" column="stage_Code_System" type="string"/>
+    <property name="tnmStage" column="tnm_Stage" type="string"/>
+    <property name="tnmStageCodeSystem" column="tnm_Stage_Code_System" type="string"/>
+    </class>
+
+</hibernate-mapping>

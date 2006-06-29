@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.Person" table="person">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">participant_seq</param>
+        	</generator>
+		</id>
+        <property name="administrativeGenderCode" column="administrative_Gender_Code" type="string"/>
+        <property name="birthDate" column="birth_Date" type="date"/>
+        <property name="countryCode" column="country_Code" type="string"/>
+        <property name="educationLevelCode" column="education_Level_Code" type="string"/>
+        <property name="employmentStatusCode" column="employment_Status_Code" type="string"/>
+        <property name="employmentStatusOtherText" column="employment_Status_Other_Text" type="string"/>
+        <property name="ethnicGroupCode" column="ethnic_Group_Code" type="string"/>
+        <property name="firstName" column="first_Name" type="string"/>
+        <property name="householdIncomeCode" column="household_Income_Code" type="string"/>
+
+        <property name="lastName" column="last_Name" type="string"/>
+        <property name="maritalStatusCode" column="marital_Status_Code" type="string"/>
+     	<set name="personOccupationCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="person_id" not-null="false"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.PersonOccupation" />
+    	</set>
+        <property name="raceCode" column="race_code" type="string"/>
+        <property name="telecomAddress" column="telecom_address" type="string"/>
+        
+      	<joined-subclass name="gov.nih.nci.ctom.domain.Investigator" table="Investigator">
+       		<key column="id"/>
+     		<set name="studyInvestigatorCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="investigator_id" not-null="false"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.StudyInvestigator" />
+    		</set>
+    	
+        	<property name="nciIdentifier" column="nci_Identifier" type="string"/>
+      	</joined-subclass>
+      	<joined-subclass name="gov.nih.nci.ctom.domain.Participant" table="PARTICIPANT">
+       		<key column="id"/>
+     		<!--<set name="studyInvestigatorCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="investigator_id" not-null="true"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.StudyInvestigator" />
+    		</set>
+    		-->
+        <property name="confidentialityIndicator" column="participant.Confidentiality_Indicator" type="boolean"/>
+		<property name="initials" column="Initials" type="string"/>
+		<property name="paymentMethodCode" column="Payment_Method_Code" type="string"/>
+		<property name="zipCode" column="zip_code" type="string"/>
+     		<set name="femaleReproductiveCharacteristicCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="participant_id" not-null="false"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.FemaleReproductiveCharacteristic" />
+    		</set>
+    		
+     		<set name="studyParticipantAssignmentCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="participant_id" not-null="false"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.StudyParticipantAssignment" />
+    		</set>
+		
+     		<set name="healthcareSiteParticipantCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="participant_id" not-null="false"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.HealthcareSiteParticipant" />
+    		</set>
+		<!--
+		
+		//participant.setParticipantEligibilityAnswerCollection();
+		
+		//participant.setStudyParticipantAssignmentCollection();
+		-->
+        	
+      	</joined-subclass>
+    </class>
+
+</hibernate-mapping>
+<!-- parsed in 0ms -->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.StudyAgent" table="study_agent">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">study_agent_seq</param>
+        	</generator>
+		</id>
+
+        <property name="investigationalNewDrugIdentifier" column="investigational_New_Drug_Id" type="string"/>
+        <property name="statusCode" column="status_Code" type="string"/>
+        <property name="statusDate" column="status_Date" type="date"/>
+         <property name="investigationalIndicator" column="investigational_Indicator" type="boolean"/>
+ <!--   	<set name="substanceAdministrationCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="study_agent_id" not-null="true"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.SubstanceAdministration" />
+    	</set>
+    	-->
+    </class>
+
+</hibernate-mapping>
+<!-- parsed in 0ms -->

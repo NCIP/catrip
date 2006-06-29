@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.Organization" table="organization">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">organization_seq</param>
+        	</generator>
+		</id>
+        <property name="city" column="" type="string"/>
+        <property name="countryCode" column="country_Code" type="string"/>
+        <property name="descriptionText" column="description_Text" type="string"/>
+        <property name="name" column="name" type="string"/>
+        <property name="postalCode" column="postal_Code" type="string"/>
+        <property name="stateCode" column="state_Code" type="string"/>
+        <property name="statusCode" column="status_Code" type="string"/>
+        <property name="statusDate" column="status_date" type="date"/>
+        <property name="streetAddress" column="street_Address" type="string"/>
+        <property name="telecomAddress" column="telecom_Address" type="string"/>
+     	<joined-subclass name="gov.nih.nci.ctom.domain.HealthcareSite" table="healthcare_site">
+       		<key column="id"/>
+     		<set name="studySiteCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="healthcare_site_id" not-null="false"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.StudySite" />
+    		</set>
+    		
+
+     		<set name="healthcareSiteParticipant" lazy="false"  inverse="false" cascade="all">
+      			<key column="healthcare_site_id" not-null="false"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.HealthcareSiteParticipant" />
+    		</set>
+    		
+        	<property name="nciInstituteCode" column="nci_Institute_Code" type="string"/>
+      	</joined-subclass>
+    </class>
+
+</hibernate-mapping>
