@@ -1,34 +1,96 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-//~--- non-JDK imports --------------------------------------------------------
-
-
 import caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
-import caBIG.cql.x1.govNihNciCagridCQLQuery.Object;
+import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 
-import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
+//~--- non-JDK imports --------------------------------------------------------
 
-import org.apache.xmlbeans.XmlObject;
-import org.apache.xmlbeans.XmlOptions;
 
 //~--- classes ----------------------------------------------------------------
 
 public class DcqlToCqlConverter {
     private CQLQueryDocument.CQLQuery cqlQry;
+    private CQLQueryDocument cqlQueryDoc;
+    //private caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject;
     
     public DcqlToCqlConverter() {}
 
     //~--- methods ------------------------------------------------------------
+    private caBIG.cql.x1.govNihNciCagridCQLQuery.Object processAssociation( 
+                                caBIG.cql.x1.govNihNciCagridCQLQuery.Association cqlAssociationIn,
+                                gov.nih.nci.cagrid.dcql.Object dcqlObject,
+                                caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject){
+        // Create new Association.
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Association cqlAssociation = caBIG.cql.x1.govNihNciCagridCQLQuery.Association.Factory.newInstance();     
+        gov.nih.nci.cagrid.dcql.Association dcqlAssociation = dcqlObject.getAssociation();
+        
+        System.out.println(dcqlAssociation.getRoleName());
+        // set association role name . 
+        cqlAssociation.setRoleName(dcqlAssociation.getRoleName());
+        
+        gov.nih.nci.cagrid.dcql.Object childObj = dcqlAssociation.getObject();
+        
+        // check for any attributes 
+        Attribute attr = childObj.getAttribute();
+        if (attr != null ) {
+            System.out.println(attr.getName());
+            cqlAssociation.setAttribute(attr);
+        } 
+               
+        /**
+         * check if association has any objects , In CQL obect is basically association name it self , 
+         * so Get the Object of DCQL association and map the name to Association Name of CQL.
+         * <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters">
+         */
+        
+        
+        if (childObj != null) {
+            cqlAssociation.setName(childObj.getName());
+            if (cqlAssociationIn != null ) {
+                
+                cqlAssociationIn.setAssociation(cqlAssociation);
+                cqlAssociation = cqlAssociationIn;
+                //System.out.println(cqlAssociation.getName());
+            } 
+            cqlObject.setAssociation(cqlAssociation);
+            // check if Object has nested associations 
+            gov.nih.nci.cagrid.dcql.Association nestedAssociation = childObj.getAssociation();            
+            if (nestedAssociation != null) {                
+                processAssociation (cqlAssociation, childObj,cqlObject);   
+            } 
+        }
 
-    public CQLQueryDocument convert(gov.nih.nci.cagrid.dcql.Object dcqlObject) {
+        return cqlObject;
+    }
+    
+    private void processAttribute(Attribute attribute){
         
-        // Create instance of CQL target object.
+    }
+    private void processGroup(gov.nih.nci.cagrid.dcql.Group group){
+        
+    }
+    private caBIG.cql.x1.govNihNciCagridCQLQuery.Object processTargetObject(gov.nih.nci.cagrid.dcql.Object dcqlObject) {
         caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject =  caBIG.cql.x1.govNihNciCagridCQLQuery.Object.Factory.newInstance();
-        cqlObject.setName(dcqlObject.getName());        
-        cqlObject.setAttribute(dcqlObject.getAttribute());
+        cqlObject.setName(dcqlObject.getName());
         
-        //Create instance of CQLQueryDocument
+        if (dcqlObject.getAssociation() != null){
+            cqlObject = processAssociation(null,dcqlObject,cqlObject);
+        }
+        
+        return cqlObject;
+        
+    }
+
+    public CQLQueryDocument convert(ForeignAssociation foreignAssociation) {
+        cqlQueryDoc = CQLQueryDocument.Factory.newInstance();
+
+        gov.nih.nci.cagrid.dcql.Object dcqlObject = foreignAssociation.getForeignObject();
+        
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processTargetObject(dcqlObject);
+        
+
+       //Create instance of CQLQueryDocument
         CQLQueryDocument cqlQueryDoc = CQLQueryDocument.Factory.newInstance();
         cqlQry = cqlQueryDoc.addNewCQLQuery();
         cqlQry.setTarget(cqlObject);

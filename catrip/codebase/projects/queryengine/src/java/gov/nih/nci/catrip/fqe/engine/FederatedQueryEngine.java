@@ -26,7 +26,7 @@ public class FederatedQueryEngine {
              gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();
              
              // check for foriegn association 
-            ForeignAssociation fa = targetObject.getForeignAssociation();
+            ForeignAssociation foreignAssociation = targetObject.getForeignAssociation();
 
              
              /*
@@ -37,7 +37,7 @@ public class FederatedQueryEngine {
              */
               //if foreign associations exists ..  Decompose queries . 
               FederatedQueryDecomposer decomposer = new FederatedQueryDecomposer();
-              List queryContextList = decomposer.decompose(targetObject);
+              List queryContextList = decomposer.decompose(foreignAssociation);
               
               
              

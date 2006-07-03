@@ -3,6 +3,7 @@ package gov.nih.nci.catrip.fqe.engine;
 
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 
+import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 import gov.nih.nci.catrip.fqe.data.ForeignQueryContext;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class FederatedQueryDecomposer {
     public FederatedQueryDecomposer() {
     }
     
-    public List <ForeignQueryContext> decompose(gov.nih.nci.cagrid.dcql.Object dcqlObject) {
+    public List <ForeignQueryContext> decompose(ForeignAssociation foreignAssociation) {
         
         // decompose foreign objects .. 
         // start with one foreign object for proto type ..
@@ -25,10 +26,10 @@ public class FederatedQueryDecomposer {
         
         // decompose foreign objecs and convert into CQL Query 
          
-         // for each foreign object
-        gov.nih.nci.cagrid.dcql.Object foriegnObject = dcqlObject.getForeignAssociation().getForeignObject();
+         // for each foreign association
+        
         DcqlToCqlConverter converter = new DcqlToCqlConverter();
-        CQLQueryDocument cqlQueryDoc = converter.convert(foriegnObject);
+        CQLQueryDocument cqlQueryDoc = converter.convert(foreignAssociation);
         
         // Format XML     
         xmlOptions = new XmlOptions();
@@ -42,7 +43,7 @@ public class FederatedQueryDecomposer {
         
         System.out.println(cqlQueryDoc.xmlText(xmlOptions));
         
-
+        
          
          ForeignQueryContext qryContext = new ForeignQueryContext();
          qryContext.setCqlQryDoc(cqlQueryDoc);
