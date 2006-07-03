@@ -9,6 +9,7 @@
 
 package edu.duke.cabig.catrip.gui.discovery;
 
+import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,7 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
     public DiscoveryClientServiceLocator() {
     }
     
-    public ArrayList discoverServices() {
+    public ArrayList<ServiceMetaDataBean> discoverServices() {
         return null;
     }
     

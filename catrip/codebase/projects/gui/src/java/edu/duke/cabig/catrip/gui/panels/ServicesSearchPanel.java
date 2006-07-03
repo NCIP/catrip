@@ -6,8 +6,19 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.components.ButtonRenderer;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
+import edu.duke.cabig.catrip.gui.components.ToolTipCellRenderer;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelRetrievalFactory;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelRetrievalStrategy;
+import edu.duke.cabig.catrip.gui.discovery.ServiceLocaterFactory;
+import edu.duke.cabig.catrip.gui.discovery.ServiceLocator;
+import edu.duke.cabig.catrip.gui.discovery.ServiceMetaDataRegistry;
+import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
@@ -23,42 +34,46 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     JDialog parentDialog;
     private boolean dialogParent = false;
     /** Creates new form ServicesSearchPanel */
-    public ServicesSearchPanel () {
-        initComponents ();
-        init ();
+    public ServicesSearchPanel() {
+        initComponents();
+        init();
     }
     
-    public ServicesSearchPanel (CJFrame parent) {
-        this ();
+    public ServicesSearchPanel(CJFrame parent) {
+        this();
         this.parentFrame = parent;
-        setDialogParent (false);
+        setDialogParent(false);
     }
     
-    public ServicesSearchPanel (JDialog parent) {
-        this ();
+    public ServicesSearchPanel(JDialog parent) {
+        this();
         this.parentDialog = parent;
-        setDialogParent (true);
+        setDialogParent(true);
     }
     
     
-    private void init (){
+    private void init(){
         
         
         
         TableColumn column = null;
         for (int i = 0; i < 5; i++) {
-            column = resultTable.getColumnModel ().getColumn (i);
+            column = resultTable.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth (32);
-            }else if (i == 4) {
-                column.setPreferredWidth (90);
+                column.setPreferredWidth(32);
+            }else if (i == 4 || i==1) {
+                column.setPreferredWidth(90);
             } else {
-                column.setPreferredWidth (220);
+                column.setPreferredWidth(285);
+                column.setCellRenderer(new ToolTipCellRenderer());
             }
         }
         
-        column = resultTable.getColumnModel ().getColumn (4);
-        column.setCellRenderer (new ButtonRenderer ());
+        column = resultTable.getColumnModel().getColumn(4);
+        column.setCellRenderer(new ButtonRenderer());
+        
+        
+//        resultTable.setSelectionMode();
         
         
     }
@@ -89,6 +104,11 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         searchBtn.setText("Search");
 
         showAllBtn.setText("Show All");
+        showAllBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showAllBtnActionPerformed(evt);
+            }
+        });
 
         clearBtn.setText("Clear");
 
@@ -203,55 +223,104 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
+        // Search for all the services from the Index Service and show here.
+        // Get the ServiceMetaData for all those services.
+        
+        // Calls to populate the ServiceMetaDataRegistry
+        
+        ServiceLocator sl = ServiceLocaterFactory.getServiceLocator();
+        ArrayList alist = sl.discoverServices();
+        // don't forget to populate the ServiceMetaDataRegistry too..
+        
+        DefaultTableModel tb = (DefaultTableModel) getResultTable().getModel();
+        
+        for (int i = 0; i < alist.size(); i++) {
+            
+            Vector v = new Vector();
+            ServiceMetaDataBean sb = (ServiceMetaDataBean)alist.get(i);
+            
+            ServiceMetaDataRegistry.addService(sb);
+            
+            v.add(new Boolean(false));
+            v.add(sb.getServiceName());
+            v.add(sb.getDescription());
+            v.add(sb.getHostingResearchCenter());
+            v.add(new JButton("View"));
+            
+            tb.addRow(v);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_showAllBtnActionPerformed
+    
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
-// TODO add your handling code here
-        parentFrame.fwdAction ();
+        // Here get the list of the Services and then populate the ServiceMetaDataRegistry
+        int srows = getResultTable().getRowCount();//getSelectedRows();
+        
+        for (int i = 0; i < srows; i++) {
+            Boolean rowChecked = (Boolean)getResultTable().getValueAt(i, 0);
+            if (rowChecked){
+                ServiceMetaDataRegistry.addSelectedService((String)getResultTable().getValueAt(i, 1));
+                
+                // populate the DomainModel MetaData also here. And if you are not able to retrieve that. Popup a error.
+                DomainModelRetrievalStrategy dr = DomainModelRetrievalFactory.getDefaultRetrievalStrategy(); 
+                DomainModel model = dr.retrievDomainModel("C:\\tmp\\objs\\a.obj");  
+                DomainModelMetaDataRegistry.populateDomainModelMetaData(model); 
+            }
+        }
+        
+        // to handle the window.. call parent action..
+        parentFrame.fwdAction();
     }//GEN-LAST:event_selectBtnActionPerformed
     
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
-        if (isDialogParent ()){
-            parentDialog.setVisible (false);
+        if (isDialogParent()){
+            parentDialog.setVisible(false);
         } else {
-            parentFrame.exit ();
+            parentFrame.exit();
         }
     }//GEN-LAST:event_exitBtnActionPerformed
     
-    public static void main (String args[]) {
-        java.awt.EventQueue.invokeLater (new Runnable () {
-            public void run () {
-                CJFrame cf = new CJFrame ();cf.setTitle ("Testing this panel");
-                cf.getContentPane ().add (new ServicesSearchPanel (cf));
-                cf.setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                cf.setBounds (10,10,850,450);cf.center ();
-                cf.setVisible (true);
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                CJFrame cf = new CJFrame();cf.setTitle("Testing this panel");
+                cf.getContentPane().add(new ServicesSearchPanel(cf));
+                cf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                cf.setBounds(10,10,850,450);cf.center();
+                cf.setVisible(true);
                 
             }
         });
     }
     
     
-    private DefaultTableModel getTableModel (){
+    private DefaultTableModel getTableModel(){
         
         Object [][] data = new Object [][] {
-            {new Boolean (false), null, null,null,new JButton ("View")},
-            {new Boolean (false), null, null,null,new JButton ("View")}  };
+//            {new Boolean(false), null, null,null,new JButton("View")},
+//            {new Boolean(false), null, null,null,new JButton("View")}
+        };
         String [] columNames = new String [] {"  ", "Service Name", "Service Description", "Institution", "View MetaData"};
         
-        DefaultTableModel tb = new javax.swing.table.DefaultTableModel (data, columNames) {
+        DefaultTableModel tb = new javax.swing.table.DefaultTableModel(data, columNames) {
             // implemented methods..
             
-            public boolean isCellEditable (int row, int col) {
+            public boolean isCellEditable(int row, int col) {
                 if (col > 0) // only first column is editable with CheckBox Editor.
                     return false;
                 
                 return true;
             }
             
-            public Class getColumnClass (int c) {
+            public Class getColumnClass(int c) {
                 if (c == 0 || c == 4)
-                    return getValueAt (0, c).getClass ();
+                    return getValueAt(0, c).getClass();
                 
-                return new String ().getClass ();
+                return new String().getClass();
             };
             
         };
@@ -261,15 +330,15 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     
     
     
-    public boolean isDialogParent () {
+    public boolean isDialogParent() {
         return dialogParent;
     }
     
-    public void setDialogParent (boolean dialogParent) {
+    public void setDialogParent(boolean dialogParent) {
         this.dialogParent = dialogParent;
     }
     
-    public javax.swing.JTable getResultTable () {
+    public javax.swing.JTable getResultTable() {
         return resultTable;
     }
     

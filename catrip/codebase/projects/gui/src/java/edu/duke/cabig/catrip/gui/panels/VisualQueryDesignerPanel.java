@@ -7,8 +7,8 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import java.beans.PropertyChangeListener;
 import org.netbeans.graph.api.GraphFactory;
 import org.netbeans.graph.api.model.builtin.GraphDocument;
 import edu.duke.cabig.catrip.gui.dnd.*;
@@ -17,7 +17,6 @@ import edu.duke.cabig.catrip.gui.dnd.*;
 import javax.swing.*;
 import java.awt.datatransfer.*;
 import java.awt.dnd.*;
-import java.awt.event.*;
 import javax.swing.tree.*;
 
 
@@ -70,8 +69,8 @@ public class VisualQueryDesignerPanel extends CPanel {
                 DefaultMutableTreeNode infoLeaf = (DefaultMutableTreeNode) getTree().getSelectionPath().getLastPathComponent();
                 
                 if (!(  (getTree().getSelectionPath().getPathCount() <= 2)  ||  (getTree().getSelectionPath().getPathCount() == 4) )){
-                    Info infof = (Info) infoLeaf.getUserObject();
-                    String info = infof.getName();//getDisplayName(); // names are complete package names.. so are defnintely different
+                    ClassBean classBean = (ClassBean) infoLeaf.getUserObject();  
+                    String info = classBean.getId();//getDisplayName(); // names are complete package names.. so are defnintely different
                     //System.out.println("##### "+info);
                     Transferable transferable = new StringSelection(info);
                     dge.startDrag(null, transferable, null);

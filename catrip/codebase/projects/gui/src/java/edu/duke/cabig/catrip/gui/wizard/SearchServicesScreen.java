@@ -40,14 +40,8 @@ public class SearchServicesScreen extends CJFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-     public void fwdAction(){
-         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               MainFrame ws= new MainFrame();
-               ws.center();
-               ws.main(null);
-            }
-        });
+    public void fwdAction(){
+        MainFrame.main(null);
         this.dispose();
     }
     

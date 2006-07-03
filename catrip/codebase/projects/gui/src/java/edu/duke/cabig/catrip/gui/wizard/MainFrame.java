@@ -275,7 +275,10 @@ public class MainFrame extends CJFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+//                MainFrame ws= new MainFrame();
+//                ws.center();
                 new MainFrame().setVisible(true);
+                
             }
         });
     }

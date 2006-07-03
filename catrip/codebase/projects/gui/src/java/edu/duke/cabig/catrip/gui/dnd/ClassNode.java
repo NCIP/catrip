@@ -9,6 +9,7 @@
 
 package edu.duke.cabig.catrip.gui.dnd;
 
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.event.PopupMenuEvent;
@@ -26,9 +27,8 @@ import javax.swing.*;
  * @author sanju
  */
 public class ClassNode extends GenericNode { 
-
-
     
+    private ClassBean associatedClassObject;
     
     /** Creates a new instance of ClassNode */
     public ClassNode() {
@@ -54,6 +54,14 @@ public class ClassNode extends GenericNode {
     public IGraphNodeRenderer createNodeRenderer (GraphHelper helper, IGraphNode node) {
         //return new ScreenNodeRenderer (helper, node);  // sanjeev
         return new ClassNodeRenderer (helper, node); // sanjeev
+    }
+
+    public ClassBean getAssociatedClassObject() {
+        return associatedClassObject;
+    }
+
+    public void setAssociatedClassObject(ClassBean associatedClassObject) {
+        this.associatedClassObject = associatedClassObject;
     }
 
 }
