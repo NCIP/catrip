@@ -1,10 +1,12 @@
 package gov.nih.nci.catrip.fqe.data;
 
+import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.Object;
+
 
 public class ForeignQueryContext {
     
-    private caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject ;
+    private CQLQueryDocument cqlQryDoc ;
     private Integer sequence ; 
     private String typeOfAggregation ; 
     // more ...
@@ -13,12 +15,13 @@ public class ForeignQueryContext {
     public ForeignQueryContext() {
     }
 
-    public void setCqlObject(Object cqlObject) {
-        this.cqlObject = cqlObject;
+
+    public void setCqlQryDoc(CQLQueryDocument cqlQryDoc) {
+        this.cqlQryDoc = cqlQryDoc;
     }
 
-    public Object getCqlObject() {
-        return cqlObject;
+    public CQLQueryDocument getCqlQryDoc() {
+        return cqlQryDoc;
     }
 
     public void setSequence(Integer sequence) {
@@ -36,4 +39,5 @@ public class ForeignQueryContext {
     public String getTypeOfAggregation() {
         return typeOfAggregation;
     }
+
 }

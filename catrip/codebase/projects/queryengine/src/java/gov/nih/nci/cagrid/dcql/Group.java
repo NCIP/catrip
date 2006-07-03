@@ -16,7 +16,7 @@ package gov.nih.nci.cagrid.dcql;
 public interface Group extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Group.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB13676C6E423A5FB4A50598EB177036F").resolveHandle("group4981type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Group.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("group4981type");
     
     /**
      * Gets array of all "Association" elements
@@ -61,12 +61,12 @@ public interface Group extends org.apache.xmlbeans.XmlObject
     /**
      * Gets array of all "Attribute" elements
      */
-    gov.nih.nci.cagrid.dcql.Attribute[] getAttributeArray();
+    caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] getAttributeArray();
     
     /**
      * Gets ith "Attribute" element
      */
-    gov.nih.nci.cagrid.dcql.Attribute getAttributeArray(int i);
+    caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute getAttributeArray(int i);
     
     /**
      * Returns number of "Attribute" element
@@ -76,22 +76,22 @@ public interface Group extends org.apache.xmlbeans.XmlObject
     /**
      * Sets array of all "Attribute" element
      */
-    void setAttributeArray(gov.nih.nci.cagrid.dcql.Attribute[] attributeArray);
+    void setAttributeArray(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] attributeArray);
     
     /**
      * Sets ith "Attribute" element
      */
-    void setAttributeArray(int i, gov.nih.nci.cagrid.dcql.Attribute attribute);
+    void setAttributeArray(int i, caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute attribute);
     
     /**
      * Inserts and returns a new empty value (as xml) as the ith "Attribute" element
      */
-    gov.nih.nci.cagrid.dcql.Attribute insertNewAttribute(int i);
+    caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute insertNewAttribute(int i);
     
     /**
      * Appends and returns a new empty value (as xml) as the last "Attribute" element
      */
-    gov.nih.nci.cagrid.dcql.Attribute addNewAttribute();
+    caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute addNewAttribute();
     
     /**
      * Removes the ith "Attribute" element
@@ -141,22 +141,22 @@ public interface Group extends org.apache.xmlbeans.XmlObject
     /**
      * Gets the "logicRelation" attribute
      */
-    gov.nih.nci.cagrid.dcql.LogicalOperator.Enum getLogicRelation();
+    caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator.Enum getLogicRelation();
     
     /**
      * Gets (as xml) the "logicRelation" attribute
      */
-    gov.nih.nci.cagrid.dcql.LogicalOperator xgetLogicRelation();
+    caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator xgetLogicRelation();
     
     /**
      * Sets the "logicRelation" attribute
      */
-    void setLogicRelation(gov.nih.nci.cagrid.dcql.LogicalOperator.Enum logicRelation);
+    void setLogicRelation(caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator.Enum logicRelation);
     
     /**
      * Sets (as xml) the "logicRelation" attribute
      */
-    void xsetLogicRelation(gov.nih.nci.cagrid.dcql.LogicalOperator logicRelation);
+    void xsetLogicRelation(caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator logicRelation);
     
     /**
      * A factory class with static methods for creating instances

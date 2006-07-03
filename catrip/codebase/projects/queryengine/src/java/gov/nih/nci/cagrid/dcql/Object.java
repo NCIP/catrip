@@ -16,12 +16,12 @@ package gov.nih.nci.cagrid.dcql;
 public interface Object extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Object.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB13676C6E423A5FB4A50598EB177036F").resolveHandle("object49cftype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Object.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("object49cftype");
     
     /**
      * Gets the "Attribute" element
      */
-    gov.nih.nci.cagrid.dcql.Attribute getAttribute();
+    caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute getAttribute();
     
     /**
      * True if has "Attribute" element
@@ -31,12 +31,12 @@ public interface Object extends org.apache.xmlbeans.XmlObject
     /**
      * Sets the "Attribute" element
      */
-    void setAttribute(gov.nih.nci.cagrid.dcql.Attribute attribute);
+    void setAttribute(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute attribute);
     
     /**
      * Appends and returns a new empty "Attribute" element
      */
-    gov.nih.nci.cagrid.dcql.Attribute addNewAttribute();
+    caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute addNewAttribute();
     
     /**
      * Unsets the "Attribute" element

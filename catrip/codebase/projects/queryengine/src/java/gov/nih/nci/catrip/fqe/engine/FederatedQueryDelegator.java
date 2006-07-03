@@ -13,7 +13,11 @@ public class FederatedQueryDelegator {
         Iterator qryContextItr = queryContextList.iterator();
         
         while (qryContextItr.hasNext()) {
+            ForeignQueryContext fQryCntx = (ForeignQueryContext)qryContextItr.next();
             
+            
+            //execute  query ..
+               
         }
         
     }

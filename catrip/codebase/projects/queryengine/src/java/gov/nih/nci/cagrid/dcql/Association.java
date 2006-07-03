@@ -16,7 +16,7 @@ package gov.nih.nci.cagrid.dcql;
 public interface Association extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Association.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB13676C6E423A5FB4A50598EB177036F").resolveHandle("associationb87ftype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Association.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("associationb87ftype");
     
     /**
      * Gets the "Object" element

@@ -148,14 +148,14 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Gets array of all "Attribute" elements
      */
-    public gov.nih.nci.cagrid.dcql.Attribute[] getAttributeArray()
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] getAttributeArray()
     {
         synchronized (monitor())
         {
             check_orphaned();
             java.util.List targetList = new java.util.ArrayList();
             get_store().find_all_element_users(ATTRIBUTE$2, targetList);
-            gov.nih.nci.cagrid.dcql.Attribute[] result = new gov.nih.nci.cagrid.dcql.Attribute[targetList.size()];
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] result = new caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[targetList.size()];
             targetList.toArray(result);
             return result;
         }
@@ -164,13 +164,13 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Gets ith "Attribute" element
      */
-    public gov.nih.nci.cagrid.dcql.Attribute getAttributeArray(int i)
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute getAttributeArray(int i)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().find_element_user(ATTRIBUTE$2, i);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$2, i);
             if (target == null)
             {
                 throw new IndexOutOfBoundsException();
@@ -194,7 +194,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Sets array of all "Attribute" element
      */
-    public void setAttributeArray(gov.nih.nci.cagrid.dcql.Attribute[] attributeArray)
+    public void setAttributeArray(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] attributeArray)
     {
         synchronized (monitor())
         {
@@ -206,13 +206,13 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Sets ith "Attribute" element
      */
-    public void setAttributeArray(int i, gov.nih.nci.cagrid.dcql.Attribute attribute)
+    public void setAttributeArray(int i, caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute attribute)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().find_element_user(ATTRIBUTE$2, i);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$2, i);
             if (target == null)
             {
                 throw new IndexOutOfBoundsException();
@@ -224,13 +224,13 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Inserts and returns a new empty value (as xml) as the ith "Attribute" element
      */
-    public gov.nih.nci.cagrid.dcql.Attribute insertNewAttribute(int i)
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute insertNewAttribute(int i)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().insert_element_user(ATTRIBUTE$2, i);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().insert_element_user(ATTRIBUTE$2, i);
             return target;
         }
     }
@@ -238,13 +238,13 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Appends and returns a new empty value (as xml) as the last "Attribute" element
      */
-    public gov.nih.nci.cagrid.dcql.Attribute addNewAttribute()
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute addNewAttribute()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().add_element_user(ATTRIBUTE$2);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().add_element_user(ATTRIBUTE$2);
             return target;
         }
     }
@@ -380,7 +380,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Gets the "logicRelation" attribute
      */
-    public gov.nih.nci.cagrid.dcql.LogicalOperator.Enum getLogicRelation()
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator.Enum getLogicRelation()
     {
         synchronized (monitor())
         {
@@ -391,20 +391,20 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
             {
                 return null;
             }
-            return (gov.nih.nci.cagrid.dcql.LogicalOperator.Enum)target.getEnumValue();
+            return (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator.Enum)target.getEnumValue();
         }
     }
     
     /**
      * Gets (as xml) the "logicRelation" attribute
      */
-    public gov.nih.nci.cagrid.dcql.LogicalOperator xgetLogicRelation()
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator xgetLogicRelation()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.LogicalOperator target = null;
-            target = (gov.nih.nci.cagrid.dcql.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$6);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$6);
             return target;
         }
     }
@@ -412,7 +412,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Sets the "logicRelation" attribute
      */
-    public void setLogicRelation(gov.nih.nci.cagrid.dcql.LogicalOperator.Enum logicRelation)
+    public void setLogicRelation(caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator.Enum logicRelation)
     {
         synchronized (monitor())
         {
@@ -430,16 +430,16 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     /**
      * Sets (as xml) the "logicRelation" attribute
      */
-    public void xsetLogicRelation(gov.nih.nci.cagrid.dcql.LogicalOperator logicRelation)
+    public void xsetLogicRelation(caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator logicRelation)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.LogicalOperator target = null;
-            target = (gov.nih.nci.cagrid.dcql.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$6);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$6);
             if (target == null)
             {
-                target = (gov.nih.nci.cagrid.dcql.LogicalOperator)get_store().add_attribute_user(LOGICRELATION$6);
+                target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().add_attribute_user(LOGICRELATION$6);
             }
             target.set(logicRelation);
         }

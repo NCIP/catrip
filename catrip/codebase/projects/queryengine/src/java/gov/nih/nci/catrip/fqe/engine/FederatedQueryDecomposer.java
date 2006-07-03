@@ -1,11 +1,18 @@
 package gov.nih.nci.catrip.fqe.engine;
 
+
+import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
+
 import gov.nih.nci.catrip.fqe.data.ForeignQueryContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.xmlbeans.XmlOptions;
+
 public class FederatedQueryDecomposer {
+    private XmlOptions xmlOptions;
+    
     public FederatedQueryDecomposer() {
     }
     
@@ -16,19 +23,33 @@ public class FederatedQueryDecomposer {
         
         List queryContextList = null;
         
-        // decompose foreign objecs and convert into cql objects 
+        // decompose foreign objecs and convert into CQL Query 
          
          // for each foreign object
-            gov.nih.nci.cagrid.dcql.Object foriegnObject = dcqlObject.getForeignAssociation().getForeignObject();
-            DcqlToCqlConverter converter = new DcqlToCqlConverter();
-            caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = converter.convert(foriegnObject);
-            // build foreign Query Context 
-            
-             ForeignQueryContext qryContext = new ForeignQueryContext();
-             qryContext.setCqlObject(cqlObject);
-             qryContext.setSequence(0);
-             
-             queryContextList.add(qryContext);
+        gov.nih.nci.cagrid.dcql.Object foriegnObject = dcqlObject.getForeignAssociation().getForeignObject();
+        DcqlToCqlConverter converter = new DcqlToCqlConverter();
+        CQLQueryDocument cqlQueryDoc = converter.convert(foriegnObject);
+        
+        // Format XML     
+        xmlOptions = new XmlOptions();
+        // Requests use of whitespace for easier reading
+        xmlOptions.setSavePrettyPrint();
+
+        // Requests that nested levels of the xml
+        // document to be indented by multiple of 4
+        // whitespace characters
+        xmlOptions.setSavePrettyPrintIndent(4);
+        
+        System.out.println(cqlQueryDoc.xmlText(xmlOptions));
+        
+
+         
+         ForeignQueryContext qryContext = new ForeignQueryContext();
+         qryContext.setCqlQryDoc(cqlQueryDoc);
+         qryContext.setSequence(0);
+         
+         //queryContextList.add(qryContext);
+         
             
         // end loop 
         

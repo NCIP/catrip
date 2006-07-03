@@ -16,7 +16,7 @@ package gov.nih.nci.cagrid.dcql;
 public interface Join extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Join.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB13676C6E423A5FB4A50598EB177036F").resolveHandle("join6c44type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Join.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("join6c44type");
     
     /**
      * Gets the "Object" element

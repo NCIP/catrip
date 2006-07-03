@@ -1,10 +1,9 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
-
-import caBIG.cql.x1.govNihNciCagridCQLQuery.impl.CQLQueryDocumentImpl;
 
 import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
+
+import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 
 import java.io.File;
 
@@ -27,14 +26,16 @@ public class FederatedQueryEngine {
              gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();
              
              // check for foriegn association 
-                // .................
+            ForeignAssociation fa = targetObject.getForeignAssociation();
+
              
+             /*
              // if NO foreign associations , convert to CQL 
              
              DcqlToCqlConverter converter = new DcqlToCqlConverter();
              caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = converter.convert(targetObject);
-             
-             // if foreign associations exists ..  Decompose queries . 
+             */
+              //if foreign associations exists ..  Decompose queries . 
               FederatedQueryDecomposer decomposer = new FederatedQueryDecomposer();
               List queryContextList = decomposer.decompose(targetObject);
               

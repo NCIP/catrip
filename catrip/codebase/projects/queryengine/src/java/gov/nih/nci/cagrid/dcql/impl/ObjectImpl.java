@@ -34,13 +34,13 @@ public class ObjectImpl extends org.apache.xmlbeans.impl.values.XmlComplexConten
     /**
      * Gets the "Attribute" element
      */
-    public gov.nih.nci.cagrid.dcql.Attribute getAttribute()
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute getAttribute()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().find_element_user(ATTRIBUTE$0, 0);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$0, 0);
             if (target == null)
             {
                 return null;
@@ -64,16 +64,16 @@ public class ObjectImpl extends org.apache.xmlbeans.impl.values.XmlComplexConten
     /**
      * Sets the "Attribute" element
      */
-    public void setAttribute(gov.nih.nci.cagrid.dcql.Attribute attribute)
+    public void setAttribute(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute attribute)
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().find_element_user(ATTRIBUTE$0, 0);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$0, 0);
             if (target == null)
             {
-                target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().add_element_user(ATTRIBUTE$0);
+                target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().add_element_user(ATTRIBUTE$0);
             }
             target.set(attribute);
         }
@@ -82,13 +82,13 @@ public class ObjectImpl extends org.apache.xmlbeans.impl.values.XmlComplexConten
     /**
      * Appends and returns a new empty "Attribute" element
      */
-    public gov.nih.nci.cagrid.dcql.Attribute addNewAttribute()
+    public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute addNewAttribute()
     {
         synchronized (monitor())
         {
             check_orphaned();
-            gov.nih.nci.cagrid.dcql.Attribute target = null;
-            target = (gov.nih.nci.cagrid.dcql.Attribute)get_store().add_element_user(ATTRIBUTE$0);
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().add_element_user(ATTRIBUTE$0);
             return target;
         }
     }
