@@ -1,6 +1,8 @@
 package gov.nih.nci.catrip.fqe.engine;
 
 
+import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
+
 import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
 
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
@@ -21,24 +23,32 @@ public class FederatedQueryEngine {
     
     public void process(FederatedQueryPlanDocument federatedQryPlan){
 
-           /** Get the target object.
-             */
-             gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();
-             
-             // check for foriegn association 
-            ForeignAssociation foreignAssociation = targetObject.getForeignAssociation();
-
-             
-             /*
-             // if NO foreign associations , convert to CQL 
-             
-             DcqlToCqlConverter converter = new DcqlToCqlConverter();
-             caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = converter.convert(targetObject);
-             */
-              //if foreign associations exists ..  Decompose queries . 
-              FederatedQueryDecomposer decomposer = new FederatedQueryDecomposer();
-              List queryContextList = decomposer.decompose(foreignAssociation);
-              
+        /** Get the target object.
+        */
+        gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();
+        
+        // check for foriegn association 
+        ForeignAssociation foreignAssociation = targetObject.getForeignAssociation();
+        
+        
+        /*
+        // if NO foreign associations , convert to CQL 
+        
+        DcqlToCqlConverter converter = new DcqlToCqlConverter();
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = converter.convert(targetObject);
+        */
+        //if foreign associations exists ..  Decompose queries . 
+        FederatedQueryDecomposer decomposer = new FederatedQueryDecomposer();
+        List queryContextList = decomposer.decompose(foreignAssociation);
+        
+        FederatedQueryDelegator qryDeligator = new FederatedQueryDelegator();
+        //qryDeligator.process(queryContextList);
+        
+        DcqlToCqlConverter converter = new DcqlToCqlConverter();
+        CQLQueryDocument cqlQry= converter.convertDCQLTragetObject(targetObject);
+        qryDeligator.executeQuery(cqlQry);
+        
+       
               
              
    }

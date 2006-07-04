@@ -25,7 +25,7 @@ public class DcqlToCqlConverter {
         caBIG.cql.x1.govNihNciCagridCQLQuery.Association cqlAssociation = caBIG.cql.x1.govNihNciCagridCQLQuery.Association.Factory.newInstance();     
         gov.nih.nci.cagrid.dcql.Association dcqlAssociation = dcqlObject.getAssociation();
         
-        System.out.println(dcqlAssociation.getRoleName());
+        //System.out.println(dcqlAssociation.getRoleName());
         // set association role name . 
         cqlAssociation.setRoleName(dcqlAssociation.getRoleName());
         
@@ -34,7 +34,7 @@ public class DcqlToCqlConverter {
         // check for any attributes 
         Attribute attr = childObj.getAttribute();
         if (attr != null ) {
-            System.out.println(attr.getName());
+            //System.out.println(attr.getName());
             cqlAssociation.setAttribute(attr);
         } 
                
@@ -47,8 +47,7 @@ public class DcqlToCqlConverter {
         
         if (childObj != null) {
             cqlAssociation.setName(childObj.getName());
-            if (cqlAssociationIn != null ) {
-                
+            if (cqlAssociationIn != null ) {                
                 cqlAssociationIn.setAssociation(cqlAssociation);
                 cqlAssociation = cqlAssociationIn;
                 //System.out.println(cqlAssociation.getName());
@@ -82,7 +81,7 @@ public class DcqlToCqlConverter {
         
     }
 
-    public CQLQueryDocument convert(ForeignAssociation foreignAssociation) {
+    public CQLQueryDocument convertForeignAssociation(ForeignAssociation foreignAssociation) {
         cqlQueryDoc = CQLQueryDocument.Factory.newInstance();
 
         gov.nih.nci.cagrid.dcql.Object dcqlObject = foreignAssociation.getForeignObject();
@@ -98,6 +97,19 @@ public class DcqlToCqlConverter {
         //return CQLQueryDocument
         return cqlQueryDoc;
     }
+    public CQLQueryDocument convertDCQLTragetObject(gov.nih.nci.cagrid.dcql.Object dcqlObject) {
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processTargetObject(dcqlObject);        
+
+        //Create instance of CQLQueryDocument
+        CQLQueryDocument cqlQueryDoc = CQLQueryDocument.Factory.newInstance();
+        cqlQry = cqlQueryDoc.addNewCQLQuery();
+        cqlQry.setTarget(cqlObject);
+
+        //return CQLQueryDocument
+        return cqlQueryDoc;
+        
+    }
+    
 }
 
 

@@ -1,55 +1,39 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
-import gov.nih.nci.catrip.fqe.data.ForeignQueryContext;
+import gov.nih.nci.catrip.fqe.data.QueryContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.xmlbeans.XmlOptions;
 
 public class FederatedQueryDecomposer {
-    private XmlOptions xmlOptions;
     
     public FederatedQueryDecomposer() {
     }
     
-    public List <ForeignQueryContext> decompose(ForeignAssociation foreignAssociation) {
+    public List <QueryContext> decompose(ForeignAssociation foreignAssociation) {
         
         // decompose foreign objects .. 
         // start with one foreign object for proto type ..
         
-        List queryContextList = null;
+        List queryContextList = new ArrayList();
         
         // decompose foreign objecs and convert into CQL Query 
          
-         // for each foreign association
-        
+         // for each foreign association        
         DcqlToCqlConverter converter = new DcqlToCqlConverter();
-        CQLQueryDocument cqlQueryDoc = converter.convert(foreignAssociation);
-        
-        // Format XML     
-        xmlOptions = new XmlOptions();
-        // Requests use of whitespace for easier reading
-        xmlOptions.setSavePrettyPrint();
+        CQLQueryDocument cqlQueryDoc = converter.convertForeignAssociation(foreignAssociation);
 
-        // Requests that nested levels of the xml
-        // document to be indented by multiple of 4
-        // whitespace characters
-        xmlOptions.setSavePrettyPrintIndent(4);
         
-        System.out.println(cqlQueryDoc.xmlText(xmlOptions));
-        
-        
-         
-         ForeignQueryContext qryContext = new ForeignQueryContext();
+         // build query context
+         QueryContext qryContext = new QueryContext();
          qryContext.setCqlQryDoc(cqlQueryDoc);
          qryContext.setSequence(0);
          
-         //queryContextList.add(qryContext);
+         queryContextList.add(qryContext);
          
             
         // end loop 

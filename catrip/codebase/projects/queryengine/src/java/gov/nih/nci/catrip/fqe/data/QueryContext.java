@@ -4,7 +4,7 @@ import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.Object;
 
 
-public class ForeignQueryContext {
+public class QueryContext {
     
     private CQLQueryDocument cqlQryDoc ;
     private Integer sequence ; 
@@ -12,7 +12,7 @@ public class ForeignQueryContext {
     // more ...
     
     
-    public ForeignQueryContext() {
+    public QueryContext() {
     }
 
 
