@@ -38,8 +38,8 @@ public class VisualQueryDesignerPanel extends CPanel {
         document = new GraphDocument();
     }
     
-    public void showNodePrperties(String nodeName){
-        getMainFrame().getPropertiesPanel().showNodeProperties(nodeName);
+    public void showNodePrperties(ClassBean nodeName){
+        getMainFrame().getPropertiesPanel().showNodeProperties(nodeName); 
     }
     
     public void setView(JComponent comp){
@@ -52,9 +52,6 @@ public class VisualQueryDesignerPanel extends CPanel {
         return prefix + ++ lastID;
     }
     
-    public Info[] getInfos() {
-        return servicePanel.getInfos();
-    }
     
     public JTree getTree() {
         return servicePanel.getTree();

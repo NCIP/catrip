@@ -25,7 +25,7 @@ public class ServiceMetaDataBean {
     
     // Set this when a user selects a service or add a service
     private boolean selected = false;
-    
+    private Object domainModelEndPointRef;
     
     
     /** Creates a new instance of ServiceMetaDataBean */
@@ -78,6 +78,14 @@ public class ServiceMetaDataBean {
     
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+    public Object getDomainModelEndPointRef() {
+        return domainModelEndPointRef; 
+    }
+
+    public void setDomainModelEndPointRef(Object domainModelEndPointRef) {
+        this.domainModelEndPointRef = domainModelEndPointRef;
     }
     
 }

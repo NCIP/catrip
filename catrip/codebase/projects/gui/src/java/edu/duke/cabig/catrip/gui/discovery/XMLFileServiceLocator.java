@@ -32,12 +32,16 @@ public class XMLFileServiceLocator extends ServiceLocator{
         ArrayList<ServiceMetaDataBean> alist = new ArrayList(5);
         
         try{
+            String baseDir = "C:\\java_exps\\caGrid_MetaDatas\\service_and_domain\\xmls\\";
+            String file = baseDir+"caTIES_serviceMetadata.xml";
+            String domainModelFile = baseDir+"caTIES_domainModel.obj";
             
-            String file = "C:\\java_exps\\caGrid_MetaDatas\\service_and_domain\\xmls\\caTIES_serviceMetadata.xml";
-            
+            // service one..
             ServiceMetadata commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
             
             ServiceMetaDataBean sb = new ServiceMetaDataBean();
+            
+            sb.setDomainModelEndPointRef(domainModelFile);
             
             sb.setServiceName(commonMetadata.getServiceDescription().getService().getName());
             sb.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
@@ -48,6 +52,27 @@ public class XMLFileServiceLocator extends ServiceLocator{
             ResearchCenter rc = commonMetadata.getHostingResearchCenter().getResearchCenter();
             sb.setHostingResearchCenter(rc.getDisplayName() + "("+rc.getShortName()+")"+":"+sb.getPointOfContact());
             alist.add(sb);
+            
+            
+            // service two..
+            file = baseDir+"caBIO_serviceMetadata.xml";
+            domainModelFile = baseDir+"caBIO_domainModel.obj";
+            commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
+            
+            sb = new ServiceMetaDataBean();
+            
+            sb.setDomainModelEndPointRef(domainModelFile);
+            
+            sb.setServiceName(commonMetadata.getServiceDescription().getService().getName());
+            sb.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
+            
+            pc = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
+            sb.setPointOfContact(pc.getFirstName()+" "+pc.getLastName()+":"+pc.getEmail()+":"+pc.getRole());
+            
+            rc = commonMetadata.getHostingResearchCenter().getResearchCenter();
+            sb.setHostingResearchCenter(rc.getDisplayName() + "("+rc.getShortName()+")"+":"+sb.getPointOfContact());
+            alist.add(sb);
+            
             
         } catch (Exception ee){ return null;}
         

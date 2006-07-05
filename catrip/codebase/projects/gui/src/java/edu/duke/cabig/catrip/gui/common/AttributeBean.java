@@ -25,6 +25,7 @@ public class AttributeBean {
     private String domainModelId;
     private String CDEName;
     private String displayName;
+    private String predicate = "EQUAL_TO"; // set as default
     
     /** Creates a new instance of AttributeBean */
     public AttributeBean() {
@@ -100,6 +101,29 @@ public class AttributeBean {
     
     public void setDomainModelId(String domainModelId) {
         this.domainModelId = domainModelId;
+    }
+    
+    public AttributeBean clone(){
+        AttributeBean aBean = new AttributeBean();
+        aBean.setAttributeName(getAttributeName());
+        aBean.setAttributeValue("");// remove the value of the attribute as every graph node will have different value.
+        aBean.setCDEName(getCDEName());
+        aBean.setClassName(getClassName());
+        aBean.setDisplayName(getDisplayName());
+        aBean.setDomainModelId(getDomainModelId());
+        aBean.setId(getId());
+        aBean.setServiceName(getServiceName());
+        aBean.setVersion(getVersion());
+        
+        return aBean;
+    }
+
+    public String getPredicate() {
+        return predicate;
+    }
+
+    public void setPredicate(String predicate) {
+        this.predicate = predicate;
     }
     
 }

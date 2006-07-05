@@ -229,9 +229,9 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         
         // Calls to populate the ServiceMetaDataRegistry
         
+        // need to replace these direct calls with the Spring Framework stuff..
         ServiceLocator sl = ServiceLocaterFactory.getServiceLocator();
         ArrayList alist = sl.discoverServices();
-        // don't forget to populate the ServiceMetaDataRegistry too..
         
         DefaultTableModel tb = (DefaultTableModel) getResultTable().getModel();
         
@@ -240,6 +240,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             Vector v = new Vector();
             ServiceMetaDataBean sb = (ServiceMetaDataBean)alist.get(i);
             
+            // don't forget to populate the ServiceMetaDataRegistry too..
             ServiceMetaDataRegistry.addService(sb);
             
             v.add(new Boolean(false));
@@ -251,9 +252,6 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             tb.addRow(v);
         }
         
-        
-        
-        
     }//GEN-LAST:event_showAllBtnActionPerformed
     
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
@@ -263,11 +261,19 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         for (int i = 0; i < srows; i++) {
             Boolean rowChecked = (Boolean)getResultTable().getValueAt(i, 0);
             if (rowChecked){
-                ServiceMetaDataRegistry.addSelectedService((String)getResultTable().getValueAt(i, 1));
+                String serviceName = (String)getResultTable().getValueAt(i, 1);
+                serviceName = serviceName.trim();
+                ServiceMetaDataRegistry.addSelectedService(serviceName);
                 
-                // populate the DomainModel MetaData also here. And if you are not able to retrieve that. Popup a error.
-                DomainModelRetrievalStrategy dr = DomainModelRetrievalFactory.getDefaultRetrievalStrategy(); 
-                DomainModel model = dr.retrievDomainModel("C:\\tmp\\objs\\a.obj");  
+                
+//                DomainModelRetrievalStrategy dr = DomainModelRetrievalFactory.getDefaultRetrievalStrategy(); 
+//                DomainModel model = dr.retrievDomainModel("C:\\tmp\\objs\\a.obj");  
+                // need to replace these direct calls with the Spring Framework stuff..
+                ServiceMetaDataBean sBean = ServiceMetaDataRegistry.getServiceBeanByName(serviceName);
+                DomainModelRetrievalStrategy dr = DomainModelRetrievalFactory.getRetrievalStrategy(sBean);  
+                DomainModel model = dr.retrievDomainModel();   
+                
+                // populate the DomainModel MetaData also here. 
                 DomainModelMetaDataRegistry.populateDomainModelMetaData(model); 
             }
         }

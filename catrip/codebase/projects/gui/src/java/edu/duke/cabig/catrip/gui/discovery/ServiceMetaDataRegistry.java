@@ -57,4 +57,8 @@ public class ServiceMetaDataRegistry {
         selectedServiceNames.add(sName); 
     }
     
+    public static ServiceMetaDataBean getServiceBeanByName(String sName){
+        return (ServiceMetaDataBean)serviceList.get(sName);
+    } 
+    
 }

@@ -18,5 +18,6 @@ import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 public abstract class DomainModelRetrievalStrategy {
     
     public abstract DomainModel retrievDomainModel(Object sName);
+    public abstract DomainModel retrievDomainModel();
     
 }

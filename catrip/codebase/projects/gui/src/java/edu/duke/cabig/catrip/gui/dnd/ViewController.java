@@ -12,6 +12,7 @@
  */
 package edu.duke.cabig.catrip.gui.dnd;
 
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.panels.*;
 import org.netbeans.graph.api.control.builtin.DefaultViewController;
 import org.netbeans.graph.api.model.builtin.GraphNode;
@@ -76,7 +77,7 @@ public class ViewController extends DefaultViewController implements ActionListe
         Object[] selectedComponents = getHelper().getSelectedComponents();
         
         if (selectedComponents != null  &&  selectedComponents.length == 2 &&  (selectedComponents[0] instanceof IGraphNode) && (selectedComponents[1] instanceof IGraphNode))
-            return popup2; 
+            return popup2;
         
         if (selectedComponents == null  ||  selectedComponents.length != 1 ||  !(selectedComponents[0] instanceof IGraphNode))
             return null; // no popup menu
@@ -139,16 +140,13 @@ public class ViewController extends DefaultViewController implements ActionListe
                 Object selectedComponent = getHelper().getModelComponent(selectedComponents[0]);
                 if (selectedComponent instanceof IGraphNode) {
                     //nodes.add(selectedComponent);
-                    String nodeClass = ((GraphNode)selectedComponent).getID(); //getDisplayName();
-                    //System.out.println("@#@#@#  "+ nodeClass);
-                    //System.out.println("@#@#@#  "+ ((GraphNode)selectedComponent).getID());
-                    
-                    popupPropertiesPanel(nodeClass);
+                    ClassBean node = ((ClassNode)selectedComponent).getAssociatedClassObject();  //getDisplayName();
+                    popupPropertiesPanel(node);
                     
                 }
             }
             
-        // Remove later : sanjeev dummy stitching code...    
+            // Remove later : sanjeev dummy stitching code...
         } else if(e.getSource() == miShowClass){
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -164,7 +162,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                 }
             });
         }
-        // Remove later : sanjeev dummy stitching code...    
+        // Remove later : sanjeev dummy stitching code...
         
         
         
@@ -174,10 +172,10 @@ public class ViewController extends DefaultViewController implements ActionListe
     }
     
     
-    private void popupPropertiesPanel(String name){
+    private void popupPropertiesPanel(ClassBean name){
         // put this code in a jpanel class.. doesn;t look good here..
         // can have a method like   test.popupPropertiesPanel(nodeClass)
-        test.showNodePrperties(name);
+        test.showNodePrperties(name); 
         final JFrame jf = new JFrame("Edit Properties");
         
         JPanel jPanel = new javax.swing.JPanel();

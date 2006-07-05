@@ -6,11 +6,15 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Vector;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.table.*;
-import java.util.*;
-
 
 /**
  *
@@ -18,118 +22,48 @@ import java.util.*;
  */
 public class PropertiesPanel extends CPanel {
     
+    private JComboBox predicates;
+    private ClassBean cBean;
+    
     /** Creates new form PropertiesPanel */
     public PropertiesPanel() {
         initComponents();
+        init();
     }
     
-    public void showNodeProperties(String nodeName){
+    private void init(){
+        predicates = new JComboBox();
+        predicates.addItem("EQUAL_TO");
+        predicates.addItem("NOT_EQUAL_TO");
+        predicates.addItem("LESS_THAN");
+        predicates.addItem("LESS_THAN_EQUAL_TO");
+        predicates.addItem("GREATER_THAN");
+        predicates.addItem("GREATER_THAN_EQUAL_TO");
+        predicates.addItem("IS_NULL");
+        predicates.addItem("IS_NOT_NULL");
+        
+        TableColumn predicateColumn = getPropTable().getColumnModel().getColumn(1);
+        predicateColumn.setCellEditor(new DefaultCellEditor(predicates));
+        
+    }
+    
+    public void showNodeProperties(ClassBean node){
         cleanTable();
+        cBean = node;
         // here set the properties table with the attribute names and values for primitive types only.
-      DefaultTableModel tm =   (DefaultTableModel) getPropTable().getModel();
-      Vector r ;
-        if (nodeName.startsWith("caCore.Gene")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("clusterId"); tm.addRow(r);
-          r = new Vector(); r.add("symbol"); tm.addRow(r);
-
-        }else if (nodeName.startsWith("caCore.Taxon")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("scientificName"); tm.addRow(r);
-          r = new Vector(); r.add("ethnicityStrain"); tm.addRow(r);
-          r = new Vector(); r.add("abbreviation"); tm.addRow(r);
-          r = new Vector(); r.add("commonName"); tm.addRow(r);
-          
-        }else if (nodeName.startsWith("caCore.Chromosome")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("name"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("caCore.Clone")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("name"); tm.addRow(r);
-          r = new Vector(); r.add("accessionNumber"); tm.addRow(r);
-          r = new Vector(); r.add("insertSize"); tm.addRow(r);
-          r = new Vector(); r.add("version"); tm.addRow(r);
-          r = new Vector(); r.add("strain"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("caCore.Library")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("name"); tm.addRow(r);
-          r = new Vector(); r.add("type"); tm.addRow(r);
-          r = new Vector(); r.add("unigeneId"); tm.addRow(r);
-          r = new Vector(); r.add("description"); tm.addRow(r);
-          r = new Vector(); r.add("labHost"); tm.addRow(r);
-          r = new Vector(); r.add("keyword"); tm.addRow(r);
-          r = new Vector(); r.add("rsite1"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("caCore.Sequence")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("accessionNumber"); tm.addRow(r);
-          r = new Vector(); r.add("description"); tm.addRow(r);
-          r = new Vector(); r.add("length"); tm.addRow(r);
-          r = new Vector(); r.add("accessionNumberVersion"); tm.addRow(r);
-          r = new Vector(); r.add("type"); tm.addRow(r);
-          r = new Vector(); r.add("asciiString"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("caCore.Target")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("name"); tm.addRow(r);
-          r = new Vector(); r.add("type"); tm.addRow(r);
-            
-          
-          // other domain model objects..
-        }else if (nodeName.startsWith("PIR.Taxon")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("PIR.Protein")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("uniprotkbPrimaryAccession"); tm.addRow(r);
-          r = new Vector(); r.add("uniprotkbEntryName"); tm.addRow(r);
-          r = new Vector(); r.add("proteinType"); tm.addRow(r);
+        ObjectTableModel tm =   (ObjectTableModel) getPropTable().getModel();
         
-        }else if (nodeName.startsWith("PIR.SequenceVariant")){
-          r = new Vector(); r.add("originalSequence"); tm.addRow(r);
-          r = new Vector(); r.add("variantSequence"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("PIR.SpliceVariant")){
-          r = new Vector(); r.add("originalSequence"); tm.addRow(r);
-          r = new Vector(); r.add("variantSequence"); tm.addRow(r);
-        
-        }else if (nodeName.startsWith("PIR.ProteinSequence")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-          r = new Vector(); r.add("checksum"); tm.addRow(r);
-          r = new Vector(); r.add("length"); tm.addRow(r);
-          r = new Vector(); r.add("value"); tm.addRow(r);
-          r = new Vector(); r.add("molecularWeightInDaltons"); tm.addRow(r);
-          r = new Vector(); r.add("sequenceInFastaFormat"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("PIR.SequenceConflict")){
-          r = new Vector(); r.add("originalSequence"); tm.addRow(r);
-          r = new Vector(); r.add("variantSequence"); tm.addRow(r);
-          
-        }else if (nodeName.startsWith("PIR.Gene")){
-          r = new Vector(); r.add("id"); tm.addRow(r);
-            
-        }else if (nodeName.startsWith("PIR.MutagenesisSite")){
-          r = new Vector(); r.add("originalSequence"); tm.addRow(r);
-          r = new Vector(); r.add("variantSequence"); tm.addRow(r);
+        ArrayList attributeBeans = node.getAttributes();
+        for (int i = 0; i < attributeBeans.size(); i++) {
+            AttributeBean aBean = (AttributeBean)attributeBeans.get(i);
+            tm.addObjectRow(aBean);
         }
-
-      
-    }
-    
-    private void populatePropTable(){
-        cleanTable();
+        
     }
     
     
     private void cleanTable(){
-        if( getPropTable().getModel() instanceof DefaultTableModel ) {
-            ((DefaultTableModel)getPropTable().getModel()).setNumRows(0);
-        } else {
-            int cols = getPropTable().getModel().getColumnCount();
-            getPropTable().setModel( new DefaultTableModel(0, cols) );
-        }
+        ((ObjectTableModel)getPropTable().getModel()).clean();
     }
     
     
@@ -154,39 +88,94 @@ public class PropertiesPanel extends CPanel {
 
         setLayout(new java.awt.GridLayout(1, 0));
 
-        propTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Attribute", "Value"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        propTable.setModel(getTableModel());
+        propTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                propTablePropertyChange(evt);
             }
         });
+
         propertyViewScrollPane.setViewportView(propTable);
 
         add(propertyViewScrollPane);
 
     }// </editor-fold>//GEN-END:initComponents
     
+    private void propTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_propTablePropertyChange
+        // Set the attribute value back into the object.
+        
+        int row = getPropTable().getSelectedRow();
+        int col = getPropTable().getSelectedColumn();
+        ObjectTableModel tm = (ObjectTableModel) getPropTable().getModel();
+        AttributeBean aBean = null;
+        String val = null;
+        
+        if ( (row != -1) && (col != -1) ){
+            val = (String)getPropTable().getValueAt(row, col);
+            aBean = tm.getObjectRow(row+1);
+            
+            if (col == 1){ // it is predicate that has been changed..
+                aBean.setPredicate(val);
+            }else if (col == 2){// it is attribute value that has been changed..
+                aBean.setAttributeValue(val);
+            } // else nothing..
+            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_propTablePropertyChange
+    
+    private DefaultTableModel getTableModel(){
+        
+        Object [][] data = new Object [][] { };
+        String [] columNames = new String [] {"Attribute","Predicate" ,"Value"};
+        
+        DefaultTableModel tb = new ObjectTableModel(data, columNames);
+        return tb;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable propTable;
     private javax.swing.JScrollPane propertyViewScrollPane;
     // End of variables declaration//GEN-END:variables
     
+}
+
+
+class ObjectTableModel extends DefaultTableModel {
+    
+    HashMap attributeRows = new HashMap(100);
+    Class[] types = new Class [] {java.lang.String.class, java.lang.String.class, java.lang.String.class};
+    
+    public ObjectTableModel(Object [][] data, String [] columNames){
+        super(data, columNames);
+    }
+    
+    public boolean isCellEditable(int row, int col) {
+        if (col == 0) // only thrid column is editable.
+            return false;
+        
+        return true;
+    }
+    
+    public Class getColumnClass(int columnIndex) {
+        return types [columnIndex];
+    }
+    
+    public void addObjectRow(AttributeBean aBean){
+        Vector  r = new Vector();
+        r.add(aBean.getAttributeName()); r.add(aBean.getPredicate()); r.add(aBean.getAttributeValue());
+        addRow(r);
+        attributeRows.put(getRowCount(), aBean);
+    }
+    public AttributeBean getObjectRow(int row){
+        return (AttributeBean)attributeRows.get(row);
+    }
+    
+    public void clean(){
+        setNumRows(0);
+        attributeRows.clear();
+    }
 }

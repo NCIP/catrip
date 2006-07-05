@@ -72,7 +72,7 @@ public class DomainModelMetaDataRegistry {
             classBean.setClassName(umlClasses[i].getClassName() );
             classBean.setPackageName(umlClasses[i].getPackageName() );
             classBean.setDescription(umlClasses[i].getDescription());
-            classBean.setId(umlClasses[i].getId()+i); // just temporary modification.
+            classBean.setId(umlClasses[i].getId()); 
             classBean.setVersion(umlClasses[i].getProjectVersion());
 //            System.out.println("### got the class name :"+classBean.getClassName());
             // using this one set the CDE information of the class...
@@ -115,16 +115,16 @@ public class DomainModelMetaDataRegistry {
         
         
         // now set the associations with the classes in registry :
-//        UMLAssociation[] associations = model.getExposedUMLAssociationCollection().getUMLAssociation(); 
-//       
-//        for (int i = 0; i < associations.length; i++) {
-//            String sourceRef = associations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-//            String targetRef = associations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-//            lookupClassByRefId(sourceRef).addAssociatedClass(targetRef);
-//        }
+        UMLAssociation[] associations = model.getExposedUMLAssociationCollection().getUMLAssociation(); 
+       
+        for (int i = 0; i < associations.length; i++) {
+            String sourceRef = associations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+            String targetRef = associations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+            lookupClassByRefId(sourceRef).addAssociatedClass(targetRef);
+        }
         
         
-        System.out.println("Success loading file for domainModel: "+model.getProjectLongName());
+        System.out.println("Successful loading of domainModel for: "+model.getProjectLongName());
     }
     
     

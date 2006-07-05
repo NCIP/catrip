@@ -10,6 +10,7 @@
 package edu.duke.cabig.catrip.gui.common;
 
 import java.util.ArrayList;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
@@ -25,7 +26,8 @@ public class ClassBean {
     private String className;
     private String description;
     
-    private String icon;
+    // set the icon based on the service name.. have a pre selected icons.. and a default icon too
+    private String icon = "edu/duke/cabig/catrip/gui/dnd/resources/caCore.png";
     private String serviceName;
     private String domainModelId;
     private String CDEName; // this
@@ -59,11 +61,11 @@ public class ClassBean {
     }
     
     public ArrayList<String> getAssociatedClasses() {
-        return associatedClasses; 
+        return associatedClasses;
     }
     
     public void setAssociatedClasses(ArrayList<String> associatedClasses) {
-        this.associatedClasses = associatedClasses; 
+        this.associatedClasses = associatedClasses;
     }
     
     public String getPackageName() {
@@ -127,12 +129,41 @@ public class ClassBean {
         this.description = description;
     }
     
-    public void addAssociatedClass (String refId){
+    public void addAssociatedClass(String refId){
         associatedClasses.add(refId);
     }
     
     public String toString() {
         return getClassName();
+    }
+    
+    
+    public ClassBean clone(){
+        
+        ClassBean cBean = new ClassBean();
+        cBean.setAssociatedClasses(getAssociatedClasses()); // associated class will be same for all clones.
+        
+        // clone attributes also.. 
+        // this is necessary as different graph nodes of the same class may have different attribute value
+        ArrayList<AttributeBean> attributeClones = new ArrayList(50);
+        ArrayList attributes = getAttributes();
+        for (int k = 0; k < attributes.size(); k++) {
+            AttributeBean aBean = ((AttributeBean)attributes.get(k)).clone();
+            attributeClones.add(aBean);
+        }
+        cBean.setAttributes(attributeClones); 
+        
+        cBean.setCDEName(getCDEName());
+        cBean.setClassName(getClassName());
+        cBean.setDescription(getDescription());
+        cBean.setDomainModelId(getDomainModelId());
+        cBean.setIcon(getIcon());
+        cBean.setId(getId());
+        cBean.setPackageName(getPackageName());
+        cBean.setServiceName(getServiceName());
+        cBean.setVersion(getVersion());
+        
+        return cBean;
     }
     
 }

@@ -19,8 +19,14 @@ import java.io.ObjectInputStream;
  */
 public class JavaObjectDeSerializationDomainModelRetrievalStrategy extends DomainModelRetrievalStrategy{
     
+    private String fileUrl;
+    
     /** Creates a new instance of JavaObjectDeSerializationDomainModelRetrievalStrategy */
     public JavaObjectDeSerializationDomainModelRetrievalStrategy() {
+    }
+    
+    public JavaObjectDeSerializationDomainModelRetrievalStrategy(String fileUrl_) {
+        fileUrl = fileUrl_;
     }
     
     public DomainModel retrievDomainModel(Object sName)  {
@@ -37,5 +43,22 @@ public class JavaObjectDeSerializationDomainModelRetrievalStrategy extends Domai
         }
         return dModel;
     }
+    
+    
+    public DomainModel retrievDomainModel()  {
+        DomainModel dModel = null;
+        ObjectInputStream oist;
+        try {
+            oist = new ObjectInputStream(new FileInputStream(fileUrl));
+            dModel = (DomainModel) oist.readObject();
+        }  catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        return dModel;
+    }
+    
+    
+    
     
 }
