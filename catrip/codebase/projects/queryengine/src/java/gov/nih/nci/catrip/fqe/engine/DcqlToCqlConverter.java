@@ -86,8 +86,7 @@ public class DcqlToCqlConverter {
 
         gov.nih.nci.cagrid.dcql.Object dcqlObject = foreignAssociation.getForeignObject();
         
-        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processTargetObject(dcqlObject);
-        
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processTargetObject(dcqlObject);        
 
        //Create instance of CQLQueryDocument
         CQLQueryDocument cqlQueryDoc = CQLQueryDocument.Factory.newInstance();
