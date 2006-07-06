@@ -16,7 +16,7 @@ package gov.nih.nci.cagrid.dcql;
 public interface Group extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Group.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("group4981type");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(Group.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB4B627F8E4D8C435E83C19D39E050BBD").resolveHandle("group4981type");
     
     /**
      * Gets array of all "Association" elements
@@ -57,6 +57,46 @@ public interface Group extends org.apache.xmlbeans.XmlObject
      * Removes the ith "Association" element
      */
     void removeAssociation(int i);
+    
+    /**
+     * Gets array of all "ForeignAssociation" elements
+     */
+    gov.nih.nci.cagrid.dcql.ForeignAssociation[] getForeignAssociationArray();
+    
+    /**
+     * Gets ith "ForeignAssociation" element
+     */
+    gov.nih.nci.cagrid.dcql.ForeignAssociation getForeignAssociationArray(int i);
+    
+    /**
+     * Returns number of "ForeignAssociation" element
+     */
+    int sizeOfForeignAssociationArray();
+    
+    /**
+     * Sets array of all "ForeignAssociation" element
+     */
+    void setForeignAssociationArray(gov.nih.nci.cagrid.dcql.ForeignAssociation[] foreignAssociationArray);
+    
+    /**
+     * Sets ith "ForeignAssociation" element
+     */
+    void setForeignAssociationArray(int i, gov.nih.nci.cagrid.dcql.ForeignAssociation foreignAssociation);
+    
+    /**
+     * Inserts and returns a new empty value (as xml) as the ith "ForeignAssociation" element
+     */
+    gov.nih.nci.cagrid.dcql.ForeignAssociation insertNewForeignAssociation(int i);
+    
+    /**
+     * Appends and returns a new empty value (as xml) as the last "ForeignAssociation" element
+     */
+    gov.nih.nci.cagrid.dcql.ForeignAssociation addNewForeignAssociation();
+    
+    /**
+     * Removes the ith "ForeignAssociation" element
+     */
+    void removeForeignAssociation(int i);
     
     /**
      * Gets array of all "Attribute" elements

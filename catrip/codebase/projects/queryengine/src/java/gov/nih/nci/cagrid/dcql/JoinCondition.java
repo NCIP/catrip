@@ -16,7 +16,7 @@ package gov.nih.nci.cagrid.dcql;
 public interface JoinCondition extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(JoinCondition.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("joinconditionb5aftype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(JoinCondition.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB4B627F8E4D8C435E83C19D39E050BBD").resolveHandle("joinconditionb5aftype");
     
     /**
      * Gets the "LeftJoin" element

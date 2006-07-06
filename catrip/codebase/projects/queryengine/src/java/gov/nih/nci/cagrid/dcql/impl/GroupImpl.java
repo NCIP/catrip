@@ -21,11 +21,13 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     
     private static final javax.xml.namespace.QName ASSOCIATION$0 = 
         new javax.xml.namespace.QName("http://nci.nih.gov/cagrid/DCQL", "Association");
-    private static final javax.xml.namespace.QName ATTRIBUTE$2 = 
+    private static final javax.xml.namespace.QName FOREIGNASSOCIATION$2 = 
+        new javax.xml.namespace.QName("http://nci.nih.gov/cagrid/DCQL", "ForeignAssociation");
+    private static final javax.xml.namespace.QName ATTRIBUTE$4 = 
         new javax.xml.namespace.QName("http://nci.nih.gov/cagrid/DCQL", "Attribute");
-    private static final javax.xml.namespace.QName GROUP$4 = 
+    private static final javax.xml.namespace.QName GROUP$6 = 
         new javax.xml.namespace.QName("http://nci.nih.gov/cagrid/DCQL", "Group");
-    private static final javax.xml.namespace.QName LOGICRELATION$6 = 
+    private static final javax.xml.namespace.QName LOGICRELATION$8 = 
         new javax.xml.namespace.QName("", "logicRelation");
     
     
@@ -146,6 +148,122 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
     }
     
     /**
+     * Gets array of all "ForeignAssociation" elements
+     */
+    public gov.nih.nci.cagrid.dcql.ForeignAssociation[] getForeignAssociationArray()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            java.util.List targetList = new java.util.ArrayList();
+            get_store().find_all_element_users(FOREIGNASSOCIATION$2, targetList);
+            gov.nih.nci.cagrid.dcql.ForeignAssociation[] result = new gov.nih.nci.cagrid.dcql.ForeignAssociation[targetList.size()];
+            targetList.toArray(result);
+            return result;
+        }
+    }
+    
+    /**
+     * Gets ith "ForeignAssociation" element
+     */
+    public gov.nih.nci.cagrid.dcql.ForeignAssociation getForeignAssociationArray(int i)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            gov.nih.nci.cagrid.dcql.ForeignAssociation target = null;
+            target = (gov.nih.nci.cagrid.dcql.ForeignAssociation)get_store().find_element_user(FOREIGNASSOCIATION$2, i);
+            if (target == null)
+            {
+                throw new IndexOutOfBoundsException();
+            }
+            return target;
+        }
+    }
+    
+    /**
+     * Returns number of "ForeignAssociation" element
+     */
+    public int sizeOfForeignAssociationArray()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            return get_store().count_elements(FOREIGNASSOCIATION$2);
+        }
+    }
+    
+    /**
+     * Sets array of all "ForeignAssociation" element
+     */
+    public void setForeignAssociationArray(gov.nih.nci.cagrid.dcql.ForeignAssociation[] foreignAssociationArray)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            arraySetterHelper(foreignAssociationArray, FOREIGNASSOCIATION$2);
+        }
+    }
+    
+    /**
+     * Sets ith "ForeignAssociation" element
+     */
+    public void setForeignAssociationArray(int i, gov.nih.nci.cagrid.dcql.ForeignAssociation foreignAssociation)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            gov.nih.nci.cagrid.dcql.ForeignAssociation target = null;
+            target = (gov.nih.nci.cagrid.dcql.ForeignAssociation)get_store().find_element_user(FOREIGNASSOCIATION$2, i);
+            if (target == null)
+            {
+                throw new IndexOutOfBoundsException();
+            }
+            target.set(foreignAssociation);
+        }
+    }
+    
+    /**
+     * Inserts and returns a new empty value (as xml) as the ith "ForeignAssociation" element
+     */
+    public gov.nih.nci.cagrid.dcql.ForeignAssociation insertNewForeignAssociation(int i)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            gov.nih.nci.cagrid.dcql.ForeignAssociation target = null;
+            target = (gov.nih.nci.cagrid.dcql.ForeignAssociation)get_store().insert_element_user(FOREIGNASSOCIATION$2, i);
+            return target;
+        }
+    }
+    
+    /**
+     * Appends and returns a new empty value (as xml) as the last "ForeignAssociation" element
+     */
+    public gov.nih.nci.cagrid.dcql.ForeignAssociation addNewForeignAssociation()
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            gov.nih.nci.cagrid.dcql.ForeignAssociation target = null;
+            target = (gov.nih.nci.cagrid.dcql.ForeignAssociation)get_store().add_element_user(FOREIGNASSOCIATION$2);
+            return target;
+        }
+    }
+    
+    /**
+     * Removes the ith "ForeignAssociation" element
+     */
+    public void removeForeignAssociation(int i)
+    {
+        synchronized (monitor())
+        {
+            check_orphaned();
+            get_store().remove_element(FOREIGNASSOCIATION$2, i);
+        }
+    }
+    
+    /**
      * Gets array of all "Attribute" elements
      */
     public caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] getAttributeArray()
@@ -154,7 +272,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             java.util.List targetList = new java.util.ArrayList();
-            get_store().find_all_element_users(ATTRIBUTE$2, targetList);
+            get_store().find_all_element_users(ATTRIBUTE$4, targetList);
             caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] result = new caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[targetList.size()];
             targetList.toArray(result);
             return result;
@@ -170,7 +288,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
-            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$2, i);
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$4, i);
             if (target == null)
             {
                 throw new IndexOutOfBoundsException();
@@ -187,7 +305,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(ATTRIBUTE$2);
+            return get_store().count_elements(ATTRIBUTE$4);
         }
     }
     
@@ -199,7 +317,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         synchronized (monitor())
         {
             check_orphaned();
-            arraySetterHelper(attributeArray, ATTRIBUTE$2);
+            arraySetterHelper(attributeArray, ATTRIBUTE$4);
         }
     }
     
@@ -212,7 +330,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
-            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$2, i);
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().find_element_user(ATTRIBUTE$4, i);
             if (target == null)
             {
                 throw new IndexOutOfBoundsException();
@@ -230,7 +348,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
-            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().insert_element_user(ATTRIBUTE$2, i);
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().insert_element_user(ATTRIBUTE$4, i);
             return target;
         }
     }
@@ -244,7 +362,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute target = null;
-            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().add_element_user(ATTRIBUTE$2);
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)get_store().add_element_user(ATTRIBUTE$4);
             return target;
         }
     }
@@ -257,7 +375,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(ATTRIBUTE$2, i);
+            get_store().remove_element(ATTRIBUTE$4, i);
         }
     }
     
@@ -270,7 +388,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             java.util.List targetList = new java.util.ArrayList();
-            get_store().find_all_element_users(GROUP$4, targetList);
+            get_store().find_all_element_users(GROUP$6, targetList);
             gov.nih.nci.cagrid.dcql.Group[] result = new gov.nih.nci.cagrid.dcql.Group[targetList.size()];
             targetList.toArray(result);
             return result;
@@ -286,7 +404,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             gov.nih.nci.cagrid.dcql.Group target = null;
-            target = (gov.nih.nci.cagrid.dcql.Group)get_store().find_element_user(GROUP$4, i);
+            target = (gov.nih.nci.cagrid.dcql.Group)get_store().find_element_user(GROUP$6, i);
             if (target == null)
             {
                 throw new IndexOutOfBoundsException();
@@ -303,7 +421,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         synchronized (monitor())
         {
             check_orphaned();
-            return get_store().count_elements(GROUP$4);
+            return get_store().count_elements(GROUP$6);
         }
     }
     
@@ -315,7 +433,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         synchronized (monitor())
         {
             check_orphaned();
-            arraySetterHelper(groupArray, GROUP$4);
+            arraySetterHelper(groupArray, GROUP$6);
         }
     }
     
@@ -328,7 +446,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             gov.nih.nci.cagrid.dcql.Group target = null;
-            target = (gov.nih.nci.cagrid.dcql.Group)get_store().find_element_user(GROUP$4, i);
+            target = (gov.nih.nci.cagrid.dcql.Group)get_store().find_element_user(GROUP$6, i);
             if (target == null)
             {
                 throw new IndexOutOfBoundsException();
@@ -346,7 +464,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             gov.nih.nci.cagrid.dcql.Group target = null;
-            target = (gov.nih.nci.cagrid.dcql.Group)get_store().insert_element_user(GROUP$4, i);
+            target = (gov.nih.nci.cagrid.dcql.Group)get_store().insert_element_user(GROUP$6, i);
             return target;
         }
     }
@@ -360,7 +478,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             gov.nih.nci.cagrid.dcql.Group target = null;
-            target = (gov.nih.nci.cagrid.dcql.Group)get_store().add_element_user(GROUP$4);
+            target = (gov.nih.nci.cagrid.dcql.Group)get_store().add_element_user(GROUP$6);
             return target;
         }
     }
@@ -373,7 +491,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         synchronized (monitor())
         {
             check_orphaned();
-            get_store().remove_element(GROUP$4, i);
+            get_store().remove_element(GROUP$6, i);
         }
     }
     
@@ -386,7 +504,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(LOGICRELATION$6);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(LOGICRELATION$8);
             if (target == null)
             {
                 return null;
@@ -404,7 +522,7 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator target = null;
-            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$6);
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$8);
             return target;
         }
     }
@@ -418,10 +536,10 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             org.apache.xmlbeans.SimpleValue target = null;
-            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(LOGICRELATION$6);
+            target = (org.apache.xmlbeans.SimpleValue)get_store().find_attribute_user(LOGICRELATION$8);
             if (target == null)
             {
-                target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(LOGICRELATION$6);
+                target = (org.apache.xmlbeans.SimpleValue)get_store().add_attribute_user(LOGICRELATION$8);
             }
             target.setEnumValue(logicRelation);
         }
@@ -436,10 +554,10 @@ public class GroupImpl extends org.apache.xmlbeans.impl.values.XmlComplexContent
         {
             check_orphaned();
             caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator target = null;
-            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$6);
+            target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().find_attribute_user(LOGICRELATION$8);
             if (target == null)
             {
-                target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().add_attribute_user(LOGICRELATION$6);
+                target = (caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator)get_store().add_attribute_user(LOGICRELATION$8);
             }
             target.set(logicRelation);
         }

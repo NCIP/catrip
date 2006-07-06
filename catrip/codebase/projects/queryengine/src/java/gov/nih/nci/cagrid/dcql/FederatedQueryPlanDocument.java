@@ -17,7 +17,7 @@ package gov.nih.nci.cagrid.dcql;
 public interface FederatedQueryPlanDocument extends org.apache.xmlbeans.XmlObject
 {
     public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FederatedQueryPlanDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("federatedqueryplan8251doctype");
+        org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FederatedQueryPlanDocument.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB4B627F8E4D8C435E83C19D39E050BBD").resolveHandle("federatedqueryplan8251doctype");
     
     /**
      * Gets the "FederatedQueryPlan" element
@@ -42,7 +42,7 @@ public interface FederatedQueryPlanDocument extends org.apache.xmlbeans.XmlObjec
     public interface FederatedQueryPlan extends org.apache.xmlbeans.XmlObject
     {
         public static final org.apache.xmlbeans.SchemaType type = (org.apache.xmlbeans.SchemaType)
-            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FederatedQueryPlan.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.s7412972FF10F5B966C04BA3A81CC6A02").resolveHandle("federatedqueryplanfcfaelemtype");
+            org.apache.xmlbeans.XmlBeans.typeSystemForClassLoader(FederatedQueryPlan.class.getClassLoader(), "schemaorg_apache_xmlbeans.system.sB4B627F8E4D8C435E83C19D39E050BBD").resolveHandle("federatedqueryplanfcfaelemtype");
         
         /**
          * Gets the "TargetObject" element
