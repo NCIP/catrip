@@ -2,17 +2,33 @@ package gov.nih.nci.catrip.fqe.engine;
 
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 
-import caBIG.cql.x1.govNihNciCagridCQLQuery.Group;
-
 import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
-
-import org.apache.xmlbeans.XmlOptions;
+import gov.nih.nci.catrip.fqe.utils.XmlUtil;
 
 
 public class FederatedQueryProcessor {
     
     public FederatedQueryProcessor() {
+    }
+    
+    /**
+     * 
+     * @param federatedQryPlan
+     * @return
+     */
+    public CQLQueryDocument processFederatedQueryPlan(FederatedQueryPlanDocument federatedQryPlan) {
+        /** Get the target object.
+        */
+        gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();        
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processDCQLObject(targetObject); 
+        
+        //craete instance of CQLQueryDocument
+        CQLQueryDocument cqlQueryDoc = CQLQueryDocument.Factory.newInstance();
+        CQLQueryDocument.CQLQuery cqlQry = cqlQueryDoc.addNewCQLQuery();
+        cqlQry.setTarget(cqlObject);
+        
+        return cqlQueryDoc;
     }
     
     private caBIG.cql.x1.govNihNciCagridCQLQuery.Object  initializeCQLObject(String targetName){
@@ -63,22 +79,8 @@ public class FederatedQueryProcessor {
         
     }
     
-    // test the CQL FORMATION
-    private static void testCQLQueryObject(CQLQueryDocument cqlQueryDoc ){
-    
-     // Format XML 
-     XmlOptions xmlOptions = new XmlOptions();
-     // Requests use of whitespace for easier reading
-     xmlOptions.setSavePrettyPrint();
-     
-     // Requests that nested levels of the xml
-     // document to be indented by multiple of 4
-     // whitespace characters
-     xmlOptions.setSavePrettyPrintIndent(4);
-     
-     System.out.println(cqlQueryDoc.xmlText(xmlOptions));
-    }
-    private caBIG.cql.x1.govNihNciCagridCQLQuery.Group processForeignAssociation (ForeignAssociation  foreignAssociation) {
+
+    private void  processForeignAssociation (ForeignAssociation  foreignAssociation) {
         //get Join Condition 
         // CODE HERE 
         
@@ -90,11 +92,11 @@ public class FederatedQueryProcessor {
         
          cqlQry.setTarget(cqlObject);
          System.out.println(" -------- Resolved Foreign Object BEGIN ----------");
-          testCQLQueryObject(cqlQueryDoc);
+         XmlUtil.printCQLQueryObject(cqlQueryDoc);
          System.out.println(" --------- Resolved Foreign Object END -----------");
          
          FederatedQueryExecutor fqexe = new FederatedQueryExecutor();
-         return fqexe.executeQry(cqlQueryDoc);
+         fqexe.executeQry(cqlQueryDoc);
     }
     
     private caBIG.cql.x1.govNihNciCagridCQLQuery.Group processDCQLGroup(gov.nih.nci.cagrid.dcql.Group  dcqlGroup) {
@@ -134,10 +136,14 @@ public class FederatedQueryProcessor {
          //foreign associations
          ForeignAssociation[] foreignAssociationArray = dcqlGroup.getForeignAssociationArray();
          for (int i=0;i<foreignAssociationArray.length;i++){
+             // need to attach the results as crieteria ... 
+             processForeignAssociation((ForeignAssociation)foreignAssociationArray[i]);
+             /*
              caBIG.cql.x1.govNihNciCagridCQLQuery.Group resultedGroup = processForeignAssociation((ForeignAssociation)foreignAssociationArray[i]);
              cqlGroup.addNewGroup();
              cqlGroup.setGroupArray(i+1,resultedGroup);
              //cqlGroup.setGroupArray(0,resultedGroup);
+             */
          }
 
          return cqlGroup;
@@ -173,47 +179,5 @@ public class FederatedQueryProcessor {
          }
          return cqlAssociation;
     }    
-    
-    public caBIG.cql.x1.govNihNciCagridCQLQuery.Object process(FederatedQueryPlanDocument federatedQryPlan) {
-        /** Get the target object.
-        */
-        gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();        
-        caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processDCQLObject(targetObject);         
-        return cqlObject;
-    }
 
-    
-  
-    /*
-    public List <QueryContext> decomposeGroup(gov.nih.nci.cagrid.dcql.Object targetObject) {
-        List queryContextList =  decompose(targetObject.getGroup().getAssociationArray()[0].getObject().getForeignAssociation());
-        return queryContextList;
-    }
-    
-    
-    public List <QueryContext> decompose(ForeignAssociation foreignAssociation) {        
-         // decompose foreign objects .. 
-         // start with one foreign object for proto type ..
-        
-         List queryContextList = new ArrayList();
-        
-         // decompose foreign objecs and convert into CQL Query 
-         
-         // for each foreign association        
-         DcqlToCqlConverter converter = new DcqlToCqlConverter();
-         CQLQueryDocument cqlQueryDoc = converter.convertForeignAssociation(foreignAssociation);
-
-        
-         // build query context
-         QueryContext qryContext = new QueryContext();
-         qryContext.setCqlQryDoc(cqlQueryDoc);
-         qryContext.setSequence(0);
-         
-         queryContextList.add(qryContext);
-         
-            
-         // end loop         
-         return queryContextList;        
-    }
-    */
 }
