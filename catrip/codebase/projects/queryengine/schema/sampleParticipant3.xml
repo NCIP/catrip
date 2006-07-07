@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Object name="edu.pitt.cabig.cae.domain.general.Participant">
+	<Attribute name="uniquePatientIdentifier" value="987003"/>
+	<Attribute name="firstName" value="Mary"/>
+	<Attribute name="lastName" value="Smith"/>
+</Object>

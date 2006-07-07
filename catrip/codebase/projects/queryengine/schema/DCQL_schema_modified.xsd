@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Srinivasa Akkala (Agile) -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dcql="http://nci.nih.gov/cagrid/DCQL" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" targetNamespace="http://nci.nih.gov/cagrid/DCQL" elementFormDefault="qualified">
 	<xsd:import namespace="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" schemaLocation="1_gov.nih.nci.cagrid.CQLQuery.xsd"/>
 	<xsd:complexType name="Object">
@@ -22,6 +23,7 @@
 			<xsd:element name="ForeignObject" type="dcql:Object"/>
 		</xsd:sequence>
 		<xsd:attribute name="roleName" type="xsd:string" use="optional"/>
+		<xsd:attribute name="serviceURL" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="JoinCondition">
 		<xsd:annotation>
@@ -56,6 +58,7 @@
 		</xsd:annotation>
 		<xsd:choice minOccurs="2" maxOccurs="unbounded">
 			<xsd:element name="Association" type="dcql:Association"/>
+			<xsd:element name="ForeignAssociation" type="dcql:ForeignAssociation"/>
 			<xsd:element name="Attribute" type="cql:Attribute"/>
 			<xsd:element name="Group" type="dcql:Group"/>
 		</xsd:choice>
