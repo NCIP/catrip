@@ -2,9 +2,15 @@ package gov.nih.nci.catrip.fqe.engine;
 
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 
+import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLQueryResults;
+
 import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
+import gov.nih.nci.cagrid.dcql.Join;
+import gov.nih.nci.cagrid.dcql.JoinCondition;
 import gov.nih.nci.catrip.fqe.utils.XmlUtil;
+
+import java.util.List;
 
 
 public class FederatedQueryProcessor {
@@ -79,11 +85,17 @@ public class FederatedQueryProcessor {
         
     }
     
-
-    private void  processForeignAssociation (ForeignAssociation  foreignAssociation) {
-        //get Join Condition 
-        // CODE HERE 
+    private void processJoinCondition(JoinCondition joinCondition){
         
+        //left join 
+        Join leftJoin = joinCondition.getLeftJoin();
+        
+        //right join
+        Join rightJoin = joinCondition.getRightJoin();
+        
+    }
+    
+    private caBIG.cql.x1.govNihNciCagridCQLQuery.Group  processForeignAssociation (ForeignAssociation  foreignAssociation) {
         //get Foreign Object 
          gov.nih.nci.cagrid.dcql.Object dcqlObject = foreignAssociation.getForeignObject();
          caBIG.cql.x1.govNihNciCagridCQLQuery.Object cqlObject = processDCQLObject(dcqlObject);
@@ -91,12 +103,16 @@ public class FederatedQueryProcessor {
          CQLQueryDocument.CQLQuery cqlQry = cqlQueryDoc.addNewCQLQuery();
         
          cqlQry.setTarget(cqlObject);
-         System.out.println(" -------- Resolved Foreign Object BEGIN ----------");
-         XmlUtil.printCQLQueryObject(cqlQueryDoc);
-         System.out.println(" --------- Resolved Foreign Object END -----------");
          
          FederatedQueryExecutor fqexe = new FederatedQueryExecutor();
-         fqexe.executeQry(cqlQueryDoc);
+         CQLQueryResults cqlResults = fqexe.executeQry(cqlQueryDoc);
+         
+         ResultAggregator resultAggregator = new ResultAggregator(foreignAssociation.getJoinCondition());
+         List cdeList = resultAggregator.processResults(cqlResults);
+         
+         caBIG.cql.x1.govNihNciCagridCQLQuery.Group criteriaGroup = resultAggregator.buildGroup(cdeList);
+         
+         return criteriaGroup;
     }
     
     private caBIG.cql.x1.govNihNciCagridCQLQuery.Group processDCQLGroup(gov.nih.nci.cagrid.dcql.Group  dcqlGroup) {
@@ -137,13 +153,11 @@ public class FederatedQueryProcessor {
          ForeignAssociation[] foreignAssociationArray = dcqlGroup.getForeignAssociationArray();
          for (int i=0;i<foreignAssociationArray.length;i++){
              // need to attach the results as crieteria ... 
-             processForeignAssociation((ForeignAssociation)foreignAssociationArray[i]);
-             /*
+             //processForeignAssociation((ForeignAssociation)foreignAssociationArray[i]);
+             
              caBIG.cql.x1.govNihNciCagridCQLQuery.Group resultedGroup = processForeignAssociation((ForeignAssociation)foreignAssociationArray[i]);
              cqlGroup.addNewGroup();
              cqlGroup.setGroupArray(i+1,resultedGroup);
-             //cqlGroup.setGroupArray(0,resultedGroup);
-             */
          }
 
          return cqlGroup;
