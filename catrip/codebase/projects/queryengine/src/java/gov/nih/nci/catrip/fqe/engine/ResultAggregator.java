@@ -4,29 +4,26 @@ import caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.Group;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate;
-
 import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLObjectResult;
 import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLQueryResults;
 
 import gov.nih.nci.cagrid.dcql.Join;
-
 import gov.nih.nci.cagrid.dcql.JoinCondition;
-
-import java.io.File;
-
-import java.io.IOException;
 
 import java.io.Reader;
 import java.io.StringReader;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
-import org.apache.xmlbeans.XmlException;
+import java.util.Set;
 
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
+
 
 public class ResultAggregator {
     
@@ -85,6 +82,39 @@ public class ResultAggregator {
         cqlGroup.setAttributeArray(attrArray);
         
         return cqlGroup;
+    }
+    
+    public static Group aggregateGroups(caBIG.cql.x1.govNihNciCagridCQLQuery.Group[] groupsTomerge){
+        caBIG.cql.x1.govNihNciCagridCQLQuery.Group aggregatedGroup = caBIG.cql.x1.govNihNciCagridCQLQuery.Group.Factory.newInstance();
+        List s = new ArrayList();
+    
+        for (int i=0;i<groupsTomerge.length;i++){
+            caBIG.cql.x1.govNihNciCagridCQLQuery.Group cqlGroup1 = groupsTomerge[i];
+            Attribute[] attrArray = cqlGroup1.getAttributeArray();
+            
+            for (int j=0;j<attrArray.length;j++) {
+                Attribute a = (Attribute)attrArray[i];
+                s.add(a);
+            }
+
+        }
+        
+        
+        Attribute[] attrArray1 = new Attribute[s.size()];
+        System.out.println(s.size());
+        Iterator sitr = s.iterator();
+        int c=0;
+        while (sitr.hasNext()) {
+            Attribute a  = (Attribute)sitr.next();
+            attrArray1[c] = a;
+            System.out.println(c);
+            c++;
+        }
+        System.out.println(attrArray1.length);
+        aggregatedGroup.setLogicRelation(LogicalOperator.OR);
+        aggregatedGroup.addNewAttribute();
+        aggregatedGroup.setAttributeArray(attrArray1);
+        return aggregatedGroup;
     }
 
 }

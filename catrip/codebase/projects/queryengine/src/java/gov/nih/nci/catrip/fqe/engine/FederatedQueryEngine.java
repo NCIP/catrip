@@ -4,6 +4,7 @@ import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLQueryResults;
 
 import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
+
 import gov.nih.nci.catrip.fqe.utils.XmlUtil;
 
 import java.io.File;
@@ -23,36 +24,43 @@ public class FederatedQueryEngine {
      * @param federatedQryPlan
      * @return
      */
+
     public CQLQueryResults processDCQLQuery(FederatedQueryPlanDocument federatedQryPlan){
-        CQLQueryDocument cqlQueryDoc = process(federatedQryPlan);
-        FederatedQueryExecutor federatedQueryExecutor = new FederatedQueryExecutor();
-        CQLQueryResults results = federatedQueryExecutor.executeCQLQry(cqlQueryDoc);
-        return results;
-    }
-    
-    private CQLQueryDocument process(FederatedQueryPlanDocument federatedQryPlan){
-       FederatedQueryProcessor processor = new FederatedQueryProcessor();
-       CQLQueryDocument cqlQueryDoc = processor.processFederatedQueryPlan(federatedQryPlan);       
+       boolean valid = federatedQryPlan.validate();
+       CQLQueryResults results= null;
        
-       return cqlQueryDoc;       
+       if (valid) {
+           // Process DCQL and get resolved CQL ... 
+           FederatedQueryProcessor processor = new FederatedQueryProcessor();
+           CQLQueryDocument cqlQueryDoc = processor.processFederatedQueryPlan(federatedQryPlan);       
+
+           System.out.println(" -------- FinalQuery ----------");
+           XmlUtil.printCQLQueryObject(cqlQueryDoc);
+           System.out.println(" --------- ---------------- -----------");
+           
+           // Execute resolved CQL ..
+           //FederatedQueryExecutor federatedQueryExecutor = new FederatedQueryExecutor();
+           //results = federatedQueryExecutor.executeQry(cqlQueryDoc);
+       } else {
+           System.out.println("DCQL is not valid");
+       }
+       return results;       
    }
         
     public static void main ( String[] args) {
         FederatedQueryEngine fqe = new FederatedQueryEngine();
-        FederatedQueryPlanDocument fqDoc = null;
+        FederatedQueryPlanDocument fqDoc = null;        
 
-        try {
-            fqDoc = FederatedQueryPlanDocument.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\SampleFederatedQry1.xml"));
-            CQLQueryDocument cqlQueryDocument = fqe.process(fqDoc);
+       try {
+            fqDoc = FederatedQueryPlanDocument.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\SampleFederatedQry3.xml"));
+            //System.out.println(fqDoc.toString());
+            fqe.processDCQLQuery(fqDoc);
             
-            System.out.println(" -------- Final CQL Query ----------");
-            
-            XmlUtil.printCQLQueryObject(cqlQueryDocument);
+
         } catch (XmlException e) {
             e.printStackTrace();
         } catch (IOException e) {
            e.printStackTrace();
         }
     }
-
 }

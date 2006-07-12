@@ -15,7 +15,7 @@ public class DummyQueryHandlerService implements LocalQueryHandlerService{
     
     public CQLQueryResults executeQuery(CQLQueryDocument Qry) {
         
-        System.out.println(" -------- Query Recieved by Dummy Service ----------");
+        System.out.println(" -------- Query Recieved by Dummy Service CTOM----------");
         XmlUtil.printCQLQueryObject(Qry);
         System.out.println(" --------- ---------------- -----------");
         

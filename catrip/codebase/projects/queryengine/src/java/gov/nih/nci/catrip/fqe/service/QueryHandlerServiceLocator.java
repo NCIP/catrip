@@ -16,10 +16,10 @@ public class QueryHandlerServiceLocator {
         return srvcLocator;
       }
       
-      public LocalQueryHandlerService getQueryHandlerService(String param){
+      public LocalQueryHandlerService getQueryHandlerService(String serviceURL){
           
           QueryHandlerServiceFactory factory = new QueryHandlerServiceFactory();
-          return factory.getQueryHandlerService(param);
+          return factory.getQueryHandlerService(serviceURL);
           
       }
 }

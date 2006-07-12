@@ -7,7 +7,10 @@ import java.io.File;
 import java.io.Reader;
 import java.io.StringReader;
 
+import java.util.HashMap;
 import java.util.List;
+
+import java.util.Map;
 
 import org.apache.xmlbeans.XmlOptions;
 
@@ -35,7 +38,13 @@ public class XmlUtil {
      // document to be indented by multiple of 4
      // whitespace characters
      xmlOptions.setSavePrettyPrintIndent(4);
-     
+        
+/*
+       Map map = new HashMap();
+       map.put("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","");
+       xmlOptions.setLoadSubstituteNamespaces(map);
+  */      
+        
      System.out.println(cqlQueryDoc.xmlText(xmlOptions));
     }
     
