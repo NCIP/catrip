@@ -1,28 +1,16 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-import caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute;
-import caBIG.cql.x1.govNihNciCagridCQLQuery.Group;
-import caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator;
-import caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate;
-import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLObjectResult;
-import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLQueryResults;
-
-import gov.nih.nci.cagrid.dcql.Join;
+import gov.nih.nci.cadsr.domain.DataElement;
+import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
+import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.cagrid.dcql.JoinCondition;
 
-import java.io.Reader;
-import java.io.StringReader;
+import java.io.File;
+import java.io.FileInputStream;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-
-import java.util.Set;
-
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
-import org.jdom.xpath.XPath;
 
 
 public class ResultAggregator {
@@ -33,57 +21,54 @@ public class ResultAggregator {
         this.joinCondition = joinCondition;
     }
     public List processResults(CQLQueryResults results){
-        
-        CQLObjectResult[] resultObjectArry = results.getObjectResultArray();
-        
+/*
         SAXBuilder saxBuilder=new SAXBuilder("org.apache.xerces.parsers.SAXParser");
         Reader stringReader;
         org.jdom.Document jdomDocument;
-        CQLObjectResult obj;
         List resultList = new ArrayList(); 
         
         Join rightJoin = joinCondition.getRightJoin();
-        String xpathStr = "/Object[@name='"+rightJoin.getObject()+"']/Attribute[@name='"+rightJoin.getAttribute()+"']";
-
-        try {
-            XPath xpath = XPath.newInstance(xpathStr);
-
-            for (int i=0;i<resultObjectArry.length;i++) {
-                obj = resultObjectArry[i];
-
-                stringReader = new StringReader(obj.xmlText());
-                jdomDocument = saxBuilder.build(stringReader);
-                Element myEl = (Element) xpath.selectSingleNode(jdomDocument);
-                
-                resultList.add(myEl.getAttribute("value").getValue());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String xpathStr = "/Object[@name='"+rightJoin.getObject()+"']/Attribute[@name='"+rightJoin.getAttribute()+"']";        
         
-        return resultList;
-
+  */      
+        List resultList = new ArrayList(); 
+        
+         try {
+         //    XPath xpath = XPath.newInstance(xpathStr);
+             
+         CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
+         
+         while (iter.hasNext()) {
+         
+               DataElement de = (DataElement) iter.next();
+               //System.out.println(de.getBeginDate());
+               resultList.add(de.getLongName());// need to get this longname using right join and reflection
+         } 
+         } catch (Exception e ) {
+             e.printStackTrace();
+         }
+       return resultList;
     }
     
 
-    public Group buildGroup(List list){
+    public gov.nih.nci.cagrid.cqlquery.Group buildGroup(List list){
     
-        caBIG.cql.x1.govNihNciCagridCQLQuery.Group cqlGroup = caBIG.cql.x1.govNihNciCagridCQLQuery.Group.Factory.newInstance();
+        gov.nih.nci.cagrid.cqlquery.Group cqlGroup = new gov.nih.nci.cagrid.cqlquery.Group();
         
-        Attribute[] attrArray = new Attribute[list.size()];
+        gov.nih.nci.cagrid.cqlquery.Attribute[] attrArray = new gov.nih.nci.cagrid.cqlquery.Attribute[list.size()];
         for(int i=0;i<list.size();i++) {
-            Attribute attr = Attribute.Factory.newInstance();
+            gov.nih.nci.cagrid.cqlquery.Attribute attr = new gov.nih.nci.cagrid.cqlquery.Attribute();
             attr.setName(joinCondition.getLeftJoin().getAttribute());
             attr.setValue(list.get(i).toString());
-            attr.setPredicate(Predicate.EQUAL_TO);
+            attr.setPredicate(gov.nih.nci.cagrid.cqlquery.Predicate.EQUAL_TO);
             attrArray[i]=attr;
         }
-        cqlGroup.setLogicRelation(LogicalOperator.OR);
-        cqlGroup.setAttributeArray(attrArray);
+        cqlGroup.setLogicRelation(LogicalOperator.fromString("OR"));
+        cqlGroup.setAttribute(attrArray);
         
         return cqlGroup;
     }
-    
+/*    
     public static Group aggregateGroups(caBIG.cql.x1.govNihNciCagridCQLQuery.Group[] groupsTomerge){
         caBIG.cql.x1.govNihNciCagridCQLQuery.Group aggregatedGroup = caBIG.cql.x1.govNihNciCagridCQLQuery.Group.Factory.newInstance();
         List s = new ArrayList();
@@ -116,5 +101,5 @@ public class ResultAggregator {
         aggregatedGroup.setAttributeArray(attrArray1);
         return aggregatedGroup;
     }
-
+*/
 }

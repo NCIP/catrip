@@ -1,7 +1,8 @@
 package gov.nih.nci.catrip.fqe.service;
 
-import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
-import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLQueryResults;
+
+import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 
 
 public interface LocalQueryHandlerService {
@@ -10,6 +11,6 @@ public interface LocalQueryHandlerService {
      * @param Qry
      * @return
      */
-    public CQLQueryResults executeQuery(CQLQueryDocument Qry);
+    public CQLQueryResults executeQuery(CQLQuery Qry,String serviceURL);
     
 }

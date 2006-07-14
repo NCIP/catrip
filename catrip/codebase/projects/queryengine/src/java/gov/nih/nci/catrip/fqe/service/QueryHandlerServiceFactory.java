@@ -13,8 +13,8 @@ public class QueryHandlerServiceFactory {
         LocalQueryHandlerService queryHandlerService = null; 
         if (serviceURL.equals("http://ctom")) {
             queryHandlerService = new DummyQueryHandlerService();
-        } else if(serviceURL.equals("http://caTissue")) {
-            queryHandlerService = new DummyQueryHandlerService1();
+        } else if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/HelloWorld")) {
+            queryHandlerService = new DummyQueryHandlerService();
         }
         return queryHandlerService;
     }
