@@ -7,7 +7,11 @@
 			<xsd:documentation>Associated Obects used as search criteria</xsd:documentation>
 		</xsd:annotation>
 		<xsd:choice>
-			<xsd:element name="Attribute" type="cql:Attribute"/>
+			<xsd:element name="Attribute" type="cql:Attribute">
+				<xsd:annotation>
+					<xsd:documentation>Reusing Attribute from CQL schema</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:element name="Association" type="dcql:Association"/>
 			<xsd:element name="ForeignAssociation" type="dcql:ForeignAssociation" minOccurs="0"/>
 			<xsd:element name="Group" type="dcql:Group"/>
@@ -55,6 +59,7 @@
 	<xsd:complexType name="Group">
 		<xsd:annotation>
 			<xsd:documentation>Binary joint of two conditions</xsd:documentation>
+			<xsd:documentation>Reusing LogicalOperator from CQL schema	</xsd:documentation>
 		</xsd:annotation>
 		<xsd:choice minOccurs="2" maxOccurs="unbounded">
 			<xsd:element name="Association" type="dcql:Association"/>
