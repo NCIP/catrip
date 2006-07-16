@@ -1,14 +1,10 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-
 import gov.nih.nci.cagrid.client.HelloWorldClient;
+import gov.nih.nci.cagrid.client.MyServiceClient;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
-import gov.nih.nci.catrip.fqe.service.LocalQueryHandlerService;
-import gov.nih.nci.catrip.fqe.service.QueryHandlerServiceLocator;
 import gov.nih.nci.catrip.fqe.service.ServiceClientFactory;
-
-import org.xml.sax.InputSource;
 
 
 public class FederatedQueryExecutor {
@@ -22,9 +18,22 @@ public class FederatedQueryExecutor {
         try{
                 
             ServiceClientFactory clientFactory = new ServiceClientFactory();
-            HelloWorldClient serviceClient = clientFactory.getSeviceClient(serviceURL);
-            serviceClient.getServiceSecurityMetadata();
-            results = serviceClient.query(cqlQry);            
+            if (serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/HelloWorld")){
+                HelloWorldClient serviceClient = (HelloWorldClient)clientFactory.getSeviceClient(serviceURL);
+                serviceClient.getServiceSecurityMetadata();
+                results = serviceClient.query(cqlQry);    
+            } else if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/MyService")){
+                MyServiceClient serviceClient = (MyServiceClient)clientFactory.getSeviceClient(serviceURL);
+                serviceClient.getServiceSecurityMetadata();
+                results = serviceClient.query(cqlQry);    
+            }
+            
+            
+            
+            
+            //HelloWorldClient serviceClient = clientFactory.getSeviceClient(serviceURL);
+            
+                    
         } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(1);

@@ -3,43 +3,59 @@ package gov.nih.nci.catrip.fqe.utils;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
 import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLObjectResult;
 
+import gov.nih.nci.cadsr.domain.DataElement;
+import gov.nih.nci.cadsr.domain.Protocol;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 
-import java.io.ByteArrayInputStream;
+import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
+
 import java.io.File;
-import java.io.InputStream;
+import java.io.FileInputStream;
 import java.io.Reader;
 import java.io.StringReader;
-
 import java.io.StringWriter;
 import java.io.Writer;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-
-import java.util.Map;
 
 import javax.xml.namespace.QName;
 
 import org.apache.xmlbeans.XmlOptions;
 
-import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.globus.wsrf.encoding.ObjectSerializer;
 
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
-
 import org.jdom.xpath.XPath;
 
 import org.w3c.dom.Node;
-
-import org.xml.sax.InputSource;
 
 
 public class XmlUtil {
     public XmlUtil() {
     }
     
+    public static void paintTabularResults (CQLQueryResults results) {
+        //List resultList = new ArrayList(); 
+        
+         try {
+         //    XPath xpath = XPath.newInstance(xpathStr);
+             
+         CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-configms.wsdd")));
+         
+         while (iter.hasNext()) {
+         
+               Protocol de = (Protocol) iter.next();
+               System.out.println(de.getLongName());
+               //resultList.add(de.getLongName());// need to get this longname using right join and reflection
+         } 
+         } catch (Exception e ) {
+             e.printStackTrace();
+         }
+        //return resultList;
+    }
     public static void serializeQry(CQLQuery Qry){
         
         try {

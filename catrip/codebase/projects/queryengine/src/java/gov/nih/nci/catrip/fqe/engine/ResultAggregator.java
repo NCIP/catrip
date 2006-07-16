@@ -4,10 +4,13 @@ import gov.nih.nci.cadsr.domain.DataElement;
 import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
+import gov.nih.nci.cagrid.dcql.Join;
 import gov.nih.nci.cagrid.dcql.JoinCondition;
 
 import java.io.File;
 import java.io.FileInputStream;
+
+import java.lang.reflect.Method;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,29 +24,19 @@ public class ResultAggregator {
         this.joinCondition = joinCondition;
     }
     public List processResults(CQLQueryResults results){
-/*
-        SAXBuilder saxBuilder=new SAXBuilder("org.apache.xerces.parsers.SAXParser");
-        Reader stringReader;
-        org.jdom.Document jdomDocument;
-        List resultList = new ArrayList(); 
-        
         Join rightJoin = joinCondition.getRightJoin();
-        String xpathStr = "/Object[@name='"+rightJoin.getObject()+"']/Attribute[@name='"+rightJoin.getAttribute()+"']";        
-        
-  */      
+        String classNameStr = rightJoin.getObject();
+        String cde = rightJoin.getAttribute();
         List resultList = new ArrayList(); 
-        
+
          try {
-         //    XPath xpath = XPath.newInstance(xpathStr);
-             
-         CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
-         
-         while (iter.hasNext()) {
-         
-               DataElement de = (DataElement) iter.next();
-               //System.out.println(de.getBeginDate());
-               resultList.add(de.getLongName());// need to get this longname using right join and reflection
-         } 
+             CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
+             Class className = Class.forName(classNameStr);
+             Method methodName = className.getMethod("get"+cde.substring(0,1).toUpperCase()+cde.substring(1,cde.length()));
+             while (iter.hasNext()) {
+                   Object o = methodName.invoke(iter.next());
+                   resultList.add(o.toString());
+             } 
          } catch (Exception e ) {
              e.printStackTrace();
          }
