@@ -47,6 +47,12 @@ public class SecurePassword
 		this.cipher = getCipher();
 	}
 	
+	public void encrypt(String password, String userName) 
+		throws IOException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException 
+	{
+		encrypt(password, new File("test" + File.separator + "resources" + File.separator +  "passwords" + File.separator + userName));		
+	}
+	
 	public void encrypt(String password, File outFile) 
 		throws IOException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException 
 	{
@@ -68,6 +74,12 @@ public class SecurePassword
 			new File(dir, "public.key"),
 			new File(dir, "private.key")
 		);
+	}
+	
+	public String decrypt(String userName) 
+		throws IOException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException 
+	{
+		return decrypt(new File("test" + File.separator + "resources" + File.separator +  "passwords" + File.separator + userName));
 	}
 	
 	public String decrypt(File inFile) 
