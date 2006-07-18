@@ -38,17 +38,17 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout -->
-	<property name="projects.list" value="queryengine, gui" />
+	<property name="projects.list" value="security-password, security-dukeidp" />
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="testable.projects.list" value="queryengine, gui" />
+	<property name="testable.projects.list" value="security-password, security-dukeidp" />
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="reportable.projects.list" value="queryengine, gui" />
+	<property name="reportable.projects.list" value="security-password, security-dukeidp" />
 
 	<!-- =============================================================== -->
 	<!-- Bootstrap the build by setting up the structure and building    -->
@@ -123,6 +123,19 @@
 				<include name="**/*.xsd" />
 			</fileset>
 		</artifact>
+		<artifact track="main" type="jars" id="security-password.jars">
+			<antcall target="build-security-password" />
+			<fileset dir="${projects.dir}/security-password/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="antfiles" id="security-password.antfiles">
+			<antcall target="build-security-password" />
+			<fileset dir="${projects.dir}/security-password/antfiles">
+				<include name="password-utils.xml" />
+			</fileset>
+		</artifact>
 	</target>
 
 	<!-- =============================================================== -->
@@ -160,6 +173,30 @@
 			<artifact refid="common.test.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- SECURITY-PASSWORD                                               -->
+	<!-- =============================================================== -->
+
+	<target name="build-security-password" depends="prepare" description="Builds the security-password project">
+		<resolveDependencies extdir="${projects.dir}/security-password/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/security-password" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- SECURITY-DUKEIDP                                                -->
+	<!-- =============================================================== -->
+
+	<target name="build-security-dukeidp" depends="prepare" description="Builds the security-dukeidp project">
+		<resolveDependencies extdir="${projects.dir}/security-dukeidp/ext">
+			<artifact refid="common.test.jars" />
+			<artifact refid="security-password.jars" />
+			<artifact refid="security-password.antfiles" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/security-dukeidp" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 	<!-- ============================================================== -->
