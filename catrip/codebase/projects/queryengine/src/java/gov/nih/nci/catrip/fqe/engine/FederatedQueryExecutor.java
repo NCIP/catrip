@@ -1,10 +1,11 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-import gov.nih.nci.cagrid.client.HelloWorldClient;
-import gov.nih.nci.cagrid.client.MyServiceClient;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.catrip.fqe.service.ServiceClientFactory;
+import gov.nih.nci.catrip.fqe.utils.XmlUtil;
+
+import java.lang.reflect.Method;
 
 
 public class FederatedQueryExecutor {
@@ -12,31 +13,32 @@ public class FederatedQueryExecutor {
     }
 
     
-    public CQLQueryResults executeQry(CQLQuery cqlQry,String serviceURL) {
+    public CQLQueryResults executeCQLQuery(CQLQuery cqlQuery,String serviceURL) {
+        
+        System.out.println(" -------- CQL Query for "+ serviceURL +"----------");
+         XmlUtil.serializeQry(cqlQuery);
         
         CQLQueryResults results = null;
         try{
-                
+            //get appropriate client class from factory    
             ServiceClientFactory clientFactory = new ServiceClientFactory();
-            if (serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/HelloWorld")){
-                HelloWorldClient serviceClient = (HelloWorldClient)clientFactory.getSeviceClient(serviceURL);
-                serviceClient.getServiceSecurityMetadata();
-                results = serviceClient.query(cqlQry);    
-            } else if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/MyService")){
-                MyServiceClient serviceClient = (MyServiceClient)clientFactory.getSeviceClient(serviceURL);
-                serviceClient.getServiceSecurityMetadata();
-                results = serviceClient.query(cqlQry);    
-            }
+            Object client = clientFactory.getSeviceClient(serviceURL);
             
+            // parameter is only CQLQuery which is CQLQuery
+            Class paramTypes[] = new Class[1];
+            paramTypes[0] = CQLQuery.class;
             
+            // need to invoke query method 
+            Method queryMethod = client.getClass().getMethod("query",paramTypes);
+            //System.out.println(queryMethod.getName());
             
-            
-            //HelloWorldClient serviceClient = clientFactory.getSeviceClient(serviceURL);
-            
-                    
+            //pass CQLQuery
+            Object[] methodArgs = new Object[1];
+            methodArgs[0] = cqlQuery;
+            results = (CQLQueryResults)queryMethod.invoke(client,methodArgs);
+     
         } catch (Exception e) {
-                e.printStackTrace();
-                System.exit(1);
+            e.printStackTrace();
         }
         return results;
         

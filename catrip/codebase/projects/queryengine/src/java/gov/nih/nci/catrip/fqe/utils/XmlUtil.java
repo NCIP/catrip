@@ -1,36 +1,22 @@
 package gov.nih.nci.catrip.fqe.utils;
 
 import caBIG.cql.x1.govNihNciCagridCQLQuery.CQLQueryDocument;
-import caBIG.cql.x1.govNihNciCagridCQLResultSet.CQLObjectResult;
 
 import gov.nih.nci.cadsr.domain.DataElement;
-import gov.nih.nci.cadsr.domain.Protocol;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
-
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.Reader;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.namespace.QName;
 
 import org.apache.xmlbeans.XmlOptions;
 
 import org.globus.wsrf.encoding.ObjectSerializer;
-
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
-import org.jdom.xpath.XPath;
-
-import org.w3c.dom.Node;
 
 
 public class XmlUtil {
@@ -43,11 +29,11 @@ public class XmlUtil {
          try {
          //    XPath xpath = XPath.newInstance(xpathStr);
              
-         CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-configms.wsdd")));
+         CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
          
          while (iter.hasNext()) {
          
-               Protocol de = (Protocol) iter.next();
+               DataElement de = (DataElement) iter.next();
                System.out.println(de.getLongName());
                //resultList.add(de.getLongName());// need to get this longname using right join and reflection
          } 
@@ -96,29 +82,6 @@ public class XmlUtil {
         
      System.out.println(cqlQueryDoc.xmlText(xmlOptions));
     }
-    
-    public static void main (String[] args) {
-         
-        try {
-            CQLObjectResult obj = CQLObjectResult.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\schema1\\sampleParticipant.xml"));
-            Node n = obj.getDomNode();
-            
- 
-            SAXBuilder saxBuilder=new SAXBuilder("org.apache.xerces.parsers.SAXParser");
-            Reader stringReader=new StringReader(obj.xmlText());
-            org.jdom.Document jdomDocument;
-           // Element e = (Element)n;
-          
-            jdomDocument = saxBuilder.build(stringReader);
-            
-            XPath xpath = XPath.newInstance("/Object[@name='edu.pitt.cabig.cae.domain.general.Participant']/Attribute[@name='uniquePatientIdentifier']");
-            Element myEl = (Element) xpath.selectSingleNode(jdomDocument);
-            System.out.println(myEl.getAttribute("value").getValue());
-            
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-    }
 }
 

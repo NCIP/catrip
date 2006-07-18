@@ -1,11 +1,11 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-import gov.nih.nci.cadsr.domain.DataElement;
+import caBIG.caGrid.x10.govNihNciCagridDcql.Join;
+import caBIG.caGrid.x10.govNihNciCagridDcql.JoinCondition;
+
 import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
-import gov.nih.nci.cagrid.dcql.Join;
-import gov.nih.nci.cagrid.dcql.JoinCondition;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,18 +25,21 @@ public class ResultAggregator {
     }
     public List processResults(CQLQueryResults results){
         Join rightJoin = joinCondition.getRightJoin();
+        
         String classNameStr = rightJoin.getObject();
-        String cde = rightJoin.getAttribute();
+        String cde = rightJoin.getProperty();
         List resultList = new ArrayList(); 
-
+        
          try {
-             CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
-             Class className = Class.forName(classNameStr);
-             Method methodName = className.getMethod("get"+cde.substring(0,1).toUpperCase()+cde.substring(1,cde.length()));
-             while (iter.hasNext()) {
-                   Object o = methodName.invoke(iter.next());
-                   resultList.add(o.toString());
-             } 
+             if (results != null) {
+                 CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
+                 Class className = Class.forName(classNameStr);
+                 Method methodName = className.getMethod("get"+cde.substring(0,1).toUpperCase()+cde.substring(1,cde.length()));
+                 while (iter.hasNext()) {
+                       Object o = methodName.invoke(iter.next());
+                       resultList.add(o.toString());
+                 } 
+             }
          } catch (Exception e ) {
              e.printStackTrace();
          }
@@ -51,7 +54,7 @@ public class ResultAggregator {
         gov.nih.nci.cagrid.cqlquery.Attribute[] attrArray = new gov.nih.nci.cagrid.cqlquery.Attribute[list.size()];
         for(int i=0;i<list.size();i++) {
             gov.nih.nci.cagrid.cqlquery.Attribute attr = new gov.nih.nci.cagrid.cqlquery.Attribute();
-            attr.setName(joinCondition.getLeftJoin().getAttribute());
+            attr.setName(joinCondition.getLeftJoin().getProperty());
             attr.setValue(list.get(i).toString());
             attr.setPredicate(gov.nih.nci.cagrid.cqlquery.Predicate.EQUAL_TO);
             attrArray[i]=attr;

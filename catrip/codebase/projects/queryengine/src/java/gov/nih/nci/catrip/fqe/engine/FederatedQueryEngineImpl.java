@@ -1,8 +1,10 @@
 package gov.nih.nci.catrip.fqe.engine;
 
+import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
+
+import gov.nih.nci.cadsr.domain.Context;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
-import gov.nih.nci.cagrid.dcql.FederatedQueryPlanDocument;
 import gov.nih.nci.catrip.fqe.exception.FederatedQueryException;
 import gov.nih.nci.catrip.fqe.utils.XmlUtil;
 
@@ -15,28 +17,25 @@ public class FederatedQueryEngineImpl implements FederatedQueryEngine{
     public FederatedQueryEngineImpl() {
     }
 
-    public CQLQueryResults execute(String dcqlQuery) throws FederatedQueryException {
+    public CQLQueryResults execute(DCQLQueryDocument dcqlQueryDocument) throws FederatedQueryException {
 
-        FederatedQueryPlanDocument federatedQueryPlanDocument = null;
-        CQLQueryResults results = null;
+      CQLQueryResults results = null;
         try {
-            federatedQueryPlanDocument = FederatedQueryPlanDocument.Factory.parse(new File(dcqlQuery));
-            boolean valid = federatedQueryPlanDocument.validate();
+            
+            boolean valid = dcqlQueryDocument.validate();
             if (valid){
                 FederatedQueryProcessor processor = new FederatedQueryProcessor();
-                CQLQuery cqlQuery = processor.processFederatedQueryPlan(federatedQueryPlanDocument);
+                CQLQuery cqlQuery = processor.processFederatedQueryPlan(dcqlQueryDocument);               
                 
-                System.out.println(" -------- FinalQuery ----------");
-                 XmlUtil.serializeQry(cqlQuery);
-                System.out.println(" --------- ---------------- -----------");
-                // Execute resolved CQL ..
                 FederatedQueryExecutor federatedQueryExecutor = new FederatedQueryExecutor();
-                results = federatedQueryExecutor.executeQry(cqlQuery,"http://localhost:8181/wsrf/services/cagrid/MyService");
-                XmlUtil.paintTabularResults(results);
-                
+                results = federatedQueryExecutor.executeCQLQuery(cqlQuery,dcqlQueryDocument.getDCQLQuery().getTargetObject().getServiceURL());
+                XmlUtil.paintTabularResults(results);               
             } else {
                 throw new RuntimeException("Invalid DCQL Query");
             }
+            //Context c = new Context();
+            //c.get
+        
         } catch (Exception e) {
             throw new FederatedQueryException(e);
         } 
@@ -47,7 +46,10 @@ public class FederatedQueryEngineImpl implements FederatedQueryEngine{
     public static void main(String[] args) throws Exception {
 
         FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
-        fqe.execute("C:\\Development\\FederatedQueryEngine\\SampleFederatedQry.xml");
+        DCQLQueryDocument dcqlQueryDocument = DCQLQueryDocument.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\schema-cagrid\\dcql1.xml"));
+        
+        fqe.execute(dcqlQueryDocument);
+        
      
     }
 }
