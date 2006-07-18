@@ -16,6 +16,7 @@ public class Artifact extends DataType {
 	public static final String JAR_TYPE = "jars";
 	public static final String SCHEMAS_TYPE = "schemas";
 	public static final String RESOURCES_TYPE = "resources";
+	public static final String ANTFILES_TYPE = "antfiles";
 	public static final String DLL_TYPE = "dll";
 	public static final String R_TYPE = "r";
 	public static final String MAPPINGS_TYPE = "mappings";

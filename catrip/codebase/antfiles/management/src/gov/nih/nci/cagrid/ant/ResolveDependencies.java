@@ -102,6 +102,8 @@ public class ResolveDependencies extends Task {
 					copyTask.setTodir(new File(getExtDir().getAbsolutePath() + track + File.separator + "dll"));
 				} else if (artifact.getType().equals(Artifact.R_TYPE)) {
 					copyTask.setTodir(new File(getExtDir().getAbsolutePath() + track + File.separator + "r"));
+				} else if (artifact.getType().equals(Artifact.ANTFILES_TYPE)) {
+					copyTask.setTodir(new File(getExtDir().getAbsolutePath() + track + File.separator + "antfiles"));
 				} else if (artifact.getType().equals(Artifact.MAPPINGS_TYPE)) {
 					copyTask.setTodir(new File(getExtDir().getAbsolutePath()));
 				} else if (artifact.getType().equals(Artifact.RESOURCES_TYPE)) {
