@@ -136,6 +136,13 @@
 				<include name="password-utils.xml" />
 			</fileset>
 		</artifact>
+		<artifact track="main" type="antfiles" id="security-dukeidp.jars">
+			<antcall target="build-security-dukeidp" />
+			<fileset dir="${projects.dir}/security-dukeidp/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
 	</target>
 
 	<!-- =============================================================== -->
