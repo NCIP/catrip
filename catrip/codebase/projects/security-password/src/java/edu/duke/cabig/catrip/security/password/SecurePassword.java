@@ -139,6 +139,14 @@ public class SecurePassword
 	public static void main(String[] args) 
 		throws Exception
 	{
-		generateKeys(new File(args[0]), new File(args[1]));
+		if (args.length == 1 && args[0].equals("-keygen")) {
+			generateKeys();
+		} else if (args.length == 3 && args[0].equals("-encrypt")) {
+			new SecurePassword().encrypt(args[1], new File(args[2]));
+		} else {
+			System.out.println("Usage:");
+			System.out.println("  SecurePassword -keygen");
+			System.out.println("  SecurePassword -encrypt password file");
+		}		
 	}
 }
