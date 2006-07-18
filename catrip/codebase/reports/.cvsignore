@@ -3,3 +3,4 @@ findbugs
 source-java
 style
 statcvs
+junit
