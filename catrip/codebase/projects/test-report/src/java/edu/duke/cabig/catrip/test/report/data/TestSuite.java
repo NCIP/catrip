@@ -11,7 +11,6 @@ public class TestSuite
 	public int errors;
 	public int failures;
 	public String name;
-	public String pkg;
 	public int tests;
 	public double time;
 	
