@@ -30,11 +30,12 @@ public class XmlUtil {
          //    XPath xpath = XPath.newInstance(xpathStr);
              
          CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
-         
+         System.out.println("   RESULTS longName |  PreferredName ");
+         System.out.println("---------------------------------------------------------------------------");
          while (iter.hasNext()) {
          
                DataElement de = (DataElement) iter.next();
-               System.out.println(de.getLongName());
+               System.out.println(de.getLongName() + " | " + de.getPreferredName());
                //resultList.add(de.getLongName());// need to get this longname using right join and reflection
          } 
          } catch (Exception e ) {

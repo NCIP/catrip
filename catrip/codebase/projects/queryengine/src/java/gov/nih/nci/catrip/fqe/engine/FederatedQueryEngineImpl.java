@@ -25,7 +25,7 @@ public class FederatedQueryEngineImpl implements FederatedQueryEngine{
             boolean valid = dcqlQueryDocument.validate();
             if (valid){
                 FederatedQueryProcessor processor = new FederatedQueryProcessor();
-                CQLQuery cqlQuery = processor.processFederatedQueryPlan(dcqlQueryDocument);               
+                CQLQuery cqlQuery = processor.processDCQLQueryPlan(dcqlQueryDocument);               
                 
                 FederatedQueryExecutor federatedQueryExecutor = new FederatedQueryExecutor();
                 results = federatedQueryExecutor.executeCQLQuery(cqlQuery,dcqlQueryDocument.getDCQLQuery().getTargetObject().getServiceURL());
@@ -46,7 +46,7 @@ public class FederatedQueryEngineImpl implements FederatedQueryEngine{
     public static void main(String[] args) throws Exception {
 
         FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
-        DCQLQueryDocument dcqlQueryDocument = DCQLQueryDocument.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\schema-cagrid\\dcql1.xml"));
+        DCQLQueryDocument dcqlQueryDocument = DCQLQueryDocument.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\schema-cagrid\\dcql3.xml"));
         
         fqe.execute(dcqlQueryDocument);
         

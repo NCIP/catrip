@@ -14,17 +14,17 @@ import gov.nih.nci.catrip.fqe.exception.FederatedQueryException;
 import java.util.List;
 
 
-public class FederatedQueryProcessor {
+class FederatedQueryProcessor {
     
     public FederatedQueryProcessor() {
     }
     
     /**
      * 
-     * @param federatedQryPlan
+     * @param dcqlQryPlan
      * @return
      */
-    public CQLQuery processFederatedQueryPlan(DCQLQueryDocument dcqlQryPlan) throws FederatedQueryException {        
+    CQLQuery processDCQLQueryPlan(DCQLQueryDocument dcqlQryPlan) throws FederatedQueryException {        
         CQLQuery cqlQuery = null;        
         try {
             /** Get the target object.
@@ -77,9 +77,8 @@ public class FederatedQueryProcessor {
         
         //check for Association
         if (dcqlObject.isSetAssociation()) {
-            //Association contains DCQL object
-            //Convert into CQL Associoation and Process DCQL Object
-             gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = processDCQLAssociation(dcqlObject.getAssociation());             
+            //Convert into CQL Associoation 
+            gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = processDCQLAssociation(dcqlObject.getAssociation());             
              cqlObject.setAssociation(cqlAssociation);
         }       
         
@@ -205,7 +204,7 @@ public class FederatedQueryProcessor {
         return cqlGroup;
     }
     private gov.nih.nci.cagrid.cqlquery.Association processDCQLAssociation (caBIG.caGrid.x10.govNihNciCagridDcql.Association  dcqlAssociation) {
-        //convert basic group information and attach group to CQL object
+
         gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = new gov.nih.nci.cagrid.cqlquery.Association();
         cqlAssociation.setRoleName(dcqlAssociation.getRoleName());        
         

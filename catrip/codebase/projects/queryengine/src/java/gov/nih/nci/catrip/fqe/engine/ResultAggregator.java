@@ -16,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ResultAggregator {
+class ResultAggregator {
     
     private JoinCondition joinCondition;
     
-    public ResultAggregator(JoinCondition joinCondition) {
+    ResultAggregator(JoinCondition joinCondition) {
         this.joinCondition = joinCondition;
     }
-    public List processResults(CQLQueryResults results){
+    List processResults(CQLQueryResults results){
         Join rightJoin = joinCondition.getRightJoin();
         
         String classNameStr = rightJoin.getObject();
@@ -47,7 +47,7 @@ public class ResultAggregator {
     }
     
 
-    public gov.nih.nci.cagrid.cqlquery.Group buildGroup(List list){
+    gov.nih.nci.cagrid.cqlquery.Group buildGroup(List list){
     
         gov.nih.nci.cagrid.cqlquery.Group cqlGroup = new gov.nih.nci.cagrid.cqlquery.Group();
         
