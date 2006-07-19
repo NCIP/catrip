@@ -36,6 +36,11 @@ public class JUnitXmlParser
 		parser.parse(file, handler);
 	}
 	
+	public TestSuite[] getTestSuites()
+	{
+		return testSuites.toArray(new TestSuite[0]);
+	}
+	
 	private class JUnitXmlHandler
 		extends DefaultHandler
 	{
