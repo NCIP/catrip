@@ -36,4 +36,70 @@
 			</batchtest>
 		</junit>
 	</target>
+	
+	<path id="junitDocReport.cp">
+		<path refid="run.classpath"/>
+		<pathelement location="build/classes"/>
+		
+		<fileset dir="../security-password/ext/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../security-password/build/jars">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../security-dukeidp/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../security-dukeidp/build/jars">
+			<include name="*.jar"/>
+		</fileset>
+
+		<fileset dir=".">
+			<include name="src/java"/>
+			<include name="test/src/java"/>
+		</fileset>
+		<fileset dir="../security-password">
+			<include name="src/java"/>
+			<include name="test/src/java"/>
+		</fileset>
+		<fileset dir="../security-dukeidp">
+			<include name="src/java"/>
+			<include name="test/src/java"/>
+		</fileset>
+	
+	</path>
+	
+	<target name="test-target" depends="all">
+		<taskdef name="junitDocReport" classname="edu.duke.cabig.catrip.test.report.ant.JUnitDocReport"
+			classpathref="junitDocReport.cp">
+		</taskdef>
+		
+		<junitDocReport format="text">
+			<junitResults>
+				<fileset dir=".">
+					<include name="test/logs/junit/*.xml"/>
+				</fileset>
+				<fileset dir="../security-password">
+					<include name="test/logs/junit/*.xml"/>
+				</fileset>
+				<fileset dir="../security-dukeidp">
+					<include name="test/logs/junit/*.xml"/>
+				</fileset>				
+			</junitResults>
+			<junitDocs>
+				<fileset dir=".">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="../security-password">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="../security-dukeidp">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+			</junitDocs>
+		</junitDocReport>
+	</target>
 </project>
