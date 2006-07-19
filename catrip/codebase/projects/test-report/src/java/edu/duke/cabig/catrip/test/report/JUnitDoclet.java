@@ -6,6 +6,8 @@ package edu.duke.cabig.catrip.test.report;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Hashtable;
 
 import com.sun.javadoc.ClassDoc;
@@ -40,16 +42,17 @@ public class JUnitDoclet
 			
 			// loop through srcDirs
 			for (File srcDir : srcDirs) {
-				// loop through root packages in srcDirs
+				// get packages in srcDirs
 				String[] pkgs = findPackages(srcDir);
-				for (String pkg : pkgs) {
-					// perform doclet
-					Main.execute(new String[] {
-						"-doclet", JUnitDoclet.class.getName(), 
-						"-sourcepath", srcDir.toString(),
-						pkg
-					});
-				}
+				String[] args = new String[4 + pkgs.length];
+
+				// perform doclet
+				args[0] = "-doclet";
+				args[1] = JUnitDoclet.class.getName();
+				args[2] = "-sourcepath";
+				args[3] = srcDir.toString();
+				System.arraycopy(pkgs, 0, args, 4, pkgs.length);
+				Main.execute(args);
 			}
 			
 			// clear lookup tables
@@ -60,7 +63,30 @@ public class JUnitDoclet
 	
 	private static String[] findPackages(File srcDir)
 	{
-		return new String[0];
+		return findPackages(srcDir, "");
+	}
+	
+	private static String[] findPackages(File rootDir, String path)
+	{
+		File dir = new File(rootDir + File.separator + path);
+		File[] files = dir.listFiles(new FileFilter() {
+			public boolean accept(File file) {
+				return (file.isFile() && file.getName().endsWith(".java")) || 
+						(file.isDirectory() && ! file.getName().equals("CVS")); 
+			}
+		});
+		
+		HashSet<String> pkgs = new HashSet<String>();
+		for (File file : files) {
+			if (file.isDirectory()) {
+				String nextPath = path + File.separator + file.getName();
+				if (nextPath.startsWith(File.separator)) nextPath = nextPath.substring(File.separator.length());
+				Collections.addAll(pkgs, findPackages(rootDir, nextPath));
+			} else {
+				pkgs.add(path.replace(File.separatorChar, '.'));
+			}
+		}
+		return pkgs.toArray(new String[0]);
 	}
 
 	/**

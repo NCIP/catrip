@@ -34,17 +34,20 @@ public class JUnitDocletTest
 		suite.name = "JUnitDocletTest";
 		suite.pkg = "edu.duke.cabig.catrip.test.report";
 		TestCase test = new TestCase();
-		test.className = "JUnitDocletTest";
+		test.className = "edu.duke.cabig.catrip.test.report.JUnitDocletTest";
 		test.name = "testDoclet";
 		suite.testCases.add(test);
 		
 		JUnitDoclet.addDocs(
-			new File[] { new File("src" + File.separator + "java") }, 
+			new File[] { 
+				new File("src" + File.separator + "java"), 
+				new File("test" + File.separator + "src" + File.separator + "java"),
+			}, 
 			new TestSuite[] { suite }
 		);
 		
 		assertEquals(
-			"This is a unit test for testing the JUnitDoclet class, which is used do attach JavaDoc comments to JUnit test results",
+			"This is a unit test for testing the JUnitDoclet class, which is used do attach JavaDoc comments\n to JUnit test results.",
 			suite.docs
 		);
 		assertEquals(
