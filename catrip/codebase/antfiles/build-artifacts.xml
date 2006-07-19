@@ -1,0 +1,83 @@
+<!-- =============================================================== -->
+<!-- Define the build artifacts (created/used by projects) here      -->
+<!--                                                                 -->
+<!-- NOTE:  These should be all of the files necessary to "depend" on-->
+<!-- the project (not just the built files).  Make a separate        -->
+<!-- artifact for groups of files that will probably be copied to    -->
+<!-- separate directoris (e.g. jars and conf files)                  -->
+<!-- =============================================================== -->
+<project name="catrip-1.0-artifacts" basedir=".">
+
+	<target name="defineArtifacts" depends="prepare">
+
+		<!-- ========== -->
+		<!-- share jars -->
+		<!-- ========== -->
+		<artifact track="test" type="jars" id="common.test.jars">
+			<fileset dir="${junit.dir}">
+				<include name="jdepend*.jar" />
+				<include name="junit*.jar" />
+				<include name="xmlunit*.jar" />
+			</fileset>
+		</artifact>
+
+		<!-- ================= -->
+		<!-- cagrid share jars -->
+		<!-- ================= -->
+
+		<artifact track="main" type="jars" id="cagrid.gridca.jars">
+			<fileset dir="${cagrid.dir}/gridca">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+
+		<artifact track="main" type="jars" id="gui.jars">
+			<antcall target="build-gui" />
+			<fileset dir="${projects.dir}/gui/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="jars" id="queryengine.jars">
+			<antcall target="build-queryengine" />
+			<fileset dir="${projects.dir}/queryengine/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="schemas" id="queryengine.schemas">
+			<fileset dir="${projects.dir}/queryengine/schema">
+				<include name="**/*.xsd" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="jars" id="security-password.jars">
+			<antcall target="build-security-password" />
+			<fileset dir="${projects.dir}/security-password/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="antfiles" id="security-password.antfiles">
+			<antcall target="build-security-password" />
+			<fileset dir="${projects.dir}/security-password/antfiles">
+				<include name="password-utils.xml" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="jars" id="security-dukeidp.jars">
+			<antcall target="build-security-dukeidp" />
+			<fileset dir="${projects.dir}/security-dukeidp/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="jars" id="test-report.jars">
+			<antcall target="build-test-report" />
+			<fileset dir="${projects.dir}/test-report/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+	</target>
+
+</project>
