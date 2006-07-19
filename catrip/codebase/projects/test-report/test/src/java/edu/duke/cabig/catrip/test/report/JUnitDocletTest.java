@@ -31,8 +31,7 @@ public class JUnitDocletTest
 		throws IOException
 	{
 		TestSuite suite = new TestSuite();
-		suite.name = "JUnitDocletTest";
-		suite.pkg = "edu.duke.cabig.catrip.test.report";
+		suite.name = "edu.duke.cabig.catrip.test.report.JUnitDocletTest";
 		TestCase test = new TestCase();
 		test.className = "edu.duke.cabig.catrip.test.report.JUnitDocletTest";
 		test.name = "testDoclet";

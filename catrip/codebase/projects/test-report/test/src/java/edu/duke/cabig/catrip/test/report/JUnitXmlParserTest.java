@@ -22,7 +22,42 @@ public class JUnitXmlParserTest
 		super(name);
 	}
 
-	public void testParser() 
+	public void testJUnit() 
+		throws SAXException, IOException, ParserConfigurationException
+	{
+		JUnitXmlParser parser = new JUnitXmlParser();
+		parser.parse(new File(System.getProperty("junit.report", 
+			"test" + File.separator + "resources" + File.separator + "TEST-edu.duke.cabig.catrip.test.report.JUnitDocletTest.xml"
+		)));
+		
+		TestSuite[] suites = parser.getTestSuites();
+		assertEquals(1, suites.length);
+		// suite 1
+		assertEquals(0, suites[0].failures);
+		assertEquals(1, suites[0].errors);
+		assertEquals("edu.duke.cabig.catrip.test.report.JUnitDocletTest", suites[0].name);
+		assertEquals(1, suites[0].tests);
+		assertEquals(0.27, suites[0].time);
+		assertEquals("C:\\caBIG\\catrip\\codebase\\share\\cobertura-1.8", suites[0].props.get("cobertura.home"));
+		assertEquals(1, suites[0].testCases.size());
+		// suite 1, test 1
+		assertEquals("edu.duke.cabig.catrip.test.report.JUnitDocletTest", suites[0].testCases.get(0).className);
+		assertEquals("testDoclet", suites[0].testCases.get(0).name);
+		assertEquals(0.02, suites[0].testCases.get(0).time);
+		assertNotNull(suites[0].testCases.get(0).failure);
+		assertEquals("java.lang.NoClassDefFoundError", suites[0].testCases.get(0).failure.type);
+		assertEquals("java.lang.NoClassDefFoundError: com/sun/javadoc/RootDoc\n" + 
+				"	at edu.duke.cabig.catrip.test.report.javadoc.Main.execute(Main.java:40)\n" + 
+				"	at edu.duke.cabig.catrip.test.report.JUnitDoclet.addDocs(JUnitDoclet.java:55)\n" + 
+				"	at edu.duke.cabig.catrip.test.report.JUnitDocletTest.testDoclet(JUnitDocletTest.java:40)\n" + 
+				"	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n" + 
+				"	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)\n" + 
+				"	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n" + 
+				"", suites[0].testCases.get(0).failure.stackTrace
+		);
+	}
+
+	public void testJUnitReport() 
 		throws SAXException, IOException, ParserConfigurationException
 	{
 		JUnitXmlParser parser = new JUnitXmlParser();
@@ -35,8 +70,7 @@ public class JUnitXmlParserTest
 		// suite 1
 		assertEquals(1, suites[0].failures);
 		assertEquals(0, suites[0].errors);
-		assertEquals("NTAuthenticationTest", suites[0].name);
-		assertEquals("edu.duke.cabig.catrip.security.dukeidp", suites[0].pkg);
+		assertEquals("edu.duke.cabig.catrip.security.dukeidp.NTAuthenticationTest", suites[0].name);
 		assertEquals(2, suites[0].tests);
 		assertEquals(23.224, suites[0].time);
 		assertEquals("HotSpot Client Compiler", suites[0].props.get("sun.management.compiler"));
@@ -62,8 +96,7 @@ public class JUnitXmlParserTest
 		// suite 2
 		assertEquals(0, suites[1].failures);
 		assertEquals(0, suites[1].errors);
-		assertEquals("SecurePasswordTest", suites[1].name);
-		assertEquals("edu.duke.cabig.catrip.security.password", suites[1].pkg);
+		assertEquals("edu.duke.cabig.catrip.security.password.SecurePasswordTest", suites[1].name);
 		assertEquals(3, suites[1].tests);
 		assertEquals(2.854, suites[1].time);
 		assertEquals("C:\\caBIG\\catrip\\codebase\\projects\\security-password/lib", suites[1].props.get("lib.dir"));
