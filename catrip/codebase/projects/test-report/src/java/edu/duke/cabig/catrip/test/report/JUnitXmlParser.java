@@ -60,7 +60,7 @@ public class JUnitXmlParser
 		@Override
 		public void endElement(String uri, String localName, String qName) throws SAXException
 		{
-			if (qName.equals("failure")) {
+			if (qName.equals("failure") || qName.equals("error")) {
 				TestSuite suite = testSuites.get(testSuites.size()-1);
 				TestCase test = suite.testCases.get(suite.testCases.size()-1);
 				test.failure.stackTrace = chars.toString();
@@ -79,7 +79,9 @@ public class JUnitXmlParser
 				testSuite.errors = Integer.parseInt(atts.getValue("errors"));
 				testSuite.failures = Integer.parseInt(atts.getValue("failures"));
 				testSuite.name = atts.getValue("name");
-				testSuite.pkg = atts.getValue("package");
+				if (atts.getValue("package") != null) {
+					testSuite.name = atts.getValue("package") + "." + testSuite.name;
+				}
 				testSuite.tests = Integer.parseInt(atts.getValue("tests"));
 				testSuite.time = Double.parseDouble(atts.getValue("time"));
 				testSuites.add(testSuite);
@@ -93,7 +95,7 @@ public class JUnitXmlParser
 				testCase.name = atts.getValue("name");
 				testCase.time = Double.parseDouble(atts.getValue("time"));
 				testSuites.get(testSuites.size()-1).testCases.add(testCase);
-			} else if (qName.equals("failure")) {
+			} else if (qName.equals("failure") || qName.equals("error")) {
 				TestSuite suite = testSuites.get(testSuites.size()-1);
 				TestCase test = suite.testCases.get(suite.testCases.size()-1);
 				test.failure = new TestFailure();

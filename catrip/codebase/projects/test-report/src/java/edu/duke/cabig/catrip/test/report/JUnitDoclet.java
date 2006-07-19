@@ -13,10 +13,10 @@ import java.util.Hashtable;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.RootDoc;
-import com.sun.tools.javadoc.Main;
 
 import edu.duke.cabig.catrip.test.report.data.TestCase;
 import edu.duke.cabig.catrip.test.report.data.TestSuite;
+import edu.duke.cabig.catrip.test.report.javadoc.Main;
 
 public class JUnitDoclet
 {
@@ -34,7 +34,7 @@ public class JUnitDoclet
 			suiteTable = new Hashtable<String,TestSuite>();
 			testTable = new Hashtable<String,TestCase>();
 			for (TestSuite suite : suites) {
-				suiteTable.put(suite.pkg + "." + suite.name, suite);
+				suiteTable.put(suite.name, suite);
 				for (TestCase test : suite.testCases) {
 					testTable.put(test.className + "." + test.name, test);
 				}
