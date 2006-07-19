@@ -234,5 +234,17 @@
 		</cobertura-report>
 	</target>
 
-	<target name="reports" depends="prepare, reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs"/>
+	<target name="reports-junit">
+		<mkdir dir="${reports.dir}/junit"/>
+		<junitreport todir="${reports.dir}/junit">
+			<fileset dir="test/logs">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			<report format="frames" todir="${reports.dir}/junit"/>
+			<report format="noframes" todir="${reports.dir}/junit"/>
+		</junitreport>
+	</target>
+
+
+	<target name="reports" depends="prepare, reports-junit, reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs"/>
 </project>
