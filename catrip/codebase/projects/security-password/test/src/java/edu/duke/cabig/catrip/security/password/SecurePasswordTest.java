@@ -10,6 +10,11 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+/**
+ * This is a unit test to test that passwords can be secured on test clients. 
+ * @testType unit
+ * @author MCCON012
+ */
 public class SecurePasswordTest
 	extends TestCase
 {
@@ -18,6 +23,10 @@ public class SecurePasswordTest
 		super(name);
 	}
 	
+	/**
+	 * This tests that public/private keys can be generated
+	 * @throws Exception
+	 */
 	public void testGenerateTempKeys() 
 		throws Exception
 	{
@@ -27,6 +36,10 @@ public class SecurePasswordTest
 		assertTrue(new File(dir, "private.key").exists());
 	}
 	
+	/**
+	 * This tests that a secure password can be encrypted using a public key
+	 * @throws Exception
+	 */
 	public void testSecurePasswordGenerated() 
 		throws Exception
 	{
@@ -52,6 +65,10 @@ public class SecurePasswordTest
 		}
 	}
 	
+	/**
+	 * This tests that an existing encrypted password can be decrypted using a private key
+	 * @throws Exception
+	 */
 	public void testSecurePassword() 
 		throws Exception
 	{

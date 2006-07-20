@@ -18,6 +18,11 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+/**
+ * This unit test tests the backend hook to the Duke IdP for authentication.
+ * @testType unit
+ * @author MCCON012
+ */
 public class NTAuthenticationTest
 	extends TestCase
 {
@@ -32,6 +37,9 @@ public class NTAuthenticationTest
 		);
 	}
 	
+	/**
+	 * This tests to ensure that a user with invalid credentials is not authenticated. 
+	 */
 	public void testInvalidCredentials()
 		throws UnknownHostException
 	{
@@ -48,6 +56,9 @@ public class NTAuthenticationTest
 		assertFalse(success);
 	}
 	
+	/**
+	 * This tests to ensure that a user with valid credentials is authenticated. 
+	 */
 	public void testValidCredentials()
 		throws IOException, GeneralSecurityException
 	{
