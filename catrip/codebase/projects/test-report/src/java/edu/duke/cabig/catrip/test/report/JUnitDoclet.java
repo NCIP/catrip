@@ -13,6 +13,7 @@ import java.util.Hashtable;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.RootDoc;
+import com.sun.javadoc.Tag;
 
 import edu.duke.cabig.catrip.test.report.data.TestCase;
 import edu.duke.cabig.catrip.test.report.data.TestSuite;
@@ -98,13 +99,20 @@ public class JUnitDoclet
         for (ClassDoc cl : root.classes()) {
         	TestSuite suite = suiteTable.get(cl.qualifiedName());
         	if (suite == null) continue;
-        	suite.docs = cl.commentText();
+        	
+        	suite.docText = cl.commentText();
+    		for (Tag tag : cl.tags()) {
+    			suite.docTags.setProperty(tag.name().substring(1), tag.text());
+    		}
 
         	for (MethodDoc m : cl.methods()) {
         		TestCase test = testTable.get(cl.qualifiedName() + "." + m.name());
         		if (test == null) continue;
         		
-        		test.docs = m.commentText();
+        		test.docText = m.commentText();
+        		for (Tag tag : m.tags()) {
+        			test.docTags.setProperty(tag.name().substring(1), tag.text());
+        		}
         	}
         }
         return true;
