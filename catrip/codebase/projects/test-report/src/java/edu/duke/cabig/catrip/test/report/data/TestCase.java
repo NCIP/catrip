@@ -3,6 +3,8 @@
  */
 package edu.duke.cabig.catrip.test.report.data;
 
+import java.util.Properties;
+
 public class TestCase
 {
 	public String className;
@@ -10,5 +12,6 @@ public class TestCase
 	public double time;
 	public TestFailure failure;
 	
-	public String docs;
+	public String docText;
+	public Properties docTags = new Properties();
 }
