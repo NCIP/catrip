@@ -18,6 +18,7 @@
 	<property name="test.dir" location="${basedir}/test" />
 	<property name="junit.dir" location="${share.dir}/junit" />
 	<property name="cagrid.dir" location="${share.dir}/cagrid" />
+	<property name="junit.results.dir" location="${test.dir}/logs"/>
 
 	<!-- import testing properties -->
 	<property file="${antfiles.dir}/test.properties" />
