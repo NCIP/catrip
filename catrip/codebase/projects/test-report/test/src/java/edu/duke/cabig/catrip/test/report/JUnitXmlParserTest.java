@@ -34,28 +34,17 @@ public class JUnitXmlParserTest
 		assertEquals(1, suites.length);
 		// suite 1
 		assertEquals(0, suites[0].failures);
-		assertEquals(1, suites[0].errors);
+		assertEquals(0, suites[0].errors);
 		assertEquals("edu.duke.cabig.catrip.test.report.JUnitDocletTest", suites[0].name);
 		assertEquals(1, suites[0].tests);
-		assertEquals(0.27, suites[0].time);
+		assertEquals(2.977, suites[0].time);
 		assertEquals("C:\\caBIG\\catrip\\codebase\\share\\cobertura-1.8", suites[0].props.get("cobertura.home"));
 		assertEquals(1, suites[0].testCases.size());
 		// suite 1, test 1
 		assertEquals("edu.duke.cabig.catrip.test.report.JUnitDocletTest", suites[0].testCases.get(0).className);
 		assertEquals("testDoclet", suites[0].testCases.get(0).name);
-		assertEquals(0.02, suites[0].testCases.get(0).time);
-		assertNotNull(suites[0].testCases.get(0).failure);
-		assertTrue(suites[0].testCases.get(0).failure.isError);
-		assertEquals("java.lang.NoClassDefFoundError", suites[0].testCases.get(0).failure.type);
-		assertEquals("java.lang.NoClassDefFoundError: com/sun/javadoc/RootDoc\n" + 
-				"	at edu.duke.cabig.catrip.test.report.javadoc.Main.execute(Main.java:40)\n" + 
-				"	at edu.duke.cabig.catrip.test.report.JUnitDoclet.addDocs(JUnitDoclet.java:55)\n" + 
-				"	at edu.duke.cabig.catrip.test.report.JUnitDocletTest.testDoclet(JUnitDocletTest.java:40)\n" + 
-				"	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n" + 
-				"	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)\n" + 
-				"	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n" + 
-				"", suites[0].testCases.get(0).failure.stackTrace
-		);
+		assertEquals(2.727, suites[0].testCases.get(0).time);
+		assertNull(suites[0].testCases.get(0).failure);
 	}
 
 	public void testJUnitReport() 
