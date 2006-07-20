@@ -6,8 +6,6 @@
 
 <project name="catrip-1.0-test" default="test" basedir=".">
 
-	<property name="junit.results.dir" location="${test.dir}/logs"/>
-
 	<!-- =============================================================== -->
 	<!-- Call test for each project and aggregates the log resutls       -->
 	<!-- =============================================================== -->
