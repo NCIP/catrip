@@ -20,7 +20,8 @@ public class ServiceLocaterFactory {
     }
     
     public static ServiceLocator getServiceLocator (){
-        return new XMLFileServiceLocator();
+//        return new XMLFileServiceLocator();
+        return new DiscoveryClientServiceLocator();
     } 
     
     

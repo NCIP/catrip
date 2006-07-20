@@ -45,6 +45,7 @@ public class ServiceMetaDataRegistry {
     
     public static void addService(ServiceMetaDataBean smb){
         serviceList.put(smb.getServiceName(), smb);
+//        System.out.println("### adding service :"+smb.getServiceName());
 //        selectedServiceNames.add(smb.getServiceName());
     }
     

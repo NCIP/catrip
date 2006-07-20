@@ -38,7 +38,7 @@ public class DomainModelMetaDataRegistry {
     public static ClassBean lookupClassByRefId(String refId) {
         return (ClassBean) classMap.get(refId);
     }
-//    
+//
 //    public static AttributeBean lookupAttributeById(String id) {
 //        return (AttributeBean) attributeMap.get(id);
 //    }
@@ -72,14 +72,16 @@ public class DomainModelMetaDataRegistry {
             classBean.setClassName(umlClasses[i].getClassName() );
             classBean.setPackageName(umlClasses[i].getPackageName() );
             classBean.setDescription(umlClasses[i].getDescription());
-            classBean.setId(umlClasses[i].getId()); 
+            classBean.setId(umlClasses[i].getId());
             classBean.setVersion(umlClasses[i].getProjectVersion());
 //            System.out.println("### got the class name :"+classBean.getClassName());
             // using this one set the CDE information of the class...
             SemanticMetadata[] smt = umlClasses[i].getSemanticMetadataCollection().getSemanticMetadata();
             String classCDEName = "";
-            for (int k = 0; k < smt.length; k++) {
-                classCDEName = classCDEName + " "+ smt[k].getConceptName() ;
+            if ((smt != null)  &&  (smt.length > 1)){
+                for (int k = 0; k < smt.length; k++) {
+                    classCDEName = classCDEName + " "+ smt[k].getConceptName() ;
+                }
             }
             classBean.setCDEName(classCDEName);
             
@@ -87,21 +89,23 @@ public class DomainModelMetaDataRegistry {
             // now set the attributes..
             ArrayList<AttributeBean> attList = new ArrayList(100);
             UMLAttribute[] umlAtt = umlClasses[i].getUmlAttributeCollection().getUMLAttribute();
-            for (int j = 0; j < umlAtt.length; j++) {
-                AttributeBean attributeBean = new AttributeBean();
-                attributeBean.setAttributeName(umlAtt[j].getName());
-                // now get the CDE name or Display Name by concatanatino of teh concept names in reverse order..
-                String cdeName = "";
-                SemanticMetadata[]  conCol =  umlAtt[j].getSemanticMetadataCollection().getSemanticMetadata();
-                
-                for (int k = 0; k < conCol.length; k++) {
-                    cdeName = cdeName + " "+ conCol[k].getConceptName() ;
+            if ((umlAtt != null)  &&  (umlAtt.length > 1)){
+                for (int j = 0; j < umlAtt.length; j++) {
+                    AttributeBean attributeBean = new AttributeBean();
+                    attributeBean.setAttributeName(umlAtt[j].getName());
+                    // now get the CDE name or Display Name by concatanatino of teh concept names in reverse order..
+                    String cdeName = "";
+                    SemanticMetadata[]  conCol =  umlAtt[j].getSemanticMetadataCollection().getSemanticMetadata();
+                    
+                    for (int k = 0; k < conCol.length; k++) {
+                        cdeName = cdeName + " "+ conCol[k].getConceptName() ;
+                    }
+                    attributeBean.setDisplayName(cdeName);
+                    attributeBean.setCDEName(cdeName);
+                    attributeBean.setClassName(umlClasses[i].getClassName());
+                    attList.add(attributeBean);
+                    // not getting Id of the attribute to bind it to registry
                 }
-                attributeBean.setDisplayName(cdeName);
-                attributeBean.setCDEName(cdeName);
-                attributeBean.setClassName(umlClasses[i].getClassName());
-                attList.add(attributeBean);
-                // not getting Id of the attribute to bind it to registry
             }
             classBean.setAttributes(attList);
             
@@ -112,15 +116,22 @@ public class DomainModelMetaDataRegistry {
         }
         // bind the class list to the project short name.. must match with the service name.
         bindClassListByDomainModelName(model.getProjectShortName(), classListTmp);
-        
+//        System.out.println("### binding domain model by name: "+model.getProjectShortName());
         
         // now set the associations with the classes in registry :
-        UMLAssociation[] associations = model.getExposedUMLAssociationCollection().getUMLAssociation(); 
-       
+        UMLAssociation[] associations = model.getExposedUMLAssociationCollection().getUMLAssociation();
+        
         for (int i = 0; i < associations.length; i++) {
             String sourceRef = associations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
             String targetRef = associations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            lookupClassByRefId(sourceRef).addAssociatedClass(targetRef);
+            ClassBean sourceClassBean = null;
+            try {
+                sourceClassBean = lookupClassByRefId(sourceRef);
+            } catch (Exception ee) {
+                ee.printStackTrace();
+            }
+            if (sourceClassBean != null)
+                sourceClassBean.addAssociatedClass(targetRef);
         }
         
         
