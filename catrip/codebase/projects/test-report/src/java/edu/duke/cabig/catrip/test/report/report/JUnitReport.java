@@ -9,6 +9,6 @@ import edu.duke.cabig.catrip.test.report.data.TestSuite;
 
 public interface JUnitReport
 {
-	public void writeReport(TestSuite[] suites, PrintStream out)
+	public void writeReport(TestSuite[] suites, boolean useTestType, PrintStream out)
 		throws Exception;
 }

@@ -14,7 +14,7 @@ import edu.duke.cabig.catrip.test.report.data.TestSuite;
 public class JUnitTextReport
 	implements JUnitReport
 {
-	public void writeReport(TestSuite[] suites, PrintStream out)
+	public void writeReport(TestSuite[] suites, boolean useTestType, PrintStream out)
 		throws Exception
 	{
 		out.println("JUnitTextReport");
@@ -24,7 +24,7 @@ public class JUnitTextReport
 			out.println("====================================================");
 			out.println();
 			out.println("Test suite: " + suite.name);
-			out.println("  Description: " + (suite.docs == null || suite.docs.equals("") ? "NA" : suite.docs));
+			out.println("  Description: " + (suite.docText == null || suite.docText.equals("") ? "NA" : suite.docText));
 			out.println("  Total tests: " + suite.tests);
 			out.println("  Errors: " + suite.errors);
 			out.println("  Failures: " + suite.failures);
@@ -33,7 +33,7 @@ public class JUnitTextReport
 			for (TestCase test : suite.testCases) {
 				out.println();
 				out.println("  Test: " + test.name + " " + (test.failure == null ? "SUCCESSFUL" : "FAILED - " + test.failure.type) + " (" + test.time + " secs)");
-				out.println("    Description: " + (test.docs == null || test.docs.equals("") ? "NA" : test.docs));
+				out.println("    Description: " + (test.docText == null || test.docText.equals("") ? "NA" : test.docText));
 				if (test.failure != null) { 
 					out.println(addSpaces(test.failure.stackTrace, 6));
 				}
