@@ -10,9 +10,9 @@
 
 	<target name="defineArtifacts" depends="prepare">
 
-		<!-- ========== -->
-		<!-- share jars -->
-		<!-- ========== -->
+		<!-- =============== -->
+		<!-- share artifacts -->
+		<!-- =============== -->
 		<artifact track="test" type="jars" id="common.test.jars">
 			<fileset dir="${junit.dir}">
 				<include name="jdepend*.jar" />
@@ -21,9 +21,9 @@
 			</fileset>
 		</artifact>
 
-		<!-- ================= -->
-		<!-- cagrid share jars -->
-		<!-- ================= -->
+		<!-- ============ -->
+		<!-- cagrid share -->
+		<!-- ============ -->
 
 		<artifact track="main" type="jars" id="cagrid.gridca.jars">
 			<fileset dir="${cagrid.dir}/gridca">
@@ -31,6 +31,16 @@
 			</fileset>
 		</artifact>
 
+		<artifact track="main" type="jars" id="cagrid.coretests.jars">
+			<fileset dir="${cagrid.dir}/coretests">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+
+		<!-- ================= -->
+		<!-- project artifacts -->
+		<!-- ================= -->
 
 		<artifact track="main" type="jars" id="gui.jars">
 			<antcall target="build-gui" />
@@ -74,6 +84,13 @@
 		<artifact track="main" type="jars" id="test-report.jars">
 			<antcall target="build-test-report" />
 			<fileset dir="${projects.dir}/test-report/build/jars">
+				<include name="*.jar" />
+				<exclude name="*tests*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="jars" id="test-system.jars">
+			<antcall target="build-test-report" />
+			<fileset dir="${projects.dir}/test-system/build/jars">
 				<include name="*.jar" />
 				<exclude name="*tests*.jar" />
 			</fileset>
