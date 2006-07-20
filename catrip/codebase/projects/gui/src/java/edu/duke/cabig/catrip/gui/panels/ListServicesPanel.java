@@ -56,6 +56,7 @@ public class ListServicesPanel extends CPanel {
         
         for (int i = 0; i < sNames.size(); i++) {
             String serviceName = (String)sNames.get(i);
+//            System.out.println("## Looking for the service :"+serviceName);
             ArrayList clList = DomainModelMetaDataRegistry.lookupClassListByDomainModelName(serviceName);
             DefaultMutableTreeNode serviceOne = new DefaultMutableTreeNode(serviceName);
             for (int j = 0; j < clList.size(); j++) {
