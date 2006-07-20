@@ -75,7 +75,7 @@
 			<antcall target="build-test-report" />
 			<fileset dir="${projects.dir}/test-report/build/jars">
 				<include name="*.jar" />
-				<exclude name="*test*.jar" />
+				<exclude name="*tests*.jar" />
 			</fileset>
 		</artifact>
 	</target>
