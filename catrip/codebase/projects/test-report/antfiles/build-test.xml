@@ -71,10 +71,10 @@
 	
 	<target name="test-target" depends="all">
 		<taskdef name="junitDocReport" classname="edu.duke.cabig.catrip.test.report.ant.JUnitDocReport"
-			classpathref="junitDocReport.cp">
-		</taskdef>
+			classpathref="junitDocReport.cp"
+		/>
 		
-		<junitDocReport format="text">
+		<junitDocReport format="html" useTestType="true" destfile="test/logs/junitDocReport.html">
 			<junitResults>
 				<fileset dir=".">
 					<include name="test/logs/junit/*.xml"/>
