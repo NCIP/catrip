@@ -234,8 +234,14 @@
 		</cobertura-report>
 	</target>
 
+	<!-- =============================================================== -->
+	<!-- Call junit                                                      -->
+	<!-- =============================================================== -->
+
 	<target name="reports-junit">
 		<mkdir dir="${reports.dir}/junit"/>
+
+		<!-- junitreport -->
 		<junitreport todir="${reports.dir}/junit">
 			<fileset dir="test/logs">
 				<include name="TEST-*.xml"/>
@@ -243,6 +249,37 @@
 			<report format="frames" todir="${reports.dir}/junit"/>
 			<report format="noframes" todir="${reports.dir}/junit"/>
 		</junitreport>
+
+		<!-- junitdocreport -->
+		<taskdef name="junitDocReport" classname="edu.duke.cabig.catrip.test.report.ant.JUnitDocReport">
+			<classpath>
+				<fileset dir="${projects.dir}/test-report/build/jars">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</taskdef>
+
+		<junitDocReport format="html" useTestType="true" destfile="${reports.dir}/junit/junitDocReport.html">
+			<junitResults>
+				<fileset dir="${junit.results.dir}">
+					<include name="*.xml"/>
+				</fileset>
+			</junitResults>
+			<junitDocs>
+				<fileset dir="${projects.dir}/security-password">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="${projects.dir}/security-dukeidp">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="${projects.dir}/test-report">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+			</junitDocs>
+		</junitDocReport>
 	</target>
 
 
