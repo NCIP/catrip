@@ -6,6 +6,7 @@ package edu.duke.cabig.catrip.test.report;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -45,6 +46,7 @@ public class JUnitDoclet
 			for (File srcDir : srcDirs) {
 				// get packages in srcDirs
 				String[] pkgs = findPackages(srcDir);
+				if (pkgs.length == 0) continue;
 				String[] args = new String[4 + pkgs.length];
 
 				// perform doclet
@@ -93,6 +95,7 @@ public class JUnitDoclet
 	/**
 	 * Doclet entry point
 	 */
+	@SuppressWarnings("deprecation")
 	public static boolean start(RootDoc root) 
 	{
         ClassDoc[] classes = root.classes();
@@ -104,18 +107,70 @@ public class JUnitDoclet
     		for (Tag tag : cl.tags()) {
     			suite.docTags.setProperty(tag.name().substring(1), tag.text());
     		}
-
-        	for (MethodDoc m : cl.methods()) {
-        		TestCase test = testTable.get(cl.qualifiedName() + "." + m.name());
-        		if (test == null) continue;
-        		
-        		test.docText = m.commentText();
-        		for (Tag tag : m.tags()) {
-        			test.docTags.setProperty(tag.name().substring(1), tag.text());
-        		}
-        	}
+    		
+    		boolean isStory = cl.superclassType().qualifiedTypeName().equals("Story");
+    		
+    		if (isStory) {
+    			for (ClassDoc iCl : cl.importedClasses()) {
+    				if (! iCl.name().endsWith("Step") && ! iCl.superclass().qualifiedName().equals("Step")
+    				) continue;
+    				
+   					TestCase test = new TestCase();
+					test.className = cl.qualifiedName();
+	        		test.name = iCl.name();
+	        		test.time = 0.0;
+	        		
+					test.docText = iCl.commentText();
+	        		for (Tag tag : iCl.tags()) {
+	        			test.docTags.setProperty(tag.name().substring(1), tag.text());
+	        		}
+	        		suite.testCases.add(test);
+    			}
+    			suite.tests = suite.testCases.size();
+    			
+    			Tag[] stepTags = cl.tags("steps");
+    			if (stepTags.length > 0) {
+    				String[] stepNames = stepTags[0].text().split(",\\s*");
+    				if (stepNames.length == suite.tests) {
+    					try {
+							suite.testCases = getSortedTests(stepNames, suite.testCases);
+						} catch (Exception e) {
+							System.out.println("ERROR: " + e.getMessage()); 
+						}
+    				}
+    			}
+    		} else {
+	        	for (MethodDoc m : cl.methods()) {
+	        		TestCase test = testTable.get(cl.qualifiedName() + "." + m.name());
+	        		if (test == null) continue;
+	        		
+	        		test.docText = m.commentText();
+	        		for (Tag tag : m.tags()) {
+	        			test.docTags.setProperty(tag.name().substring(1), tag.text());
+	        		}
+	        	}
+    		}
         }
         return true;
-    }	
+    }
 
+	private static ArrayList<TestCase> getSortedTests(String[] testNames, ArrayList<TestCase> testCases) 
+		throws Exception
+	{
+		ArrayList<TestCase> sortedTestCases = new ArrayList<TestCase>(testCases.size());
+		
+		for (String testName : testNames) {
+			TestCase foundTest = null;
+			for (TestCase test : testCases) {
+				if (test.name.equals(testName.trim())) {
+					foundTest = test;
+					break;
+				}
+			}
+			if (foundTest == null) throw new Exception("test " + testName + " not found");
+			sortedTestCases.add(foundTest);
+		}
+		
+		return sortedTestCases;
+	}
 }

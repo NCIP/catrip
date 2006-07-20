@@ -56,7 +56,34 @@ public class JUnitDocletTest
 		);
 		
 		assertEquals("unit", suite.docTags.getProperty("testType"));
-		assertEquals("unit", test.docTags.getProperty("testType"));
+		assertEquals(null, test.docTags.getProperty("testType"));
+	}
+	
+	/**
+	 * This test case tests the doclet functionality of adding class docs and method docs to test results from a Haste-based test.
+	 * @throws IOException
+	 */
+	public void testHaste() 
+		throws IOException
+	{
+		TestSuite suite = new TestSuite();
+		suite.name = "edu.duke.cabig.catrip.test.system.JUnitDocReportTest";
+		
+		File projectDir = new File("..", "test-system");
+		JUnitDoclet.addDocs(
+			new File[] { 
+				new File(projectDir, "src" + File.separator + "java"), 
+				new File(projectDir, "test" + File.separator + "src" + File.separator + "java"),
+			}, 
+			new TestSuite[] { suite }
+		);
+		
+		assertEquals("system", suite.docTags.getProperty("testType"));
+		assertEquals(3, suite.tests);
+		assertEquals(3, suite.testCases.size());
+		assertEquals("CreateJUnitDocReportAntFile", suite.testCases.get(0).name);
+		assertEquals("RunJUnitDocReportStep", suite.testCases.get(1).name);
+		assertEquals("CheckJUnitDocReportStep", suite.testCases.get(2).name);
 	}
 	
 	/**
