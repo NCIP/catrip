@@ -13,6 +13,7 @@ import junit.textui.TestRunner;
 /**
  * This is a unit test for testing the JUnitDoclet class, which is used do attach JavaDoc comments
  * to JUnit test results.
+ * @testType unit
  * @author MCCON012
  */
 public class JUnitDocletTest
@@ -25,6 +26,7 @@ public class JUnitDocletTest
 	
 	/**
 	 * This test case tests the doclet functionality of adding class docs and method docs to test results.
+	 * @testType unit
 	 * @throws IOException
 	 */
 	public void testDoclet() 
@@ -47,12 +49,15 @@ public class JUnitDocletTest
 		
 		assertEquals(
 			"This is a unit test for testing the JUnitDoclet class, which is used do attach JavaDoc comments\n to JUnit test results.",
-			suite.docs
+			suite.docText
 		);
 		assertEquals(
 			"This test case tests the doclet functionality of adding class docs and method docs to test results.",
-			test.docs
+			test.docText
 		);
+		
+		assertEquals("unit", suite.docTags.getProperty("testType"));
+		assertEquals("unit", test.docTags.getProperty("testType"));
 	}
 	
 	/**
