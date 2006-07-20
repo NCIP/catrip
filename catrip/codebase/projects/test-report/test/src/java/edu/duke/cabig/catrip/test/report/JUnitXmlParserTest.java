@@ -45,6 +45,7 @@ public class JUnitXmlParserTest
 		assertEquals("testDoclet", suites[0].testCases.get(0).name);
 		assertEquals(0.02, suites[0].testCases.get(0).time);
 		assertNotNull(suites[0].testCases.get(0).failure);
+		assertTrue(suites[0].testCases.get(0).failure.isError);
 		assertEquals("java.lang.NoClassDefFoundError", suites[0].testCases.get(0).failure.type);
 		assertEquals("java.lang.NoClassDefFoundError: com/sun/javadoc/RootDoc\n" + 
 				"	at edu.duke.cabig.catrip.test.report.javadoc.Main.execute(Main.java:40)\n" + 
@@ -85,6 +86,7 @@ public class JUnitXmlParserTest
 		assertEquals("testValidCredentials", suites[0].testCases.get(1).name);
 		assertEquals(1.052, suites[0].testCases.get(1).time);
 		assertNotNull(suites[0].testCases.get(1).failure);
+		assertFalse(suites[0].testCases.get(1).failure.isError);
 		assertEquals("junit.framework.AssertionFailedError", suites[0].testCases.get(1).failure.type);
 		assertEquals("junit.framework.AssertionFailedError\n" + 
 				"	at edu.duke.cabig.catrip.security.dukeidp.NTAuthenticationTest.testValidCredentials(NTAuthenticationTest.java:77)\n" + 
