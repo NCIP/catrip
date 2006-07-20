@@ -32,10 +32,10 @@ public class SampleTest extends TestCase {
    }
 
     public void testFQE() throws Exception {
-    
+
         FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
-        DCQLQueryDocument dcqlQueryDocument = DCQLQueryDocument.Factory.parse(new File("C:\\Development\\FederatedQueryEngine\\schema-cagrid\\dcql1.xml"));
-        
+        DCQLQueryDocument dcqlQueryDocument = DCQLQueryDocument.Factory.parse(new File("./schema/dcql1.xml"));
+
         fqe.execute(dcqlQueryDocument);
     }
 }
