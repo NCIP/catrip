@@ -21,16 +21,27 @@ import edu.duke.cabig.catrip.test.report.JUnitDoclet;
 import edu.duke.cabig.catrip.test.report.JUnitXmlParser;
 import edu.duke.cabig.catrip.test.report.data.TestSuite;
 
+/**
+ * This is a unit test that tests the html report generation functionality of the JUnitHtmlReport.
+ * @testType unit
+ * @author MCCON012
+ */
 public class JUnitHtmlReportTest
 	extends junit.framework.TestCase
 {
-	public static final boolean MANUAL_TEST = true;
+	public static final boolean MANUAL_TEST = false;
 	
 	public JUnitHtmlReportTest(String name)
 	{
 		super(name);
 	}
 	
+	/**
+	 * Tests that an html report can be generated using the testType tag
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
 	public void testTypedHtmlReport() 
 		throws SAXException, IOException, ParserConfigurationException
 	{
@@ -74,7 +85,12 @@ public class JUnitHtmlReportTest
 		// check report
 	}
 
-	/*
+	/**
+	 * Tests that an html report can be generated wihtout using the testType tag
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
 	public void testUntypedHtmlReport() 
 		throws SAXException, IOException, ParserConfigurationException
 	{
@@ -114,7 +130,6 @@ public class JUnitHtmlReportTest
 		
 		// check report
 	}
-	*/
 	
 	private String readText(File file) 
 		throws IOException

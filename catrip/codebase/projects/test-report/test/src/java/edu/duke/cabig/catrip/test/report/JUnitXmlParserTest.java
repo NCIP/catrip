@@ -14,6 +14,11 @@ import edu.duke.cabig.catrip.test.report.data.TestSuite;
 
 import junit.textui.TestRunner;
 
+/**
+ * This is a unit test to test the functionality of the JUnitXmlParser.
+ * @testType unit
+ * @author MCCON012
+ */
 public class JUnitXmlParserTest
 	extends junit.framework.TestCase
 {
@@ -22,6 +27,12 @@ public class JUnitXmlParserTest
 		super(name);
 	}
 
+	/**
+	 * This tests that a junit output xml file can be properly parsed.
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
 	public void testJUnit() 
 		throws SAXException, IOException, ParserConfigurationException
 	{
@@ -47,6 +58,12 @@ public class JUnitXmlParserTest
 		assertNull(suites[0].testCases.get(0).failure);
 	}
 
+	/**
+	 * This tests that a junitreport output xml file can be properly parsed.
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
 	public void testJUnitReport() 
 		throws SAXException, IOException, ParserConfigurationException
 	{
