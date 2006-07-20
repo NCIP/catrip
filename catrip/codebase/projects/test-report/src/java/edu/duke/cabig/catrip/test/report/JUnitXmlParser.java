@@ -99,6 +99,7 @@ public class JUnitXmlParser
 				TestSuite suite = testSuites.get(testSuites.size()-1);
 				TestCase test = suite.testCases.get(suite.testCases.size()-1);
 				test.failure = new TestFailure();
+				test.failure.isError = qName.equals("error");
 				test.failure.type = atts.getValue("type");
 			}
 		}
