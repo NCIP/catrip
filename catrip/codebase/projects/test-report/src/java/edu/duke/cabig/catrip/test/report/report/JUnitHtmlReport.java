@@ -80,7 +80,7 @@ public class JUnitHtmlReport
 			}
 			
 			for (int j = 0; j < mySuites.length; j++) {
-				TestSuite suite = suites[j];
+				TestSuite suite = mySuites[j];
 
 				String outline = String.valueOf(j+1);
 				if (useTestType) outline = String.valueOf(i+1) + "." + String.valueOf(j+1);
