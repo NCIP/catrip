@@ -29,11 +29,57 @@ import edu.duke.cabig.catrip.test.report.data.TestSuite;
 public class JUnitHtmlReportTest
 	extends junit.framework.TestCase
 {
-	public static final boolean MANUAL_TEST = false;
+	public static final boolean MANUAL_TEST = true;
 	
 	public JUnitHtmlReportTest(String name)
 	{
 		super(name);
+	}
+
+	/**
+	 * Tests that an html report can be generated wihtout using the testType tag
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
+	public void testUntypedHtmlReport() 
+		throws SAXException, IOException, ParserConfigurationException
+	{
+		// parse results
+		JUnitXmlParser parser = new JUnitXmlParser();
+		parser.parse(new File(System.getProperty("junit.report", 
+			"test" + File.separator + "resources" + File.separator + "TESTS-TestSuites.xml"
+		)));
+		TestSuite[] suites = parser.getTestSuites();
+		
+		// add documentation
+		JUnitDoclet.addDocs(
+			new File[] { 
+				new File("src" + File.separator + "java"), 
+				new File("test" + File.separator + "src" + File.separator + "java"),
+			}, 
+			suites
+		);
+		
+		// print report
+		File file = null;
+		if (MANUAL_TEST) {
+			file = new File("test" + File.separator + "logs" + File.separator + "junitDocReport.html");
+		} else {
+			file = File.createTempFile("JUnitHtmlReportTest", ".html");
+			file.deleteOnExit();
+		}
+		PrintStream out = new PrintStream(new BufferedOutputStream(new FileOutputStream(file)));
+		JUnitHtmlReport report = new JUnitHtmlReport();
+		report.writeReport(suites, false, out);
+		out.flush();
+		out.close();
+		
+		// read report
+		String text = readText(file);
+		if (! MANUAL_TEST) file.delete();
+		
+		// check report
 	}
 	
 	/**
@@ -86,12 +132,12 @@ public class JUnitHtmlReportTest
 	}
 
 	/**
-	 * Tests that an html report can be generated wihtout using the testType tag
+	 * Tests that an html report can be generated with using the testType tag on a Haste test
 	 * @throws SAXException
 	 * @throws IOException
 	 * @throws ParserConfigurationException
 	 */
-	public void testUntypedHtmlReport() 
+	public void testHasteHtmlReport() 
 		throws SAXException, IOException, ParserConfigurationException
 	{
 		// parse results
@@ -102,6 +148,14 @@ public class JUnitHtmlReportTest
 		TestSuite[] suites = parser.getTestSuites();
 		
 		// add documentation
+		File projectDir = new File("..", "test-system");
+		JUnitDoclet.addDocs(
+			new File[] { 
+				new File(projectDir, "src" + File.separator + "java"), 
+				new File(projectDir, "test" + File.separator + "src" + File.separator + "java"),
+			}, 
+			suites
+		);
 		JUnitDoclet.addDocs(
 			new File[] { 
 				new File("src" + File.separator + "java"), 
@@ -120,7 +174,7 @@ public class JUnitHtmlReportTest
 		}
 		PrintStream out = new PrintStream(new BufferedOutputStream(new FileOutputStream(file)));
 		JUnitHtmlReport report = new JUnitHtmlReport();
-		report.writeReport(suites, false, out);
+		report.writeReport(suites, true, out);
 		out.flush();
 		out.close();
 		
