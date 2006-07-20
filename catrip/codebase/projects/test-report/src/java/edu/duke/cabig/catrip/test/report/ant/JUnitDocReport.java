@@ -30,6 +30,7 @@ public class JUnitDocReport
 	private File destfile;
 	private String format;
 	private String reportClass;
+	private boolean useTestType = false;
 	private List<JUnitResults> resultsList = new ArrayList<JUnitResults>();
 	private List<JUnitDocs> docsList = new ArrayList<JUnitDocs>();
 
@@ -64,7 +65,6 @@ public class JUnitDocReport
 		
 		// parse docs
 		try {
-			//Class.forName("edu.duke.cabig.catrip.test.report.JUnitDoclet");
 			for (JUnitDocs docs : docsList) {
 				File[] files = getFiles(getProject(), docs.fileSetList);
 				JUnitDoclet.addDocs(files, suites);
@@ -95,12 +95,12 @@ public class JUnitDocReport
 		try {
 			if (destfile == null) {
 				out = System.out;
-				shouldClose = true;
 			} else {
 				destfile.getParentFile().mkdirs();
 				out = new PrintStream(new BufferedOutputStream(new FileOutputStream(destfile)));
+				shouldClose = true;
 			}
-			report.writeReport(suites, System.out);
+			report.writeReport(suites, useTestType, out);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BuildException(e);
@@ -176,5 +176,15 @@ public class JUnitDocReport
 	public void setReportClass(String reportClass)
 	{
 		this.reportClass = reportClass;
+	}
+
+	public boolean isUseTestType()
+	{
+		return useTestType;
+	}
+
+	public void setUseTestType(boolean useTestType)
+	{
+		this.useTestType = useTestType;
 	}
 }
