@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" name="edu.duke.cabig.catrip.test.report.JUnitDocletTest" tests="1" time="0.27">
+<testsuite errors="0" failures="0" name="edu.duke.cabig.catrip.test.report.JUnitDocletTest" tests="1" time="2.977">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc."></property>
     <property name="lib.dir" value="C:\caBIG\catrip\codebase\projects\test-report/lib"></property>
@@ -92,7 +92,7 @@
     <property name="env.AXISCPP_DEPLOY" value="C:\apache2\axis"></property>
     <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
     <property name="ant.version" value="Apache Ant version 1.6.2 compiled on July 16 2004"></property>
-    <property name="java.class.path" value="C:\caBIG\catrip\codebase\projects\test-report\build\jars\test-report-1.0.jar;C:\caBIG\catrip\codebase\projects\test-report\build\jars\test-report-tests-1.0.jar;C:\caBIG\catrip\codebase\projects\test-report\ext\test\lib\junit.jar;C:\Globus4.0.2\lib\addressing-1.0.jar;C:\Globus4.0.2\lib\axis-url.jar;C:\Globus4.0.2\lib\axis.jar;C:\Globus4.0.2\lib\bootstrap.jar;C:\Globus4.0.2\lib\cog-axis.jar;C:\Globus4.0.2\lib\cog-jglobus.jar;C:\Globus4.0.2\lib\cog-tomcat.jar;C:\Globus4.0.2\lib\cog-url.jar;C:\Globus4.0.2\lib\commonj.jar;C:\Globus4.0.2\lib\commons-beanutils.jar;C:\Globus4.0.2\lib\commons-cli-2.0.jar;C:\Globus4.0.2\lib\commons-collections-3.0.jar;C:\Globus4.0.2\lib\commons-digester.jar;C:\Globus4.0.2\lib\commons-discovery.jar;C:\Globus4.0.2\lib\commons-logging.jar;C:\Globus4.0.2\lib\concurrent.jar;C:\Globus4.0.2\lib\cryptix-asn1.jar;C:\Globus4.0.2\lib\cryptix.jar;C:\Globus4.0.2\lib\cryptix32.jar;C:\Globus4.0.2\lib\globus_usage_core.jar;C:\Globus4.0.2\lib\globus_usage_packets_common.jar;C:\Globus4.0.2\lib\globus_wsrf_tools_test.jar;C:\Globus4.0.2\lib\jaxrpc.jar;C:\Globus4.0.2\lib\jce-jdk13-125.jar;C:\Globus4.0.2\lib\jgss.jar;C:\Globus4.0.2\lib\junit.jar;C:\Globus4.0.2\lib\log4j-1.2.8.jar;C:\Globus4.0.2\lib\naming-common.jar;C:\Globus4.0.2\lib\naming-factory.jar;C:\Globus4.0.2\lib\naming-java.jar;C:\Globus4.0.2\lib\naming-resources.jar;C:\Globus4.0.2\lib\opensaml.jar;C:\Globus4.0.2\lib\puretls.jar;C:\Globus4.0.2\lib\resolver.jar;C:\Globus4.0.2\lib\saaj.jar;C:\Globus4.0.2\lib\wsdl4j.jar;C:\Globus4.0.2\lib\wsrf_common.jar;C:\Globus4.0.2\lib\wsrf_core.jar;C:\Globus4.0.2\lib\wsrf_core_registry.jar;C:\Globus4.0.2\lib\wsrf_core_registry_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_samples_authzService.jar;C:\Globus4.0.2\lib\wsrf_core_samples_authzService_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_samples_counter.jar;C:\Globus4.0.2\lib\wsrf_core_samples_counter_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_samples_mgmt.jar;C:\Globus4.0.2\lib\wsrf_core_samples_mgmt_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_stubs.jar;C:\Globus4.0.2\lib\wsrf_provider_jce.jar;C:\Globus4.0.2\lib\wsrf_test.jar;C:\Globus4.0.2\lib\wsrf_test_interop.jar;C:\Globus4.0.2\lib\wsrf_test_interop_stubs.jar;C:\Globus4.0.2\lib\wsrf_test_unit.jar;C:\Globus4.0.2\lib\wsrf_test_unit_stubs.jar;C:\Globus4.0.2\lib\wsrf_tools.jar;C:\Globus4.0.2\lib\wss4j.jar;C:\Globus4.0.2\lib\xalan.jar;C:\Globus4.0.2\lib\xercesImpl.jar;C:\Globus4.0.2\lib\xml-apis.jar;C:\Globus4.0.2\lib\xmlsec.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\cobertura.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\lib\asm-2.2.1.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\lib\jakarta-oro-2.0.8.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\lib\log4j-1.2.9.jar;C:\orabpel\lib\olite40.jar;C:\apache-ant-1.6.2\lib\junit.jar;C:\apache-ant-1.6.2\lib\ant-launcher.jar;C:\apache-ant-1.6.2\lib\ant.jar;C:\apache-ant-1.6.2\lib\ant-junit.jar"></property>
+    <property name="java.class.path" value="C:\caBIG\catrip\codebase\projects\test-report\build\jars\test-report-1.0.jar;C:\caBIG\catrip\codebase\projects\test-report\build\jars\test-report-tests-1.0.jar;C:\jdk1.5.0_03\lib\tools.jar;C:\caBIG\catrip\codebase\projects\test-report\ext\test\lib\junit.jar;C:\Globus4.0.2\lib\addressing-1.0.jar;C:\Globus4.0.2\lib\axis-url.jar;C:\Globus4.0.2\lib\axis.jar;C:\Globus4.0.2\lib\bootstrap.jar;C:\Globus4.0.2\lib\cog-axis.jar;C:\Globus4.0.2\lib\cog-jglobus.jar;C:\Globus4.0.2\lib\cog-tomcat.jar;C:\Globus4.0.2\lib\cog-url.jar;C:\Globus4.0.2\lib\commonj.jar;C:\Globus4.0.2\lib\commons-beanutils.jar;C:\Globus4.0.2\lib\commons-cli-2.0.jar;C:\Globus4.0.2\lib\commons-collections-3.0.jar;C:\Globus4.0.2\lib\commons-digester.jar;C:\Globus4.0.2\lib\commons-discovery.jar;C:\Globus4.0.2\lib\commons-logging.jar;C:\Globus4.0.2\lib\concurrent.jar;C:\Globus4.0.2\lib\cryptix-asn1.jar;C:\Globus4.0.2\lib\cryptix.jar;C:\Globus4.0.2\lib\cryptix32.jar;C:\Globus4.0.2\lib\globus_usage_core.jar;C:\Globus4.0.2\lib\globus_usage_packets_common.jar;C:\Globus4.0.2\lib\globus_wsrf_tools_test.jar;C:\Globus4.0.2\lib\jaxrpc.jar;C:\Globus4.0.2\lib\jce-jdk13-125.jar;C:\Globus4.0.2\lib\jgss.jar;C:\Globus4.0.2\lib\junit.jar;C:\Globus4.0.2\lib\log4j-1.2.8.jar;C:\Globus4.0.2\lib\naming-common.jar;C:\Globus4.0.2\lib\naming-factory.jar;C:\Globus4.0.2\lib\naming-java.jar;C:\Globus4.0.2\lib\naming-resources.jar;C:\Globus4.0.2\lib\opensaml.jar;C:\Globus4.0.2\lib\puretls.jar;C:\Globus4.0.2\lib\resolver.jar;C:\Globus4.0.2\lib\saaj.jar;C:\Globus4.0.2\lib\wsdl4j.jar;C:\Globus4.0.2\lib\wsrf_common.jar;C:\Globus4.0.2\lib\wsrf_core.jar;C:\Globus4.0.2\lib\wsrf_core_registry.jar;C:\Globus4.0.2\lib\wsrf_core_registry_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_samples_authzService.jar;C:\Globus4.0.2\lib\wsrf_core_samples_authzService_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_samples_counter.jar;C:\Globus4.0.2\lib\wsrf_core_samples_counter_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_samples_mgmt.jar;C:\Globus4.0.2\lib\wsrf_core_samples_mgmt_stubs.jar;C:\Globus4.0.2\lib\wsrf_core_stubs.jar;C:\Globus4.0.2\lib\wsrf_provider_jce.jar;C:\Globus4.0.2\lib\wsrf_test.jar;C:\Globus4.0.2\lib\wsrf_test_interop.jar;C:\Globus4.0.2\lib\wsrf_test_interop_stubs.jar;C:\Globus4.0.2\lib\wsrf_test_unit.jar;C:\Globus4.0.2\lib\wsrf_test_unit_stubs.jar;C:\Globus4.0.2\lib\wsrf_tools.jar;C:\Globus4.0.2\lib\wss4j.jar;C:\Globus4.0.2\lib\xalan.jar;C:\Globus4.0.2\lib\xercesImpl.jar;C:\Globus4.0.2\lib\xml-apis.jar;C:\Globus4.0.2\lib\xmlsec.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\cobertura.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\lib\asm-2.2.1.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\lib\jakarta-oro-2.0.8.jar;C:\caBIG\catrip\codebase\share\cobertura-1.8\lib\log4j-1.2.9.jar;C:\orabpel\lib\olite40.jar;C:\apache-ant-1.6.2\lib\junit.jar;C:\apache-ant-1.6.2\lib\ant-launcher.jar;C:\apache-ant-1.6.2\lib\ant.jar;C:\apache-ant-1.6.2\lib\ant-junit.jar"></property>
     <property name="project.version" value="1.0"></property>
     <property name="project.name" value="test-report"></property>
     <property name="env.ANT_OPTS" value="-Xmx1024m"></property>
@@ -138,16 +138,20 @@
     <property name="env.PROCESSOR_LEVEL" value="6"></property>
     <property name="junit.results.dir" value="C:\caBIG\catrip\codebase\projects\test-report\test\logs/junit"></property>
   </properties>
-  <testcase classname="edu.duke.cabig.catrip.test.report.JUnitDocletTest" name="testDoclet" time="0.02">
-    <error message="com/sun/javadoc/RootDoc" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: com/sun/javadoc/RootDoc
-	at edu.duke.cabig.catrip.test.report.javadoc.Main.execute(Main.java:40)
-	at edu.duke.cabig.catrip.test.report.JUnitDoclet.addDocs(JUnitDoclet.java:55)
-	at edu.duke.cabig.catrip.test.report.JUnitDocletTest.testDoclet(JUnitDocletTest.java:40)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-</error>
-  </testcase>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <testcase classname="edu.duke.cabig.catrip.test.report.JUnitDocletTest" name="testDoclet" time="2.727"></testcase>
+  <system-out><![CDATA[Loading source files for package edu.duke.cabig.catrip.test.report.report...
+Loading source files for package edu.duke.cabig.catrip.test.report.javadoc...
+Loading source files for package edu.duke.cabig.catrip.test.report...
+Loading source files for package edu.duke.cabig.catrip.test.report.data...
+Loading source files for package edu.duke.cabig.catrip.test.report.ant...
+Constructing Javadoc information...
+2 warnings
+Loading source files for package edu.duke.cabig.catrip.test.report...
+Constructing Javadoc information...
+1 warning
+]]></system-out>
+  <system-err><![CDATA[javadoc: warning - Multiple sources of package comments found for package "org"
+javadoc: warning - Multiple sources of package comments found for package "org.apache"
+javadoc: warning - Multiple sources of package comments found for package "org"
+]]></system-err>
 </testsuite>
