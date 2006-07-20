@@ -26,7 +26,6 @@ public class JUnitDocletTest
 	
 	/**
 	 * This test case tests the doclet functionality of adding class docs and method docs to test results.
-	 * @testType unit
 	 * @throws IOException
 	 */
 	public void testDoclet() 
