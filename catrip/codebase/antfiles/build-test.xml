@@ -47,13 +47,6 @@
 	<target name="test-system" depends="prepare, test-prepare" description="Test all the system test projects.">
 		<mkdir dir="${junit.results.dir}"/>
 		<mkdir dir="${testcoverage.dir}"/>
-		<!-- Clean out old logs first -->
-		<delete>
-			<fileset dir="${junit.results.dir}">
-				<include name="*" />
-			</fileset>
-		</delete>
-
 
 		<for list="${system.testable.projects.list}" parallel="true" param="project.name" trim="true">
 			<sequential>
