@@ -16,6 +16,7 @@ public class TestSuite
 	
 	public Properties props = new Properties();
 	public ArrayList<TestCase> testCases = new ArrayList<TestCase>();
+	public ArrayList<TestStep> testSteps = new ArrayList<TestStep>();
 	
 	public String docText;
 	public Properties docTags = new Properties();
