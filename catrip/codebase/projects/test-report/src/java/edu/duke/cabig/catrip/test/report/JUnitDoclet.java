@@ -17,6 +17,7 @@ import com.sun.javadoc.RootDoc;
 import com.sun.javadoc.Tag;
 
 import edu.duke.cabig.catrip.test.report.data.TestCase;
+import edu.duke.cabig.catrip.test.report.data.TestStep;
 import edu.duke.cabig.catrip.test.report.data.TestSuite;
 import edu.duke.cabig.catrip.test.report.javadoc.Main;
 
@@ -115,25 +116,23 @@ public class JUnitDoclet
     				if (! iCl.name().endsWith("Step") && ! iCl.superclass().qualifiedName().equals("Step")
     				) continue;
     				
-   					TestCase test = new TestCase();
+   					TestStep test = new TestStep();
 					test.className = cl.qualifiedName();
 	        		test.name = iCl.name();
-	        		test.time = 0.0;
 	        		
 					test.docText = iCl.commentText();
 	        		for (Tag tag : iCl.tags()) {
 	        			test.docTags.setProperty(tag.name().substring(1), tag.text());
 	        		}
-	        		suite.testCases.add(test);
+	        		suite.testSteps.add(test);
     			}
-    			suite.tests = suite.testCases.size();
     			
     			Tag[] stepTags = cl.tags("steps");
     			if (stepTags.length > 0) {
     				String[] stepNames = stepTags[0].text().split(",\\s*");
-    				if (stepNames.length == suite.tests) {
+    				if (stepNames.length == suite.testSteps.size()) {
     					try {
-							suite.testCases = getSortedTests(stepNames, suite.testCases);
+							suite.testSteps = getSortedSteps(stepNames, suite.testSteps);
 						} catch (Exception e) {
 							System.out.println("ERROR: " + e.getMessage()); 
 						}
@@ -154,23 +153,23 @@ public class JUnitDoclet
         return true;
     }
 
-	private static ArrayList<TestCase> getSortedTests(String[] testNames, ArrayList<TestCase> testCases) 
+	private static ArrayList<TestStep> getSortedSteps(String[] stepNames, ArrayList<TestStep> testSteps) 
 		throws Exception
 	{
-		ArrayList<TestCase> sortedTestCases = new ArrayList<TestCase>(testCases.size());
+		ArrayList<TestStep> sortedTestSteps = new ArrayList<TestStep>(testSteps.size());
 		
-		for (String testName : testNames) {
-			TestCase foundTest = null;
-			for (TestCase test : testCases) {
-				if (test.name.equals(testName.trim())) {
-					foundTest = test;
+		for (String stepName : stepNames) {
+			TestStep foundStep = null;
+			for (TestStep step : testSteps) {
+				if (step.name.equals(stepName.trim())) {
+					foundStep = step;
 					break;
 				}
 			}
-			if (foundTest == null) throw new Exception("test " + testName + " not found");
-			sortedTestCases.add(foundTest);
+			if (foundStep == null) throw new Exception("test " + stepName + " not found");
+			sortedTestSteps.add(foundStep);
 		}
 		
-		return sortedTestCases;
+		return sortedTestSteps;
 	}
 }

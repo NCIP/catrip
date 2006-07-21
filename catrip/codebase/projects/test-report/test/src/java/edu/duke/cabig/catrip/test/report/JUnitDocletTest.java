@@ -79,11 +79,12 @@ public class JUnitDocletTest
 		);
 		
 		assertEquals("system", suite.docTags.getProperty("testType"));
-		assertEquals(3, suite.tests);
-		assertEquals(3, suite.testCases.size());
-		assertEquals("CreateJUnitDocReportAntFile", suite.testCases.get(0).name);
-		assertEquals("RunJUnitDocReportStep", suite.testCases.get(1).name);
-		assertEquals("CheckJUnitDocReportStep", suite.testCases.get(2).name);
+		assertEquals(0, suite.tests);
+		assertEquals(0, suite.testCases.size());
+		assertEquals(3, suite.testSteps.size());
+		assertEquals("CreateJUnitDocReportAntFile", suite.testSteps.get(0).name);
+		assertEquals("RunJUnitDocReportStep", suite.testSteps.get(1).name);
+		assertEquals("CheckJUnitDocReportStep", suite.testSteps.get(2).name);
 	}
 	
 	/**

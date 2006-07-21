@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Hashtable;
 
 import edu.duke.cabig.catrip.test.report.data.TestCase;
+import edu.duke.cabig.catrip.test.report.data.TestStep;
 import edu.duke.cabig.catrip.test.report.data.TestSuite;
 
 public class JUnitHtmlReport
@@ -164,6 +165,24 @@ public class JUnitHtmlReport
 						out.println("<pre>" +  test.failure.stackTrace + "</pre>");
 					}
 					out.println("</td>");
+					out.println("</table>");
+					out.println("</dt></dl></dl>");
+				}
+				
+				for (int k = 0; k < suite.testSteps.size(); k++) {
+					TestStep step = suite.testSteps.get(k);
+					
+					String testOutline = String.valueOf(j+1) + "." + String.valueOf(k+1+suite.testCases.size());
+					String testeHeader = "h3";
+					if (useTestType) {
+						testOutline = String.valueOf(i+1) + "." + String.valueOf(j+1) + "." + String.valueOf(k+1+suite.testCases.size());
+						testeHeader = "h4";
+					}
+					out.println("<p><a name=\"" + testOutline + "\"><" + testeHeader + ">" + testOutline + ". " + step.name + "</" + testeHeader + "></a></p>");
+
+					out.println("<dl><dl><dt>");
+					out.println("<table border=\"0\">");
+					out.println("<tr><td valign=\"top\"><b>Description:</b></td><td>" + (step.docText == null || step.docText.equals("") ? "NA" : step.docText) + "</td>");
 					out.println("</table>");
 					out.println("</dt></dl></dl>");
 				}
