@@ -41,17 +41,22 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout -->
-	<property name="projects.list" value="test-report, security-password, security-dukeidp" />
+	<property name="projects.list" value="test-report, security-password, security-dukeidp, test-system" />
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
 	<property name="testable.projects.list" value="test-report, security-password, security-dukeidp" />
+	<!-- ======================================================================================= -->
+	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT SYSTEM TESTING                    -->
+	<!-- ======================================================================================= -->
+	<!-- This should be a subset of the projects above -->
+	<property name="system.testable.projects.list" value="test-system" />
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="reportable.projects.list" value="test-report, security-password, security-dukeidp" />
+	<property name="reportable.projects.list" value="test-report, security-password, security-dukeidp, test-system" />
 
 	<!-- =============================================================== -->
 	<!-- Bootstrap the build by setting up the structure and building    -->
@@ -162,6 +167,18 @@
 			<artifact refid="common.test.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/test-report" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- TEST-SYSTEM                                                     -->
+	<!-- =============================================================== -->
+
+	<target name="build-test-system" depends="prepare" description="Builds the test-system project">
+		<resolveDependencies extdir="${projects.dir}/test-system/ext">
+			<artifact refid="common.test.jars" />
+			<artifact refid="cagrid.coretests.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/test-system" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 	<!-- ============================================================== -->
