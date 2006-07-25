@@ -99,6 +99,11 @@ public class JUnitDoclet
 	@SuppressWarnings("deprecation")
 	public static boolean start(RootDoc root) 
 	{
+		Hashtable<String,ClassDoc> classTable = new Hashtable<String,ClassDoc>(root.classes().length);
+		for (ClassDoc cl : root.classes()) {
+			classTable.put(cl.name(), cl);
+		}
+		
         ClassDoc[] classes = root.classes();
         for (ClassDoc cl : root.classes()) {
         	TestSuite suite = suiteTable.get(cl.qualifiedName());
@@ -112,6 +117,9 @@ public class JUnitDoclet
     		boolean isStory = cl.superclassType().qualifiedTypeName().equals("Story");
     		
     		if (isStory) {
+    			Hashtable<String,TestStep> stepTable = new Hashtable<String,TestStep>();
+    			
+    			// add imports
     			for (ClassDoc iCl : cl.importedClasses()) {
     				if (! iCl.name().endsWith("Step") && ! iCl.superclass().qualifiedName().equals("Step")
     				) continue;
@@ -124,20 +132,41 @@ public class JUnitDoclet
 	        		for (Tag tag : iCl.tags()) {
 	        			test.docTags.setProperty(tag.name().substring(1), tag.text());
 	        		}
-	        		suite.testSteps.add(test);
+	        		stepTable.put(iCl.qualifiedName(), test);
     			}
     			
+    			// add tagged steps
     			Tag[] stepTags = cl.tags("steps");
-    			if (stepTags.length > 0) {
-    				String[] stepNames = stepTags[0].text().split(",\\s*");
-    				if (stepNames.length == suite.testSteps.size()) {
-    					try {
-							suite.testSteps = getSortedSteps(stepNames, suite.testSteps);
-						} catch (Exception e) {
-							System.out.println("ERROR: " + e.getMessage()); 
-						}
+    			ArrayList<String> stepNames = new ArrayList<String>();
+    			for (Tag stepTag : stepTags) {
+    				for (String stepName : stepTag.text().split("\\s*,\\s*")) {
+    					ClassDoc iCl = classTable.get(stepName.trim());
+    					if (iCl == null) continue;
+    					
+       					TestStep test = new TestStep();
+    					test.className = cl.qualifiedName();
+    	        		test.name = iCl.name();
+
+    					test.docText = iCl.commentText();
+    	        		for (Tag tag : iCl.tags()) {
+    	        			test.docTags.setProperty(tag.name().substring(1), tag.text());
+    	        		}
+    	        		
+    	        		stepTable.put(iCl.qualifiedName(), test);
+    	        		stepNames.add(stepName);
     				}
     			}
+
+    			// sort stepList
+    			ArrayList<TestStep> stepList = new ArrayList<TestStep>(stepTable.values());
+				if (stepNames.size() == stepList.size()) {
+					try {
+						stepList = getSortedSteps(stepNames.toArray(new String[0]), stepList);
+					} catch (Exception e) {
+						System.out.println("ERROR: " + e.getMessage()); 
+					}
+				}
+				suite.testSteps.addAll(stepList);
     		} else {
 	        	for (MethodDoc m : cl.methods()) {
 	        		TestCase test = testTable.get(cl.qualifiedName() + "." + m.name());
