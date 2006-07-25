@@ -133,7 +133,11 @@ public class JUnitHtmlReport
 				out.println("<dl><dl><dt>");
 				out.println("<table border=\"0\">");
 				out.println("<tr><td valign=\"top\"><b>Description:</b></td><td>" + (suite.docText == null || suite.docText.equals("") ? "NA" : suite.docText) + "</td>");
-				out.println("<tr><td valign=\"top\"><b>Tests:</b></td><td>" +  suite.tests + "</td>");
+				if (suite.testSteps.size() > 0) {
+					out.println("<tr><td valign=\"top\"><b>Steps:</b></td><td>" +  suite.testSteps.size() + "</td>");
+				} else {
+					out.println("<tr><td valign=\"top\"><b>Tests:</b></td><td>" +  suite.tests + "</td>");
+				}
 				out.println("<tr><td valign=\"top\"><b>Failures:</b></td><td>" +  suite.failures + "</td>");
 				out.println("<tr><td valign=\"top\"><b>Errors:</b></td><td>" +  suite.errors + "</td>");
 				out.println("<tr><td valign=\"top\"><b>Time&nbsp;(sec):</b></td><td>" +  suite.time + "</td>");
@@ -142,6 +146,7 @@ public class JUnitHtmlReport
 	
 				for (int k = 0; k < suite.testCases.size(); k++) {
 					TestCase test = suite.testCases.get(k);
+					if (test.name.equals("Story")) continue;
 					
 					String status = "Success";
 					if (test.failure != null && test.failure.isError) status = "Error";
