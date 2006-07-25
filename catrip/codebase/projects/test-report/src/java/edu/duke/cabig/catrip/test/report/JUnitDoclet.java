@@ -114,15 +114,17 @@ public class JUnitDoclet
     			suite.docTags.setProperty(tag.name().substring(1), tag.text());
     		}
     		
-    		boolean isStory = cl.superclassType().qualifiedTypeName().equals("Story");
+    		boolean isStory = isStory(cl); 
     		
     		if (isStory) {
     			Hashtable<String,TestStep> stepTable = new Hashtable<String,TestStep>();
     			
     			// add imports
     			for (ClassDoc iCl : cl.importedClasses()) {
-    				if (! iCl.name().endsWith("Step") && ! iCl.superclass().qualifiedName().equals("Step")
-    				) continue;
+    				if (!(
+    					iCl.name().endsWith("Step") || 
+    					(iCl.superclass() != null && iCl.superclass().name().equals("Step"))
+    				)) { continue; }
     				
    					TestStep test = new TestStep();
 					test.className = cl.qualifiedName();
@@ -181,6 +183,15 @@ public class JUnitDoclet
         }
         return true;
     }
+
+	private static boolean isStory(ClassDoc cl)
+	{
+		do  {
+			if (cl.superclassType() == null) break;
+			if (cl.superclassType().qualifiedTypeName().equals("Story")) return true;
+		} while ((cl = cl.superclass()) != null);
+		return false;
+	}
 
 	private static ArrayList<TestStep> getSortedSteps(String[] stepNames, ArrayList<TestStep> testSteps) 
 		throws Exception
