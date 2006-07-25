@@ -30,17 +30,23 @@ public class XmlUtil {
          //    XPath xpath = XPath.newInstance(xpathStr);
              
          CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/client/client-config.wsdd")));
-         System.out.println("   RESULTS longName |  PreferredName ");
+
+         if (results.getObjectResult() != null ) {   
+            System.out.println("  RESULTS SIZE - " + results.getObjectResult().length);
+         }
+         System.out.println("  longName |  PreferredName | RegistrationStatus");
          System.out.println("---------------------------------------------------------------------------");
          while (iter.hasNext()) {
          
                DataElement de = (DataElement) iter.next();
-               System.out.println(de.getLongName() + " | " + de.getPreferredName());
+               System.out.println(de.getLongName() + " | " + de.getPreferredName() + " | " + de.getRegistrationStatus());
                //resultList.add(de.getLongName());// need to get this longname using right join and reflection
          } 
+              
          } catch (Exception e ) {
              e.printStackTrace();
          }
+         
         //return resultList;
     }
     public static void serializeQry(CQLQuery Qry){

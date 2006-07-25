@@ -2,20 +2,27 @@ package gov.nih.nci.catrip.fqe.engine;
 
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.catrip.fqe.exception.QueryExecutionException;
 import gov.nih.nci.catrip.fqe.service.ServiceClientFactory;
 import gov.nih.nci.catrip.fqe.utils.XmlUtil;
 
 import java.lang.reflect.Method;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 
 class FederatedQueryExecutor {
+    
+    private static Log log = LogFactory.getLog(FederatedQueryExecutor.class);
+    
     public FederatedQueryExecutor() {
     }
 
     
-    CQLQueryResults executeCQLQuery(CQLQuery cqlQuery,String serviceURL) {
+    CQLQueryResults executeCQLQuery(CQLQuery cqlQuery,String serviceURL) throws QueryExecutionException {
         
-        System.out.println(" -------- CQL Query for "+ serviceURL +"----------");
+         System.out.println(" Executing CQL Query on "+ serviceURL +"----------");
          XmlUtil.serializeQry(cqlQuery);
         
         CQLQueryResults results = null;
@@ -38,9 +45,9 @@ class FederatedQueryExecutor {
             results = (CQLQueryResults)queryMethod.invoke(client,methodArgs);
      
         } catch (Exception e) {
-            e.printStackTrace();
+            log.fatal(e); 
+            throw new QueryExecutionException("Error in executiong CQL for service URL : " + serviceURL, e);
         }
         return results;
     }
-
 }
