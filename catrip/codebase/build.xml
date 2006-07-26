@@ -43,7 +43,7 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout -->
-	<property name="projects.list" value="test-report, security-password, security-dukeidp, test-system" />
+	<property name="projects.list" value="ctom, gui, queryengine, test-report, security-password, security-dukeidp, test-system" />
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
 	<!-- ================================================================================ -->
@@ -58,7 +58,7 @@
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="reportable.projects.list" value="test-report, security-password, security-dukeidp, test-system" />
+	<property name="reportable.projects.list" value="ctom, gui, queryengine, test-report, security-password, security-dukeidp, test-system" />
 
 	<!-- =============================================================== -->
 	<!-- Bootstrap the build by setting up the structure and building    -->
@@ -94,6 +94,18 @@
 				<pathelement location="${share.dir}/ant-contrib/ant-contrib.jar" />
 			</classpath>
 		</taskdef>
+	</target>
+
+
+	<!-- =============================================================== -->
+	<!-- CTOM                                                            -->
+	<!-- =============================================================== -->
+
+	<target name="build-ctom" depends="prepare" description="Builds the ctom project">
+		<resolveDependencies extdir="${projects.dir}/ctom/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/ctom" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 
