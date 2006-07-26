@@ -21,6 +21,12 @@
 			</fileset>
 		</artifact>
 
+		<artifact track="main" type="jars" id="xmlbeans.jars">
+			<fileset dir="${xmlbeans.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+		
 		<!-- ============ -->
 		<!-- cagrid share -->
 		<!-- ============ -->
