@@ -18,7 +18,9 @@
 	<property name="test.dir" location="${basedir}/test" />
 	<property name="junit.dir" location="${share.dir}/junit" />
 	<property name="cagrid.dir" location="${share.dir}/cagrid" />
+	<property name="xmlbeans.dir" location="${share.dir}/xmlbeans"/>
 	<property name="junit.results.dir" location="${test.dir}/logs"/>
+	
 
 	<!-- import testing properties -->
 	<property file="${antfiles.dir}/test.properties" />
@@ -128,6 +130,7 @@
 	<target name="build-queryengine" depends="prepare" description="Builds the queryengine project">
 		<resolveDependencies extdir="${projects.dir}/queryengine/ext">
 			<artifact refid="common.test.jars" />
+			<artifact refid="xmlbeans.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
