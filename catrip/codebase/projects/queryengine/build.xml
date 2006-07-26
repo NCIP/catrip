@@ -143,6 +143,23 @@
 			</manifest>
 		</jar>
 	</target>
+	<!-- ============================================================== -->
+	<!-- JUNIT                                     -->
+	<!-- ============================================================== -->	
+	<target name="junit" depends="compile-tests" description="Execute Unit Tests">
+	    <junit printsummary="yes" haltonfailure="yes">
+		  <classpath refid="test.classpath"/>
+		  
+		  <formatter type="plain" />
+	
+		  <batchtest fork="yes" todir="${test.logs.dir}">
+		   <fileset dir="${test.src.dir}">
+		      <include name="**/*Test.java"/>
+		    </fileset>
+		   </batchtest>
+	    </junit>
+	
+	</target>
 
 	<!-- ============================================================== -->
 	<!-- Creates the jar files                                          -->
@@ -160,5 +177,14 @@
 	<!-- Builds from scratch                                                -->
 	<!-- ============================================================== -->
 	<target name="all" description="Builds the entire application" depends="jar,jar-tests" />
+	
+	
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="./ext/lib/xbean.jar"/>
+	
+	
+	<target name="xbgen">
+		  <xmlbean schema="./schema1" classgendir="./gen1" classpath="${build.classpath}" failonerror="true"/>
+	</target>
+  
 </project>
 
