@@ -1,18 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
-<hibernate-mapping package="edu.pitt.cabig.cae.domain.general.impl">
-  <!-- copied from cae -->
-  <class name="AnnotationSetImpl" table="ANNOTATION_SET" mutable="true" lazy="false">
-    <cache usage="read-write" />
-    <id name="id" type="java.lang.Long" column="ID">
-      <generator class="native" />
-    </id>
-    <many-to-one name="annotationEvent" class="edu.pitt.cabig.cae.domain.general.impl.AnnotationEventParametersImpl" column="ANNOTATION_EVENT_PARM_ID" lazy="false" />
-	 <property name="annotationSetTypeClassName" column="type"/>
-	 <set name="annotations" lazy ="false" inverse="true" cascade="save-update">
-		 <key column="ANNOTATION_SET_ID"/>
-		 <one-to-many class="edu.pitt.cabig.cae.domain.general.impl.AnnotationImpl"/>
-	 </set>
-  </class>
+<hibernate-mapping>
+    <class name="edu.pitt.cabig.cae.domain.general.impl.AnnotationSetImpl" table="annotation_set">
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.Long"
+        >
+            <generator class="assigned">
+             </generator>
+        </id>
+
+<!--       	<joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.CancerTNMFindingImpl" table="breast_Cancer_TNMF_Finding">
+       		<key column="id"/>
+      		<property name="category" column="category" type="string"/>
+        	<property name="primaryTumorFinding" column="primary_Tumor_Finding" type="string"/>
+        	<property name="regionalLymphNodesFinding" column="regional_Nodes_Finding" type="string"/>
+        	<property name="distantMetastasisFinding" column="distant_Met_Finding" type="string"/>
+		</joined-subclass>
+		-->
+   	<joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.ThreeDimensionalSizeImpl" table="Three_Dimensional_Sizes">
+       		<key column="id"/>
+        	<property name="greatestDimension" type="java.lang.Integer" update="true" insert="true"
+            column="GREATEST_DIMENSION" />
+
+        	<property name="additionalDimensionY" type="java.lang.Integer" update="true" insert="true"
+            column="ADDITIONAL_DIMENSION_Y" />
+
+        	<property name="additionalDimensionZ" type="java.lang.Integer" update="true" insert="true"
+            column="ADDITIONAL_DIMENSION_Z" />
+
+        	<property name="MVR" type="java.lang.String" update="true" insert="true"
+            column="MVR" />
+           </joined-subclass>
+       	<joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.AdditionalFindingsImpl" table="Additional_Findings">
+       		<key column="id"/>
+      		<property name="otherFindings" column="other_Findings" type="string"/>
+		</joined-subclass>
+       	<joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.SurgicalMarginImpl" table="breast_Surgical_Margins">
+       		<key column="id"/>
+         	<property name="otherSpatialRelationshipToPatient" type="java.lang.String" update="true"  insert="true"
+            	column="OTHER_SPA_REL_TO_PATIENT" />
+        	<property name="MVR" type="java.lang.String" update="true" insert="true"
+            	column="MVR" />
+        	<property name="spatialRelationshipToPatient" type="java.lang.String" update="true"
+            	insert="true" column="SPATIAL_REL_TO_PATIENT" />
+
+		</joined-subclass> 
+      	<joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.NeoplasmHistopathologicTypeImpl" table="breast_neo_hstopthlgc_types">
+       		<key column="id"/>
+         	<property name="name" type="java.lang.String" update="true"  insert="true"
+            	column="name" />
+        	<property name="nameMVR" type="java.lang.String" update="true" insert="true"
+            	column="name_MVR" />
+        	<property name="otherName" type="java.lang.String" update="true"
+            	insert="true" column="other_name" />
+
+		</joined-subclass> 
+     </class>
+
 </hibernate-mapping>

@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
-<hibernate-mapping package="edu.pitt.cabig.cae.domain.general.impl">
-  <!-- copied from cae -->
-  <class name="AnnotatableEntityImpl" table="ANNOTATABLE_ENTITY" mutable="true">
-    <cache usage="read-write" />
-    <id name="id" type="java.lang.Long" column="ID">
-      <generator class="native" />
-    </id>
-    <set name="annotationEventParametersCollection" lazy="false" cascade="save-update" inverse="true">
-      <cache usage="read-write" />
-      <key column="ANNOTATABLE_ENTITY_ID" />
-      <one-to-many class="edu.pitt.cabig.cae.domain.general.impl.AnnotationEventParametersImpl" />
-    </set>
-    <joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.AccessionImpl" table="ACCESSION">
-      <key column="ANNOTATABLE_ENTITY_ID" />
-      <property name="diseaseType" type="java.lang.String" column="DISEASE_TYPE" />
-      <set name="specimenCollection" lazy="false" cascade="save-update" inverse="true">
-        <cache usage="read-write" />
-        <key column="ACCESSION_ID" />
-        <one-to-many class="edu.pitt.cabig.cae.domain.general.impl.SpecimenImpl" />
-      </set>
-		<many-to-one name="participant" class="edu.pitt.cabig.cae.domain.general.impl.ParticipantImpl" column="PARTICIPANT_ID" lazy="false" />
-    </joined-subclass>
-    <joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.ParticipantImpl" table="PARTICIPANT">
-      <key column="ANNOTATABLE_ENTITY_ID" />
-      <set name="accessionCollection" lazy="false" cascade="save-update" inverse="true">
-        <cache usage="read-write" />
-        <key column="PARTICIPANT_ID" />
-        <one-to-many class="edu.pitt.cabig.cae.domain.general.impl.AccessionImpl" />
-      </set>
-    </joined-subclass>
-    <joined-subclass name="edu.pitt.cabig.cae.domain.general.impl.SpecimenImpl" table="SPECIMEN">
-      <key column="ANNOTATABLE_ENTITY_ID" />
-      <set name="specimenCollection" lazy="false" cascade="save-update" inverse="true">
-        <cache usage="read-write" />
-        <key column="PARENT_SPECIMEN_ID" />
-        <one-to-many class="edu.pitt.cabig.cae.domain.general.impl.SpecimenImpl" />
-      </set>
-      <many-to-one name="accession" class="edu.pitt.cabig.cae.domain.general.impl.AccessionImpl" column="ACCESSION_ID" lazy="false" />
-      <many-to-one name="specimen" class="edu.pitt.cabig.cae.domain.general.impl.SpecimenImpl" column="PARENT_SPECIMEN_ID" lazy="false" />
-    </joined-subclass>
-  </class>
+<hibernate-mapping auto-import="false">
+    <class name="edu.pitt.cabig.cae.domain.general.impl.AnnotatableEntityImpl" table="annotatable_entity">
+ 		<id name="id" type="long" column="id">
+        	<generator class="sequence">
+                <param name="sequence">hibernate_sequence</param>
+        	</generator>
+		</id>
+
+       <!-- <set role="annotationEventParametersCollection"> 
+        </set>-->
+    
+
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.impl.ParticipantImpl" table="Participant">
+       		<key column="annotatable_entity_id"/>
+       		<property name="lastName" column="last_Name" type="string"/>
+       		<property name="firstName" column="first_Name" type="string"/>
+       		<property name="birthDate" column="birth_Date" type="string"/>
+       		<property name="uniquePatientIdentifier" column="Patient_Identifier" type="string"/>
+       		<property name="medicalRecordNumber" column="medical_Record_Number" type="string"/>
+       		<property name="gender" column="gender" type="string"/>
+       		<property name="race" column="race" type="string"/>
+       		<property name="ethnicity" column="ethnicity" type="string"/>
+     		 <set name="accessionCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="participant_id" not-null="true"/>
+      			<one-to-many class="edu.duke.catrip.cae.domain.general.impl.AccessionImpl" />
+    		</set>
+      
+ 		</joined-subclass>
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.impl.AccessionImpl" table="Accession">
+       		<key column="annotatable_entity_id"/>
+     		<set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="accession_id" not-null="true"/>
+      			<one-to-many class="edu.duke.catrip.cae.domain.general.impl.SpecimenImpl" />
+    		</set>
+       		<property name="diseaseType" column="disease_Type" type="string"/>
+       		<property name="accessionDate" column="accession_Date" type="date"/>
+       		<property name="surgicalPathologyNumber" column="surgical_Pathology_Number" type="string"/>
+       		
+ 		</joined-subclass>
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.impl.SpecimenImpl" table="Specimen">
+       		<key column="annotatable_entity_id"/>
+       		<property name="identifier" column="identifier" type="string"/>
+       		<property name="surgicalLabel" column="surgical_Label" type="string"/>
+     	<!--	 <set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="parent_specimen_id" not-null="true"/>
+      			<one-to-many class="edu.duke.catrip.cae.domain.general.impl.SpecimenImpl" />
+    		</set>
+       -->
+       		
+ 		</joined-subclass>
+	</class>
 </hibernate-mapping>
-
