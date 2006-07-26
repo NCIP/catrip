@@ -178,11 +178,8 @@
 	<!-- ============================================================== -->
 	<target name="all" description="Builds the entire application" depends="jar,jar-tests" />
 	
-	
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="./ext/lib/xbean.jar"/>
-	
-	
 	<target name="xbgen">
+		<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="./ext/lib/xbean.jar"/>
 		  <xmlbean schema="./schema1" classgendir="./gen1" classpath="${build.classpath}" failonerror="true"/>
 	</target>
   
