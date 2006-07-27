@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Object name="edu.pitt.cabig.catissue.Participant">
-	<Attribute name="pi" value="caTissue987002"/>
-	<Attribute name="firstName" value="John"/>
-	<Attribute name="lastName" value="Doe"/>
-</Object>
