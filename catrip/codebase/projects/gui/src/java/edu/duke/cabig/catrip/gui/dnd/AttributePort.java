@@ -23,8 +23,18 @@ public class AttributePort extends GraphPort implements IDirectionable {
     /** Creates a new instance of AttributePort */
 
     private int direction;
+    private String attributeName;
     
-    public AttributePort (String displayName, int direction) {
+    public AttributePort (String displayName, String _attributeName,  int direction) {
+        this.direction = direction;
+        setSource (true);
+        setTarget (true);
+        this.setDisplayName(displayName);
+        this.setAttributeName(_attributeName);
+        
+    }
+    
+    public AttributePort (String displayName, int direction) { 
         this.direction = direction;
         setSource (true);
         setTarget (true);
@@ -39,5 +49,13 @@ public class AttributePort extends GraphPort implements IDirectionable {
 
     public int getDirection () {
         return direction;
+    }
+
+    public String getAttributeName() {
+        return attributeName;
+    }
+
+    public void setAttributeName(String _attributeName) {
+        this.attributeName = _attributeName;
     }
 }

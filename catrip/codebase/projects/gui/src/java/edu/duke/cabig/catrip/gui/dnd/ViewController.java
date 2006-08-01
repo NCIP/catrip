@@ -14,6 +14,7 @@ package edu.duke.cabig.catrip.gui.dnd;
 
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.panels.*;
+import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import org.netbeans.graph.api.control.builtin.DefaultViewController;
 import org.netbeans.graph.api.model.builtin.GraphNode;
 import org.netbeans.graph.api.model.IGraphNode;
@@ -36,6 +37,7 @@ public class ViewController extends DefaultViewController implements ActionListe
     private JMenuItem miViewProp;
     private JMenuItem miShowClass;
     
+    private JMenuItem miSetTarget;
     
     
     private JPopupMenu popup2;
@@ -63,6 +65,10 @@ public class ViewController extends DefaultViewController implements ActionListe
         miShowClass.addActionListener(this);
         popup.add(miShowClass);
         
+        
+        miSetTarget = new JMenuItem("Set object as Target Object.");
+        miSetTarget.addActionListener(this);
+        popup.add(miSetTarget);
         
         
         popup2 = new JPopupMenu();
@@ -103,7 +109,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                 Object selectedComponent = getHelper().getModelComponent(selectedComponents[i]);
                 if (selectedComponent instanceof IGraphNode) {
                     nodes.add(selectedComponent);
-                    // sanjeev
+                    // sanjeev  // DONE - delete all links that leads in or out from any ports of the node
                     GraphNode gn = (GraphNode) selectedComponent;
                     GraphPort[] gp = (GraphPort[]) gn.getPorts();
                     
@@ -123,7 +129,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                     }
                     // sanjeev
                     
-                    // TODO - delete all links that leads in or out from any ports of the node
+                    
                 } else if (selectedComponent instanceof IGraphLink)
                     links.add(selectedComponent);
                 }
@@ -162,8 +168,21 @@ public class ViewController extends DefaultViewController implements ActionListe
                 }
             });
         }
-        // Remove later : sanjeev dummy stitching code...
-        
+        // @todo : Remove later, sanjeev dummy stitching code...
+        else if(e.getSource() == miSetTarget){
+            // set the current node class bean as target object..
+            final Object[] selectedComponents = getHelper().getSelectedComponents();
+            if (selectedComponents != null && selectedComponents.length == 1){
+                Object selectedComponent = getHelper().getModelComponent(selectedComponents[0]);
+                if (selectedComponent instanceof ClassNode) {
+                    ClassNode cNode = (ClassNode)selectedComponent;
+//                    System.out.println("xxxxx TargetObject is:"+cNode.getAssociatedClassObject().getFullyQualifiedName());
+                    DCQLRegistry.setTargetNode(cNode);  
+                    
+                      // TODO -  reverse the foreign associations and other objects for dcql.
+                }
+            }
+        }
         
         
         
@@ -175,7 +194,7 @@ public class ViewController extends DefaultViewController implements ActionListe
     private void popupPropertiesPanel(ClassBean name){
         // put this code in a jpanel class.. doesn;t look good here..
         // can have a method like   test.popupPropertiesPanel(nodeClass)
-        test.showNodePrperties(name); 
+        test.showNodePrperties(name);
         final JFrame jf = new JFrame("Edit Properties");
         
         JPanel jPanel = new javax.swing.JPanel();

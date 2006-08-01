@@ -16,6 +16,7 @@ package edu.duke.cabig.catrip.gui.common;
 public class ServiceMetaDataBean {
     
     private String serviceName;
+    private String serviceUrl;
     private String description;
     private String version;
     private String pointOfContact; // concatnate name:email:role
@@ -86,6 +87,14 @@ public class ServiceMetaDataBean {
 
     public void setDomainModelEndPointRef(Object domainModelEndPointRef) {
         this.domainModelEndPointRef = domainModelEndPointRef;
+    }
+
+    public String getServiceUrl() {
+        return serviceUrl;
+    }
+
+    public void setServiceUrl(String serviceUrl) {
+        this.serviceUrl = serviceUrl;
     }
     
 }

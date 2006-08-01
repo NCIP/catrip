@@ -3,8 +3,10 @@ package edu.duke.cabig.catrip.gui.dnd;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel;
+import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import org.netbeans.graph.api.IGraphEventHandler;
 import org.netbeans.graph.api.model.GraphEvent;
 import org.netbeans.graph.api.model.IGraphLink;
@@ -49,13 +51,68 @@ public class EventHandler extends IGraphEventHandler {
     }
     
     public void createLink(IGraphPort sourcePort, IGraphPort targetPort) {
-        GraphLink link = new GraphLink();
-//        link.setDisplayName("some name linked...");
+//        GraphLink link = new GraphLink();
+//        link.setID(test.createID("link"));
+//        link.setSourcePort((GraphPort) sourcePort);
+//        link.setTargetPort((GraphPort) targetPort);
+//        test.getDocument().addComponents(GraphEvent.createSingle(link));
         
-        link.setID(test.createID("link"));
-        link.setSourcePort((GraphPort) sourcePort);
-        link.setTargetPort((GraphPort) targetPort);
-        test.getDocument().addComponents(GraphEvent.createSingle(link));
+        // sanjeev
+        
+        int sourceDirection = ((GraphPort) sourcePort).getDirection();
+        int targetDirection = ((GraphPort) targetPort).getDirection();
+        
+        
+        // if it is a CDE link... create a foreign association...
+        if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT)){
+            System.out.println("XXXX creating a foreign association..");
+            
+            System.out.println("XXXX  Attribute name is :"+ ( (AttributePort) sourcePort).getAttributeName()  );
+            System.out.println("XXXX  class is :"+ ((ClassNode)sourcePort.getNode()).getAssociatedClassObject().getFullyQualifiedName()  );
+            // TODO - add the foreign association here..
+            ForeignAssociationBean fBean = new ForeignAssociationBean();
+            ClassBean leftObject = ((ClassNode)sourcePort.getNode()).getAssociatedClassObject();
+            fBean.setLeftObj(leftObject);
+            fBean.setRighObj(((ClassNode)targetPort.getNode()).getAssociatedClassObject()); 
+            fBean.setLeftProperty(( (AttributePort) sourcePort).getAttributeName());
+            fBean.setRightProperty(( (AttributePort) targetPort).getAttributeName());
+            // add a foreign association with the node..
+            leftObject.setHasForeignAssociations(true);
+            leftObject.addForeignAssociation(fBean);
+            
+            
+            // now create the visual link..
+            GraphLink link = new GraphLink();
+            link.setID(test.createID("link"));
+            link.setSourcePort((GraphPort) sourcePort);
+            link.setTargetPort((GraphPort) targetPort);
+            test.getDocument().addComponents(GraphEvent.createSingle(link));
+        }
+        
+        // if it is a normal link.. create a normal association...
+        if ( ((sourceDirection == IDirectionable.RIGHT) || (sourceDirection == IDirectionable.LEFT)) && ((targetDirection == IDirectionable.RIGHT) || (targetDirection == IDirectionable.LEFT))  ){
+            // this is a class assoctaion link...
+            System.out.println("XXXX creating a local/class association..");
+            
+            ClassNode leftNode = (ClassNode)sourcePort.getNode();
+            ClassNode rightNode = (ClassNode)targetPort.getNode();
+            ClassBean leftObject = leftNode.getAssociatedClassObject();
+            leftObject.setHasAssociations(true);
+            leftObject.addAssociation(rightNode.getAssociatedClassObject());
+//            leftObject.
+            
+            
+            // now create the visual link..
+            GraphLink link = new GraphLink();
+            link.setID(test.createID("link"));
+            link.setSourcePort((GraphPort) sourcePort);
+            link.setTargetPort((GraphPort) targetPort);
+            test.getDocument().addComponents(GraphEvent.createSingle(link));
+        }
+        
+        // sanjeev
+        
+        
     }
     
     public void componentsSelected(GraphEvent event) {
@@ -66,8 +123,8 @@ public class EventHandler extends IGraphEventHandler {
         if ((selectedComponents != null) && selectedComponents.length == 1){
             Object selectedComponent = selectedComponents[0];
             if (selectedComponent instanceof IGraphNode) {
-                ClassBean node = ((ClassNode)selectedComponent).getAssociatedClassObject(); //getDisplayName(); 
-                test.showNodePrperties(node); 
+                ClassBean node = ((ClassNode)selectedComponent).getAssociatedClassObject(); //getDisplayName();
+                test.showNodePrperties(node);
             }
         }
         
@@ -99,16 +156,23 @@ public class EventHandler extends IGraphEventHandler {
                 node = (ClassNode) ClassNode.class.newInstance(); // set the information of the GraphNode type with ClassBean itself.
                 node.setID(test.createID(cBean.getId()));
                 node.setDisplayName(cBean.getClassName());
-                node.setIcon( Utilities.loadImage (cBean.getIcon())); 
+                node.setIcon( Utilities.loadImage(cBean.getIcon()));
                 addAttrubutePorts(node, cBean);
                 node.setAssociatedClassObject(cBean);// attach a classBean instance with this Graph node.
-                
+                String toolTipText = "<html>Service Name: <b>"+cBean.getServiceName()+"</b><br>Package Name: <b>"+cBean.getPackageName()+"</b></html>";
+                node.setTooltipText(toolTipText);
             } catch (InstantiationException e) {
                 e.printStackTrace(); // TODO
             } catch (IllegalAccessException e) {
                 e.printStackTrace(); // TODO
             }
             test.getDocument().addComponents(GraphEvent.createSingle(node));
+            
+            // set the first object as target object..
+            if (test.getLastID() == 1){
+                DCQLRegistry.setTargetNode(node);
+            }
+
             return;
         }
         
@@ -130,9 +194,9 @@ public class EventHandler extends IGraphEventHandler {
         ArrayList attributes = classBean.getAttributes();
         for (int k = 0; k < attributes.size(); k++) {
             AttributeBean aBean = (AttributeBean)attributes.get(k);
-            node.addPort( new AttributePort(aBean.getCDEName(),IDirectionable.BOTTOM_LEFT));
+            node.addPort( new AttributePort(aBean.getCDEName(),aBean.getAttributeName(),IDirectionable.BOTTOM_LEFT));
         }
-
+        
     }
     // sanjeev
     

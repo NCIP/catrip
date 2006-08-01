@@ -29,6 +29,7 @@ import javax.swing.*;
 public class ClassNode extends GenericNode { 
     
     private ClassBean associatedClassObject;
+    private boolean isTargetNode=false;
     
     /** Creates a new instance of ClassNode */
     public ClassNode() {
@@ -62,6 +63,14 @@ public class ClassNode extends GenericNode {
 
     public void setAssociatedClassObject(ClassBean associatedClassObject) {
         this.associatedClassObject = associatedClassObject;
+    }
+
+    public boolean isTargetNode() {
+        return isTargetNode;
+    }
+
+    public void setAsTargetNode() {
+        this.isTargetNode = true;
     }
 
 }

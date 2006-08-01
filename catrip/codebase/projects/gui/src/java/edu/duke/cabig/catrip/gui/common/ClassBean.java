@@ -29,8 +29,22 @@ public class ClassBean {
     // set the icon based on the service name.. have a pre selected icons.. and a default icon too
     private String icon = "edu/duke/cabig/catrip/gui/dnd/resources/caCore.png";
     private String serviceName;
+    private String serviceUrl;
     private String domainModelId;
     private String CDEName; // this
+    
+    // ----- DCQL helper attributes ---- //
+    private int numNotNullAttributes = 0;
+    private ArrayList<AttributeBean> notNullAttributes;// = new ArrayList(50);
+    
+    private boolean hasAssociations = false;
+//    private int numAssociations = 0;
+    private ArrayList<ClassBean> associations = new ArrayList(20);
+    
+    private ArrayList<ForeignAssociationBean> foreignAssociations = new ArrayList(10);
+    private boolean hasForeignAssociations = false;
+    // ----- DCQL helper attributes ---- //
+    
     
     /** Creates a new instance of ClassBean */
     public ClassBean() {
@@ -143,7 +157,7 @@ public class ClassBean {
         ClassBean cBean = new ClassBean();
         cBean.setAssociatedClasses(getAssociatedClasses()); // associated class will be same for all clones.
         
-        // clone attributes also.. 
+        // clone attributes also..
         // this is necessary as different graph nodes of the same class may have different attribute value
         ArrayList<AttributeBean> attributeClones = new ArrayList(50);
         ArrayList attributes = getAttributes();
@@ -151,7 +165,7 @@ public class ClassBean {
             AttributeBean aBean = ((AttributeBean)attributes.get(k)).clone();
             attributeClones.add(aBean);
         }
-        cBean.setAttributes(attributeClones); 
+        cBean.setAttributes(attributeClones);
         
         cBean.setCDEName(getCDEName());
         cBean.setClassName(getClassName());
@@ -161,9 +175,84 @@ public class ClassBean {
         cBean.setId(getId());
         cBean.setPackageName(getPackageName());
         cBean.setServiceName(getServiceName());
+        cBean.setServiceUrl(getServiceUrl());
         cBean.setVersion(getVersion());
         
         return cBean;
     }
     
+    public String getServiceUrl() {
+        return serviceUrl;
+    }
+    
+    public void setServiceUrl(String serviceUrl) {
+        this.serviceUrl = serviceUrl;
+    }
+    
+    public String getFullyQualifiedName() {
+        return getPackageName()+"."+getClassName();
+    }
+    
+    // --------- helper methods for generating DCQL ------------------ //
+    
+    public boolean hasNotNullAttributes(){
+        boolean result = false;
+        ArrayList attributes = getAttributes();
+        for (int i = 0; i < attributes.size(); i++) {
+            AttributeBean aBean = (AttributeBean)attributes.get(i);
+            if (!aBean.isNull()){
+                numNotNullAttributes++;
+                result = true;
+            }
+            
+        }
+        return result;
+    }
+    
+    public ArrayList<AttributeBean> getNonNullAttributes(){
+        notNullAttributes = new ArrayList(numNotNullAttributes);
+        ArrayList attributes = getAttributes();
+        for (int i = 0; i < attributes.size(); i++) {
+            AttributeBean aBean = (AttributeBean)attributes.get(i);
+            if (!aBean.isNull()){
+                notNullAttributes.add(aBean);
+            }
+            
+        }
+        return notNullAttributes;
+    }
+    
+    // ----------------------------------
+    
+    public boolean hasAssociations(){
+        return hasAssociations;
+    }
+    public void setHasAssociations(boolean has){
+        this.hasAssociations = has;
+    }
+    public void addAssociation(ClassBean ass){
+        associations.add(ass);
+//        numAssociations++;
+    }
+    public ArrayList getAssociations(){
+        return associations;
+    }
+    
+    // -----------------------------------
+    
+    public boolean hasForeignAssociations(){
+        return hasForeignAssociations;
+    }
+     public void setHasForeignAssociations(boolean has){
+        this.hasForeignAssociations = has;
+    } 
+     
+    public void addForeignAssociation(ForeignAssociationBean fass){
+        foreignAssociations.add(fass);
+    }
+    public ArrayList getForeignAssociations(){
+        return foreignAssociations;
+    }
+     
+    // --------- helper methods for generating DCQL ------------------ //
 }
