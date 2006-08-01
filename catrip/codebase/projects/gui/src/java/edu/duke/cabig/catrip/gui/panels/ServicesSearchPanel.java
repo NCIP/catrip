@@ -235,7 +235,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         
         DefaultTableModel tb = (DefaultTableModel) getResultTable().getModel();
         
-        for (int i = 0; i < alist.size(); i++) {
+        for (int i = 0; i < alist.size(); i++) { 
             
             Vector v = new Vector();
             ServiceMetaDataBean sb = (ServiceMetaDataBean)alist.get(i);
@@ -274,12 +274,13 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 DomainModel model = dr.retrievDomainModel();   
                 
                 // populate the DomainModel MetaData also here. 
-                DomainModelMetaDataRegistry.populateDomainModelMetaData(model); 
+//                DomainModelMetaDataRegistry.populateDomainModelMetaData(model); 
+                DomainModelMetaDataRegistry.populateDomainModelMetaData(model, sBean); 
             }
         }
         
         // to handle the window.. call parent action..
-        parentFrame.fwdAction();
+        parentFrame.fwdAction(); 
     }//GEN-LAST:event_selectBtnActionPerformed
     
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed

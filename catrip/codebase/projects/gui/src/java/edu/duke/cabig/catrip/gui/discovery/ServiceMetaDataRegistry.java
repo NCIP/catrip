@@ -22,6 +22,7 @@ public class ServiceMetaDataRegistry {
     private static HashMap serviceList = new HashMap(50); // to show in table..
     private static ArrayList<String> selectedServiceNames =  new ArrayList(50); // just the service names to build the tree..
 //    private static ArrayList<String> selectedService =  new ArrayList(50);
+    private static HashMap serviceUrlMap = new HashMap(50); // map of service names vs serviceUrl.
     
     /** Creates a new instance of ServiceMetaDataRegistry */
     public ServiceMetaDataRegistry() {
@@ -45,9 +46,14 @@ public class ServiceMetaDataRegistry {
     
     public static void addService(ServiceMetaDataBean smb){
         serviceList.put(smb.getServiceName(), smb);
+        serviceUrlMap.put(smb.getServiceName(), smb.getServiceUrl());
 //        System.out.println("### adding service :"+smb.getServiceName());
 //        selectedServiceNames.add(smb.getServiceName());
     }
+    
+    public static String getServiceUrl(String serviceName){
+        return (String)serviceUrlMap.get(serviceName);
+    } 
     
     public static void addSelectedService(ServiceMetaDataBean smb){
         selectedServiceNames.add(smb.getServiceName());

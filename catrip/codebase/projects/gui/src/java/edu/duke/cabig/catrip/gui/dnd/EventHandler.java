@@ -2,11 +2,13 @@
 package edu.duke.cabig.catrip.gui.dnd;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.AttributeBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
+import java.util.Collections;
 import org.netbeans.graph.api.IGraphEventHandler;
 import org.netbeans.graph.api.model.GraphEvent;
 import org.netbeans.graph.api.model.IGraphLink;
@@ -65,10 +67,10 @@ public class EventHandler extends IGraphEventHandler {
         
         // if it is a CDE link... create a foreign association...
         if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT)){
-            System.out.println("XXXX creating a foreign association..");
-            
-            System.out.println("XXXX  Attribute name is :"+ ( (AttributePort) sourcePort).getAttributeName()  );
-            System.out.println("XXXX  class is :"+ ((ClassNode)sourcePort.getNode()).getAssociatedClassObject().getFullyQualifiedName()  );
+//            System.out.println("XXXX creating a foreign association..");
+//            
+//            System.out.println("XXXX  Attribute name is :"+ ( (AttributePort) sourcePort).getAttributeName()  );
+//            System.out.println("XXXX  class is :"+ ((ClassNode)sourcePort.getNode()).getAssociatedClassObject().getFullyQualifiedName()  );
             // TODO - add the foreign association here..
             ForeignAssociationBean fBean = new ForeignAssociationBean();
             ClassBean leftObject = ((ClassNode)sourcePort.getNode()).getAssociatedClassObject();
@@ -92,7 +94,7 @@ public class EventHandler extends IGraphEventHandler {
         // if it is a normal link.. create a normal association...
         if ( ((sourceDirection == IDirectionable.RIGHT) || (sourceDirection == IDirectionable.LEFT)) && ((targetDirection == IDirectionable.RIGHT) || (targetDirection == IDirectionable.LEFT))  ){
             // this is a class assoctaion link...
-            System.out.println("XXXX creating a local/class association..");
+//            System.out.println("XXXX creating a local/class association..");
             
             ClassNode leftNode = (ClassNode)sourcePort.getNode();
             ClassNode rightNode = (ClassNode)targetPort.getNode();
@@ -192,7 +194,8 @@ public class EventHandler extends IGraphEventHandler {
     private void addAttrubutePorts(GraphNode node, ClassBean classBean){
         
         ArrayList attributes = classBean.getAttributes();
-        for (int k = 0; k < attributes.size(); k++) {
+        Collections.sort(attributes, new AttributeBeanComparator()); 
+        for (int k = attributes.size()-1; k >= 0; k--) {
             AttributeBean aBean = (AttributeBean)attributes.get(k);
             node.addPort( new AttributePort(aBean.getCDEName(),aBean.getAttributeName(),IDirectionable.BOTTOM_LEFT));
         }

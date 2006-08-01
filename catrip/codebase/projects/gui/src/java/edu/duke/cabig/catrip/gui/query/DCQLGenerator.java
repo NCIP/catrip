@@ -48,224 +48,19 @@ public class DCQLGenerator {
             ClassNode targetNode = DCQLRegistry.getTargetNode();
             ClassBean targetObject= targetNode.getAssociatedClassObject();
             
-            
             DCQLQueryDocument dc = DCQLQueryDocument.Factory.newInstance();
             DCQLQuery dcql = DCQLQuery.Factory.newInstance();
             TargetObject to = TargetObject.Factory.newInstance();
             to.setName(targetObject.getFullyQualifiedName());
             to.setServiceURL(targetObject.getServiceUrl());
             
-            /*
-            boolean hasFA = false;//DCQLRegistry.hasForeignAssociations();
-            ArrayList fAssList = null;
-            // write all FAs..
-            if (hasFA){
-                // <editor-fold>   // has foreign associations...
-                fAssList = DCQLRegistry.getForeignAssociationsList();
-                // TODO - if the foreign association are null that means you don't have to write that part..
-                ClassBean foreignLeft = ((ForeignAssociationBean)fAssList.get(0)).getLeftObj();
-                ClassBean foreignRight = ((ForeignAssociationBean)fAssList.get(0)).getRighObj();
-                String leftProp = ((ForeignAssociationBean)fAssList.get(0)).getLeftProperty();
-                String rightProp = ((ForeignAssociationBean)fAssList.get(0)).getLeftProperty();
-             
-             
-                Group gp1 = to.addNewGroup();
-                gp1.setLogicRelation(LogicalOperator.AND);
-             
-                Group gp2 = Group.Factory.newInstance();
-                gp2.setLogicRelation(LogicalOperator.AND);
-             
-                ArrayList targetObjAttributes = targetObject.getNonNullAttributes();
-                Attribute[] targetAtts = new Attribute[targetObjAttributes.size()];
-                for (int i = 0; i < targetObjAttributes.size(); i++) {
-                    AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
-                    targetAtts[i] = Attribute.Factory.newInstance();
-                    targetAtts[i].setName(aBean.getAttributeName());
-                    targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                    targetAtts[i].setValue(aBean.getAttributeValue());
-                }
-             
-                gp2.setAttributeArray(targetAtts);
-             
-                TargetObject fo = TargetObject.Factory.newInstance(); // foreign object  //foreignRight
-                fo.setName(foreignRight.getFullyQualifiedName());
-                fo.setServiceURL(foreignRight.getServiceUrl());
-             
-                // TODO - get all the attributes of foreign object.. not just the one..
-                AttributeBean fAttribute =(AttributeBean) foreignRight.getNonNullAttributes().get(0);
-                Attribute fatt = Attribute.Factory.newInstance();
-                fatt.setName(fAttribute.getAttributeName());
-                fatt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(fAttribute.getPredicate()));
-                fatt.setValue(fAttribute.getAttributeValue());
-                fo.setAttribute(fatt);
-             
-                ForeignAssociation forAss = ForeignAssociation.Factory.newInstance();
-                forAss.setForeignObject(fo);
-             
-                JoinCondition jc = JoinCondition.Factory.newInstance();
-                Join leftJ = Join.Factory.newInstance();
-                leftJ.setObject(foreignLeft.getFullyQualifiedName());
-                leftJ.setProperty(leftProp);
-                Join rightJ = Join.Factory.newInstance();
-                rightJ.setObject(foreignRight.getFullyQualifiedName());
-                rightJ.setProperty(rightProp);
-                jc.setLeftJoin(leftJ);jc.setRightJoin(rightJ);
-                forAss.setJoinCondition(jc);
-             
-                gp1.setGroupArray(new Group[]{gp2});
-                gp1.setForeignAssociationArray(new ForeignAssociation[]{forAss});
-                // </editor-fold>   // has foreign associations...
-            }
-             */
-            
             buildAssociationGroup(to, targetObject);
             
-          /*
-            // build the normal associations...
-            boolean targetHasAtts = targetObject.hasNotNullAttributes();
-            boolean targetHasAss = targetObject.hasAssociations();
-            Group gp1 = null;
-            if (targetHasAtts && !targetHasAss){
-                // <editor-fold>   // only attriibutes are there
-           
-                ArrayList targetObjAttributes = targetObject.getNonNullAttributes();
-                // if more than one attribute.. create an internal group...
-                if (targetObjAttributes.size() > 1){
-                    // has multiple attcibutes..
-                    gp1 = to.addNewGroup();
-                    gp1.setLogicRelation(LogicalOperator.AND);
-                    Attribute[] targetAtts = new Attribute[targetObjAttributes.size()];
-                    for (int i = 0; i < targetObjAttributes.size(); i++) {
-                        AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
-                        targetAtts[i] = Attribute.Factory.newInstance();
-                        targetAtts[i].setName(aBean.getAttributeName());
-                        targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                        targetAtts[i].setValue(aBean.getAttributeValue());
-                    }
-                    gp1.setAttributeArray(targetAtts);
-                }else {
-                    // has only 1 attribute
-                    Attribute oneAtt = to.addNewAttribute();
-                    AttributeBean aBean = (AttributeBean)targetObjAttributes.get(0);
-                    oneAtt.setName(aBean.getAttributeName());
-                    oneAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                    oneAtt.setValue(aBean.getAttributeValue());
-                }
-           
-                // </editor-fold>  // only attriibutes are there
-            } else if (targetHasAtts && targetHasAss){
-                // <editor-fold>   // attriibutes and associations both are there
-                ArrayList targetObjAttributes = targetObject.getNonNullAttributes();
-           
-                gp1 = to.addNewGroup();
-                gp1.setLogicRelation(LogicalOperator.AND);
-                if (targetObjAttributes.size() > 1){
-                    // <editor-fold>  //
-                    // has multiple attributes.. create an internal group...
-                    Group gp2 = gp1.addNewGroup();
-                    gp2.setLogicRelation(LogicalOperator.AND);
-                    Attribute[] targetAtts = new Attribute[targetObjAttributes.size()];
-                    for (int i = 0; i < targetObjAttributes.size(); i++) {
-                        AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
-                        targetAtts[i] = Attribute.Factory.newInstance();
-                        targetAtts[i].setName(aBean.getAttributeName());
-                        targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                        targetAtts[i].setValue(aBean.getAttributeValue());
-                    }
-                    gp2.setAttributeArray(targetAtts);
-                    Association ass = gp1.addNewAssociation();
-                    // TODO - iterate the associations... recursively.. and create the DCQL.
-           
-                    ArrayList associationList = targetObject.getAssociations();
-                    for (int i = 0;i<associationList.size() ;i++){
-           
-                        ClassBean localAss = (ClassBean)associationList.get(i);
-                        ass.setName(localAss.getFullyQualifiedName());
-                        ass.setRoleName("localAssociationRoleName");  // TODO - get the role name from Domain Model.
-           
-                        buildAssociationGroup(ass, localAss);
-           
-                    }
-           
-//                ClassBean localAss = (ClassBean)targetObject.getAssociations().get(0);
-//                if (localAss.hasNotNullAttributes()){
-//                    // TODO - add all the attributes... with or without group..
-//                    AttributeBean aBean = (AttributeBean) localAss.getNonNullAttributes().get(0);
-//                    Attribute oneAssAtt = ass.addNewAttribute();
-//                    oneAssAtt.setName(aBean.getAttributeName());
-//                    oneAssAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-//                    oneAssAtt.setValue(aBean.getAttributeValue());
-//                }
-//
-           
-           
-           
-                    // </editor-fold>  //
-                }else {
-                    // has only 1 attribute
-                    Attribute oneAtt = gp1.addNewAttribute();
-                    AttributeBean aBean = (AttributeBean)targetObjAttributes.get(0);
-                    oneAtt.setName(aBean.getAttributeName());
-                    oneAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                    oneAtt.setValue(aBean.getAttributeValue());
-           
-                    Association ass = gp1.addNewAssociation();
-                    // TODO - iterate the associations... recursively.. and create the DCQL.
-                    ArrayList associationList = targetObject.getAssociations();
-                    for (int i = 0;i<associationList.size() ;i++){
-           
-                        ClassBean localAss = (ClassBean)associationList.get(i);
-                        ass.setName(localAss.getFullyQualifiedName());
-                        ass.setRoleName("localAssociationRoleName");  // TODO - get the role name from Domain Model.
-           
-                        buildAssociationGroup(ass, localAss);
-           
-                    }
-           
-//                ClassBean localAss1 = (ClassBean)targetObject.getAssociations().get(0);
-//                if (localAss1.hasNotNullAttributes()){
-//                    // <editor-fold>  //
-//                    // TODO - add all the attributes... with or without group..
-//                    AttributeBean aBean1 = (AttributeBean) localAss1.getNonNullAttributes().get(0);
-//                    Attribute oneAssAtt = ass.addNewAttribute();
-//                    oneAssAtt.setName(aBean1.getAttributeName());
-//                    oneAssAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean1.getPredicate()));
-//                    oneAssAtt.setValue(aBean1.getAttributeValue());
-//                    // </editor-fold>  //
-//                }
-           
-           
-           
-                }
-           
-                // </editor-fold>   // attriibutes and associations both are there
-           
-            }else if (!targetHasAtts && targetHasAss){
-                // <editor-fold>   // only associations are there
-           
-           
-           
-           
-           
-           
-           
-           
-                // </editor-fold>   // only associations are there
-            }
-           
-           
-           */
-            // ------------------------------------------------------------
-            
-            
-            
-            
-            
             dcql.setTargetObject(to);
-            
             dc.setDCQLQuery(dcql);
             
-            // ------------------------------------------------------------
+            // here you can send DCQL to the query processor....
+            
             dcqlStr = dc.xmlText();
             
         } catch (Exception e){
@@ -293,15 +88,9 @@ public class DCQLGenerator {
                 // has multiple attcibutes..
                 gp1 = outerObject.addNewGroup();
                 gp1.setLogicRelation(LogicalOperator.AND);
-                Attribute[] targetAtts = new Attribute[targetObjAttributes.size()];
-                for (int i = 0; i < targetObjAttributes.size(); i++) {
-                    AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
-                    targetAtts[i] = Attribute.Factory.newInstance();
-                    targetAtts[i].setName(aBean.getAttributeName());
-                    targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                    targetAtts[i].setValue(aBean.getAttributeValue());
-                }
-                gp1.setAttributeArray(targetAtts);
+                
+                createAttributesGroup(gp1, targetObjAttributes);
+                
             }else {
                 // has only 1 attribute
                 Attribute oneAtt = outerObject.addNewAttribute();
@@ -319,22 +108,15 @@ public class DCQLGenerator {
             gp1 = outerObject.addNewGroup();
             gp1.setLogicRelation(LogicalOperator.AND);
             if (targetObjAttributes.size() > 1){
-
+                
                 // has multiple attributes.. create an internal group...
                 Group gp2 = gp1.addNewGroup();
                 gp2.setLogicRelation(LogicalOperator.AND);
-                Attribute[] targetAtts = new Attribute[targetObjAttributes.size()];
-                for (int i = 0; i < targetObjAttributes.size(); i++) {
-                    AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
-                    targetAtts[i] = Attribute.Factory.newInstance();
-                    targetAtts[i].setName(aBean.getAttributeName());
-                    targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
-                    targetAtts[i].setValue(aBean.getAttributeValue());
-                }
-                gp2.setAttributeArray(targetAtts);
-
-                createAssociations(gp1, outerObjectBean);  
-
+                
+                createAttributesGroup(gp2, targetObjAttributes);
+                
+                createAssociations(gp1, outerObjectBean);
+                
             }else {
                 // has only 1 attribute
                 Attribute oneAtt = gp1.addNewAttribute();
@@ -342,8 +124,8 @@ public class DCQLGenerator {
                 oneAtt.setName(aBean.getAttributeName());
                 oneAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
                 oneAtt.setValue(aBean.getAttributeValue());
-
-                createAssociations(gp1, outerObjectBean);  
+                
+                createAssociations(gp1, outerObjectBean);
                 
             }
             // </editor-fold>   // attriibutes and associations both are there
@@ -360,6 +142,17 @@ public class DCQLGenerator {
     }
     
     
+    private static void createAttributesGroup(Group gp2, ArrayList targetObjAttributes){
+        Attribute[] targetAtts = new Attribute[targetObjAttributes.size()];
+        for (int i = 0; i < targetObjAttributes.size(); i++) {
+            AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
+            targetAtts[i] = Attribute.Factory.newInstance();
+            targetAtts[i].setName(aBean.getAttributeName());
+            targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
+            targetAtts[i].setValue(aBean.getAttributeValue());
+        }
+        gp2.setAttributeArray(targetAtts);
+    }
     
     
     private static void createAssociations(Group outerObject, ClassBean outerObjectBean){
@@ -374,7 +167,7 @@ public class DCQLGenerator {
             ArrayList associationList = outerObjectBean.getAssociations();
             for (int i = 0;i<associationList.size() ;i++){
                 
-                Association ass = gp1.addNewAssociation(); // adding a local association..  
+                Association ass = gp1.addNewAssociation(); // adding a local association..
                 ClassBean localAss = (ClassBean)associationList.get(i);
                 ass.setName(localAss.getFullyQualifiedName());
                 ass.setRoleName("localAssociationRoleName");  // TODO - get the role name from Domain Model.

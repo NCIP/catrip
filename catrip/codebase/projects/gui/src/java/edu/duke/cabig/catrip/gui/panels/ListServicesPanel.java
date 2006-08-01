@@ -8,15 +8,16 @@ package edu.duke.cabig.catrip.gui.panels;
 
 
 
-import com.sun.org.apache.bcel.internal.classfile.Attribute;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.AttributeBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.common.ClassBeanComparator;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.discovery.ServiceMetaDataRegistry;
-import edu.duke.cabig.catrip.gui.dnd.*;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 import javax.swing.*;
@@ -58,6 +59,8 @@ public class ListServicesPanel extends CPanel {
             String serviceName = (String)sNames.get(i);
 //            System.out.println("## Looking for the service :"+serviceName);
             ArrayList clList = DomainModelMetaDataRegistry.lookupClassListByDomainModelName(serviceName);
+            Collections.sort(clList, new ClassBeanComparator()); 
+//            ArrayList clList = new ArrayList(clListTmp);  
             DefaultMutableTreeNode serviceOne = new DefaultMutableTreeNode(serviceName);
             for (int j = 0; j < clList.size(); j++) {
                 ClassBean classBean = (ClassBean)clList.get(j);
@@ -67,6 +70,7 @@ public class ListServicesPanel extends CPanel {
                 DefaultMutableTreeNode associationsNode = new DefaultMutableTreeNode("Associations" );
                 
                 ArrayList attributes = classBean.getAttributes();
+                Collections.sort(attributes, new AttributeBeanComparator());  
                 for (int k = 0; k < attributes.size(); k++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(k);
                     DefaultMutableTreeNode attNode = new DefaultMutableTreeNode(aBean.getCDEName());

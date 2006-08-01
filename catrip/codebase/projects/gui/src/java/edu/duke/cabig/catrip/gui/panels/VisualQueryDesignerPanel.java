@@ -51,7 +51,9 @@ public class VisualQueryDesignerPanel extends CPanel {
     public String createID(String prefix) {
         return prefix + ++ lastID;
     }
-    
+    public int getLastID(){
+        return lastID;
+    }
     
     public JTree getTree() {
         return servicePanel.getTree();

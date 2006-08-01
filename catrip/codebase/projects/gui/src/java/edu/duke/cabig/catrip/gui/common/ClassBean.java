@@ -16,7 +16,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  *
  * @author Sanjeev Agarwal
  */
-public class ClassBean {
+public class ClassBean{ 
     
     private String id;
     private String version;
@@ -255,4 +255,5 @@ public class ClassBean {
     }
      
     // --------- helper methods for generating DCQL ------------------ //
+    
 }

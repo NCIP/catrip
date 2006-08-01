@@ -33,6 +33,7 @@ public class PropertiesPanel extends CPanel {
     
     private void init(){
         predicates = new JComboBox();
+        predicates.addItem("LIKE");
         predicates.addItem("EQUAL_TO");
         predicates.addItem("NOT_EQUAL_TO");
         predicates.addItem("LESS_THAN");
@@ -145,7 +146,7 @@ public class PropertiesPanel extends CPanel {
 
 
 class ObjectTableModel extends DefaultTableModel {
-    
+    private ClassBean object;
     HashMap attributeRows = new HashMap(100);
     Class[] types = new Class [] {java.lang.String.class, java.lang.String.class, java.lang.String.class};
     

@@ -7,6 +7,10 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 
 /**
  *
@@ -38,10 +42,25 @@ public class CommandPanel extends CPanel {
         add(ExecuteCommand);
 
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
-    getMainFrame().getOutputPanel().getOutPutArea().append("\n Result will be shown here in Tabular format..");
+        
+//    getMainFrame().getOutputPanel().getOutPutArea().append("\n Result will be shown here in Tabular format..");
         // call the test client here and run that...
+//        String targetName = DCQLRegistry.getTargetNode().getAssociatedClassObject().getFullyQualifiedName();
+        
+        
+//        getMainFrame().getOutputPanel().getOutPutArea().setText(DCQLGenerator.getDCQLText());
+        
+        try {
+            FileWriter fop = new FileWriter(new File("C:\\tmp\\tmptmp\\aa.xml"), false);
+            fop.write(DCQLGenerator.getDCQLText());
+            fop.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        
         
         
         

@@ -22,6 +22,7 @@ public class ServiceMetaDataBean {
     private String pointOfContact; // concatnate name:email:role
     private String hostingResearchCenter; // concatnate displayName:shortName::(point of contact)name:email:role
     
+    private String icon;
     // Few custom properties used in GUI.
     
     // Set this when a user selects a service or add a service
@@ -95,6 +96,14 @@ public class ServiceMetaDataBean {
 
     public void setServiceUrl(String serviceUrl) {
         this.serviceUrl = serviceUrl;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
     
 }
