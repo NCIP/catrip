@@ -13,13 +13,12 @@ public class ServiceClientFactory {
         
             try {
             
-                if (serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/DataService2")){                    
-                    cls = Class.forName("gov.nih.nci.cagrid.client.DataService2Client");
-                } else if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/DataService1")){
-                    cls = Class.forName("gov.nih.nci.cagrid.client.DataService1Client");
-                } else if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/DataService3")){
-                    cls = Class.forName("gov.nih.nci.cagrid.dataservice3.client.DataService3Client");
-                }
+                if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full")){
+                    cls = Class.forName("gov.nih.nci.cagrid.catissuecorefull.client.CaTissueCore_FullClient");
+                } else if(serviceURL.equals("http://localhost:8181/wsrf/services/cagrid/CAE")){
+                    cls = Class.forName("gov.nih.nci.cagrid.cae.client.CAEClient");
+                } 
+                
                 // parameter is only serviceURL which is String
                 Class paramTypes[] = new Class[1];
                 paramTypes[0] = String.class;

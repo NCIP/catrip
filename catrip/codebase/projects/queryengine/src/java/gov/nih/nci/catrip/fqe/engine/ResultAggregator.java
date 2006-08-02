@@ -23,6 +23,11 @@ class ResultAggregator {
     ResultAggregator(JoinCondition joinCondition) {
         this.joinCondition = joinCondition;
     }
+    /**
+     * 
+     * @param results
+     * @return
+     */
     List processResults(CQLQueryResults results){
         Join rightJoin = joinCondition.getRightJoin();
         
@@ -46,7 +51,11 @@ class ResultAggregator {
        return resultList;
     }
     
-
+    /**
+     * 
+     * @param list
+     * @return
+     */
     gov.nih.nci.cagrid.cqlquery.Group buildGroup(List list){
     
         gov.nih.nci.cagrid.cqlquery.Group cqlGroup = new gov.nih.nci.cagrid.cqlquery.Group();

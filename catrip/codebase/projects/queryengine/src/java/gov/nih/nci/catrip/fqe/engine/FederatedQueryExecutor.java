@@ -19,7 +19,13 @@ class FederatedQueryExecutor {
     public FederatedQueryExecutor() {
     }
 
-    
+    /**
+     * 
+     * @param cqlQuery
+     * @param serviceURL
+     * @return
+     * @throws QueryExecutionException
+     */
     CQLQueryResults executeCQLQuery(CQLQuery cqlQuery,String serviceURL) throws QueryExecutionException {
         
          System.out.println(" Executing CQL Query on "+ serviceURL +"----------");
