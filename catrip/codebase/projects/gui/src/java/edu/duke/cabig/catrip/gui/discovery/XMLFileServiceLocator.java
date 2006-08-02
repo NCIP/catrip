@@ -36,15 +36,15 @@ public class XMLFileServiceLocator extends ServiceLocator{
         ArrayList<ServiceMetaDataBean> alist = new ArrayList(5);
         
         try{
-            // TODO :  Read all the services from service-config.xml  
+            // TODO :  Read all the services from service-config.xml
             
-            GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration(); 
-             
+            GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
+            
             String serviceMetadatafile = "";
             String domainModelFile = "";
             String serviceUrl="";
             String icon="";
-                    
+            
             // services ..  ideally load all the xmls from this directory.
             serviceUrl = "http://localhost:8080/CAE";
             icon = "edu/duke/cabig/catrip/gui/dnd/resources/CAE.png";
@@ -62,6 +62,7 @@ public class XMLFileServiceLocator extends ServiceLocator{
             
             
             
+            
         } catch (Exception ee){ return null;}
         
         return alist;
@@ -72,36 +73,36 @@ public class XMLFileServiceLocator extends ServiceLocator{
 //        ArrayList<ServiceMetaDataBean> alist = new ArrayList(5);
         
 //        try{
-                
-           
-            
+        
+        
+        
 //            String baseDir = "C:\\java_exps\\caGrid_MetaDatas\\service_and_domain\\xmls\\";
 //            String file = "";
 //            String domainModelFile = "";
-            
-            // service ..
+        
+        // service ..
 //            file = baseDir+"caTIES_serviceMetadata.xml";
 //            domainModelFile = baseDir+"caTIES_domainModel.obj";
 //            addNode(file, domainModelFile, alist);
-//            
-            
-            // service ..
+//
+        
+        // service ..
 //            file = baseDir+"caTISSUE_CAE_serviceMetadata.xml";
 //            domainModelFile = baseDir+"caTISSUE_CAE.obj";
 //            addNode(file, domainModelFile, alist);
-            
-            
-            // service ..
+        
+        
+        // service ..
 //            file = baseDir+"caTISSUE_Core_serviceMetadata.xml";
 //            domainModelFile = baseDir+"caTISSUE_Core.xml";
 //            addNode(file, domainModelFile, alist);
-            
-            
-//        } catch (Exception ee){ 
+        
+        
+//        } catch (Exception ee){
 //            ee.printStackTrace();
 //            return null;
 //        }
-//        
+//
 //        return alist;
     }
     // not in use..
