@@ -10,6 +10,7 @@
 package edu.duke.cabig.catrip.gui.util;
 
 import java.awt.Image;
+import java.io.File;
 import javax.swing.Icon;
 import org.openide.util.Utilities;
 
@@ -35,7 +36,7 @@ public class GUIConstants {
     
     public static final String DEFAULT_INDEX_SERVICE_URL = "http://localhost:8080/wsrf/services/DefaultIndexService";
     
-    
+    public static final String CATRIP_HOME = System.getProperty("user.home") + File.separator + ".caTRIP";
     
     
     /**
