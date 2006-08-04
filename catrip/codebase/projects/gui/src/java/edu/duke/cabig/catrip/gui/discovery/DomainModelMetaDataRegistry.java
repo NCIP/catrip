@@ -233,7 +233,7 @@ public class DomainModelMetaDataRegistry {
             if (sourceClassBean != null){
                 sourceClassBean.addAssociatedClass(targetRef);
                 sourceClassBean.addAssociationRoleName(targetRef, targetRole);
-            }
+            } // put the cross references for the source into target class...
             if ( (targetClassBean != null ) && biDir ) {
                 targetClassBean.addAssociatedClass(sourceRef);
                 String sourceRole = associations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();

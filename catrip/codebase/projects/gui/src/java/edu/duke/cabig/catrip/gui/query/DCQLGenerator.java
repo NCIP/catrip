@@ -130,11 +130,37 @@ public class DCQLGenerator {
             
             
         }else if (!targetHasAtts && (targetHasAss || targetHasFass)){
-            // <editor-fold>   // only associations are there
+            ArrayList targetObjAttributes = outerObjectBean.getNonNullAttributes();
             // TODO - check the number of associations and based on that create group..
+            int numAss = outerObjectBean.getAssociations().size();
+            if (numAss>1){
+                gp1 = outerObject.addNewGroup();
+                gp1.setLogicRelation(LogicalOperator.AND);
+                createAssociations(gp1, outerObjectBean);
+            }else{
+
+                ArrayList associationList = outerObjectBean.getAssociations();
+                for (int i = 0;i<associationList.size() ;i++){
+                    
+                    Association ass = outerObject.addNewAssociation(); // adding a local association..
+                    ClassBean localAss = (ClassBean)associationList.get(i);
+                    ass.setName(localAss.getFullyQualifiedName());
+                    ass.setRoleName( outerObjectBean.getAssociationRoleName(localAss.getId()) );
+                    buildAssociationGroup(ass, localAss);
+                    
+                }
+                
+            }
             
             
-            // </editor-fold>   // only associations are there
+            
+            
+            
+            
+            
+            
+            
+            
         }
         
     }
