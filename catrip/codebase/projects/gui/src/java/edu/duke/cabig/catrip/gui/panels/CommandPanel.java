@@ -56,7 +56,7 @@ public class CommandPanel extends CPanel {
     
     private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
         try {
-
+            
             
 //            ArrayList ar = new ArrayList(1);
 //            ar.add(DCQLRegistry.getTargetNode().getAssociatedClassObject());
@@ -64,11 +64,11 @@ public class CommandPanel extends CPanel {
             
             
             
-
-//            FileWriter fop = new FileWriter(new File("C:\\tmp\\tmptmp\\aa.xml"), false); 
+            
+//            FileWriter fop = new FileWriter(new File("C:\\tmp\\tmptmp\\aa.xml"), false);
 //            fop.write(DCQLGenerator.getDCQLText());
 //            fop.close();
-
+            
             
             
             
@@ -76,7 +76,7 @@ public class CommandPanel extends CPanel {
             DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
             CQLQueryResults results = fqe.execute(dcqlQueryDocument);
             System.out.println(results.getObjectResult().length);
-             // TODO - put the client config fils of the individual service also in the caTRIP-config.xml or the services-mapping file some how...
+            // TODO - put the client config fils of the individual service also in the caTRIP-config.xml or the services-mapping file some how...
             CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("qe-client-config.wsdd")));
             
             ArrayList arr = new ArrayList();
@@ -95,8 +95,11 @@ public class CommandPanel extends CPanel {
                     String mNaame ="get"+vName.substring(0,1).toUpperCase() + vName.substring(1);
 //                    System.out.println("XXXX method is :"+mNaame);
                     String value = "";
-                    try{
-                        value = ""+((Method)dom.getClass().getMethod(mNaame)).invoke(dom);
+                    try{ 
+                        Object vValue = ((Method)dom.getClass().getMethod(mNaame)).invoke(dom);
+                        if (vValue != null){
+                            value = vValue.toString();
+                        }
                     } catch (Exception eex) {}
                     aBean.setAttributeValue(value);
                 }

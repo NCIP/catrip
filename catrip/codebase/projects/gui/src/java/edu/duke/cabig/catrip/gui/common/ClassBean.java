@@ -232,7 +232,7 @@ public class ClassBean{
         ArrayList attributes = getAttributes();
         for (int i = 0; i < attributes.size(); i++) {
             AttributeBean aBean = (AttributeBean)attributes.get(i);
-            if (!aBean.isNull()){
+            if (!aBean.isNull()){  // TODO - add notNull/Null predicates also into this..
                 numNotNullAttributes++;
                 result = true;
             }

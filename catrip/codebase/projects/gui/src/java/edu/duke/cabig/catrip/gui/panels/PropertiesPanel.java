@@ -167,7 +167,9 @@ class ObjectTableModel extends DefaultTableModel {
     
     public void addObjectRow(AttributeBean aBean){
         Vector  r = new Vector();
-        r.add(aBean.getAttributeName()); r.add(aBean.getPredicate()); r.add(aBean.getAttributeValue());
+//        r.add(aBean.getAttributeName()); r.add(aBean.getPredicate()); r.add(aBean.getAttributeValue());
+        // show the CDE name in the properties table.. instead of variable names..
+        r.add(aBean.getCDEName()); r.add(aBean.getPredicate()); r.add(aBean.getAttributeValue());
         addRow(r);
         attributeRows.put(getRowCount(), aBean);
     }

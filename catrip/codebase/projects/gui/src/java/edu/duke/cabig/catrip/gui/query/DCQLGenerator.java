@@ -69,7 +69,7 @@ public class DCQLGenerator {
     }
     
     
-    
+     // TODO - add notNull/Null predicates also into this..
     private static void buildAssociationGroup(caBIG.caGrid.x10.govNihNciCagridDcql.Object outerObject, ClassBean outerObjectBean){//Association
         
         boolean targetHasAtts = outerObjectBean.hasNotNullAttributes();
@@ -131,7 +131,6 @@ public class DCQLGenerator {
             
         }else if (!targetHasAtts && (targetHasAss || targetHasFass)){
             ArrayList targetObjAttributes = outerObjectBean.getNonNullAttributes();
-            // TODO - check the number of associations and based on that create group..
             int numAss = outerObjectBean.getAssociations().size();
             if (numAss>1){
                 gp1 = outerObject.addNewGroup();
@@ -195,7 +194,7 @@ public class DCQLGenerator {
                 ClassBean localAss = (ClassBean)associationList.get(i);
                 ass.setName(localAss.getFullyQualifiedName());
                 ass.setRoleName( outerObjectBean.getAssociationRoleName(localAss.getId()) );
-//                ass.setRoleName("localAssociationRoleName");  // TODO - get the role name from Domain Model.
+//                ass.setRoleName("localAssociationRoleName");  
                 
                 buildAssociationGroup(ass, localAss);
                 

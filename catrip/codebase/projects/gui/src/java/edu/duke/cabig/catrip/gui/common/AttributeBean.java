@@ -25,7 +25,7 @@ public class AttributeBean {
 //    private String domainModelId;
     private String CDEName;
     private String displayName;
-    private String predicate = "EQUAL_TO"; // set as default
+    private String predicate = "LIKE"; // set as default
     
     /** Creates a new instance of AttributeBean */
     public AttributeBean() {
@@ -81,10 +81,15 @@ public class AttributeBean {
         this.predicate = predicate;
     }
     
-    public boolean isNull(){
+    public boolean isNull(){  // TODO - add notNull/Null predicates also into this..
         if (getAttributeValue() == null  || getAttributeValue().equalsIgnoreCase("")){
+            boolean nullNotNull = getPredicate().equalsIgnoreCase("IS_NULL") || getPredicate().equalsIgnoreCase("IS_NOT_NULL") ;
+            if (nullNotNull){
+                return false;
+            } else {
             return true;
-        }
+            } 
+        } 
         return false;
     }
     
