@@ -1,0 +1,10 @@
+@InsertAnnotatableEntity.sql
+@InsertParticipants.sql
+@InsertParticipantsIdentifiers.sql
+@InsertAnnotationEventParameters.sql
+@InsertAnnotationSet.sql
+@InsertInvasiveBrCar.sql
+@InsertNottigHG.sql
+@InsertOtherHG.sql
+@InsertThreeDim.sql
+commit;
