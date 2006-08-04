@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catripServicesConfiguration xmlns="config.catrip.duke.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="config.catrip.duke.edu
+C:\work\fqe\xmlbeans-2.1.0\BeanGeneration\gui\servicesConfig.xsd">
+	<catripService url="http://localhost:8081/wsrf/services/cagrid/CaTissueCore_Full" serviceMetadataFileName="CaTissueCore_serviceMetadata.xml" domainModelFileName="caTissueCore_domainModel.xml"/>
+	<catripService url="http://localhost:8081/wsrf/services/cagrid/CaTissueCore_Full" serviceMetadataFileName="CaTissueCore_Demo_serviceMetadata.xml" domainModelFileName="CaTissueCore_Demo_domainModel.xml"/>
+	<catripService url="http://localhost:8080/wsrf/services/cagrid/CaTRIPcaTissueCAE" serviceMetadataFileName="CaTRIPcaTissueCAE_serviceMetadata.xml" domainModelFileName="CaTRIPcaTissueCAE_domainModel.xml"/>
+</catripServicesConfiguration>
