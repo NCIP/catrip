@@ -55,6 +55,7 @@
 	<!-- The Run Classpath                                                   -->
 	<!-- =============================================================== -->
 	<path id="run.classpath">
+	    <pathelement location="${basedir}/conf" />
 		<fileset dir="${jar.dir}">
 			<include name="**/*.jar" />
 			<exclude name="**/*test*.jar" />
