@@ -79,7 +79,8 @@ public class MainFrame extends CJFrame {
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("TITLE_MAIN_FRAME"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        setTitle(bundle.getString("TITLE_MAIN_FRAME")); // NOI18N
         rootpanel.setPreferredSize(new java.awt.Dimension(1024, 768));
         jSplitPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jSplitPane1.setDividerLocation(200);
@@ -157,8 +158,8 @@ public class MainFrame extends CJFrame {
         );
         getContentPane().add(rootpanel);
 
-        servicesMenu.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_SERVICE_MENU"));
-        add.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_SERVICE_MENU_ADD"));
+        servicesMenu.setText(bundle.getString("MAIN_FRAME_WIZARD_SERVICE_MENU")); // NOI18N
+        add.setText(bundle.getString("MAIN_FRAME_WIZARD_SERVICE_MENU_ADD")); // NOI18N
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -167,31 +168,31 @@ public class MainFrame extends CJFrame {
 
         servicesMenu.add(add);
 
-        delete.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_SERVICE_MENU_DELETE"));
+        delete.setText(bundle.getString("MAIN_FRAME_WIZARD_SERVICE_MENU_DELETE")); // NOI18N
         servicesMenu.add(delete);
 
         menuBar.add(servicesMenu);
 
-        queryMenu.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU"));
-        retrieve.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_RETRIEVE"));
+        queryMenu.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU")); // NOI18N
+        retrieve.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_RETRIEVE")); // NOI18N
         queryMenu.add(retrieve);
 
-        create.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_CREATE"));
+        create.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_CREATE")); // NOI18N
         queryMenu.add(create);
 
-        save.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_SAVE"));
+        save.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_SAVE")); // NOI18N
         queryMenu.add(save);
 
-        deleteQuery.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_DELETE"));
+        deleteQuery.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_DELETE")); // NOI18N
         queryMenu.add(deleteQuery);
 
-        execute.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_QUERY_MENU_EXECUTE"));
+        execute.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_EXECUTE")); // NOI18N
         queryMenu.add(execute);
 
         menuBar.add(queryMenu);
 
-        preferencesMenu.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU"));
-        addSearchEngineServices.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_ADD"));
+        preferencesMenu.setText(bundle.getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU")); // NOI18N
+        addSearchEngineServices.setText(bundle.getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_ADD")); // NOI18N
         addSearchEngineServices.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSearchEngineServicesActionPerformed(evt);
@@ -200,7 +201,7 @@ public class MainFrame extends CJFrame {
 
         preferencesMenu.add(addSearchEngineServices);
 
-        selectSearchEngine.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_SELECT"));
+        selectSearchEngine.setText(bundle.getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_SELECT")); // NOI18N
         selectSearchEngine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectSearchEngineActionPerformed(evt);
@@ -209,7 +210,7 @@ public class MainFrame extends CJFrame {
 
         preferencesMenu.add(selectSearchEngine);
 
-        addSearchEngineURL.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_ADD_URL"));
+        addSearchEngineURL.setText(bundle.getString("MAIN_FRAME_WIZARD_PREFERENCES_MENU_ADD_URL")); // NOI18N
         addSearchEngineURL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSearchEngineURLActionPerformed(evt);

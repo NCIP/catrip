@@ -9,19 +9,19 @@
 
 package edu.duke.cabig.catrip.gui.common;
 
-import java.util.ArrayList;
-import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.*;
+
 
 /**
  *
  * @author Sanjeev Agarwal
  */
-public class ClassBean{ 
+public class ClassBean{
     
     private String id;
     private String version;
     private ArrayList<AttributeBean> attributes = new ArrayList(50);
-    private ArrayList<String> associatedClasses= new ArrayList(20);
+    private ArrayList<String> associatedClasses= new ArrayList(20); // this is from the domain model..
     private String packageName;
     private String className;
     private String description;
@@ -31,7 +31,9 @@ public class ClassBean{
     private String serviceName;
     private String serviceUrl;
     private String domainModelId;
-    private String CDEName; // this
+    private String CDEName;
+    
+    private HashMap associationRoleNameMap = new HashMap(20);
     
     // ----- DCQL helper attributes ---- //
     private int numNotNullAttributes = 0;
@@ -177,6 +179,7 @@ public class ClassBean{
         cBean.setServiceName(getServiceName());
         cBean.setServiceUrl(getServiceUrl());
         cBean.setVersion(getVersion());
+        cBean.setAssociationRoleNameMap(getAssociationRoleNameMap());
         
         return cBean;
     }
@@ -190,8 +193,37 @@ public class ClassBean{
     }
     
     public String getFullyQualifiedName() {
-        return getPackageName()+"."+getClassName();
+//        return getPackageName()+"."+getClassName();
+        // TODO - change this in future.. for the demo only..
+        return getPackageName()+".impl."+getClassName()+"Impl";
     }
+    
+    
+    public HashMap getAssociationRoleNameMap() {
+        return associationRoleNameMap;
+    }
+    
+    public void setAssociationRoleNameMap(HashMap associationRoleNameMap) {
+        this.associationRoleNameMap = associationRoleNameMap;
+    }
+    
+    public String getAssociationRoleName(String classId) {
+        String roleName = (String)getAssociationRoleNameMap().get(classId);
+        return roleName;
+    }
+    
+    public void addAssociationRoleName(String classId, String associationRoleName) {
+        this.getAssociationRoleNameMap().put(classId, associationRoleName) ;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // --------- helper methods for generating DCQL ------------------ //
     
@@ -243,17 +275,18 @@ public class ClassBean{
     public boolean hasForeignAssociations(){
         return hasForeignAssociations;
     }
-     public void setHasForeignAssociations(boolean has){
+    public void setHasForeignAssociations(boolean has){
         this.hasForeignAssociations = has;
-    } 
-     
+    }
+    
     public void addForeignAssociation(ForeignAssociationBean fass){
         foreignAssociations.add(fass);
     }
     public ArrayList getForeignAssociations(){
         return foreignAssociations;
     }
-     
+    
     // --------- helper methods for generating DCQL ------------------ //
+    
     
 }

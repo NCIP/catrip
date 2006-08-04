@@ -12,6 +12,9 @@ package edu.duke.cabig.catrip.gui.discovery;
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import edu.duke.catrip.config.CatripService;
+import edu.duke.catrip.config.CatripServicesConfigurationDocument;
 import java.util.ArrayList;
 import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.metadata.ServiceMetadata;
@@ -33,32 +36,49 @@ public class XMLFileServiceLocator extends ServiceLocator{
     
     public ArrayList<ServiceMetaDataBean> discoverAllLocalServices() {
         
-        ArrayList<ServiceMetaDataBean> alist = new ArrayList(5);
+        
+        ArrayList<ServiceMetaDataBean> alist = new ArrayList(10);
         
         try{
-            // TODO :  Read all the services from service-config.xml
             
             GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
+            
+            String configXMLFile = guiConfiguration.getConfigRootLocation() + File.separator + "services-config.xml";
+            CatripServicesConfigurationDocument sDom = CatripServicesConfigurationDocument.Factory.parse(new File(configXMLFile));
+            CatripService[] cachedServices = sDom.getCatripServicesConfiguration().getCatripServiceArray();
+            
             
             String serviceMetadatafile = "";
             String domainModelFile = "";
             String serviceUrl="";
-            String icon="";
+            
+            
+            for (int i = 0; i < cachedServices.length; i++) {
+                serviceMetadatafile = cachedServices[i].getServiceMetadataFileName();
+                domainModelFile = cachedServices[i].getDomainModelFileName();
+                serviceUrl=cachedServices[i].getUrl();
+                
+                serviceMetadatafile = guiConfiguration.getServiceMetadataLocation()+File.separator+serviceMetadatafile;
+                domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+domainModelFile;
+                addNode(serviceMetadatafile, domainModelFile, alist, serviceUrl);
+            }
+            
+            
             
             // services ..  ideally load all the xmls from this directory.
-            serviceUrl = "http://localhost:8080/CAE";
-            icon = "edu/duke/cabig/catrip/gui/dnd/resources/CAE.png";
-            serviceMetadatafile = guiConfiguration.getServiceMetadataLocation()+File.separator+"CaTRIPcaTissueCAE_serviceMetadata.xml";//"caTISSUE_Core_serviceMetadata.xml";
-            domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+"CaTRIPcaTissueCAE_domainModel.xml";//"caTISSUE_Core.xml";
-            addNode(serviceMetadatafile, domainModelFile, alist, serviceUrl, icon);
-//            addNode(serviceMetadatafile, domainModelFile, alist);
+//            serviceUrl = "http://localhost:8080/CAE";
+//            icon = "edu/duke/cabig/catrip/gui/dnd/resources/CAE.png";
+//            serviceMetadatafile = guiConfiguration.getServiceMetadataLocation()+File.separator+"CaTRIPcaTissueCAE_serviceMetadata.xml";//"caTISSUE_Core_serviceMetadata.xml";
+//            domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+"CaTRIPcaTissueCAE_domainModel.xml";//"caTISSUE_Core.xml";
+//            addNode(serviceMetadatafile, domainModelFile, alist, serviceUrl, icon);
+//
+//
+//            serviceUrl = "http://localhost:8081/wsrf/services/cagrid/CaTissueCore_Full";
+//            icon = "edu/duke/cabig/catrip/gui/dnd/resources/caTissueCore.png";
+//            serviceMetadatafile = guiConfiguration.getServiceMetadataLocation()+File.separator+"caTissueCore_serviceMetadata.xml";//"caTISSUE_Core_serviceMetadata.xml";
+//            domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+"caTissueCore_domainModel.xml";//"caTISSUE_Core.xml";
+//            addNode(serviceMetadatafile, domainModelFile, alist, serviceUrl, icon);
             
-            serviceUrl = "http://localhost:8080/caTissueCore";
-            icon = "edu/duke/cabig/catrip/gui/dnd/resources/caTissueCore.png";
-            serviceMetadatafile = guiConfiguration.getServiceMetadataLocation()+File.separator+"caTissueCore_serviceMetadata.xml";//"caTISSUE_Core_serviceMetadata.xml";
-            domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+"caTissueCore_domainModel.xml";//"caTISSUE_Core.xml";
-            addNode(serviceMetadatafile, domainModelFile, alist, serviceUrl, icon);
-//            addNode(serviceMetadatafile, domainModelFile, alist);
             
             
             
@@ -105,31 +125,10 @@ public class XMLFileServiceLocator extends ServiceLocator{
 //
 //        return alist;
     }
-    // not in use..
-    private void addNode(String file, String domainModelFile, ArrayList alist) throws Exception{
-        ServiceMetaDataBean sb = new ServiceMetaDataBean();
-        ServiceMetadata commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
-        
-        sb = new ServiceMetaDataBean();
-        
-        sb.setDomainModelEndPointRef(domainModelFile);
-        
-        sb.setServiceName(commonMetadata.getServiceDescription().getService().getName());
-        sb.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
-        
-        PointOfContact pc = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
-        sb.setPointOfContact(pc.getFirstName()+" "+pc.getLastName()+":"+pc.getEmail()+":"+pc.getRole());
-        
-        ResearchCenter rc = commonMetadata.getHostingResearchCenter().getResearchCenter();
-        sb.setHostingResearchCenter(rc.getDisplayName() + "("+rc.getShortName()+")"+":"+sb.getPointOfContact());
-        alist.add(sb);
-        
-    }
+
     
     
-    
-    
-    private void addNode(String file, String domainModelFile, ArrayList alist, String serviceUrl, String icon) throws Exception{
+    private void addNode(String file, String domainModelFile, ArrayList alist, String serviceUrl) throws Exception{
         ServiceMetaDataBean sb = new ServiceMetaDataBean();
         ServiceMetadata commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
         
@@ -139,7 +138,8 @@ public class XMLFileServiceLocator extends ServiceLocator{
         
         sb.setServiceName(commonMetadata.getServiceDescription().getService().getName());
         sb.setServiceUrl(serviceUrl);
-        sb.setIcon(icon);
+         // TODO - change it later.. to generate the icon dunamically from the service name..
+        sb.setIcon("edu/duke/cabig/catrip/gui/dnd/resources/"+sb.getServiceName().trim()+".png");
         sb.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
         
         PointOfContact pc = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);

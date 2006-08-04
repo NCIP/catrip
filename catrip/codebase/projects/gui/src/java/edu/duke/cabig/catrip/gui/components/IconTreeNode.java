@@ -24,7 +24,6 @@ public class IconTreeNode extends DefaultMutableTreeNode {
     private Icon openImage;
     private Object associatedObject;
     
-    
     /**
      * Creates a new instance of IconTreeNode with Icon.
      */
@@ -60,7 +59,7 @@ public class IconTreeNode extends DefaultMutableTreeNode {
     public void setAssociatedObject (Object o) {
         associatedObject = o;
     }
-    
+
     
     
 }

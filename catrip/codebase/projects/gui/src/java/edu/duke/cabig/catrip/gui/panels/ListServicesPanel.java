@@ -13,6 +13,7 @@ import edu.duke.cabig.catrip.gui.common.AttributeBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ClassBeanComparator;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.components.NamedTreeNode;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.discovery.ServiceMetaDataRegistry;
 import java.awt.Component;
@@ -58,9 +59,8 @@ public class ListServicesPanel extends CPanel {
         for (int i = 0; i < sNames.size(); i++) {
             String serviceName = (String)sNames.get(i);
 //            System.out.println("## Looking for the service :"+serviceName);
-            ArrayList clList = DomainModelMetaDataRegistry.lookupClassListByDomainModelName(serviceName);
-            Collections.sort(clList, new ClassBeanComparator()); 
-//            ArrayList clList = new ArrayList(clListTmp);  
+            ArrayList clList = DomainModelMetaDataRegistry.lookupClassListByServiceName(serviceName);
+            Collections.sort(clList, new ClassBeanComparator());
             DefaultMutableTreeNode serviceOne = new DefaultMutableTreeNode(serviceName);
             for (int j = 0; j < clList.size(); j++) {
                 ClassBean classBean = (ClassBean)clList.get(j);
@@ -70,7 +70,7 @@ public class ListServicesPanel extends CPanel {
                 DefaultMutableTreeNode associationsNode = new DefaultMutableTreeNode("Associations" );
                 
                 ArrayList attributes = classBean.getAttributes();
-                Collections.sort(attributes, new AttributeBeanComparator());  
+                Collections.sort(attributes, new AttributeBeanComparator());
                 for (int k = 0; k < attributes.size(); k++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(k);
                     DefaultMutableTreeNode attNode = new DefaultMutableTreeNode(aBean.getCDEName());
@@ -80,8 +80,16 @@ public class ListServicesPanel extends CPanel {
                 ArrayList associations = classBean.getAssociatedClasses();
                 for (int k = 0; k < associations.size(); k++) {
                     String classRefId = (String)associations.get(k);
+                    boolean same = classRefId.equalsIgnoreCase(classBean.getId());
                     ClassBean classBeanTmp = DomainModelMetaDataRegistry.lookupClassByRefId(classRefId);
-                    DefaultMutableTreeNode assNode = new DefaultMutableTreeNode(classBeanTmp);
+                     // TODO - try to print the associatioRole name with the assciation tree 
+                    DefaultMutableTreeNode assNode = null;
+                    if (same){
+                        String name = classBeanTmp.getClassName()+" (Role: "+classBean.getAssociationRoleName(classRefId)+")";
+                        assNode = new NamedTreeNode(name,classBeanTmp); 
+                    }else{
+                    assNode = new DefaultMutableTreeNode(classBeanTmp);
+                    }
                     associationsNode.add(assNode);
                 }
                 

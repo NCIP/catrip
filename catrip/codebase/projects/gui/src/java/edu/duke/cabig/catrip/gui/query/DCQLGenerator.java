@@ -39,16 +39,14 @@ public class DCQLGenerator {
     public DCQLGenerator() {
     }
     
-    public static String getDCQLText(){
-        
-        String dcqlStr = "";
-        
+    public static DCQLQueryDocument getDCQLDocument(){
+        DCQLQueryDocument dc = null;
         try{
             
             ClassNode targetNode = DCQLRegistry.getTargetNode();
             ClassBean targetObject= targetNode.getAssociatedClassObject();
             
-            DCQLQueryDocument dc = DCQLQueryDocument.Factory.newInstance();
+            dc = DCQLQueryDocument.Factory.newInstance();
             DCQLQuery dcql = DCQLQuery.Factory.newInstance();
             TargetObject to = TargetObject.Factory.newInstance();
             to.setName(targetObject.getFullyQualifiedName());
@@ -59,15 +57,15 @@ public class DCQLGenerator {
             dcql.setTargetObject(to);
             dc.setDCQLQuery(dcql);
             
-            // here you can send DCQL to the query processor....
-            
-            dcqlStr = dc.xmlText();
-            
         } catch (Exception e){
             e.printStackTrace();
         }
-        
-        return dcqlStr;
+        return dc;
+    }
+    
+    
+    public static String getDCQLText(){
+        return getDCQLDocument().xmlText();
     }
     
     
@@ -170,7 +168,8 @@ public class DCQLGenerator {
                 Association ass = gp1.addNewAssociation(); // adding a local association..
                 ClassBean localAss = (ClassBean)associationList.get(i);
                 ass.setName(localAss.getFullyQualifiedName());
-                ass.setRoleName("localAssociationRoleName");  // TODO - get the role name from Domain Model.
+                ass.setRoleName( outerObjectBean.getAssociationRoleName(localAss.getId()) );
+//                ass.setRoleName("localAssociationRoleName");  // TODO - get the role name from Domain Model.
                 
                 buildAssociationGroup(ass, localAss);
                 

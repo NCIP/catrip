@@ -6,11 +6,22 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
+import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
+import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
+import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngine;
+import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 /**
  *
@@ -44,26 +55,59 @@ public class CommandPanel extends CPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
-        
-//    getMainFrame().getOutputPanel().getOutPutArea().append("\n Result will be shown here in Tabular format..");
-        // call the test client here and run that...
-//        String targetName = DCQLRegistry.getTargetNode().getAssociatedClassObject().getFullyQualifiedName();
-        
-        
-//        getMainFrame().getOutputPanel().getOutPutArea().setText(DCQLGenerator.getDCQLText());
-        
         try {
-            FileWriter fop = new FileWriter(new File("C:\\tmp\\tmptmp\\aa.xml"), false);
-            fop.write(DCQLGenerator.getDCQLText());
-            fop.close();
+
+            
+//            ArrayList ar = new ArrayList(1);
+//            ar.add(DCQLRegistry.getTargetNode().getAssociatedClassObject());
+//            getMainFrame().getOutputPanel().setResults(ar);
+            
+            
+            
+
+//            FileWriter fop = new FileWriter(new File("C:\\tmp\\tmptmp\\aa.xml"), false); 
+//            fop.write(DCQLGenerator.getDCQLText());
+//            fop.close();
+
+            
+            
+            
+            FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
+            DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
+            CQLQueryResults results = fqe.execute(dcqlQueryDocument);
+            System.out.println(results.getObjectResult().length);
+             // TODO - put the client config fils of the individual service also in the caTRIP-config.xml or the services-mapping file some how...
+            CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("qe-client-config.wsdd")));
+            
+            ArrayList arr = new ArrayList();
+            
+            ClassBean tObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
+            
+            while (iter.hasNext()) {
+                Object dom = iter.next();
+                ClassBean tmp = tObject.clone();
+                
+                ArrayList Atts = tmp.getAttributes();
+                
+                for (int i = 0; i < Atts.size(); i++) {
+                    AttributeBean aBean = (AttributeBean) Atts.get(i);
+                    String vName = aBean.getAttributeName();
+                    String mNaame ="get"+vName.substring(0,1).toUpperCase() + vName.substring(1);
+//                    System.out.println("XXXX method is :"+mNaame);
+                    String value = "";
+                    try{
+                        value = ""+((Method)dom.getClass().getMethod(mNaame)).invoke(dom);
+                    } catch (Exception eex) {}
+                    aBean.setAttributeValue(value);
+                }
+                arr.add(tmp);
+            }
+            
+            getMainFrame().getOutputPanel().setResults(arr);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
-        
-        
-        
-        
     }//GEN-LAST:event_ExecuteCommandActionPerformed
     
     

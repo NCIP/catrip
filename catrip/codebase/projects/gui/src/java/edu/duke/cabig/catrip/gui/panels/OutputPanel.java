@@ -6,8 +6,12 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import javax.swing.JTextArea;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,15 +19,19 @@ import javax.swing.JTextArea;
  */
 public class OutputPanel extends CPanel {
     
+    
     /** Creates new form OutputPanel */
     public OutputPanel() {
         initComponents();
     }
-
-    public javax.swing.JTextArea getOutPutArea() {
-        return outPutArea;
+    
+    public javax.swing.JTable getOutputTable() {
+        return outputTable;
     }
     
+    public void setResults(ArrayList resultArray){
+        getOutputTable().setModel(getTableModel(resultArray));
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -32,13 +40,12 @@ public class OutputPanel extends CPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
-        outPutArea = new javax.swing.JTextArea();
+        outputTable = new javax.swing.JTable();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
-        outPutArea.setColumns(20);
-        outPutArea.setRows(5);
-        jScrollPane1.setViewportView(outPutArea);
+        outputTable.setModel(getTableModel());
+        jScrollPane1.setViewportView(outputTable);
 
         add(jScrollPane1);
 
@@ -47,7 +54,46 @@ public class OutputPanel extends CPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea outPutArea;
+    private javax.swing.JTable outputTable;
     // End of variables declaration//GEN-END:variables
+    
+    
+    
+    
+    
+    
+    private DefaultTableModel getTableModel(){
+        return new javax.swing.table.DefaultTableModel();
+    }
+    
+    
+    
+    private DefaultTableModel getTableModel(ArrayList array){
+        Vector rowV = new Vector();
+        Vector colNames = null;
+        
+        for (int i = 0; i < array.size(); i++){  // TODO - restrict it to only 100 rows.. else gui will suck...
+            ClassBean b = (ClassBean) array.get(i);
+            ArrayList at = b.getAttributes();
+            Vector colV = new Vector();
+            colNames = new Vector();
+            for (int j = 0; j< at.size();j++){
+                AttributeBean att = (AttributeBean)at.get(j);
+                colV.add(att.getAttributeValue());
+                colNames.add(att.getCDEName());
+            }
+            rowV.add(colV);
+        }
+        
+        DefaultTableModel tb = new javax.swing.table.DefaultTableModel(rowV, colNames){
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+        
+        return tb;
+    }
+    
+    
     
 }
