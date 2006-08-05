@@ -10,6 +10,7 @@ import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
@@ -18,8 +19,6 @@ import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngine;
 import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -77,7 +76,7 @@ public class CommandPanel extends CPanel {
             CQLQueryResults results = fqe.execute(dcqlQueryDocument);
             System.out.println(results.getObjectResult().length);
             // TODO - put the client config fils of the individual service also in the caTRIP-config.xml or the services-mapping file some how...
-            CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("qe-client-config.wsdd")));
+            CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"qe-client-config.wsdd")));
             
             ArrayList arr = new ArrayList();
             

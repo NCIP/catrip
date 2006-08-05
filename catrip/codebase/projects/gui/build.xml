@@ -101,6 +101,7 @@
 	<target name="prepare">
 		<tstamp />
 		<mkdir dir="${build.dir}" />
+		<mkdir dir="${user.home}/.caTRIP" />  <!-- Create the conf dir also. later this will be created by the installer. -->
 	</target>
 
 	<!-- =============================================================== -->
