@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndiConfig xmlns="http://wsrf.globus.org/jndi/config">
+  <service name="cagrid/CAE">
+    <resource name="configuration" type="gov.nih.nci.cagrid.cae.service.globus.resource.ResourceConfiguration">
+      <resourceParams>
+        <parameter>
+          <name>factory</name>
+          <value>org.globus.wsrf.jndi.BeanFactory</value>
+        </parameter>
+        <parameter>
+          <name>performRegistration</name>
+          <!-- Set this to false to skip ServiceGroup registration -->
+          <value>true</value>
+        </parameter>
+        <parameter>
+          <name>registrationTemplateFile</name>
+          <!-- Set this to the relative path (from the container root, e.g GLOBUS_LOCATION for globus container) of the registration parameters template file (ignored if performRegistration is false) -->
+          <value>etc/_cagrid_CAE/registration.xml</value>
+        </parameter>
+        <parameter>
+          <name>serviceMetadataFile</name>
+          <!-- Set this to the relative path (from the container root, e.g GLOBUS_LOCATION for globus container) of the serviceMetadata extract -->
+          <value>etc/_cagrid_CAE/serviceMetadata.xml</value>
+        </parameter>
+        <parameter>
+          <name>domainModelFile</name>
+          <!-- Set this to the relative path (from the container root, e.g GLOBUS_LOCATION for globus container) of the domainModel extract -->
+          <value>etc/_cagrid_CAE/domainModel.xml</value>
+        </parameter>
+      </resourceParams>
+    </resource>
+    <resource name="serviceconfiguration" type="gov.nih.nci.cagrid.cae.service.ServiceConfiguration">
+      <resourceParams>
+        <parameter>
+          <name>factory</name>
+          <value>org.globus.wsrf.jndi.BeanFactory</value>
+        </parameter>
+        <parameter>
+          <name>queryProcessorClass</name>
+          <value>gov.nih.nci.cagrid.data.cql.cacore.LocalQueryProcessor</value>
+        </parameter>
+        <parameter>
+          <name>appserviceUrl</name>
+          <value>http://10.1.10.165/cae/http/remoteService</value>
+        </parameter>
+      </resourceParams>
+    </resource>
+    <resource name="home" type="gov.nih.nci.cagrid.cae.service.globus.resource.BaseResourceHome">
+      <resourceParams>
+        <parameter>
+          <name>factory</name>
+          <value>org.globus.wsrf.jndi.BeanFactory</value>
+        </parameter>
+      </resourceParams>
+    </resource>
+  </service>
+</jndiConfig>
+
