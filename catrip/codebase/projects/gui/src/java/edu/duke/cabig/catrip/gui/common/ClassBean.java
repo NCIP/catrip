@@ -36,6 +36,9 @@ public class ClassBean{
     private HashMap associationRoleNameMap = new HashMap(20);
     
     // ----- DCQL helper attributes ---- //
+    
+    private boolean needImpl=false;
+    
     private int numNotNullAttributes = 0;
     private ArrayList<AttributeBean> notNullAttributes;// = new ArrayList(50);
     
@@ -195,7 +198,11 @@ public class ClassBean{
     public String getFullyQualifiedName() {
 //        return getPackageName()+"."+getClassName();
         // TODO - change this in future.. for the demo only..
-        return getPackageName()+".impl."+getClassName()+"Impl";
+        if (needImpl()){
+            return getPackageName()+".impl."+getClassName()+"Impl";
+        } else {
+            return getPackageName()+getClassName();
+        }
     }
     
     
@@ -284,6 +291,13 @@ public class ClassBean{
     }
     public ArrayList getForeignAssociations(){
         return foreignAssociations;
+    }
+    
+    public void needImpl(boolean need){
+        this.needImpl = need;
+    }
+    public boolean needImpl(){
+        return needImpl;
     }
     
     // --------- helper methods for generating DCQL ------------------ //

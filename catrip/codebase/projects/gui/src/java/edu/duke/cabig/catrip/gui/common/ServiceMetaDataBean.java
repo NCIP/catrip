@@ -29,6 +29,8 @@ public class ServiceMetaDataBean {
     private boolean selected = false;
     private Object domainModelEndPointRef;
     
+    private boolean needImpl=false;
+    
     
     /** Creates a new instance of ServiceMetaDataBean */
     public ServiceMetaDataBean() {
@@ -106,4 +108,12 @@ public class ServiceMetaDataBean {
         this.icon = icon;
     }
     
+    
+    public void needImpl(boolean need){
+        this.needImpl = need;
+    }
+    
+    public boolean needImpl(){
+        return needImpl;
+    }
 }

@@ -19,6 +19,8 @@ import edu.duke.catrip.config.CatripServicesConfigurationDocument;
 import edu.duke.catrip.config.GuiConfiguration;
 import edu.duke.catrip.config.IndentityProvider;
 import java.io.File;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -93,7 +95,8 @@ public  class GUIConfigurationLoader {
             sBean.setDomainModelFileName(services[i].getDomainModelFileName());
             configBean.addServices(sBean);
         }
-       
+        
+        
     }
     
     

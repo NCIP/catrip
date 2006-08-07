@@ -12,7 +12,6 @@ package edu.duke.cabig.catrip.gui.discovery;
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
-import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.catrip.config.CatripService;
 import edu.duke.catrip.config.CatripServicesConfigurationDocument;
 import java.util.ArrayList;
@@ -22,6 +21,7 @@ import gov.nih.nci.cagrid.metadata.common.PointOfContact;
 import gov.nih.nci.cagrid.metadata.common.ResearchCenter;
 import java.io.File;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 
 /**
@@ -40,6 +40,8 @@ public class XMLFileServiceLocator extends ServiceLocator{
         ArrayList<ServiceMetaDataBean> alist = new ArrayList(10);
         
         try{
+            
+            
             
             GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
             
@@ -125,20 +127,23 @@ public class XMLFileServiceLocator extends ServiceLocator{
 //
 //        return alist;
     }
-
+    
     
     
     private void addNode(String file, String domainModelFile, ArrayList alist, String serviceUrl) throws Exception{
+        // read the file for which you have to add impl or not..
+        ResourceBundle rb = ResourceBundle.getBundle("metadataMappings.properties");
+        
         ServiceMetaDataBean sb = new ServiceMetaDataBean();
         ServiceMetadata commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
         
         sb = new ServiceMetaDataBean();
         
         sb.setDomainModelEndPointRef(domainModelFile);
-        
-        sb.setServiceName(commonMetadata.getServiceDescription().getService().getName());
+        String serviceName = commonMetadata.getServiceDescription().getService().getName();
+        sb.setServiceName(serviceName);
         sb.setServiceUrl(serviceUrl);
-         // TODO - change it later.. to generate the icon dunamically from the service name..
+        // TODO - change it later.. to generate the icon dunamically from the service name..
         sb.setIcon("edu/duke/cabig/catrip/gui/dnd/resources/"+sb.getServiceName().trim()+".png");
         sb.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
         
@@ -147,7 +152,15 @@ public class XMLFileServiceLocator extends ServiceLocator{
         
         ResearchCenter rc = commonMetadata.getHostingResearchCenter().getResearchCenter();
         sb.setHostingResearchCenter(rc.getDisplayName() + "("+rc.getShortName()+")"+":"+sb.getPointOfContact());
-        alist.add(sb);
+        
+         // TODO - remove this later...
+        String needImpl = rb.getString(serviceName);
+        if ((needImpl == null) && (Boolean.valueOf(needImpl))){
+            sb.needImpl(true);
+        }
+
+        alist.add(sb); 
+        
         
     }
     

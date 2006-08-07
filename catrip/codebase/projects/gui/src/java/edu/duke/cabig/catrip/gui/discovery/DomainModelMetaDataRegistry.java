@@ -164,6 +164,7 @@ public class DomainModelMetaDataRegistry {
             classBean.setServiceName(sBean.getServiceName());
             classBean.setServiceUrl(sBean.getServiceUrl());
             classBean.setIcon(sBean.getIcon());
+            classBean.needImpl(sBean.needImpl());
 //            System.out.println("### got the class name :"+classBean.getClassName());
             // using this one set the CDE information of the class...
             SemanticMetadata[] smt = umlClasses[i].getSemanticMetadataCollection().getSemanticMetadata();
