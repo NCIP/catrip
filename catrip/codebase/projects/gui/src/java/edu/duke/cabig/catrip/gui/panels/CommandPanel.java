@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,45 +69,57 @@ public class CommandPanel extends CPanel {
 //            fop.write(DCQLGenerator.getDCQLText());
 //            fop.close();
             
-            
-            
-            
             FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
             DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
+            
+            // print the DCQL first..
+            System.out.println("\n\n ========= Executing this DCQL ================\n");
+            System.out.println(DCQLGenerator.getDCQLText());
+            System.out.println("\n\n ==============================================\n\n\n\n\n");
+            
+            // clean the result table before you even try the new query...
+            getMainFrame().getOutputPanel().cleanResults();
+            
             CQLQueryResults results = fqe.execute(dcqlQueryDocument);
-            System.out.println(results.getObjectResult().length);
-            // TODO - put the client config fils of the individual service also in the caTRIP-config.xml or the services-mapping file some how...
-            CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"qe-client-config.wsdd")));
-            
-            ArrayList arr = new ArrayList();
-            
-            ClassBean tObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
-            
-            while (iter.hasNext()) {
-                Object dom = iter.next();
-                ClassBean tmp = tObject.clone();
+            // TODO -  check if the results are null.. show a dialog..
+            if ( (results == null) || (results.getObjectResult() == null) || (results.getObjectResult().length == 0) ){
+                JOptionPane.showMessageDialog(getMainFrame(), "No results found. Please check your query.");
+            } else {
+                // now process results.. to show..
+//            System.out.println(results.getObjectResult().length);
                 
-                ArrayList Atts = tmp.getAttributes();
+                // TODO - put the client config fils of the individual service also in the caTRIP-config.xml or the services-mapping file some how...
+                CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"qe-client-config.wsdd")));
                 
-                for (int i = 0; i < Atts.size(); i++) {
-                    AttributeBean aBean = (AttributeBean) Atts.get(i);
-                    String vName = aBean.getAttributeName();
-                    String mNaame ="get"+vName.substring(0,1).toUpperCase() + vName.substring(1);
+                ArrayList arr = new ArrayList();
+                
+                ClassBean tObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
+                
+                while (iter.hasNext()) {
+                    Object dom = iter.next();
+                    ClassBean tmp = tObject.clone();
+                    
+                    ArrayList Atts = tmp.getAttributes();
+                    
+                    for (int i = 0; i < Atts.size(); i++) {
+                        AttributeBean aBean = (AttributeBean) Atts.get(i);
+                        String vName = aBean.getAttributeName();
+                        String mNaame ="get"+vName.substring(0,1).toUpperCase() + vName.substring(1);
 //                    System.out.println("XXXX method is :"+mNaame);
-                    String value = "";
-                    try{ 
-                        Object vValue = ((Method)dom.getClass().getMethod(mNaame)).invoke(dom);
-                        if (vValue != null){
-                            value = vValue.toString();
-                        }
-                    } catch (Exception eex) {}
-                    aBean.setAttributeValue(value);
+                        String value = "";
+                        try{
+                            Object vValue = ((Method)dom.getClass().getMethod(mNaame)).invoke(dom);
+                            if (vValue != null){
+                                value = vValue.toString();
+                            }
+                        } catch (Exception eex) {}
+                        aBean.setAttributeValue(value);
+                    }
+                    arr.add(tmp);
                 }
-                arr.add(tmp);
+                
+                getMainFrame().getOutputPanel().setResults(arr);
             }
-            
-            getMainFrame().getOutputPanel().setResults(arr);
-            
         } catch (Exception ex) {
             ex.printStackTrace();
         }

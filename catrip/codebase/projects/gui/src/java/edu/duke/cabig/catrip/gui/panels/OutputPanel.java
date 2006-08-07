@@ -32,6 +32,11 @@ public class OutputPanel extends CPanel {
     public void setResults(ArrayList resultArray){
         getOutputTable().setModel(getTableModel(resultArray));
     }
+    
+    public void cleanResults(){
+        getOutputTable().setModel(getTableModel());
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
