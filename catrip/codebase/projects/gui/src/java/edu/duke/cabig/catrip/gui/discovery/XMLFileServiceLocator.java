@@ -158,7 +158,7 @@ public class XMLFileServiceLocator extends ServiceLocator{
         
          // TODO - remove this later...
         String needImpl = rb.getString(serviceName);
-        if ((needImpl == null) && (Boolean.valueOf(needImpl))){
+        if ((needImpl != null) && (Boolean.valueOf(needImpl))){
             sb.needImpl(true);
         }
 
