@@ -20,8 +20,9 @@ import gov.nih.nci.cagrid.metadata.ServiceMetadata;
 import gov.nih.nci.cagrid.metadata.common.PointOfContact;
 import gov.nih.nci.cagrid.metadata.common.ResearchCenter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.PropertyResourceBundle;
 
 
 /**
@@ -132,7 +133,9 @@ public class XMLFileServiceLocator extends ServiceLocator{
     
     private void addNode(String file, String domainModelFile, ArrayList alist, String serviceUrl) throws Exception{
         // read the file for which you have to add impl or not..
-        ResourceBundle rb = ResourceBundle.getBundle("metadataMappings.properties");
+        GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
+        
+        PropertyResourceBundle rb = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
         
         ServiceMetaDataBean sb = new ServiceMetaDataBean();
         ServiceMetadata commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
