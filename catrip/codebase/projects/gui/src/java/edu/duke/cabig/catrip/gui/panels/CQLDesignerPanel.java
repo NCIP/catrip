@@ -22,17 +22,17 @@ public class CQLDesignerPanel extends CPanel {
         initComponents();
     }
 
-    public javax.swing.JTextArea getCqlQueryTextArea() {
+    public javax.swing.JTextArea getDcqlQueryTextArea() {
         return cqlQueryTextArea;
     }
 
    
-    public String getCqlQueryText() {
-        return getCqlQueryTextArea().getText(); 
+    public String getDcqlQueryText() {
+        return getDcqlQueryTextArea().getText();  
     }
     
-    public void setCqlQueryText(String cqlTxt) {
-        getCqlQueryTextArea().setText(cqlTxt); 
+    public void setDcqlQueryText(String cqlTxt) {
+        getDcqlQueryTextArea().setText(cqlTxt); 
     }
     
     /** This method is called from within the constructor to
@@ -47,10 +47,9 @@ public class CQLDesignerPanel extends CPanel {
 
         cqlQueryTextArea.setColumns(20);
         cqlQueryTextArea.setEditable(false);
-        cqlQueryTextArea.setFont(new java.awt.Font("Courier New", 1, 24));
+        cqlQueryTextArea.setFont(new java.awt.Font("Courier New", 0, 12));
         cqlQueryTextArea.setRows(5);
-        cqlQueryTextArea.setText("Generated CQL Query Here.");
-        cqlQueryTextArea.setToolTipText("Generated CQL Query");
+        cqlQueryTextArea.setToolTipText("Generated DCQL Query");
         jScrollPane.setViewportView(cqlQueryTextArea);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);

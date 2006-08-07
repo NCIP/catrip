@@ -7,8 +7,10 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import javax.swing.*;
+import org.apache.xmlbeans.XmlOptions;
 
 
 /**
@@ -28,11 +30,11 @@ public class VisualPanel extends CPanel {
         visualQueryDesignerPanel.setMainFrame(mainFrame);
     }
     
-
+    
     public edu.duke.cabig.catrip.gui.panels.CQLDesignerPanel getCQLDesignerPanel() {
         return cQLDesignerPanel;
     }
-
+    
     public edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel getVisualQueryDesignerPanel() {
         return visualQueryDesignerPanel;
     }
@@ -52,13 +54,32 @@ public class VisualPanel extends CPanel {
         setLayout(new java.awt.GridLayout(1, 0));
 
         tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        tabbedPane.addTab(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("VISUAL_PANEL_TAB_ONE"), visualQueryDesignerPanel);
+        tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbedPaneStateChanged(evt);
+            }
+        });
 
-        tabbedPane.addTab(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("VISUAL_PANEL_TAB_TWO"), cQLDesignerPanel);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        tabbedPane.addTab(bundle.getString("VISUAL_PANEL_TAB_ONE"), visualQueryDesignerPanel); // NOI18N
+
+        tabbedPane.addTab(bundle.getString("VISUAL_PANEL_TAB_TWO"), cQLDesignerPanel); // NOI18N
 
         add(tabbedPane);
 
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
+        // parse the DCQL and show here...
+        int id = tabbedPane.getSelectedIndex();
+        if (id == 1){ // it is the dcql tab.. how show the DCQL..
+            XmlOptions xmlOptions = new XmlOptions();
+            xmlOptions.setSavePrettyPrint();
+            xmlOptions.setSavePrettyPrintIndent(4);
+            xmlOptions.setUseDefaultNamespace();
+            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));
+        }
+    }//GEN-LAST:event_tabbedPaneStateChanged
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

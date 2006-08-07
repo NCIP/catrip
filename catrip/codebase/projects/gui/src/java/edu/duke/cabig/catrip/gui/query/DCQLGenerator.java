@@ -26,6 +26,7 @@ import caBIG.caGrid.x10.govNihNciCagridDcql.TargetObject;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute;
 import caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import org.apache.xmlbeans.XmlOptions;
 // DCQL XML imports..
 
 
@@ -65,7 +66,15 @@ public class DCQLGenerator {
     
     
     public static String getDCQLText(){
-        return getDCQLDocument().xmlText();
+        String txt = "";
+        txt = getDCQLDocument().xmlText();
+        return txt;
+    }
+    
+    public static String getDCQLText(XmlOptions xmlOptions){ 
+        String txt = "";
+        txt = getDCQLDocument().xmlText(xmlOptions);
+        return txt;
     }
     
     

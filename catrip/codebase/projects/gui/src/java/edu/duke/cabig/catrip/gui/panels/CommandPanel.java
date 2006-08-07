@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import org.apache.xmlbeans.XmlOptions;
 
 /**
  *
@@ -72,10 +73,14 @@ public class CommandPanel extends CPanel {
             FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
             DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
             
-            // print the DCQL first..
-            System.out.println("\n\n ========= Executing this DCQL ================\n");
-            System.out.println(DCQLGenerator.getDCQLText());
-            System.out.println("\n\n ==============================================\n\n\n\n\n");
+            // print the formatted DCQL first..
+//            XmlOptions xmlOptions = new XmlOptions();
+//            xmlOptions.setSavePrettyPrint();
+//            xmlOptions.setSavePrettyPrintIndent(4);
+//            xmlOptions.setUseDefaultNamespace();
+//            System.out.println("\n\n ========= Executing this DCQL ================\n");
+//            System.out.println(DCQLGenerator.getDCQLText(xmlOptions));
+//            System.out.println("\n\n ==============================================\n\n\n\n\n");
             
             // clean the result table before you even try the new query...
             getMainFrame().getOutputPanel().cleanResults();
