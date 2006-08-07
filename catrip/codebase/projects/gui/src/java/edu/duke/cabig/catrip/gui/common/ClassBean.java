@@ -201,7 +201,7 @@ public class ClassBean{
         if (needImpl()){
             return getPackageName()+".impl."+getClassName()+"Impl";
         } else {
-            return getPackageName()+getClassName();
+            return getPackageName()+"."+getClassName();
         }
     }
     
