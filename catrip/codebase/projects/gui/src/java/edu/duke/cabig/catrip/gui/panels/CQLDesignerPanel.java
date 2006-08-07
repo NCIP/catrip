@@ -8,7 +8,11 @@ package edu.duke.cabig.catrip.gui.panels;
 
 
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.text.PlainDocument;
+import org.bounce.text.xml.XMLEditorKit;
+import org.bounce.text.xml.XMLStyleConstants;
 
 
 /**
@@ -20,19 +24,28 @@ public class CQLDesignerPanel extends CPanel {
     /** Creates new form CQLDesignerPanel */
     public CQLDesignerPanel() {
         initComponents();
+        init();
     }
-
-    public javax.swing.JTextArea getDcqlQueryTextArea() {
-        return cqlQueryTextArea;
+    
+    private void init(){
+        XMLEditorKit kit = new XMLEditorKit( true);
+        kit.setWrapStyleWord( true);
+        kit.setLineWrappingEnabled( true);
+        getDcqlQueryEditorPane().getDocument().putProperty( PlainDocument.tabSizeAttribute, new Integer(4));
+        kit.setStyle( XMLStyleConstants.ATTRIBUTE_NAME, new Color( 128, 0, 128), Font.PLAIN);
+        kit.setStyle( XMLStyleConstants.ATTRIBUTE_VALUE, new Color( 128, 0, 255), Font.BOLD);
+        kit.setStyle( XMLStyleConstants.ELEMENT_VALUE, new Color(0,0,0), Font.BOLD);
+        kit.setStyle( XMLStyleConstants.ELEMENT_NAME, new Color(128,0,128), Font.PLAIN);
+        getDcqlQueryEditorPane().setEditable(false);
+        getDcqlQueryEditorPane().setEditorKit(kit);
     }
-
-   
-    public String getDcqlQueryText() {
-        return getDcqlQueryTextArea().getText();  
+    
+    public javax.swing.JEditorPane getDcqlQueryEditorPane() {
+        return dcqlQueryEditorPane;
     }
     
     public void setDcqlQueryText(String cqlTxt) {
-        getDcqlQueryTextArea().setText(cqlTxt); 
+        getDcqlQueryEditorPane().setText(cqlTxt);
     }
     
     /** This method is called from within the constructor to
@@ -42,15 +55,10 @@ public class CQLDesignerPanel extends CPanel {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jScrollPane = new javax.swing.JScrollPane();
-        cqlQueryTextArea = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dcqlQueryEditorPane = new javax.swing.JEditorPane();
 
-        cqlQueryTextArea.setColumns(20);
-        cqlQueryTextArea.setEditable(false);
-        cqlQueryTextArea.setFont(new java.awt.Font("Courier New", 0, 12));
-        cqlQueryTextArea.setRows(5);
-        cqlQueryTextArea.setToolTipText("Generated DCQL Query");
-        jScrollPane.setViewportView(cqlQueryTextArea);
+        jScrollPane1.setViewportView(dcqlQueryEditorPane);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -58,22 +66,22 @@ public class CQLDesignerPanel extends CPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea cqlQueryTextArea;
-    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JEditorPane dcqlQueryEditorPane;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     
 }
