@@ -183,6 +183,7 @@ public class ClassBean{
         cBean.setServiceUrl(getServiceUrl());
         cBean.setVersion(getVersion());
         cBean.setAssociationRoleNameMap(getAssociationRoleNameMap());
+        cBean.needImpl(needImpl());
         
         return cBean;
     }
