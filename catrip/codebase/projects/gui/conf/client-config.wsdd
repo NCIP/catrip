@@ -1,43 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deployment xmlns="http://xml.apache.org/axis/wsdd/"
- xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
  <globalConfiguration>
-  
   <parameter name="adminPassword" value="admin"/>
   <parameter name="disablePrettyXML" value="true"/>
   <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <parameter name="sendXsiTypes" value="true"/>
   <parameter name="sendMultiRefs" value="true"/>
   <parameter name="sendXMLDeclaration" value="true"/>
-  
   <requestFlow>
    <handler type="java:org.globus.wsrf.handlers.AddressingHandler"/>
    <handler type="java:org.globus.wsrf.impl.security.authorization.ClientPropertiesHandler"/>
    <handler type="java:org.globus.wsrf.impl.security.authentication.ClientPropertiesHandler"/>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
-    <parameter name="className"
-     value="org.globus.wsrf.impl.security.authentication.securemsg.X509EncryptHandler"/>
+    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.securemsg.X509EncryptHandler"/>
    </handler>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
-    <parameter name="className"
-     value="org.globus.wsrf.impl.security.authentication.securemsg.X509SignHandler"/>
+    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.securemsg.X509SignHandler"/>
    </handler>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
-    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.UsernameHandler"
-    />
+    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.UsernameHandler"/>
    </handler>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
     <parameter name="authService" value="auto"/>
-    <parameter name="className"
-     value="org.globus.wsrf.impl.security.authentication.secureconv.SecContextHandler"/>
+    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.secureconv.SecContextHandler"/>
    </handler>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
-    <parameter name="className"
-     value="org.globus.wsrf.impl.security.authentication.secureconv.GSSHandler"/>
+    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.secureconv.GSSHandler"/>
    </handler>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
-    <parameter name="className"
-     value="org.globus.wsrf.impl.security.authorization.TrustedTargetHandler"/>
+    <parameter name="className" value="org.globus.wsrf.impl.security.authorization.TrustedTargetHandler"/>
    </handler>
    <handler type="java:org.globus.wsrf.handlers.MessageLoggingHandler"/>
   </requestFlow>
@@ -45,12 +36,10 @@
    <handler type="java:org.globus.wsrf.handlers.AddressingHandler"/>
    <handler type="java:org.globus.wsrf.handlers.MessageLoggingHandler"/>
    <handler type="java:org.apache.axis.handlers.JAXRPCHandler">
-    <parameter name="className"
-     value="org.globus.wsrf.impl.security.authentication.wssec.WSSecurityClientHandler"/>
+    <parameter name="className" value="org.globus.wsrf.impl.security.authentication.wssec.WSSecurityClientHandler"/>
    </handler>
   </responseFlow>
  </globalConfiguration>
- 
  <transport name="java" pivot="java:org.apache.axis.transport.java.JavaSender"/>
  <transport name="https" pivot="java:org.globus.axis.transport.HTTPSSender">
   <requestFlow>
@@ -63,66 +52,324 @@
   </requestFlow>
  </transport>
  <transport name="local" pivot="java:org.apache.axis.transport.local.LocalSender"/>
- 
- 
- 
- <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle=""
-  qname="ns1:ServiceNameType" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
-  type="java:org.apache.axis.message.addressing.ServiceNameType"
-  xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle=""
-  qname="ns2:BinaryExchangeType" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
-  type="java:org.globus.ws.trust.BinaryExchangeType"
-  xmlns:ns2="http://schemas.xmlsoap.org/ws/2004/04/trust"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""
-  qname="ns3:BaseFaultType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-  type="java:org.oasis.wsrf.faults.BaseFaultType"
-  xmlns:ns3="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle=""
-  qname="ns4:AttributedURI" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
-  type="java:org.apache.axis.message.addressing.AttributedURI"
-  xmlns:ns4="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
- <typeMapping deserializer="org.globus.wsrf.encoding.TopicExpressionDeserializerFactory"
-  encodingStyle="" qname="ns5:TopicExpressionType"
-  serializer="org.globus.wsrf.encoding.TopicExpressionSerializerFactory"
-  type="java:org.oasis.wsn.TopicExpressionType"
-  xmlns:ns5="http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.xsd"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""
-  qname="ns6:EndpointReferenceType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-  type="java:org.apache.axis.message.addressing.EndpointReferenceType"
-  xmlns:ns6="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle=""
-  qname="ns7:AttributedQName" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
-  type="java:org.apache.axis.message.addressing.AttributedQName"
-  xmlns:ns7="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""
-  qname="ns8:SecurityContextTokenType"
-  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-  type="java:org.globus.ws.sc.SecurityContextTokenType"
-  xmlns:ns8="http://schemas.xmlsoap.org/ws/2004/04/sc"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""
-  qname="ns9:ReferencePropertiesType"
-  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-  type="java:org.apache.axis.message.addressing.ReferencePropertiesType"
-  xmlns:ns9="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
- <typeMapping deserializer="org.globus.wsrf.encoding.AnyListDeserializerFactory" encodingStyle=""
-  qname="ns10:&gt;SetResourceProperties"
-  serializer="org.globus.wsrf.encoding.AnyListSerializerFactory"
-  type="java:org.oasis.wsrf.properties.SetResourceProperties_Element"
-  xmlns:ns10="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"/>
- <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle=""
-  qname="ns11:QueryExpressionDialect"
-  serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory" type="java:java.lang.String"
-  xmlns:ns11="http://www.globus.org/foobar"/>
- <typeMapping deserializer="org.globus.wsrf.encoding.QueryExpressionDeserializerFactory"
-  encodingStyle="" qname="ns12:QueryExpressionType"
-  serializer="org.globus.wsrf.encoding.QueryExpressionSerializerFactory"
-  type="java:org.oasis.wsrf.properties.QueryExpressionType"
-  xmlns:ns12="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"/>
-  
-  <!-- START INTRODUCE TYPEMAPPINGS -->
+ <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle="" qname="ns1:ServiceNameType" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory" type="java:org.apache.axis.message.addressing.ServiceNameType" xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle="" qname="ns2:BinaryExchangeType" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory" type="java:org.globus.ws.trust.BinaryExchangeType" xmlns:ns2="http://schemas.xmlsoap.org/ws/2004/04/trust"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:BaseFaultType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.oasis.wsrf.faults.BaseFaultType" xmlns:ns3="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle="" qname="ns4:AttributedURI" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory" type="java:org.apache.axis.message.addressing.AttributedURI" xmlns:ns4="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
+ <typeMapping deserializer="org.globus.wsrf.encoding.TopicExpressionDeserializerFactory" encodingStyle="" qname="ns5:TopicExpressionType" serializer="org.globus.wsrf.encoding.TopicExpressionSerializerFactory" type="java:org.oasis.wsn.TopicExpressionType" xmlns:ns5="http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.xsd"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:EndpointReferenceType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.apache.axis.message.addressing.EndpointReferenceType" xmlns:ns6="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle="" qname="ns7:AttributedQName" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory" type="java:org.apache.axis.message.addressing.AttributedQName" xmlns:ns7="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns8:SecurityContextTokenType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.globus.ws.sc.SecurityContextTokenType" xmlns:ns8="http://schemas.xmlsoap.org/ws/2004/04/sc"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:ReferencePropertiesType" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.apache.axis.message.addressing.ReferencePropertiesType" xmlns:ns9="http://schemas.xmlsoap.org/ws/2004/03/addressing"/>
+ <typeMapping deserializer="org.globus.wsrf.encoding.AnyListDeserializerFactory" encodingStyle="" qname="ns10:&gt;SetResourceProperties" serializer="org.globus.wsrf.encoding.AnyListSerializerFactory" type="java:org.oasis.wsrf.properties.SetResourceProperties_Element" xmlns:ns10="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"/>
+ <typeMapping deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory" encodingStyle="" qname="ns11:QueryExpressionDialect" serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory" type="java:java.lang.String" xmlns:ns11="http://www.globus.org/foobar"/>
+ <typeMapping deserializer="org.globus.wsrf.encoding.QueryExpressionDeserializerFactory" encodingStyle="" qname="ns12:QueryExpressionType" serializer="org.globus.wsrf.encoding.QueryExpressionSerializerFactory" type="java:org.oasis.wsrf.properties.QueryExpressionType" xmlns:ns12="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"/>
 
-<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nci.cadsr.umlproject.domain.SemanticMetadata" qname="ns2:SemanticMetadata" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
 
 <!-- END INTRODUCE TYPEMAPPINGS -->
-</deployment>
+
+
+<!-- START INTRODUCE TYPEMAPPINGS for NameSpace: gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general -->
+
+
+
+
+
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Participant" qname="ns2:Participant" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.SpecimenCollectionGroup" qname="ns2:SpecimenCollectionGroup" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CollectionProtocol" qname="ns2:CollectionProtocol" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Site" qname="ns2:Site" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.DistributionProtocol" qname="ns2:DistributionProtocol" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Specimen" qname="ns2:Specimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.MolecularSpecimen" qname="ns2:MolecularSpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.User" qname="ns2:User" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.SpecimenRequirement" qname="ns2:SpecimenRequirement" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Distribution" qname="ns2:Distribution" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.DistributedItem" qname="ns2:DistributedItem" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.StorageContainer" qname="ns2:StorageContainer" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.StorageContainerDetails" qname="ns2:StorageContainerDetails" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Address" qname="ns2:Address" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Institution" qname="ns2:Institution" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.AuditEvent" qname="ns2:AuditEvent" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.AuditEventLog" qname="ns2:AuditEventLog" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Biohazard" qname="ns2:Biohazard" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.Department" qname="ns2:Department" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.SpecimenEventParameters" qname="ns2:SpecimenEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.FixedEventParameters" qname="ns2:FixedEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ProcedureEventParameters" qname="ns2:ProcedureEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ReviewEventParameters" qname="ns2:ReviewEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.FluidSpecimenReviewEventParameters" qname="ns2:FluidSpecimenReviewEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.TissueSpecimenReviewEventParameters" qname="ns2:TissueSpecimenReviewEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.TissueSpecimen" qname="ns2:TissueSpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.StorageContainerCapacity" qname="ns2:StorageContainerCapacity" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.StorageType" qname="ns2:StorageType" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CollectionProtocolRegistration" qname="ns2:CollectionProtocolRegistration" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ReceivedEventParameters" qname="ns2:ReceivedEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CollectionProtocolEvent" qname="ns2:CollectionProtocolEvent" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ParticipantMedicalIdentifier" qname="ns2:ParticipantMedicalIdentifier" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.SpecimenProtocol" qname="ns2:SpecimenProtocol" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.MolecularSpecimenReviewParameters" qname="ns2:MolecularSpecimenReviewParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ExternalIdentifier" qname="ns2:ExternalIdentifier" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ClinicalReport" qname="ns2:ClinicalReport" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.AuditEventDetails" qname="ns2:AuditEventDetails" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.EventParameters" qname="ns2:EventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.FluidSpecimen" qname="ns2:FluidSpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.FluidSpecimenRequirement" qname="ns2:FluidSpecimenRequirement" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.TissueSpecimenRequirement" qname="ns2:TissueSpecimenRequirement" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CollectionEventParameters" qname="ns2:CollectionEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.FrozenEventParameters" qname="ns2:FrozenEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.SpunEventParameters" qname="ns2:SpunEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.EmbeddedEventParameters" qname="ns2:EmbeddedEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.ThawEventParameters" qname="ns2:ThawEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.DisposalEventParameters" qname="ns2:DisposalEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.SpecimenCharacteristics" qname="ns2:SpecimenCharacteristics" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.MolecularSpecimenRequirement" qname="ns2:MolecularSpecimenRequirement" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CheckInCheckOutEventParameter" qname="ns2:CheckInCheckOutEventParameter" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CellSpecimen" qname="ns2:CellSpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.TransferEventParameters" qname="ns2:TransferEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CancerResearchGroup" qname="ns2:CancerResearchGroup" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CellSpecimenReviewParameters" qname="ns2:CellSpecimenReviewParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.CellSpecimenRequirement" qname="ns2:CellSpecimenRequirement" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+
+
+
+
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ParticipantImpl" qname="ns2:ParticipantImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" qname="ns2:SpecimenCollectionGroupImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CollectionProtocolImpl" qname="ns2:CollectionProtocolImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SiteImpl" qname="ns2:SiteImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.DistributionProtocolImpl" qname="ns2:DistributionProtocolImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpecimenImpl" qname="ns2:SpecimenImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenImpl" qname="ns2:MolecularSpecimenImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.UserImpl" qname="ns2:UserImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl" qname="ns2:SpecimenRequirementImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.DistributionImpl" qname="ns2:DistributionImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.DistributedItemImpl" qname="ns2:DistributedItemImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.StorageContainerImpl" qname="ns2:StorageContainerImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.StorageContainerDetailsImpl" qname="ns2:StorageContainerDetailsImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.AddressImpl" qname="ns2:AddressImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.InstitutionImpl" qname="ns2:InstitutionImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.AuditEventImpl" qname="ns2:AuditEventImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.AuditEventLogImpl" qname="ns2:AuditEventLogImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.BiohazardImpl" qname="ns2:BiohazardImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.DepartmentImpl" qname="ns2:DepartmentImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl" qname="ns2:SpecimenEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.FixedEventParametersImpl" qname="ns2:FixedEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ProcedureEventParametersImpl" qname="ns2:ProcedureEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl" qname="ns2:ReviewEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.FluidSpecimenReviewEventParametersImpl" qname="ns2:FluidSpecimenReviewEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.TissueSpecimenReviewEventParametersImpl" qname="ns2:TissueSpecimenReviewEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" qname="ns2:TissueSpecimenImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.StorageContainerCapacityImpl" qname="ns2:StorageContainerCapacityImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.StorageTypeImpl" qname="ns2:StorageTypeImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CollectionProtocolRegistrationImpl" qname="ns2:CollectionProtocolRegistrationImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ReceivedEventParametersImpl" qname="ns2:ReceivedEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CollectionProtocolEventImpl" qname="ns2:CollectionProtocolEventImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" qname="ns2:ParticipantMedicalIdentifierImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpecimenProtocolImpl" qname="ns2:SpecimenProtocolImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenReviewParametersImpl" qname="ns2:MolecularSpecimenReviewParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ExternalIdentifierImpl" qname="ns2:ExternalIdentifierImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" qname="ns2:ClinicalReportImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.AuditEventDetailsImpl" qname="ns2:AuditEventDetailsImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.EventParametersImpl" qname="ns2:EventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.FluidSpecimenImpl" qname="ns2:FluidSpecimenImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.FluidSpecimenRequirementImpl" qname="ns2:FluidSpecimenRequirementImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.TissueSpecimenRequirementImpl" qname="ns2:TissueSpecimenRequirementImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CollectionEventParametersImpl" qname="ns2:CollectionEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.FrozenEventParametersImpl" qname="ns2:FrozenEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpunEventParametersImpl" qname="ns2:SpunEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.EmbeddedEventParametersImpl" qname="ns2:EmbeddedEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.ThawEventParametersImpl" qname="ns2:ThawEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.DisposalEventParametersImpl" qname="ns2:DisposalEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl" qname="ns2:SpecimenCharacteristicsImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenRequirementImpl" qname="ns2:MolecularSpecimenRequirementImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CheckInCheckOutEventParameterImpl" qname="ns2:CheckInCheckOutEventParameterImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl" qname="ns2:CellSpecimenImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.TransferEventParametersImpl" qname="ns2:TransferEventParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CancerResearchGroupImpl" qname="ns2:CancerResearchGroupImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CellSpecimenReviewParametersImpl" qname="ns2:CellSpecimenReviewParametersImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.wustl.catissuecore.domainobject.impl.CellSpecimenRequirementImpl" qname="ns2:CellSpecimenRequirementImpl" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCore.caBIG/1.0/edu.wustl.catissuecore.domainobject" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+
+<!-- CAE  -->
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.Specimen" qname="ns2:Specimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.Participant" qname="ns2:Participant" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.Accession" qname="ns2:Accession" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" qname="ns2:ParticipantMedicalIdentifier" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+<!-- END INTRODUCE TYPEMAPPINGS -->
+
+
+<!-- START INTRODUCE TYPEMAPPINGS for NameSpace: gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast -->
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFinding" qname="ns2:BreastCancerTNMFinding" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin" qname="ns2:BreastPositiveSurgicalMargin" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastNegativeSurgicalMargin" qname="ns2:BreastNegativeSurgicalMargin" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinoma" qname="ns2:InvasiveBreastCarcinoma" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" qname="ns2:NottinghamHistopathologicGrade" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinomaNeoplasmHistologicType" qname="ns2:InvasiveBreastCarcinomaNeoplasmHistologicType" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastSurgicalPathologySpecimen" qname="ns2:BreastSurgicalPathologySpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.OtherBreastCancerHistopathologicGrade" qname="ns2:OtherBreastCancerHistopathologicGrade" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+<!-- END INTRODUCE TYPEMAPPINGS -->
+
+
+<!-- START INTRODUCE TYPEMAPPINGS for NameSpace: gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general -->
+
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.EventParameters" qname="ns2:EventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" qname="ns2:AnnotationEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AnnotationSet" qname="ns2:AnnotationSet" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AnnotatableEntity" qname="ns2:AnnotatableEntity" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AdditionalFindings" qname="ns2:AdditionalFindings" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.NeoplasmHistopathologicType" qname="ns2:NeoplasmHistopathologicType" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.SurgicalMargin" qname="ns2:SurgicalMargin" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.HistopathologicGrade" qname="ns2:HistopathologicGrade" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" qname="ns2:ThreeDimensionalSize" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.CancerTNMFinding" qname="ns2:CancerTNMFinding" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.Neoplasm" qname="ns2:Neoplasm" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.SurgicalPathologySpecimen" qname="ns2:SurgicalPathologySpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+
+
+
+
+<!-- END INTRODUCE TYPEMAPPINGS --></deployment>

@@ -1,215 +1,145 @@
 <ns1:DomainModel projectDescription="This is the phase 1 model for the caTISSUE Clinical Annotation Engine application, a caBIG application for integrating  clinical information that describes tissue bank specimens.    The clinical data come from sources including the Anatomic Pathology LIS and the tumor registry.    The classes and attributes in the breast, prostate, and cutaneousMelanoma packages of this model are identical to those in the same packages of the model in the CAP Cancer Checklists classification." projectLongName="caTISSUE Clinical Annotation Engine caTissueCAE" projectShortName="caTissueCAE" projectVersion="1" xsi:type="ns1:DomainModel" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ns1:exposedUMLAssociationCollection>
+		
 		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
 			<ns1:targetUMLAssociationEdge>
+				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="medicalRecordNumberCollection" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="ParticipantMedicalIdentifier" xsi:type="ns1:UMLClassReference"/>
+				</ns1:UMLAssociationEdge>
+			</ns1:targetUMLAssociationEdge>
+			<ns1:sourceUMLAssociationEdge>
 				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="participant" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33F-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:targetUMLAssociationEdge>
-			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="accessionCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33F-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+					<ns1:UMLClassReference refid="Participant" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:sourceUMLAssociationEdge>
 		</ns1:UMLAssociation>
+
 		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
 			<ns1:targetUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="participant" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33F-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotatableEntity" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="Participant" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:targetUMLAssociationEdge>
 			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="accessionCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33F-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationEventParametersCollection" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="AnnotationEventParameters" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:sourceUMLAssociationEdge>
 		</ns1:UMLAssociation>
+
 		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
 			<ns1:targetUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="accession" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33A-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotationEventParameters" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="AnnotationEventParameters" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:targetUMLAssociationEdge>
 			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="specimenCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33A-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationSetCollection" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="NottinghamHistopathologicGrade" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:sourceUMLAssociationEdge>
 		</ns1:UMLAssociation>
+
 		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
 			<ns1:targetUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="accession" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33A-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotationEventParameters" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="AnnotationEventParameters" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:targetUMLAssociationEdge>
 			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="specimenCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33A-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:sourceUMLAssociationEdge>
-		</ns1:UMLAssociation>
-		<ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
-			<ns1:targetUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="specimenCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33B-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:targetUMLAssociationEdge>
-			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="specimen" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F33B-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationSetCollection" xsi:type="ns1:UMLAssociationEdge">
+					<ns1:UMLClassReference refid="OtherBreastCancerHistopathologicGrade" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:sourceUMLAssociationEdge>
 		</ns1:UMLAssociation>
 		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
 			<ns1:targetUMLAssociationEdge>
 				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotationEventParameters" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F341-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+					<ns1:UMLClassReference refid="AnnotationEventParameters" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:targetUMLAssociationEdge>
 			<ns1:sourceUMLAssociationEdge>
 				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationSetCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F341-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+					<ns1:UMLClassReference refid="InvasiveBreastCarcinoma" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:sourceUMLAssociationEdge>
 		</ns1:UMLAssociation>
+
 		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
 			<ns1:targetUMLAssociationEdge>
 				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotationEventParameters" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F341-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+					<ns1:UMLClassReference refid="AnnotationEventParameters" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:targetUMLAssociationEdge>
 			<ns1:sourceUMLAssociationEdge>
 				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationSetCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F341-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+					<ns1:UMLClassReference refid="ThreeDimensionalSize" xsi:type="ns1:UMLClassReference"/>
 				</ns1:UMLAssociationEdge>
 			</ns1:sourceUMLAssociationEdge>
 		</ns1:UMLAssociation>
-		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
-			<ns1:targetUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotatableEntity" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F342-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:targetUMLAssociationEdge>
-			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationEventParametersCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F342-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:sourceUMLAssociationEdge>
-		</ns1:UMLAssociation>
-		<ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
-			<ns1:targetUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="annotatableEntity" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F342-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:targetUMLAssociationEdge>
-			<ns1:sourceUMLAssociationEdge>
-				<ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="annotationEventParametersCollection" xsi:type="ns1:UMLAssociationEdge">
-					<ns1:UMLClassReference refid="18785753-F342-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
-				</ns1:UMLAssociationEdge>
-			</ns1:sourceUMLAssociationEdge>
-		</ns1:UMLAssociation>
+
 	</ns1:exposedUMLAssociationCollection>
+	
 	<ns1:exposedUMLClassCollection>
-		<ns2:UMLClass className="InvasiveBreastCarcinomaNeoplasmHistologicType" description="The diagnostic subclassification of invasive breast carcinoma." id="18785753-F338-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns2:UMLClass" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns2:umlAttributeCollection>
-				<ns2:UMLAttribute name="otherName" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns3:SemanticMetadata id="18785754-3BB4-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="1" xsi:type="ns4:SemanticMetadata" xmlns:ns3="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns4="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns5:SemanticMetadata id="18785754-45C9-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns6:SemanticMetadata" xmlns:ns5="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns6="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-				<ns2:UMLAttribute name="nameMVR" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns7:SemanticMetadata id="18785754-45D2-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns8:SemanticMetadata" xmlns:ns7="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns8="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns9:SemanticMetadata id="18785754-4EE3-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="false" order="1" xsi:type="ns10:SemanticMetadata" xmlns:ns9="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns10="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-				<ns2:UMLAttribute name="name" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns11:SemanticMetadata id="18785754-4743-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns12:SemanticMetadata" xmlns:ns11="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns12="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-				<ns2:UMLAttribute name="id" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns13:SemanticMetadata id="18785754-3919-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns14:SemanticMetadata" xmlns:ns13="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns14="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-				<ns2:UMLAttribute name="otherName" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns15:SemanticMetadata id="18785754-3BB5-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="1" xsi:type="ns16:SemanticMetadata" xmlns:ns15="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns16="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns17:SemanticMetadata id="18785754-45CA-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns18:SemanticMetadata" xmlns:ns17="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns18="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-				<ns2:UMLAttribute name="nameMVR" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns19:SemanticMetadata id="18785754-45D3-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns20:SemanticMetadata" xmlns:ns19="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns20="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns21:SemanticMetadata id="18785754-4EE4-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="false" order="1" xsi:type="ns22:SemanticMetadata" xmlns:ns21="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns22="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-				<ns2:UMLAttribute name="name" xsi:type="ns2:UMLAttribute">
-					<ns2:semanticMetadataCollection>
-						<ns23:SemanticMetadata id="18785754-474D-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns24:SemanticMetadata" xmlns:ns23="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns24="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns2:semanticMetadataCollection>
-				</ns2:UMLAttribute>
-			</ns2:umlAttributeCollection>
-			<ns2:semanticMetadataCollection>
-				<ns25:SemanticMetadata id="18785754-318D-3542-E044-0003BA4529A9" conceptCode="C4741" conceptName="Neoplasm by Morphology" conceptDefinition="definition pending" isPrimaryConcept="false" order="1" xsi:type="ns26:SemanticMetadata" xmlns:ns25="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns26="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns27:SemanticMetadata id="18785754-31BE-3542-E044-0003BA4529A9" conceptCode="C9245" conceptName="Invasive Breast Carcinoma" conceptDefinition="A carcinoma that infiltrates the breast parenchyma.  The vast majority are adenocarcinomas arising from the terminal ductal lobular unit (TDLU).  Often, the invasive adenocarcinoma co-exists with ductal or lobular carcinoma in situ.  It is the most common carcinoma affecting women. --2003" isPrimaryConcept="true" order="0" xsi:type="ns28:SemanticMetadata" xmlns:ns27="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns28="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns2:semanticMetadataCollection>
-		</ns2:UMLClass>
-		<ns29:UMLClass className="BreastCancerTNMFinding" description="TNM finding of the American Joint Committee on Cancer (AJCC) and Internation Union Against Cancer (UICC) recommended classification system for breast cancers." id="18785753-F3D1-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns29:UMLClass" xmlns:ns29="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns29:umlAttributeCollection>
-				<ns29:UMLAttribute description="Total number of lymph nodes examined in surgical pathology case." name="numberLymphNodesExamined" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns30:SemanticMetadata id="18785754-427B-3542-E044-0003BA4529A9" conceptCode="C25500" conceptName="Examined" conceptDefinition="Examined; having been subjected to an examination." isPrimaryConcept="false" order="2" xsi:type="ns31:SemanticMetadata" xmlns:ns30="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns31="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns32:SemanticMetadata id="18785754-3BF3-3542-E044-0003BA4529A9" conceptCode="C25337" conceptName="Number" conceptDefinition="Number; a concept of quantity derived from zero and units; a numeral or string of numerals that is used for identification." isPrimaryConcept="false" order="1" xsi:type="ns33:SemanticMetadata" xmlns:ns32="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns33="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns34:SemanticMetadata id="18785754-3336-3542-E044-0003BA4529A9" conceptCode="C12745" conceptName="Lymph Node" conceptDefinition="A rounded mass of lymphatic tissue that is surrounded by a capsule of connective tissue. Lymph glands filter lymph (lymphatic fluid), and they store lymphocytes (white blood cells). They are located along lymphatic vessels. Also called a lymph node." isPrimaryConcept="true" order="0" xsi:type="ns35:SemanticMetadata" xmlns:ns34="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns35="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute description="Number of lymph nodes examined that are involved by metastatic neoplasm." name="numberLymphNodesInvolved" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns36:SemanticMetadata id="18785754-3BF0-3542-E044-0003BA4529A9" conceptCode="C25337" conceptName="Number" conceptDefinition="Number; a concept of quantity derived from zero and units; a numeral or string of numerals that is used for identification." isPrimaryConcept="false" order="1" xsi:type="ns37:SemanticMetadata" xmlns:ns36="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns37="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns38:SemanticMetadata id="18785754-3333-3542-E044-0003BA4529A9" conceptCode="C12745" conceptName="Lymph Node" conceptDefinition="A rounded mass of lymphatic tissue that is surrounded by a capsule of connective tissue. Lymph glands filter lymph (lymphatic fluid), and they store lymphocytes (white blood cells). They are located along lymphatic vessels. Also called a lymph node." isPrimaryConcept="true" order="0" xsi:type="ns39:SemanticMetadata" xmlns:ns38="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns39="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns40:SemanticMetadata id="18785754-4F0E-3542-E044-0003BA4529A9" conceptCode="C35682" conceptName="Positive Test Result" conceptDefinition="A test result confirming the presence of a disease, condition, or microorganism. (NCI)" isPrimaryConcept="false" order="2" xsi:type="ns41:SemanticMetadata" xmlns:ns40="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns41="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute description="Sites of metastatic neoplasm." name="metastasisAnatomicSite" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns42:SemanticMetadata id="18785754-3DA1-3542-E044-0003BA4529A9" conceptCode="C19151" conceptName="Metastasis" conceptDefinition="Cancer that has spread from the organ in which it first appeared to another organ. For example, breast cancer cells may spread (metastasize) to the lungs and cause the growth of a new tumor. When this happens, the disease is called metastatic breast cancer." isPrimaryConcept="false" order="1" xsi:type="ns43:SemanticMetadata" xmlns:ns42="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns43="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns44:SemanticMetadata id="18785754-34CD-3542-E044-0003BA4529A9" conceptCode="C13717" conceptName="Anatomic Site" conceptDefinition="Named locations of, or within, the body." isPrimaryConcept="true" order="0" xsi:type="ns45:SemanticMetadata" xmlns:ns44="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns45="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute name="id" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns46:SemanticMetadata id="18785754-38E9-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns47:SemanticMetadata" xmlns:ns46="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns47="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute name="distantMetastasisFinding" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns48:SemanticMetadata id="18785754-4F03-3542-E044-0003BA4529A9" conceptCode="C48883" conceptName="Generic_Distant_Metastasis_TNM_Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns49:SemanticMetadata" xmlns:ns48="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns49="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute name="regionalLymphNodesFinding" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns50:SemanticMetadata id="18785754-4EFB-3542-E044-0003BA4529A9" conceptCode="C48884" conceptName="Generic_Regional_Lymph_Nodes_TNM_Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns51:SemanticMetadata" xmlns:ns50="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns51="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute name="primaryTumorFinding" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns52:SemanticMetadata id="18785754-4EF3-3542-E044-0003BA4529A9" conceptCode="C48885" conceptName="Generic_Primary_Tumor_TNM_Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns53:SemanticMetadata" xmlns:ns52="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns53="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-				<ns29:UMLAttribute name="category" xsi:type="ns29:UMLAttribute">
-					<ns29:semanticMetadataCollection>
-						<ns54:SemanticMetadata id="18785754-4EEB-3542-E044-0003BA4529A9" conceptCode="C48698" conceptName="Cancer TNM Finding Category" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns55:SemanticMetadata" xmlns:ns54="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns55="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns29:semanticMetadataCollection>
-				</ns29:UMLAttribute>
-			</ns29:umlAttributeCollection>
-			<ns29:semanticMetadataCollection>
-				<ns56:SemanticMetadata id="18785754-31B0-3542-E044-0003BA4529A9" conceptCode="C48790" conceptName="Breast Cancer TNM Finding" conceptDefinition="A finding about one or more characteristics of breast cancer, following the rules of the TNM classification system." isPrimaryConcept="true" order="0" xsi:type="ns57:SemanticMetadata" xmlns:ns56="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns57="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns29:semanticMetadataCollection>
-		</ns29:UMLClass>
-		<ns58:UMLClass className="OtherBreastCancerHistopathologicGrade" description="An alternative grading system for breast cancer (not Nottingham Grade)." id="18785753-F3D2-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns58:UMLClass" xmlns:ns58="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+		
+		<ns287:UMLClass className="AnnotationSet" description="The collection of all the data in the annotation" id="AnnotationSet" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns287:UMLClass" xmlns:ns287="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+			<ns287:umlAttributeCollection>
+				<ns287:UMLAttribute description="System generated internal identifier" name="id" xsi:type="ns287:UMLAttribute">
+					<ns287:semanticMetadataCollection>
+						<ns288:SemanticMetadata id="18785754-379A-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns289:SemanticMetadata" xmlns:ns288="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns289="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns287:semanticMetadataCollection>
+				</ns287:UMLAttribute>
+			</ns287:umlAttributeCollection>
+			<ns287:semanticMetadataCollection>
+				<ns290:SemanticMetadata id="18785754-317C-3542-E044-0003BA4529A9" conceptCode="C47894" conceptName="Set" conceptDefinition="A group of things of the same kind that belong together and are so used." isPrimaryConcept="true" order="0" xsi:type="ns291:SemanticMetadata" xmlns:ns290="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns291="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+				<ns292:SemanticMetadata id="18785754-3290-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="1" xsi:type="ns293:SemanticMetadata" xmlns:ns292="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns293="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+			</ns287:semanticMetadataCollection>
+		</ns287:UMLClass>
+		
+		<ns294:UMLClass className="AnnotationEventParameters" description="The parameters used in the annotation" id="AnnotationEventParameters" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns294:UMLClass" xmlns:ns294="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+			<ns294:umlAttributeCollection>
+				<ns294:UMLAttribute description="The source of the data for the annotation" name="source" xsi:type="ns294:UMLAttribute">
+					<ns294:semanticMetadataCollection>
+						<ns295:SemanticMetadata id="18785754-3A6C-3542-E044-0003BA4529A9" conceptCode="C25683" conceptName="Source" conceptDefinition="Source; where something is available." isPrimaryConcept="true" order="0" xsi:type="ns296:SemanticMetadata" xmlns:ns295="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns296="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns294:semanticMetadataCollection>
+				</ns294:UMLAttribute>
+				<ns294:UMLAttribute name="timeStamp" xsi:type="ns294:UMLAttribute">
+					<ns294:semanticMetadataCollection>
+						<ns297:SemanticMetadata id="18785754-3AAF-3542-E044-0003BA4529A9" conceptCode="C37939" conceptName="Date/Time" conceptDefinition="An expression of both date and time that an event has happened or will happened. (NCI)" isPrimaryConcept="true" order="0" xsi:type="ns298:SemanticMetadata" xmlns:ns297="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns298="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns294:semanticMetadataCollection>
+				</ns294:UMLAttribute>
+				<ns294:UMLAttribute name="id" xsi:type="ns294:UMLAttribute">
+					<ns294:semanticMetadataCollection>
+						<ns299:SemanticMetadata id="18785754-3934-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns300:SemanticMetadata" xmlns:ns299="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns300="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns294:semanticMetadataCollection>
+				</ns294:UMLAttribute>
+				<ns294:UMLAttribute name="sourceDate" xsi:type="ns294:UMLAttribute">
+					<ns294:semanticMetadataCollection>
+						<ns301:SemanticMetadata id="18785754-3E85-3542-E044-0003BA4529A9" conceptCode="C25164" conceptName="Date" conceptDefinition="a particular day specified as the time something has, or will, happen." isPrimaryConcept="true" order="0" xsi:type="ns302:SemanticMetadata" xmlns:ns301="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns302="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+						<ns303:SemanticMetadata id="18785754-3A57-3542-E044-0003BA4529A9" conceptCode="C25683" conceptName="Source" conceptDefinition="Source; where something is available." isPrimaryConcept="false" order="1" xsi:type="ns304:SemanticMetadata" xmlns:ns303="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns304="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns294:semanticMetadataCollection>
+				</ns294:UMLAttribute>
+			</ns294:umlAttributeCollection>
+			<ns294:semanticMetadataCollection>
+				<ns305:SemanticMetadata id="18785754-3013-3542-E044-0003BA4529A9" conceptCode="C44175" conceptName="Parameter Object" conceptDefinition="A Parameter is a replaceable value in a Parameterizable class.  Examples of Parameters include: scanning wavelength, laser power, centrifuge speed, multiplicative errors, the number of input nodes to a SOM, and PCR temperatures." isPrimaryConcept="true" order="0" xsi:type="ns306:SemanticMetadata" xmlns:ns305="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns306="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+				<ns307:SemanticMetadata id="18785754-328F-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="1" xsi:type="ns308:SemanticMetadata" xmlns:ns307="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns308="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+			</ns294:semanticMetadataCollection>
+		</ns294:UMLClass>
+		
+		<ns309:UMLClass className="AnnotatableEntity" description="Any items that can be annotated by CAE, i.e. Accession, Specimen" id="AnnotatableEntity" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns309:UMLClass" xmlns:ns309="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+			<ns309:umlAttributeCollection>
+				<ns309:UMLAttribute description="System generated internal identifier" name="id" xsi:type="ns309:UMLAttribute">
+					<ns309:semanticMetadataCollection>
+						<ns310:SemanticMetadata id="18785754-379B-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns311:SemanticMetadata" xmlns:ns310="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns311="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns309:semanticMetadataCollection>
+				</ns309:UMLAttribute>
+			</ns309:umlAttributeCollection>
+			<ns309:semanticMetadataCollection>
+				<ns312:SemanticMetadata id="18785754-326C-3542-E044-0003BA4529A9" conceptCode="C51070" conceptName="Entity" conceptDefinition="An independently existing thing (living or nonliving)." isPrimaryConcept="true" order="0" xsi:type="ns313:SemanticMetadata" xmlns:ns312="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns313="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+				<ns314:SemanticMetadata id="18785754-328E-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="1" xsi:type="ns315:SemanticMetadata" xmlns:ns314="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns315="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+			</ns309:semanticMetadataCollection>
+		</ns309:UMLClass>
+		<ns58:UMLClass className="OtherBreastCancerHistopathologicGrade" description="An alternative grading system for breast cancer (not Nottingham Grade)." id="OtherBreastCancerHistopathologicGrade" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns58:UMLClass" xmlns:ns58="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns58:umlAttributeCollection>
 				<ns58:UMLAttribute description="The commonly used name of the scoring system, often eponymic." name="systemName" xsi:type="ns58:UMLAttribute">
 					<ns58:semanticMetadataCollection>
@@ -244,54 +174,7 @@
 				<ns75:SemanticMetadata id="18785754-31BF-3542-E044-0003BA4529A9" conceptCode="C9245" conceptName="Invasive Breast Carcinoma" conceptDefinition="A carcinoma that infiltrates the breast parenchyma.  The vast majority are adenocarcinomas arising from the terminal ductal lobular unit (TDLU).  Often, the invasive adenocarcinoma co-exists with ductal or lobular carcinoma in situ.  It is the most common carcinoma affecting women. --2003" isPrimaryConcept="false" order="1" xsi:type="ns76:SemanticMetadata" xmlns:ns75="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns76="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
 			</ns58:semanticMetadataCollection>
 		</ns58:UMLClass>
-		<ns77:UMLClass className="BreastSurgicalPathologySpecimen" description="A set of surgical pathologic specimens resulting from a surgical procedure for breast cancer." id="18785753-F3D3-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns77:UMLClass" xmlns:ns77="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns77:umlAttributeCollection>
-				<ns77:UMLAttribute description="User entered text indicating surgical procedure not specified within the typical value domain." name="otherSurgicalProcedure" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns78:SemanticMetadata id="18785754-3B8C-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="1" xsi:type="ns79:SemanticMetadata" xmlns:ns78="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns79="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns80:SemanticMetadata id="18785754-3479-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="true" order="0" xsi:type="ns81:SemanticMetadata" xmlns:ns80="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns81="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-				<ns77:UMLAttribute description="Type of lymph node sampling performed." name="lymphNodeSamplingProcedure" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns82:SemanticMetadata id="18785754-43DB-3542-E044-0003BA4529A9" conceptCode="C15427" conceptName="Lymph Node Dissection" conceptDefinition="Surgical removal of lymph nodes.  Done to assess the spread of cancer." isPrimaryConcept="false" order="1" xsi:type="ns83:SemanticMetadata" xmlns:ns82="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns83="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-				<ns77:UMLAttribute description="Side of body from which specimen originates." name="laterality" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns84:SemanticMetadata id="18785754-400A-3542-E044-0003BA4529A9" conceptCode="C25185" conceptName="Laterality" conceptDefinition="Behavioral manifestations of cerebral dominance in which there is preferential use and superior functioning of either the left or the right side, as in the preferred use of the right hand or right foot." isPrimaryConcept="true" order="0" xsi:type="ns85:SemanticMetadata" xmlns:ns84="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns85="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-				<ns77:UMLAttribute description="Indicates the reason that Breast Surgical Pathology Specimen laterality is missing." name="lateralityMVR" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns86:SemanticMetadata id="18785754-4008-3542-E044-0003BA4529A9" conceptCode="C25185" conceptName="Laterality" conceptDefinition="Behavioral manifestations of cerebral dominance in which there is preferential use and superior functioning of either the left or the right side, as in the preferred use of the right hand or right foot." isPrimaryConcept="true" order="0" xsi:type="ns87:SemanticMetadata" xmlns:ns86="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns87="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns88:SemanticMetadata id="18785754-4EAC-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="false" order="1" xsi:type="ns89:SemanticMetadata" xmlns:ns88="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns89="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-				<ns77:UMLAttribute name="id" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns90:SemanticMetadata id="18785754-38E5-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns91:SemanticMetadata" xmlns:ns90="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns91="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-				<ns77:UMLAttribute name="surgicalProcedureMVR" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns92:SemanticMetadata id="18785754-348D-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="true" order="0" xsi:type="ns93:SemanticMetadata" xmlns:ns92="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns93="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns94:SemanticMetadata id="18785754-4EB6-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="false" order="1" xsi:type="ns95:SemanticMetadata" xmlns:ns94="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns95="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-				<ns77:UMLAttribute name="surgicalProcedure" xsi:type="ns77:UMLAttribute">
-					<ns77:semanticMetadataCollection>
-						<ns96:SemanticMetadata id="18785754-34A3-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="true" order="0" xsi:type="ns97:SemanticMetadata" xmlns:ns96="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns97="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns77:semanticMetadataCollection>
-				</ns77:UMLAttribute>
-			</ns77:umlAttributeCollection>
-			<ns77:semanticMetadataCollection>
-				<ns98:SemanticMetadata id="18785754-2C28-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="true" order="0" xsi:type="ns99:SemanticMetadata" xmlns:ns98="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns99="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns100:SemanticMetadata id="18785754-2C4D-3542-E044-0003BA4529A9" conceptCode="C12971" conceptName="Breast" conceptDefinition="One of two hemispheric projections of variable size situated in the subcutaneous layer over the pectoralis major muscle on either side of the chest." isPrimaryConcept="false" order="2" xsi:type="ns101:SemanticMetadata" xmlns:ns100="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns101="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns102:SemanticMetadata id="18785754-31AC-3542-E044-0003BA4529A9" conceptCode="C16958" conceptName="Surgical Pathology" conceptDefinition="A field of anatomical pathology in which living tissue is surgically removed for the purpose of diagnosis and treatment." isPrimaryConcept="false" order="1" xsi:type="ns103:SemanticMetadata" xmlns:ns102="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns103="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns77:semanticMetadataCollection>
-		</ns77:UMLClass>
-		<ns104:UMLClass className="NottinghamHistopathologicGrade" description="A grading system for breast cancer." id="18785753-F3D4-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns104:UMLClass" xmlns:ns104="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+		<ns104:UMLClass className="NottinghamHistopathologicGrade" description="A grading system for breast cancer." id="NottinghamHistopathologicGrade" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns104:UMLClass" xmlns:ns104="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns104:umlAttributeCollection>
 				<ns104:UMLAttribute description="Degree of tubule formation." name="tubuleFormation" xsi:type="ns104:UMLAttribute">
 					<ns104:semanticMetadataCollection>
@@ -329,7 +212,7 @@
 				<ns119:SemanticMetadata id="18785754-2CC1-3542-E044-0003BA4529A9" conceptCode="C25595" conceptName="Nottingham Score" conceptDefinition="The numerical result of analysis of a breast cancer based on the Nottingham Prognostic Index." isPrimaryConcept="true" order="0" xsi:type="ns120:SemanticMetadata" xmlns:ns119="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns120="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
 			</ns104:semanticMetadataCollection>
 		</ns104:UMLClass>
-		<ns121:UMLClass className="InvasiveBreastCarcinoma" description="A primary infiltrating carcinoma of the breast." id="18785753-F3D5-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns121:UMLClass" xmlns:ns121="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+		<ns121:UMLClass className="InvasiveBreastCarcinoma" description="A primary infiltrating carcinoma of the breast." id="InvasiveBreastCarcinoma" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns121:UMLClass" xmlns:ns121="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns121:umlAttributeCollection>
 				<ns121:UMLAttribute description="The location of the tumor within the primary site." name="location" xsi:type="ns121:UMLAttribute">
 					<ns121:semanticMetadataCollection>
@@ -366,301 +249,7 @@
 				<ns142:SemanticMetadata id="18785754-31C2-3542-E044-0003BA4529A9" conceptCode="C9245" conceptName="Invasive Breast Carcinoma" conceptDefinition="A carcinoma that infiltrates the breast parenchyma.  The vast majority are adenocarcinomas arising from the terminal ductal lobular unit (TDLU).  Often, the invasive adenocarcinoma co-exists with ductal or lobular carcinoma in situ.  It is the most common carcinoma affecting women. --2003" isPrimaryConcept="true" order="0" xsi:type="ns143:SemanticMetadata" xmlns:ns142="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns143="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
 			</ns121:semanticMetadataCollection>
 		</ns121:UMLClass>
-		<ns144:UMLClass className="BreastPositiveSurgicalMargin" description="An edge of the specimen removed suring a surgical procedure which is involved by disease." id="18785753-F3D6-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns144:UMLClass" xmlns:ns144="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns144:umlAttributeCollection>
-				<ns144:UMLAttribute description="Indicates what neoplasm is present at margin." name="neoplasmPresent" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns145:SemanticMetadata id="18785754-3AE8-3542-E044-0003BA4529A9" conceptCode="C3262" conceptName="Neoplasm" conceptDefinition="(NEE-o-PLAY-zha) Abnormal and uncontrolled cell growth." isPrimaryConcept="true" order="0" xsi:type="ns146:SemanticMetadata" xmlns:ns145="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns146="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-				<ns144:UMLAttribute description="Description of the extent of margin involvement by disease." name="extentInvolvement" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns147:SemanticMetadata id="18785754-4275-3542-E044-0003BA4529A9" conceptCode="C25332" conceptName="Extent" conceptDefinition="The range, magnitude, or distance over which a thing spans an interval of distance, space, or time." isPrimaryConcept="false" order="1" xsi:type="ns148:SemanticMetadata" xmlns:ns147="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns148="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns149:SemanticMetadata id="18785754-407F-3542-E044-0003BA4529A9" conceptCode="C25548" conceptName="Involvement" conceptDefinition="To have a connection by participation or association or use; sharing in an activity or process." isPrimaryConcept="true" order="0" xsi:type="ns150:SemanticMetadata" xmlns:ns149="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns150="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-				<ns144:UMLAttribute description="User entered text to specify extent of involvement not present in value domain of extent of involvement." name="otherExtentInvolvement" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns151:SemanticMetadata id="18785754-4273-3542-E044-0003BA4529A9" conceptCode="C25332" conceptName="Extent" conceptDefinition="The range, magnitude, or distance over which a thing spans an interval of distance, space, or time." isPrimaryConcept="false" order="1" xsi:type="ns152:SemanticMetadata" xmlns:ns151="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns152="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns153:SemanticMetadata id="18785754-407D-3542-E044-0003BA4529A9" conceptCode="C25548" conceptName="Involvement" conceptDefinition="To have a connection by participation or association or use; sharing in an activity or process." isPrimaryConcept="true" order="0" xsi:type="ns154:SemanticMetadata" xmlns:ns153="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns154="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns155:SemanticMetadata id="18785754-3B9E-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="2" xsi:type="ns156:SemanticMetadata" xmlns:ns155="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns156="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-				<ns144:UMLAttribute name="id" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns157:SemanticMetadata id="18785754-38DE-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns158:SemanticMetadata" xmlns:ns157="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns158="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-				<ns144:UMLAttribute name="MVR" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns159:SemanticMetadata id="18785754-4ECF-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="true" order="0" xsi:type="ns160:SemanticMetadata" xmlns:ns159="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns160="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-				<ns144:UMLAttribute name="otherSpatialRelationshipToPatient" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns161:SemanticMetadata id="18785754-3DB2-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns162:SemanticMetadata" xmlns:ns161="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns162="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns163:SemanticMetadata id="18785754-3BA2-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="2" xsi:type="ns164:SemanticMetadata" xmlns:ns163="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns164="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns165:SemanticMetadata id="18785754-4CD5-3542-E044-0003BA4529A9" conceptCode="C45788" conceptName="Orientation" conceptDefinition="Position or alignment relative to points of the compass or other specific directions." isPrimaryConcept="true" order="0" xsi:type="ns166:SemanticMetadata" xmlns:ns165="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns166="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-				<ns144:UMLAttribute name="spatialRelationshipToPatient" xsi:type="ns144:UMLAttribute">
-					<ns144:semanticMetadataCollection>
-						<ns167:SemanticMetadata id="18785754-3DC2-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns168:SemanticMetadata" xmlns:ns167="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns168="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns169:SemanticMetadata id="18785754-4CE5-3542-E044-0003BA4529A9" conceptCode="C45788" conceptName="Orientation" conceptDefinition="Position or alignment relative to points of the compass or other specific directions." isPrimaryConcept="true" order="0" xsi:type="ns170:SemanticMetadata" xmlns:ns169="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns170="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns144:semanticMetadataCollection>
-				</ns144:UMLAttribute>
-			</ns144:umlAttributeCollection>
-			<ns144:semanticMetadataCollection>
-				<ns171:SemanticMetadata id="18785754-2C51-3542-E044-0003BA4529A9" conceptCode="C12971" conceptName="Breast" conceptDefinition="One of two hemispheric projections of variable size situated in the subcutaneous layer over the pectoralis major muscle on either side of the chest." isPrimaryConcept="false" order="1" xsi:type="ns172:SemanticMetadata" xmlns:ns171="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns172="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns173:SemanticMetadata id="18785754-31B6-3542-E044-0003BA4529A9" conceptCode="C48620" conceptName="Positive Surgical Margin" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns174:SemanticMetadata" xmlns:ns173="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns174="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns144:semanticMetadataCollection>
-		</ns144:UMLClass>
-		<ns175:UMLClass className="BreastNegativeSurgicalMargin" description="An edge of the specimen removed suring a surgical procedure which is NOT involved by disease." id="18785753-F3D7-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns175:UMLClass" xmlns:ns175="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns175:umlAttributeCollection>
-				<ns175:UMLAttribute description="Indicates what neoplasm is closest to the margin." name="closestNeoplasmPresent" xsi:type="ns175:UMLAttribute">
-					<ns175:semanticMetadataCollection>
-						<ns176:SemanticMetadata id="18785754-3AE4-3542-E044-0003BA4529A9" conceptCode="C3262" conceptName="Neoplasm" conceptDefinition="(NEE-o-PLAY-zha) Abnormal and uncontrolled cell growth." isPrimaryConcept="true" order="0" xsi:type="ns177:SemanticMetadata" xmlns:ns176="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns177="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns178:SemanticMetadata id="18785754-44DE-3542-E044-0003BA4529A9" conceptCode="C25449" conceptName="Closest" conceptDefinition="Indicating the one of several that is the shortest distance away." isPrimaryConcept="false" order="1" xsi:type="ns179:SemanticMetadata" xmlns:ns178="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns179="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns175:semanticMetadataCollection>
-				</ns175:UMLAttribute>
-				<ns175:UMLAttribute description="Closest distance from the edge of the neoplasm to the margin." name="distanceToClosestNeoplasm" xsi:type="ns175:UMLAttribute">
-					<ns175:semanticMetadataCollection>
-						<ns180:SemanticMetadata id="18785754-423B-3542-E044-0003BA4529A9" conceptCode="C25167" conceptName="Distance" conceptDefinition="The space between two objects or points." isPrimaryConcept="true" order="0" xsi:type="ns181:SemanticMetadata" xmlns:ns180="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns181="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns182:SemanticMetadata id="18785754-3AE0-3542-E044-0003BA4529A9" conceptCode="C3262" conceptName="Neoplasm" conceptDefinition="(NEE-o-PLAY-zha) Abnormal and uncontrolled cell growth." isPrimaryConcept="false" order="1" xsi:type="ns183:SemanticMetadata" xmlns:ns182="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns183="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns184:SemanticMetadata id="18785754-44DA-3542-E044-0003BA4529A9" conceptCode="C25449" conceptName="Closest" conceptDefinition="Indicating the one of several that is the shortest distance away." isPrimaryConcept="false" order="2" xsi:type="ns185:SemanticMetadata" xmlns:ns184="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns185="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns175:semanticMetadataCollection>
-				</ns175:UMLAttribute>
-				<ns175:UMLAttribute name="id" xsi:type="ns175:UMLAttribute">
-					<ns175:semanticMetadataCollection>
-						<ns186:SemanticMetadata id="18785754-38EC-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns187:SemanticMetadata" xmlns:ns186="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns187="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns175:semanticMetadataCollection>
-				</ns175:UMLAttribute>
-				<ns175:UMLAttribute name="MVR" xsi:type="ns175:UMLAttribute">
-					<ns175:semanticMetadataCollection>
-						<ns188:SemanticMetadata id="18785754-4ED1-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="true" order="0" xsi:type="ns189:SemanticMetadata" xmlns:ns188="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns189="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns175:semanticMetadataCollection>
-				</ns175:UMLAttribute>
-				<ns175:UMLAttribute name="otherSpatialRelationshipToPatient" xsi:type="ns175:UMLAttribute">
-					<ns175:semanticMetadataCollection>
-						<ns190:SemanticMetadata id="18785754-3DB4-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns191:SemanticMetadata" xmlns:ns190="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns191="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns192:SemanticMetadata id="18785754-3BA4-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="2" xsi:type="ns193:SemanticMetadata" xmlns:ns192="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns193="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns194:SemanticMetadata id="18785754-4CD7-3542-E044-0003BA4529A9" conceptCode="C45788" conceptName="Orientation" conceptDefinition="Position or alignment relative to points of the compass or other specific directions." isPrimaryConcept="true" order="0" xsi:type="ns195:SemanticMetadata" xmlns:ns194="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns195="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns175:semanticMetadataCollection>
-				</ns175:UMLAttribute>
-				<ns175:UMLAttribute name="spatialRelationshipToPatient" xsi:type="ns175:UMLAttribute">
-					<ns175:semanticMetadataCollection>
-						<ns196:SemanticMetadata id="18785754-3DC4-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns197:SemanticMetadata" xmlns:ns196="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns197="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns198:SemanticMetadata id="18785754-4CE7-3542-E044-0003BA4529A9" conceptCode="C45788" conceptName="Orientation" conceptDefinition="Position or alignment relative to points of the compass or other specific directions." isPrimaryConcept="true" order="0" xsi:type="ns199:SemanticMetadata" xmlns:ns198="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns199="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns175:semanticMetadataCollection>
-				</ns175:UMLAttribute>
-			</ns175:umlAttributeCollection>
-			<ns175:semanticMetadataCollection>
-				<ns200:SemanticMetadata id="18785754-2C4F-3542-E044-0003BA4529A9" conceptCode="C12971" conceptName="Breast" conceptDefinition="One of two hemispheric projections of variable size situated in the subcutaneous layer over the pectoralis major muscle on either side of the chest." isPrimaryConcept="false" order="1" xsi:type="ns201:SemanticMetadata" xmlns:ns200="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns201="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns202:SemanticMetadata id="18785754-31BC-3542-E044-0003BA4529A9" conceptCode="C48621" conceptName="Negative Surgical Margin" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns203:SemanticMetadata" xmlns:ns202="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns203="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns175:semanticMetadataCollection>
-		</ns175:UMLClass>
-		<ns204:UMLClass className="SpecimenIdentifiers" description="The attributes that can be used to identify a specimen." id="18785753-F339-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns204:UMLClass" xmlns:ns204="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns204:umlAttributeCollection>
-				<ns204:UMLAttribute description="The surgical label assigned to blocks indicating the location of a part the block belong to. " name="surgicalLabel" xsi:type="ns204:UMLAttribute">
-					<ns204:semanticMetadataCollection>
-						<ns205:SemanticMetadata id="18785754-3475-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="false" order="1" xsi:type="ns206:SemanticMetadata" xmlns:ns205="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns206="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns207:SemanticMetadata id="18785754-4DFB-3542-E044-0003BA4529A9" conceptCode="C45561" conceptName="Label" conceptDefinition="A brief description given for purposes of identification; an identifying or descriptive marker that is attached to an object." isPrimaryConcept="true" order="0" xsi:type="ns208:SemanticMetadata" xmlns:ns207="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns208="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns204:semanticMetadataCollection>
-				</ns204:UMLAttribute>
-				<ns204:UMLAttribute name="id" xsi:type="ns204:UMLAttribute">
-					<ns204:semanticMetadataCollection>
-						<ns209:SemanticMetadata id="18785754-391B-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns210:SemanticMetadata" xmlns:ns209="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns210="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns204:semanticMetadataCollection>
-				</ns204:UMLAttribute>
-			</ns204:umlAttributeCollection>
-			<ns204:semanticMetadataCollection>
-				<ns211:SemanticMetadata id="18785754-2B9A-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns212:SemanticMetadata" xmlns:ns211="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns212="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns213:SemanticMetadata id="18785754-2C04-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="false" order="1" xsi:type="ns214:SemanticMetadata" xmlns:ns213="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns214="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns204:semanticMetadataCollection>
-		</ns204:UMLClass>
-		<ns227:UMLClass className="ParticipantIdentifiers" description="A medical record identification number that refers to a Participant" id="18785753-F33C-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns227:UMLClass" xmlns:ns227="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns227:umlAttributeCollection>
-				<ns227:UMLAttribute description="Last name of the participant." name="lastName" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns228:SemanticMetadata id="18785754-4579-3542-E044-0003BA4529A9" conceptCode="C40975" conceptName="Last Name" conceptDefinition="A word or group of words indicating a person's last (family) name. (NCI)" isPrimaryConcept="true" order="0" xsi:type="ns229:SemanticMetadata" xmlns:ns228="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns229="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-				<ns227:UMLAttribute description="First name of the participant." name="firstName" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns230:SemanticMetadata id="18785754-4024-3542-E044-0003BA4529A9" conceptCode="C40974" conceptName="First Name" conceptDefinition="A word or group of words indicating a person's first (personal) name. (NCI)" isPrimaryConcept="true" order="0" xsi:type="ns231:SemanticMetadata" xmlns:ns230="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns231="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-				<ns227:UMLAttribute description="Middle name of the participant." name="middleName" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns232:SemanticMetadata id="18785754-404B-3542-E044-0003BA4529A9" conceptCode="C25191" conceptName="Name" conceptDefinition="Personal names, given or surname, as cultural characteristics, as ethnological or religious patterns, as indications of the geographic distribution of families and inbreeding, etc. Analysis of isonymy, the quality of having the same or similar names, is useful in the study of population genetics. NAMES is used also for the history of names or name changes of corporate bodies, such as medical societies, universities, hospitals, government agencies, etc." isPrimaryConcept="true" order="0" xsi:type="ns233:SemanticMetadata" xmlns:ns232="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns233="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns234:SemanticMetadata id="18785754-43DD-3542-E044-0003BA4529A9" conceptCode="C25569" conceptName="Middle" conceptDefinition="Middle; an area that is approximately central within some larger region." isPrimaryConcept="false" order="1" xsi:type="ns235:SemanticMetadata" xmlns:ns234="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns235="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-				<ns227:UMLAttribute description="Birth date of participant." name="birthDate" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns236:SemanticMetadata id="18785754-3FCB-3542-E044-0003BA4529A9" conceptCode="C25155" conceptName="Birth" conceptDefinition="The event of being born." isPrimaryConcept="false" order="1" xsi:type="ns237:SemanticMetadata" xmlns:ns236="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns237="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns238:SemanticMetadata id="18785754-3E93-3542-E044-0003BA4529A9" conceptCode="C25164" conceptName="Date" conceptDefinition="a particular day specified as the time something has, or will, happen." isPrimaryConcept="true" order="0" xsi:type="ns239:SemanticMetadata" xmlns:ns238="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns239="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-				<ns227:UMLAttribute description="Unique patient identifier of participant, such as Social Security Number." name="uniquePatientIdentifier" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns240:SemanticMetadata id="18785754-3DAD-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns241:SemanticMetadata" xmlns:ns240="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns241="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns242:SemanticMetadata id="18785754-360E-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns243:SemanticMetadata" xmlns:ns242="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns243="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns244:SemanticMetadata id="18785754-4BD0-3542-E044-0003BA4529A9" conceptCode="C45282" conceptName="Unique" conceptDefinition="The single one of its kind." isPrimaryConcept="false" order="2" xsi:type="ns245:SemanticMetadata" xmlns:ns244="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns245="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-				<ns227:UMLAttribute description="Participant's medical record number used in their medical treatment" name="medicalRecordNumber" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns246:SemanticMetadata id="18785754-3BDF-3542-E044-0003BA4529A9" conceptCode="C25337" conceptName="Number" conceptDefinition="Number; a concept of quantity derived from zero and units; a numeral or string of numerals that is used for identification." isPrimaryConcept="true" order="0" xsi:type="ns247:SemanticMetadata" xmlns:ns246="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns247="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns248:SemanticMetadata id="18785754-4D45-3542-E044-0003BA4529A9" conceptCode="C45258" conceptName="Medical Record" conceptDefinition="A chronological written account of a patient's examination and treatment that includes the patient's medical history and complaints, the physician's physical findings, the results of diagnostic tests and procedures, and medications and therapeutic procedures. (dictionary.com)" isPrimaryConcept="false" order="1" xsi:type="ns249:SemanticMetadata" xmlns:ns248="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns249="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-				<ns227:UMLAttribute name="id" xsi:type="ns227:UMLAttribute">
-					<ns227:semanticMetadataCollection>
-						<ns250:SemanticMetadata id="18785754-38E4-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns251:SemanticMetadata" xmlns:ns250="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns251="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns227:semanticMetadataCollection>
-				</ns227:UMLAttribute>
-			</ns227:umlAttributeCollection>
-			<ns227:semanticMetadataCollection>
-				<ns252:SemanticMetadata id="18785754-2B99-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns253:SemanticMetadata" xmlns:ns252="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns253="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns254:SemanticMetadata id="18785754-2C6E-3542-E044-0003BA4529A9" conceptCode="C29867" conceptName="Participant" conceptDefinition="Someone who takes part in an activity." isPrimaryConcept="false" order="1" xsi:type="ns255:SemanticMetadata" xmlns:ns254="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns255="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns227:semanticMetadataCollection>
-		</ns227:UMLClass>
-		<ns256:UMLClass className="EventParameters" description="The parameters for an event" id="18785753-F33D-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns256:UMLClass" xmlns:ns256="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns256:umlAttributeCollection>
-				<ns256:UMLAttribute description="The timestamp for the event" name="timeStamp" xsi:type="ns256:UMLAttribute">
-					<ns256:semanticMetadataCollection>
-						<ns257:SemanticMetadata id="18785754-3AAD-3542-E044-0003BA4529A9" conceptCode="C37939" conceptName="Date/Time" conceptDefinition="An expression of both date and time that an event has happened or will happened. (NCI)" isPrimaryConcept="true" order="0" xsi:type="ns258:SemanticMetadata" xmlns:ns257="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns258="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns256:semanticMetadataCollection>
-				</ns256:UMLAttribute>
-			</ns256:umlAttributeCollection>
-			<ns256:semanticMetadataCollection>
-				<ns259:SemanticMetadata id="18785754-2C5A-3542-E044-0003BA4529A9" conceptCode="C25499" conceptName="Event" conceptDefinition="Event; something that happens at a given place and time." isPrimaryConcept="false" order="1" xsi:type="ns260:SemanticMetadata" xmlns:ns259="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns260="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns261:SemanticMetadata id="18785754-301D-3542-E044-0003BA4529A9" conceptCode="C44175" conceptName="Parameter Object" conceptDefinition="A Parameter is a replaceable value in a Parameterizable class.  Examples of Parameters include: scanning wavelength, laser power, centrifuge speed, multiplicative errors, the number of input nodes to a SOM, and PCR temperatures." isPrimaryConcept="true" order="0" xsi:type="ns262:SemanticMetadata" xmlns:ns261="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns262="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns256:semanticMetadataCollection>
-		</ns256:UMLClass>
-		<ns263:UMLClass className="AccessionIdentifiers" description="The indentifier to identify an accession" id="18785753-F33E-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns263:UMLClass" xmlns:ns263="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns263:umlAttributeCollection>
-				<ns263:UMLAttribute description="The date the procedure event was done" name="accessionDate" xsi:type="ns263:UMLAttribute">
-					<ns263:semanticMetadataCollection>
-						<ns264:SemanticMetadata id="18785754-3E86-3542-E044-0003BA4529A9" conceptCode="C25164" conceptName="Date" conceptDefinition="a particular day specified as the time something has, or will, happen." isPrimaryConcept="true" order="0" xsi:type="ns265:SemanticMetadata" xmlns:ns264="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns265="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns266:SemanticMetadata id="18785754-4E6B-3542-E044-0003BA4529A9" conceptCode="C45257" conceptName="Accession" conceptDefinition="A process of increasing by addition (as to a collection or group)." isPrimaryConcept="false" order="1" xsi:type="ns267:SemanticMetadata" xmlns:ns266="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns267="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns263:semanticMetadataCollection>
-				</ns263:UMLAttribute>
-				<ns263:UMLAttribute description="Hospital surgical pathology number associated with the current specimen collection event." name="surgicalPathologyNumber" xsi:type="ns263:UMLAttribute">
-					<ns263:semanticMetadataCollection>
-						<ns268:SemanticMetadata id="18785754-3FF0-3542-E044-0003BA4529A9" conceptCode="C25402" conceptName="Accession Number" conceptDefinition="A control number unique to an object, used to identify it among the other objects in a collection." isPrimaryConcept="true" order="0" xsi:type="ns269:SemanticMetadata" xmlns:ns268="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns269="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns270:SemanticMetadata id="18785754-505D-3542-E044-0003BA4529A9" conceptCode="C45260" conceptName="Surgical Pathology Report" conceptDefinition="A pathology report based upon samples obtained by or during surgery." isPrimaryConcept="false" order="1" xsi:type="ns271:SemanticMetadata" xmlns:ns270="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns271="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns263:semanticMetadataCollection>
-				</ns263:UMLAttribute>
-				<ns263:UMLAttribute name="id" xsi:type="ns263:UMLAttribute">
-					<ns263:semanticMetadataCollection>
-						<ns272:SemanticMetadata id="18785754-3923-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns273:SemanticMetadata" xmlns:ns272="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns273="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns263:semanticMetadataCollection>
-				</ns263:UMLAttribute>
-			</ns263:umlAttributeCollection>
-			<ns263:semanticMetadataCollection>
-				<ns274:SemanticMetadata id="18785754-2B98-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns275:SemanticMetadata" xmlns:ns274="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns275="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns276:SemanticMetadata id="18785754-3170-3542-E044-0003BA4529A9" conceptCode="C45257" conceptName="Accession" conceptDefinition="A process of increasing by addition (as to a collection or group)." isPrimaryConcept="false" order="1" xsi:type="ns277:SemanticMetadata" xmlns:ns276="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns277="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns263:semanticMetadataCollection>
-		</ns263:UMLClass>
-		<ns287:UMLClass className="AnnotationSet" description="The collection of all the data in the annotation" id="18785753-F340-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns287:UMLClass" xmlns:ns287="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns287:umlAttributeCollection>
-				<ns287:UMLAttribute description="System generated internal identifier" name="id" xsi:type="ns287:UMLAttribute">
-					<ns287:semanticMetadataCollection>
-						<ns288:SemanticMetadata id="18785754-379A-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns289:SemanticMetadata" xmlns:ns288="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns289="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns287:semanticMetadataCollection>
-				</ns287:UMLAttribute>
-			</ns287:umlAttributeCollection>
-			<ns287:semanticMetadataCollection>
-				<ns290:SemanticMetadata id="18785754-317C-3542-E044-0003BA4529A9" conceptCode="C47894" conceptName="Set" conceptDefinition="A group of things of the same kind that belong together and are so used." isPrimaryConcept="true" order="0" xsi:type="ns291:SemanticMetadata" xmlns:ns290="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns291="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns292:SemanticMetadata id="18785754-3290-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="1" xsi:type="ns293:SemanticMetadata" xmlns:ns292="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns293="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns287:semanticMetadataCollection>
-		</ns287:UMLClass>
-		<ns294:UMLClass className="AnnotationEventParameters" description="The parameters used in the annotation" id="18785753-F341-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns294:UMLClass" xmlns:ns294="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns294:umlAttributeCollection>
-				<ns294:UMLAttribute description="The source of the data for the annotation" name="source" xsi:type="ns294:UMLAttribute">
-					<ns294:semanticMetadataCollection>
-						<ns295:SemanticMetadata id="18785754-3A6C-3542-E044-0003BA4529A9" conceptCode="C25683" conceptName="Source" conceptDefinition="Source; where something is available." isPrimaryConcept="true" order="0" xsi:type="ns296:SemanticMetadata" xmlns:ns295="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns296="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns294:semanticMetadataCollection>
-				</ns294:UMLAttribute>
-				<ns294:UMLAttribute name="timeStamp" xsi:type="ns294:UMLAttribute">
-					<ns294:semanticMetadataCollection>
-						<ns297:SemanticMetadata id="18785754-3AAF-3542-E044-0003BA4529A9" conceptCode="C37939" conceptName="Date/Time" conceptDefinition="An expression of both date and time that an event has happened or will happened. (NCI)" isPrimaryConcept="true" order="0" xsi:type="ns298:SemanticMetadata" xmlns:ns297="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns298="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns294:semanticMetadataCollection>
-				</ns294:UMLAttribute>
-				<ns294:UMLAttribute name="id" xsi:type="ns294:UMLAttribute">
-					<ns294:semanticMetadataCollection>
-						<ns299:SemanticMetadata id="18785754-3934-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns300:SemanticMetadata" xmlns:ns299="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns300="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns294:semanticMetadataCollection>
-				</ns294:UMLAttribute>
-				<ns294:UMLAttribute name="sourceDate" xsi:type="ns294:UMLAttribute">
-					<ns294:semanticMetadataCollection>
-						<ns301:SemanticMetadata id="18785754-3E85-3542-E044-0003BA4529A9" conceptCode="C25164" conceptName="Date" conceptDefinition="a particular day specified as the time something has, or will, happen." isPrimaryConcept="true" order="0" xsi:type="ns302:SemanticMetadata" xmlns:ns301="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns302="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns303:SemanticMetadata id="18785754-3A57-3542-E044-0003BA4529A9" conceptCode="C25683" conceptName="Source" conceptDefinition="Source; where something is available." isPrimaryConcept="false" order="1" xsi:type="ns304:SemanticMetadata" xmlns:ns303="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns304="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns294:semanticMetadataCollection>
-				</ns294:UMLAttribute>
-			</ns294:umlAttributeCollection>
-			<ns294:semanticMetadataCollection>
-				<ns305:SemanticMetadata id="18785754-3013-3542-E044-0003BA4529A9" conceptCode="C44175" conceptName="Parameter Object" conceptDefinition="A Parameter is a replaceable value in a Parameterizable class.  Examples of Parameters include: scanning wavelength, laser power, centrifuge speed, multiplicative errors, the number of input nodes to a SOM, and PCR temperatures." isPrimaryConcept="true" order="0" xsi:type="ns306:SemanticMetadata" xmlns:ns305="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns306="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns307:SemanticMetadata id="18785754-328F-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="1" xsi:type="ns308:SemanticMetadata" xmlns:ns307="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns308="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns294:semanticMetadataCollection>
-		</ns294:UMLClass>
-		<ns309:UMLClass className="AnnotatableEntity" description="Any items that can be annotated by CAE, i.e. Accession, Specimen" id="18785753-F342-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns309:UMLClass" xmlns:ns309="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns309:umlAttributeCollection>
-				<ns309:UMLAttribute description="System generated internal identifier" name="id" xsi:type="ns309:UMLAttribute">
-					<ns309:semanticMetadataCollection>
-						<ns310:SemanticMetadata id="18785754-379B-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns311:SemanticMetadata" xmlns:ns310="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns311="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns309:semanticMetadataCollection>
-				</ns309:UMLAttribute>
-			</ns309:umlAttributeCollection>
-			<ns309:semanticMetadataCollection>
-				<ns312:SemanticMetadata id="18785754-326C-3542-E044-0003BA4529A9" conceptCode="C51070" conceptName="Entity" conceptDefinition="An independently existing thing (living or nonliving)." isPrimaryConcept="true" order="0" xsi:type="ns313:SemanticMetadata" xmlns:ns312="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns313="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns314:SemanticMetadata id="18785754-328E-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="1" xsi:type="ns315:SemanticMetadata" xmlns:ns314="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns315="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns309:semanticMetadataCollection>
-		</ns309:UMLClass>
-		<ns316:UMLClass className="Demographics" description="Demographic information of a participant" id="18785753-F343-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns316:UMLClass" xmlns:ns316="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns316:umlAttributeCollection>
-				<ns316:UMLAttribute description="Gender of a Person. Person Gender Text Type. Text designations that identify gender. Gender is described as the assemblage of properties that distinguish people on the basis of their societal roles. (caDSR CDE Public ID: 2200604 Version 2.0)" name="gender" xsi:type="ns316:UMLAttribute">
-					<ns316:semanticMetadataCollection>
-						<ns317:SemanticMetadata id="18785754-34D8-3542-E044-0003BA4529A9" conceptCode="C17357" conceptName="Gender" conceptDefinition="Gender is the assemblage of properties that distinguish people on the basis of their societal roles." isPrimaryConcept="true" order="0" xsi:type="ns318:SemanticMetadata" xmlns:ns317="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns318="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns316:semanticMetadataCollection>
-				</ns316:UMLAttribute>
-				<ns316:UMLAttribute description="The race of a patient. Race category text. The text for reporting information about race based on the Office of Management and Budget (OMB) categories. (caDSR CDE Public ID: 2192199 version 1.0)" name="race" xsi:type="ns316:UMLAttribute">
-					<ns316:semanticMetadataCollection>
-						<ns319:SemanticMetadata id="18785754-35E6-3542-E044-0003BA4529A9" conceptCode="C17049" conceptName="Race" conceptDefinition="Major living subspecies of man differentiated by genetic and physical characteristics. There are four racial groups: Australoid, Caucasoid, Mongoloid, and Negroid." isPrimaryConcept="true" order="0" xsi:type="ns320:SemanticMetadata" xmlns:ns319="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns320="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns316:semanticMetadataCollection>
-				</ns316:UMLAttribute>
-				<ns316:UMLAttribute description="Patient's ethnicity status. Ethnic Group Category Text.  The text for reporting information about ethnicity based on the Office of Management and Budget (OMB) categories. (caDSR CDE Public ID: 2192217 version 2.0)." name="ethnicity" xsi:type="ns316:UMLAttribute">
-					<ns316:semanticMetadataCollection>
-						<ns321:SemanticMetadata id="18785754-456A-3542-E044-0003BA4529A9" conceptCode="C16564" conceptName="Ethnic Group" conceptDefinition="A social group characterized by a distinctive social and cultural tradition maintained from generation to generation, a common history and origin and a sense of identification with the group; members of the group have distinctive features in their way of life, shared experiences and often a common genetic heritage; these features may be reflected in their experience of health and disease." isPrimaryConcept="true" order="0" xsi:type="ns322:SemanticMetadata" xmlns:ns321="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns322="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns316:semanticMetadataCollection>
-				</ns316:UMLAttribute>
-			</ns316:umlAttributeCollection>
-			<ns316:semanticMetadataCollection>
-				<ns323:SemanticMetadata id="18785754-2DD8-3542-E044-0003BA4529A9" conceptCode="C16495" conceptName="Demographics" conceptDefinition="statistical characterization of human populations (or segments of human populations broken down by age or sex or income etc.)." isPrimaryConcept="true" order="0" xsi:type="ns324:SemanticMetadata" xmlns:ns323="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns324="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns316:semanticMetadataCollection>
-		</ns316:UMLClass>
-		<ns325:UMLClass className="AccessionDemographics" description="Demographic information of a participant at accession." id="18785753-F344-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns325:UMLClass" xmlns:ns325="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns325:umlAttributeCollection>
-				<ns325:UMLAttribute description="Age of a participant at accession" name="ageAtAccession" xsi:type="ns325:UMLAttribute">
-					<ns325:semanticMetadataCollection>
-						<ns326:SemanticMetadata id="18785754-3E33-3542-E044-0003BA4529A9" conceptCode="C25150" conceptName="Age" conceptDefinition="A period or stage in life, usually stated in years since birth." isPrimaryConcept="true" order="0" xsi:type="ns327:SemanticMetadata" xmlns:ns326="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns327="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns328:SemanticMetadata id="18785754-4E6A-3542-E044-0003BA4529A9" conceptCode="C45257" conceptName="Accession" conceptDefinition="A process of increasing by addition (as to a collection or group)." isPrimaryConcept="false" order="1" xsi:type="ns329:SemanticMetadata" xmlns:ns328="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns329="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns325:semanticMetadataCollection>
-				</ns325:UMLAttribute>
-				<ns325:UMLAttribute name="id" xsi:type="ns325:UMLAttribute">
-					<ns325:semanticMetadataCollection>
-						<ns330:SemanticMetadata id="18785754-38E6-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns331:SemanticMetadata" xmlns:ns330="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns331="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns325:semanticMetadataCollection>
-				</ns325:UMLAttribute>
-			</ns325:umlAttributeCollection>
-			<ns325:semanticMetadataCollection>
-				<ns332:SemanticMetadata id="18785754-2DD6-3542-E044-0003BA4529A9" conceptCode="C16495" conceptName="Demographics" conceptDefinition="statistical characterization of human populations (or segments of human populations broken down by age or sex or income etc.)." isPrimaryConcept="true" order="0" xsi:type="ns333:SemanticMetadata" xmlns:ns332="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns333="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns334:SemanticMetadata id="18785754-316F-3542-E044-0003BA4529A9" conceptCode="C45257" conceptName="Accession" conceptDefinition="A process of increasing by addition (as to a collection or group)." isPrimaryConcept="false" order="1" xsi:type="ns335:SemanticMetadata" xmlns:ns334="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns335="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns325:semanticMetadataCollection>
-		</ns325:UMLClass>
-		<ns336:UMLClass className="ThreeDimensionalSize" description="General measurement of size in 3 dimensions." id="18785753-F3DF-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns336:UMLClass" xmlns:ns336="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+		<ns336:UMLClass className="ThreeDimensionalSize" description="General measurement of size in 3 dimensions." id="ThreeDimensionalSize" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns336:UMLClass" xmlns:ns336="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns336:umlAttributeCollection>
 				<ns336:UMLAttribute description="Greatest length of three dimensions." name="greatestDimension" xsi:type="ns336:UMLAttribute">
 					<ns336:semanticMetadataCollection>
@@ -697,179 +286,10 @@
 				<ns357:SemanticMetadata id="18785754-3197-3542-E044-0003BA4529A9" conceptCode="C47866" conceptName="Three Dimensional Size" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns358:SemanticMetadata" xmlns:ns357="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns358="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
 			</ns336:semanticMetadataCollection>
 		</ns336:UMLClass>
-		<ns359:UMLClass className="AdditionalFindings" description="Significant pathologic findings that are present in addition to the tumor." id="18785753-F3E0-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns359:UMLClass" xmlns:ns359="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns359:umlAttributeCollection>
-				<ns359:UMLAttribute description="User entered text describing additional finding or findings not elsewhere described in synoptic report." name="otherFindings" xsi:type="ns359:UMLAttribute">
-					<ns359:semanticMetadataCollection>
-						<ns360:SemanticMetadata id="18785754-3BBB-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="1" xsi:type="ns361:SemanticMetadata" xmlns:ns360="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns361="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns362:SemanticMetadata id="18785754-35A1-3542-E044-0003BA4529A9" conceptCode="C3367" conceptName="Finding" conceptDefinition="Clinical manifestations that can be either objective when observed by a physician, or subjective when perceived by the patient." isPrimaryConcept="true" order="0" xsi:type="ns363:SemanticMetadata" xmlns:ns362="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns363="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns359:semanticMetadataCollection>
-				</ns359:UMLAttribute>
-				<ns359:UMLAttribute name="id" xsi:type="ns359:UMLAttribute">
-					<ns359:semanticMetadataCollection>
-						<ns364:SemanticMetadata id="18785754-393B-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns365:SemanticMetadata" xmlns:ns364="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns365="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns359:semanticMetadataCollection>
-				</ns359:UMLAttribute>
-			</ns359:umlAttributeCollection>
-			<ns359:semanticMetadataCollection>
-				<ns366:SemanticMetadata id="18785754-2B81-3542-E044-0003BA4529A9" conceptCode="C3367" conceptName="Finding" conceptDefinition="Clinical manifestations that can be either objective when observed by a physician, or subjective when perceived by the patient." isPrimaryConcept="true" order="0" xsi:type="ns367:SemanticMetadata" xmlns:ns366="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns367="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns368:SemanticMetadata id="18785754-2DF2-3542-E044-0003BA4529A9" conceptCode="C25406" conceptName="Additional" conceptDefinition="Added; extra. (from American Heritage Dictionary)" isPrimaryConcept="false" order="1" xsi:type="ns369:SemanticMetadata" xmlns:ns368="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns369="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns359:semanticMetadataCollection>
-		</ns359:UMLClass>
-		<ns370:UMLClass className="CancerTNMFinding" description="TNM finding of the American Joint Committee on Cancer (AJCC) and International Union Against Cancer (UICC) recommended classification system for cancers." id="18785753-F3E1-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns370:UMLClass" xmlns:ns370="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns370:umlAttributeCollection>
-				<ns370:UMLAttribute description="Type of cancer TNM finding category, for example pathologic classification (p), classification following initial treatment (y),  recurrent tumor (r), stage determined at autopsy (a)." name="category" xsi:type="ns370:UMLAttribute">
-					<ns370:semanticMetadataCollection>
-						<ns371:SemanticMetadata id="18785754-4EE9-3542-E044-0003BA4529A9" conceptCode="C48698" conceptName="Cancer TNM Finding Category" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns372:SemanticMetadata" xmlns:ns371="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns372="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns370:semanticMetadataCollection>
-				</ns370:UMLAttribute>
-				<ns370:UMLAttribute description="Classification of primary tumor based on AJCC Staging guidelines." name="primaryTumorFinding" xsi:type="ns370:UMLAttribute">
-					<ns370:semanticMetadataCollection>
-						<ns373:SemanticMetadata id="18785754-4EF1-3542-E044-0003BA4529A9" conceptCode="C48885" conceptName="Generic_Primary_Tumor_TNM_Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns374:SemanticMetadata" xmlns:ns373="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns374="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns370:semanticMetadataCollection>
-				</ns370:UMLAttribute>
-				<ns370:UMLAttribute description="Classification of regional lymph node involvement based on AJCC Staging guidelines." name="regionalLymphNodesFinding" xsi:type="ns370:UMLAttribute">
-					<ns370:semanticMetadataCollection>
-						<ns375:SemanticMetadata id="18785754-4EF9-3542-E044-0003BA4529A9" conceptCode="C48884" conceptName="Generic_Regional_Lymph_Nodes_TNM_Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns376:SemanticMetadata" xmlns:ns375="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns376="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns370:semanticMetadataCollection>
-				</ns370:UMLAttribute>
-				<ns370:UMLAttribute description="Classification of distant metastases based on AJCC Staging guidelines." name="distantMetastasisFinding" xsi:type="ns370:UMLAttribute">
-					<ns370:semanticMetadataCollection>
-						<ns377:SemanticMetadata id="18785754-4F01-3542-E044-0003BA4529A9" conceptCode="C48883" conceptName="Generic_Distant_Metastasis_TNM_Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns378:SemanticMetadata" xmlns:ns377="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns378="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns370:semanticMetadataCollection>
-				</ns370:UMLAttribute>
-				<ns370:UMLAttribute name="id" xsi:type="ns370:UMLAttribute">
-					<ns370:semanticMetadataCollection>
-						<ns379:SemanticMetadata id="18785754-3929-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns380:SemanticMetadata" xmlns:ns379="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns380="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns370:semanticMetadataCollection>
-				</ns370:UMLAttribute>
-			</ns370:umlAttributeCollection>
-			<ns370:semanticMetadataCollection>
-				<ns381:SemanticMetadata id="18785754-3199-3542-E044-0003BA4529A9" conceptCode="C48232" conceptName="Cancer TNM Finding" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns382:SemanticMetadata" xmlns:ns381="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns382="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns370:semanticMetadataCollection>
-		</ns370:UMLClass>
-		<ns383:UMLClass className="HistopathologicGrade" description="The microscopic classification of degree of abnormality of a neoplasm." id="18785753-F3E2-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns383:UMLClass" xmlns:ns383="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns383:umlAttributeCollection>
-				<ns383:UMLAttribute name="id" xsi:type="ns383:UMLAttribute">
-					<ns383:semanticMetadataCollection>
-						<ns384:SemanticMetadata id="18785754-3921-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns385:SemanticMetadata" xmlns:ns384="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns385="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns383:semanticMetadataCollection>
-				</ns383:UMLAttribute>
-			</ns383:umlAttributeCollection>
-			<ns383:semanticMetadataCollection>
-				<ns386:SemanticMetadata id="18785754-2D7A-3542-E044-0003BA4529A9" conceptCode="C18000" conceptName="Grade" conceptDefinition="Describes how closely a cancer resembles normal tissue of its same type, and the cancer's probable rate of growth" isPrimaryConcept="true" order="0" xsi:type="ns387:SemanticMetadata" xmlns:ns386="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns387="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns383:semanticMetadataCollection>
-		</ns383:UMLClass>
-		<ns388:UMLClass className="NeoplasmHistopathologicType" description="The diagnostic subclassification of neoplasm." id="18785753-F3E3-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns388:UMLClass" xmlns:ns388="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns388:umlAttributeCollection>
-				<ns388:UMLAttribute description="The name of the histologic type." name="name" xsi:type="ns388:UMLAttribute">
-					<ns388:semanticMetadataCollection>
-						<ns389:SemanticMetadata id="18785754-4707-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns390:SemanticMetadata" xmlns:ns389="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns390="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns388:semanticMetadataCollection>
-				</ns388:UMLAttribute>
-				<ns388:UMLAttribute description="Indicates the reason that Neoplasm Histologic Type name is missing." name="nameMVR" xsi:type="ns388:UMLAttribute">
-					<ns388:semanticMetadataCollection>
-						<ns391:SemanticMetadata id="18785754-45CF-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns392:SemanticMetadata" xmlns:ns391="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns392="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns393:SemanticMetadata id="18785754-4EE0-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="false" order="1" xsi:type="ns394:SemanticMetadata" xmlns:ns393="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns394="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns388:semanticMetadataCollection>
-				</ns388:UMLAttribute>
-				<ns388:UMLAttribute description="User entered text indicating a histologic type not specified within the enumerated value domain." name="otherName" xsi:type="ns388:UMLAttribute">
-					<ns388:semanticMetadataCollection>
-						<ns395:SemanticMetadata id="18785754-3BB1-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="1" xsi:type="ns396:SemanticMetadata" xmlns:ns395="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns396="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns397:SemanticMetadata id="18785754-45C6-3542-E044-0003BA4529A9" conceptCode="C42614" conceptName="Name" conceptDefinition="The words or language units by which a thing is known." isPrimaryConcept="true" order="0" xsi:type="ns398:SemanticMetadata" xmlns:ns397="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns398="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns388:semanticMetadataCollection>
-				</ns388:UMLAttribute>
-				<ns388:UMLAttribute name="id" xsi:type="ns388:UMLAttribute">
-					<ns388:semanticMetadataCollection>
-						<ns399:SemanticMetadata id="18785754-391A-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns400:SemanticMetadata" xmlns:ns399="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns400="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns388:semanticMetadataCollection>
-				</ns388:UMLAttribute>
-			</ns388:umlAttributeCollection>
-			<ns388:semanticMetadataCollection>
-				<ns401:SemanticMetadata id="18785754-3193-3542-E044-0003BA4529A9" conceptCode="C4741" conceptName="Neoplasm by Morphology" conceptDefinition="definition pending" isPrimaryConcept="true" order="0" xsi:type="ns402:SemanticMetadata" xmlns:ns401="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns402="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns388:semanticMetadataCollection>
-		</ns388:UMLClass>
-		<ns403:UMLClass className="SurgicalMargin" description="The edge of the specimen removed during a surgical procedure." id="18785753-F3E4-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns403:UMLClass" xmlns:ns403="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns403:umlAttributeCollection>
-				<ns403:UMLAttribute description="Spatial relationship of the margin to the patient. Implicitly dentifies the spatial location of the disease if the margin is involved." name="spatialRelationshipToPatient" xsi:type="ns403:UMLAttribute">
-					<ns403:semanticMetadataCollection>
-						<ns404:SemanticMetadata id="18785754-3DC1-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns405:SemanticMetadata" xmlns:ns404="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns405="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns406:SemanticMetadata id="18785754-4CE4-3542-E044-0003BA4529A9" conceptCode="C45788" conceptName="Orientation" conceptDefinition="Position or alignment relative to points of the compass or other specific directions." isPrimaryConcept="true" order="0" xsi:type="ns407:SemanticMetadata" xmlns:ns406="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns407="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns403:semanticMetadataCollection>
-				</ns403:UMLAttribute>
-				<ns403:UMLAttribute description="User entered text describing  spatial relationship not specified within the typical value domain." name="otherSpatialRelationshipToPatient" xsi:type="ns403:UMLAttribute">
-					<ns403:semanticMetadataCollection>
-						<ns408:SemanticMetadata id="18785754-3DB1-3542-E044-0003BA4529A9" conceptCode="C16960" conceptName="Patient" conceptDefinition="A person who requires medical care." isPrimaryConcept="false" order="1" xsi:type="ns409:SemanticMetadata" xmlns:ns408="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns409="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns410:SemanticMetadata id="18785754-3BA1-3542-E044-0003BA4529A9" conceptCode="C17649" conceptName="Other" conceptDefinition="Not otherwise specified." isPrimaryConcept="false" order="2" xsi:type="ns411:SemanticMetadata" xmlns:ns410="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns411="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns412:SemanticMetadata id="18785754-4CD4-3542-E044-0003BA4529A9" conceptCode="C45788" conceptName="Orientation" conceptDefinition="Position or alignment relative to points of the compass or other specific directions." isPrimaryConcept="true" order="0" xsi:type="ns413:SemanticMetadata" xmlns:ns412="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns413="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns403:semanticMetadataCollection>
-				</ns403:UMLAttribute>
-				<ns403:UMLAttribute description="Indicates why all values for this class are missing." name="MVR" xsi:type="ns403:UMLAttribute">
-					<ns403:semanticMetadataCollection>
-						<ns414:SemanticMetadata id="18785754-4ECD-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="true" order="0" xsi:type="ns415:SemanticMetadata" xmlns:ns414="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns415="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns403:semanticMetadataCollection>
-				</ns403:UMLAttribute>
-				<ns403:UMLAttribute name="id" xsi:type="ns403:UMLAttribute">
-					<ns403:semanticMetadataCollection>
-						<ns416:SemanticMetadata id="18785754-392C-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns417:SemanticMetadata" xmlns:ns416="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns417="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns403:semanticMetadataCollection>
-				</ns403:UMLAttribute>
-			</ns403:umlAttributeCollection>
-			<ns403:semanticMetadataCollection>
-				<ns418:SemanticMetadata id="18785754-2B53-3542-E044-0003BA4529A9" conceptCode="C41227" conceptName="Surgical Margin" conceptDefinition="The edge or border of the tissue removed in cancer surgery.  The margin is described as negative or clean when the pathologist finds no cancer cells at the edge of the tissue, suggesting that all of the cancer has been removed.  The margin is described as positive or involved when the pathologist finds cancer cells at the edge of the tissue, suggesting that all of the cancer has not been removed." isPrimaryConcept="true" order="0" xsi:type="ns419:SemanticMetadata" xmlns:ns418="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns419="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns403:semanticMetadataCollection>
-		</ns403:UMLClass>
-		<ns420:UMLClass className="SurgicalPathologySpecimen" description="The set of collected tissues generated by a therapeutic or diagnostic surgical procedure, the evaluation of which generates a surgical pathology report." id="18785753-F3E5-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns420:UMLClass" xmlns:ns420="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns420:umlAttributeCollection>
-				<ns420:UMLAttribute description="Name of surgical procedure used to obtain the specimen." name="surgicalProcedure" xsi:type="ns420:UMLAttribute">
-					<ns420:semanticMetadataCollection>
-						<ns421:SemanticMetadata id="18785754-34A1-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="true" order="0" xsi:type="ns422:SemanticMetadata" xmlns:ns421="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns422="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns420:semanticMetadataCollection>
-				</ns420:UMLAttribute>
-				<ns420:UMLAttribute description="Indicates the reason that SurgicalPathologySpecimen surgicalProcedure is missing." name="surgicalProcedureMVR" xsi:type="ns420:UMLAttribute">
-					<ns420:semanticMetadataCollection>
-						<ns423:SemanticMetadata id="18785754-348B-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="true" order="0" xsi:type="ns424:SemanticMetadata" xmlns:ns423="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns424="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns425:SemanticMetadata id="18785754-4EB4-3542-E044-0003BA4529A9" conceptCode="C48655" conceptName="Missing Value Reason" conceptDefinition="A specific reason explaining why a meaningful value is not available.  A meaningful value answers the question posed by a Data Element Concept.  In contrast, a Missing Value Reason answers the implicit question &quot;Why is there no 'meaningful' value?&quot;, when there is none." isPrimaryConcept="false" order="1" xsi:type="ns426:SemanticMetadata" xmlns:ns425="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns426="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns420:semanticMetadataCollection>
-				</ns420:UMLAttribute>
-				<ns420:UMLAttribute name="id" xsi:type="ns420:UMLAttribute">
-					<ns420:semanticMetadataCollection>
-						<ns427:SemanticMetadata id="18785754-3936-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns428:SemanticMetadata" xmlns:ns427="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns428="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns420:semanticMetadataCollection>
-				</ns420:UMLAttribute>
-			</ns420:umlAttributeCollection>
-			<ns420:semanticMetadataCollection>
-				<ns429:SemanticMetadata id="18785754-2C2B-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="true" order="0" xsi:type="ns430:SemanticMetadata" xmlns:ns429="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns430="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns431:SemanticMetadata id="18785754-31AF-3542-E044-0003BA4529A9" conceptCode="C16958" conceptName="Surgical Pathology" conceptDefinition="A field of anatomical pathology in which living tissue is surgically removed for the purpose of diagnosis and treatment." isPrimaryConcept="false" order="1" xsi:type="ns432:SemanticMetadata" xmlns:ns431="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns432="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns420:semanticMetadataCollection>
-		</ns420:UMLClass>
-		<ns433:UMLClass className="Neoplasm" description="A neoplastic growth." id="18785753-F3E6-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns433:UMLClass" xmlns:ns433="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns433:umlAttributeCollection>
-				<ns433:UMLAttribute name="id" xsi:type="ns433:UMLAttribute">
-					<ns433:semanticMetadataCollection>
-						<ns434:SemanticMetadata id="18785754-3939-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns435:SemanticMetadata" xmlns:ns434="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns435="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns433:semanticMetadataCollection>
-				</ns433:UMLAttribute>
-			</ns433:umlAttributeCollection>
-			<ns433:semanticMetadataCollection>
-				<ns436:SemanticMetadata id="18785754-2BF7-3542-E044-0003BA4529A9" conceptCode="C3262" conceptName="Neoplasm" conceptDefinition="(NEE-o-PLAY-zha) Abnormal and uncontrolled cell growth." isPrimaryConcept="true" order="0" xsi:type="ns437:SemanticMetadata" xmlns:ns436="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns437="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns433:semanticMetadataCollection>
-		</ns433:UMLClass>
-		<ns438:UMLClass className="AnnotatableEntityIdentifiers" id="18785753-F4C2-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns438:UMLClass" xmlns:ns438="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns438:umlAttributeCollection>
-				<ns438:UMLAttribute name="id" xsi:type="ns438:UMLAttribute">
-					<ns438:semanticMetadataCollection>
-						<ns439:SemanticMetadata id="18785754-3924-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns440:SemanticMetadata" xmlns:ns439="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns440="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns438:semanticMetadataCollection>
-				</ns438:UMLAttribute>
-			</ns438:umlAttributeCollection>
-			<ns438:semanticMetadataCollection>
-				<ns441:SemanticMetadata id="18785754-2B97-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns442:SemanticMetadata" xmlns:ns441="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns442="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns443:SemanticMetadata id="18785754-326D-3542-E044-0003BA4529A9" conceptCode="C51070" conceptName="Entity" conceptDefinition="An independently existing thing (living or nonliving)." isPrimaryConcept="false" order="1" xsi:type="ns444:SemanticMetadata" xmlns:ns443="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns444="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-				<ns445:SemanticMetadata id="18785754-3291-3542-E044-0003BA4529A9" conceptCode="C44272" conceptName="Annotation" conceptDefinition="An explanatory or critical comment that has been added to a text." isPrimaryConcept="false" order="2" xsi:type="ns446:SemanticMetadata" xmlns:ns445="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns446="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns438:semanticMetadataCollection>
-		</ns438:UMLClass>
-		<ns501:UMLClass className="Participant" description="A Participant object" id="18785753-F33C-3542-E044-0003BA4529A9-a" packageName="edu.duke.catrip.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns501:UMLClass" xmlns:ns501="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+
+
+	
+		<ns501:UMLClass className="Participant" description="A Participant object" id="Participant" packageName="edu.duke.catrip.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns501:UMLClass" xmlns:ns501="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns501:umlAttributeCollection>
 				<ns501:UMLAttribute description="Last name of the participant." name="lastName" xsi:type="ns501:UMLAttribute">
 					<ns501:semanticMetadataCollection>
@@ -915,47 +335,36 @@
 						<ns513:SemanticMetadata id="18785754-4569-3542-E044-0003BA4529A9" conceptCode="C16564" conceptName="Ethnic Group" conceptDefinition="A social group characterized by a distinctive social and cultural tradition maintained from generation to generation, a common history and origin and a sense of identification with the group; members of the group have distinctive features in their way of life, shared experiences and often a common genetic heritage; these features may be reflected in their experience of health and disease." isPrimaryConcept="true" order="0" xsi:type="ns5130:SemanticMetadata" xmlns:ns513="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns5130="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
 					</ns501:semanticMetadataCollection>
 				</ns501:UMLAttribute>
+				<ns501:UMLAttribute name="id" xsi:type="ns501:UMLAttribute">
+					<ns501:semanticMetadataCollection>
+						<ns514:SemanticMetadata id="18785754-392D-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns5140:SemanticMetadata" xmlns:ns5140="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns514="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns501:semanticMetadataCollection>
+				</ns501:UMLAttribute>
 			</ns501:umlAttributeCollection>
 			<ns501:semanticMetadataCollection>
 				<ns514:SemanticMetadata id="18785754-2C6D-3542-E044-0003BA4529A9" conceptCode="C29867" conceptName="Participant" conceptDefinition="Someone who takes part in an activity." isPrimaryConcept="true" order="0" xsi:type="ns5140:SemanticMetadata" xmlns:ns5140="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns514="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
 			</ns501:semanticMetadataCollection>
 		</ns501:UMLClass>
-		<ns520:UMLClass className="Specimen" description="A Specimen object" id="18785753-F33C-3542-E044-0003BA4529A9-b" packageName="edu.duke.catrip.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns520:UMLClass" xmlns:ns520="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns520:umlAttributeCollection>
-				<ns520:UMLAttribute description="Patient's identifier." name="identifier" xsi:type="ns520:UMLAttribute">
-					<ns520:semanticMetadataCollection>
-						<ns521:SemanticMetadata id="18785754-3924-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns522:SemanticMetadata" xmlns:ns521="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns522="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns520:semanticMetadataCollection>
-				</ns520:UMLAttribute>
-				<ns520:UMLAttribute description="The surgical label assigned to blocks indicating the location of a part the block belong to. " name="surgicalLabel" xsi:type="ns520:UMLAttribute">
-					<ns520:semanticMetadataCollection>
-						<ns523:SemanticMetadata id="18785754-3475-3542-E044-0003BA4529A9" conceptCode="C15329" conceptName="Surgical Procedure" conceptDefinition="Used for operative procedures on organs, regions, or tissues in the treatment of diseases, including tissue section by lasers. It excludes transplantation, for which &quot;transplantation&quot; is used." isPrimaryConcept="false" order="1" xsi:type="ns524:SemanticMetadata" xmlns:ns523="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns524="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns525:SemanticMetadata id="18785754-4DFB-3542-E044-0003BA4529A9" conceptCode="C45561" conceptName="Label" conceptDefinition="A brief description given for purposes of identification; an identifying or descriptive marker that is attached to an object." isPrimaryConcept="true" order="0" xsi:type="ns526:SemanticMetadata" xmlns:ns525="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns526="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns520:semanticMetadataCollection>
-				</ns520:UMLAttribute>
-			</ns520:umlAttributeCollection>
-			<ns520:semanticMetadataCollection>
-				<ns527:SemanticMetadata id="18785754-2C49-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="true" order="0" xsi:type="ns528:SemanticMetadata" xmlns:ns527="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns528="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns520:semanticMetadataCollection>
-		</ns520:UMLClass>
-		<ns530:UMLClass className="Accession" description="A Accession object" id="18785753-F33C-3542-E044-0003BA4529A9-c" packageName="edu.duke.catrip.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns530:UMLClass" xmlns:ns530="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
-			<ns530:umlAttributeCollection>
-				<ns530:UMLAttribute description="The date the procedure event was done" name="accessionDate" xsi:type="ns530:UMLAttribute">
-					<ns530:semanticMetadataCollection>
-						<ns531:SemanticMetadata id="18785754-3E86-3542-E044-0003BA4529A9" conceptCode="C25164" conceptName="Date" conceptDefinition="a particular day specified as the time something has, or will, happen." isPrimaryConcept="true" order="0" xsi:type="ns532:SemanticMetadata" xmlns:ns531="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns532="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns533:SemanticMetadata id="18785754-4E6B-3542-E044-0003BA4529A9" conceptCode="C45257" conceptName="Accession" conceptDefinition="A process of increasing by addition (as to a collection or group)." isPrimaryConcept="false" order="1" xsi:type="ns534:SemanticMetadata" xmlns:ns533="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns534="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns530:semanticMetadataCollection>
-				</ns530:UMLAttribute>
-				<ns530:UMLAttribute description="Hospital surgical pathology number associated with the current specimen collection event." name="surgicalPathologyNumber" xsi:type="ns530:UMLAttribute">
-					<ns530:semanticMetadataCollection>
-						<ns535:SemanticMetadata id="18785754-3FF0-3542-E044-0003BA4529A9" conceptCode="C25402" conceptName="Accession Number" conceptDefinition="A control number unique to an object, used to identify it among the other objects in a collection." isPrimaryConcept="true" order="0" xsi:type="ns536:SemanticMetadata" xmlns:ns535="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns536="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-						<ns537:SemanticMetadata id="18785754-505D-3542-E044-0003BA4529A9" conceptCode="C45260" conceptName="Surgical Pathology Report" conceptDefinition="A pathology report based upon samples obtained by or during surgery." isPrimaryConcept="false" order="1" xsi:type="ns538:SemanticMetadata" xmlns:ns537="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns538="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-					</ns530:semanticMetadataCollection>
-				</ns530:UMLAttribute>
-			</ns530:umlAttributeCollection>
-			<ns530:semanticMetadataCollection>
-				<ns539:SemanticMetadata id="18785754-3171-3542-E044-0003BA4529A9" conceptCode="C45257" conceptName="Accession" conceptDefinition="A process of increasing by addition (as to a collection or group)." isPrimaryConcept="true" order="0" xsi:type="ns540:SemanticMetadata" xmlns:ns539="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns540="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
-			</ns530:semanticMetadataCollection>
-		</ns530:UMLClass>
+
+		<ns540:UMLClass className="ParticipantMedicalIdentifier" description="A Participant Identfier object" id="ParticipantMedicalIdentifier" packageName="edu.duke.catrip.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" xsi:type="ns540:UMLClass" xmlns:ns540="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+			<ns540:umlAttributeCollection>
+				<ns540:UMLAttribute name="id" xsi:type="ns540:UMLAttribute">
+					<ns540:semanticMetadataCollection>
+						<ns541:SemanticMetadata id="18785754-392D-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns5410:SemanticMetadata" xmlns:ns5410="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns541="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns540:semanticMetadataCollection>
+				</ns540:UMLAttribute>
+				<ns540:UMLAttribute description="medical record number " name="medicalRecordNumber" xsi:type="ns540:UMLAttribute">
+					<ns540:semanticMetadataCollection>
+						<ns542:SemanticMetadata id="18785754-3E86-3542-E044-0003BA4529A9" conceptCode="C25164" conceptName="medicalRecordNumber" conceptDefinition="a particular day specified as the time something has, or will, happen." isPrimaryConcept="true" order="0" xsi:type="ns5420:SemanticMetadata" xmlns:ns5420="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns542="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+					</ns540:semanticMetadataCollection>
+				</ns540:UMLAttribute>
+			</ns540:umlAttributeCollection>
+			<ns540:semanticMetadataCollection>
+				<ns541:SemanticMetadata id="18785754-2C6D-3542-E044-0003BA4529A9" conceptCode="C29867" conceptName="Participant" conceptDefinition="Someone who takes part in an activity." isPrimaryConcept="true" order="0" xsi:type="ns5140:SemanticMetadata" xmlns:ns5410="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns541="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+			</ns540:semanticMetadataCollection>
+		</ns540:UMLClass>
+
+
+
 	</ns1:exposedUMLClassCollection>
 </ns1:DomainModel>
