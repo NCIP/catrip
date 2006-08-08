@@ -1,16 +1,16 @@
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-66, 'axillary lymph node procedure'); 
+55, 'axillary lymph node procedure'); 
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-67, 'left breast implant surgery'); 
+55, 'left breast implant surgery'); 
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-68, 'sentinel lymph node procedure'); 
+56, 'sentinel lymph node procedure'); 
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-69, 'reconstructive surgeon in right breast'); 
+56, 'reconstructive surgeon in right breast'); 
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-70, 'breast implant surgery'); 
+57, 'breast implant surgery'); 
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-71, 'bilateral implant surgery'); 
+57, 'bilateral implant surgery'); 
 INSERT INTO BREAST_SURGICAL_PROCEDURES ( ID, SURGICAL_PROCEDURE ) VALUES ( 
-72, 'standard lymph node procedure'); 
+58, 'standard lymph node procedure'); 
 
 COMMIT;
