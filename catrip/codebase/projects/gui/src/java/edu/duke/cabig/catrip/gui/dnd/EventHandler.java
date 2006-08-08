@@ -61,21 +61,24 @@ public class EventHandler extends IGraphEventHandler {
         
         // sanjeev
         
-        int sourceDirection = ((GraphPort) sourcePort).getDirection();
-        int targetDirection = ((GraphPort) targetPort).getDirection();
-        
+        int sourceDirection = 0;//((GraphPort) sourcePort).getDirection();
+        int targetDirection = 0;//((GraphPort) targetPort).getDirection();
+        try{
+            sourceDirection = ((GraphPort) sourcePort).getDirection();
+            targetDirection = ((GraphPort) targetPort).getDirection();
+        }catch (Exception ne){}
         
         // if it is a CDE link... create a foreign association...
         if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT)){
 //            System.out.println("XXXX creating a foreign association..");
-//            
+//
 //            System.out.println("XXXX  Attribute name is :"+ ( (AttributePort) sourcePort).getAttributeName()  );
 //            System.out.println("XXXX  class is :"+ ((ClassNode)sourcePort.getNode()).getAssociatedClassObject().getFullyQualifiedName()  );
-            // TODO - add the foreign association here..
+            //  - add the foreign association here..
             ForeignAssociationBean fBean = new ForeignAssociationBean();
             ClassBean leftObject = ((ClassNode)sourcePort.getNode()).getAssociatedClassObject();
             fBean.setLeftObj(leftObject);
-            fBean.setRighObj(((ClassNode)targetPort.getNode()).getAssociatedClassObject()); 
+            fBean.setRighObj(((ClassNode)targetPort.getNode()).getAssociatedClassObject());
             fBean.setLeftProperty(( (AttributePort) sourcePort).getAttributeName());
             fBean.setRightProperty(( (AttributePort) targetPort).getAttributeName());
             // add a foreign association with the node..
@@ -175,7 +178,7 @@ public class EventHandler extends IGraphEventHandler {
                 node.setAsTargetNode();
                 DCQLRegistry.setTargetNode(node);
             }
-
+            
             return;
         }
         
@@ -195,7 +198,7 @@ public class EventHandler extends IGraphEventHandler {
     private void addAttrubutePorts(GraphNode node, ClassBean classBean){
         
         ArrayList attributes = classBean.getAttributes();
-        Collections.sort(attributes, new AttributeBeanComparator()); 
+        Collections.sort(attributes, new AttributeBeanComparator());
         for (int k = attributes.size()-1; k >= 0; k--) {
             AttributeBean aBean = (AttributeBean)attributes.get(k);
             node.addPort( new AttributePort(aBean.getCDEName(),aBean.getAttributeName(),IDirectionable.BOTTOM_LEFT));

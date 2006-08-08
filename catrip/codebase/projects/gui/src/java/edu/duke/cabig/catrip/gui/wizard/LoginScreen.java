@@ -165,7 +165,7 @@ public class LoginScreen extends CJFrame {
         screen.center();
         screen.setVisible(true);
         this.dispose();
-        System.out.println("#####  "+identityProvider.getSelectedItem());
+//        System.out.println("#####  "+identityProvider.getSelectedItem());
         
          }
     }//GEN-LAST:event_loginBtnActionPerformed
