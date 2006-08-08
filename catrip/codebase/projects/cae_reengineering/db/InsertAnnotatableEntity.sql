@@ -1,4 +1,4 @@
-
+delete from annotatable_entity;
 insert into annotatable_entity values (1);
 insert into annotatable_entity values (2);
 insert into annotatable_entity values (3);

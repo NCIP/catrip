@@ -1,4 +1,4 @@
-
+delete from participant;
 insert into participant (annotatable_entity_id,first_name,last_name) values (1,'Mickey','Mouse');
 insert into participant (annotatable_entity_id,first_name,last_name) values (2,'Mary','Smith');
 insert into participant (annotatable_entity_id,first_name,last_name) values (3,'','');
