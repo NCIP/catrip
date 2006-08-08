@@ -10,5 +10,6 @@
 @InsertOtherHG.sql
 @InsertThreeDim.sql
 @InsertBrSurgPathSpec.sql
+@InsertBreatSurgProced.sql
 @UPDATE_CAE_MRN.sql
 commit;
