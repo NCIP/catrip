@@ -222,7 +222,7 @@ public class DCQLGenerator {
                 ClassBean foreignLeft = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftObj();
                 ClassBean foreignRight = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRighObj();
                 String leftProp = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
-                String rightProp = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
+                String rightProp = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRightProperty();
                 
                 ForeignAssociation forAss = gp1.addNewForeignAssociation(); // adding a foreign association..
                 
@@ -281,7 +281,7 @@ public class DCQLGenerator {
                 ClassBean foreignLeft = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftObj();
                 ClassBean foreignRight = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRighObj();
                 String leftProp = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
-                String rightProp = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
+                String rightProp = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRightProperty();
                 
                 ForeignAssociation forAss = gp1.addNewForeignAssociation(); // adding a foreign association..
                 
