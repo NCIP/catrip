@@ -68,9 +68,11 @@ public class ClassNode extends GenericNode {
     public boolean isTargetNode() {
         return isTargetNode;
     }
-
     public void setAsTargetNode() {
         this.isTargetNode = true;
+    }
+    public void isNotTargetNode(){
+        this.isTargetNode = false;
     }
 
 }

@@ -177,8 +177,12 @@ public class ViewController extends DefaultViewController implements ActionListe
                 if (selectedComponent instanceof ClassNode) {
                     ClassNode cNode = (ClassNode)selectedComponent;
 //                    System.out.println("xxxxx TargetObject is:"+cNode.getAssociatedClassObject().getFullyQualifiedName());
-                    DCQLRegistry.setTargetNode(cNode);  
-                    
+                    // first get the old target node from Registry. remove target status from it 
+                    DCQLRegistry.getTargetNode().isNotTargetNode();  
+                    test.repaint();  // to re-render the old Target node..
+                    // set the new node as Target node.. both in the Node and in the registry..
+                    cNode.setAsTargetNode();
+                    DCQLRegistry.setTargetNode(cNode);   
                       // TODO -  reverse the foreign associations and other objects for dcql.
                 }
             }

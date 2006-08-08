@@ -172,6 +172,7 @@ public class EventHandler extends IGraphEventHandler {
             
             // set the first object as target object..
             if (test.getLastID() == 1){
+                node.setAsTargetNode();
                 DCQLRegistry.setTargetNode(node);
             }
 

@@ -104,7 +104,7 @@ public class ClassNodeRenderer implements IGraphNodeRenderer {
                     break;
                 case IDirectionable.BOTTOM_LEFT:
                     bottomLeftSidePoint.y += PORT_SPACE;
-                    break;    
+                    break;
             }
         }
         
@@ -188,7 +188,7 @@ public class ClassNodeRenderer implements IGraphNodeRenderer {
         
         helper.includeNodePortsToNodeRelativeBounds(node, bounds);
         bounds.grow(4, 4);
-        
+         // TODO - add the attributes portion also into the active area...
         helper.setNodeRelativeActiveAreas(node, new Rectangle[] { imageRect, textRect } );
 //        helper.setNodeRelativeActiveAreas(node, new Rectangle[] { imageRect, textRect, attributeRect } ); // sanjeev
         helper.setNodeRelativeBounds(node, bounds);
@@ -209,13 +209,18 @@ public class ClassNodeRenderer implements IGraphNodeRenderer {
         if (layer == LAYER_BACKGROUND) {
             //sanjeev drawing a box covering the node..
             Rectangle rect = helper.getBounds(node);
-            gr.setColor(new Color(0xEEEEEE));
+            gr.setColor(new Color(0xEEEEEE)); // background color..
             gr.fillRect(rect.x, rect.y, rect.width, rect.height);
-            gr.setColor(new Color(0xCDCDCD));
+            ClassNode cNode = (ClassNode)node.getLookup().lookup(ClassNode.class);
+            if ( cNode.isTargetNode() ){
+                gr.setColor(Color.RED);  // set the color for teh target node..
+            } else {
+                gr.setColor(new Color(0xCDCDCD));  // border color..
+            }
+            // draw the border for the node here....
             gr.draw(new Rectangle2D.Float(rect.x + 0.5f, rect.y + 0.5f, rect.width - 1, rect.height - 1));
             //sanjeev now drawing a ract for a line between attributes..
             gr.draw(new Rectangle2D.Float(rect.x + 0.5f , rect.y + 0.5f , rect.width - 1 , ClassrRect.height +4 ));
-            // now draw the attributes
             // sanjeev
             if (helper.isComponentSelected(node))
                 SimpleDocumentRenderer.renderSelectedRect(gr, helper.getBounds(node));
