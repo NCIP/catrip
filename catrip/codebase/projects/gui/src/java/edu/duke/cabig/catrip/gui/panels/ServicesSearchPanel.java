@@ -61,10 +61,12 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             column = resultTable.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(32);
-            }else if (i == 4 || i==1) {
+            }else if (i == 1 ) {
+                column.setPreferredWidth(140);
+            }else if (i == 4 ) {
                 column.setPreferredWidth(90);
             } else {
-                column.setPreferredWidth(285);
+                column.setPreferredWidth(260);
                 column.setCellRenderer(new ToolTipCellRenderer());
             }
         }
