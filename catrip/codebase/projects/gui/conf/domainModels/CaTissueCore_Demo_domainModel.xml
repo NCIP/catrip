@@ -52,6 +52,19 @@
 
   <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
    <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="specimenCollectionGroup" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="18785753-F2E4-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="1" roleName="specimenCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="18785753-F2FC-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
     <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="childrenSpecimen" xsi:type="ns1:UMLAssociationEdge">
      <ns1:UMLClassReference refid="18785753-F2E8-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
     </ns1:UMLAssociationEdge>
@@ -232,6 +245,74 @@
     <ns68:SemanticMetadata id="18785754-2C48-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="true" order="0" xsi:type="ns69:SemanticMetadata" xmlns:ns68="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns69="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
    </ns41:semanticMetadataCollection>
   </ns41:UMLClass>
+  
+  <ns739:UMLClass className="TissueSpecimen" description="A single unit of tissue specimen that is collected or created from a Participant" id="18785753-F2FC-3542-E044-0003BA4529A9" packageName="edu.wustl.catissuecore.domainobject" projectName="caTISSUE Core" xsi:type="ns739:UMLClass" xmlns:ns739="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+     <ns739:umlAttributeCollection>
+      <ns739:UMLAttribute description="Initial amount of specimen either directly collected from participant or created from another specimen." name="quantityInGram" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns740:SemanticMetadata id="18785754-3DEB-3542-E044-0003BA4529A9" conceptCode="C25256" conceptName="Quantity" conceptDefinition="Quantity; how much there is of something that you can measure." isPrimaryConcept="true" order="0" xsi:type="ns741:SemanticMetadata" xmlns:ns740="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns741="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns742:SemanticMetadata id="18785754-50A8-3542-E044-0003BA4529A9" conceptCode="C48155" conceptName="Gram" conceptDefinition="A metric unit of mass equal to one one thousandth of a kilogram." isPrimaryConcept="false" order="1" xsi:type="ns743:SemanticMetadata" xmlns:ns742="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns743="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute description="Current available quantity of the specimen." name="availableQuantityInGram" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns744:SemanticMetadata id="18785754-43A0-3542-E044-0003BA4529A9" conceptCode="C25429" conceptName="Available" conceptDefinition="Available; obtainable or accessible and ready for use or service." isPrimaryConcept="false" order="1" xsi:type="ns745:SemanticMetadata" xmlns:ns744="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns745="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns746:SemanticMetadata id="18785754-3DEA-3542-E044-0003BA4529A9" conceptCode="C25256" conceptName="Quantity" conceptDefinition="Quantity; how much there is of something that you can measure." isPrimaryConcept="true" order="0" xsi:type="ns747:SemanticMetadata" xmlns:ns746="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns747="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns748:SemanticMetadata id="18785754-50A7-3542-E044-0003BA4529A9" conceptCode="C48155" conceptName="Gram" conceptDefinition="A metric unit of mass equal to one one thousandth of a kilogram." isPrimaryConcept="false" order="2" xsi:type="ns749:SemanticMetadata" xmlns:ns748="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns749="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="activityStatus" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns750:SemanticMetadata id="18785754-338C-3542-E044-0003BA4529A9" conceptCode="C25688" conceptName="Status" conceptDefinition="A condition or state at a particular time." isPrimaryConcept="true" order="0" xsi:type="ns751:SemanticMetadata" xmlns:ns750="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns751="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns752:SemanticMetadata id="18785754-4593-3542-E044-0003BA4529A9" conceptCode="C43431" conceptName="Activity" conceptDefinition="The state of being active; any specific activity." isPrimaryConcept="false" order="1" xsi:type="ns753:SemanticMetadata" xmlns:ns752="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns753="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="comments" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns754:SemanticMetadata id="18785754-3C5B-3542-E044-0003BA4529A9" conceptCode="C25393" conceptName="Comments" conceptDefinition="Comments; a written explanation or criticism or illustration that is added to a book or other textual material." isPrimaryConcept="true" order="0" xsi:type="ns755:SemanticMetadata" xmlns:ns754="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns755="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="barcode" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns756:SemanticMetadata id="18785754-4CCE-3542-E044-0003BA4529A9" conceptCode="C43361" conceptName="Barcode" conceptDefinition="A machine-readable representation of information in a visual format on a surface. Originally barcodes stored data in the widths and spacings of printed parallel lines, but today they also come in patterns of dots, concentric circles, and hidden in images (Wikipedia)." isPrimaryConcept="true" order="0" xsi:type="ns757:SemanticMetadata" xmlns:ns756="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns757="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="positionDimensionTwo" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns758:SemanticMetadata id="18785754-4291-3542-E044-0003BA4529A9" conceptCode="C25339" conceptName="Position" conceptDefinition="Position; the particular portion of space occupied by a physical object." isPrimaryConcept="true" order="0" xsi:type="ns759:SemanticMetadata" xmlns:ns758="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns759="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns760:SemanticMetadata id="18785754-4256-3542-E044-0003BA4529A9" conceptCode="C25483" conceptName="Dimension" conceptDefinition="Dimension; the magnitude of something in a particular direction, especially length or width or height." isPrimaryConcept="false" order="1" xsi:type="ns761:SemanticMetadata" xmlns:ns760="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns761="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns762:SemanticMetadata id="18785754-3B2C-3542-E044-0003BA4529A9" conceptCode="C25666" conceptName="Second" conceptDefinition="coming next after the first in position in space or time or degree or magnitude." isPrimaryConcept="false" order="2" xsi:type="ns763:SemanticMetadata" xmlns:ns762="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns763="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="positionDimensionOne" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns764:SemanticMetadata id="18785754-4297-3542-E044-0003BA4529A9" conceptCode="C25339" conceptName="Position" conceptDefinition="Position; the particular portion of space occupied by a physical object." isPrimaryConcept="true" order="0" xsi:type="ns765:SemanticMetadata" xmlns:ns764="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns765="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns766:SemanticMetadata id="18785754-425C-3542-E044-0003BA4529A9" conceptCode="C25483" conceptName="Dimension" conceptDefinition="Dimension; the magnitude of something in a particular direction, especially length or width or height." isPrimaryConcept="false" order="1" xsi:type="ns767:SemanticMetadata" xmlns:ns766="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns767="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns768:SemanticMetadata id="18785754-44EC-3542-E044-0003BA4529A9" conceptCode="C25509" conceptName="First" conceptDefinition="Preceding all others in time or space or degree." isPrimaryConcept="false" order="2" xsi:type="ns769:SemanticMetadata" xmlns:ns768="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns769="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="available" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns770:SemanticMetadata id="18785754-43A8-3542-E044-0003BA4529A9" conceptCode="C25429" conceptName="Available" conceptDefinition="Available; obtainable or accessible and ready for use or service." isPrimaryConcept="true" order="0" xsi:type="ns771:SemanticMetadata" xmlns:ns770="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns771="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="type" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns772:SemanticMetadata id="18785754-3583-3542-E044-0003BA4529A9" conceptCode="C25284" conceptName="Type" conceptDefinition="Type; a subdivision of a particular kind of thing." isPrimaryConcept="true" order="0" xsi:type="ns773:SemanticMetadata" xmlns:ns772="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns773="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+      <ns739:UMLAttribute name="id" xsi:type="ns739:UMLAttribute">
+       <ns739:semanticMetadataCollection>
+        <ns774:SemanticMetadata id="18785754-394F-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns775:SemanticMetadata" xmlns:ns774="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns775="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns739:semanticMetadataCollection>
+      </ns739:UMLAttribute>
+     </ns739:umlAttributeCollection>
+     <ns739:semanticMetadataCollection>
+      <ns776:SemanticMetadata id="18785754-2BF0-3542-E044-0003BA4529A9" conceptCode="C12801" conceptName="Tissue" conceptDefinition="is an organ part that consists of similarly specialized cells and intercellular matrix, aggregated according to specific spatial relationships; together with other tissues, it constitutes an organ component. Example(s): epithelium, muscle(tissue), connective tissue, neural tissue, lymphoid tissue." isPrimaryConcept="false" order="1" xsi:type="ns777:SemanticMetadata" xmlns:ns776="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns777="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+      <ns778:SemanticMetadata id="18785754-2C45-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="true" order="0" xsi:type="ns779:SemanticMetadata" xmlns:ns778="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns779="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+     </ns739:semanticMetadataCollection>
+  </ns739:UMLClass>
+  
   <ns70:UMLClass className="ClinicalReport" description="A clinical report associated with the participant at the time of the SpecimenCollection Group receipt" id="18785753-F306-3542-E044-0003BA4529A9" packageName="edu.wustl.catissuecore.domainobject" projectName="caTISSUE Core" xsi:type="ns70:UMLClass" xmlns:ns70="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
    <ns70:umlAttributeCollection>
     <ns70:UMLAttribute description="System generated unique identifier." name="id" xsi:type="ns70:UMLAttribute">
