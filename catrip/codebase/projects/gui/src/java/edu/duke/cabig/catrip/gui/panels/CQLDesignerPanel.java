@@ -32,10 +32,10 @@ public class CQLDesignerPanel extends CPanel {
         kit.setWrapStyleWord( true);
         kit.setLineWrappingEnabled( true);
         getDcqlQueryEditorPane().getDocument().putProperty( PlainDocument.tabSizeAttribute, new Integer(4));
-        kit.setStyle( XMLStyleConstants.ATTRIBUTE_NAME, new Color( 128, 0, 128), Font.PLAIN);
+        kit.setStyle( XMLStyleConstants.ATTRIBUTE_NAME, new Color( 0,128,0), Font.PLAIN);
         kit.setStyle( XMLStyleConstants.ATTRIBUTE_VALUE, new Color( 128, 0, 255), Font.BOLD);
         kit.setStyle( XMLStyleConstants.ELEMENT_VALUE, new Color(0,0,0), Font.BOLD);
-        kit.setStyle( XMLStyleConstants.ELEMENT_NAME, new Color(128,0,128), Font.PLAIN);
+        kit.setStyle( XMLStyleConstants.ELEMENT_NAME, new Color(128, 0, 128), Font.PLAIN);
         getDcqlQueryEditorPane().setEditable(false);
         getDcqlQueryEditorPane().setEditorKit(kit);
     }
