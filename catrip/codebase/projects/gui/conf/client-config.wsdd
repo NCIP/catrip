@@ -127,8 +127,6 @@
 <!-- END INTRODUCE TYPEMAPPINGS -->
 
 
-<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nci.cadsr.umlproject.domain.SemanticMetadata" qname="ns2:SemanticMetadata" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
-
 
 <!-- START INTRODUCE TYPEMAPPINGS for NameSpace: gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general -->
 
