@@ -1,3 +1,6 @@
+spool cae_tables.log
+set scan off;
+
 @DeleteChilds.sql
 @InsertAnnotatableEntity.sql
 @InsertParticipants.sql
@@ -13,3 +16,6 @@
 @InsertBreatSurgProced.sql
 @UPDATE_CAE_MRN.sql
 commit;
+
+spool off;
+exit
