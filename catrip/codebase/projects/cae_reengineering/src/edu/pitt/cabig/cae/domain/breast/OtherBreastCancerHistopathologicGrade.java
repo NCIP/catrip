@@ -1,80 +1,85 @@
+
+
 package edu.pitt.cabig.cae.domain.breast;
-import edu.pitt.cabig.cae.domain.general.HistopathologicGrade;
-import java.lang.String;
-import java.lang.Integer;
 
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * An alternative grading system for breast cancer (not Nottingham Grade).
+   */
 
- /**
-  *
-  * @hibernate.subclass
-  *           discriminator-value="OTGR" 
-  *
-  */
+public  class OtherBreastCancerHistopathologicGrade 
+    extends edu.pitt.cabig.cae.domain.general.HistopathologicGrade
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-public class OtherBreastCancerHistopathologicGrade extends HistopathologicGrade {
+	
+	   
+	   private java.lang.String systemName;
+	   public  java.lang.String getSystemName(){
+	      return systemName;
+	   }
+	   public void setSystemName( java.lang.String systemName){
+	      this.systemName = systemName;
+	   }
+	
+	   
+	   private java.lang.Integer score;
+	   public  java.lang.Integer getScore(){
+	      return score;
+	   }
+	   public void setScore( java.lang.Integer score){
+	      this.score = score;
+	   }
+	
+	   
+	   private java.lang.String scoreMVR;
+	   public  java.lang.String getScoreMVR(){
+	      return scoreMVR;
+	   }
+	   public void setScoreMVR( java.lang.String scoreMVR){
+	      this.scoreMVR = scoreMVR;
+	   }
+	
+	   
+	   private java.lang.Integer mitoticCount;
+	   public  java.lang.Integer getMitoticCount(){
+	      return mitoticCount;
+	   }
+	   public void setMitoticCount( java.lang.Integer mitoticCount){
+	      this.mitoticCount = mitoticCount;
+	   }
+	
 
-    private String systemName;
-    private Integer score;
-    private String scoreMVR;
-    private Integer mitoticCount;
+	
 
-    public OtherBreastCancerHistopathologicGrade(){
-
-    }
-
-    public void setSystemName(String systemName) {
-        this.systemName = systemName;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="SYSTEM_NAME"
-     *   type="java.lang.String"
-     *
-     */
-    public String getSystemName() {
-        return systemName;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="SCORE"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScoreMVR(String scoreMVR) {
-        this.scoreMVR = scoreMVR;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="SCORE_MVR"
-     *   type="java.lang.String"
-     *
-     */
-    public String getScoreMVR() {
-        return scoreMVR;
-    }
-
-    public void setMitoticCount(Integer mitoticCount) {
-        this.mitoticCount = mitoticCount;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="MITOTIC_COUNT_O"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getMitoticCount() {
-        return mitoticCount;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof OtherBreastCancerHistopathologicGrade) {
+				OtherBreastCancerHistopathologicGrade c =(OtherBreastCancerHistopathologicGrade)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

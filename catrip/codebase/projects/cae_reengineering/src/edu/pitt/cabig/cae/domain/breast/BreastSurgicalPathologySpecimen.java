@@ -1,79 +1,86 @@
+
+
 package edu.pitt.cabig.cae.domain.breast;
-import edu.pitt.cabig.cae.domain.general.SurgicalPathologySpecimen;
-import java.lang.String;
 
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * A set of surgical pathologic specimens resulting from a surgical procedure for breast cancer. 
+   * 
+   */
 
- /**
-  *
-  * @hibernate.class
-  *           table="BREAST_SUR_PATHO_SPECIMANS"
-  *
-  *
-  */
-public class BreastSurgicalPathologySpecimen extends SurgicalPathologySpecimen {
+public  class BreastSurgicalPathologySpecimen 
+    extends edu.pitt.cabig.cae.domain.general.SurgicalPathologySpecimen
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-    private String otherSurgicalProcedure;
-    private String lymphNodeSamplingProcedure;
-    private String laterality;
-    private String lateralityMVR;
+	
+	   
+	   private java.lang.String otherSurgicalProcedure;
+	   public  java.lang.String getOtherSurgicalProcedure(){
+	      return otherSurgicalProcedure;
+	   }
+	   public void setOtherSurgicalProcedure( java.lang.String otherSurgicalProcedure){
+	      this.otherSurgicalProcedure = otherSurgicalProcedure;
+	   }
+	
+	   
+	   private java.lang.String lymphNodeSamplingProcedure;
+	   public  java.lang.String getLymphNodeSamplingProcedure(){
+	      return lymphNodeSamplingProcedure;
+	   }
+	   public void setLymphNodeSamplingProcedure( java.lang.String lymphNodeSamplingProcedure){
+	      this.lymphNodeSamplingProcedure = lymphNodeSamplingProcedure;
+	   }
+	
+	   
+	   private java.lang.String laterality;
+	   public  java.lang.String getLaterality(){
+	      return laterality;
+	   }
+	   public void setLaterality( java.lang.String laterality){
+	      this.laterality = laterality;
+	   }
+	
+	   
+	   private java.lang.String lateralityMVR;
+	   public  java.lang.String getLateralityMVR(){
+	      return lateralityMVR;
+	   }
+	   public void setLateralityMVR( java.lang.String lateralityMVR){
+	      this.lateralityMVR = lateralityMVR;
+	   }
+	
 
-    public BreastSurgicalPathologySpecimen(){
+	
 
-    }
-
-    public void setOtherSurgicalProcedure(String otherSurgicalProcedure) {
-        this.otherSurgicalProcedure = otherSurgicalProcedure;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="OTHER_SURGICAL_PROCEDURE"
-     *   type="java.lang.String"
-     *
-     */
-    public String getOtherSurgicalProcedure() {
-        return otherSurgicalProcedure;
-    }
-
-    public void setLymphNodeSamplingProcedure(String lymphNodeSamplingProcedure) {
-        this.lymphNodeSamplingProcedure = lymphNodeSamplingProcedure;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="LYMPH_NODE_PROCEDURE"
-     *   type="java.lang.String"
-     *
-     */
-    public String getLymphNodeSamplingProcedure() {
-        return lymphNodeSamplingProcedure;
-    }
-
-    public void setLaterality(String laterality) {
-        this.laterality = laterality;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="LATERALITY"
-     *   type="java.lang.String"
-     *
-     */
-    public String getLaterality() {
-        return laterality;
-    }
-
-    public void setLateralityMVR(String lateralityMVR) {
-        this.lateralityMVR = lateralityMVR;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="LATERALITY_MVR"
-     *   type="java.lang.String"
-     *
-     */
-    public String getLateralityMVR() {
-        return lateralityMVR;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof BreastSurgicalPathologySpecimen) {
+				BreastSurgicalPathologySpecimen c =(BreastSurgicalPathologySpecimen)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

@@ -1,93 +1,94 @@
+
+
 package edu.pitt.cabig.cae.domain.breast;
-import edu.pitt.cabig.cae.domain.general.HistopathologicGrade;
-import java.lang.Integer;
-import java.lang.String;
 
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * A grading system for breast cancer.
+   */
 
- /**
-  *
-  * @hibernate.subclass
-  *           discriminator-value="NHGR" 
-  *
-  */
-  
-public class NottinghamHistopathologicGrade extends HistopathologicGrade {
+public  class NottinghamHistopathologicGrade 
+    extends edu.pitt.cabig.cae.domain.general.HistopathologicGrade
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-    private Integer tubuleFormation;
-    private Integer nuclearPleomorphism;
-    private Integer mitoticCount;
-    private Integer totalScore;
-    private String totalScoreMVR;
+	
+	   
+	   private java.lang.Integer tubuleFormation;
+	   public  java.lang.Integer getTubuleFormation(){
+	      return tubuleFormation;
+	   }
+	   public void setTubuleFormation( java.lang.Integer tubuleFormation){
+	      this.tubuleFormation = tubuleFormation;
+	   }
+	
+	   
+	   private java.lang.Integer nuclearPleomorphism;
+	   public  java.lang.Integer getNuclearPleomorphism(){
+	      return nuclearPleomorphism;
+	   }
+	   public void setNuclearPleomorphism( java.lang.Integer nuclearPleomorphism){
+	      this.nuclearPleomorphism = nuclearPleomorphism;
+	   }
+	
+	   
+	   private java.lang.Integer mitoticCount;
+	   public  java.lang.Integer getMitoticCount(){
+	      return mitoticCount;
+	   }
+	   public void setMitoticCount( java.lang.Integer mitoticCount){
+	      this.mitoticCount = mitoticCount;
+	   }
+	
+	   
+	   private java.lang.Integer totalScore;
+	   public  java.lang.Integer getTotalScore(){
+	      return totalScore;
+	   }
+	   public void setTotalScore( java.lang.Integer totalScore){
+	      this.totalScore = totalScore;
+	   }
+	
+	   
+	   private java.lang.String totalScoreMVR;
+	   public  java.lang.String getTotalScoreMVR(){
+	      return totalScoreMVR;
+	   }
+	   public void setTotalScoreMVR( java.lang.String totalScoreMVR){
+	      this.totalScoreMVR = totalScoreMVR;
+	   }
+	
 
-    public NottinghamHistopathologicGrade(){
+	
 
-    }
-
-
-
-    public void setTubuleFormation(Integer tubuleFormation) {
-        this.tubuleFormation = tubuleFormation;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="TUBULE_FORMATION"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getTubuleFormation() {
-        return tubuleFormation;
-    }
-
-    public void setNuclearPleomorphism(Integer nuclearPleomorphism) {
-        this.nuclearPleomorphism = nuclearPleomorphism;
-    }
-    /**
-     * @hibernate.property
-     *   column="NUCLEAR_PLEOMORPHISM"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getNuclearPleomorphism() {
-        return nuclearPleomorphism;
-    }
-
-    public void setMitoticCount(Integer mitoticCount) {
-        this.mitoticCount = mitoticCount;
-    }
-    /**
-     * @hibernate.property
-     *   column="MITOTIC_COUNT_N"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getMitoticCount() {
-        return mitoticCount;
-    }
-
-    public void setTotalScore(Integer totalScore) {
-        this.totalScore = totalScore;
-    }
-    /**
-     * @hibernate.property
-     *   column="TOTAL_SCORE"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getTotalScore() {
-        return totalScore;
-    }
-
-    public void setTotalScoreMVR(String totalScoreMVR) {
-        this.totalScoreMVR = totalScoreMVR;
-    }
-    /**
-     * @hibernate.property
-     *   column="TOTAL_SCORE_MVR"
-     *   type="java.lang.String"
-     *
-     */
-    public String getTotalScoreMVR() {
-        return totalScoreMVR;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof NottinghamHistopathologicGrade) {
+				NottinghamHistopathologicGrade c =(NottinghamHistopathologicGrade)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

@@ -1,81 +1,87 @@
+
+
 package edu.pitt.cabig.cae.domain.general;
-import java.lang.String;
-
-
-
-
 
 /**
- * @version 1.0
- * @created 15-Jun-2006 2:15:29 PM
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
  */
-public class CancerTNMFinding extends AnnotationSet {
+ 
+  /**
+   * TNM finding of the American Joint Committee on Cancer (AJCC) and International Union Against Cancer 
+   * (UICC) recommended classification system for cancers. 
+   * 
+   */
 
-	private String category;
-	private String primaryTumorFinding;
-	private String regionalLymphNodesFinding;
-	private String distantMetastasisFinding;
+public  class CancerTNMFinding 
+    extends AnnotationSet
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-	public CancerTNMFinding(){
+	
+	   
+	   private java.lang.String category;
+	   public  java.lang.String getCategory(){
+	      return category;
+	   }
+	   public void setCategory( java.lang.String category){
+	      this.category = category;
+	   }
+	
+	   
+	   private java.lang.String primaryTumorFinding;
+	   public  java.lang.String getPrimaryTumorFinding(){
+	      return primaryTumorFinding;
+	   }
+	   public void setPrimaryTumorFinding( java.lang.String primaryTumorFinding){
+	      this.primaryTumorFinding = primaryTumorFinding;
+	   }
+	
+	   
+	   private java.lang.String regionalLymphNodesFinding;
+	   public  java.lang.String getRegionalLymphNodesFinding(){
+	      return regionalLymphNodesFinding;
+	   }
+	   public void setRegionalLymphNodesFinding( java.lang.String regionalLymphNodesFinding){
+	      this.regionalLymphNodesFinding = regionalLymphNodesFinding;
+	   }
+	
+	   
+	   private java.lang.String distantMetastasisFinding;
+	   public  java.lang.String getDistantMetastasisFinding(){
+	      return distantMetastasisFinding;
+	   }
+	   public void setDistantMetastasisFinding( java.lang.String distantMetastasisFinding){
+	      this.distantMetastasisFinding = distantMetastasisFinding;
+	   }
+	
 
+	
+
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof CancerTNMFinding) {
+				CancerTNMFinding c =(CancerTNMFinding)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
 	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    /**
-     * @hibernate.property
-     *   column="CATEGORY"
-     *   type="java.lang.String"
-     *
-     */
-    public String getCategory() {
-        return category;
-    }
-
-    public void setPrimaryTumorFinding(String primaryTumorFinding) {
-        this.primaryTumorFinding = primaryTumorFinding;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="PRIMARY_TUMOR_FINDING"
-     *   type="java.lang.String"
-     *
-     */
-    public String getPrimaryTumorFinding() {
-        return primaryTumorFinding;
-    }
-
-    public void setRegionalLymphNodesFinding(String regionalLymphNodesFinding) {
-        this.regionalLymphNodesFinding = regionalLymphNodesFinding;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="REGIONAL_NODES_FINDING"
-     *   type="java.lang.String"
-     *
-     */
-    public String getRegionalLymphNodesFinding() {
-        return regionalLymphNodesFinding;
-    }
-
-    public void setDistantMetastasisFinding(String distantMetastasisFinding) {
-        this.distantMetastasisFinding = distantMetastasisFinding;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="DISTANT_MET_FINDING"
-     *   type="java.lang.String"
-     *
-     */
-    public String getDistantMetastasisFinding() {
-        return distantMetastasisFinding;
-    }
+	
+	
 }

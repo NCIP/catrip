@@ -1,55 +1,68 @@
+
+
 package edu.pitt.cabig.cae.domain.breast;
-import edu.pitt.cabig.cae.domain.general.SurgicalMargin;
-import java.lang.String;
-import java.lang.Float;
 
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * An edge of the specimen removed suring a surgical procedure which is NOT involved by disease. 
+   * 
+   */
 
+public  class BreastNegativeSurgicalMargin 
+    extends edu.pitt.cabig.cae.domain.general.SurgicalMargin
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
- /**
-  *
-  * @hibernate.subclass
-  *           discriminator-value="BNSM"
-  *
-  */
+	
+	   
+	   private java.lang.String closestNeoplasmPresent;
+	   public  java.lang.String getClosestNeoplasmPresent(){
+	      return closestNeoplasmPresent;
+	   }
+	   public void setClosestNeoplasmPresent( java.lang.String closestNeoplasmPresent){
+	      this.closestNeoplasmPresent = closestNeoplasmPresent;
+	   }
+	
+	   
+	   private java.lang.Float distanceToClosestNeoplasm;
+	   public  java.lang.Float getDistanceToClosestNeoplasm(){
+	      return distanceToClosestNeoplasm;
+	   }
+	   public void setDistanceToClosestNeoplasm( java.lang.Float distanceToClosestNeoplasm){
+	      this.distanceToClosestNeoplasm = distanceToClosestNeoplasm;
+	   }
+	
 
-public class BreastNegativeSurgicalMargin extends SurgicalMargin {
+	
 
-    private String closestNeoplasmPresent;
-    private Float distanceToClosestNeoplasm;
-
-    public BreastNegativeSurgicalMargin(){
-
-    }
-
-    public void finalize() throws Throwable {
-            super.finalize();
-    }
-
-    public void setClosestNeoplasmPresent(String closestNeoplasmPresent) {
-        this.closestNeoplasmPresent = closestNeoplasmPresent;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="CLOSEST_NEOPLASM_PRESENT"
-     *   type="java.lang.String"
-     *
-     */
-    public String getClosestNeoplasmPresent() {
-        return closestNeoplasmPresent;
-    }
-
-    public void setDistanceToClosestNeoplasm(Float distanceToClosestNeoplasm) {
-        this.distanceToClosestNeoplasm = distanceToClosestNeoplasm;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="DIS_TO_CLOSEST_NEOPLASM"
-     *   type="float"
-     *
-     */
-    public Float getDistanceToClosestNeoplasm() {
-        return distanceToClosestNeoplasm;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof BreastNegativeSurgicalMargin) {
+				BreastNegativeSurgicalMargin c =(BreastNegativeSurgicalMargin)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

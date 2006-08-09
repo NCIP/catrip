@@ -1,40 +1,74 @@
+
+
 package edu.pitt.cabig.cae.domain.general;
-import java.lang.Long;
-
-
-
-
 
 /**
- * @version 1.0
- * @created 15-Jun-2006 2:15:28 PM
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
  */
-public class AnnotatableEntity {
+ 
+  /**
+   * Any items that can be annotated by CAE, i.e. Accession, Specimen
+   */
 
-	private Long id;
-	public AnnotationEventParameters annotationEventParametersCollection;
+public  class AnnotatableEntity 
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-	public AnnotatableEntity(){
+	
+	   
+	   private java.lang.Long id;
+	   public  java.lang.Long getId(){
+	      return id;
+	   }
+	   public void setId( java.lang.Long id){
+	      this.id = id;
+	   }
+	      
+			private java.util.Collection annotationEventParametersCollection = new java.util.HashSet();
+			public java.util.Collection getAnnotationEventParametersCollection(){
 
+                        	              return annotationEventParametersCollection;
+        	          }
+			   
+			   
+			   
+			   
+			   
+	      
+	               
+	   
+	   	public void setAnnotationEventParametersCollection(java.util.Collection annotationEventParametersCollection){
+	   		this.annotationEventParametersCollection = annotationEventParametersCollection;
+	        }	
+	   
+	   
+	
+
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof AnnotatableEntity) {
+				AnnotatableEntity c =(AnnotatableEntity)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
 	}
-
-	public void finalize() throws Throwable {
-
-	}
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setAnnotationEventParametersCollection(AnnotationEventParameters annotationEventParametersCollection) {
-        this.annotationEventParametersCollection = annotationEventParametersCollection;
-    }
-
-    public AnnotationEventParameters getAnnotationEventParametersCollection() {
-        return annotationEventParametersCollection;
-    }
+	
+	
 }

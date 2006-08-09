@@ -1,80 +1,87 @@
+
+
 package edu.pitt.cabig.cae.domain.general;
-import java.lang.Integer;
-import java.lang.String;
 
 /**
- *
- * @hibernate.class
- *           table="THREE_DIMENSIONAL_SIZES"
- *
- *
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
  */
-public class ThreeDimensionalSize extends AnnotationSet {
+ 
+  /**
+   * General measurement of size in 3 dimensions.
+   */
 
-	private Integer greatestDimension;
-	private Integer additionalDimensionY;
-	private Integer additionalDimensionZ;
-	private String MVR;
+public  class ThreeDimensionalSize 
+    extends AnnotationSet
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
 	public ThreeDimensionalSize(){
 
 	}
+	   
+	   private java.lang.Integer greatestDimension;
+	   public  java.lang.Integer getGreatestDimension(){
+	      return greatestDimension;
+	   }
+	   public void setGreatestDimension( java.lang.Integer greatestDimension){
+	      this.greatestDimension = greatestDimension;
+	   }
+	
+	   
+	   private java.lang.Integer additionalDimensionY;
+	   public  java.lang.Integer getAdditionalDimensionY(){
+	      return additionalDimensionY;
+	   }
+	   public void setAdditionalDimensionY( java.lang.Integer additionalDimensionY){
+	      this.additionalDimensionY = additionalDimensionY;
+	   }
+	
+	   
+	   private java.lang.Integer additionalDimensionZ;
+	   public  java.lang.Integer getAdditionalDimensionZ(){
+	      return additionalDimensionZ;
+	   }
+	   public void setAdditionalDimensionZ( java.lang.Integer additionalDimensionZ){
+	      this.additionalDimensionZ = additionalDimensionZ;
+	   }
+	
+	   
+	   private java.lang.String MVR;
+	   public  java.lang.String getMVR(){
+	      return MVR;
+	   }
+	   public void setMVR( java.lang.String MVR){
+	      this.MVR = MVR;
+	   }
+	
 
+	
 
-
-    public void setGreatestDimension(Integer greatestDimension) {
-        this.greatestDimension = greatestDimension;
-    }
-
-    /**
-       *
-       * @hibernate.property
-       *    column="GREATEST_DIMENSION"
-       *    type="java.lang.Integer"
-    */
-    public Integer getGreatestDimension() {
-        return greatestDimension;
-    }
-
-    public void setAdditionalDimensionY(Integer additionalDimensionY) {
-        this.additionalDimensionY = additionalDimensionY;
-    }
-
-    /**
-       *
-       * @hibernate.property
-       *    column="ADDITIONAL_DIMENSION_Y"
-       *    type="java.lang.Integer"
-    */
-    public Integer getAdditionalDimensionY() {
-        return additionalDimensionY;
-    }
-
-    public void setAdditionalDimensionZ(Integer additionalDimensionZ) {
-        this.additionalDimensionZ = additionalDimensionZ;
-    }
-
-    /**
-       *
-       * @hibernate.property
-       *    column="ADDITIONAL_DIMENSION_Z"
-       *    type="java.lang.Integer"
-    */
-    public Integer getAdditionalDimensionZ() {
-        return additionalDimensionZ;
-    }
-
-    public void setMVR(String mVR) {
-        this.MVR = mVR;
-    }
-    /**
-       *
-       * @hibernate.property
-       *    column="MVR"
-       *    type="java.lang.String"
-       *    size="255"
-    */
-    public String getMVR() {
-        return MVR;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof ThreeDimensionalSize) {
+				ThreeDimensionalSize c =(ThreeDimensionalSize)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

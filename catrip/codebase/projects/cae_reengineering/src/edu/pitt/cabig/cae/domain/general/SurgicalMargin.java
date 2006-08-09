@@ -1,64 +1,76 @@
+
+
 package edu.pitt.cabig.cae.domain.general;
-import java.lang.String;
 
- /**
-  *
-  * @hibernate.class
-  *           table="BREAST_SURGICAL_MARGINS"
-  *           @hibernate.discriminator column="DISCRIMINATOR"
-  *
-  *
-  */
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * The edge of the specimen removed during a surgical procedure.
+   */
 
-public class SurgicalMargin extends AnnotationSet {
+public  class SurgicalMargin 
+    extends AnnotationSet
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-    private String spatialRelationshipToPatient;
-    private String otherSpatialRelationshipToPatient;
-    private String MVR;
+	
+	   
+	   private java.lang.String spatialRelationshipToPatient;
+	   public  java.lang.String getSpatialRelationshipToPatient(){
+	      return spatialRelationshipToPatient;
+	   }
+	   public void setSpatialRelationshipToPatient( java.lang.String spatialRelationshipToPatient){
+	      this.spatialRelationshipToPatient = spatialRelationshipToPatient;
+	   }
+	
+	   
+	   private java.lang.String otherSpatialRelationshipToPatient;
+	   public  java.lang.String getOtherSpatialRelationshipToPatient(){
+	      return otherSpatialRelationshipToPatient;
+	   }
+	   public void setOtherSpatialRelationshipToPatient( java.lang.String otherSpatialRelationshipToPatient){
+	      this.otherSpatialRelationshipToPatient = otherSpatialRelationshipToPatient;
+	   }
+	
+	   
+	   private java.lang.String MVR;
+	   public  java.lang.String getMVR(){
+	      return MVR;
+	   }
+	   public void setMVR( java.lang.String MVR){
+	      this.MVR = MVR;
+	   }
+	
 
-    public SurgicalMargin(){
+	
 
-    }
-
-    public void setSpatialRelationshipToPatient(String spatialRelationshipToPatient) {
-        this.spatialRelationshipToPatient = spatialRelationshipToPatient;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="SPATIAL_REL_TO_PATIENT"
-     *   type="java.lang.String"
-     *
-     */
-    public String getSpatialRelationshipToPatient() {
-        return spatialRelationshipToPatient;
-    }
-
-    public void setOtherSpatialRelationshipToPatient(String otherSpatialRelationshipToPatient) {
-        this.otherSpatialRelationshipToPatient = otherSpatialRelationshipToPatient;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="OTHER_SPA_REL_TO_PATIENT"
-     *   type="java.lang.String"
-     *
-     */
-    public String getOtherSpatialRelationshipToPatient() {
-        return otherSpatialRelationshipToPatient;
-    }
-
-    public void setMVR(String mVR) {
-        this.MVR = mVR;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="MVR"
-     *   type="java.lang.String"
-     *
-     */
-    public String getMVR() {
-        return MVR;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof SurgicalMargin) {
+				SurgicalMargin c =(SurgicalMargin)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

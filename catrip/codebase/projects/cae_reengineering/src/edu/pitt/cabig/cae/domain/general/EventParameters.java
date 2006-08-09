@@ -1,40 +1,76 @@
-package edu.pitt.cabig.cae.domain.general;
-import java.lang.Long;
 
+
+package edu.pitt.cabig.cae.domain.general;
+
+import java.util.Collection;
 import java.util.Date;
 
-
 /**
- * @author Songhui Li
- * @version 1.0
- * @created 15-Jun-2006 2:15:31 PM
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
  */
-public class EventParameters {
+ 
+  /**
+   * The parameters for an event
+   */
 
-	private Long id;
-	private Date timeStamp;
+public  class EventParameters 
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-	public EventParameters(){
-
+	
+	   
+	   private java.lang.Long id;
+	   public  java.lang.Long getId(){
+	      return id;
+	   }
+	   public void setId( java.lang.Long id){
+	      this.id = id;
+	   }
+	
+	   
+	   private Date timeStamp;
+	   public Date getTimeStamp(){
+	      return timeStamp;
+	   }
+	   public void setTimeStamp(Date timeStamp){
+	      this.timeStamp = timeStamp;
+	   }
+	public Collection annotationSetCollection;
+	public Collection getAnnotationSetCollection() {
+		return annotationSetCollection;
 	}
 
-	public void finalize() throws Throwable {
-
+	public void setAnnotationSetCollection(Collection annotationSetCollection) {
+		this.annotationSetCollection = annotationSetCollection;
 	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setTimeStamp(Date timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    public Date getTimeStamp() {
-        return timeStamp;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof EventParameters) {
+				EventParameters c =(EventParameters)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

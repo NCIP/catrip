@@ -1,93 +1,87 @@
+
+
 package edu.pitt.cabig.cae.domain.breast;
-import edu.pitt.cabig.cae.domain.general.CancerTNMFinding;
-import java.lang.Integer;
-import java.util.Collection;
-import java.lang.String;
 
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * TNM finding of the American Joint Committee on Cancer (AJCC) and Internation Union Against Cancer 
+   * (UICC) recommended classification system for breast cancers. 
+   * 
+   */
 
+public  class BreastCancerTNMFinding 
+    extends edu.pitt.cabig.cae.domain.general.CancerTNMFinding
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
- /**
-  *
-  * @hibernate.class
-  *           table="BREAST_CANCER_TNMF_FINDINGS"
-  *
-  *
-  */
+	
+	   
+	   private java.lang.Integer numberLymphNodesExamined;
+	   public  java.lang.Integer getNumberLymphNodesExamined(){
+	      return numberLymphNodesExamined;
+	   }
+	   public void setNumberLymphNodesExamined( java.lang.Integer numberLymphNodesExamined){
+	      this.numberLymphNodesExamined = numberLymphNodesExamined;
+	   }
+	
+	   
+	   private java.lang.Integer numberLymphNodesInvolved;
+	   public  java.lang.Integer getNumberLymphNodesInvolved(){
+	      return numberLymphNodesInvolved;
+	   }
+	   public void setNumberLymphNodesInvolved( java.lang.Integer numberLymphNodesInvolved){
+	      this.numberLymphNodesInvolved = numberLymphNodesInvolved;
+	   }
+	
+	   
+	   private java.util.Collection metastasisAnatomicSite;
+	   public  java.util.Collection getMetastasisAnatomicSite(){
+	      return metastasisAnatomicSite;
+	   }
+	   public void setMetastasisAnatomicSite( java.util.Collection metastasisAnatomicSite){
+	      this.metastasisAnatomicSite = metastasisAnatomicSite;
+	   }
+	
+	   
+	   private java.lang.String otherMetastaticAnatomicSite;
+	   public  java.lang.String getOtherMetastaticAnatomicSite(){
+	      return otherMetastaticAnatomicSite;
+	   }
+	   public void setOtherMetastaticAnatomicSite( java.lang.String otherMetastaticAnatomicSite){
+	      this.otherMetastaticAnatomicSite = otherMetastaticAnatomicSite;
+	   }
+	
 
-public class BreastCancerTNMFinding extends CancerTNMFinding {
+	
 
-    private Integer numberLymphNodesExamined;
-    private Integer numberLymphNodesInvolved;
-    private Collection metastasisAnatomicSite;
-    private String otherMetastaticAnatomicSite;
-
-    public BreastCancerTNMFinding(){
-
-    }
-
-
-    public void setNumberLymphNodesExamined(Integer numberLymphNodesExamined) {
-        this.numberLymphNodesExamined = numberLymphNodesExamined;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="NUMBER_NODES_EXAMINED"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getNumberLymphNodesExamined() {
-        return numberLymphNodesExamined;
-    }
-
-    public void setNumberLymphNodesInvolved(Integer numberLymphNodesInvolved) {
-        this.numberLymphNodesInvolved = numberLymphNodesInvolved;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="NUMBER_NODES_INVOLVED"
-     *   type="java.lang.Integer"
-     *
-     */
-    public Integer getNumberLymphNodesInvolved() {
-        return numberLymphNodesInvolved;
-    }
-
-    public void setMetastasisAnatomicSite(Collection metastasisAnatomicSite) {
-        this.metastasisAnatomicSite = metastasisAnatomicSite;
-    }
-
-    /**
-     *
-     * @hibernate.bag  
-     *            name="metastasisAnatomicSite"
-     *            lazy="false"
-     *            table="BREAST_MET_ANATOMIC_SITES"
-     * 
-     * @hibernate.collection-key 
-     *            column="ID"
-     * 
-     * @hibernate.collection-element
-     *            column="METASTASIS_ANATOMIC_SITE"
-     *            type="java.lang.String"
-     * 
-     */
-    public Collection getMetastasisAnatomicSite() {
-        return metastasisAnatomicSite;
-    }
-
-    public void setOtherMetastaticAnatomicSite(String otherMetastaticAnatomicSite) {
-        this.otherMetastaticAnatomicSite = otherMetastaticAnatomicSite;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="OTHER_MET_ANATOMIC_SITE"
-     *   type="java.lang.String"
-     *
-     */
-    public String getOtherMetastaticAnatomicSite() {
-        return otherMetastaticAnatomicSite;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof BreastCancerTNMFinding) {
+				BreastCancerTNMFinding c =(BreastCancerTNMFinding)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }

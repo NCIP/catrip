@@ -1,37 +1,86 @@
+
+
 package edu.pitt.cabig.cae.domain.general;
-import java.lang.Long;
-
-
-
-
 
 /**
- * @version 1.0
- * @created 15-Jun-2006 2:15:28 PM
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
  */
-public class AnnotationSet {
+ 
+  /**
+   * The collection of all the data in the annotation
+   */
 
-	private Long id;
+public  class AnnotationSet 
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-	public AnnotationSet(){
+	
+	   
+	   private java.lang.Long id;
+	   public  java.lang.Long getId(){
+	      return id;
+	   }
+	   public void setId( java.lang.Long id){
+	      this.id = id;
+	   }
+	
 
+	
+	   
+	   
+	   
+	      
+			
+			
+			
+			
+			private edu.pitt.cabig.cae.domain.general.AnnotationEventParameters annotationEventParameters;
+			public edu.pitt.cabig.cae.domain.general.AnnotationEventParameters getAnnotationEventParameters(){
+			
+			
+
+			  return annotationEventParameters;	
+			 
+			 		
+           }
+		   
+	      
+	               
+	   
+	   
+	   
+	   public void setAnnotationEventParameters(edu.pitt.cabig.cae.domain.general.AnnotationEventParameters annotationEventParameters){
+		this.annotationEventParameters = annotationEventParameters;
+	   }	
+	   
+	   
+	
+
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof AnnotationSet) {
+				AnnotationSet c =(AnnotationSet)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
 	}
-
-	public void finalize() throws Throwable {
-
-	}
-
-        public void setId(Long id) {
-            this.id = id;
-        }
-
-        /**
-           *
-           * @hibernate.id
-           *    column="ID"
-           *    generator-class="assigned"
-        */
-        public Long getId() {
-            return id;
-        }
+	
+	
 }

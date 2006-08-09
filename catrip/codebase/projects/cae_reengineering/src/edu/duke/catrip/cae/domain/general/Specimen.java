@@ -1,9 +1,9 @@
 
 
 package edu.duke.catrip.cae.domain.general;
-import edu.duke.catrip.cae.domain.general.*;
-import gov.nih.nci.system.applicationservice.*;
-import java.util.*;
+
+import java.util.Set;
+
 
 /**
  * <!-- LICENSE_TEXT_START -->
@@ -17,12 +17,14 @@ import java.util.*;
    */
 
 public  class Specimen 
-    extends edu.pitt.cabig.cae.domain.general.Specimen
-	
+   extends edu.pitt.cabig.cae.domain.general.AnnotatableEntity
 {
-
-	  
+	private Set specimenCollection;
+	   
 	   private java.lang.String identifier;
+	public Specimen(){
+
+	}
 	   public  java.lang.String getIdentifier(){
 	      return identifier;
 	   }
@@ -39,6 +41,14 @@ public  class Specimen
 	      this.surgicalLabel = surgicalLabel;
 	   }
 	
+
+	public Set getSpecimenCollection() {
+		return specimenCollection;
+	}
+
+	public void setSpecimenCollection(Set specimenCollection) {
+		this.specimenCollection = specimenCollection;
+	}
 
 	
 

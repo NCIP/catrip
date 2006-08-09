@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping auto-import="false">
-    <class name="edu.pitt.cabig.cae.domain.general.AnnotatableEntity" table="annotatable_entity">
+    <class name="edu.pitt.cabig.cae.domain.general.AnnotatableEntity" table="annotatable_entity" lazy="false">
         <id name="id" column="ID" type="long">
             <generator class="native">
               <!--  
@@ -15,11 +15,17 @@
         </id>
  		
 
-       <!-- <set role="annotationEventParametersCollection"> 
-        </set>-->
+    		<set name="annotationEventParametersCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="annotatable_entity_id"/>
+      			<one-to-many class="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" />
+    		</set>
     
-       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Participant" table="Participant">
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Participant" table="Participant" lazy="false">
        		<key column="annotatable_entity_id"/>
+                        <set name="medicalRecordNumberCollection" lazy="false"  inverse="false" cascade="all">
+                                <key column="participant_id"/>
+                                <one-to-many class="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" />
+                        </set>
      			<set name="accessionCollection" lazy="false"  inverse="false" cascade="all">
       				<key column="participant_id"/>
       				<one-to-many class="edu.duke.catrip.cae.domain.general.Accession" />
@@ -28,13 +34,13 @@
        			<property name="firstName" column="first_Name" type="string"/>
        			<property name="birthDate" column="birth_Date" type="string"/>
        			<property name="uniquePatientIdentifier" column="Patient_Identifier" type="string"/>
-       			<property name="medicalRecordNumber" column="medical_Record_Number" type="string"/>
+       			
        			<property name="gender" column="gender" type="string"/>
        			<property name="race" column="race" type="string"/>
        			<property name="ethnicity" column="ethnicity" type="string"/>
  			
 		</joined-subclass>
-       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Accession" table="Accession">
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Accession" table="Accession" lazy="false">
        		<key column="annotatable_entity_id"/>
      		<set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
       			<key column="accession_id"/>
@@ -45,7 +51,7 @@
         	<property name="accessionDate" column="accession_Date" type="date"/>
        		<property name="surgicalPathologyNumber" column="surgical_Pathology_Number" type="string"/>
 		</joined-subclass>
-       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Specimen" table="Specimen">
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Specimen" table="Specimen" lazy="false">
        		<key column="annotatable_entity_id"/>
      		 <set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
       			<key column="parent_specimen_id" not-null="false"/>

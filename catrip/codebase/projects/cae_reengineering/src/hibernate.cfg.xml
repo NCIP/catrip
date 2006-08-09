@@ -26,7 +26,12 @@
          
       <!--  mapping files. -->
        
-      <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/SurgicalMargin.hbm.xml"/> 
+      <mapping resource="edu/pitt/cabig/cae/domain/general/AnnotationSet.hbm.xml"/> 
+      <mapping resource="edu/pitt/cabig/cae/domain/general/AnnotatableEntity.hbm.xml"/>
+      <mapping resource="edu/pitt/cabig/cae/domain/general/EventParameters.hbm.xml"/>
+      <mapping resource="edu/duke/catrip/cae/domain/general/ParticipantMedicalIdentifier.hbm.xml"/>
+      <!--
+      <mapping resource="edu/duke/catrip/cae/domain/general/ParticipantMedicalIdentifier.hbm.xml"/>
       <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/ThreeDimensionalSize.hbm.xml"/> 
       <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/HistopathologicGrade.hbm.xml"/> 
       <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/AdditionalFindings.hbm.xml"/> 
@@ -35,7 +40,7 @@
       <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/BreastSurgicalPathologySpecimen.hbm.xml"/> 
       <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/InvasiveBreastCarcinoma.hbm.xml"/> 
       <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/BreastCancerTNMFinding.hbm.xml"/> 
-      
+      -->
     </session-factory>
 </hibernate-configuration>
 

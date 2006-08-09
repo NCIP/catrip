@@ -1,9 +1,9 @@
 
 
 package edu.duke.catrip.cae.domain.general;
-import edu.duke.catrip.cae.domain.general.*;
-import gov.nih.nci.system.applicationservice.*;
-import java.util.*;
+
+import java.util.Set;
+
 
 /**
  * <!-- LICENSE_TEXT_START -->
@@ -16,18 +16,16 @@ import java.util.*;
    * 
    */
 
-public  class Participant 
-    extends edu.pitt.cabig.cae.domain.general.Participant
+public class Participant extends edu.pitt.cabig.cae.domain.general.AnnotatableEntity
 	implements java.io.Serializable 
 {
 	private static final long serialVersionUID = 1234567890L;
 
-	
-	   
 	   private java.lang.String lastName;
 	   public  java.lang.String getLastName(){
 	      return lastName;
 	   }
+	   
 	   public void setLastName( java.lang.String lastName){
 	      this.lastName = lastName;
 	   }
@@ -69,12 +67,12 @@ public  class Participant
 	   }
 	
 	   
-	   private java.util.Collection medicalRecordNumber;
-	   public  java.util.Collection getMedicalRecordNumber(){
-	      return medicalRecordNumber;
+	   private java.util.Set medicalRecordNumberCollection;
+	   public  java.util.Set getMedicalRecordNumberCollection(){
+	      return medicalRecordNumberCollection;
 	   }
-	   public void setMedicalRecordNumber( java.util.Collection medicalRecordNumber){
-	      this.medicalRecordNumber = medicalRecordNumber;
+	   public void setMedicalRecordNumberCollection( java.util.Set medicalRecordNumberCollection){
+	      this.medicalRecordNumberCollection = medicalRecordNumberCollection;
 	   }
 	
 	   
@@ -106,44 +104,19 @@ public  class Participant
 	
 
 	
+	  private Set accessionCollection;
+		public Set getAccessionCollection() {
+			return accessionCollection;
+		}
+
+		public void setAccessionCollection(Set accessionCollection) {
+			this.accessionCollection = accessionCollection;
+		}
+
 	   
-	   
-	   
-	      
-			private java.util.Collection medicalRecordNumberHs = new java.util.HashSet();
-			public java.util.Collection getMedicalRecordNumberHs(){
-			try{
-			   if(medicalRecordNumber.size() == 0) {}
-		           } catch(Exception e) {			     
-			      ApplicationService applicationService = ApplicationServiceProvider.getApplicationService();
-			      try {
-			      
-			      
-			         
-				 	edu.duke.catrip.cae.domain.general.Participant thisIdSet = new edu.duke.catrip.cae.domain.general.Participant();
-			         	thisIdSet.setId(this.getId());
-			         	java.util.Collection resultList = applicationService.search("java.util.Collection", thisIdSet);				 
-				 	medicalRecordNumber = resultList;  
-				 	return resultList;
-				 
-			      
-			      }catch(Exception ex) 
-			      {
-			      	System.out.println("Participant:getMedicalRecordNumber throws exception ... ...");
-			   		ex.printStackTrace(); 
-			      }
-			   }	
-	              return medicalRecordNumber;
-	          }
-			   
-			   
-			   
-			   
-			   
-	      
-	               
 	   
 
+	
 		public boolean equals(Object obj){
 			boolean eq = false;
 			if(obj instanceof Participant) {

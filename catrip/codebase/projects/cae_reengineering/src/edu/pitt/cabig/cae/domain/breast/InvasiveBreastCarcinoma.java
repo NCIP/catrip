@@ -1,99 +1,85 @@
+
+
 package edu.pitt.cabig.cae.domain.breast;
-import edu.pitt.cabig.cae.domain.general.Neoplasm;
-import java.util.Collection;
-import java.lang.String;
 
- /**
-  *
-  * @hibernate.class
-  *           table="INVASIVE_BREAST_CARCINOMA"
-  *
-  *
-  */
+/**
+ * <!-- LICENSE_TEXT_START -->
+ * <!-- LICENSE_TEXT_END -->
+ */
+ 
+  /**
+   * A primary infiltrating carcinoma of the breast.
+   */
 
-public class InvasiveBreastCarcinoma extends Neoplasm {
+public  class InvasiveBreastCarcinoma 
+    extends edu.pitt.cabig.cae.domain.general.Neoplasm
+	implements java.io.Serializable 
+{
+	private static final long serialVersionUID = 1234567890L;
 
-    private Collection location;
-    private String locationMVR;
-    private String venousLymphaticInvasion;
-    private Collection microcalcificationLocation;
+	
+	   
+	   private java.util.Collection location;
+	   public  java.util.Collection getLocation(){
+	      return location;
+	   }
+	   public void setLocation( java.util.Collection location){
+	      this.location = location;
+	   }
+	
+	   
+	   private java.lang.String locationMVR;
+	   public  java.lang.String getLocationMVR(){
+	      return locationMVR;
+	   }
+	   public void setLocationMVR( java.lang.String locationMVR){
+	      this.locationMVR = locationMVR;
+	   }
+	
+	   
+	   private java.lang.String venousLymphaticInvasion;
+	   public  java.lang.String getVenousLymphaticInvasion(){
+	      return venousLymphaticInvasion;
+	   }
+	   public void setVenousLymphaticInvasion( java.lang.String venousLymphaticInvasion){
+	      this.venousLymphaticInvasion = venousLymphaticInvasion;
+	   }
+	
+	   
+	   private java.util.Collection microcalcificationLocation;
+	   public  java.util.Collection getMicrocalcificationLocation(){
+	      return microcalcificationLocation;
+	   }
+	   public void setMicrocalcificationLocation( java.util.Collection microcalcificationLocation){
+	      this.microcalcificationLocation = microcalcificationLocation;
+	   }
+	
 
-    public InvasiveBreastCarcinoma(){
+	
 
-    }
-
-
-    public void setLocation(Collection location) {
-        this.location = location;
-    }
-
-    /**
-     *
-     * @hibernate.bag  
-     *            name="location"
-     *            lazy="false"
-     *            table="BREAST_LOCATIONS"
-     * 
-     * @hibernate.collection-key 
-     *            column="ID"
-     * 
-     * @hibernate.collection-element
-     *            column="LOCATION"
-     *            type="java.lang.String"
-     * 
-     */
-    public Collection getLocation() {
-        return location;
-    }
-
-    public void setLocationMVR(String locationMVR) {
-        this.locationMVR = locationMVR;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="LOCATION_MVR"
-     *   type="java.lang.String"
-     *
-     */
-    public String getLocationMVR() {
-        return locationMVR;
-    }
-
-    public void setVenousLymphaticInvasion(String venousLymphaticInvasion) {
-        this.venousLymphaticInvasion = venousLymphaticInvasion;
-    }
-
-    /**
-     * @hibernate.property
-     *   column="VENOUS_LYMPHATIC_INVASION"
-     *   type="java.lang.String"
-     *
-     */
-    public String getVenousLymphaticInvasion() {
-        return venousLymphaticInvasion;
-    }
-
-    public void setMicrocalcificationLocation(Collection microcalcificationLocation) {
-        this.microcalcificationLocation = microcalcificationLocation;
-    }
-
-    /**
-     *
-     * @hibernate.bag  
-     *            name="microcalcificationLocation"
-     *            lazy="false"
-     *            table="BREAST_MC_LOCATIONS"
-     * 
-     * @hibernate.collection-key 
-     *            column="ID"
-     * 
-     * @hibernate.collection-element
-     *            column="MICROCALCIFICATION_LOCATION"
-     *            type="java.lang.String"
-     * 
-     */
-    public Collection getMicrocalcificationLocation() {
-        return microcalcificationLocation;
-    }
+		public boolean equals(Object obj){
+			boolean eq = false;
+			if(obj instanceof InvasiveBreastCarcinoma) {
+				InvasiveBreastCarcinoma c =(InvasiveBreastCarcinoma)obj; 			 
+				Long thisId = getId();		
+				
+					if(thisId != null && thisId.equals(c.getId())) {
+					   eq = true;
+				    }		
+				
+			}
+			return eq;
+		}
+		
+		public int hashCode(){
+			int h = 0;
+			
+			if(getId() != null) {
+				h += getId().hashCode();
+			}
+			
+			return h;
+	}
+	
+	
 }
