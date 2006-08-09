@@ -43,31 +43,7 @@ public class NottinghamHistopathologicGradeTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
 
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           NottinghamHistopathologicGrade obj = null;
-
-           for (int i=11;i<=12;i++)  {
-               obj = new NottinghamHistopathologicGrade();
-
-               obj.setId(new Long(i));
-               obj.setMitoticCount(98);
-               obj.setNuclearPleomorphism(9898);
-               obj.setTubuleFormation(8976);
-
-               //session.delete(obj);
-               session.saveOrUpdate(obj);
-           }
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
 

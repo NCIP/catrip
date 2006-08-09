@@ -42,31 +42,7 @@ public class BreastNegativeSurgicalMarginTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
 
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           BreastNegativeSurgicalMargin obj = null;
-
-           for (int i=3;i<=4;i++)  {
-               obj = new BreastNegativeSurgicalMargin();
-
-               obj.setId(new Long(i));
-               obj.setMVR("mvr");
-               obj.setSpatialRelationshipToPatient("rel");
-               obj.setClosestNeoplasmPresent("clo");
-
-              // session.delete(obj);
-               session.saveOrUpdate(obj);
-           }
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-            System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
 

@@ -42,40 +42,7 @@ public class BreastSurgicalPathologySpecimenTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
 
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           BreastSurgicalPathologySpecimen bc = null;
-
-           for (int i=15;i<=16;i++)  {
-               bc = new BreastSurgicalPathologySpecimen();
-
-
-               bc.setId(new Long(i));
-               bc.setLateralityMVR("l mvr");
-               bc.setOtherSurgicalProcedure("ot sp");
-
-
-               Collection c = new ArrayList();
-               c.add("pr 1 "+i);
-               c.add("pr 2 "+i);
-
-               bc.setSurgicalProcedure(c);
-
-              // session.delete(bc);
-               session.saveOrUpdate(bc);
-           }
-
-
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
 

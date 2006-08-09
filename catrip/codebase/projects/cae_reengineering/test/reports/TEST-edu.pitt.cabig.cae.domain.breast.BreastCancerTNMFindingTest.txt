@@ -1,21 +1,10 @@
 Testsuite: edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest
-Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 2.422 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 2.484 sec
 ------------- Standard Output ---------------
-Inserted/Updated successfully 
-ID is 1
-getDistantMetastasisFinding is dis
-LOCATIONS : 
-one
-two
-ID is 2
-getDistantMetastasisFinding is dis
-LOCATIONS : 
-one
-two
+Hibernate: select breastcanc0_.id as ID, breastcanc0_.NUMBER_NODES_EXAMINED as NUMBER2_14_, breastcanc0_.NUMBER_NODES_INVOLVED as NUMBER3_14_, breastcanc0_.OTHER_MET_ANATOMIC_SITE as OTHER4_14_, breastcanc0_.CATEGORY as CATEGORY14_, breastcanc0_.PRIMARY_TUMOR_FINDING as PRIMARY6_14_, breastcanc0_.REGIONAL_NODES_FINDING as REGIONAL7_14_, breastcanc0_.DISTANT_MET_FINDING as DISTANT8_14_ from BREAST_CANCER_TNMF_FINDINGS breastcanc0_ inner join annotation_set breastcanc0_1_ on breastcanc0_.id=breastcanc0_1_.ID
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
-Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@121f1d [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1aa57fb [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1ab28fe [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 121f1d ] 
+Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@184ec44 [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1319c [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1592174 [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 184ec44 ] 
 ------------- ---------------- ---------------
 
-Testcase: testInsert took 2.266 sec
-Testcase: testSelect took 0.156 sec
+Testcase: testSelect took 2.484 sec

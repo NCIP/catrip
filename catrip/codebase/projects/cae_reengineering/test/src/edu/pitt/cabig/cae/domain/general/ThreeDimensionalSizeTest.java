@@ -42,32 +42,6 @@ public class ThreeDimensionalSizeTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
-
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           ThreeDimensionalSize obj = null;
-
-           for (int i=7;i<=8;i++)  {
-               obj = new ThreeDimensionalSize();
-               obj.setId(new Long(i));
-               obj.setAdditionalDimensionY(123);
-               obj.setAdditionalDimensionZ(456);
-               obj.setMVR("1 mvr");
-
-               //session.delete(obj);
-               session.saveOrUpdate(obj);
-           }
-
-
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
 

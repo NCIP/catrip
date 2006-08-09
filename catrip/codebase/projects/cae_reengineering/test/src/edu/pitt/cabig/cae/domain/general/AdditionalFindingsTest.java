@@ -42,30 +42,6 @@ public class AdditionalFindingsTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
-
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           AdditionalFindings obj = null;
-
-           for (int i=9;i<=10;i++)  {
-               obj = new AdditionalFindings();
-               obj.setId(new Long(i));
-               obj.setOtherFindings("of123");
-
-              // session.delete(obj);
-               session.saveOrUpdate(obj);
-           }
-
-
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
            Session session = HibernateUtil.currentSession();

@@ -120,7 +120,7 @@
       <classpath refid="test.compile.classpath"/>
     </javac>
     <copy todir="${test.class.dir}">
-          <fileset dir="${hibernate.mapping}">
+          <fileset dir="${src.dir}">
             <include name="**/*.hbm.xml"/>
             <include name="hibernate.cfg.xml"/>
           </fileset>

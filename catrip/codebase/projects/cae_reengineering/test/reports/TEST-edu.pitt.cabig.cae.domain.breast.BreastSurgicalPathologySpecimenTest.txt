@@ -1,21 +1,61 @@
 Testsuite: edu.pitt.cabig.cae.domain.breast.BreastSurgicalPathologySpecimenTest
-Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 2.422 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 2.468 sec
 ------------- Standard Output ---------------
-Inserted/Updated successfully 
-ID is 15
-getOtherSurgicalProcedure is ot sp
+Hibernate: select breastsurg0_.id as ID, breastsurg0_.OTHER_SURGICAL_PROCEDURE as OTHER2_7_, breastsurg0_.LYMPH_NODE_PROCEDURE as LYMPH3_7_, breastsurg0_.LATERALITY as LATERALITY7_, breastsurg0_.LATERALITY_MVR as LATERALITY5_7_, breastsurg0_.SURGICAL_PROCEDURE_MVR as SURGICAL6_7_ from BREAST_SUR_PATHO_SPECIMANS breastsurg0_ inner join annotation_set breastsurg0_1_ on breastsurg0_.id=breastsurg0_1_.ID
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+Hibernate: select surgicalpr0_.ID as ID__, surgicalpr0_.SURGICAL_PROCEDURE as SURGICAL2___ from BREAST_SURGICAL_PROCEDURES surgicalpr0_ where surgicalpr0_.ID=?
+ID is 55
+getOtherSurgicalProcedure is left breast implant surgery
 Sps : 
-pr 1 15
-pr 2 15
-ID is 16
-getOtherSurgicalProcedure is ot sp
+axillary lymph node procedure
+left breast implant surgery
+ID is 56
+getOtherSurgicalProcedure is reconstructive surgeon in right breast
 Sps : 
-pr 1 16
-pr 2 16
+sentinel lymph node procedure
+reconstructive surgeon in right breast
+ID is 57
+getOtherSurgicalProcedure is breast implant surgery
+Sps : 
+breast implant surgery
+bilateral implant surgery
+ID is 58
+getOtherSurgicalProcedure is bilateral implant surgery
+Sps : 
+standard lymph node procedure
+ID is 59
+getOtherSurgicalProcedure is N/A
+Sps : 
+ID is 60
+getOtherSurgicalProcedure is postmastectomy reconstruction
+Sps : 
+ID is 61
+getOtherSurgicalProcedure is right breast implant surgery
+Sps : 
+ID is 62
+getOtherSurgicalProcedure is reconstructive surgeon
+Sps : 
+ID is 63
+getOtherSurgicalProcedure is mastectomy surgery
+Sps : 
+ID is 64
+getOtherSurgicalProcedure is implant surgery
+Sps : 
+ID is 65
+getOtherSurgicalProcedure is postmastectomy reconstruction
+Sps : 
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
-Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@121f1d [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1aa57fb [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1ab28fe [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 121f1d ] 
+Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@184ec44 [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1319c [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1592174 [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 184ec44 ] 
 ------------- ---------------- ---------------
 
-Testcase: testInsert took 2.266 sec
-Testcase: testSelect took 0.156 sec
+Testcase: testSelect took 2.453 sec

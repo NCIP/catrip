@@ -42,42 +42,6 @@ public class BreastCancerTNMFindingTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception  {
-
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           BreastCancerTNMFinding bc = null;
-
-           for (int i=1;i<=2;i++)  {
-               bc = new BreastCancerTNMFinding();
-
-
-               bc.setId(new Long(i));
-               bc.setCategory("cat");
-               bc.setDistantMetastasisFinding("dis");
-               bc.setNumberLymphNodesExamined(i);
-               bc.setOtherMetastaticAnatomicSite("bc ot");
-               bc.setNumberLymphNodesInvolved(new Integer(1));
-               bc.setPrimaryTumorFinding("tf");
-               bc.setRegionalLymphNodesFinding("rls");
-
-               Collection c = new ArrayList();
-               c.add("one");
-               c.add("two");
-
-               bc.setMetastasisAnatomicSite(c);
-
-               //session.delete(bc);
-               session.saveOrUpdate(bc);
-           }
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-           System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception  {
            Session session = HibernateUtil.currentSession();

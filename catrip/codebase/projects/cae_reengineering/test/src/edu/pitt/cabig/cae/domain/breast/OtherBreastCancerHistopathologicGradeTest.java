@@ -42,30 +42,6 @@ public class OtherBreastCancerHistopathologicGradeTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
-
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           OtherBreastCancerHistopathologicGrade obj = null;
-
-           for (int i=13;i<=14;i++)  {
-               obj = new OtherBreastCancerHistopathologicGrade();
-
-               obj.setId(new Long(i));
-               obj.setScoreMVR("mvr");
-               obj.setSystemName("sys");
-
-               //session.delete(obj);
-               session.saveOrUpdate(obj);
-           }
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
 

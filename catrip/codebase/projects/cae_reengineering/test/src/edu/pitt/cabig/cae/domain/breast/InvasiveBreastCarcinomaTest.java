@@ -42,46 +42,7 @@ public class InvasiveBreastCarcinomaTest extends TestCase {
    }
 
 
-   public void testInsert() throws Exception {
-
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           InvasiveBreastCarcinoma bc = null;
-
-           for (int i=17;i<=18;i++)  {
-               bc = new InvasiveBreastCarcinoma();
-
-
-               bc.setId(new Long(i));
-               bc.setLocationMVR("loc mvr");
-               bc.setVenousLymphaticInvasion("l inv ");
-
-
-               Collection c = new ArrayList();
-               c.add("loc 1 "+i);
-               c.add("loc 2 "+i);
-
-               bc.setLocation(c);
-
-               Collection c1 = new ArrayList();
-               c1.add("m loc 1 "+i);
-               c1.add("m loc 2 "+i);
-
-               bc.setMicrocalcificationLocation(c1);
-
-               //session.delete(bc);
-               session.saveOrUpdate(bc);
-           }
-
-
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
+  
 
    public void testSelect() throws Exception {
 

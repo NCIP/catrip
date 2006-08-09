@@ -1,27 +1,70 @@
 Testsuite: edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinomaTest
-Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 2.438 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 2.547 sec
 ------------- Standard Output ---------------
-Inserted/Updated successfully 
-ID is 17
-getLocationMVR is loc mvr
+Hibernate: select invasivebr0_.id as ID, invasivebr0_.LOCATION_MVR as LOCATION2_10_, invasivebr0_.VENOUS_LYMPHATIC_INVASION as VENOUS3_10_ from INVASIVE_BREAST_CARCINOMA invasivebr0_ inner join annotation_set invasivebr0_1_ on invasivebr0_.id=invasivebr0_1_.ID
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+Hibernate: select microcalci0_.ID as ID__, microcalci0_.MICROCALCIFICATION_LOCATION as MICROCAL2___ from BREAST_MC_LOCATIONS microcalci0_ where microcalci0_.ID=?
+Hibernate: select location0_.ID as ID__, location0_.LOCATION as LOCATION__ from BREAST_LOCATIONS location0_ where location0_.ID=?
+ID is 45
+getLocationMVR is NO MVR
 loc s : 
-loc 1 17
-loc 2 17
 m loc s : 
-m loc 1 17
-m loc 2 17
-ID is 18
-getLocationMVR is loc mvr
+ID is 46
+getLocationMVR is NO MVR
 loc s : 
-loc 1 18
-loc 2 18
 m loc s : 
-m loc 1 18
-m loc 2 18
+ID is 47
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 48
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 49
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 50
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 51
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 52
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 53
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
+ID is 54
+getLocationMVR is NO MVR
+loc s : 
+m loc s : 
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
-Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@121f1d [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1aa57fb [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1ab28fe [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 121f1d ] 
+Initializing c3p0 pool... com.mchange.v2.c3p0.PoolBackedDataSource@184ec44 [ connectionPoolDataSource -> com.mchange.v2.c3p0.WrapperConnectionPoolDataSource@1319c [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, maxIdleTime -> 2800, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, nestedDataSource -> com.mchange.v2.c3p0.DriverManagerDataSource@1592174 [ description -> null, driverClass -> null, factoryClassLocation -> null, jdbcUrl -> jdbc:oracle:thin:@localhost:1521:agile, properties -> {user=******, password=******} ] , preferredTestQuery -> null, propertyCycle -> 300, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, usesTraditionalReflectiveProxies -> false ] , factoryClassLocation -> null, numHelperThreads -> 3, poolOwnerIdentityToken -> 184ec44 ] 
 ------------- ---------------- ---------------
 
-Testcase: testInsert took 2.25 sec
-Testcase: testSelect took 0.172 sec
+Testcase: testSelect took 2.547 sec

@@ -43,30 +43,7 @@ public class InvasiveBreastCarcinomaNeoplasmHistologicTypeTest extends TestCase 
    }
 
 
-   public void testInsert() throws Exception {
 
-           Session session = HibernateUtil.currentSession();
-           Transaction tx = session.beginTransaction();
-
-           InvasiveBreastCarcinomaNeoplasmHistologicType obj = null;
-
-           for (int i=19;i<=20;i++)  {
-               obj = new InvasiveBreastCarcinomaNeoplasmHistologicType();
-               obj.setId(new Long(i));
-               obj.setName("name ");
-               obj.setNameMVR("n mvr");
-
-
-               //session.delete(obj);
-               session.saveOrUpdate(obj);
-           }
-
-           tx.commit();
-           //dbCleanup(session);
-           HibernateUtil.closeSession();
-       System.out.println("Inserted/Updated successfully ");
-
-   }
 
    public void testSelect() throws Exception {
 
