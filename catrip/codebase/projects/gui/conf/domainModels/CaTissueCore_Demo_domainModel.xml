@@ -115,6 +115,32 @@
    </ns1:sourceUMLAssociationEdge>
   </ns1:UMLAssociation>
 
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="specimenCharacteristics" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="18785753-F312-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="18785753-F2E8-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="specimenCharacteristics" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="18785753-F312-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="18785753-F2FC-3542-E044-0003BA4529A9" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  
  </ns1:exposedUMLAssociationCollection>
  <ns1:exposedUMLClassCollection>
   <ns2:UMLClass className="Site" description="A physical location associated with biospecimen collection, storage, processing, or utilization" id="18785753-F2E6-3542-E044-0003BA4529A9" packageName="edu.wustl.catissuecore.domainobject" projectName="caTISSUE Core" xsi:type="ns2:UMLClass" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
@@ -429,5 +455,39 @@
     <ns131:SemanticMetadata id="18785754-2FBA-3542-E044-0003BA4529A9" conceptCode="C43359" conceptName="Group" conceptDefinition="Any number of entities (members) considered as a unit." isPrimaryConcept="true" order="0" xsi:type="ns132:SemanticMetadata" xmlns:ns131="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns132="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
    </ns114:semanticMetadataCollection>
   </ns114:UMLClass>
+  
+  <ns1161:UMLClass className="SpecimenCharacteristics" description="The combined anatomic state and pathological disease&#xA0;classification of a specimen" id="18785753-F312-3542-E044-0003BA4529A9" packageName="edu.wustl.catissuecore.domainobject" projectName="caTISSUE Core" xsi:type="ns1161:UMLClass" xmlns:ns1161="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+     <ns1161:umlAttributeCollection>
+      <ns1161:UMLAttribute description="System generated unique identifier." name="id" xsi:type="ns1161:UMLAttribute">
+       <ns1161:semanticMetadataCollection>
+        <ns1162:SemanticMetadata id="18785754-3780-3542-E044-0003BA4529A9" conceptCode="C25364" conceptName="Identifier" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." isPrimaryConcept="true" order="0" xsi:type="ns1163:SemanticMetadata" xmlns:ns1162="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1163="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns1161:semanticMetadataCollection>
+      </ns1161:UMLAttribute>
+      <ns1161:UMLAttribute description="The anatomical site from which a specimen is derived." name="tissueSite" xsi:type="ns1161:UMLAttribute">
+       <ns1161:semanticMetadataCollection>
+        <ns1164:SemanticMetadata id="18785754-3A8E-3542-E044-0003BA4529A9" conceptCode="C12801" conceptName="Tissue" conceptDefinition="is an organ part that consists of similarly specialized cells and intercellular matrix, aggregated according to specific spatial relationships; together with other tissues, it constitutes an organ component. Example(s): epithelium, muscle(tissue), connective tissue, neural tissue, lymphoid tissue." isPrimaryConcept="false" order="1" xsi:type="ns1165:SemanticMetadata" xmlns:ns1164="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1165="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns1166:SemanticMetadata id="18785754-346E-3542-E044-0003BA4529A9" conceptCode="C37901" conceptName="Site" conceptDefinition="Position in relation to the surroundings." isPrimaryConcept="true" order="0" xsi:type="ns1167:SemanticMetadata" xmlns:ns1166="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1167="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns1161:semanticMetadataCollection>
+      </ns1161:UMLAttribute>
+      <ns1161:UMLAttribute description="For bilateral sites, left or right" name="tissueSide" xsi:type="ns1161:UMLAttribute">
+       <ns1161:semanticMetadataCollection>
+        <ns1168:SemanticMetadata id="18785754-40B1-3542-E044-0003BA4529A9" conceptCode="C25306" conceptName="Side" conceptDefinition="One of the two lateral margins or surfaces of a body, midway between the front and back." isPrimaryConcept="true" order="0" xsi:type="ns1169:SemanticMetadata" xmlns:ns1168="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1169="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns1170:SemanticMetadata id="18785754-3A8C-3542-E044-0003BA4529A9" conceptCode="C12801" conceptName="Tissue" conceptDefinition="is an organ part that consists of similarly specialized cells and intercellular matrix, aggregated according to specific spatial relationships; together with other tissues, it constitutes an organ component. Example(s): epithelium, muscle(tissue), connective tissue, neural tissue, lymphoid tissue." isPrimaryConcept="false" order="1" xsi:type="ns1171:SemanticMetadata" xmlns:ns1170="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1171="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns1161:semanticMetadataCollection>
+      </ns1161:UMLAttribute>
+      <ns1161:UMLAttribute description="Histoathological character of specimen e.g. Non-Malignant, Malignant, Non-Malignant Diseased, Pre-Malignant" name="pathologicalStatus" xsi:type="ns1161:UMLAttribute">
+       <ns1161:semanticMetadataCollection>
+        <ns1172:SemanticMetadata id="18785754-3DD6-3542-E044-0003BA4529A9" conceptCode="C18189" conceptName="Pathology" conceptDefinition="A specialty concerned with the nature and cause of disease as expressed by changes in cellular or tissue structure and function caused by the disease process. (MSH98)" isPrimaryConcept="false" order="2" xsi:type="ns1173:SemanticMetadata" xmlns:ns1172="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1173="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns1174:SemanticMetadata id="18785754-359B-3542-E044-0003BA4529A9" conceptCode="C3367" conceptName="Finding" conceptDefinition="Clinical manifestations that can be either objective when observed by a physician, or subjective when perceived by the patient." isPrimaryConcept="false" order="1" xsi:type="ns1175:SemanticMetadata" xmlns:ns1174="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1175="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+        <ns1176:SemanticMetadata id="18785754-3378-3542-E044-0003BA4529A9" conceptCode="C25688" conceptName="Status" conceptDefinition="A condition or state at a particular time." isPrimaryConcept="true" order="0" xsi:type="ns1177:SemanticMetadata" xmlns:ns1176="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1177="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+       </ns1161:semanticMetadataCollection>
+      </ns1161:UMLAttribute>
+     </ns1161:umlAttributeCollection>
+     <ns1161:semanticMetadataCollection>
+      <ns1178:SemanticMetadata id="18785754-2C08-3542-E044-0003BA4529A9" conceptCode="C19157" conceptName="Specimen" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." isPrimaryConcept="false" order="1" xsi:type="ns1179:SemanticMetadata" xmlns:ns1178="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1179="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+      <ns1180:SemanticMetadata id="18785754-2D92-3542-E044-0003BA4529A9" conceptCode="C25447" conceptName="Characteristics" conceptDefinition="Characteristics; distinguishing qualities of a person, object, or substance." isPrimaryConcept="true" order="0" xsi:type="ns1181:SemanticMetadata" xmlns:ns1180="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns1181="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain"/>
+     </ns1161:semanticMetadataCollection>
+  </ns1161:UMLClass>
+  
  </ns1:exposedUMLClassCollection>
 </ns1:DomainModel>
