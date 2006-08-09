@@ -48,7 +48,7 @@ public class WelcomeScreen extends CJFrame {
 
         caBIGIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/cabig_logo.jpg")));
 
-        caGridIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/caGrid_small.gif")));
+        caGridIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/caTrip_logo.gif")));
 
         lbl1.setText("Cancer Translational Research Informatics Platform (caTRIP)");
 

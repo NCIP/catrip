@@ -115,7 +115,7 @@
     <Component class="javax.swing.JLabel" name="caGridIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/caGrid_small.gif"/>
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/caTrip_logo.gif"/>
         </Property>
       </Properties>
     </Component>
