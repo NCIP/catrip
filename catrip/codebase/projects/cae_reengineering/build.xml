@@ -35,7 +35,8 @@
     <pathelement location="${class.dir}"/>
   </path> 
 
-  <target name="all" description="Builds the entire application" depends="create-cae-tables,compile" />
+  <target name="all" description="Builds the entire application" depends="compile" />
+  <target name="db" description="Builds the entire application" depends="create-cae-tables,insert-sample-data" />
 
   <target name="clean"> 
     <delete dir="${class.dir}" failonerror="true" />
@@ -159,9 +160,9 @@
 		<arg line="${cae.db.user.name}/${cae.db.user.password}@${db.server} @cae_catrip_tables.sql"/>
 	</exec>
 </target>
-<target name="insert_dummy-annotationset-ids" description="dummy data .">
+<target name="insert-sample-data" description="dummy data .">
 	<exec executable="${oracle.sqlplus.path}" dir="db" failonerror="true">
-		<arg line="${cae.db.user.name}/${cae.db.user.password}@${db.server} @INSERT_DUMMY_ANNOTATION_SET_IDS.SQL"/>
+		<arg line="${cae.db.user.name}/${cae.db.user.password}@${db.server} @InsertSampleData.sql"/>
 	</exec>
 </target>
 

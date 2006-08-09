@@ -1,212 +1,1352 @@
 
-Table dropped.
+0 rows deleted.
 
 
-Table dropped.
+0 rows deleted.
 
 
-Table dropped.
+0 rows deleted.
 
-drop table BREAST_HISTOPATHOLOGIC_GRADES
-           *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+0 rows deleted.
 
 
-Table dropped.
+0 rows deleted.
 
 
-Table dropped.
+0 rows deleted.
 
 
-Table dropped.
+72 rows deleted.
 
 
-Table dropped.
+72 rows deleted.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table dropped.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
-DOC>CREATE TABLE BREAST_HISTOPATHOLOGIC_GRADES (
-DOC>	    ID NUMERIC(10,2) NOT NULL,
-DOC>	    TUBULE_FORMATION INTEGER,
-DOC>	    NUCLEAR_PLEOMORPHISM INTEGER,
-DOC>	    MITOTIC_COUNT_N INTEGER,
-DOC>	    TOTAL_SCORE INTEGER,
-DOC>	    TOTAL_SCORE_MVR VARCHAR(255),
-DOC>	    DISCRIMINATOR VARCHAR(4),
-DOC>	    SYSTEM_NAME VARCHAR(255),
-DOC>	    SCORE INTEGER,
-DOC>	    SCORE_MVR VARCHAR(255),
-DOC>	    MITOTIC_COUNT_O INTEGER,
-DOC>	    PRIMARY KEY(ID)
-DOC>)
-DOC>;
-DOC>
-DOC>ALTER TABLE BREAST_HISTOPATHOLOGIC_GRADES ADD CONSTRAINT FK_BREAST_HIST_GRADES
-DOC>FOREIGN KEY (ID) REFERENCES ANNOTATION_SET (ID)
-DOC>;
-DOC>**/
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
 
-Table created.
+1 row created.
 
 
-Table altered.
+1 row created.
 
-DOC>CREATE TABLE BREAST_SURGICAL_MARGINS (
-DOC>	    ID NUMERIC(10,2) NOT NULL,
-DOC>	    SPATIAL_REL_TO_PATIENT VARCHAR(255),
-DOC>	    OTHER_SPA_REL_TO_PATIENT VARCHAR(255),
-DOC>	    MVR VARCHAR(255),
-DOC>	    NEOPLASM_PRESENT VARCHAR(255),
-DOC>	    EXTENT_INVOLVEMENT VARCHAR(255),
-DOC>	    OTHER_EXTENT_INVOLVEMENT VARCHAR(255),
-DOC>	    DISCRIMINATOR VARCHAR(4),
-DOC>	    CLOSEST_NEOPLASM_PRESENT VARCHAR(255),
-DOC>	    DIS_TO_CLOSEST_NEOPLASM FLOAT(24),
-DOC>	    PRIMARY KEY(ID)
-DOC>)
-DOC>;
-DOC>
-DOC>ALTER TABLE BREAST_SURGICAL_MARGINS ADD CONSTRAINT FK_BREAST_SURGICAL_MARGINS
-DOC>FOREIGN KEY (ID) REFERENCES ANNOTATION_SET (ID)
-DOC>;
-DOC>**/
-  LAST_NAME              VARCHAR2(200),
-  *
-ERROR at line 2:
-ORA-01430: column being added already exists in table 
 
+1 row created.
 
-  SURGICAL_LABEL         VARCHAR2(200),
-  *
-ERROR at line 2:
-ORA-01430: column being added already exists in table 
 
+1 row created.
 
-  ACCESSION_DATE             DATE,
-  *
-ERROR at line 2:
-ORA-01430: column being added already exists in table 
 
+1 row created.
 
-CREATE TABLE PARTICIPANT_IDENTIFIERS
-             *
-ERROR at line 1:
-ORA-00955: name is already used by an existing object 
 
+1 row created.
 
-FOREIGN KEY (PARTICIPANT_ID) REFERENCES PARTICIPANT (ANNOTATABLE_ENTITY_ID)
-*
-ERROR at line 2:
-ORA-02275: such a referential constraint already exists in the table 
 
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+72 rows deleted.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+72 rows deleted.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+72 rows deleted.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+40 rows updated.
+
+
+32 rows updated.
 
 
 Commit complete.
