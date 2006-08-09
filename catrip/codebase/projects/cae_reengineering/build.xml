@@ -11,7 +11,6 @@
   <property name="build.dir" value="./build" />
   <property name="docs.dir" value="./docs" />
   <property name="config.dir" value="properties" />
-  <property name="hibernate.mapping" value="hibernate_mappings" />
   <property name="test.report.dir" value="./test/reports" />
   <property name="jar.dir" value="${build.dir}/jars" />
   <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
@@ -37,18 +36,16 @@
     <pathelement location="${class.dir}"/>
   </path> 
 
-  <target name="all" description="Builds the entire application" depends="compile,jar" />
+  <target name="all" description="Builds the entire application" depends="init,compile,jar" />
   <target name="db" description="Builds the entire application" depends="create-cae-tables,insert-sample-data" />
 
   <target name="clean"> 
     <delete dir="${class.dir}" failonerror="true" />
-    <delete dir="${hibernate.mapping}" failonerror="true" />
  </target>
 
  <target name="init">
     <mkdir dir="${class.dir}"/> 
     <mkdir dir="${build.dir}"/> 
-    <mkdir dir="${hibernate.mapping}"/>
  </target>
  
 
@@ -94,7 +91,7 @@
     </hibernatedoclet>
   </target>
 
-  <target name="compile" depends="hibernate">
+  <target name="compile">
     <javac
       destdir="${class.dir}"
       debug="on"
@@ -104,12 +101,13 @@
       <classpath refid="compile.classpath"/>
     </javac>
     
+    <!--
     <copy todir="${class.dir}">
       <fileset dir="${hibernate.mapping}">
         <include name="**/*.hbm.xml"/>
       </fileset>
     </copy>
-    
+    -->
   </target>
 
   <target name="compiletests" depends="hibernate">
@@ -139,7 +137,7 @@
 		</jar>
 	</target>
   
-<target name="jUnit" depends="compiletests,hibernate" description="Execute Unit Tests">
+<target name="junit" depends="compiletests,hibernate" description="Execute Unit Tests">
     <junit printsummary="yes" haltonfailure="yes">
 	  <classpath refid="test.compile.classpath"/>
 	  
