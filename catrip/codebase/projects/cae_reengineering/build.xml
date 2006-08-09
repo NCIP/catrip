@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="Cae API" default="compile" basedir=".">
+<project name="cae_domain" default="compile" basedir=".">
 
   <property file="build.properties"/>
-
+  <property name="project.name" value="cae_domain_cons" />
   <property name="src.dir" value="./src" />
   <property name="class.dir" value="./classes" /> 
   <property name="test.src.dir" value="./test/src" />
   <property name="test.class.dir" value="./test/classes" /> 
   <property name="lib.dir" value="./lib" />
-  <property name="dist.dir" value="./dist" />
+  <property name="build.dir" value="./build" />
   <property name="docs.dir" value="./docs" />
   <property name="config.dir" value="properties" />
   <property name="hibernate.mapping" value="hibernate_mappings" />
   <property name="test.report.dir" value="./test/reports" />
+  <property name="jar.dir" value="${build.dir}/jars" />
+  <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
   
   <path id="xdoclet.classpath">
     <fileset dir="${lib.dir}">
@@ -35,7 +37,7 @@
     <pathelement location="${class.dir}"/>
   </path> 
 
-  <target name="all" description="Builds the entire application" depends="compile" />
+  <target name="all" description="Builds the entire application" depends="compile,jar" />
   <target name="db" description="Builds the entire application" depends="create-cae-tables,insert-sample-data" />
 
   <target name="clean"> 
@@ -45,7 +47,7 @@
 
  <target name="init">
     <mkdir dir="${class.dir}"/> 
-    <mkdir dir="${dist.dir}"/> 
+    <mkdir dir="${build.dir}"/> 
     <mkdir dir="${hibernate.mapping}"/>
  </target>
  
@@ -127,7 +129,15 @@
     </copy>
   </target>
  
-
+	<target name="jar" depends="compile" description="Builds the Jar Files">
+		<mkdir dir="${jar.dir}" />
+		<jar jarfile="${project.jarfile}" basedir="${class.dir}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="${main.class}" />
+			</manifest>
+		</jar>
+	</target>
   
 <target name="jUnit" depends="compiletests,hibernate" description="Execute Unit Tests">
     <junit printsummary="yes" haltonfailure="yes">
