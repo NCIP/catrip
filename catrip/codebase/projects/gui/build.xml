@@ -165,14 +165,30 @@
 		</jar>
 	</target>
 
-        <!-- ============================================================== -->
+    <!-- ============================================================== -->
 	<!-- Run the GUI                                                    -->
 	<!-- ============================================================== -->
-	<target name="run" depends="all" description="Run the GUI">
-	<java classname="${main.class}" fork="true" >
-		<classpath refid="run.classpath" />
+	<target name="run" depends="all,install" description="Run the GUI">
+		<java classname="${main.class}" fork="true" >
+			<classpath refid="run.classpath" />
         </java>
-        </target>
+    </target>
+
+    <!-- ============================================================== -->
+	<!-- Install the GUI                                                -->
+	<!-- ============================================================== -->
+	<target name="install" depends="" description="Install the GUI">
+		<property name="catrip.dir" location="${user.home}/.caTRIP" />
+		<property name="conf.dir" location="${basedir}/conf" />
+		<property name="client.config" location="${basedir}/conf/qe-client-config.wsdd" />
+
+		<mkdir dir="${catrip.dir}"/>
+		<copy file="${conf.dir}/catrip-config.xml" todir="${catrip.dir}" />
+		<copy file="${conf.dir}/query_engine_services_config.xml" todir="${catrip.dir}" />
+
+		<replace file="${catrip.dir}/catrip-config.xml" token="@conf.dir@" value="${conf.dir}"/>
+		<replace file="${catrip.dir}/query_engine_services_config.xml" token="@client.config@" value="${client.config}"/>
+    </target>
 
 	<!-- ============================================================== -->
 	<!-- Builds from scratch                                                -->
