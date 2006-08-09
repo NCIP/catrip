@@ -48,6 +48,13 @@ public class VisualQueryDesignerPanel extends CPanel {
     }
     
     
+    public void showMsg(String msgStr){
+        JOptionPane.showMessageDialog(getMainFrame(), msgStr);
+    }
+    public void showWarning(String msgStr){
+        JOptionPane.showMessageDialog(getMainFrame(), msgStr, null ,JOptionPane.WARNING_MESSAGE);
+    }
+    
     public String createID(String prefix) {
         return prefix + ++ lastID;
     }

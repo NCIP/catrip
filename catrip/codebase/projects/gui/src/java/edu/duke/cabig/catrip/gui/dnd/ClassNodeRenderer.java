@@ -206,14 +206,24 @@ public class ClassNodeRenderer implements IGraphNodeRenderer {
     public void renderNode(IGraphNode node, Graphics2D gr, int layer) {
         Point location = helper.getNodeLocation(node);
         
+        ClassNode cNode = (ClassNode)node.getLookup().lookup(ClassNode.class);
+        
         if (layer == LAYER_BACKGROUND) {
             //sanjeev drawing a box covering the node..
             Rectangle rect = helper.getBounds(node);
-            gr.setColor(new Color(0xEEEEEE)); // background color..
-            gr.fillRect(rect.x, rect.y, rect.width, rect.height);
-            ClassNode cNode = (ClassNode)node.getLookup().lookup(ClassNode.class);
+            
+            
+            // set the color for the target background border...
             if ( cNode.isTargetNode() ){
-                gr.setColor(Color.RED);  // set the color for teh target node..
+                gr.setColor(new Color(255,235,155)); //  blue : //210,210,255 , green :236,247,193, orange : 255,235,155
+            } else {
+                gr.setColor(new Color(0xEEEEEE)); 
+            }
+            gr.fillRect(rect.x, rect.y, rect.width, rect.height);
+            
+            // set the color for the target node border...
+            if ( cNode.isTargetNode() ){
+                gr.setColor(Color.RED);  
             } else {
                 gr.setColor(new Color(0xCDCDCD));  // border color..
             }

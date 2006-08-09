@@ -60,6 +60,8 @@ public class EventHandler extends IGraphEventHandler {
 //        test.getDocument().addComponents(GraphEvent.createSingle(link));
         
         // sanjeev
+        boolean samePort = sourcePort.equals(targetPort);
+        boolean sameNode = ((GraphPort) sourcePort).getNode().equals( ((GraphPort) targetPort).getNode());
         
         int sourceDirection = 0;//((GraphPort) sourcePort).getDirection();
         int targetDirection = 0;//((GraphPort) targetPort).getDirection();
@@ -69,7 +71,7 @@ public class EventHandler extends IGraphEventHandler {
         }catch (Exception ne){}
         
         // if it is a CDE link... create a foreign association...
-        if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT)){
+        if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT) && !samePort && !sameNode){
 //            System.out.println("XXXX creating a foreign association..");
 //
 //            System.out.println("XXXX  Attribute name is :"+ ( (AttributePort) sourcePort).getAttributeName()  );
@@ -95,7 +97,7 @@ public class EventHandler extends IGraphEventHandler {
         }
         
         // if it is a normal link.. create a normal association...
-        if ( ((sourceDirection == IDirectionable.RIGHT) || (sourceDirection == IDirectionable.LEFT)) && ((targetDirection == IDirectionable.RIGHT) || (targetDirection == IDirectionable.LEFT))  ){
+        if ( ((sourceDirection == IDirectionable.RIGHT) || (sourceDirection == IDirectionable.LEFT)) && ((targetDirection == IDirectionable.RIGHT) || (targetDirection == IDirectionable.LEFT))  && !samePort && !sameNode ){
             // this is a class assoctaion link...
 //            System.out.println("XXXX creating a local/class association..");
             
@@ -114,6 +116,21 @@ public class EventHandler extends IGraphEventHandler {
             link.setTargetPort((GraphPort) targetPort);
             test.getDocument().addComponents(GraphEvent.createSingle(link));
         }
+        
+        // show the error msg that do not link to itself
+        if (samePort || sameNode){
+            if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT)){
+                test.showWarning("You can not link CDEs in the same class.");
+            } else {
+                test.showWarning("You can not link to same class.");
+            }
+        }
+        
+        // show the error msg that do not link class to CDE.
+        if( ((sourceDirection == IDirectionable.RIGHT) || (sourceDirection == IDirectionable.LEFT)   || (targetDirection == IDirectionable.RIGHT) || (targetDirection == IDirectionable.LEFT)   ) &&  ((sourceDirection == IDirectionable.BOTTOM_LEFT) || (targetDirection == IDirectionable.BOTTOM_LEFT)) ){
+            test.showWarning("You can not link CDE to a class.");
+        }
+        
         
         // sanjeev
         
