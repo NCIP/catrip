@@ -1,4 +1,4 @@
-spool cae_tables.log
+spool cae_data.log
 set scan off;
 
 @DeleteChilds.sql
