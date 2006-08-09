@@ -2,7 +2,7 @@
 <project name="cae_domain" default="compile" basedir=".">
 
   <property file="build.properties"/>
-  <property name="project.name" value="cae_domain_cons" />
+  <property name="project.name" value="cae_domain_reengg" />
   <property name="src.dir" value="./src" />
   <property name="class.dir" value="./classes" /> 
   <property name="test.src.dir" value="./test/src" />
