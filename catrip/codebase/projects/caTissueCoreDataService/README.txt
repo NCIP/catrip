@@ -22,4 +22,8 @@ To Build:
 
 ---
 
-modify hibernate.cfg.xml
+modify hibernate.cfg.xml with your database parameters 
+
+		<property name="connection.url">jdbc:mysql://localhost:3306/catissuecore</property>
+		<property name="connection.username">catissue_core</property>
+		<property name="connection.password">catissue_core</property>
