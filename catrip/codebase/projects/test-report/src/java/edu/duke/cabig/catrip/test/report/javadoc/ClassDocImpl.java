@@ -505,7 +505,7 @@ public class ClassDocImpl extends ProgramElementDocImpl implements ClassDoc {
      * @param enumConstants  if true, return the enum constants instead
      */
     private FieldDoc[] fields(boolean filter, boolean enumConstants) {
-        List<FieldDocImpl> fields = new List<FieldDocImpl>();
+        List<FieldDocImpl> fields = new List<FieldDocImpl>(null, null);
         for (Scope.Entry e = tsym.members().elems; e != null; e = e.sibling) {
             if (e.sym != null && e.sym.kind == VAR) {
                 VarSymbol s = (VarSymbol)e.sym;
@@ -530,7 +530,7 @@ public class ClassDocImpl extends ProgramElementDocImpl implements ClassDoc {
      */
     public MethodDoc[] methods(boolean filter) {
         Name.Table names = tsym.name.table;
-        List<MethodDocImpl> methods = new List<MethodDocImpl>();
+        List<MethodDocImpl> methods = new List<MethodDocImpl>(null, null);
         for (Scope.Entry e = tsym.members().elems; e != null; e = e.sibling) {
             if (e.sym != null &&
                 e.sym.kind == Kinds.MTH && e.sym.name != names.init) {
@@ -563,7 +563,7 @@ public class ClassDocImpl extends ProgramElementDocImpl implements ClassDoc {
      */
     public ConstructorDoc[] constructors(boolean filter) {
         Name.Table names = tsym.name.table;
-        List<ConstructorDocImpl> constructors = new List<ConstructorDocImpl>();
+        List<ConstructorDocImpl> constructors = new List<ConstructorDocImpl>(null, null);
         for (Scope.Entry e = tsym.members().elems; e != null; e = e.sibling) {
             if (e.sym != null &&
                 e.sym.kind == Kinds.MTH && e.sym.name == names.init) {
@@ -599,7 +599,7 @@ public class ClassDocImpl extends ProgramElementDocImpl implements ClassDoc {
             if (filtered && !env.shouldDocument(tsym)) return;
             if (l.contains(this)) return;
             l.append(this);
-            List<ClassDocImpl> more = new List<ClassDocImpl>();
+            List<ClassDocImpl> more = new List<ClassDocImpl>(null, null);
             for (Scope.Entry e = tsym.members().elems; e != null;
                  e = e.sibling) {
                 if (e.sym != null && e.sym.kind == Kinds.TYP) {
