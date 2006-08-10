@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:aggr="http://mds.globus.org/aggregator/types" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="defaultServerConfig">
+  <service name="cagrid/CAE" provider="Handler" use="literal" style="document">
+    <parameter name="className" value="gov.nih.nci.cagrid.cae.service.globus.CAEProviderImpl" />
+    <wsdlFile>share/schema/_cagrid_CAE/CAE_service.wsdl</wsdlFile>
+    <parameter name="securityDescriptor" value="etc/_cagrid_CAE/CAE-security-desc.xml" />
+    <parameter name="allowedMethods" value="*" />
+    <parameter name="handlerClass" value="org.globus.axis.providers.RPCProvider" />
+    <parameter name="scope" value="Application" />
+    <parameter name="providers" value="GetRPProvider GetMRPProvider QueryRPProvider gov.nih.nci.cagrid.introduce.security.service.globus.ServiceSecurityProviderImpl gov.nih.nci.cagrid.data.service.globus.DataServiceProviderImpl" />
+    <parameter name="loadOnStartup" value="true" />
+    <parameter name="securityMetadata" value="etc/_cagrid_CAE/CAE-security-metadata.xml" />
+  </service>
+  <typeMapping name="AggregatorContent" qname="aggr:AggregatorContent" type="java:org.globus.mds.aggregator.types.AggregatorContent" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" />
+<!-- START INTRODUCE TYPEMAPPINGS -->
+
+<!-- CAE  -->
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.Specimen" qname="ns2:Specimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.Participant" qname="ns2:Participant" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.Accession" qname="ns2:Accession" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" qname="ns2:ParticipantMedicalIdentifier" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+<!-- END INTRODUCE TYPEMAPPINGS -->
+
+
+<!-- START INTRODUCE TYPEMAPPINGS for NameSpace: gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast -->
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFinding" qname="ns2:BreastCancerTNMFinding" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin" qname="ns2:BreastPositiveSurgicalMargin" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastNegativeSurgicalMargin" qname="ns2:BreastNegativeSurgicalMargin" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinoma" qname="ns2:InvasiveBreastCarcinoma" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" qname="ns2:NottinghamHistopathologicGrade" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinomaNeoplasmHistologicType" qname="ns2:InvasiveBreastCarcinomaNeoplasmHistologicType" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastSurgicalPathologySpecimen" qname="ns2:BreastSurgicalPathologySpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.OtherBreastCancerHistopathologicGrade" qname="ns2:OtherBreastCancerHistopathologicGrade" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.breast" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+
+<!-- END INTRODUCE TYPEMAPPINGS -->
+
+
+<!-- START INTRODUCE TYPEMAPPINGS for NameSpace: gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general -->
+
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.EventParameters" qname="ns2:EventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" qname="ns2:AnnotationEventParameters" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AnnotationSet" qname="ns2:AnnotationSet" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AnnotatableEntity" qname="ns2:AnnotatableEntity" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AdditionalFindings" qname="ns2:AdditionalFindings" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.NeoplasmHistopathologicType" qname="ns2:NeoplasmHistopathologicType" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.SurgicalMargin" qname="ns2:SurgicalMargin" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.HistopathologicGrade" qname="ns2:HistopathologicGrade" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" qname="ns2:ThreeDimensionalSize" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.CancerTNMFinding" qname="ns2:CancerTNMFinding" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.Neoplasm" qname="ns2:Neoplasm" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.SurgicalPathologySpecimen" qname="ns2:SurgicalPathologySpecimen" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+
+<!-- END INTRODUCE TYPEMAPPINGS --></deployment>
+
