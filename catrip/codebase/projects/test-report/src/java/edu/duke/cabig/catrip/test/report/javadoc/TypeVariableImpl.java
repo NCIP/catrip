@@ -98,7 +98,8 @@ public class TypeVariableImpl extends AbstractTypeImpl implements TypeVariable {
     private static List<Type> getBounds(TypeVar v, DocEnv env) {
 	Name boundname = v.bound().tsym.fullName();
 	if (boundname == boundname.table.java_lang_Object) {
-	    return Type.emptyList;
+	    //return Type.emptyList;
+		return new List<Type>();
 	} else {
 	    return env.types.getBounds(v);
 	}

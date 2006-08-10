@@ -104,13 +104,15 @@ public class WildcardTypeImpl extends AbstractTypeImpl implements WildcardType {
 
     private static List<Type> getExtendsBounds(ArgumentType wild) {
 	return wild.isSuperBound()
-		? Type.emptyList
+		//? Type.emptyList
+		? new List<Type>()
 		: List.make(wild.type);
     }
 
     private static List<Type> getSuperBounds(ArgumentType wild) {
 	return wild.isExtendsBound()
-		? Type.emptyList
+		//? Type.emptyList
+		? new List<Type>()
 		: List.make(wild.type);
     }
 }
