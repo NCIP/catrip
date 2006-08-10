@@ -8,11 +8,12 @@
 <!-- =============================================================== -->
 <project name="catrip-1.0-artifacts" basedir=".">
 
-	<target name="defineArtifacts" depends="prepare">
+	<target name="defineArtifacts" depends="prepare" description="Defines artifacts that can be imported into projects.">
 
 		<!-- =============== -->
 		<!-- share artifacts -->
 		<!-- =============== -->
+
 		<artifact track="test" type="jars" id="common.test.jars">
 			<fileset dir="${junit.dir}">
 				<include name="jdepend*.jar" />
@@ -23,6 +24,12 @@
 
 		<artifact track="main" type="jars" id="xmlbeans.jars">
 			<fileset dir="${xmlbeans.dir}">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+		<artifact track="main" type="jars" id="ant-contrib.jars">
+			<fileset dir="${share.dir}/ant-contrib">
 				<include name="*.jar" />
 			</fileset>
 		</artifact>
@@ -43,6 +50,36 @@
 			</fileset>
 		</artifact>
 
+		<artifact track="main" type="jars" id="cagrid.cadsr.jars">
+			<fileset dir="${cagrid.dir}/cadsr">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+		<artifact track="main" type="jars" id="cagrid.data.jars">
+			<fileset dir="${cagrid.dir}/data">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+		<artifact track="main" type="jars" id="cagrid.discovery.jars">
+			<fileset dir="${cagrid.dir}/discovery">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+		<artifact track="main" type="jars" id="cagrid.introduce.jars">
+			<fileset dir="${cagrid.dir}/introduce">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+		<artifact track="main" type="jars" id="cagrid.metadata.jars">
+			<fileset dir="${cagrid.dir}/metadata">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
 
 		<!-- ================= -->
 		<!-- project artifacts -->
@@ -55,6 +92,23 @@
 				<exclude name="*test*.jar" />
 			</fileset>
 		</artifact>
+
+		<artifact track="main" type="jars" id="caTissueCAEDataService.jars">
+			<antcall target="build-caTissueCAEDataService" />
+			<fileset dir="${projects.dir}/caTissueCAEDataService/build/lib">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+
+		<artifact track="main" type="jars" id="caTissueCoreDataService.jars">
+			<antcall target="build-caTissueCoreDataService" />
+			<fileset dir="${projects.dir}/caTissueCoreDataService/build/lib">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+
 		<artifact track="main" type="jars" id="queryengine.jars">
 			<antcall target="build-queryengine" />
 			<fileset dir="${projects.dir}/queryengine/build/jars">
@@ -62,11 +116,13 @@
 				<exclude name="*test*.jar" />
 			</fileset>
 		</artifact>
+
 		<artifact track="main" type="schemas" id="queryengine.schemas">
 			<fileset dir="${projects.dir}/queryengine/schema">
 				<include name="**/*.xsd" />
 			</fileset>
 		</artifact>
+
 		<artifact track="main" type="jars" id="security-password.jars">
 			<antcall target="build-security-password" />
 			<fileset dir="${projects.dir}/security-password/build/jars">
@@ -74,12 +130,14 @@
 				<exclude name="*test*.jar" />
 			</fileset>
 		</artifact>
+
 		<artifact track="main" type="antfiles" id="security-password.antfiles">
 			<antcall target="build-security-password" />
 			<fileset dir="${projects.dir}/security-password/antfiles">
 				<include name="password-utils.xml" />
 			</fileset>
 		</artifact>
+
 		<artifact track="main" type="jars" id="security-dukeidp.jars">
 			<antcall target="build-security-dukeidp" />
 			<fileset dir="${projects.dir}/security-dukeidp/build/jars">
@@ -87,6 +145,7 @@
 				<exclude name="*test*.jar" />
 			</fileset>
 		</artifact>
+
 		<artifact track="main" type="jars" id="test-report.jars">
 			<antcall target="build-test-report" />
 			<fileset dir="${projects.dir}/test-report/build/jars">
@@ -94,6 +153,7 @@
 				<exclude name="*tests*.jar" />
 			</fileset>
 		</artifact>
+
 		<artifact track="main" type="jars" id="test-system.jars">
 			<antcall target="build-test-report" />
 			<fileset dir="${projects.dir}/test-system/build/jars">
@@ -101,6 +161,7 @@
 				<exclude name="*tests*.jar" />
 			</fileset>
 		</artifact>
+
 	</target>
 
 </project>

@@ -42,7 +42,7 @@
 		</for>
 	</target>
 
-	<target name="run-report-style">
+	<target name="run-report-style" description="Check the style for a single project.">
 		<checkstyle config="${checkstyle.home}/catrip_checks.xml" failOnViolation="false">
 			<fileset dir="${projects.dir}/${project}/src" includes="**/*.java"/>
 			<formatter type="plain" toFile="${style.dir}/${project}.txt"/>
@@ -60,7 +60,7 @@
 	<!-- Call findbugs for each project log results                      -->
 	<!-- =============================================================== -->
 	
-	<target name="reports-findbugs">
+	<target name="reports-findbugs" description="Find bugs for all the projects.">
 		<property name="findbugs.home" location="${basedir}/share/findbugs-0.9.6"/>
 		<property name="findbugs.dir" location="${reports.dir}/findbugs"/>
 
@@ -88,7 +88,7 @@
 		</for>
 	</target>
 
-	<target name="run-report-findbugs">
+	<target name="run-report-findbugs" description="Find bugs for a single project.">
 		<findbugs home="${findbugs.home}"
 			output="xml"
 			outputFile="${findbugs.dir}/${project}.xml"
@@ -123,7 +123,7 @@
 	<!-- Call source-java for each project log results                   -->
 	<!-- =============================================================== -->
 
-	<target name="reports-source-java">
+	<target name="reports-source-java" description="Count the source code for all projects.">
 		<property name="javancss.home" location="${basedir}/share/javancss-24.44"/>
 		<property name="source-java.dir" location="${reports.dir}/source-java"/>
 
@@ -151,7 +151,7 @@
 		</for>
 	</target>
 
-	<target name="run-report-source-java">
+	<target name="run-report-source-java" description="Count the source code for one project.">
 		<javancss srcdir="${projects.dir}/${project}/src/java"
 			generateReport="true"
 			outputfile="${source-java.dir}/${project}.xml"
@@ -170,7 +170,7 @@
 	<!-- Call cvs                                                        -->
 	<!-- =============================================================== -->
 
-	<target name="reports-cvs">
+	<target name="reports-cvs" description="Report on CVS activity.">
 		<property name="statcvs.home" location="${basedir}/share/statcvs-0.2.2"/>
 		<property name="cvs.dir" location="${reports.dir}/statcvs"/>
 
@@ -195,7 +195,7 @@
 	<!-- Call testcoverage for each project log results                  -->
 	<!-- =============================================================== -->
 
-	<target name="reports-testcoverage" depends="prepare, defineArtifacts">
+	<target name="reports-testcoverage" depends="prepare, defineArtifacts" description="Check the test coverage for all the projects.">
 		<property name="testcoverage.dir" location="${reports.dir}/testcoverage"/>
 		
 		<taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
@@ -220,7 +220,7 @@
 		</for>
 	</target>
 
-	<target name="run-report-testcoverage">
+	<target name="run-report-testcoverage" description="Check the test coverage for a single project.">
 		<mkdir dir="${testcoverage.dir}/${project}"/>
 		<cobertura-report format="html" destdir="${testcoverage.dir}/${project}"
 			datafile="${testcoverage.dir}/${project}.ser"  
@@ -238,7 +238,7 @@
 	<!-- Call junit                                                      -->
 	<!-- =============================================================== -->
 
-	<target name="reports-junit">
+	<target name="reports-junit" description="Report on JUnit tests for all the projects.">
 		<mkdir dir="${reports.dir}/junit"/>
 
 		<!-- junitreport -->
@@ -287,5 +287,5 @@
 	</target>
 
 
-	<target name="reports" depends="prepare, reports-junit, reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs"/>
+	<target name="reports" depends="prepare, reports-junit, reports-source-java, reports-style, reports-findbugs, reports-testcoverage, reports-cvs" description="Runs reports on all the reportable projects."/>
 </project>

@@ -9,7 +9,7 @@
 	<!-- =============================================================== -->
 	<!-- Call test for each project and aggregates the log resutls       -->
 	<!-- =============================================================== -->
-	<target name="test" depends="prepare, test-prepare" description="Test all the projects.">
+	<target name="test" depends="prepare, test-prepare" description="Tests all the projects.">
 		<mkdir dir="${junit.results.dir}"/>
 		<mkdir dir="${testcoverage.dir}"/>
 		<!-- Clean out old logs first -->
@@ -44,7 +44,7 @@
 	<!-- =========================================================================== -->
 	<!-- Call test for each system test project and aggregates the log resutls       -->
 	<!-- =========================================================================== -->
-	<target name="test-system" depends="prepare, test-prepare" description="Test all the system test projects.">
+	<target name="test-system" depends="prepare, test-prepare" description="Tests all the system test projects.">
 		<mkdir dir="${junit.results.dir}"/>
 		<mkdir dir="${testcoverage.dir}"/>
 
@@ -69,7 +69,7 @@
 		<delete dir="${instrumentation.temp.dir}"/>
 	</target>
 
-	<target name="test-prepare" depends="prepare, defineArtifacts">
+	<target name="test-prepare" depends="prepare, defineArtifacts" description="Prepare for running tests">
 		<property name="testcoverage.dir" location="${reports.dir}/testcoverage"/>
 		<property name="testcoverage.temp.dir" location="${reports.dir}/testcoverage"/>
 		<property name="instrumentation.temp.dir" location="${basedir}/temp"/>
