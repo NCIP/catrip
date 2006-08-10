@@ -34,5 +34,8 @@ public class DCQLRegistry {
         aTargetNode.setAsTargetNode();
         targetNode = aTargetNode;
     }
+    public static void clean(){
+        targetNode = null;
+    }
 
 }

@@ -61,6 +61,9 @@ public class VisualQueryDesignerPanel extends CPanel {
     public int getLastID(){
         return lastID;
     }
+    public void resetID(){
+        this.lastID = 0;
+    }
     
     public JTree getTree() {
         return servicePanel.getTree();

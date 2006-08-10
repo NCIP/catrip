@@ -45,6 +45,9 @@ public class DCQLGenerator {
         try{
             
             ClassNode targetNode = DCQLRegistry.getTargetNode();
+            if (targetNode == null){
+                return null;
+            }
             ClassBean targetObject= targetNode.getAssociatedClassObject();
             
             dc = DCQLQueryDocument.Factory.newInstance();
@@ -67,13 +70,21 @@ public class DCQLGenerator {
     
     public static String getDCQLText(){
         String txt = "";
-        txt = getDCQLDocument().xmlText();
+        try{
+            txt = getDCQLDocument().xmlText();
+        } catch (Exception e){
+            txt = "Please create a query first.";
+        }
         return txt;
     }
     
     public static String getDCQLText(XmlOptions xmlOptions){
         String txt = "";
-        txt = getDCQLDocument().xmlText(xmlOptions);
+        try{
+            txt = getDCQLDocument().xmlText(xmlOptions);
+        } catch (Exception e){
+            txt = "Please create a query first.";
+        }
         return txt;
     }
     

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import org.netbeans.graph.api.model.builtin.GraphPort;
 
 /**
- * @author David Kaspar
+ * @author Sanjeev Agarwal
  */
 public class ViewController extends DefaultViewController implements ActionListener {
     
@@ -42,6 +42,9 @@ public class ViewController extends DefaultViewController implements ActionListe
     
     private JPopupMenu popup2;
     private JMenuItem miLinkCDE;
+    
+    private JPopupMenu popup3;
+    private JMenuItem miDeleteAll;
     
     
     private VisualQueryDesignerPanel test;
@@ -76,6 +79,13 @@ public class ViewController extends DefaultViewController implements ActionListe
         miLinkCDE.addActionListener(this);
         popup2.add(miLinkCDE);
         
+        
+        popup3 = new JPopupMenu();
+        miDeleteAll = new JMenuItem("Delete All Nodes from Graph.");
+        miDeleteAll.addActionListener(this);
+        popup3.add(miDeleteAll);
+        
+        
     }
     
     protected JPopupMenu getPopupMenu() {
@@ -86,10 +96,8 @@ public class ViewController extends DefaultViewController implements ActionListe
             return popup2;
         
         if (selectedComponents == null  ||  selectedComponents.length != 1 ||  !(selectedComponents[0] instanceof IGraphNode))
-            return null; // no popup menu
+            return popup3; // return base graph menu
         
-        
-        // there is only one component selected and the component is a node, so let's create a popup menu
         
         //useful code here..
 //        IGraphNode[] nodes = document.getSelectedComponents().getNodes();
@@ -102,6 +110,7 @@ public class ViewController extends DefaultViewController implements ActionListe
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == miDelete) {
             final Object[] selectedComponents = getHelper().getSelectedComponents();
+
             ArrayList nodes = new ArrayList();
             ArrayList links = new ArrayList();
             if (selectedComponents != null)
@@ -152,7 +161,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                 }
             }
             
-            // Remove later : sanjeev dummy stitching code...
+            // @todo : Remove later, sanjeev dummy stitching code...
         } else if(e.getSource() == miShowClass){
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -160,6 +169,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                     ws.main(null);
                 }
             });
+            // @todo : Remove later, sanjeev dummy stitching code...
         } else if(e.getSource() == miLinkCDE){
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -168,7 +178,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                 }
             });
         }
-        // @todo : Remove later, sanjeev dummy stitching code...
+        
         else if(e.getSource() == miSetTarget){
             // set the current node class bean as target object..
             final Object[] selectedComponents = getHelper().getSelectedComponents();
@@ -187,8 +197,12 @@ public class ViewController extends DefaultViewController implements ActionListe
                 }
             }
         }
-        
-        
+        // delete all nodes.. clean registry and reset the graphNode Ids 
+         else if(e.getSource() == miDeleteAll){
+            test.getDocument().removeComponents(test.getDocument().getComponents());
+            test.resetID();
+            DCQLRegistry.clean();
+        }
         
         
         
