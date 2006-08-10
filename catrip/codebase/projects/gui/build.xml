@@ -75,6 +75,7 @@
 	<!-- The Test Classpath                                                   -->
 	<!-- =============================================================== -->
 	<path id="test.classpath">
+            <pathelement location="${basedir}/conf" />
 		<fileset dir="${jar.dir}">
 			<include name="**/*.jar" />
 		</fileset>
