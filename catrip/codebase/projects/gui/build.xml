@@ -121,6 +121,7 @@
 	<target name="compile-tests" depends="prepare" description="compiles.">
 		<mkdir dir="${test.classes.dir}" />
 		<mkdir dir="${ext.test.lib.dir}" />
+		<mkdir dir="${test.src.dir}" />
 		<javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" debug="${debug}" deprecation="off" optimize="off">
 			<classpath refid="test.classpath" />
 		</javac>
