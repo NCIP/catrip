@@ -178,7 +178,7 @@
     <!-- ============================================================== -->
 	<!-- Install the GUI                                                -->
 	<!-- ============================================================== -->
-	<target name="install" depends="" description="Install the GUI">
+	<target name="install" depends="all" description="Install the GUI">
 		<property name="catrip.dir" location="${user.home}/.caTRIP" />
 		<property name="conf.dir" location="${basedir}/conf" />
 		<property name="client.config" location="${basedir}/conf/qe-client-config.wsdd" />
