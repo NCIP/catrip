@@ -38,7 +38,7 @@ public class XMLDomainModelRetrievalStrategyTest extends TestCase {
      * Test of retrievDomainModel method, of class edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategy.
      */
     public void testRetrievDomainModel() {
-        System.out.println("Running the retrieve domain model from domain model Metadata extracts");
+        System.out.println("Retrieve domain model from domain model Metadata extracts");
         ArrayList<ServiceMetaDataBean> alist = null; 
         try{
             XMLFileServiceLocator instance = new XMLFileServiceLocator();
