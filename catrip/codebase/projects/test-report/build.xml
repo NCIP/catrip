@@ -77,9 +77,6 @@
 		<fileset dir="${jar.dir}">
 			<include name="**/*.jar" />
 		</fileset>
-		<fileset dir="${env.JAVA_HOME}/lib">
-			<include name="tools.jar" />
-		</fileset>
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
 		</fileset>
@@ -94,6 +91,9 @@
 		</fileset>
 		<fileset dir="${globus.dir}/lib">
 			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${env.JAVA_HOME}/lib">
+			<include name="tools.jar" />
 		</fileset>
 	</path>
 
