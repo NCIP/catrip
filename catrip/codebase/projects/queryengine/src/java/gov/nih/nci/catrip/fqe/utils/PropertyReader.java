@@ -18,7 +18,7 @@ public class PropertyReader {
         //InputStream is = ClassLoader.getSystemResourceAsStream("gov/nih/nci/catrip/fqe/utils/service_config.xml");
         Properties properties = new Properties();
         try {
-               properties.loadFromXML(new FileInputStream(new File ( CATRIP_HOME + File.separator + "service_config.xml")));
+               properties.loadFromXML(new FileInputStream(new File ( CATRIP_HOME + File.separator + "query_engine_services_config.xml")));
            } catch (IOException e) {
               e.printStackTrace();
               System.exit(1);
