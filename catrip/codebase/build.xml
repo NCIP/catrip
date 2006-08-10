@@ -39,26 +39,31 @@
 	    </fileset>
 	</path>
 
+
 	<!-- ================================================================================ -->
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
-	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout -->
-	<property name="projects.list" value="ctom, gui, queryengine, test-report, security-password, security-dukeidp, test-system" />
+	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
+	<property name="projects.list" value="ctom, gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
+
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="testable.projects.list" value="test-report, security-password, security-dukeidp" />
+	<property name="testable.projects.list" value="gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report" />
+
 	<!-- ======================================================================================= -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT SYSTEM TESTING                    -->
 	<!-- ======================================================================================= -->
 	<!-- This should be a subset of the projects above -->
 	<property name="system.testable.projects.list" value="test-system" />
+
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="reportable.projects.list" value="ctom, gui, queryengine, test-report, security-password, security-dukeidp, test-system" />
+	<property name="reportable.projects.list" value="ctom, gui, queryengine, caTissueCAEDataService, caTissueCoreDataService, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
+
 
 	<!-- =============================================================== -->
 	<!-- Bootstrap the build by setting up the structure and building    -->
@@ -108,6 +113,38 @@
 		<ant dir="${projects.dir}/ctom" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
+	<!-- =============================================================== -->
+	<!-- CAE_REENGINEERING                                               -->
+	<!-- =============================================================== -->
+
+	<target name="build-cae_reengineering" depends="prepare" description="Builds the cae_reengineering project">
+		<resolveDependencies extdir="${projects.dir}/cae_reengineering/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/cae_reengineering" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- caTissueCAEDataService                                          -->
+	<!-- =============================================================== -->
+
+	<target name="build-caTissueCAEDataService" depends="prepare" description="Builds the caTissueCAEDataService project">
+		<resolveDependencies extdir="${projects.dir}/caTissueCAEDataService/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/caTissueCAEDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- caTissueCoreDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-caTissueCoreDataService" depends="prepare" description="Builds the caTissueCoreDataService project">
+		<resolveDependencies extdir="${projects.dir}/caTissueCoreDataService/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/caTissueCoreDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
 
 	<!-- =============================================================== -->
 	<!-- GUI                                                             -->
@@ -118,23 +155,17 @@
 			<artifact refid="common.test.jars" />
 			<artifact refid="queryengine.jars" />
 			<artifact refid="queryengine.schemas" />
+			<artifact refid="caTissueCoreDataService.jars" />
+			<artifact refid="cagrid.cadsr.jars" />
+			<artifact refid="cagrid.data.jars" />
+			<artifact refid="cagrid.discovery.jars" />
+			<artifact refid="cagrid.introduce.jars" />
+			<artifact refid="cagrid.metadata.jars" />
+			<artifact refid="ant-contrib.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
-
-
-	<!-- =============================================================== -->
-	<!-- CAE                                                             -->
-	<!-- =============================================================== -->
-
-	<target name="build-cae" depends="prepare" description="Builds the cae project">
-		<resolveDependencies extdir="${projects.dir}/cae_reengineering/ext">
-			<artifact refid="common.test.jars" />
-		</resolveDependencies>
-		<ant dir="${projects.dir}/cae_reengineering" inheritAll="false" antfile="build.xml" target="all" />
-	</target>
-	
-	
+		
 	<!-- =============================================================== -->
 	<!-- QUERYENGINE                                                     -->
 	<!-- =============================================================== -->
@@ -143,6 +174,8 @@
 		<resolveDependencies extdir="${projects.dir}/queryengine/ext">
 			<artifact refid="common.test.jars" />
 			<artifact refid="xmlbeans.jars" />
+			<artifact refid="caTissueCAEDataService.jars" />
+			<artifact refid="caTissueCoreDataService.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
@@ -229,9 +262,16 @@
 	</target>
 
 	<!-- ============================================================== -->
+	<!-- Builds the projects                                            -->
+	<!-- ============================================================== -->
+	<target name="gui" depends="build-gui" description="Runs the caTRIP GUI.">
+		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="run" />
+	</target>
+
+	<!-- ============================================================== -->
 	<!-- Builds caTRIP from scratch                                     -->
 	<!-- ============================================================== -->
-	<target name="all" depends="clean, build" />
+	<target name="all" depends="clean, build" description="Cleans and builds all the projects."/>
 
 </project>
 
