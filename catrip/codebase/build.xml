@@ -29,6 +29,7 @@
 	<import file="${antfiles.dir}/build-artifacts.xml" />
 	<import file="${antfiles.dir}/build-test.xml" />
 	<import file="${antfiles.dir}/build-reports.xml" />
+	<import file="${antfiles.dir}/build-deploy.xml" />
 
 	<!-- define global properties -->
 	<property name="cobertura.home" location="${basedir}/share/cobertura-1.8"/>
@@ -264,7 +265,7 @@
 	<!-- ============================================================== -->
 	<!-- Builds the projects                                            -->
 	<!-- ============================================================== -->
-	<target name="gui" depends="build-gui" description="Runs the caTRIP GUI.">
+	<target name="gui" depends="" description="Runs the caTRIP GUI.">
 		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="run" />
 	</target>
 
