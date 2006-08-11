@@ -4,6 +4,7 @@ import org.apache.tools.ant.taskdefs.optional.junit.JUnitTest;
 import edu.wustl.catissuecore.domainobject.*;
 import edu.wustl.catissuecore.domainobject.impl.*;
 
+import gov.nih.nci.cagrid.catissuecorefull.client.CaTissueCore_FullClient;
 import gov.nih.nci.cagrid.cqlquery.Association;
 import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
