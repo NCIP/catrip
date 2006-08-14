@@ -110,7 +110,7 @@ public class ViewController extends DefaultViewController implements ActionListe
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == miDelete) {
             final Object[] selectedComponents = getHelper().getSelectedComponents();
-
+            
             ArrayList nodes = new ArrayList();
             ArrayList links = new ArrayList();
             if (selectedComponents != null)
@@ -171,12 +171,26 @@ public class ViewController extends DefaultViewController implements ActionListe
             });
             // @todo : Remove later, sanjeev dummy stitching code...
         } else if(e.getSource() == miLinkCDE){
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    LinkCDEPanel ws= new LinkCDEPanel();
-                    ws.main(null);
+            // show a dialog with main frame as parent.. send 2 graph nodes..
+            
+            final Object[] selectedComponents = getHelper().getSelectedComponents();
+            ClassNode source = null;
+            ClassNode target = null;
+            
+            if ((selectedComponents != null) && selectedComponents.length == 2){
+                Object selectedComponent = getHelper().getModelComponent(selectedComponents[0]);
+                if (selectedComponent instanceof IGraphNode) {
+                    source = (ClassNode)selectedComponent;
                 }
-            });
+                selectedComponent = getHelper().getModelComponent(selectedComponents[1]);
+                if (selectedComponent instanceof IGraphNode) {
+                    target = (ClassNode)selectedComponent;
+                }
+                test.linkCDEs( source, target);
+            }
+            
+            
+            
         }
         
         else if(e.getSource() == miSetTarget){
@@ -187,18 +201,18 @@ public class ViewController extends DefaultViewController implements ActionListe
                 if (selectedComponent instanceof ClassNode) {
                     ClassNode cNode = (ClassNode)selectedComponent;
 //                    System.out.println("xxxxx TargetObject is:"+cNode.getAssociatedClassObject().getFullyQualifiedName());
-                    // first get the old target node from Registry. remove target status from it 
-                    DCQLRegistry.getTargetNode().isNotTargetNode();  
+                    // first get the old target node from Registry. remove target status from it
+                    DCQLRegistry.getTargetNode().isNotTargetNode();
                     test.repaint();  // to re-render the old Target node..
                     // set the new node as Target node.. both in the Node and in the registry..
                     cNode.setAsTargetNode();
-                    DCQLRegistry.setTargetNode(cNode);   
-                      // TODO -  reverse the foreign associations and other objects for dcql.
+                    DCQLRegistry.setTargetNode(cNode);
+                    // TODO -  reverse the foreign associations and other objects for dcql.
                 }
             }
         }
-        // delete all nodes.. clean registry and reset the graphNode Ids 
-         else if(e.getSource() == miDeleteAll){
+        // delete all nodes.. clean registry and reset the graphNode Ids
+        else if(e.getSource() == miDeleteAll){
             test.getDocument().removeComponents(test.getDocument().getComponents());
             test.resetID();
             DCQLRegistry.clean();
