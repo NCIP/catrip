@@ -1,17 +1,10 @@
-/*
- * AttributeBeanComparator.java
- *
- * Created on August 1, 2006, 4:58 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.common;
 
 import java.util.Comparator;
 
 /**
+ * Comparator to compare two AttributeBean objects based on the CDE name.
+ * Used in JTree and Graph to sort the Attributes based on CDE names.
  *
  * @author Sanjeev Agarwal
  */
@@ -20,6 +13,10 @@ public class AttributeBeanComparator implements Comparator{
     /** Creates a new instance of AttributeBeanComparator */
     public AttributeBeanComparator() {
     }
+    /**
+     * Compares the CDE name from one AttributeBean to another AttributeBean.
+     * @see java.util.Comparator
+     */
     public int compare(Object cBean1, Object cBean2) {
         return ((AttributeBean)cBean1).getCDEName().compareTo( ((AttributeBean)cBean2).getCDEName() );
     }
