@@ -14,7 +14,12 @@ import gov.nih.nci.catrip.fqe.exception.QueryExecutionException;
 
 import java.util.List;
 
-
+/**
+ * FederatedQueryProcessor decomposes the DCQL into individual CQLs
+ * Each individual CQL is executed by specified grid service in serviceURL 
+ * Results obtained from DCQLQueryDocument are joined by Result Aggregator
+ * @author Srini Akkala
+ */
 class FederatedQueryProcessor {
     
     public FederatedQueryProcessor() {
@@ -38,6 +43,12 @@ class FederatedQueryProcessor {
 
     /**
      * process TargetObject
+     *  A DCQL target object can contain
+     *   Attribute (OR)
+     *   GROUP (OR)
+     *   Association (OR)
+     *   ForeignAssociation 
+     *   Check for the existance of above elements and process them . 
      * @param dcqlObject
      * @return
      */
@@ -48,15 +59,7 @@ class FederatedQueryProcessor {
         
         cqlObject.setName(dcqlObject.getName()); 
 
-        /*
-         A DCQL target object can contain
-         Attribute (OR)
-         GROUP (OR)
-         Association (OR)
-         ForeignAssociation 
-         
-         check for any of the above accurances . 
-         */
+
          
         // check for any attribute 
         if (dcqlObject.isSetAttribute()) {
@@ -90,7 +93,8 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * process Attribute . 
+     * process Attribute .
+     * builds CQL Attribute. name,value and predicate of dcql Attribute would be set to name, value and prediccate of CQL Attribute
      * @param dcqlAttribute
      * @return
      */
@@ -106,6 +110,10 @@ class FederatedQueryProcessor {
 
     /**
      * process Group
+     * builds CQL Group . 
+     * Group can contain nested Groups or Association or ForeignAssociation
+     * Based on the existance of above elements , the elements are processed and DCQL Groups or Associations
+     * are converted into CQL Groups or Associations and those would get attached to CQL Group
      * @param dcqlGroup
      * @return
      * @throws QueryExecutionException
@@ -118,9 +126,7 @@ class FederatedQueryProcessor {
               cqlGroup.setLogicRelation(gov.nih.nci.cagrid.cqlquery.LogicalOperator.fromValue(dcqlGroup.getLogicRelation().toString()));
               cqlGroup.setAttribute(convertDcql2CqlAttributeArray(dcqlGroup.getAttributeArray()));
               
-             /**
-              * Group can contain nested Group or Association or ForeignAssociation
-              */
+
               //associations
               if (dcqlGroup.getAssociationArray().length > 0) {
                   cqlGroup = attachAssociationArrayToGroup(dcqlGroup,cqlGroup);
@@ -141,6 +147,7 @@ class FederatedQueryProcessor {
     
     /**
      * process Association
+     * convert DCQL Association into CQL Association.
      * @param dcqlAssociation
      * @return
      * @throws QueryExecutionException
@@ -174,6 +181,9 @@ class FederatedQueryProcessor {
     
     /**
      * process ForeignAssociation
+     * ForeignAssociation is basically a Query that can be executed by a grid service mentioned in serviceURL attribute
+     * As ForeignAssocitaion itself is a DCQL Object , the Object is processed and CQL Query would be passed to FederatedQueryExecutor
+     * Obtained results from services are then aggreated using CDEs by ResultAggregator
      * @param foreignAssociation
      * @return
      * @throws QueryExecutionException
@@ -220,7 +230,7 @@ class FederatedQueryProcessor {
    
 
     /**
-     * 
+     * Converts and attach dcqlGroup Associations to CQL asssociations
      * @param dcqlGroup
      * @param cqlGroup
      * @return
@@ -243,7 +253,7 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * 
+     * Converts and attach nested dcqlGroup to CQL asssociations
      * @param dcqlGroup
      * @param cqlGroup
      * @return
@@ -265,7 +275,7 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * 
+     * process ForeignAssocation and attache the result Group to higher level Object.
      * @param dcqlGroup
      * @param cqlGroup
      * @return

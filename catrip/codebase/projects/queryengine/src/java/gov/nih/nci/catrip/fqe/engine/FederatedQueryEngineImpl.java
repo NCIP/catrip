@@ -22,7 +22,7 @@ public class FederatedQueryEngineImpl implements FederatedQueryEngine{
     }
 
     /**
-     * 
+     * Method which is exposed by query engine . calls Federated Query Processor 
      * @param dcqlQueryDocument
      * @return
      * @throws FederatedQueryException
@@ -30,13 +30,15 @@ public class FederatedQueryEngineImpl implements FederatedQueryEngine{
     public CQLQueryResults execute(DCQLQueryDocument dcqlQueryDocument) throws FederatedQueryException {
 
       CQLQueryResults results = null;
-           
+            // check for XML validity 
             boolean valid = dcqlQueryDocument.validate();
             if (valid){
                 try {
+                // call federated query processor
                 FederatedQueryProcessor processor = new FederatedQueryProcessor();
                 CQLQuery cqlQuery = processor.processDCQLQueryPlan(dcqlQueryDocument);               
                 
+                // execute final CQL ..
                 FederatedQueryExecutor federatedQueryExecutor = new FederatedQueryExecutor();
                 results = federatedQueryExecutor.executeCQLQuery(cqlQuery,dcqlQueryDocument.getDCQLQuery().getTargetObject().getServiceURL());
                 

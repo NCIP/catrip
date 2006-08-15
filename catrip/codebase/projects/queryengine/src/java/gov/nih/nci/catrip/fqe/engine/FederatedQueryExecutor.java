@@ -20,7 +20,9 @@ class FederatedQueryExecutor {
     }
 
     /**
-     * Execute the query method on service Client ..
+     * Execute the query method on service Client .
+     * As there is no abstraction layer for introduce generated client , The query method on the client is called using java reflection.
+     * Class name obtained from config file based on service URL .
      * @param cqlQuery
      * @param serviceURL
      * @return
