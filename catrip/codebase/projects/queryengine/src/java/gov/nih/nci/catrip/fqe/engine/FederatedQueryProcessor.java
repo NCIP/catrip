@@ -1,11 +1,14 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
-import caBIG.caGrid.x10.govNihNciCagridDcql.ForeignAssociation;
-import caBIG.caGrid.x10.govNihNciCagridDcql.TargetObject;
 
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+
+import gov.nih.nci.cagrid.dcql.Association;
+import gov.nih.nci.cagrid.dcql.DCQLQueryDocument;
+import gov.nih.nci.cagrid.dcql.ForeignAssociation;
+import gov.nih.nci.cagrid.dcql.Group;
+import gov.nih.nci.cagrid.dcql.TargetObject;
 import gov.nih.nci.catrip.fqe.exception.QueryExecutionException;
 
 import java.util.List;
@@ -17,7 +20,7 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * 
+     * process root element DCQLQuery Element
      * @param dcqlQryPlan
      * @return
      */
@@ -25,8 +28,7 @@ class FederatedQueryProcessor {
         CQLQuery cqlQuery = null;
         
         // Get the target object.        
-         TargetObject targetObject = dcqlQryPlan.getDCQLQuery().getTargetObject();
-        //gov.nih.nci.cagrid.dcql.Object targetObject = federatedQryPlan.getFederatedQueryPlan().getTargetObject();        
+        TargetObject targetObject = dcqlQryPlan.getDCQLQuery().getTargetObject();
         gov.nih.nci.cagrid.cqlquery.Object cqlObject = processTargetObject(targetObject);             
         cqlQuery = new CQLQuery();
         cqlQuery.setTarget(cqlObject);
@@ -34,7 +36,7 @@ class FederatedQueryProcessor {
     }
 
     /**
-     * 
+     * process TargetObject
      * @param dcqlObject
      * @return
      */
@@ -44,15 +46,15 @@ class FederatedQueryProcessor {
         gov.nih.nci.cagrid.cqlquery.Object cqlObject =  new gov.nih.nci.cagrid.cqlquery.Object();
         
         cqlObject.setName(dcqlObject.getName()); 
-        //gov.nih.nci.cagrid.cqlquery.Object cqlObject = initializeCQLObject(dcqlObject.getName());
-        /**
-         * A DCQL target object can contain
-         * Attribute (OR)
-         * GROUP (OR)
-         * Association (OR)
-         * ForeignAssociation 
-         * 
-         * check for any of the above accurances . 
+
+        /*
+         A DCQL target object can contain
+         Attribute (OR)
+         GROUP (OR)
+         Association (OR)
+         ForeignAssociation 
+         
+         check for any of the above accurances . 
          */
          
         // check for any attribute 
@@ -63,7 +65,7 @@ class FederatedQueryProcessor {
         
         //check for group
         if (dcqlObject.isSetGroup()) {
-            //convert basic group information and attach group to CQL object
+            //convert group and attach group to CQL object
              gov.nih.nci.cagrid.cqlquery.Group cqlGroup = processGroup(dcqlObject.getGroup());     
              cqlObject.setGroup(cqlGroup);              
         }
@@ -77,9 +79,7 @@ class FederatedQueryProcessor {
         
         //check for ForeignAssociation
         if (dcqlObject.isSetForeignAssociation()){
-            //processForeignAssociation(dcqlObject.getForeignAssociation());
-            gov.nih.nci.cagrid.cqlquery.Group resultedGroup = processForeignAssociation(dcqlObject.getForeignAssociation());
-            
+            gov.nih.nci.cagrid.cqlquery.Group resultedGroup = processForeignAssociation(dcqlObject.getForeignAssociation());            
             if (resultedGroup.getAttribute().length > 0 ) cqlObject.setGroup(resultedGroup);
             
         }
@@ -89,7 +89,7 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * 
+     * process Attribute . 
      * @param dcqlAttribute
      * @return
      */
@@ -98,19 +98,18 @@ class FederatedQueryProcessor {
         cqlAttribute.setName(dcqlAttribute.getName());
         cqlAttribute.setValue(dcqlAttribute.getValue());
         cqlAttribute.setPredicate(gov.nih.nci.cagrid.cqlquery.Predicate.fromValue(dcqlAttribute.getPredicate().toString()));
-
         
         return cqlAttribute;
-        //gov.nih.nci.cagrid.cqlquery.Predicate cqlPredicate = gov.nih.nci.cagrid.cqlquery.Predicate.        
+     
     }
 
     /**
-     * 
+     * process Group
      * @param dcqlGroup
      * @return
      * @throws QueryExecutionException
      */
-     private gov.nih.nci.cagrid.cqlquery.Group processGroup(caBIG.caGrid.x10.govNihNciCagridDcql.Group  dcqlGroup)  throws QueryExecutionException {
+     private gov.nih.nci.cagrid.cqlquery.Group processGroup(Group  dcqlGroup)  throws QueryExecutionException {
          //convert basic group information and attach group to CQL object
           gov.nih.nci.cagrid.cqlquery.Group cqlGroup = new gov.nih.nci.cagrid.cqlquery.Group();
           //attach logical relationship and any aatributes .
@@ -140,12 +139,12 @@ class FederatedQueryProcessor {
      }
     
     /**
-     * 
+     * process Association
      * @param dcqlAssociation
      * @return
      * @throws QueryExecutionException
      */
-    private gov.nih.nci.cagrid.cqlquery.Association processAssociation (caBIG.caGrid.x10.govNihNciCagridDcql.Association  dcqlAssociation) throws QueryExecutionException {
+    private gov.nih.nci.cagrid.cqlquery.Association processAssociation (Association  dcqlAssociation) throws QueryExecutionException {
 
         gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = new gov.nih.nci.cagrid.cqlquery.Association();
         cqlAssociation.setRoleName(dcqlAssociation.getRoleName());        
@@ -155,8 +154,7 @@ class FederatedQueryProcessor {
         
         //check for nested associations 
          if (dcqlAssociation.isSetAssociation()) {
-             caBIG.caGrid.x10.govNihNciCagridDcql.Association nestedAssociation = dcqlAssociation.getAssociation();
-             //---cqlAssociation.addNewAssociation();             
+             Association nestedAssociation = dcqlAssociation.getAssociation();
              //call this method recursively...
              cqlAssociation.setAssociation(processAssociation(nestedAssociation));
          } 
@@ -174,7 +172,7 @@ class FederatedQueryProcessor {
     } 
     
     /**
-     * 
+     * process ForeignAssociation
      * @param foreignAssociation
      * @return
      * @throws QueryExecutionException
@@ -193,7 +191,8 @@ class FederatedQueryProcessor {
          FederatedQueryExecutor fqexe = new FederatedQueryExecutor();
          CQLQueryResults cqlResults = fqexe.executeCQLQuery(cqlQuery,dcqlObject.getServiceURL());
          
-         ResultAggregator resultAggregator = new ResultAggregator(foreignAssociation.getJoinCondition() );
+         //ResultAggregator resultAggregator = new ResultAggregator(foreignAssociation.getJoinCondition() , foreignAssociation.getForeignObject().getName());
+          ResultAggregator resultAggregator = new ResultAggregator(foreignAssociation.getJoinCondition());
          List cdeList = resultAggregator.processResults(cqlResults);
          gov.nih.nci.cagrid.cqlquery.Group criteriaGroup = resultAggregator.buildGroup(cdeList);
           //gov.nih.nci.cagrid.cqlquery.Group criteriaGroup= new gov.nih.nci.cagrid.cqlquery.Group();
@@ -201,7 +200,7 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * 
+     * get the attribute Array from DCQL and convert into CQL Attribute 
      * @param dcqlAttributeArray
      * @return
      */
@@ -226,15 +225,15 @@ class FederatedQueryProcessor {
      * @return
      * @throws QueryExecutionException
      */
-    private gov.nih.nci.cagrid.cqlquery.Group attachAssociationArrayToGroup(caBIG.caGrid.x10.govNihNciCagridDcql.Group dcqlGroup,
+    private gov.nih.nci.cagrid.cqlquery.Group attachAssociationArrayToGroup(Group dcqlGroup,
                                                                                 gov.nih.nci.cagrid.cqlquery.Group cqlGroup) throws QueryExecutionException {
         //associations
-        caBIG.caGrid.x10.govNihNciCagridDcql.Association[] dcqlAssociationArray = dcqlGroup.getAssociationArray();
+        Association[] dcqlAssociationArray = dcqlGroup.getAssociationArray();
         //build cqlAssociationArray
         gov.nih.nci.cagrid.cqlquery.Association[] cqlAssociationArray = new gov.nih.nci.cagrid.cqlquery.Association[dcqlAssociationArray.length];
 
         for (int i=0;i<dcqlAssociationArray.length;i++){
-            gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = processAssociation((caBIG.caGrid.x10.govNihNciCagridDcql.Association)dcqlAssociationArray[i]);
+            gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = processAssociation((Association)dcqlAssociationArray[i]);
             cqlAssociationArray[i]=cqlAssociation;
         }
         cqlGroup.setAssociation(cqlAssociationArray);    
@@ -249,14 +248,14 @@ class FederatedQueryProcessor {
      * @return
      * @throws QueryExecutionException
      */
-    private gov.nih.nci.cagrid.cqlquery.Group attachNestedGroupArray(caBIG.caGrid.x10.govNihNciCagridDcql.Group dcqlGroup,
+    private gov.nih.nci.cagrid.cqlquery.Group attachNestedGroupArray(Group dcqlGroup,
                                                                                 gov.nih.nci.cagrid.cqlquery.Group cqlGroup) throws QueryExecutionException {
         //groups
-         caBIG.caGrid.x10.govNihNciCagridDcql.Group[] dcqlGroupArray =  dcqlGroup.getGroupArray();
+         Group[] dcqlGroupArray =  dcqlGroup.getGroupArray();
          gov.nih.nci.cagrid.cqlquery.Group[] cqlGroupArray = new gov.nih.nci.cagrid.cqlquery.Group[dcqlGroupArray.length];
          
          for (int i=0;i<dcqlGroupArray.length;i++){
-            gov.nih.nci.cagrid.cqlquery.Group cqlNestedGroup = processGroup((caBIG.caGrid.x10.govNihNciCagridDcql.Group)dcqlGroupArray[i]);
+            gov.nih.nci.cagrid.cqlquery.Group cqlNestedGroup = processGroup((Group)dcqlGroupArray[i]);
             cqlGroupArray[i]=cqlNestedGroup;           
          }
          cqlGroup.setGroup(cqlGroupArray);
@@ -271,7 +270,7 @@ class FederatedQueryProcessor {
      * @return
      * @throws QueryExecutionException
      */
-    private gov.nih.nci.cagrid.cqlquery.Group attachForeignAssociationArrayToGroup(caBIG.caGrid.x10.govNihNciCagridDcql.Group dcqlGroup,
+    private gov.nih.nci.cagrid.cqlquery.Group attachForeignAssociationArrayToGroup(Group dcqlGroup,
                                                                                 gov.nih.nci.cagrid.cqlquery.Group cqlGroup) throws QueryExecutionException{
                                                                                  
          //foreign associations

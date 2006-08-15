@@ -2,22 +2,22 @@ package gov.nih.nci.catrip.fqe.service;
 
 import gov.nih.nci.catrip.fqe.utils.PropertyReader;
 
-import java.io.File;
-import java.io.FileInputStream;
-
-import java.io.IOException;
-
 import java.lang.reflect.Constructor;
 
-import java.util.Enumeration;
 import java.util.Properties;
 
 
 public class ServiceClientFactory {
-    private Properties properties;
+
     public ServiceClientFactory() { 
     }
-
+    
+    /**
+     * get the service Client for the given service URL . This info is configured in query_engine_services_config.xml
+     * 
+     * @param serviceURL
+     * @return
+     */
     public Object getSeviceClient(String serviceURL) {
         
         Object client = null;

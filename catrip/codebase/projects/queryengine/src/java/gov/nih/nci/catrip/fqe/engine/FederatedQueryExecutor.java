@@ -13,45 +13,46 @@ import org.apache.commons.logging.LogFactory;
 
 
 class FederatedQueryExecutor {
-
+    
     private static Log log = LogFactory.getLog(FederatedQueryExecutor.class);
-
+    
     public FederatedQueryExecutor() {
     }
 
     /**
-     *
+     * Execute the query method on service Client ..
      * @param cqlQuery
      * @param serviceURL
      * @return
      * @throws QueryExecutionException
      */
     CQLQueryResults executeCQLQuery(CQLQuery cqlQuery,String serviceURL) throws QueryExecutionException {
-
+        
          System.out.println(" Executing CQL Query on "+ serviceURL +"----------");
          XmlUtil.serializeQry(cqlQuery);
-
+        
         CQLQueryResults results = null;
         try{
-            //get appropriate client class from factory
+            //get appropriate client class from factory    
             ServiceClientFactory clientFactory = new ServiceClientFactory();
             Object client = clientFactory.getSeviceClient(serviceURL);
-
+            
             // parameter is only CQLQuery which is CQLQuery
             Class paramTypes[] = new Class[1];
             paramTypes[0] = CQLQuery.class;
-
-            // need to invoke query method
+            
+            // need to invoke query method 
             Method queryMethod = client.getClass().getMethod("query",paramTypes);
             //System.out.println(queryMethod.getName());
-
+            
             //pass CQLQuery
             Object[] methodArgs = new Object[1];
             methodArgs[0] = cqlQuery;
             results = (CQLQueryResults)queryMethod.invoke(client,methodArgs);
-
+     
         } catch (Exception e) {
-            log.fatal(e);
+            log.fatal(e); 
+            System.exit(1);
             throw new QueryExecutionException("Error in executiong CQL for service URL : " + serviceURL, e);
         }
         return results;

@@ -12,7 +12,11 @@ public class PropertyReader {
     public PropertyReader() {
     }
     public static String CATRIP_HOME = System.getProperty("user.home") + File.separator + ".caTRIP";
-
+    
+    /**
+     * read property file .
+     * @return
+     */
     public static Properties  initProperties(){
     
         //InputStream is = ClassLoader.getSystemResourceAsStream("gov/nih/nci/catrip/fqe/utils/service_config.xml");

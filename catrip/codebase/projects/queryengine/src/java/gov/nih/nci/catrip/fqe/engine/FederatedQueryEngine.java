@@ -1,9 +1,11 @@
 
 package gov.nih.nci.catrip.fqe.engine;
 
-import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
+
 
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+
+import gov.nih.nci.cagrid.dcql.DCQLQueryDocument;
 import gov.nih.nci.catrip.fqe.exception.FederatedQueryException;
 
 

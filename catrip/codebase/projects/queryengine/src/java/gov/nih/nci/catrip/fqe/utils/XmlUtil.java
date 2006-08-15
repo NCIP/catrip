@@ -13,26 +13,26 @@ import org.globus.wsrf.encoding.ObjectSerializer;
 public class XmlUtil {
     public XmlUtil() {
     }
-
+    
 
     public static void serializeQry(CQLQuery Qry){
-
+        
         try {
-
-
+            
+            
             Writer w = new StringWriter();
-
+            
             QName q= new QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
-
+            
             ObjectSerializer.serialize(w,(Object)Qry,q);
             System.out.println(w);
 
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
+        
+        
     }
 
 }
