@@ -4,6 +4,7 @@ package gov.nih.nci.catrip.fqe.engine;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 
+
 import gov.nih.nci.catrip.dcql.Association;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
 import gov.nih.nci.catrip.dcql.ForeignAssociation;
@@ -93,7 +94,7 @@ class FederatedQueryProcessor {
      * @param dcqlAttribute
      * @return
      */
-    private gov.nih.nci.cagrid.cqlquery.Attribute processAttribute(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute dcqlAttribute) {
+    private gov.nih.nci.cagrid.cqlquery.Attribute processAttribute(gov.nih.nci.catrip.cqlquery.Attribute dcqlAttribute) {
         gov.nih.nci.cagrid.cqlquery.Attribute cqlAttribute = new gov.nih.nci.cagrid.cqlquery.Attribute(); 
         cqlAttribute.setName(dcqlAttribute.getName());
         cqlAttribute.setValue(dcqlAttribute.getValue());
@@ -204,12 +205,12 @@ class FederatedQueryProcessor {
      * @param dcqlAttributeArray
      * @return
      */
-    private gov.nih.nci.cagrid.cqlquery.Attribute[] convertDcql2CqlAttributeArray(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute[] dcqlAttributeArray )  {
+    private gov.nih.nci.cagrid.cqlquery.Attribute[] convertDcql2CqlAttributeArray(gov.nih.nci.catrip.cqlquery.Attribute[] dcqlAttributeArray )  {
         
         gov.nih.nci.cagrid.cqlquery.Attribute[] cqlAttributeArray = new gov.nih.nci.cagrid.cqlquery.Attribute[dcqlAttributeArray.length];
 
         for (int i=0;i<dcqlAttributeArray.length;i++){
-             gov.nih.nci.cagrid.cqlquery.Attribute cqlAttribute = processAttribute((caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute)dcqlAttributeArray[i]);
+             gov.nih.nci.cagrid.cqlquery.Attribute cqlAttribute = processAttribute((gov.nih.nci.catrip.cqlquery.Attribute)dcqlAttributeArray[i]);
              cqlAttributeArray[i]=cqlAttribute;
         }
 
