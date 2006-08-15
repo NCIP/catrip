@@ -6,7 +6,8 @@ import edu.duke.catrip.cae.domain.general.Participant;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
-import gov.nih.nci.cagrid.dcql.DCQLQueryDocument;
+
+import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
 import gov.nih.nci.catrip.fqe.exception.FederatedQueryException;
 import gov.nih.nci.catrip.fqe.exception.QueryExecutionException;
 

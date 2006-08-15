@@ -4,11 +4,11 @@ package gov.nih.nci.catrip.fqe.engine;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 
-import gov.nih.nci.cagrid.dcql.Association;
-import gov.nih.nci.cagrid.dcql.DCQLQueryDocument;
-import gov.nih.nci.cagrid.dcql.ForeignAssociation;
-import gov.nih.nci.cagrid.dcql.Group;
-import gov.nih.nci.cagrid.dcql.TargetObject;
+import gov.nih.nci.catrip.dcql.Association;
+import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
+import gov.nih.nci.catrip.dcql.ForeignAssociation;
+import gov.nih.nci.catrip.dcql.Group;
+import gov.nih.nci.catrip.dcql.TargetObject;
 import gov.nih.nci.catrip.fqe.exception.QueryExecutionException;
 
 import java.util.List;

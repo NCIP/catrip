@@ -7,8 +7,9 @@ import gov.nih.nci.cagrid.cqlquery.Predicate;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 
-import gov.nih.nci.cagrid.dcql.Join;
-import gov.nih.nci.cagrid.dcql.JoinCondition;
+
+import gov.nih.nci.catrip.dcql.Join;
+import gov.nih.nci.catrip.dcql.JoinCondition;
 import gov.nih.nci.catrip.fqe.utils.PropertyReader;
 
 import java.io.File;
