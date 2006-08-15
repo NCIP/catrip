@@ -1,18 +1,10 @@
-/*
- * ClassBean.java
- *
- * Created on June 25, 2006, 11:43 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.common;
 
 import java.util.*;
 
 
 /**
+ * ClassBean represents a Class as defined in UMLClass element of Domain Model Metadata.
  *
  * @author Sanjeev Agarwal
  */
@@ -40,7 +32,7 @@ public class ClassBean{
     private boolean needImpl=false;
     
     private int numNotNullAttributes = 0;
-    private ArrayList<AttributeBean> notNullAttributes;// = new ArrayList(50);
+    private ArrayList<AttributeBean> notNullAttributes;
     
     private boolean hasAssociations = false;
 //    private int numAssociations = 0;
@@ -79,10 +71,12 @@ public class ClassBean{
         this.attributes = attributes;
     }
     
+    /** All associated classes as defined in the domain model */
     public ArrayList<String> getAssociatedClasses() {
         return associatedClasses;
     }
     
+    /** All associated classes as defined in the domain model */
     public void setAssociatedClasses(ArrayList<String> associatedClasses) {
         this.associatedClasses = associatedClasses;
     }
@@ -135,7 +129,7 @@ public class ClassBean{
         this.domainModelId = domainModelId;
     }
     
-    
+    /** Add to the attribute list of the class. */
     public void addAttribute(AttributeBean ab){
         getAttributes().add(ab);
     }
@@ -148,15 +142,19 @@ public class ClassBean{
         this.description = description;
     }
     
+    /** add to the list of associated classes. Associations are defined in domain model. */
     public void addAssociatedClass(String refId){
         associatedClasses.add(refId);
     }
     
+    /** this is to display the tree node name as class name only. */
     public String toString() {
         return getClassName();
     }
     
-    
+    /** used to clone the class object when it is dropped on the graph.
+     * The cloned object contains all the property of the original class object except the values of the Attribute.
+     */
     public ClassBean clone(){
         
         ClassBean cBean = new ClassBean();
@@ -188,6 +186,7 @@ public class ClassBean{
         return cBean;
     }
     
+    /** The service URL of the grid service. Required in DCQL generation from the class instance. */
     public String getServiceUrl() {
         return serviceUrl;
     }
@@ -206,7 +205,9 @@ public class ClassBean{
         }
     }
     
-    
+    /** The map of the associated classes and corresponding roleNames.
+     * Built from the Domain model element "exposedUMLAssociationCollection"
+     */
     public HashMap getAssociationRoleNameMap() {
         return associationRoleNameMap;
     }
@@ -215,11 +216,13 @@ public class ClassBean{
         this.associationRoleNameMap = associationRoleNameMap;
     }
     
+    /** get the role name for a particular associated class. */
     public String getAssociationRoleName(String classId) {
         String roleName = (String)getAssociationRoleNameMap().get(classId);
         return roleName;
     }
     
+    /** set the role name for a particular associated class and add to the map. */
     public void addAssociationRoleName(String classId, String associationRoleName) {
         this.getAssociationRoleNameMap().put(classId, associationRoleName) ;
     }
@@ -235,20 +238,21 @@ public class ClassBean{
     
     // --------- helper methods for generating DCQL ------------------ //
     
+    /** return true of the class object contains attributes without null values  */
     public boolean hasNotNullAttributes(){
         boolean result = false;
         ArrayList attributes = getAttributes();
         for (int i = 0; i < attributes.size(); i++) {
             AttributeBean aBean = (AttributeBean)attributes.get(i);
-            if (!aBean.isNull()){  // TODO - add notNull/Null predicates also into this..
+            if (!aBean.isNull()){
                 numNotNullAttributes++;
                 result = true;
             }
-            
         }
         return result;
     }
     
+    /** Get the list of attributes with values. */
     public ArrayList<AttributeBean> getNonNullAttributes(){
         notNullAttributes = new ArrayList(numNotNullAttributes);
         ArrayList attributes = getAttributes();
@@ -264,12 +268,14 @@ public class ClassBean{
     
     // ----------------------------------
     
+    /** Check for any association created by linking two nodes on the graph via class-link. */
     public boolean hasAssociations(){
         return hasAssociations;
     }
     public void setHasAssociations(boolean has){
         this.hasAssociations = has;
     }
+    /** the list that contains the list of associations created on the graph. */
     public void addAssociation(ClassBean ass){
         associations.add(ass);
 //        numAssociations++;
@@ -279,29 +285,35 @@ public class ClassBean{
     }
     
     // -----------------------------------
-    
+    /** Check for any foreign association created by linking two nodes on the graph via CDE link  */
     public boolean hasForeignAssociations(){
         return hasForeignAssociations;
     }
     public void setHasForeignAssociations(boolean has){
         this.hasForeignAssociations = has;
     }
-    
+    /** add to the list that contains the list of foreign associations created on the graph. */
     public void addForeignAssociation(ForeignAssociationBean fass){
         foreignAssociations.add(fass);
     }
+    /** the list that contains the list of foreign associations created on the graph. */
     public ArrayList getForeignAssociations(){
         return foreignAssociations;
     }
+    // --------- helper methods for generating DCQL ------------------ //
     
+    
+    
+    /** method created for the "impl" problem in the caCORE SDK generated code. */
     public void needImpl(boolean need){
         this.needImpl = need;
     }
+    /** method created for the "impl" problem in the caCORE SDK generated code. */
     public boolean needImpl(){
         return needImpl;
     }
     
-    // --------- helper methods for generating DCQL ------------------ //
+    
     
     
 }

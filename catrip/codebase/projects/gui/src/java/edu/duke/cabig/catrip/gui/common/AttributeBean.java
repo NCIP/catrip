@@ -2,7 +2,7 @@ package edu.duke.cabig.catrip.gui.common;
 
 /**
  * This class represents an Attribute of a Class.
- * This class holds important properties defined under UMLAttribute element in Domain Model Metadata.
+ * This class holds important properties defined in UMLAttribute element of Domain Model Metadata.
  *
  * @author Sanjeev Agarwal
  */

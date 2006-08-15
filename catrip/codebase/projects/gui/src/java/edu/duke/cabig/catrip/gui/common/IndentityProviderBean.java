@@ -1,15 +1,7 @@
-/*
- * IndentityProviderBean.java
- *
- * Created on July 24, 2006, 5:18 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.common;
 
 /**
+ * Captures the Indentity Providers listed in caTrip-config.xml file.
  *
  * @author Sanjeev Agarwal
  */
@@ -18,7 +10,7 @@ public class IndentityProviderBean {
     private String url;
     private String type;
     private String keystore;
-//    private boolean trusted;
+    private boolean trusted;
     
     /** Creates a new instance of IndentityProviderBean */
     public IndentityProviderBean() {
@@ -56,12 +48,12 @@ public class IndentityProviderBean {
         this.keystore = keystore;
     }
 
-//    public boolean isTrusted() {
-//        return trusted;
-//    }
-//
-//    public void setTrusted(boolean trusted) {
-//        this.trusted = trusted;
-//    }
+    public boolean isTrusted() {
+        return trusted;
+    }
+
+    public void setTrusted(boolean trusted) {
+        this.trusted = trusted;
+    }
     
 }

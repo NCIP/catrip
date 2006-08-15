@@ -1,15 +1,7 @@
-/*
- * ServiceMetaDataBean.java
- *
- * Created on June 26, 2006, 9:02 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.common;
 
 /**
+ * This class holds the properties defined in the Service Metadata xml.
  *
  * @author Sanjeev Agarwal
  */
@@ -19,16 +11,19 @@ public class ServiceMetaDataBean {
     private String serviceUrl;
     private String description;
     private String version;
-    private String pointOfContact; // concatnate name:email:role
-    private String hostingResearchCenter; // concatnate displayName:shortName::(point of contact)name:email:role
-    
+    private String pointOfContact; // concatenate name:email:role
+    private String hostingResearchCenter; // concatenate displayName:shortName::(point of contact)name:email:role
+     
     private String icon;
-    // Few custom properties used in GUI.
+
     
     // Set this when a user selects a service or add a service
     private boolean selected = false;
+    
+    // This holds the pointer to either a serialized Java object or a XML file or a EndPointReferenceType object.
     private Object domainModelEndPointRef;
     
+    // added only for the demo and initial issues related to "impl".
     private boolean needImpl=false;
     
     
@@ -36,6 +31,7 @@ public class ServiceMetaDataBean {
     public ServiceMetaDataBean() {
     }
     
+    /** service name as defined in the Service Metadata xml */
     public String getServiceName() {
         return serviceName;
     }
@@ -64,6 +60,7 @@ public class ServiceMetaDataBean {
         return pointOfContact;
     }
     
+    /** Set only first Point of Contact from "pointOfContactCollection" element */
     public void setPointOfContact(String pointOfContact) {
         this.pointOfContact = pointOfContact;
     }
@@ -80,6 +77,7 @@ public class ServiceMetaDataBean {
         return selected;
     }
     
+    /** Marked when user select this service to be shown in the GUI. */
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
@@ -96,6 +94,7 @@ public class ServiceMetaDataBean {
         return serviceUrl;
     }
 
+    /** The service URL is taken either from the services-config.xml or the Discovery client directly. */
     public void setServiceUrl(String serviceUrl) {
         this.serviceUrl = serviceUrl;
     }
@@ -104,6 +103,7 @@ public class ServiceMetaDataBean {
         return icon;
     }
 
+    /** Icon must be generated dynamically based on the Service Name. */
     public void setIcon(String icon) {
         this.icon = icon;
     }
