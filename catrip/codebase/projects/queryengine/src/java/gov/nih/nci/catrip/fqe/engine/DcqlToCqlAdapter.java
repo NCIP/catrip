@@ -7,6 +7,7 @@ public class DcqlToCqlAdapter {
     public DcqlToCqlAdapter() {
     }
     /*
+     * updated
     public static gov.nih.nci.cagrid.cqlquery.Attribute getCQLAttribute(caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute dcqlAttribute){
         gov.nih.nci.cagrid.cqlquery.Attribute cqlAttribute = new gov.nih.nci.cagrid.cqlquery.Attribute();
         cqlAttribute.setName(dcqlAttribute.getName());
