@@ -1,11 +1,3 @@
-/*
- * DiscoveryClientDomainModelRetrievalStrategy.java
- *
- * Created on July 5, 2006, 9:27 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
@@ -18,6 +10,7 @@ import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.w3c.dom.Element;
 
 /**
+ * Retrieve the Domain Model from EndpointReferenceType object directly from the Index service.
  *
  * @author Sanjeev Agarwal
  */
