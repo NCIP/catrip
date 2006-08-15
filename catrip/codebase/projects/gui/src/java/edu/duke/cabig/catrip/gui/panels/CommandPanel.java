@@ -6,7 +6,7 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
-import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
+
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
@@ -15,6 +15,7 @@ import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
+import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
 import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngine;
 import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
 import java.io.File;
@@ -22,7 +23,6 @@ import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import org.apache.xmlbeans.XmlOptions;
 
 /**
  *
@@ -85,7 +85,7 @@ public class CommandPanel extends CPanel {
             // clean the result table before you even try the new query...
             getMainFrame().getOutputPanel().cleanResults();
             
-            CQLQueryResults results = fqe.execute(dcqlQueryDocument);
+            CQLQueryResults results = fqe.execute(dcqlQueryDocument); 
             // TODO -  check if the results are null.. show a dialog..
             if ( (results == null) || (results.getObjectResult() == null) || (results.getObjectResult().length == 0) ){
                 JOptionPane.showMessageDialog(getMainFrame(), "No results found. Please check your query.");

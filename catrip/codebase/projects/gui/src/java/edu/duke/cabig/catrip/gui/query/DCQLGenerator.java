@@ -9,23 +9,25 @@
 
 package edu.duke.cabig.catrip.gui.query;
 
-import caBIG.caGrid.x10.govNihNciCagridDcql.Association;
+
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.dnd.ClassNode;
 import java.util.ArrayList;
 
 // DCQL XML imports..
-import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
-import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument.DCQLQuery;
-import caBIG.caGrid.x10.govNihNciCagridDcql.ForeignAssociation;
-import caBIG.caGrid.x10.govNihNciCagridDcql.Group;
-import caBIG.caGrid.x10.govNihNciCagridDcql.Join;
-import caBIG.caGrid.x10.govNihNciCagridDcql.JoinCondition;
-import caBIG.caGrid.x10.govNihNciCagridDcql.TargetObject;
-import caBIG.cql.x1.govNihNciCagridCQLQuery.Attribute;
-import caBIG.cql.x1.govNihNciCagridCQLQuery.LogicalOperator;
+
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import gov.nih.nci.catrip.cqlquery.Attribute;
+import gov.nih.nci.catrip.cqlquery.LogicalOperator;
+import gov.nih.nci.catrip.dcql.Association;
+import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
+import gov.nih.nci.catrip.dcql.DCQLQueryDocument.DCQLQuery;
+import gov.nih.nci.catrip.dcql.ForeignAssociation;
+import gov.nih.nci.catrip.dcql.Group;
+import gov.nih.nci.catrip.dcql.Join;
+import gov.nih.nci.catrip.dcql.JoinCondition;
+import gov.nih.nci.catrip.dcql.TargetObject;
 import org.apache.xmlbeans.XmlOptions;
 // DCQL XML imports..
 
@@ -90,7 +92,7 @@ public class DCQLGenerator {
     
     
     // TODO - add notNull/Null predicates also into this..
-    private static void buildAssociationGroup(caBIG.caGrid.x10.govNihNciCagridDcql.Object outerObject, ClassBean outerObjectBean){//Association
+    private static void buildAssociationGroup(gov.nih.nci.catrip.dcql.Object outerObject, ClassBean outerObjectBean){//Association
         
         boolean targetHasAtts = outerObjectBean.hasNotNullAttributes();
         boolean targetHasAss = outerObjectBean.hasAssociations();
@@ -114,7 +116,7 @@ public class DCQLGenerator {
                 Attribute oneAtt = outerObject.addNewAttribute();
                 AttributeBean aBean = (AttributeBean)targetObjAttributes.get(0);
                 oneAtt.setName(aBean.getAttributeName());
-                oneAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
+                oneAtt.setPredicate(gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
                 boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
                 String attributeValue = aBean.getAttributeValue();
                 boolean hasChar = attributeValue.endsWith("%");
@@ -147,7 +149,7 @@ public class DCQLGenerator {
                 Attribute oneAtt = gp1.addNewAttribute();
                 AttributeBean aBean = (AttributeBean)targetObjAttributes.get(0);
                 oneAtt.setName(aBean.getAttributeName());
-                oneAtt.setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
+                oneAtt.setPredicate(gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
                 boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
                 String attributeValue = aBean.getAttributeValue();
                 boolean hasChar = attributeValue.endsWith("%");
@@ -172,7 +174,7 @@ public class DCQLGenerator {
                 gp1.setLogicRelation(LogicalOperator.AND);
                 createAssociations(gp1, outerObjectBean);
             }else{
-                createAssociations(outerObject,outerObjectBean );
+                createAssociations(outerObject,outerObjectBean ); 
             }
             
             
@@ -187,7 +189,7 @@ public class DCQLGenerator {
             AttributeBean aBean = (AttributeBean)targetObjAttributes.get(i);
             targetAtts[i] = Attribute.Factory.newInstance();
             targetAtts[i].setName(aBean.getAttributeName());
-            targetAtts[i].setPredicate(caBIG.cql.x1.govNihNciCagridCQLQuery.Predicate.Enum.forString(aBean.getPredicate()));
+            targetAtts[i].setPredicate(gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
             boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
             String attributeValue = aBean.getAttributeValue();
             boolean hasChar = attributeValue.endsWith("%");
@@ -261,12 +263,12 @@ public class DCQLGenerator {
     
     
     
-    private static void createAssociations(caBIG.caGrid.x10.govNihNciCagridDcql.Object outerObject, ClassBean outerObjectBean){
+    private static void createAssociations(gov.nih.nci.catrip.dcql.Object outerObject, ClassBean outerObjectBean){
         
         boolean targetHasAss = outerObjectBean.hasAssociations();
         boolean targetHasFass = outerObjectBean.hasForeignAssociations();
         
-        caBIG.caGrid.x10.govNihNciCagridDcql.Object gp1 = outerObject;
+        gov.nih.nci.catrip.dcql.Object gp1 = outerObject; 
         
         if(targetHasAss){
             //- iterate the local associations... recursively.. and create the DCQL.
