@@ -1,8 +1,10 @@
 package gov.nih.nci.catrip.fqe.engine;
 
-import caBIG.caGrid.x10.govNihNciCagridDcql.DCQLQueryDocument;
+
 
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+
+import gov.nih.nci.cagrid.dcql.DCQLQueryDocument;
 
 import java.io.File;
 
@@ -20,26 +22,26 @@ public class CAEandCaTissueCoreDistributedTest extends TestCase {
     protected void tearDown() throws Exception {
         super.tearDown();
     }
-
+    
     private void executeQry(String queryFile) throws Exception{
         FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
         DCQLQueryDocument dcqlQueryDocument = DCQLQueryDocument.Factory.parse(new File(queryFile));
         CQLQueryResults results= fqe.execute(dcqlQueryDocument);
-
+        
         int size = 0;
         if (results.getObjectResult() != null ) {
             size = results.getObjectResult().length;
         }
         System.out.println("Results returned Count : " + size);
     }
-
+    
     /**
      * Get all the tissue specimens  from caTissueCore whose particpants total score of NottinghamHistopathologicGrade
      * is greater than 1
      * @throws Exception
      */
-    public void testGetTissueSpecimensWithNottinghamTotalScore()  throws Exception {
-        String queryFile = "./testDCQL/catissuecore_tissuespecimens_cae_totalscore.xml";
+    public void testGetTissueSpecimensWithNottinghamTotalScore()  throws Exception {        
+        String queryFile = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\queryengine\\testDCQL\\catissuecore_tissuespecimens_cae_totalscore.xml";
         executeQry(queryFile);
     }
 
@@ -49,11 +51,11 @@ public class CAEandCaTissueCoreDistributedTest extends TestCase {
      * is greater than 2
      * * @throws Exception
      */
-    public void testGetTissueSpecimensWithThreeDimensionalSize()  throws Exception {
-        String queryFile = "./testDCQL/catissuecore_tissuespecimens_cae_greatest.xml";
+    public void testGetTissueSpecimensWithThreeDimensionalSize()  throws Exception {        
+        String queryFile = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\queryengine\\testDCQL\\catissuecore_tissuespecimens_cae_greatest.xml";
         executeQry(queryFile);
     }
 
-
-
+    
+    
 }
