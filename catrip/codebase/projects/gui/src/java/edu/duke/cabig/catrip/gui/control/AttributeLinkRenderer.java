@@ -26,14 +26,17 @@ import java.awt.geom.Line2D;
 import org.netbeans.graph.api.model.builtin.GraphPort;
 
 /**
- * @author David Kaspar
+ * This class is responsible to render the link between two ports on the Graph.
+ * The color of the Link is set as Blue if the link is drawn between two CDEs.
+ *
+ * @author Sanjeev Agarwal, David Kaspar
  */
 public class AttributeLinkRenderer implements IGraphLinkRenderer {
     
     private static final boolean disableAntialiasing = Utilities.isWindows()  &&  System.getProperty("java.version", "").startsWith("1.4");
     
 //    private static final Color colorLink = new Color(230, 139, 44);  // sanjeev
-    private static  Color colorLink = new Color(230, 139, 44);
+    private static Color colorLink = new Color(230, 139, 44); // color of the link.
     private static final Color colorLinkSelected = SimpleDocumentRenderer.getSelectionForegroundColor();
     private static final Color colorLinkHighlighted = new Color(0x4B, 0x79, 0xBF);
 //    private static final Color colorLinkShadow = Color.WHITE;
@@ -88,9 +91,10 @@ public class AttributeLinkRenderer implements IGraphLinkRenderer {
         return layers;
     }
     
+    /** Render the link. Change the color of the link based on the SourcePort direction. */
     public void renderLink(IGraphLink link, Graphics2D gr, int layer) {
         // sanjeev
-        // Change the color of the Link base on the SourcePort Type
+        // Change the color of the Link base on the SourcePort Type to draw a Blue colored CDE link.
         if (((GraphPort)link.getSourcePort()).getDirection() == IDirectionable.BOTTOM_LEFT){
             colorLink = Color.BLUE;//new Color (230, 139, 44); // sanjeev
         } else {
@@ -130,10 +134,12 @@ public class AttributeLinkRenderer implements IGraphLinkRenderer {
         return new Rectangle(controlPoint.x - 3, controlPoint.y - 3, 7, 7).contains(location);
     }
     
+    /** Can be used to change/set the role name by clicking on the link. */
     public IGraphEditor getEditor(IGraphLink link, Point position) {
         return null;
     }
     
+    /** Can be helpful in displaying the association Role Name on the graph. */
     public String getToolTipText(IGraphLink link, Point position) {
         IDisplayable displayable = (IDisplayable) link.getLookup().lookup(IDisplayable.class);
         return displayable != null ? displayable.getTooltipText() : null;
