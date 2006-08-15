@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" xmlns:edu.pitt.cabig.cae.domain.general="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" targetNamespace="gme://caTissueCAE.caBIG/1.0/edu.duke.catrip.cae.domain.general" elementFormDefault="qualified">
+  <xs:import namespace="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" schemaLocation="1.0_edu.pitt.cabig.cae.domain.general.xsd" />
+  <xs:element name="Specimen" type="Specimen" />
+  <xs:complexType name="Specimen">
+    <xs:complexContent>
+      <xs:extension base="edu.pitt.cabig.cae.domain.general:Specimen">
+        <xs:sequence />
+        <xs:attribute name="identifier" type="xs:string" />
+        <xs:attribute name="surgicalLabel" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Participant" type="Participant" />
+  <xs:complexType name="Participant">
+    <xs:complexContent>
+      <xs:extension base="edu.pitt.cabig.cae.domain.general:Participant">
+        <xs:sequence>
+          <xs:element name="medicalRecordNumber" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="lastName" type="xs:string" />
+        <xs:attribute name="firstName" type="xs:string" />
+        <xs:attribute name="middleName" type="xs:string" />
+        <xs:attribute name="birthDate" type="xs:dateTime" />
+        <xs:attribute name="uniquePatientIdentifier" type="xs:string" />
+        <xs:attribute name="gender" type="xs:string" />
+        <xs:attribute name="race" type="xs:string" />
+        <xs:attribute name="ethnicity" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Accession" type="Accession" />
+  <xs:complexType name="Accession">
+    <xs:complexContent>
+      <xs:extension base="edu.pitt.cabig.cae.domain.general:Accession">
+        <xs:sequence />
+        <xs:attribute name="accessionDate" type="xs:dateTime" />
+        <xs:attribute name="surgicalPathologyNumber" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

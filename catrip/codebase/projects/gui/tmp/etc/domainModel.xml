@@ -1,0 +1,9 @@
+<ns1:DomainModel projectDescription="This is the phase 1 model for the caTISSUE Clinical Annotation Engine application, a caBIG application for integrating  clinical information that describes tissue bank specimens.    The clinical data come from sources including the Anatomic Pathology LIS and the tumor registry.    The classes and attributes in the breast, prostate, and cutaneousMelanoma packages of this model are identical to those in the same packages of the model in the CAP Cancer Checklists classification." projectLongName="caTISSUE Clinical Annotation Engine" projectShortName="caTissueCAE" projectVersion="1" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice">
+ <ns1:exposedUMLAssociationCollection/>
+ <ns1:exposedUMLClassCollection>
+  <ns2:UMLClass className="ThreeDimensionalSize" description="General measurement of size in 3 dimensions." id="18785753-F3DF-3542-E044-0003BA4529A9" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTISSUE Clinical Annotation Engine" projectVersion="1" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns2:umlAttributeCollection/>
+   <ns2:semanticMetadataCollection/>
+  </ns2:UMLClass>
+ </ns1:exposedUMLClassCollection>
+</ns1:DomainModel>

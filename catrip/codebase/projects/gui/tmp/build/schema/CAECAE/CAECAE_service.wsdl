@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CAECAE" targetNamespace="http://cagrid.nci.nih.gov/CAECAE/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:binding="http://cagrid.nci.nih.gov/CAECAE/bindings" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://cagrid.nci.nih.gov/CAECAE/bindings" location="CAECAE_bindings.wsdl"/>
+  <wsdl:service name="CAECAEService">
+    <wsdl:port name="CAECAEPortTypePort" binding="binding:CAECAEPortTypeSOAPBinding">
+      <soap:address location="http://localhost:8080/wsrf/services/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

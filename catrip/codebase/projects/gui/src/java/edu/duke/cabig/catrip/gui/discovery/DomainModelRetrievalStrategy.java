@@ -1,17 +1,9 @@
-/*
- * DomainModelRetrievalStrategy.java
- *
- * Created on July 3, 2006, 12:58 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.discovery;
 
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 
 /**
+ * The class is based on the Strategy pattern.
  *
  * @author Sanjeev Agarwal
  */
