@@ -1,11 +1,3 @@
-/*
- * GUIConfigurationLoader.java
- *
- * Created on June 7, 2006, 4:41 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.config;
 
@@ -23,6 +15,7 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
+ * Loads the configuration file "catrip-config.xml" and return a populated GUIConfigurationBean object.
  *
  * @author Sanjeev Agarwal
  */
@@ -36,6 +29,7 @@ public  class GUIConfigurationLoader {
     public GUIConfigurationLoader() {
     }
     
+    /** Return the GUIConfigurationBean populated with Configuration data. */
     public static GUIConfigurationBean getGUIConfiguration(){
         if (configBean == null){
             createConfig();
@@ -47,10 +41,11 @@ public  class GUIConfigurationLoader {
         return null;
     }
     
+    /** Loads the data from  "catrip-config.xml" into GUIConfigurationBean object using XMLBeans.*/
     private static synchronized void createConfig(){
         configBean = new GUIConfigurationBean();
         CatripConfigurationDocument conf = null;
-        String configXMLFile = GUIConstants.CATRIP_HOME + File.separator + "catrip-config.xml";
+        String configXMLFile = GUIConstants.CATRIP_CONFIG_FILE_LOCATION;
         try {
             conf = CatripConfigurationDocument.Factory.parse(new File(configXMLFile));
         } catch (Exception ex) {
@@ -81,7 +76,7 @@ public  class GUIConfigurationLoader {
         }
         
         CatripServicesConfigurationDocument serviceList = null;
-        String servicesXMLFile = configBean.getConfigRootLocation() + File.separator + "services-config.xml";
+        String servicesXMLFile = configBean.getConfigRootLocation() + File.separator + GUIConstants.CATRIP_SERVICES_CONFIG_FILE_NAME;
         try {
             serviceList = CatripServicesConfigurationDocument.Factory.parse(new File(servicesXMLFile));
         } catch (Exception ex) {

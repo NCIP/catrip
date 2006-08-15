@@ -1,11 +1,3 @@
-/*
- * GUIConfigurationBean.java
- *
- * Created on June 7, 2006, 4:42 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.config;
 
@@ -14,6 +6,7 @@ import edu.duke.cabig.catrip.gui.common.ServiceBean;
 import java.util.ArrayList;
 
 /**
+ * This class holds the values from catrip-config.xml file.
  *
  * @author Sanjeev Agarwal
  */
