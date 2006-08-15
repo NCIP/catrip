@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import org.apache.axis.message.addressing.EndpointReferenceType;
 
 /**
+ * This class is a subclass of ServiceLocator which uses Discovery APIs to locate the Service Metadata and the Domain Model.
  *
  * @author Sanjeev Agarwal
  */
