@@ -1,17 +1,10 @@
-/*
- * NamedTreeNode.java
- *
- * Created on August 4, 2006, 12:05 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.components;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
+ * Subclass of DefaultMutableTreeNode which can be given a specific name.
  *
  * @author Sanjeev Agarwal
  */
@@ -49,8 +42,7 @@ public class NamedTreeNode extends DefaultMutableTreeNode{
     
     
     /**
-     * Returns this node label. This method is invoked by {@link JTree} for populating
-     * the tree widget.
+     * Returns this node label. This method is invoked by {@link JTree} for populating the tree widget.
      */
     public String toString() {
         return name;

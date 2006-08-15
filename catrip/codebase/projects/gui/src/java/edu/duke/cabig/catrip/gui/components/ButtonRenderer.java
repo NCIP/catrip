@@ -1,12 +1,3 @@
-/*
- * ButtonRenderer.java
- *
- * Created on June 19, 2006, 10:26 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.components;
 
 import java.awt.Component;
@@ -15,6 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 /**
+ * Button renderer for the JTable cell.
  *
  * @author Sanjeev Agarwal
  */

@@ -1,10 +1,3 @@
-/*
- * CPanel.java
- *
- * Created on May 17, 2006, 6:34 PM
- *
- */
-
 package edu.duke.cabig.catrip.gui.components;
 
 
@@ -12,6 +5,7 @@ import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import javax.swing.*;
 
 /**
+ * Custom swing Panel component. Has pointer to a parent JFrame.
  *
  * @author Sanjeev Agarwal
  */

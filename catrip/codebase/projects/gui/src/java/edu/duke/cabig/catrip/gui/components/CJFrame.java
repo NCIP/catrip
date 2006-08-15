@@ -1,9 +1,3 @@
-/*
- * CJFrame.java
- *
- * Created on June 9, 2006, 2:36 PM
- */
-
 package edu.duke.cabig.catrip.gui.components;
 
 import edu.duke.cabig.catrip.gui.util.*;
@@ -13,6 +7,7 @@ import java.awt.Toolkit;
 
 
 /**
+ * Custom swing JFrame component. Can be positioned in center of the screen and has a default Icon.
  *
  * @author  Sanjeev Agarwal
  */
@@ -27,19 +22,16 @@ public class CJFrame extends javax.swing.JFrame {
         setIconImage(getIconImage());
     }
     
-    
-    
     public Image getIconImage(){
-        return GUIConstants.WINDOW_ICON;//iconImage;
+        return GUIConstants.WINDOW_ICON;
     }
     
     public void exit(){
         System.exit(0);
     }
     
-    
+    /** Implemented by extending classes. */
     public void fwdAction(){
-        // to be implemented in each window..
     }
     
     

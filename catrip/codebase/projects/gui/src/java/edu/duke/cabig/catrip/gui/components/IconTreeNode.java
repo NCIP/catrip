@@ -1,11 +1,3 @@
-/*
- * IconTreeNode.java
- *
- * Created on June 19, 2006, 8:53 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.components;
 
@@ -15,6 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 /**
  * Subclass of DefaultMutableTreeNode which can show different Icons for the tree nodes,
  * and provide easy access to the associated User Object.
+ *
  * @author Sanjeev Agarwal
  */
 public class IconTreeNode extends DefaultMutableTreeNode {

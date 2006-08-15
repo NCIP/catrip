@@ -1,11 +1,3 @@
-/*
- * IconTreeNodeRenderer.java
- *
- * Created on June 19, 2006, 9:01 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.components;
 
@@ -17,6 +9,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 /**
  * A Custom renderer for the IconTreeNode which displays the Icon of the Tree Node.
+ *
  * @author Sanjeev Agarwal
  */
 public class IconTreeNodeRenderer extends DefaultTreeCellRenderer {

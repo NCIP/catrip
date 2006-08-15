@@ -1,12 +1,3 @@
-/*
- * CJDialog.java
- *
- * Created on June 16, 2006, 12:09 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package edu.duke.cabig.catrip.gui.components;
 
 import java.awt.Dimension;
@@ -15,6 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 /**
+ * Custom swing JDialog component. Can be positioned in center of the screen.
  *
  * @author Sanjeev Agarwal
  */
@@ -24,6 +16,7 @@ public class CJDialog extends JDialog{
      super(owner, title);   
     }
     
+    /** Place the component in the center of the screen. */
     public void center(){ 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
