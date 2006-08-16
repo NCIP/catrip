@@ -1,23 +1,14 @@
-/*
- * DCQLGenerator.java
- *
- * Created on July 27, 2006, 10:32 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.query;
 
-
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.dnd.ClassNode;
 import java.util.ArrayList;
 
-// DCQL XML imports..
 
-import edu.duke.cabig.catrip.gui.common.AttributeBean;
+// DCQL XML imports..
 import gov.nih.nci.catrip.cqlquery.Attribute;
 import gov.nih.nci.catrip.cqlquery.LogicalOperator;
 import gov.nih.nci.catrip.dcql.Association;
@@ -33,6 +24,7 @@ import org.apache.xmlbeans.XmlOptions;
 
 
 /**
+ * This class generates the DCQL object and XML based on the nodes on the Graph and DCQLRegistry.
  *
  * @author Sanjeev Agarwal
  */
@@ -42,6 +34,7 @@ public class DCQLGenerator {
     public DCQLGenerator() {
     }
     
+    /** Creates a DCQLDocument object. */
     public static DCQLQueryDocument getDCQLDocument(){
         DCQLQueryDocument dc = null;
         try{
@@ -69,7 +62,7 @@ public class DCQLGenerator {
         return dc;
     }
     
-    
+    /** get the DCQL as XML text. */
     public static String getDCQLText(){
         String txt = "";
         try{
@@ -80,6 +73,7 @@ public class DCQLGenerator {
         return txt;
     }
     
+    /** get the DCQL as formatted XML text. */
     public static String getDCQLText(XmlOptions xmlOptions){
         String txt = "";
         try{
@@ -91,7 +85,7 @@ public class DCQLGenerator {
     }
     
     
-    // TODO - add notNull/Null predicates also into this..
+    
     private static void buildAssociationGroup(gov.nih.nci.catrip.dcql.Object outerObject, ClassBean outerObjectBean){//Association
         
         boolean targetHasAtts = outerObjectBean.hasNotNullAttributes();

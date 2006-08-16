@@ -1,11 +1,3 @@
-/*
- * DCQLRegistry.java
- *
- * Created on July 27, 2006, 10:32 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.query;
 
@@ -14,6 +6,7 @@ import edu.duke.cabig.catrip.gui.dnd.ClassNode;
 import java.util.ArrayList;
 
 /**
+ * The registry to keep information about the Target object/node set on the graph.
  *
  * @author Sanjeev Agarwal
  */
