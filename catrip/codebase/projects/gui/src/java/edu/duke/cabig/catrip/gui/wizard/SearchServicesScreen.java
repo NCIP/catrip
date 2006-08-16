@@ -1,8 +1,3 @@
-/*
- * SearchServicesScreen.java
- *
- * Created on June 9, 2006, 1:30 PM
- */
 
 package edu.duke.cabig.catrip.gui.wizard;
 
@@ -10,6 +5,7 @@ import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel;
 
 /**
+ * Window for searching the Grid services.
  *
  * @author  Sanjeev Agarwal
  */

@@ -12,7 +12,7 @@
  */
 package edu.duke.cabig.catrip.gui.control;
 
-import edu.duke.cabig.catrip.gui.util.XMLSerializerTest;
+import edu.duke.cabig.catrip.gui.control.XMLGraphSerializer;
 import org.netbeans.graph.api.control.builtin.DefaultViewController;
 import org.netbeans.graph.api.model.IGraphNode;
 import org.netbeans.graph.api.GraphFactory;
@@ -232,10 +232,10 @@ public class SimpleViewController extends DefaultViewController implements Actio
         if (value == null)
             return;
         try {
-            Document document = XMLSerializerTest.readXMLDocument (new FileInputStream (value));
+            Document document = XMLGraphSerializer.readXMLDocument (new FileInputStream (value));
             Node rootNode = document != null ? document.getFirstChild () : null;
             if (rootNode != null)
-                XMLSerializerTest.readXMLTree (getHelper (), rootNode);
+                XMLGraphSerializer.readXMLTree (getHelper (), rootNode);
         } catch (IOException e) {
             e.printStackTrace (); // TODO
         }
@@ -247,8 +247,8 @@ public class SimpleViewController extends DefaultViewController implements Actio
             return;
         try {
             Document document = XMLUtil.createDocument ("document", null, null, null);
-            XMLSerializerTest.writeXMLTree (getHelper (), document, null);
-            XMLSerializerTest.writeXMLDocument (new FileOutputStream (value), document);
+            XMLGraphSerializer.writeXMLTree (getHelper (), document, null);
+            XMLGraphSerializer.writeXMLDocument (new FileOutputStream (value), document);
         } catch (IOException e) {
             e.printStackTrace (); // TODO
         }

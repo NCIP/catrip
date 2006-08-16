@@ -10,7 +10,7 @@
  * Code is Sun Microsystems, Inc. Portions Copyright 1997-2005 Sun
  * Microsystems, Inc. All Rights Reserved.
  */
-package edu.duke.cabig.catrip.gui.util;
+package edu.duke.cabig.catrip.gui.control;
 
 import org.netbeans.graph.api.control.GraphHelper;
 import org.netbeans.graph.api.model.IGraphNode;
@@ -28,9 +28,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
+ * Will be used in saving the Visual Query.
+ *
  * @author David Kaspar
  */
-public class XMLSerializerTest {
+public class XMLGraphSerializer {
 
     private static String getAttributeValue (org.w3c.dom.Node node, String attr) {
         try {

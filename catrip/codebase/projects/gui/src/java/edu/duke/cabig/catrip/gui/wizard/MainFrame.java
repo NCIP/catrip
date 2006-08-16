@@ -1,8 +1,3 @@
-/*
- * MainFrame.java
- *
- * Created on May 16, 2006, 2:23 PM
- */
 
 package edu.duke.cabig.catrip.gui.wizard;
 
@@ -12,6 +7,7 @@ import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.panels.*;
 
 /**
+ * Main Window containing all the different Panels.
  *
  * @author  Sanjeev Agarwal
  */

@@ -1,14 +1,9 @@
-/*
- * WelcomeScreen.java
- *
- * Created on June 9, 2006, 1:00 PM
- */
-
 package edu.duke.cabig.catrip.gui.wizard;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 
 /**
+ * Welcome Screen Window.
  *
  * @author  Sanjeev Agarwal
  */
@@ -131,15 +126,6 @@ public class WelcomeScreen extends CJFrame {
         loginScreen.setVisible(true);
         loginScreen.center();
         this.dispose();
-        
-        
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                LoginScreen ws= new LoginScreen();
-//                ws.main(null);
-//            }
-//        });
-//        this.dispose();
         
     }//GEN-LAST:event_loginBtnActionPerformed
     
