@@ -162,7 +162,6 @@ public class DCQLGenerator {
         }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
             
             int numOfAssociations = outerObjectBean.getAssociations().size();
-            
             if (numOfAssociations>1){
                 dcqlGroup = dcqlOuterObject.addNewGroup();
                 dcqlGroup.setLogicRelation(LogicalOperator.AND);
@@ -170,8 +169,6 @@ public class DCQLGenerator {
             }else{
                 createAssociations(dcqlOuterObject,outerObjectBean );
             }
-            
-            
         }
         
     }
@@ -236,7 +233,6 @@ public class DCQLGenerator {
                 dcqlForeignObject.setName(foreignAssociationRightBean.getFullyQualifiedName());
                 dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
                 
-                
                 JoinCondition dcqlJoinCondition = JoinCondition.Factory.newInstance();
                 Join leftJoin = Join.Factory.newInstance();
                 leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName());
@@ -294,7 +290,6 @@ public class DCQLGenerator {
                 TargetObject dcqlForeignObject = dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
                 dcqlForeignObject.setName(foreignAssociationRightBean.getFullyQualifiedName());
                 dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
-                
                 
                 JoinCondition dcqlJoinCondition = JoinCondition.Factory.newInstance();
                 Join leftJoin = Join.Factory.newInstance();

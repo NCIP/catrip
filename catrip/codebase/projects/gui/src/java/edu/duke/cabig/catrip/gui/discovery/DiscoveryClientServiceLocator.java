@@ -22,7 +22,9 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
     public DiscoveryClientServiceLocator() {
     }
     
-    /** Discover all services registered into Index service. The service list is generated using Discovery APIs. */
+    /**
+     * Discover all services registered into Index endpointReference. The endpointReference list is generated using Discovery APIs.
+     */
     public ArrayList<ServiceMetaDataBean> discoverServices() {
         ArrayList<ServiceMetaDataBean> serviceList = new ArrayList(50);
         
@@ -44,34 +46,34 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
         
         if (allServices != null) {
             for (int ii = 0; ii < allServices.length; ii++) {
-                EndpointReferenceType service = allServices[ii];
-                System.out.println("Service End Point Address :" + service.getAddress()+"\n");
+                EndpointReferenceType endpointReference = allServices[ii];
+                System.out.println("Service End Point Address :" + endpointReference.getAddress()+"\n");
                 try {
-                    ServiceMetadata commonMetadata = MetadataUtils.getServiceMetadata(service);
-                    if (commonMetadata != null) {
+                    ServiceMetadata serviceMetadata = MetadataUtils.getServiceMetadata(endpointReference);
+                    if (serviceMetadata != null) {
                         
-                        ServiceMetaDataBean serviceBean = new ServiceMetaDataBean();
+                        ServiceMetaDataBean serviceMetaDataBean = new ServiceMetaDataBean();
                         
-                        serviceBean.setDomainModelEndPointRef(service);
-                        serviceBean.setServiceName(commonMetadata.getServiceDescription().getService().getName());
-                        serviceBean.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
+                        serviceMetaDataBean.setDomainModelEndPointRef(endpointReference);
+                        serviceMetaDataBean.setServiceName(serviceMetadata.getServiceDescription().getService().getName());
+                        serviceMetaDataBean.setDescription(serviceMetadata.getServiceDescription().getService().getDescription());
                         try {
-                            PointOfContact pc = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
-                            serviceBean.setPointOfContact(pc.getFirstName()+" "+pc.getLastName()+":"+pc.getEmail()+":"+pc.getRole());
+                            PointOfContact pointOfContact = serviceMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
+                            serviceMetaDataBean.setPointOfContact(pointOfContact.getFirstName()+" "+pointOfContact.getLastName()+":"+pointOfContact.getEmail()+":"+pointOfContact.getRole());
                         } catch (NullPointerException np){
                             np.printStackTrace();
-                            serviceBean.setPointOfContact("No Point of Contact found in the Metadata.");
+                            serviceMetaDataBean.setPointOfContact("No Point of Contact found in the Metadata.");
                         }
                         
                         try {
-                            ResearchCenter rc = commonMetadata.getHostingResearchCenter().getResearchCenter();
-                            serviceBean.setHostingResearchCenter(rc.getDisplayName() + "("+rc.getShortName()+")"+":"+serviceBean.getPointOfContact());
+                            ResearchCenter researchCenter = serviceMetadata.getHostingResearchCenter().getResearchCenter();
+                            serviceMetaDataBean.setHostingResearchCenter(researchCenter.getDisplayName() + "("+researchCenter.getShortName()+")"+":"+serviceMetaDataBean.getPointOfContact());
                         } catch (NullPointerException np){
                             np.printStackTrace();
-                            serviceBean.setHostingResearchCenter("No Hosting Research Center found in the Metadata.");
+                            serviceMetaDataBean.setHostingResearchCenter("No Hosting Research Center found in the Metadata.");
                         }
                         
-                        serviceList.add(serviceBean);
+                        serviceList.add(serviceMetaDataBean);
                         
                     }
                     
