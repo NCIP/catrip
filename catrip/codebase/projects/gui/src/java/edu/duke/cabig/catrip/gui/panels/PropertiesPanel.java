@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.table.*;
 
 /**
+ * This panel shows the Properties or Attribute Names/Predicates/Values for selected node on the graph.
  *
  * @author  Sanjeev Agarwal
  */
@@ -31,6 +32,7 @@ public class PropertiesPanel extends CPanel {
         init();
     }
     
+    /** load the predicate list in the combo-box. This should come from a configuration file. */
     private void init(){
         predicates = new JComboBox();
         predicates.addItem("LIKE");
@@ -51,7 +53,6 @@ public class PropertiesPanel extends CPanel {
     public void showNodeProperties(ClassBean node){
         cleanTable();
         cBean = node;
-        // here set the properties table with the attribute names and values for primitive types only.
         ObjectTableModel tm =   (ObjectTableModel) getPropTable().getModel();
         
         ArrayList attributeBeans = node.getAttributes();
@@ -59,23 +60,15 @@ public class PropertiesPanel extends CPanel {
             AttributeBean aBean = (AttributeBean)attributeBeans.get(i);
             tm.addObjectRow(aBean);
         }
-        
     }
-    
     
     private void cleanTable(){
         ((ObjectTableModel)getPropTable().getModel()).clean();
     }
     
-    
-    
-    
-    
     public javax.swing.JTable getPropTable() {
         return propTable;
     }
-    
-    
     
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -102,9 +95,9 @@ public class PropertiesPanel extends CPanel {
 
     }// </editor-fold>//GEN-END:initComponents
     
+    /** Set the predicate/attribute value back into the object. */
     private void propTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_propTablePropertyChange
-        // Set the attribute value back into the object.
-        
+
         int row = getPropTable().getSelectedRow();
         int col = getPropTable().getSelectedColumn();
         ObjectTableModel tm = (ObjectTableModel) getPropTable().getModel();
@@ -119,20 +112,14 @@ public class PropertiesPanel extends CPanel {
                 aBean.setPredicate(val);
             }else if (col == 2){// it is attribute value that has been changed..
                 aBean.setAttributeValue(val);
-            } // else nothing..
-            
+            } // else nothing..   
         }
-        
-        
-        
-        
     }//GEN-LAST:event_propTablePropertyChange
     
     private DefaultTableModel getTableModel(){
         
         Object [][] data = new Object [][] { };
         String [] columNames = new String [] {"Attribute","Predicate" ,"Value"};
-        
         DefaultTableModel tb = new ObjectTableModel(data, columNames);
         return tb;
     }
@@ -144,7 +131,7 @@ public class PropertiesPanel extends CPanel {
     
 }
 
-
+/** Custom table model which can take an object of type AttributeBean and add a row in the table. */
 class ObjectTableModel extends DefaultTableModel {
     private ClassBean object;
     HashMap attributeRows = new HashMap(100);
@@ -167,8 +154,6 @@ class ObjectTableModel extends DefaultTableModel {
     
     public void addObjectRow(AttributeBean aBean){
         Vector  r = new Vector();
-//        r.add(aBean.getAttributeName()); r.add(aBean.getPredicate()); r.add(aBean.getAttributeValue());
-        // show the CDE name in the properties table.. instead of variable names..
         r.add(aBean.getCDEName()); r.add(aBean.getPredicate()); r.add(aBean.getAttributeValue());
         addRow(r);
         attributeRows.put(getRowCount(), aBean);

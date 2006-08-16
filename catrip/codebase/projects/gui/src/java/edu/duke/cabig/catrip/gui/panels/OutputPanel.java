@@ -1,8 +1,3 @@
-/*
- * OutputPanel.java
- *
- * Created on May 16, 2006, 2:22 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
@@ -14,6 +9,8 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Out Panel to show the results from the DCQL Query execution. 
+ * It has a dynamic Table Model, where the Table columns are shown based on the Target object selected on the Graph.
  *
  * @author  Sanjeev Agarwal
  */
@@ -62,22 +59,16 @@ public class OutputPanel extends CPanel {
     private javax.swing.JTable outputTable;
     // End of variables declaration//GEN-END:variables
     
-    
-    
-    
-    
-    
     private DefaultTableModel getTableModel(){
         return new javax.swing.table.DefaultTableModel();
     }
     
-    
-    
+    /** This method assumes that the Target object and the results are an instance of type ClassBean. */
     private DefaultTableModel getTableModel(ArrayList array){
         Vector rowV = new Vector();
         Vector colNames = null;
         
-        for (int i = 0; i < array.size(); i++){  // TODO - restrict it to only 100 rows.. else gui will suck...
+        for (int i = 0; i < array.size(); i++){  // TODO - restrict it to only 100 rows or so.
             ClassBean b = (ClassBean) array.get(i);
             ArrayList at = b.getAttributes();
             Vector colV = new Vector();

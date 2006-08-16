@@ -1,8 +1,3 @@
-/*
- * ListServicesPanel.java
- *
- * Created on May 16, 2006, 2:21 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
@@ -28,6 +23,7 @@ import javax.swing.tree.*;
 
 
 /**
+ * Panel which contains the JTree of the Services.
  *
  * @author  Sanjeev Agarwal
  */
@@ -49,7 +45,7 @@ public class ListServicesPanel extends CPanel {
         return tree;
     }
     
-    
+    /** build the tree by loading the data from Service and DomainModel registry. */
     private void buildTree(){
         
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("caTRIP Services");
@@ -131,23 +127,23 @@ public class ListServicesPanel extends CPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
     
-    
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JFrame jf = new JFrame("Testing this panel");
-                jf.getContentPane().add(new ListServicesPanel());
-                jf.setBounds(10,10,200,200);
-                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jf.setVisible(true);
-            }
-        });
-        
-    }
-    
-    
+//    
+//    public static void main(String[] args) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                JFrame jf = new JFrame("Testing this panel");
+//                jf.getContentPane().add(new ListServicesPanel());
+//                jf.setBounds(10,10,200,200);
+//                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                jf.setVisible(true);
+//            }
+//        });
+//        
+//    }
     
     
+    
+    /** Custom  Tree cell/Node renderer which different Icons for different levels/node-type. */
     private class MyRenderer extends DefaultTreeCellRenderer {
         Icon tutorialIcon;
         
@@ -171,7 +167,7 @@ public class ListServicesPanel extends CPanel {
                     expanded, leaf, row,
                     hasFocus);
             DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
-            
+             // TODO - Get the Icons from the GUIConstants class..
             if (leaf ) {
                 setIcon(tutorialIcon);
                 setToolTipText("CDE Named : "+value.toString());
@@ -187,7 +183,7 @@ public class ListServicesPanel extends CPanel {
                 setToolTipText(value.toString()); //no tool tip
             }
             
-            
+            // TODO - Get the Icons from the GUIConstants class..
             if ( (node.getLevel() == 4) && (node.getParent().toString().equalsIgnoreCase("Associations"))  ){
                 setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/tree/icon_association.png")));
 //                System.out.println ("###### node is :"+node.getParent ());

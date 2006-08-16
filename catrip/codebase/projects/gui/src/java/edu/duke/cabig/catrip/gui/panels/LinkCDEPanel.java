@@ -1,8 +1,3 @@
-/*
- * LinkCDEPanel.java
- *
- * Created on June 9, 2006, 1:34 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
@@ -10,6 +5,7 @@ import edu.duke.cabig.catrip.gui.components.CJFrame;
 import javax.swing.AbstractListModel;
 
 /**
+ * Pop-up Panel when two class nodes are selected to be linked via CDE.
  *
  * @author  Sanjeev Agarwal
  */
@@ -104,7 +100,7 @@ public class LinkCDEPanel extends javax.swing.JPanel {
         });
     }
     
-    
+    /** get the list of CDEs from both classes and show in the table. */
     private AbstractListModel getListModel(){
         AbstractListModel lm =   new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2"};
