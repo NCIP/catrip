@@ -32,7 +32,7 @@ import org.netbeans.graph.api.model.builtin.GraphPort;
  */
 public class ViewController extends DefaultViewController implements ActionListener {
     
-    private JPopupMenu popup;
+    private JPopupMenu singleNodePopup;
     private JMenuItem miDelete;
     private JMenuItem miViewProp;
     private JMenuItem miShowClass;
@@ -40,50 +40,50 @@ public class ViewController extends DefaultViewController implements ActionListe
     private JMenuItem miSetTarget;
     
     
-    private JPopupMenu popup2;
+    private JPopupMenu twoNodePopup;
     private JMenuItem miLinkCDE;
     
-    private JPopupMenu popup3;
+    private JPopupMenu graphPopup;
     private JMenuItem miDeleteAll;
     
     
-    private VisualQueryDesignerPanel test;
+    private VisualQueryDesignerPanel visualQueryDesignerPanel;
     
     public ViewController(VisualQueryDesignerPanel test) {
-        this.test = test;
-        popup = new JPopupMenu();
+        this.visualQueryDesignerPanel = test;
+        singleNodePopup = new JPopupMenu();
         
         miDelete = new JMenuItem("Delete Model element");
         miDelete.addActionListener(this);
-        popup.add(miDelete);
+        singleNodePopup.add(miDelete);
         
         miViewProp = new JMenuItem("Edit Model Properties/Attributes");
         miViewProp.addActionListener(this);
-        popup.add(miViewProp);
+        singleNodePopup.add(miViewProp);
         
-        popup.add(new JMenuItem("Get Associated Domain Model Classes"));
-        popup.add(new JMenuItem("Get All Domain Model Classes"));
+        singleNodePopup.add(new JMenuItem("Get Associated Domain Model Classes"));
+        singleNodePopup.add(new JMenuItem("Get All Domain Model Classes"));
         
         miShowClass = new JMenuItem("Retrieve Semantically Equivalent Classes");
         miShowClass.addActionListener(this);
-        popup.add(miShowClass);
+        singleNodePopup.add(miShowClass);
         
         
         miSetTarget = new JMenuItem("Set object as Target Object.");
         miSetTarget.addActionListener(this);
-        popup.add(miSetTarget);
+        singleNodePopup.add(miSetTarget);
         
         
-        popup2 = new JPopupMenu();
+        twoNodePopup = new JPopupMenu();
         miLinkCDE = new JMenuItem("Link Classes via CDE");
         miLinkCDE.addActionListener(this);
-        popup2.add(miLinkCDE);
+        twoNodePopup.add(miLinkCDE);
         
         
-        popup3 = new JPopupMenu();
+        graphPopup = new JPopupMenu();
         miDeleteAll = new JMenuItem("Delete All Nodes from Graph.");
         miDeleteAll.addActionListener(this);
-        popup3.add(miDeleteAll);
+        graphPopup.add(miDeleteAll);
         
         
     }
@@ -93,17 +93,17 @@ public class ViewController extends DefaultViewController implements ActionListe
         Object[] selectedComponents = getHelper().getSelectedComponents();
         
         if (selectedComponents != null  &&  selectedComponents.length == 2 &&  (selectedComponents[0] instanceof IGraphNode) && (selectedComponents[1] instanceof IGraphNode))
-            return popup2;
+            return twoNodePopup;
         
         if (selectedComponents == null  ||  selectedComponents.length != 1 ||  !(selectedComponents[0] instanceof IGraphNode))
-            return popup3; // return base graph menu
+            return graphPopup; // return base graph menu
         
         
         //useful code here..
 //        IGraphNode[] nodes = document.getSelectedComponents().getNodes();
 //        nodes[0].getID();
         
-        return popup;
+        return singleNodePopup;
         
     }
     
@@ -144,7 +144,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                 }
             final IGraphNode[] _nodes = (IGraphNode[]) nodes.toArray(new IGraphNode[nodes.size()]);
             final IGraphLink[] _links = (IGraphLink[]) links.toArray(new IGraphLink[links.size()]);
-            test.getDocument().removeComponents(GraphEvent.create(_nodes, _links));
+            visualQueryDesignerPanel.getDocument().removeComponents(GraphEvent.create(_nodes, _links));
             
         }
         //sanjeev : not required as properties are shown on click only..
@@ -186,7 +186,7 @@ public class ViewController extends DefaultViewController implements ActionListe
                 if (selectedComponent instanceof IGraphNode) {
                     target = (ClassNode)selectedComponent;
                 }
-                test.linkCDEs( source, target);
+                visualQueryDesignerPanel.linkCDEs( source, target);
             }
             
             
@@ -203,7 +203,7 @@ public class ViewController extends DefaultViewController implements ActionListe
 //                    System.out.println("xxxxx TargetObject is:"+cNode.getAssociatedClassObject().getFullyQualifiedName());
                     // first get the old target node from Registry. remove target status from it
                     DCQLRegistry.getTargetNode().isNotTargetNode();
-                    test.repaint();  // to re-render the old Target node..
+                    visualQueryDesignerPanel.repaint();  // to re-render the old Target node..
                     // set the new node as Target node.. both in the Node and in the registry..
                     cNode.setAsTargetNode();
                     DCQLRegistry.setTargetNode(cNode);
@@ -213,8 +213,8 @@ public class ViewController extends DefaultViewController implements ActionListe
         }
         // delete all nodes.. clean registry and reset the graphNode Ids
         else if(e.getSource() == miDeleteAll){
-            test.getDocument().removeComponents(test.getDocument().getComponents());
-            test.resetID();
+            visualQueryDesignerPanel.getDocument().removeComponents(visualQueryDesignerPanel.getDocument().getComponents());
+            visualQueryDesignerPanel.resetID();
             DCQLRegistry.clean();
         }
         
@@ -225,28 +225,28 @@ public class ViewController extends DefaultViewController implements ActionListe
     
     private void popupPropertiesPanel(ClassBean name){
         // put this code in a jpanel class.. doesn;t look good here..
-        // can have a method like   test.popupPropertiesPanel(nodeClass)
-        test.showNodePrperties(name);
-        final JFrame jf = new JFrame("Edit Properties");
+        // can have a method like   visualQueryDesignerPanel.popupPropertiesPanel(nodeClass)
+        visualQueryDesignerPanel.showNodePrperties(name);
+        final JFrame jFrame = new JFrame("Edit Properties");
         
         JPanel jPanel = new javax.swing.JPanel();
         JButton button = new javax.swing.JButton();
         button.setText("Ok");
         button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jf.setVisible(false);
+                jFrame.setVisible(false);
             }
         });
         jPanel.add(button);
-        jf.getContentPane().add(jPanel, java.awt.BorderLayout.SOUTH);
+        jFrame.getContentPane().add(jPanel, java.awt.BorderLayout.SOUTH);
         
         
-        PropertiesPanel p = new PropertiesPanel();
-        p.setMainFrame(test.getMainFrame());
-        p.showNodeProperties(name);
-        jf.getContentPane().add(p, java.awt.BorderLayout.CENTER);
-        jf.setBounds(100,100,300,200);
-        jf.setVisible(true);
+        PropertiesPanel propertiesPanel = new PropertiesPanel();
+        propertiesPanel.setMainFrame(visualQueryDesignerPanel.getMainFrame());
+        propertiesPanel.showNodeProperties(name);
+        jFrame.getContentPane().add(propertiesPanel, java.awt.BorderLayout.CENTER);
+        jFrame.setBounds(100,100,300,200);
+        jFrame.setVisible(true);
         //
     }
     

@@ -57,11 +57,11 @@ public class DomainModelMetaDataRegistry {
     
     /** Populate the data from Domain Model extract into ClassBean instances and bind them into registry.  */
 
-    public static void populateDomainModelMetaData(DomainModel model, ServiceMetaDataBean sBean){
+    public static void populateDomainModelMetaData(DomainModel domainModel, ServiceMetaDataBean sBean){
         
-        ArrayList<ClassBean> classListTmp = new ArrayList(100); // The collection of classes that belongs to only this DomainModel.
+        ArrayList<ClassBean> serviceClassList = new ArrayList(100); // The collection of classes that belongs to only this DomainModel.
         
-        UMLClass[] umlClasses = model.getExposedUMLClassCollection().getUMLClass();
+        UMLClass[] umlClasses = domainModel.getExposedUMLClassCollection().getUMLClass();
         for (int i = 0; i < umlClasses.length; i++) {
             ClassBean classBean = new ClassBean();
             classBean.setClassName(umlClasses[i].getClassName() );
@@ -75,53 +75,53 @@ public class DomainModelMetaDataRegistry {
             classBean.setIcon(sBean.getIcon());
             classBean.needImpl(sBean.needImpl());
 
-            SemanticMetadata[] smt = umlClasses[i].getSemanticMetadataCollection().getSemanticMetadata();
+            SemanticMetadata[] semanticMetadata = umlClasses[i].getSemanticMetadataCollection().getSemanticMetadata();
             String classCDEName = "";
-            if ((smt != null)  &&  (smt.length > 1)){
-                for (int k = 0; k < smt.length; k++) {
-                    classCDEName = classCDEName + " "+ smt[k].getConceptName() ;
+            if ((semanticMetadata != null)  &&  (semanticMetadata.length > 1)){
+                for (int k = 0; k < semanticMetadata.length; k++) {
+                    classCDEName = classCDEName + " "+ semanticMetadata[k].getConceptName() ;
                 }
             }
             classBean.setCDEName(classCDEName);
             
             
             // now set the attributes..
-            ArrayList<AttributeBean> attList = new ArrayList(100);
-            UMLAttribute[] umlAtt = umlClasses[i].getUmlAttributeCollection().getUMLAttribute();
-            if ((umlAtt != null)  &&  (umlAtt.length > 1)){
-                for (int j = 0; j < umlAtt.length; j++) {
+            ArrayList<AttributeBean> attributeList = new ArrayList(100);
+            UMLAttribute[] umlAttributes = umlClasses[i].getUmlAttributeCollection().getUMLAttribute();
+            if ((umlAttributes != null)  &&  (umlAttributes.length > 1)){
+                for (int j = 0; j < umlAttributes.length; j++) {
                     AttributeBean attributeBean = new AttributeBean();
-                    attributeBean.setAttributeName(umlAtt[j].getName());
+                    attributeBean.setAttributeName(umlAttributes[j].getName());
                     /**   get the CDE name or Display Name by concatenation of the concept names in reverse order. */
                     String cdeName = "";
-                    SemanticMetadata[]  conCol =  umlAtt[j].getSemanticMetadataCollection().getSemanticMetadata();
+                    SemanticMetadata[]  attributeMetadata =  umlAttributes[j].getSemanticMetadataCollection().getSemanticMetadata();
                     
-                    for (int k = 0; k < conCol.length; k++) {
-                        cdeName = cdeName + " "+ conCol[k].getConceptName() ;
+                    for (int k = 0; k < attributeMetadata.length; k++) {
+                        cdeName = cdeName + " "+ attributeMetadata[k].getConceptName() ;
                     }
                     attributeBean.setDisplayName(cdeName);
                     attributeBean.setCDEName(cdeName);
                     
-                    attList.add(attributeBean);
+                    attributeList.add(attributeBean);
                 }
             }
-            classBean.setAttributes(attList);
+            classBean.setAttributes(attributeList);
             
             // now bind the class Obj with the Registry.
             bindClassByRefId(classBean);
-            classListTmp.add(classBean);
+            serviceClassList.add(classBean);
         }
         // bind the class list to the service name.
-        bindClassListByServiceName(sBean.getServiceName(), classListTmp); //
+        bindClassListByServiceName(sBean.getServiceName(), serviceClassList); //
         
-        // now set the associations with the classes in registry :
-        UMLAssociation[] associations = model.getExposedUMLAssociationCollection().getUMLAssociation();
+        // now set the umlAssociations with the classes in registry :
+        UMLAssociation[] umlAssociations = domainModel.getExposedUMLAssociationCollection().getUMLAssociation();
         
-        for (int i = 0; i < associations.length; i++) {
-            boolean biDir = associations[i].isBidirectional();
-            String sourceRef = associations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            String targetRef = associations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            String targetRole = associations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+        for (int i = 0; i < umlAssociations.length; i++) {
+            boolean biDirectional = umlAssociations[i].isBidirectional();
+            String sourceRef = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+            String targetRef = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+            String targetRole = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
             
             ClassBean sourceClassBean = null;
             ClassBean targetClassBean = null;
@@ -139,14 +139,14 @@ public class DomainModelMetaDataRegistry {
                 sourceClassBean.addAssociatedClass(targetRef);
                 sourceClassBean.addAssociationRoleName(targetRef, targetRole);
             } // put the cross references for the source into target class...
-            if ( (targetClassBean != null ) && biDir ) {
+            if ( (targetClassBean != null ) && biDirectional ) {
                 targetClassBean.addAssociatedClass(sourceRef);
-                String sourceRole = associations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+                String sourceRole = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
                 targetClassBean.addAssociationRoleName(sourceRef, sourceRole);
             }
         }
         
-        System.out.println("Successful loading of domainModel for Project: "+model.getProjectLongName());
+        System.out.println("Successful loading of domainModel for Project: "+domainModel.getProjectLongName());
     }
     
 }

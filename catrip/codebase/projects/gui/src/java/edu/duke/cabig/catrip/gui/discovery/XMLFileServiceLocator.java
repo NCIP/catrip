@@ -30,15 +30,15 @@ public class XMLFileServiceLocator extends ServiceLocator{
     
     public ArrayList<ServiceMetaDataBean> discoverAllLocalServices() {
 
-        ArrayList<ServiceMetaDataBean> alist = new ArrayList(10);
+        ArrayList<ServiceMetaDataBean> serviceBeanlist = new ArrayList(10);
         
         try{
             
             GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
             
             String configXMLFile = guiConfiguration.getConfigRootLocation() + File.separator + "services-config.xml";
-            CatripServicesConfigurationDocument sDom = CatripServicesConfigurationDocument.Factory.parse(new File(configXMLFile));
-            CatripService[] cachedServices = sDom.getCatripServicesConfiguration().getCatripServiceArray();
+            CatripServicesConfigurationDocument configDocument = CatripServicesConfigurationDocument.Factory.parse(new File(configXMLFile));
+            CatripService[] cachedServices = configDocument.getCatripServicesConfiguration().getCatripServiceArray();
             
             
             String serviceMetadatafile = "";
@@ -53,12 +53,12 @@ public class XMLFileServiceLocator extends ServiceLocator{
                 
                 serviceMetadatafile = guiConfiguration.getServiceMetadataLocation()+File.separator+serviceMetadatafile;
                 domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+domainModelFile;
-                addNode(serviceMetadatafile, domainModelFile, alist, serviceUrl);
+                addNode(serviceMetadatafile, domainModelFile, serviceBeanlist, serviceUrl);
             }
             
         } catch (Exception ee){ return null;}
         
-        return alist;
+        return serviceBeanlist;
     }
     
     public ArrayList<ServiceMetaDataBean> discoverServices() {
@@ -67,39 +67,39 @@ public class XMLFileServiceLocator extends ServiceLocator{
     
     
     
-    private void addNode(String file, String domainModelFile, ArrayList alist, String serviceUrl) throws Exception{
+    private void addNode(String file, String domainModelFile, ArrayList serviceBeanlist, String serviceUrl) throws Exception{
         // read the file for which you have to add impl or not..
         GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
         
-        PropertyResourceBundle rb = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
+        PropertyResourceBundle bundle = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
         
-        ServiceMetaDataBean sb = new ServiceMetaDataBean();
+        ServiceMetaDataBean serviceMetaDataBean = new ServiceMetaDataBean();
         ServiceMetadata commonMetadata = (ServiceMetadata)Utils.deserializeDocument(file, ServiceMetadata.class);
         
-        sb = new ServiceMetaDataBean();
+        serviceMetaDataBean = new ServiceMetaDataBean();
         
-        sb.setDomainModelEndPointRef(domainModelFile);
+        serviceMetaDataBean.setDomainModelEndPointRef(domainModelFile);
         String serviceName = commonMetadata.getServiceDescription().getService().getName();
-        sb.setServiceName(serviceName);
-        sb.setServiceUrl(serviceUrl);
+        serviceMetaDataBean.setServiceName(serviceName);
+        serviceMetaDataBean.setServiceUrl(serviceUrl);
         // TODO - change it later.. to generate the icon dynamically from the service name..
-        sb.setIcon("edu/duke/cabig/catrip/gui/dnd/resources/"+sb.getServiceName().trim()+".png");
-        sb.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
+        serviceMetaDataBean.setIcon("edu/duke/cabig/catrip/gui/dnd/resources/"+serviceMetaDataBean.getServiceName().trim()+".png");
+        serviceMetaDataBean.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
         
-        PointOfContact pc = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
-        sb.setPointOfContact(pc.getFirstName()+" "+pc.getLastName()+":"+pc.getEmail()+":"+pc.getRole());
+        PointOfContact pointOfContact = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
+        serviceMetaDataBean.setPointOfContact(pointOfContact.getFirstName()+" "+pointOfContact.getLastName()+":"+pointOfContact.getEmail()+":"+pointOfContact.getRole());
         
-        ResearchCenter rc = commonMetadata.getHostingResearchCenter().getResearchCenter();
-        sb.setHostingResearchCenter(rc.getDisplayName() + "("+rc.getShortName()+")"+":"+sb.getPointOfContact());
+        ResearchCenter researchCenter = commonMetadata.getHostingResearchCenter().getResearchCenter();
+        serviceMetaDataBean.setHostingResearchCenter(researchCenter.getDisplayName() + "("+researchCenter.getShortName()+")"+":"+serviceMetaDataBean.getPointOfContact());
         
         // TODO - remove this later.  only for the demo..
-        String needImpl = rb.getString(serviceName);
+        String needImpl = bundle.getString(serviceName);
         if ((needImpl != null) && (Boolean.valueOf(needImpl))){
-            sb.needImpl(true);
+            serviceMetaDataBean.needImpl(true);
         }
         // only for the demo..
         
-        alist.add(sb);
+        serviceBeanlist.add(serviceMetaDataBean);
         
         
     }

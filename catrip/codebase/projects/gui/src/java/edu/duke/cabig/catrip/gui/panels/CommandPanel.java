@@ -80,35 +80,35 @@ public class CommandPanel extends CPanel {
             } else {
                 
                 // TODO - put the client config files of the individual service also in the caTRIP-config.xml or the services-mapping file some how.
-                CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"qe-client-config.wsdd")));
+                CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"qe-client-config.wsdd")));
                 
-                ArrayList arr = new ArrayList();
+                ArrayList classBeanList = new ArrayList();
                 
-                ClassBean tObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
+                ClassBean tmpObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
                 
-                while (iter.hasNext()) {
-                    Object dom = iter.next();
-                    ClassBean tmp = tObject.clone();
+                while (iterator.hasNext()) {
+                    Object obj = iterator.next();
+                    ClassBean classBeanTmp = tmpObject.clone();
                     
-                    ArrayList Atts = tmp.getAttributes();
+                    ArrayList attributeList = classBeanTmp.getAttributes();
                     
-                    for (int i = 0; i < Atts.size(); i++) {
-                        AttributeBean aBean = (AttributeBean) Atts.get(i);
-                        String vName = aBean.getAttributeName();
-                        String mNaame ="get"+vName.substring(0,1).toUpperCase() + vName.substring(1);
+                    for (int i = 0; i < attributeList.size(); i++) {
+                        AttributeBean aBean = (AttributeBean) attributeList.get(i);
+                        String attributeName = aBean.getAttributeName();
+                        String methodName ="get"+attributeName.substring(0,1).toUpperCase() + attributeName.substring(1);
                         String value = "";
                         try{
-                            Object vValue = ((Method)dom.getClass().getMethod(mNaame)).invoke(dom);
-                            if (vValue != null){
-                                value = vValue.toString();
+                            Object attributeValue = ((Method)obj.getClass().getMethod(methodName)).invoke(obj);
+                            if (attributeValue != null){
+                                value = attributeValue.toString();
                             }
                         } catch (Exception eex) {}
                         aBean.setAttributeValue(value);
                     }
-                    arr.add(tmp);
+                    classBeanList.add(classBeanTmp);
                 }
                 
-                getMainFrame().getOutputPanel().setResults(arr);
+                getMainFrame().getOutputPanel().setResults(classBeanList);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

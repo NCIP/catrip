@@ -50,17 +50,17 @@ public class ListServicesPanel extends CPanel {
         
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("caTRIP Services");
         
-        ArrayList sNames = ServiceMetaDataRegistry.getServiceNames();
+        ArrayList serviceNames = ServiceMetaDataRegistry.getServiceNames();
         
-        for (int i = 0; i < sNames.size(); i++) {
-            String serviceName = (String)sNames.get(i);
+        for (int i = 0; i < serviceNames.size(); i++) {
+            String serviceName = (String)serviceNames.get(i);
 //            System.out.println("## Looking for the service :"+serviceName);
-            ArrayList clList = DomainModelMetaDataRegistry.lookupClassListByServiceName(serviceName);
-            Collections.sort(clList, new ClassBeanComparator());
+            ArrayList classList = DomainModelMetaDataRegistry.lookupClassListByServiceName(serviceName);
+            Collections.sort(classList, new ClassBeanComparator());
             DefaultMutableTreeNode serviceOne = new DefaultMutableTreeNode(serviceName);
-            for (int j = 0; j < clList.size(); j++) {
-                ClassBean classBean = (ClassBean)clList.get(j);
-                DefaultMutableTreeNode classn = new DefaultMutableTreeNode(classBean);
+            for (int j = 0; j < classList.size(); j++) {
+                ClassBean classBean = (ClassBean)classList.get(j);
+                DefaultMutableTreeNode classNode = new DefaultMutableTreeNode(classBean);
                 
                 DefaultMutableTreeNode attributesNode = new DefaultMutableTreeNode("Attributes" );
                 DefaultMutableTreeNode associationsNode = new DefaultMutableTreeNode("Associations" );
@@ -69,8 +69,8 @@ public class ListServicesPanel extends CPanel {
                 Collections.sort(attributes, new AttributeBeanComparator());
                 for (int k = 0; k < attributes.size(); k++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(k);
-                    DefaultMutableTreeNode attNode = new DefaultMutableTreeNode(aBean.getCDEName());
-                    attributesNode.add(attNode);
+                    DefaultMutableTreeNode attributeLeafNode = new DefaultMutableTreeNode(aBean.getCDEName());
+                    attributesNode.add(attributeLeafNode);
                 }
                 
                 ArrayList associations = classBean.getAssociatedClasses();
@@ -79,18 +79,18 @@ public class ListServicesPanel extends CPanel {
                     boolean same = classRefId.equalsIgnoreCase(classBean.getId());
                     ClassBean classBeanTmp = DomainModelMetaDataRegistry.lookupClassByRefId(classRefId);
                      // TODO - try to print the associatioRole name with the assciation tree 
-                    DefaultMutableTreeNode assNode = null;
+                    DefaultMutableTreeNode associationLeafNode = null;
                     if (same){
                         String name = classBeanTmp.getClassName()+" (Role: "+classBean.getAssociationRoleName(classRefId)+")";
-                        assNode = new NamedTreeNode(name,classBeanTmp); 
+                        associationLeafNode = new NamedTreeNode(name,classBeanTmp); 
                     }else{
-                    assNode = new DefaultMutableTreeNode(classBeanTmp);
+                    associationLeafNode = new DefaultMutableTreeNode(classBeanTmp);
                     }
-                    associationsNode.add(assNode);
+                    associationsNode.add(associationLeafNode);
                 }
                 
-                classn.add(attributesNode); classn.add(associationsNode);
-                serviceOne.add(classn);
+                classNode.add(attributesNode); classNode.add(associationsNode);
+                serviceOne.add(classNode);
             }
             root.add(serviceOne);
         }
@@ -99,14 +99,11 @@ public class ListServicesPanel extends CPanel {
         tree = new JTree(root);
         tree.getSelectionModel().setSelectionMode(DefaultTreeSelectionModel.SINGLE_TREE_SELECTION);
         
-        MyRenderer rr = new MyRenderer(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/tree/icon_cde.png")));
-        tree.setCellRenderer(rr);
+        MyRenderer myRenderer = new MyRenderer(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/tree/icon_cde.png")));
+        tree.setCellRenderer(myRenderer);
         ToolTipManager.sharedInstance().registerComponent(tree);
         
-        
-        
         add(new JScrollPane(tree));
-        
         
     }
     

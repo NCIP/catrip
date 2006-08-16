@@ -22,19 +22,19 @@ public class JavaObjectDeSerializationDomainModelRetrievalStrategy extends Domai
         fileUrl = fileUrl_;
     }
     
-    public DomainModel retrievDomainModel(Object sName)  {
-        DomainModel dModel = null;
-        if (sName instanceof String){
-            String fileUrl = (String) sName;
-            ObjectInputStream oist;
+    public DomainModel retrievDomainModel(Object obj)  {
+        DomainModel domainModel = null;
+        if (obj instanceof String){
+            String fileUrl = (String) obj;
+            ObjectInputStream ois;
             try {
-                oist = new ObjectInputStream(new FileInputStream(fileUrl));
-                dModel = (DomainModel) oist.readObject();
+                ois = new ObjectInputStream(new FileInputStream(fileUrl));
+                domainModel = (DomainModel) ois.readObject();
             }  catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
-        return dModel;
+        return domainModel;
     }
     
     

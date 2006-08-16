@@ -34,10 +34,10 @@ import org.openide.util.Utilities;
  */
 public class EventHandler extends IGraphEventHandler {
     
-    private VisualQueryDesignerPanel test;
+    private VisualQueryDesignerPanel visualQueryDesignerPanel;
     
     public EventHandler(VisualQueryDesignerPanel test) {
-        this.test = test;
+        this.visualQueryDesignerPanel = test;
     }
     
     public void setSourcePort(IGraphLink link, IGraphPort sourcePort) {
@@ -54,10 +54,10 @@ public class EventHandler extends IGraphEventHandler {
     
     public void createLink(IGraphPort sourcePort, IGraphPort targetPort) {
 //        GraphLink link = new GraphLink();
-//        link.setID(test.createID("link"));
+//        link.setID(visualQueryDesignerPanel.createID("link"));
 //        link.setSourcePort((GraphPort) sourcePort);
 //        link.setTargetPort((GraphPort) targetPort);
-//        test.getDocument().addComponents(GraphEvent.createSingle(link));
+//        visualQueryDesignerPanel.getDocument().addComponents(GraphEvent.createSingle(link));
         
         // sanjeev
         boolean samePort = sourcePort.equals(targetPort);
@@ -77,23 +77,23 @@ public class EventHandler extends IGraphEventHandler {
 //            System.out.println("XXXX  Attribute name is :"+ ( (AttributePort) sourcePort).getAttributeName()  );
 //            System.out.println("XXXX  class is :"+ ((ClassNode)sourcePort.getNode()).getAssociatedClassObject().getFullyQualifiedName()  );
             //  - add the foreign association here..
-            ForeignAssociationBean fBean = new ForeignAssociationBean();
-            ClassBean leftObject = ((ClassNode)sourcePort.getNode()).getAssociatedClassObject();
-            fBean.setLeftObj(leftObject);
-            fBean.setRighObj(((ClassNode)targetPort.getNode()).getAssociatedClassObject());
-            fBean.setLeftProperty(( (AttributePort) sourcePort).getAttributeName());
-            fBean.setRightProperty(( (AttributePort) targetPort).getAttributeName());
+            ForeignAssociationBean foreignAssociationBean = new ForeignAssociationBean();
+            ClassBean leftClassBeanObject = ((ClassNode)sourcePort.getNode()).getAssociatedClassObject();
+            foreignAssociationBean.setLeftObj(leftClassBeanObject);
+            foreignAssociationBean.setRighObj(((ClassNode)targetPort.getNode()).getAssociatedClassObject());
+            foreignAssociationBean.setLeftProperty(( (AttributePort) sourcePort).getAttributeName());
+            foreignAssociationBean.setRightProperty(( (AttributePort) targetPort).getAttributeName());
             // add a foreign association with the node..
-            leftObject.setHasForeignAssociations(true);
-            leftObject.addForeignAssociation(fBean);
+            leftClassBeanObject.setHasForeignAssociations(true);
+            leftClassBeanObject.addForeignAssociation(foreignAssociationBean);
             
             
             // now create the visual link..
             GraphLink link = new GraphLink();
-            link.setID(test.createID("link"));
+            link.setID(visualQueryDesignerPanel.createID("link"));
             link.setSourcePort((GraphPort) sourcePort);
             link.setTargetPort((GraphPort) targetPort);
-            test.getDocument().addComponents(GraphEvent.createSingle(link));
+            visualQueryDesignerPanel.getDocument().addComponents(GraphEvent.createSingle(link));
         }
         
         // if it is a normal link.. create a normal association...
@@ -103,32 +103,32 @@ public class EventHandler extends IGraphEventHandler {
             
             ClassNode leftNode = (ClassNode)sourcePort.getNode();
             ClassNode rightNode = (ClassNode)targetPort.getNode();
-            ClassBean leftObject = leftNode.getAssociatedClassObject();
-            leftObject.setHasAssociations(true);
-            leftObject.addAssociation(rightNode.getAssociatedClassObject());
-//            leftObject.
+            ClassBean leftClassBeanObject = leftNode.getAssociatedClassObject();
+            leftClassBeanObject.setHasAssociations(true);
+            leftClassBeanObject.addAssociation(rightNode.getAssociatedClassObject());
+//            leftClassBeanObject.
             
             
             // now create the visual link..
             GraphLink link = new GraphLink();
-            link.setID(test.createID("link"));
+            link.setID(visualQueryDesignerPanel.createID("link"));
             link.setSourcePort((GraphPort) sourcePort);
             link.setTargetPort((GraphPort) targetPort);
-            test.getDocument().addComponents(GraphEvent.createSingle(link));
+            visualQueryDesignerPanel.getDocument().addComponents(GraphEvent.createSingle(link));
         }
         
         // show the error msg that do not link to itself
         if (samePort || sameNode){
             if ((sourceDirection == IDirectionable.BOTTOM_LEFT) && (targetDirection == IDirectionable.BOTTOM_LEFT)){
-                test.showWarning("You can not link CDEs in the same class.");
+                visualQueryDesignerPanel.showWarning("You can not link CDEs in the same class.");
             } else {
-                test.showWarning("You can not link to same class.");
+                visualQueryDesignerPanel.showWarning("You can not link to same class.");
             }
         }
         
         // show the error msg that do not link class to CDE.
         if( ((sourceDirection == IDirectionable.RIGHT) || (sourceDirection == IDirectionable.LEFT)   || (targetDirection == IDirectionable.RIGHT) || (targetDirection == IDirectionable.LEFT)   ) &&  ((sourceDirection == IDirectionable.BOTTOM_LEFT) || (targetDirection == IDirectionable.BOTTOM_LEFT)) ){
-            test.showWarning("You can not link CDE to a class.");
+            visualQueryDesignerPanel.showWarning("You can not link CDE to a class.");
         }
         
         
@@ -138,15 +138,15 @@ public class EventHandler extends IGraphEventHandler {
     }
     
     public void componentsSelected(GraphEvent event) {
-        test.getDocument().selectComponents(event);
+        visualQueryDesignerPanel.getDocument().selectComponents(event);
         // sanjeev : show the properties of this link in the properties table..
-        Object[] selectedComponents =  test.getDocument().getSelectedComponents().getNodes();
+        Object[] selectedComponents =  visualQueryDesignerPanel.getDocument().getSelectedComponents().getNodes();
         
         if ((selectedComponents != null) && selectedComponents.length == 1){
             Object selectedComponent = selectedComponents[0];
             if (selectedComponent instanceof IGraphNode) {
                 ClassBean node = ((ClassNode)selectedComponent).getAssociatedClassObject(); //getDisplayName();
-                test.showNodePrperties(node);
+                visualQueryDesignerPanel.showNodePrperties(node);
             }
         }
         
@@ -176,7 +176,7 @@ public class EventHandler extends IGraphEventHandler {
             ClassNode node = null;//GraphNode node = null;
             try {
                 node = (ClassNode) ClassNode.class.newInstance(); // set the information of the GraphNode type with ClassBean itself.
-                node.setID(test.createID(cBean.getId()));
+                node.setID(visualQueryDesignerPanel.createID(cBean.getId()));
                 node.setDisplayName(cBean.getClassName());
                 node.setIcon( Utilities.loadImage(cBean.getIcon()));
                 addAttrubutePorts(node, cBean);
@@ -188,10 +188,10 @@ public class EventHandler extends IGraphEventHandler {
             } catch (IllegalAccessException e) {
                 e.printStackTrace(); // TODO
             }
-            test.getDocument().addComponents(GraphEvent.createSingle(node));
+            visualQueryDesignerPanel.getDocument().addComponents(GraphEvent.createSingle(node));
             
             // set the first object as target object..
-            if (test.getLastID() == 1){
+            if (visualQueryDesignerPanel.getLastID() == 1){
                 node.setAsTargetNode();
                 DCQLRegistry.setTargetNode(node);
             }

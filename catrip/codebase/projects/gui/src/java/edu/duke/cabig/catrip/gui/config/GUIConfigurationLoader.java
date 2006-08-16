@@ -41,7 +41,9 @@ public  class GUIConfigurationLoader {
         return null;
     }
     
-    /** Loads the data from  "catrip-config.xml" into GUIConfigurationBean object using XMLBeans.*/
+    /**
+     * Loads the data from  "catrip-guiConfig.xml" into GUIConfigurationBean object using XMLBeans.
+     */
     private static synchronized void createConfig(){
         configBean = new GUIConfigurationBean();
         CatripConfigurationDocument conf = null;
@@ -51,20 +53,20 @@ public  class GUIConfigurationLoader {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        GuiConfiguration config =  conf.getCatripConfiguration().getGuiConfiguration();
+        GuiConfiguration guiConfig =  conf.getCatripConfiguration().getGuiConfiguration();
         
         
-        configBean.setConfigRootLocation(config.getRootDirectory());
-        configBean.setIndexServiceUrl(config.getIndexService().getUrl());
-        configBean.setIndexServiceUrl(config.getIndexService().getName());
-        configBean.setQueryEngineServiceUrl(config.getFederatedQueryEngineService().getUrl());
-        configBean.setQueryEngineServiceUrl(config.getFederatedQueryEngineService().getName());
-        configBean.setDomainModelMetadataLocation(configBean.getConfigRootLocation()+File.separator+config.getMetadataCache().getDomainModelMetadataLocation());
-        configBean.setServiceMetadataLocation(configBean.getConfigRootLocation()+File.separator+config.getMetadataCache().getServiceMetadataLocation());
-        configBean.setMetadataMappingFileName(config.getMetadataCache().getMetadataMappingFilename());
+        configBean.setConfigRootLocation(guiConfig.getRootDirectory());
+        configBean.setIndexServiceUrl(guiConfig.getIndexService().getUrl());
+        configBean.setIndexServiceUrl(guiConfig.getIndexService().getName());
+        configBean.setQueryEngineServiceUrl(guiConfig.getFederatedQueryEngineService().getUrl());
+        configBean.setQueryEngineServiceUrl(guiConfig.getFederatedQueryEngineService().getName());
+        configBean.setDomainModelMetadataLocation(configBean.getConfigRootLocation()+File.separator+guiConfig.getMetadataCache().getDomainModelMetadataLocation());
+        configBean.setServiceMetadataLocation(configBean.getConfigRootLocation()+File.separator+guiConfig.getMetadataCache().getServiceMetadataLocation());
+        configBean.setMetadataMappingFileName(guiConfig.getMetadataCache().getMetadataMappingFilename());
         
         
-        IndentityProvider[] iProvider = config.getGridIndentityProviders().getIndentityProviderArray();
+        IndentityProvider[] iProvider = guiConfig.getGridIndentityProviders().getIndentityProviderArray();
         
         for (int i=0; i < iProvider.length;i++){
             IndentityProviderBean idBean = new IndentityProviderBean();

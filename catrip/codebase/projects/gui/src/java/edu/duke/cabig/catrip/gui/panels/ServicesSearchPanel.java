@@ -219,36 +219,38 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
         
         // TODO - need to replace these direct calls with the Spring Framework.
-        ServiceLocator sl = ServiceLocaterFactory.getServiceLocator();
-        ArrayList alist = sl.discoverServices();
+        ServiceLocator serviceLocator = ServiceLocaterFactory.getServiceLocator();
+        ArrayList serviceList = serviceLocator.discoverServices();
         
-        DefaultTableModel tb = (DefaultTableModel) getResultTable().getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) getResultTable().getModel();
         
-        for (int i = 0; i < alist.size(); i++) {
+        for (int i = 0; i < serviceList.size(); i++) {
             
-            Vector v = new Vector();
-            ServiceMetaDataBean sb = (ServiceMetaDataBean)alist.get(i);
+            Vector tableRow = new Vector();
+            ServiceMetaDataBean serviceMetaDataBean = (ServiceMetaDataBean)serviceList.get(i);
             
             // don't forget to populate the ServiceMetaDataRegistry too..
-            ServiceMetaDataRegistry.addService(sb);
+            ServiceMetaDataRegistry.addService(serviceMetaDataBean);
             
-            v.add(new Boolean(false));
-            v.add(sb.getServiceName());
-            v.add(sb.getDescription());
-            v.add(sb.getHostingResearchCenter());
-            v.add(new JButton("View"));
+            tableRow.add(new Boolean(false));
+            tableRow.add(serviceMetaDataBean.getServiceName());
+            tableRow.add(serviceMetaDataBean.getDescription());
+            tableRow.add(serviceMetaDataBean.getHostingResearchCenter());
+            tableRow.add(new JButton("View"));
             
-            tb.addRow(v);
+            tableModel.addRow(tableRow);
         }
         
     }//GEN-LAST:event_showAllBtnActionPerformed
     
-    /** Get the list of selected Services and populate the domain model for those and bind into the registry for later use. */
+    /**
+     * Get the list of selected Services and populate the domain domainModel for those and bind into the registry for later use.
+     */
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
         // Here get the list of the Services and then populate the ServiceMetaDataRegistry
-        int srows = getResultTable().getRowCount();//getSelectedRows();
+        int numSelectedRows = getResultTable().getRowCount();//getSelectedRows();
         
-        for (int i = 0; i < srows; i++) {
+        for (int i = 0; i < numSelectedRows; i++) {
             Boolean rowChecked = (Boolean)getResultTable().getValueAt(i, 0);
             if (rowChecked){
                 String serviceName = (String)getResultTable().getValueAt(i, 1);
@@ -256,11 +258,11 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 ServiceMetaDataRegistry.addSelectedService(serviceName);
                 
                 // TODO - need to replace these direct calls with the Spring Framework.
-                ServiceMetaDataBean sBean = ServiceMetaDataRegistry.getServiceBeanByName(serviceName);
-                DomainModelRetrievalStrategy dr = DomainModelRetrievalFactory.getRetrievalStrategy(sBean);
-                DomainModel model = dr.retrievDomainModel();
+                ServiceMetaDataBean metaDataBean = ServiceMetaDataRegistry.getServiceBeanByName(serviceName);
+                DomainModelRetrievalStrategy retrievalStrategy = DomainModelRetrievalFactory.getRetrievalStrategy(metaDataBean);
+                DomainModel domainModel = retrievalStrategy.retrievDomainModel();
                 
-                DomainModelMetaDataRegistry.populateDomainModelMetaData(model, sBean);
+                DomainModelMetaDataRegistry.populateDomainModelMetaData(domainModel, metaDataBean);
             }
         }
         

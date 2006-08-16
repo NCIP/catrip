@@ -27,14 +27,14 @@ public class XMLDomainModelRetrievalStrategy extends DomainModelRetrievalStrateg
     
     public DomainModel retrievDomainModel()  {
         // Deserialize the XML by the url "fileUrl" and return the DomainModel.
-        DomainModel dModel = null;
+        DomainModel domainModel = null;
         try {
-            dModel = (DomainModel)Utils.deserializeDocument(fileUrl, DomainModel.class); 
+            domainModel = (DomainModel)Utils.deserializeDocument(fileUrl, DomainModel.class); 
         }  catch (Exception ex) {
             ex.printStackTrace();
         }
         
-        return dModel;
+        return domainModel;
     }
     
     
