@@ -1,9 +1,3 @@
-/*
- * XMLFileServiceLocatorTest.java
- * JUnit based test
- *
- * Created on August 10, 2006, 11:52 AM
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
@@ -12,6 +6,7 @@ import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import java.util.ArrayList;
 
 /**
+ * JUnit test for the XMLFileServiceLocator class.
  *
  * @author Sanjeev Agarwal
  */

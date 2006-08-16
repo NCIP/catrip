@@ -1,9 +1,3 @@
-/*
- * XMLDomainModelRetrievalStrategyTest.java
- * JUnit based test
- *
- * Created on August 10, 2006, 1:05 PM
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
@@ -13,6 +7,7 @@ import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 import java.util.ArrayList;
 
 /**
+ * JUnit test for the XMLDomainModelRetrievalStrategy class.
  *
  * @author Sanjeev Agarwal
  */
