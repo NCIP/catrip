@@ -1,15 +1,8 @@
-/*
- * LoginProviderLocatorFactory.java
- *
- * Created on June 15, 2006, 4:08 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.security;
 
 /**
+ * Factory class to provide a Login Provider Locator.
  *
  * @author Sanjeev Agarwal
  */
@@ -19,8 +12,10 @@ public class LoginProviderLocatorFactory {
     public LoginProviderLocatorFactory() {
     }
     
+    /** return the Login Provider Locator. Must read from the configuration file.*/
     public static LoginProviderLocator getLoginProviderLocator(){
-        return new DorianLoginProviderLocator();
+//        return new DorianLoginProviderLocator();
+        return new XMLFileLoginProviderLocator();
     } 
     
 }

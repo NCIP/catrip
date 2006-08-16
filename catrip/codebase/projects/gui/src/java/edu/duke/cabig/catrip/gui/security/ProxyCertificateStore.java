@@ -1,15 +1,8 @@
-/*
- * ProxyCertificateStore.java
- *
- * Created on June 7, 2006, 5:24 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.security;
 
 /**
+ * Store for the proxy certificates obtained from the Dorian.
  *
  * @author Sanjeev Agarwal
  */
