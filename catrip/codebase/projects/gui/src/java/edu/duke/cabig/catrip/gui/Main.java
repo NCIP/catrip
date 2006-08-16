@@ -1,17 +1,10 @@
-/*
- * Main.java
- *
- * Created on June 9, 2006, 12:58 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui;
 
 import edu.duke.cabig.catrip.gui.wizard.WelcomeScreen;
 
 /**
+ * Main class of the GUI project. Entry point for the GUI.
  *
  * @author Sanjeev Agarwal
  */
@@ -27,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         // This is the entry point to the GUI module.
         // Perform few basic check on the settings of the GUI and launch the Welcome Screen.
+        // perform the static initializations also if required.
         // Check:
         // caTRIP_config.xml for Index service and Dorian Urls.
         

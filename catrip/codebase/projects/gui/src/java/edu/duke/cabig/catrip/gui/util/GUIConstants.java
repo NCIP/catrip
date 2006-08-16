@@ -1,11 +1,3 @@
-/*
- * GUIConstants.java
- *
- * Created on June 9, 2006, 2:29 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.util;
 
@@ -15,6 +7,7 @@ import javax.swing.Icon;
 import org.openide.util.Utilities;
 
 /**
+ * Holds all Constants defined for GUI. Should read the constants from a config file.
  *
  * @author Sanjeev Agarwal
  */

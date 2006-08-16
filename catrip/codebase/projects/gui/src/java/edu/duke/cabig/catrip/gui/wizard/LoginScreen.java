@@ -7,8 +7,6 @@ import edu.duke.cabig.catrip.gui.security.LoginProviderLocatorFactory;
 import javax.swing.DefaultComboBoxModel;
 
 
-
-
 /**
  * Login Screen window.
  *
