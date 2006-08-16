@@ -1,11 +1,3 @@
-/*
- * XMLDomainModelRetrievalStrategy.java
- *
- * Created on July 3, 2006, 1:09 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
@@ -13,6 +5,7 @@ import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 
 /**
+ * Retrieve the Domain Model from a serialized Domain Model extract XML file.
  *
  * @author Sanjeev Agarwal
  */

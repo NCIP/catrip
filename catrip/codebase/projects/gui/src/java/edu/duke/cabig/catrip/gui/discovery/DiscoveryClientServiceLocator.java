@@ -22,6 +22,7 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
     public DiscoveryClientServiceLocator() {
     }
     
+    /** Discover all services registered into Index service. The service list is generated using Discovery APIs. */
     public ArrayList<ServiceMetaDataBean> discoverServices() {
         ArrayList<ServiceMetaDataBean> serviceList = new ArrayList(50);
         

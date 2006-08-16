@@ -14,7 +14,7 @@ public abstract class ServiceLocator {
     public ServiceLocator() {
     }
     
-    /** Implemented by the subclasses. */
+    /** discover all services from this locator. */
     public abstract ArrayList discoverServices();
     
     
