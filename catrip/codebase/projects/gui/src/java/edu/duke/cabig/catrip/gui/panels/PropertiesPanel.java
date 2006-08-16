@@ -1,8 +1,3 @@
-/*
- * PropertiesPanel.java
- *
- * Created on May 16, 2006, 2:22 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 

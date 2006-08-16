@@ -1,8 +1,3 @@
-/*
- * VisualQueryDesignerPanel.java
- *
- * Created on May 16, 2006, 3:17 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
@@ -22,6 +17,7 @@ import javax.swing.tree.*;
 
 
 /**
+ * The Panel which contains the Graph component.
  *
  * @author  Sanjeev Agarwal
  */
@@ -79,6 +75,7 @@ public class VisualQueryDesignerPanel extends CPanel {
         return servicePanel.getTree();
     }
     
+    /** Create a Graph document, DnD drag source and set into the Panel. */
     public void setDnDGraphView(ListServicesPanel sPanel){
         servicePanel = sPanel;
         
@@ -101,15 +98,6 @@ public class VisualQueryDesignerPanel extends CPanel {
         view = GraphFactory.createView(document, new DocumentRenderer(), new ViewController(this), new EventHandler(this));
         
         add(new JScrollPane(view));
-        
-        //view.setVisible(true);
-        //repaint();
-        
-//        JFrame jf = new JFrame("xxxxxxxx");
-//        jf.getContentPane().add(new JScrollPane(view));
-//        jf.setVisible(true);
-        
-        
         
     }
     

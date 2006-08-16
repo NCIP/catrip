@@ -1,8 +1,3 @@
-/*
- * QueryEngineServiceSearchPanel.java
- *
- * Created on June 9, 2006, 1:35 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
@@ -14,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
+ * Query Engine Service Search Panel.
  *
  * @author  Sanjeev Agarwal
  */
@@ -27,11 +23,9 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
         init();
     }
     
-    
+    /** set the width for the columns. */
     private void init (){
-        
-        
-        
+
         TableColumn column = null;
         for (int i = 0; i < 5; i++) {
             column = serviceListTable.getColumnModel ().getColumn (i);
@@ -46,11 +40,7 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
         
         column = serviceListTable.getColumnModel ().getColumn (4);
         column.setCellRenderer (new ButtonRenderer ());
-        
-        
     }
-    
-    
     
     
     /** 
@@ -156,14 +146,12 @@ public class QueryEngineServiceSearchPanel extends javax.swing.JPanel {
     }
     
     
-    
-    
     private DefaultComboBoxModel getComboBoxModel(){
         DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2" });
         return cb;
     }
     
-    
+     // TODO - implement the "View MetaData" jbutton to show the Service Metadata.
    private DefaultTableModel getTableModel (){
         
         Object [][] data = new Object [][] {

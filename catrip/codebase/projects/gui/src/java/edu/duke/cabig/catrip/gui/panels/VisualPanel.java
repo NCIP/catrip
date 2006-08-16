@@ -1,8 +1,3 @@
-/*
- * VisualPanel.java
- *
- * Created on May 16, 2006, 2:21 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
@@ -14,6 +9,8 @@ import org.apache.xmlbeans.XmlOptions;
 
 
 /**
+ * Panel holding Visual Query Designer and the DCQL viewer as different Tabs. 
+ * More tabs can be added by adding Panels into this.
  *
  * @author  Sanjeev Agarwal
  */

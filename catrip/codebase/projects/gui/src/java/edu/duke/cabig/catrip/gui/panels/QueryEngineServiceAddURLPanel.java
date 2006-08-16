@@ -1,14 +1,10 @@
-/*
- * QueryEngineServiceAddURLPanel.java
- *
- * Created on June 13, 2006, 3:55 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 
 /**
+ * Panel where the user can add a Federated Query Engine service URL.
  *
  * @author  Sanjeev Agarwal
  */

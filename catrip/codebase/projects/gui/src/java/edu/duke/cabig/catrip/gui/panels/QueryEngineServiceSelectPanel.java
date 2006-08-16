@@ -1,8 +1,3 @@
-/*
- * QueryEngineServiceSelectPanel.java
- *
- * Created on June 9, 2006, 1:36 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 

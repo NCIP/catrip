@@ -1,8 +1,3 @@
-/*
- * SemanticallyEquivalentClassListPanel.java
- *
- * Created on June 9, 2006, 1:34 PM
- */
 
 package edu.duke.cabig.catrip.gui.panels;
 
