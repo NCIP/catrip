@@ -1,15 +1,8 @@
-/*
- * ServiceLocaterFactory.java
- *
- * Created on June 30, 2006, 12:15 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
 /**
+ * Factory class to return the correct Service Locator.
  *
  * @author Sanjeev Agarwal
  */
@@ -19,6 +12,7 @@ public class ServiceLocaterFactory {
     public ServiceLocaterFactory() {
     }
     
+    /** Should read from a configuration file. */
     public static ServiceLocator getServiceLocator (){
         return new XMLFileServiceLocator();
 //        return new DiscoveryClientServiceLocator();

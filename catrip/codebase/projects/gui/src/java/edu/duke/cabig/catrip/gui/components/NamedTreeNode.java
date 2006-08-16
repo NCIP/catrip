@@ -42,7 +42,7 @@ public class NamedTreeNode extends DefaultMutableTreeNode{
     
     
     /**
-     * Returns this node label. This method is invoked by {@link JTree} for populating the tree widget.
+     * Returns this node label. This method is invoked by JTree for populating the tree widget.
      */
     public String toString() {
         return name;
