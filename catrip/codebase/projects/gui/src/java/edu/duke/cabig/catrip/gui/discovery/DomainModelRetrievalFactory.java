@@ -1,11 +1,3 @@
-/*
- * DomainModelRetrievalFactory.java
- *
- * Created on July 3, 2006, 1:08 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
@@ -13,6 +5,7 @@ import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import org.apache.axis.message.addressing.EndpointReferenceType;
 
 /**
+ * The RetrievalStrategy Factory class.
  *
  * @author Sanjeev Agarwal
  */
@@ -27,7 +20,7 @@ public class DomainModelRetrievalFactory {
         return new JavaObjectDeSerializationDomainModelRetrievalStrategy();
     }
     
-    
+    /** Return the correct Strategy based on the end point ref set in the ServiceMetaDataBean object. */
     public static DomainModelRetrievalStrategy  getRetrievalStrategy(ServiceMetaDataBean sBean){
         
         Object endPointRef = sBean.getDomainModelEndPointRef();

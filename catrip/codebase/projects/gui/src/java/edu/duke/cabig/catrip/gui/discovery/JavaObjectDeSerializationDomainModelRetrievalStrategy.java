@@ -1,11 +1,3 @@
-/*
- * JavaObjectDeSerializationDomainModelRetrievalStrategy.java
- *
- * Created on July 3, 2006, 1:11 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.discovery;
 
@@ -14,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
 /**
+ * Retrieve the Domain Model from a serialized 'DomainModel' java object.
  *
  * @author Sanjeev Agarwal
  */
