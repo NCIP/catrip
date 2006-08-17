@@ -266,6 +266,14 @@
 				</fileset>
 			</junitResults>
 			<junitDocs>
+				<fileset dir="${projects.dir}/queryengine">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="${projects.dir}/gui">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
 				<fileset dir="${projects.dir}/security-password">
 					<include name="src/java"/>
 					<include name="test/src/java"/>
