@@ -51,7 +51,7 @@
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="testable.projects.list" value="gui, queryengine, cae_reengineering, security-password, test-report, security-dukeidp" />
+	<property name="testable.projects.list" value="gui, queryengine, security-password, test-report, security-dukeidp" />
 
 	<!-- ======================================================================================= -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT SYSTEM TESTING                    -->
