@@ -10,6 +10,11 @@ import java.io.File;
 
 import junit.framework.TestCase;
 
+/**
+ * This unit test issues DCQL queries that perform joins between a CAE and a caTissue CORE grid service.
+ * @testType unit
+ * @author Srini Akkala
+ */
 public class CAEandCaTissueCoreDistributedTest extends TestCase {
     public CAEandCaTissueCoreDistributedTest(String sTestName) {
         super(sTestName);

@@ -11,6 +11,11 @@ import java.io.File;
 
 import junit.framework.TestCase;
 
+/**
+ * This unit test issues DCQL queries to a single CAE grid service.
+ * @testType unit
+ * @author Srini Akkala
+ */
 public class CAETest extends TestCase {
     public CAETest(String sTestName) {
         super(sTestName);

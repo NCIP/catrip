@@ -7,8 +7,8 @@ import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 import java.util.ArrayList;
 
 /**
- * JUnit test for the XMLDomainModelRetrievalStrategy class.
- *
+ * Unit test that tests whether a domain model can be retrieved.
+ * @testType unit
  * @author Sanjeev Agarwal
  */
 public class XMLDomainModelRetrievalStrategyTest extends TestCase {

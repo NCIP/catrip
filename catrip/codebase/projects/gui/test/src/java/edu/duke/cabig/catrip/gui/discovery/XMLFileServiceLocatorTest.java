@@ -6,8 +6,8 @@ import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import java.util.ArrayList;
 
 /**
- * JUnit test for the XMLFileServiceLocator class.
- *
+ * Unit test that tests whether local services can be discovered
+ * @testType unit
  * @author Sanjeev Agarwal
  */
 public class XMLFileServiceLocatorTest extends TestCase {

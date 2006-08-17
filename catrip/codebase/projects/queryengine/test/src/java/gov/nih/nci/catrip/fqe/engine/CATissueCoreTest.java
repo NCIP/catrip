@@ -11,6 +11,11 @@ import java.io.File;
 
 import junit.framework.TestCase;
 
+/**
+ * This unit test issues DCQL queries to a single caTissue CORE grid service.
+ * @testType unit
+ * @author Srini Akkala
+ */
 public class CATissueCoreTest extends TestCase {
     public CATissueCoreTest(String sTestName) {
         super(sTestName);
