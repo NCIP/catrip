@@ -78,7 +78,7 @@ public class JUnitDocletTest
 			new TestSuite[] { suite }
 		);
 		
-		assertEquals("system", suite.docTags.getProperty("testType"));
+		assertEquals("integration", suite.docTags.getProperty("testType"));
 		assertEquals(0, suite.tests);
 		assertEquals(0, suite.testCases.size());
 		assertEquals(3, suite.testSteps.size());
