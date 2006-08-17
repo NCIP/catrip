@@ -1,0 +1,476 @@
+<html><head><title>JUnitHtmlReport</title><head>
+     <style type='text/css'>
+
+    body { background-color:white; }
+
+    p,td,div,span                      {font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+
+    p.title                   { font-size: 14pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+    p.header,div.header       { font-size: 14pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+    td.nav                    { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+
+    
+      a:link                         { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: underline;}
+      a:link:hover                   { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a:link:active                  { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: underline;}
+      a:link:visited                 { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800080; text-decoration: underline;}
+      a:link:visited:hover           { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+    
+      a.nav:link                     { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: none;}
+      a.nav:link:hover               { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a.nav:link:active              { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: none;}
+      a.nav:link:visited             { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: none;}
+      a.nav:link:visited:hover       { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+    td.navActive              { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+
+    
+      a.navActive:link          { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+      a.navActive:link:hover         { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a.navActive:link:active        { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: none;}
+      a.navActive:link:visited       { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+      a.navActive:link:visited:hover { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+
+   </style>
+
+<body>
+<p><center><h1>JUnitHtmlReport</h1></center></p>
+<p><h2>Summary</h2>
+<table border="1">
+<tr><td valign="top"><b>Test Suite</b></td><td valign="top"><b>Tests</b></td><td valign="top"><b>Failures</b></td><td valign="top"><b>Errors</b></td><td valign="top"><b>Time (sec)</b></td></tr>
+<tr>
+<td valign="top"><b>1. <a href="#1">unit tests</b></a></td>
+<td valign="top">22</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">148</td>
+</tr>
+<tr>
+<td valign="top">1.1. <a href="#1.1">edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategyTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">25.821</td>
+</tr>
+<tr>
+<td valign="top">1.2. <a href="#1.2">edu.duke.cabig.catrip.gui.discovery.XMLFileServiceLocatorTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">14.397</td>
+</tr>
+<tr>
+<td valign="top">1.3. <a href="#1.3">edu.duke.cabig.catrip.security.dukeidp.NTAuthenticationTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">14.577</td>
+</tr>
+<tr>
+<td valign="top">1.4. <a href="#1.4">edu.duke.cabig.catrip.security.password.SecurePasswordTest</a></td>
+<td valign="top">3</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">14.928</td>
+</tr>
+<tr>
+<td valign="top">1.5. <a href="#1.5">edu.duke.cabig.catrip.test.report.JUnitDocletTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">12.831</td>
+</tr>
+<tr>
+<td valign="top">1.6. <a href="#1.6">edu.duke.cabig.catrip.test.report.JUnitXmlParserTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">1.034</td>
+</tr>
+<tr>
+<td valign="top">1.7. <a href="#1.7">edu.duke.cabig.catrip.test.report.report.JUnitHtmlReportTest</a></td>
+<td valign="top">3</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">22.318</td>
+</tr>
+<tr>
+<td valign="top">1.8. <a href="#1.8">gov.nih.nci.catrip.fqe.engine.CAETest</a></td>
+<td valign="top">3</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">17.91</td>
+</tr>
+<tr>
+<td valign="top">1.9. <a href="#1.9">gov.nih.nci.catrip.fqe.engine.CAEandCaTissueCoreDistributedTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">23.582</td>
+</tr>
+<tr>
+<td valign="top">1.10. <a href="#1.10">gov.nih.nci.catrip.fqe.engine.CATissueCoreTest</a></td>
+<td valign="top">3</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">6.284</td>
+</tr>
+<tr>
+<td valign="top"><b>2. <a href="#2">integration tests</b></a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">5</td>
+</tr>
+<tr>
+<td valign="top">2.1. <a href="#2.1">edu.duke.cabig.catrip.test.system.JUnitDocReportTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">5.27</td>
+</tr>
+<tr><td valign="top"><b>Total:</b></td><td valign="top">23</td><td valign="top">0</td><td valign="top">0</td><td valign="top">153 (sec)</td></tr>
+</table>
+</p>
+<p><a name="1"><h2>1. unit tests</h2></a></p>
+<p><a name="1.1"><h3>1.1. edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategyTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Unit test that tests whether a domain model can be retrieved.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>25.821</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.1.1"><h4>1.1.1. testRetrievDomainModel</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test of retrievDomainModel method, of class edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategy.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>24.145</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2"><h3>1.2. edu.duke.cabig.catrip.gui.discovery.XMLFileServiceLocatorTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Unit test that tests whether local services can be discovered</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>14.397</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2.1"><h4>1.2.1. testDiscoverAllLocalServices</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test of discoverAllLocalServices method, of class edu.duke.cabig.catrip.gui.discovery.XMLFileServiceLocator.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>13.493</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3"><h3>1.3. edu.duke.cabig.catrip.security.dukeidp.NTAuthenticationTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This unit test tests the backend hook to the Duke IdP for authentication.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>14.577</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.1"><h4>1.3.1. testInvalidCredentials</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests to ensure that a user with invalid credentials is not authenticated.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>9.186</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.2"><h4>1.3.2. testValidCredentials</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests to ensure that a user with valid credentials is authenticated.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.157</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4"><h3>1.4. edu.duke.cabig.catrip.security.password.SecurePasswordTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test to test that passwords can be secured on test clients.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>14.928</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4.1"><h4>1.4.1. testGenerateTempKeys</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that public/private keys can be generated</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>6.907</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4.2"><h4>1.4.2. testSecurePasswordGenerated</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that a secure password can be encrypted using a public key</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>6.003</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4.3"><h4>1.4.3. testSecurePassword</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that an existing encrypted password can be decrypted using a private key</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.211</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5"><h3>1.5. edu.duke.cabig.catrip.test.report.JUnitDocletTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test for testing the JUnitDoclet class, which is used do attach JavaDoc comments
+ to JUnit test results.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>12.831</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5.1"><h4>1.5.1. testDoclet</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case tests the doclet functionality of adding class docs and method docs to test results.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>10.532</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5.2"><h4>1.5.2. testHaste</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case tests the doclet functionality of adding class docs and method docs to test results from a Haste-based test.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.546</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.6"><h3>1.6. edu.duke.cabig.catrip.test.report.JUnitXmlParserTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test to test the functionality of the JUnitXmlParser.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.034</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.6.1"><h4>1.6.1. testJUnit</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that a junit output xml file can be properly parsed.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.312</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.6.2"><h4>1.6.2. testJUnitReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that a junitreport output xml file can be properly parsed.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.18</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.7"><h3>1.7. edu.duke.cabig.catrip.test.report.report.JUnitHtmlReportTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test that tests the html report generation functionality of the JUnitHtmlReport.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>22.318</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.7.1"><h4>1.7.1. testUntypedHtmlReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests that an html report can be generated wihtout using the testType tag</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>9.698</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.7.2"><h4>1.7.2. testTypedHtmlReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests that an html report can be generated using the testType tag</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.608</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.7.3"><h4>1.7.3. testHasteHtmlReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests that an html report can be generated with using the testType tag on a Haste test</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>7.168</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.8"><h3>1.8. gov.nih.nci.catrip.fqe.engine.CAETest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This unit test issues DCQL queries to a single CAE grid service.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>17.91</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.8.1"><h4>1.8.1. testGetParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the particpants from CAE</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>13.975</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.8.2"><h4>1.8.2. testGetParticipantsRestrictionTotalScore</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the particpants from CAE  whose total score of NottinghamHistopathologicGrade is greater than 1</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>2.37</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.8.3"><h4>1.8.3. testGetParticipantsRestrictionThreeDimensionalSize</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the particpants from CAE  whose greatestDimension of ThreeDimensionalSize is greater than 1
+ and additionalDimensionZ is  greater than 2</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.2</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.9"><h3>1.9. gov.nih.nci.catrip.fqe.engine.CAEandCaTissueCoreDistributedTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This unit test issues DCQL queries that perform joins between a CAE and a caTissue CORE grid service.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>23.582</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.9.1"><h4>1.9.1. testGetTissueSpecimensWithNottinghamTotalScore</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the tissue specimens  from caTissueCore whose particpants total score of NottinghamHistopathologicGrade
+ is greater than 1</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>21.053</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.9.2"><h4>1.9.2. testGetTissueSpecimensWithThreeDimensionalSize</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the tissue specimens  from caTissueCore for all active  particpants whose greatest dimension of ThreeDimensionalSize
+ is greater than 2
+ * @throws Exception</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.415</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.10"><h3>1.10. gov.nih.nci.catrip.fqe.engine.CATissueCoreTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This unit test issues DCQL queries to a single caTissue CORE grid service.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>6.284</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.10.1"><h4>1.10.1. testGetTissueSpecimens</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the tissue specimens  from caTissueCore</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>5.251</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.10.2"><h4>1.10.2. testGetBreastTissueSpecimens</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the tissue specimens  from caTissueCore whose tissue site is breast</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.231</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.10.3"><h4>1.10.3. testGetTissueSpecimensForInactiveParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Get all the tissue specimens  from caTissueCore from inactive participants</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.16</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2"><h2>2. integration tests</h2></a></p>
+<p><a name="2.1"><h3>2.1. edu.duke.cabig.catrip.test.system.JUnitDocReportTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a integration test that tests the user's ability to run the JUnitDocReport ant task.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>5.27</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.2"><h4>2.1.2. CreateJUnitDocReportAntFile</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case creates an ant file that will generate a JUnitDocReport.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.3"><h4>2.1.3. RunJUnitDocReportStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case runs a JUnitDocReport ant file to generate results.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.4"><h4>2.1.4. CheckJUnitDocReportStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case ensures that a JUnitDocReport result file has been generated.</td>
+</table>
+</dt></dl></dl>
+</body></html>
