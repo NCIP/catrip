@@ -45,13 +45,13 @@ public class VisualQueryDesignerPanel extends CPanel {
     
     public void linkCDEs(ClassNode source, ClassNode target){
         // here you can show first the dialog... then take the input and then set that..
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     LinkCDEPanel ws= new LinkCDEPanel();
                     ws.main(null);
                 }
             });
-        
     }
     
     public void showMsg(String msgStr){
