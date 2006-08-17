@@ -20,14 +20,16 @@ public class CreateJUnitDocReportAntFile
 	private File antFile;
 	private File xmlDir;
 	private File destFile;
+	private File coberturaDir;
 	
-	public CreateJUnitDocReportAntFile(File antFile, File xmlDir, File destFile)
+	public CreateJUnitDocReportAntFile(File antFile, File xmlDir, File destFile, File coberturaDir)
 	{
 		super();
 		
 		this.antFile = antFile;
 		this.xmlDir = xmlDir;
 		this.destFile = destFile;
+		this.coberturaDir = coberturaDir;
 	}
 	
 	@Override
@@ -43,6 +45,12 @@ public class CreateJUnitDocReportAntFile
 			"		<taskdef name=\"junitDocReport\" classname=\"edu.duke.cabig.catrip.test.report.ant.JUnitDocReport\">\r\n" + 
 			"			<classpath>\r\n" + 
 			"				<fileset dir=\"" + testReportDir + "/build/jars\">\r\n" + 
+			"					<include name=\"*.jar\"/>\r\n" + 
+			"				</fileset>\r\n" + 
+			"				<fileset dir=\"" + coberturaDir.getAbsolutePath() + "\">\r\n" + 
+			"					<include name=\"*.jar\"/>\r\n" + 
+			"				</fileset>\r\n" + 
+			"				<fileset dir=\"" + new File(coberturaDir, "lib").getAbsolutePath() + "\">\r\n" + 
 			"					<include name=\"*.jar\"/>\r\n" + 
 			"				</fileset>\r\n" + 
 			"			</classpath>\r\n" + 

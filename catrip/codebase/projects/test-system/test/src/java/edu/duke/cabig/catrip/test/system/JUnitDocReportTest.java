@@ -17,8 +17,8 @@ import edu.duke.cabig.catrip.test.system.steps.CreateJUnitDocReportAntFile;
 import edu.duke.cabig.catrip.test.system.steps.RunJUnitDocReportStep;
 
 /**
- * This is a system test that tests the user's ability to run the JUnitDocReport ant task.
- * @testType system
+ * This is a integration test that tests the user's ability to run the JUnitDocReport ant task.
+ * @testType integration
  * @steps CreateJUnitDocReportAntFile, RunJUnitDocReportStep, CheckJUnitDocReportStep 
  * @author MCCON012
  */
@@ -55,9 +55,12 @@ public class JUnitDocReportTest
 			antFile = File.createTempFile("RunJUnitDocReportStep", ".xml");;
 			xmlDir = new File("test" + File.separator + "resources" + File.separator + "JUnitDocReportTest");
 			destFile = File.createTempFile("RunJUnitDocReportStep", ".html");
-
+			File coberturaDir = new File(System.getProperty("cobertura.dir", 
+				".." + File.separator + ".." + File.separator + "share" + File.separator + "cobertura-1.8"
+			));
+			
 			Vector steps = new Vector();
-			steps.add(new CreateJUnitDocReportAntFile(antFile, xmlDir, destFile));
+			steps.add(new CreateJUnitDocReportAntFile(antFile, xmlDir, destFile, coberturaDir));
 			steps.add(new RunJUnitDocReportStep(antFile));
 			steps.add(new CheckJUnitDocReportStep(destFile));
 			return steps;
