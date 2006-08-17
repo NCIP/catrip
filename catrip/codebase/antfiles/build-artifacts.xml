@@ -101,6 +101,14 @@
 			</fileset>
 		</artifact>
 
+		<artifact track="main" type="jars" id="cae_reengineering.jars">
+			<antcall target="build-cae_reengineering" />
+			<fileset dir="${projects.dir}/cae_reengineering/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+
 		<artifact track="main" type="jars" id="caTissueCoreDataService.jars">
 			<antcall target="build-caTissueCoreDataService" />
 			<fileset dir="${projects.dir}/caTissueCoreDataService/build/lib">
