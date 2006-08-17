@@ -53,11 +53,9 @@ public class EventHandler extends IGraphEventHandler {
     }
     
     public void createLink(IGraphPort sourcePort, IGraphPort targetPort) {
-//        GraphLink link = new GraphLink();
-//        link.setID(visualQueryDesignerPanel.createID("link"));
-//        link.setSourcePort((GraphPort) sourcePort);
-//        link.setTargetPort((GraphPort) targetPort);
-//        visualQueryDesignerPanel.getDocument().addComponents(GraphEvent.createSingle(link));
+
+         // TODO - Check for the null ports before you try to create a link at all..
+         // This is to avoide the null pointer exception when the target link is missed..
         
         // sanjeev
         boolean samePort = sourcePort.equals(targetPort);
