@@ -97,7 +97,6 @@
 	<classpathentry kind="lib" path="lib/cae_domain_cons.jar"/>
 	<classpathentry kind="lib" path="lib/catissuecore_domain_local_modified.jar"/>
 	<classpathentry kind="lib" path="lib/catrip_config_beans.jar"/>
-	<classpathentry kind="lib" path="lib/catrip_DCQL_beans.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-full-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/client.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
@@ -117,5 +116,6 @@
 	<classpathentry kind="lib" path="lib/z_CAE-common.jar"/>
 	<classpathentry kind="lib" path="lib/z_CAE-service.jar"/>
 	<classpathentry kind="lib" path="lib/z_CAE-stubs.jar"/>
+	<classpathentry kind="lib" path="lib/cagrid_dcql_schema_beans.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

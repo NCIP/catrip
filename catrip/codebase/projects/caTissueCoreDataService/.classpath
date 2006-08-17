@@ -145,5 +145,6 @@
 	<classpathentry kind="lib" path="lib/xerces-2.6.2.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
 	<classpathentry kind="lib" path="ext/test/lib/junit.jar"/>
+	<classpathentry kind="src" path="test/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
