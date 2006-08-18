@@ -42,7 +42,7 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 	<xsd:complexType name="Group">
-		<xsd:choice maxOccurs="unbounded">
+		<xsd:choice minOccurs="2" maxOccurs="unbounded">
 			<xsd:element name="Association" type="dcql:Association" maxOccurs="unbounded"/>
 			<xsd:element name="Attribute" type="cql:Attribute" maxOccurs="unbounded"/>
 			<xsd:element name="ForeignAssociation" type="dcql:ForeignAssociation" maxOccurs="unbounded"/>
