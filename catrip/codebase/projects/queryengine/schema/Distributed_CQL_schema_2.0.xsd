@@ -61,7 +61,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="JoinCondition">
 		<xsd:annotation>
-			<xsd:documentation>>Join condition specifies join to foreign association. Right join denotes the Foreign Object CDE and left join is the target object CDE</xsd:documentation>
+			<xsd:documentation>>Join condition specifies join to foreign association. foreignAttributeName denotes the Foreign Object CDE and localAttributeName is the local object CDE</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="predicate" type="dcql:ForeignPredicate" use="optional" default="EQUAL_TO"/>
 		<xsd:attribute name="localAttributeName" type="xsd:string" use="required"/>
