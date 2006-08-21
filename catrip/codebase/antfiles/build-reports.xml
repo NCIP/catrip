@@ -14,7 +14,7 @@
 	<!-- Call check-style for each project log results                   -->
 	<!-- =============================================================== -->
 
-	<target name="reports-style" description="Check the style of all the projects.">
+	<target name="reports-style" depends="prepare" description="Check the style of all the projects.">
 		<property name="checkstyle.home" location="${basedir}/share/checkstyle-4.1"/>
 		<property name="style.dir" location="${reports.dir}/style"/>
 
@@ -60,7 +60,7 @@
 	<!-- Call findbugs for each project log results                      -->
 	<!-- =============================================================== -->
 	
-	<target name="reports-findbugs" description="Find bugs for all the projects.">
+	<target name="reports-findbugs" depends="prepare" description="Find bugs for all the projects.">
 		<property name="findbugs.home" location="${basedir}/share/findbugs-0.9.6"/>
 		<property name="findbugs.dir" location="${reports.dir}/findbugs"/>
 
@@ -123,7 +123,7 @@
 	<!-- Call source-java for each project log results                   -->
 	<!-- =============================================================== -->
 
-	<target name="reports-source-java" description="Count the source code for all projects.">
+	<target name="reports-source-java" depends="prepare" description="Count the source code for all projects.">
 		<property name="javancss.home" location="${basedir}/share/javancss-24.44"/>
 		<property name="source-java.dir" location="${reports.dir}/source-java"/>
 
@@ -170,7 +170,7 @@
 	<!-- Call cvs                                                        -->
 	<!-- =============================================================== -->
 
-	<target name="reports-cvs" description="Report on CVS activity.">
+	<target name="reports-cvs" depends="prepare" description="Report on CVS activity.">
 		<property name="statcvs.home" location="${basedir}/share/statcvs-0.2.2"/>
 		<property name="cvs.dir" location="${reports.dir}/statcvs"/>
 
@@ -195,7 +195,7 @@
 	<!-- Call testcoverage for each project log results                  -->
 	<!-- =============================================================== -->
 
-	<target name="reports-testcoverage" depends="prepare, defineArtifacts" description="Check the test coverage for all the projects.">
+	<target name="reports-testcoverage" depends="prepare" depends="prepare, defineArtifacts" description="Check the test coverage for all the projects.">
 		<property name="testcoverage.dir" location="${reports.dir}/testcoverage"/>
 		
 		<taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
@@ -238,7 +238,7 @@
 	<!-- Call junit                                                      -->
 	<!-- =============================================================== -->
 
-	<target name="reports-junit" description="Report on JUnit tests for all the projects.">
+	<target name="reports-junit" depends="prepare" description="Report on JUnit tests for all the projects.">
 		<mkdir dir="${reports.dir}/junit"/>
 
 		<!-- junitreport -->
