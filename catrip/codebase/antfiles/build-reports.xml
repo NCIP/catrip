@@ -195,7 +195,7 @@
 	<!-- Call testcoverage for each project log results                  -->
 	<!-- =============================================================== -->
 
-	<target name="reports-testcoverage" depends="prepare" depends="prepare, defineArtifacts" description="Check the test coverage for all the projects.">
+	<target name="reports-testcoverage" depends="prepare, defineArtifacts" description="Check the test coverage for all the projects.">
 		<property name="testcoverage.dir" location="${reports.dir}/testcoverage"/>
 		
 		<taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
