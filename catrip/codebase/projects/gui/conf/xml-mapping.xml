@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN" "http://www.castor.org/mapping.dtd">
+
+<mapping>
+
+<!-- caDSR  mappings... -->
+
+<!-- Adding the mapping from the caDSR project like SemanticMetaData etc. -->
+  <class name="gov.nih.nci.cadsr.umlproject.domain.Project">
+    <map-to xml="Project" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="shortName" type="string">
+      <bind-xml name="shortName" node="attribute" />
+    </field>
+    <field name="longName" type="string">
+      <bind-xml name="longName" node="attribute" />
+    </field>
+    <field name="description" type="string">
+      <bind-xml name="description" node="attribute" />
+    </field>
+    <field name="version" type="string">
+      <bind-xml name="version" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.SubProject">
+    <map-to xml="SubProject" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute" />
+    </field>
+    <field name="description" type="string">
+      <bind-xml name="description" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.UMLPackageMetadata">
+    <map-to xml="UMLPackageMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute" />
+    </field>
+    <field name="description" type="string">
+      <bind-xml name="description" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.UMLClassMetadata">
+    <map-to xml="UMLClassMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute" />
+    </field>
+    <field name="description" type="string">
+      <bind-xml name="description" node="attribute" />
+    </field>
+    <field name="fullyQualifiedName" type="string">
+      <bind-xml name="fullyQualifiedName" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.UMLAttributeMetadata">
+    <map-to xml="UMLAttributeMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute" />
+    </field>
+    <field name="description" type="string">
+      <bind-xml name="description" node="attribute" />
+    </field>
+    <field name="fullyQualifiedName" type="string">
+      <bind-xml name="fullyQualifiedName" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.SemanticMetadata">
+    <map-to xml="SemanticMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="conceptCode" type="string">
+      <bind-xml name="conceptCode" node="attribute" />
+    </field>
+    <field name="conceptName" type="string">
+      <bind-xml name="conceptName" node="attribute" />
+    </field>
+    <field name="conceptDefinition" type="string">
+      <bind-xml name="conceptDefinition" node="attribute" />
+    </field>
+    <field name="isPrimaryConcept" type="boolean">
+      <bind-xml name="isPrimaryConcept" node="attribute" />
+    </field>
+    <field name="order" type="integer">
+      <bind-xml name="order" node="attribute" />
+    </field>
+    <field name="orderLevel" type="integer">
+      <bind-xml name="orderLevel" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.UMLAssociationMetadata">
+    <map-to xml="UMLAssociationMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="sourceLowCardinality" type="integer">
+      <bind-xml name="sourceLowCardinality" node="attribute" />
+    </field>
+    <field name="sourceHighCardinality" type="integer">
+      <bind-xml name="sourceHighCardinality" node="attribute" />
+    </field>
+    <field name="targetLowCardinality" type="integer">
+      <bind-xml name="targetLowCardinality" node="attribute" />
+    </field>
+    <field name="targetHighCardinality" type="integer">
+      <bind-xml name="targetHighCardinality" node="attribute" />
+    </field>
+    <field name="sourceRoleName" type="string">
+      <bind-xml name="sourceRoleName" node="attribute" />
+    </field>
+    <field name="targetRoleName" type="string">
+      <bind-xml name="targetRoleName" node="attribute" />
+    </field>
+    <field name="isBidirectional" type="boolean">
+      <bind-xml name="isBidirectional" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.UMLGeneralizationMetadata">
+    <map-to xml="UMLGeneralizationMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.AttributeTypeMetadata">
+    <map-to xml="AttributeTypeMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="valueDomainDataType" type="string">
+      <bind-xml name="valueDomainDataType" node="attribute" />
+    </field>
+    <field name="valueDomainLongName" type="string">
+      <bind-xml name="valueDomainLongName" node="attribute" />
+    </field>
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+  </class>
+  <class name="gov.nih.nci.cadsr.umlproject.domain.TypeEnumerationMetadata">
+    <map-to xml="TypeEnumerationMetadata" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.cadsr.umlproject.domain" />
+    <field name="valueMeaning" type="string">
+      <bind-xml name="valueMeaning" node="attribute" />
+    </field>
+    <field name="permissibleValue" type="string">
+      <bind-xml name="permissibleValue" node="attribute" />
+    </field>
+    <field name="id" type="string">
+      <bind-xml name="id" node="attribute" />
+    </field>
+  </class>
+<!-- Adding the mapping from the caDSR project like SemanticMetaData etc. -->
+
+
+<!-- CaTissueCore mappings... -->
+
+
+  <class name="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl">
+    <map-to xml="Participant" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="lastName" type="string">
+      <bind-xml name="lastName" node="attribute"/>
+    </field>
+    <field name="firstName" type="string">
+      <bind-xml name="firstName" node="attribute"/>
+    </field>
+    <field name="middleName" type="string">
+      <bind-xml name="middleName" node="attribute"/>
+    </field>
+    <field name="birthDate" type="date">
+      <bind-xml name="birthDate" node="attribute"/>
+    </field>
+    <field name="sexGenotype" type="string">
+      <bind-xml name="sexGenotype" node="attribute"/>
+    </field>
+    <field name="gender" type="string">
+      <bind-xml name="gender" node="attribute"/>
+    </field>
+    <field name="race" type="string">
+      <bind-xml name="race" node="attribute"/>
+    </field>
+    <field name="ethnicity" type="string">
+      <bind-xml name="ethnicity" node="attribute"/>
+    </field>
+    <field name="socialSecurityNumber" type="string">
+      <bind-xml name="socialSecurityNumber" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl">
+    <map-to xml="SpecimenCollectionGroup" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="clinicalDiagnosis" type="string">
+      <bind-xml name="clinicalDiagnosis" node="attribute"/>
+    </field>
+    <field name="clinicalStatus" type="string">
+      <bind-xml name="clinicalStatus" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CollectionProtocolImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenProtocolImpl">
+    <map-to xml="CollectionProtocol" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SiteImpl">
+    <map-to xml="Site" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+    <field name="type" type="string">
+      <bind-xml name="type" node="attribute"/>
+    </field>
+    <field name="emailAddress" type="string">
+      <bind-xml name="emailAddress" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.DistributionProtocolImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenProtocolImpl">
+    <map-to xml="DistributionProtocol" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl">
+    <map-to xml="Specimen" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="type" type="string">
+      <bind-xml name="type" node="attribute"/>
+    </field>
+    <field name="available" type="boolean">
+      <bind-xml name="available" node="attribute"/>
+    </field>
+    <field name="positionDimensionOne" type="integer">
+      <bind-xml name="positionDimensionOne" node="attribute"/>
+    </field>
+    <field name="positionDimensionTwo" type="integer">
+      <bind-xml name="positionDimensionTwo" node="attribute"/>
+    </field>
+    <field name="barcode" type="string">
+      <bind-xml name="barcode" node="attribute"/>
+    </field>
+    <field name="comments" type="string">
+      <bind-xml name="comments" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl">
+    <map-to xml="MolecularSpecimen" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="concentrationInMicrogramPerMicroliter" type="double">
+      <bind-xml name="concentrationInMicrogramPerMicroliter" node="attribute"/>
+    </field>
+    <field name="quantityInMicrogram" type="double">
+      <bind-xml name="quantityInMicrogram" node="attribute"/>
+    </field>
+    <field name="availableQuantityInMicrogram" type="double">
+      <bind-xml name="availableQuantityInMicrogram" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.UserImpl">
+    <map-to xml="User" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="lastName" type="string">
+      <bind-xml name="lastName" node="attribute"/>
+    </field>
+    <field name="firstName" type="string">
+      <bind-xml name="firstName" node="attribute"/>
+    </field>
+    <field name="password" type="string">
+      <bind-xml name="password" node="attribute"/>
+    </field>
+    <field name="startDate" type="date">
+      <bind-xml name="dateAdded" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+    <field name="comments" type="string">
+      <bind-xml name="comments" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl">
+    <map-to xml="SpecimenRequirement" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="specimenType" type="string">
+      <bind-xml name="specimenType" node="attribute"/>
+    </field>
+    <field name="tissueSite" type="string">
+      <bind-xml name="tissueSite" node="attribute"/>
+    </field>
+    <field name="pathologyStatus" type="string">
+      <bind-xml name="pathologyStatus" node="attribute"/>
+    </field>
+  </class>
+  <!--
+  <class name="edu.wustl.catissuecore.domainobject.impl.DistributionImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="Distribution" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.DistributedItemImpl">
+    <map-to xml="DistributedItem" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="quantity" type="double">
+      <bind-xml name="quantity" node="attribute"/>
+    </field>
+  </class>
+  -->
+  <class name="edu.wustl.catissuecore.domainobject.impl.StorageContainerImpl">
+    <map-to xml="StorageContainer" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="number" type="integer">
+      <bind-xml name="number" node="attribute"/>
+    </field>
+    <field name="tempratureInCentigrade" type="double">
+      <bind-xml name="tempratureInCentigrade" node="attribute"/>
+    </field>
+    <field name="isFull" type="boolean">
+      <bind-xml name="isFull" node="attribute"/>
+    </field>
+    <field name="barcode" type="string">
+      <bind-xml name="barcode" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+    <field name="positionDimensionOne" type="integer">
+      <bind-xml name="positionDimensionOne" node="attribute"/>
+    </field>
+    <field name="positionDimensionTwo" type="integer">
+      <bind-xml name="positionDimensionTwo" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.StorageContainerDetailsImpl">
+    <map-to xml="StorageContainerDetails" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="parameterName" type="string">
+      <bind-xml name="parameterName" node="attribute"/>
+    </field>
+    <field name="parameterValue" type="string">
+      <bind-xml name="parameterValue" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.AddressImpl">
+    <map-to xml="Address" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="street" type="string">
+      <bind-xml name="street" node="attribute"/>
+    </field>
+    <field name="city" type="string">
+      <bind-xml name="city" node="attribute"/>
+    </field>
+    <field name="state" type="string">
+      <bind-xml name="state" node="attribute"/>
+    </field>
+    <field name="country" type="string">
+      <bind-xml name="country" node="attribute"/>
+    </field>
+    <field name="zipCode" type="string">
+      <bind-xml name="zipCode" node="attribute"/>
+    </field>
+    <field name="phoneNumber" type="string">
+      <bind-xml name="phoneNumber" node="attribute"/>
+    </field>
+    <field name="faxNumber" type="string">
+      <bind-xml name="faxNumber" node="attribute"/>
+    </field>
+
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.InstitutionImpl">
+    <map-to xml="Institution" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.AuditEventImpl" extends="edu.wustl.catissuecore.domainobject.impl.EventParametersImpl">
+    <map-to xml="AuditEvent" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="ipAddress" type="string">
+      <bind-xml name="ipAddress" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.AuditEventLogImpl">
+    <map-to xml="AuditEventLog" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="objectIdentifier" type="long">
+      <bind-xml name="objectIdentifier" node="attribute"/>
+    </field>
+    <field name="ObjectName" type="string">
+      <bind-xml name="ObjectName" node="attribute"/>
+    </field>
+    <field name="eventType" type="string">
+      <bind-xml name="eventType" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.BiohazardImpl">
+    <map-to xml="Biohazard" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+    <field name="comments" type="string">
+      <bind-xml name="comments" node="attribute"/>
+    </field>
+    <field name="type" type="string">
+      <bind-xml name="type" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.DepartmentImpl">
+    <map-to xml="Department" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.EventParametersImpl">
+    <map-to xml="SpecimenEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.FixedEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="FixedEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="fixationType" type="string">
+      <bind-xml name="fixationType" node="attribute"/>
+    </field>
+    <field name="durationInMinutes" type="integer">
+      <bind-xml name="durationInMinutes" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ProcedureEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="ProcedureEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="url" type="string">
+      <bind-xml name="url" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="ReviewEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.FluidSpecimenReviewEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl">
+    <map-to xml="FluidSpecimenReviewEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="cellCount" type="double">
+      <bind-xml name="cellCount" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenReviewEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl">
+    <map-to xml="TissueSpecimenReviewEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="neoplasticCellularityPercentage" type="double">
+      <bind-xml name="neoplasticCellularityPercentage" node="attribute"/>
+    </field>
+    <field name="necrosisPercentage" type="double">
+      <bind-xml name="necrosisPercentage" node="attribute"/>
+    </field>
+    <field name="lymphocyticPercentage" type="double">
+      <bind-xml name="lymphocyticPercentage" node="attribute"/>
+    </field>
+    <field name="totalCellularityPercentage" type="double">
+      <bind-xml name="totalCellularityPercentage" node="attribute"/>
+    </field>
+    <field name="histologicalQuality" type="string">
+      <bind-xml name="histologicalQuality" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl">
+    <map-to xml="TissueSpecimen" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInGram" type="double">
+      <bind-xml name="quantityInGram" node="attribute"/>
+    </field>
+    <field name="availableQuantityInGram" type="double">
+      <bind-xml name="availableQuantityInGram" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.StorageContainerCapacityImpl">
+    <map-to xml="StorageContainerCapacity" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="oneDimensionCapacity" type="integer">
+      <bind-xml name="oneDimensionCapacity" node="attribute"/>
+    </field>
+    <field name="twoDimensionCapacity" type="integer">
+      <bind-xml name="twoDimensionCapacity" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.StorageTypeImpl">
+    <map-to xml="StorageType" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="type" type="string">
+      <bind-xml name="type" node="attribute"/>
+    </field>
+    <field name="defaultTempratureInCentigrade" type="double">
+      <bind-xml name="defaultTempratureInCentigrade" node="attribute"/>
+    </field>
+    <field name="oneDimensionLabel" type="string">
+      <bind-xml name="oneDimensionLabel" node="attribute"/>
+    </field>
+    <field name="twoDimensionLabel" type="string">
+      <bind-xml name="twoDimensionLabel" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CollectionProtocolRegistrationImpl">
+    <map-to xml="CollectionProtocolRegistration" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="protocolParticipantIdentifier" type="string">
+      <bind-xml name="protocolParticipantIdentifier" node="attribute"/>
+    </field>
+    <field name="registrationDate" type="date">
+      <bind-xml name="registrationDate" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ReceivedEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="ReceivedEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="receivedQuality" type="string">
+      <bind-xml name="receivedQuality" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CollectionProtocolEventImpl">
+    <map-to xml="CollectionProtocolEvent" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="clinicalStatus" type="string">
+      <bind-xml name="clinicalStatus" node="attribute"/>
+    </field>
+    <field name="studyCalendarEventPoint" type="double">
+      <bind-xml name="studyCalendarEventPoint" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl">
+    <map-to xml="ParticipantMedicalIdentifier" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="medicalRecordNumber" type="string">
+      <bind-xml name="medicalRecordNumber" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpecimenProtocolImpl">
+    <map-to xml="SpecimenProtocol" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="title" type="string">
+      <bind-xml name="title" node="attribute"/>
+    </field>
+    <field name="shortTitle" type="string">
+      <bind-xml name="shortTitle" node="attribute"/>
+    </field>
+    <field name="irbIdentifier" type="string">
+      <bind-xml name="irbIdentifier" node="attribute"/>
+    </field>
+    <field name="startDate" type="date">
+      <bind-xml name="startDate" node="attribute"/>
+    </field>
+    <field name="endDate" type="date">
+      <bind-xml name="endDate" node="attribute"/>
+    </field>
+    <field name="enrollment" type="integer">
+      <bind-xml name="enrollment" node="attribute"/>
+    </field>
+    <field name="descriptionURL" type="string">
+      <bind-xml name="descriptionURL" node="attribute"/>
+    </field>
+    <field name="activityStatus" type="string">
+      <bind-xml name="activityStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenReviewParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl">
+    <map-to xml="MolecularSpecimenReviewParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="gelImageURL" type="string">
+      <bind-xml name="gelImageURL" node="attribute"/>
+    </field>
+    <field name="qualityIndex" type="string">
+      <bind-xml name="qualityIndex" node="attribute"/>
+    </field>
+    <field name="laneNumber" type="string">
+      <bind-xml name="laneNumber" node="attribute"/>
+    </field>
+    <field name="gelNumber" type="integer">
+      <bind-xml name="gelNumber" node="attribute"/>
+    </field>
+    <field name="absorbanceAt260" type="double">
+      <bind-xml name="absorbanceAt260" node="attribute"/>
+    </field>
+    <field name="absorbanceAt280" type="double">
+      <bind-xml name="absorbanceAt280" node="attribute"/>
+    </field>
+    <field name="ratio28STo18S" type="double">
+      <bind-xml name="ratio28STo18S" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ExternalIdentifierImpl">
+    <map-to xml="ExternalIdentifier" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+    <field name="value" type="string">
+      <bind-xml name="value" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl">
+    <map-to xml="ClinicalReport" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="surgicalPathologyNumber" type="string">
+      <bind-xml name="surgicalPathologyNumber" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.AuditEventDetailsImpl">
+    <map-to xml="AuditEventDetails" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="elementName" type="string">
+      <bind-xml name="elementName" node="attribute"/>
+    </field>
+    <field name="previousValue" type="string">
+      <bind-xml name="previousValue" node="attribute"/>
+    </field>
+    <field name="currentValue" type="string">
+      <bind-xml name="currentValue" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.EventParametersImpl">
+    <map-to xml="EventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="timestamp" type="date">
+      <bind-xml name="timestamp" node="attribute"/>
+    </field>
+    <field name="comments" type="string">
+      <bind-xml name="comments" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.FluidSpecimenImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl">
+    <map-to xml="FluidSpecimen" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInMilliliter" type="double">
+      <bind-xml name="quantityInMilliliter" node="attribute"/>
+    </field>
+    <field name="availableQuantityInMilliliter" type="double">
+      <bind-xml name="availableQuantityInMilliliter" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.FluidSpecimenRequirementImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl">
+    <map-to xml="FluidSpecimenRequirement" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInMilliliter" type="double">
+      <bind-xml name="quantityInMilliliter" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenRequirementImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl">
+    <map-to xml="TissueSpecimenRequirement" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInGram" type="double">
+      <bind-xml name="quantityInGram" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CollectionEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="CollectionEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="collectionProcedure" type="string">
+      <bind-xml name="collectionProcedure" node="attribute"/>
+    </field>
+    <field name="container" type="string">
+      <bind-xml name="container" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.FrozenEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="FrozenEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="method" type="string">
+      <bind-xml name="method" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpunEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="SpunEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="gForce" type="double">
+      <bind-xml name="gForce" node="attribute"/>
+    </field>
+    <field name="durationInMinutes" type="integer">
+      <bind-xml name="durationInMinutes" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.EmbeddedEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="EmbeddedEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="embeddingMedium" type="string">
+      <bind-xml name="embeddingMedium" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.ThawEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="ThawEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.DisposalEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="DisposalEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="reason" type="string">
+      <bind-xml name="reason" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl">
+    <map-to xml="SpecimenCharacteristics" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="tissueSite" type="string">
+      <bind-xml name="tissueSite" node="attribute"/>
+    </field>
+    <field name="tissueSide" type="string">
+      <bind-xml name="tissueSide" node="attribute"/>
+    </field>
+    <field name="pathologicalStatus" type="string">
+      <bind-xml name="pathologicalStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenRequirementImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl">
+    <map-to xml="MolecularSpecimenRequirement" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInMicrogram" type="double">
+      <bind-xml name="quantityInMicrogram" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CheckInCheckOutEventParameterImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="CheckInCheckOutEventParameter" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="storageStatus" type="string">
+      <bind-xml name="storageStatus" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl">
+    <map-to xml="CellSpecimen" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInCellCount" type="integer">
+      <bind-xml name="quantityInCellCount" node="attribute"/>
+    </field>
+    <field name="availableQuantityInCellCount" type="integer">
+      <bind-xml name="availableQuantityInCellCount" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.TransferEventParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl">
+    <map-to xml="TransferEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="fromPositionDimensionOne" type="integer">
+      <bind-xml name="fromPositionDimensionOne" node="attribute"/>
+    </field>
+    <field name="fromPositionDimensionTwo" type="integer">
+      <bind-xml name="fromPositionDimensionTwo" node="attribute"/>
+    </field>
+    <field name="toPositionDimensionOne" type="integer">
+      <bind-xml name="toPositionDimensionOne" node="attribute"/>
+    </field>
+    <field name="toPositionDimensionTwo" type="integer">
+      <bind-xml name="toPositionDimensionTwo" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CancerResearchGroupImpl">
+    <map-to xml="CancerResearchGroup" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute"/>
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CellSpecimenReviewParametersImpl" extends="edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl">
+    <map-to xml="CellSpecimenReviewParameters" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="neoplasticCellularityPercentage" type="double">
+      <bind-xml name="neoplasticCellularityPercentage" node="attribute"/>
+    </field>
+    <field name="viableCellPercentage" type="double">
+      <bind-xml name="viableCellPercentage" node="attribute"/>
+    </field>
+  </class>
+  <class name="edu.wustl.catissuecore.domainobject.impl.CellSpecimenRequirementImpl" extends="edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl">
+    <map-to xml="CellSpecimenRequirement" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject" />
+    <field name="quantityInCellCount" type="integer">
+      <bind-xml name="quantityInCellCount" node="attribute"/>
+    </field>
+  </class>
+
+
+
+<!-- CAE mappings... -->
+
+	<class name="edu.duke.catrip.cae.domain.general.Participant" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
+		<map-to xml="Participant" ns-uri="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+		<field name="lastName" type="string">
+			<bind-xml name="lastName" node="attribute"/>
+		</field>
+		<field name="firstName" type="string">
+			<bind-xml name="firstName" node="attribute"/>
+		</field>
+		<field name="middleName" type="string">
+			<bind-xml name="middleName" node="attribute"/>
+		</field>
+		<field name="birthDate" type="date">
+			<bind-xml name="birthDate" node="attribute"/>
+		</field>
+		<field name="uniquePatientIdentifier" type="string">
+			<bind-xml name="uniquePatientIdentifier" node="attribute"/>
+		</field>
+		<field name="gender" type="string">
+			<bind-xml name="gender" node="attribute"/>
+		</field>
+		<field name="race" type="string">
+			<bind-xml name="race" node="attribute"/>
+		</field>
+		<field name="ethnicity" type="string">
+			<bind-xml name="ethnicity" node="attribute"/>
+		</field>
+	</class>
+	<class name="edu.duke.catrip.cae.domain.general.Accession" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
+		<map-to xml="Accession" ns-uri="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+		<field name="accessionDate" type="date">
+			<bind-xml name="accessionDate" node="attribute"/>
+		</field>
+		<field name="surgicalPathologyNumber" type="string">
+			<bind-xml name="surgicalPathologyNumber" node="attribute"/>
+		</field>
+		<field name="diseaseType" type="string">
+			<bind-xml name="diseaseType" node="attribute"/>
+		</field>
+	</class>
+	<class name="edu.duke.catrip.cae.domain.general.Specimen" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
+		<map-to xml="Specimen" ns-uri="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+		<field name="identifier" type="string">
+			<bind-xml name="identifier" node="attribute"/>
+		</field>
+		<field name="surgicalLabel" type="string">
+			<bind-xml name="surgicalLabel" node="attribute"/>
+		</field>
+	</class>
+	<class name="edu.pitt.cabig.cae.domain.general.EventParameters">
+		<map-to xml="EventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general"/>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="attribute"/>
+		</field>
+	</class>
+	<class name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" extends="edu.pitt.cabig.cae.domain.general.EventParameters">
+		<map-to xml="AnnotationEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general"/>
+		<field name="source" type="string">
+			<bind-xml name="source" node="attribute"/>
+		</field>
+		<field name="sourceDate" type="date">
+			<bind-xml name="sourceDate" node="attribute"/>
+		</field>
+	</class>
+	<class name="edu.pitt.cabig.cae.domain.general.AnnotationSet">
+		<map-to xml="AnnotationSet" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general"/>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+	</class>
+	<class name="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
+		<map-to xml="AnnotatableEntity" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general"/>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+	</class>
+
+
+</mapping>
+
