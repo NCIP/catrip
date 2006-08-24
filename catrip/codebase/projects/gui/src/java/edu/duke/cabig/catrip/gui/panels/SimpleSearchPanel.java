@@ -56,8 +56,6 @@ public class SimpleSearchPanel extends CPanel {
         jLabel6 = new javax.swing.JLabel();
         btnPanel = new javax.swing.JPanel();
         targetObjBtn = new javax.swing.JButton();
-        serviceOneBtn = new javax.swing.JButton();
-        serviceTwoBtn = new javax.swing.JButton();
         clearFilterBtn = new javax.swing.JButton();
 
         jLabel1.setText("Select");
@@ -144,16 +142,12 @@ public class SimpleSearchPanel extends CPanel {
         );
 
         btnPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Restrictions"));
-        targetObjBtn.setText("Add xxx Filter");
+        targetObjBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.targetObjBtn.text")); // NOI18N
         targetObjBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 targetObjBtnActionPerformed(evt);
             }
         });
-
-        serviceOneBtn.setText("Add Tissue Bank Filter");
-
-        serviceTwoBtn.setText("Add Clinical Annotation Filter");
 
         clearFilterBtn.setText("Clear Filters");
         clearFilterBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -169,9 +163,7 @@ public class SimpleSearchPanel extends CPanel {
             .add(btnPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(btnPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(serviceOneBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .add(targetObjBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                    .add(serviceTwoBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -180,11 +172,7 @@ public class SimpleSearchPanel extends CPanel {
             .add(btnPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(targetObjBtn)
-                .add(15, 15, 15)
-                .add(serviceOneBtn)
-                .add(16, 16, 16)
-                .add(serviceTwoBtn)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 167, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 244, Short.MAX_VALUE)
                 .add(clearFilterBtn)
                 .addContainerGap())
         );
@@ -244,9 +232,7 @@ public class SimpleSearchPanel extends CPanel {
         
         filterPanel.revalidate();
         filterPanel.repaint();
-        
-        
-        
+
         
     }//GEN-LAST:event_targetObjBtnActionPerformed
     
@@ -275,8 +261,6 @@ public class SimpleSearchPanel extends CPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpanel;
-    private javax.swing.JButton serviceOneBtn;
-    private javax.swing.JButton serviceTwoBtn;
     private javax.swing.JButton targetObjBtn;
     private javax.swing.JComboBox targetObjCombo;
     private javax.swing.JPanel targetPanel;
