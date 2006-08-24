@@ -54,7 +54,6 @@ public class SimpleSearchPanel extends CPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnPanel = new javax.swing.JPanel();
         targetObjBtn = new javax.swing.JButton();
         clearFilterBtn = new javax.swing.JButton();
 
@@ -83,7 +82,7 @@ public class SimpleSearchPanel extends CPanel {
                 .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 227, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(16, 16, 16)
                 .add(jLabel3)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         targetPanelLayout.setVerticalGroup(
             targetPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -118,14 +117,14 @@ public class SimpleSearchPanel extends CPanel {
             .add(jpanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
                     .add(jpanelLayout.createSequentialGroup()
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                        .add(209, 209, 209)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                        .add(84, 84, 84)
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(52, 52, 52)
+                        .add(63, 63, 63)
                         .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(90, 90, 90)))
+                        .add(204, 204, 204)))
                 .addContainerGap())
         );
         jpanelLayout.setVerticalGroup(
@@ -134,15 +133,14 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap()
                 .add(jpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
-                    .add(jLabel6)
-                    .add(jLabel5))
+                    .add(jLabel5)
+                    .add(jLabel6))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        btnPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Restrictions"));
-        targetObjBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.targetObjBtn.text")); // NOI18N
+        targetObjBtn.setText("Add Filter");
         targetObjBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 targetObjBtnActionPerformed(evt);
@@ -156,27 +154,6 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
-        org.jdesktop.layout.GroupLayout btnPanelLayout = new org.jdesktop.layout.GroupLayout(btnPanel);
-        btnPanel.setLayout(btnPanelLayout);
-        btnPanelLayout.setHorizontalGroup(
-            btnPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(btnPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(btnPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(targetObjBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                    .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        btnPanelLayout.setVerticalGroup(
-            btnPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(btnPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(targetObjBtn)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 244, Short.MAX_VALUE)
-                .add(clearFilterBtn)
-                .addContainerGap())
-        );
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,9 +163,10 @@ public class SimpleSearchPanel extends CPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, targetPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(jpanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(targetObjBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 208, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -197,10 +175,12 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap()
                 .add(targetPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(btnPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jpanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .add(jpanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(targetObjBtn)
+                    .add(clearFilterBtn))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -250,7 +230,6 @@ public class SimpleSearchPanel extends CPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnPanel;
     private javax.swing.JButton clearFilterBtn;
     private javax.swing.JPanel filterPanel;
     private javax.swing.JLabel jLabel1;
