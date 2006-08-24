@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.components.SteppedComboBox;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
@@ -28,8 +29,8 @@ public class PropertiesPanel extends CPanel {
     }
     
     /** load the predicate list in the combo-box. This should come from a configuration file. */
-    private void init(){
-        predicates = new JComboBox();
+    private void init(){ 
+        predicates = new SteppedComboBox(); //JComboBox();// 
         predicates.addItem("LIKE");
         predicates.addItem("EQUAL_TO");
         predicates.addItem("NOT_EQUAL_TO");

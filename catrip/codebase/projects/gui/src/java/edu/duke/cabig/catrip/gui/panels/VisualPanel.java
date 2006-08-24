@@ -47,6 +47,7 @@ public class VisualPanel extends CPanel {
         tabbedPane = new javax.swing.JTabbedPane();
         visualQueryDesignerPanel = new edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel();
         cQLDesignerPanel = new edu.duke.cabig.catrip.gui.panels.CQLDesignerPanel();
+        simpleSearchPanel = new edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -61,6 +62,8 @@ public class VisualPanel extends CPanel {
         tabbedPane.addTab(bundle.getString("VISUAL_PANEL_TAB_ONE"), visualQueryDesignerPanel); // NOI18N
 
         tabbedPane.addTab(bundle.getString("VISUAL_PANEL_TAB_TWO"), cQLDesignerPanel); // NOI18N
+
+        tabbedPane.addTab("Simple Query Interface", simpleSearchPanel);
 
         add(tabbedPane);
 
@@ -81,6 +84,7 @@ public class VisualPanel extends CPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private edu.duke.cabig.catrip.gui.panels.CQLDesignerPanel cQLDesignerPanel;
+    private edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel simpleSearchPanel;
     private javax.swing.JTabbedPane tabbedPane;
     private edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel visualQueryDesignerPanel;
     // End of variables declaration//GEN-END:variables

@@ -102,7 +102,9 @@ public class CommandPanel extends CPanel {
                             if (attributeValue != null){
                                 value = attributeValue.toString();
                             }
-                        } catch (Exception eex) {}
+                        } catch (Exception eex) {
+                            eex.printStackTrace();
+                        }
                         aBean.setAttributeValue(value);
                     }
                     classBeanList.add(classBeanTmp);
