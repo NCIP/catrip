@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.discovery;
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
+import edu.duke.cabig.catrip.gui.util.SwingUtils;
 import edu.duke.catrip.config.CatripService;
 import edu.duke.catrip.config.CatripServicesConfigurationDocument;
 import java.util.ArrayList;
@@ -82,8 +83,9 @@ public class XMLFileServiceLocator extends ServiceLocator{
         String serviceName = commonMetadata.getServiceDescription().getService().getName();
         serviceMetaDataBean.setServiceName(serviceName);
         serviceMetaDataBean.setServiceUrl(serviceUrl);
-        // TODO - change it later.. to generate the icon dynamically from the service name..
-        serviceMetaDataBean.setIcon("edu/duke/cabig/catrip/gui/dnd/resources/"+serviceMetaDataBean.getServiceName().trim()+".png");
+        // generate the icon dynamically from the service name..
+        serviceMetaDataBean.setIcon(SwingUtils.getTextAsRandomColorImage(serviceMetaDataBean.getServiceName().trim())); 
+//        serviceMetaDataBean.setIcon("edu/duke/cabig/catrip/gui/dnd/resources/"+serviceMetaDataBean.getServiceName().trim()+".png");
         serviceMetaDataBean.setDescription(commonMetadata.getServiceDescription().getService().getDescription());
         
         PointOfContact pointOfContact = commonMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);

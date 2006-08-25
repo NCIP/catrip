@@ -252,7 +252,7 @@
               <SubComponents>
                 <Container class="javax.swing.JSplitPane" name="jSplitPane3">
                   <Properties>
-                    <Property name="dividerLocation" type="int" value="500"/>
+                    <Property name="dividerLocation" type="int" value="540"/>
                     <Property name="orientation" type="int" value="0"/>
                   </Properties>
 
@@ -275,11 +275,11 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="466" max="32767" attributes="0"/>
+                                  <EmptySpace pref="506" max="32767" attributes="0"/>
                                   <Component id="commandPanel" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="visualPanel" pref="465" max="32767" attributes="0"/>
+                                  <Component id="visualPanel" pref="505" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                           </Group>

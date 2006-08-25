@@ -1,5 +1,6 @@
 package edu.duke.cabig.catrip.gui.common;
 
+import java.awt.Image;
 import java.util.*;
 
 
@@ -19,7 +20,7 @@ public class ClassBean{
     private String description;
     
     // set the icon based on the service name.. have a pre selected icons.. and a default icon too
-    private String icon = "edu/duke/cabig/catrip/gui/dnd/resources/caCore.png";
+    private Image icon;// = "edu/duke/cabig/catrip/gui/dnd/resources/caCore.png";
     private String serviceName;
     private String serviceUrl;
     private String domainModelId;
@@ -97,11 +98,11 @@ public class ClassBean{
         this.className = className;
     }
     
-    public String getIcon() {
+    public Image getIcon() {
         return icon;
     }
     
-    public void setIcon(String icon) {
+    public void setIcon(Image icon) {
         this.icon = icon;
     }
     

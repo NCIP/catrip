@@ -176,7 +176,8 @@ public class EventHandler extends IGraphEventHandler {
                 node = (ClassNode) ClassNode.class.newInstance(); // set the information of the GraphNode type with ClassBean itself.
                 node.setID(visualQueryDesignerPanel.createID(cBean.getId()));
                 node.setDisplayName(cBean.getClassName());
-                node.setIcon( Utilities.loadImage(cBean.getIcon()));
+//                node.setIcon( Utilities.loadImage(cBean.getIcon())); 
+                node.setIcon( cBean.getIcon()); 
                 addAttrubutePorts(node, cBean);
                 node.setAssociatedClassObject(cBean);// attach a classBean instance with this Graph node.
                 String toolTipText = "<html>Service Name: <b>"+cBean.getServiceName()+"</b><br>Package Name: <b>"+cBean.getPackageName()+"</b></html>";

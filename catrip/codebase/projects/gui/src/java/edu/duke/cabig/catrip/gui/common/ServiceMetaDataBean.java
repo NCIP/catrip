@@ -1,5 +1,7 @@
 package edu.duke.cabig.catrip.gui.common;
 
+import java.awt.Image;
+
 /**
  * This class holds the properties defined in the Service Metadata xml.
  *
@@ -14,7 +16,7 @@ public class ServiceMetaDataBean {
     private String pointOfContact; // concatenate name:email:role
     private String hostingResearchCenter; // concatenate displayName:shortName::(point of contact)name:email:role
      
-    private String icon;
+    private Image icon;
 
     
     // Set this when a user selects a service or add a service
@@ -99,12 +101,12 @@ public class ServiceMetaDataBean {
         this.serviceUrl = serviceUrl;
     }
 
-    public String getIcon() {
+    public Image getIcon() { 
         return icon;
     }
 
     /** Icon must be generated dynamically based on the Service Name. */
-    public void setIcon(String icon) {
+    public void setIcon(Image icon) { 
         this.icon = icon;
     }
     
