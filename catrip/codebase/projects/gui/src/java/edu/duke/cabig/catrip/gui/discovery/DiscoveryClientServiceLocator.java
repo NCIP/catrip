@@ -2,6 +2,8 @@
 package edu.duke.cabig.catrip.gui.discovery;
 
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
+import edu.duke.cabig.catrip.gui.config.GUIConfigurationBean;
+import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.SwingUtils;
 import gov.nih.nci.cagrid.discovery.MetadataUtils;
@@ -32,16 +34,25 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
         DiscoveryClient client = null;
         EndpointReferenceType[] allServices = null;
         
-        
-        try {
+        GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
+        String indexServiceUrl = guiConfiguration.getIndexServiceUrl();
+        String indexServiceName = "Default Index Service";
+                
+        try { 
             client = new DiscoveryClient(GUIConstants.DEFAULT_INDEX_SERVICE_URL);
+            
+            if (indexServiceUrl != null){
+                client = new DiscoveryClient(indexServiceUrl);
+                indexServiceName = guiConfiguration.getIndexServiceName();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        System.out.println("Searching for the services in the: "+indexServiceName+", Url: "+client.getIndexEPR().getAddress());
         try {
             allServices = client.getAllServices(true);
         } catch (Exception e1) {
+            System.out.println("Exception in looking up the services in Index Service.");
             e1.printStackTrace();
         }
         
@@ -60,7 +71,7 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                         serviceMetaDataBean.setDescription(serviceMetadata.getServiceDescription().getService().getDescription());
                         
                         serviceMetaDataBean.setServiceUrl(endpointReference.getAddress().toString());
-                        serviceMetaDataBean.setIcon(SwingUtils.getTextAsRandomColorImage(serviceMetaDataBean.getServiceName().trim())); 
+                        serviceMetaDataBean.setIcon(SwingUtils.getTextAsRandomColorImage(serviceMetaDataBean.getServiceName().trim()));
                         
                         try {
                             PointOfContact pointOfContact = serviceMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);

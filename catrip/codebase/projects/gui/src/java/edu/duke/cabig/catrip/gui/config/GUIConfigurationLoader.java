@@ -57,8 +57,8 @@ public  class GUIConfigurationLoader {
         
         
         configBean.setConfigRootLocation(guiConfig.getRootDirectory());
+        configBean.setIndexServiceName(guiConfig.getIndexService().getName());
         configBean.setIndexServiceUrl(guiConfig.getIndexService().getUrl());
-        configBean.setIndexServiceUrl(guiConfig.getIndexService().getName());
         configBean.setQueryEngineServiceUrl(guiConfig.getFederatedQueryEngineService().getUrl());
         configBean.setQueryEngineServiceUrl(guiConfig.getFederatedQueryEngineService().getName());
         configBean.setDomainModelMetadataLocation(configBean.getConfigRootLocation()+File.separator+guiConfig.getMetadataCache().getDomainModelMetadataLocation());
