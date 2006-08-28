@@ -3,6 +3,7 @@ package edu.duke.cabig.catrip.gui.discovery;
 
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import edu.duke.cabig.catrip.gui.util.SwingUtils;
 import gov.nih.nci.cagrid.discovery.MetadataUtils;
 import gov.nih.nci.cagrid.discovery.client.DiscoveryClient;
 import gov.nih.nci.cagrid.metadata.ServiceMetadata;
@@ -57,6 +58,10 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                         serviceMetaDataBean.setDomainModelEndPointRef(endpointReference);
                         serviceMetaDataBean.setServiceName(serviceMetadata.getServiceDescription().getService().getName());
                         serviceMetaDataBean.setDescription(serviceMetadata.getServiceDescription().getService().getDescription());
+                        
+                        serviceMetaDataBean.setServiceUrl(endpointReference.getAddress().toString());
+                        serviceMetaDataBean.setIcon(SwingUtils.getTextAsRandomColorImage(serviceMetaDataBean.getServiceName().trim())); 
+                        
                         try {
                             PointOfContact pointOfContact = serviceMetadata.getServiceDescription().getService().getPointOfContactCollection().getPointOfContact(0);
                             serviceMetaDataBean.setPointOfContact(pointOfContact.getFirstName()+" "+pointOfContact.getLastName()+":"+pointOfContact.getEmail()+":"+pointOfContact.getRole());
