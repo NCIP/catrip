@@ -167,7 +167,7 @@ public class ListServicesPanel extends CPanel {
              // TODO - Get the Icons from the GUIConstants class..
             if (leaf ) {
                 setIcon(tutorialIcon);
-                setToolTipText("CDE Named : "+value.toString());
+                setToolTipText(value.toString());
             } else if( value.toString().equalsIgnoreCase("Attributes") ){
                 setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/tree/icon_attributes.png")));
             }else if( value.toString().equalsIgnoreCase("Associations") ){
