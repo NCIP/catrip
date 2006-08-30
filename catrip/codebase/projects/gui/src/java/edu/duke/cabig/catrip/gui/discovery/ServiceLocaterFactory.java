@@ -14,8 +14,8 @@ public class ServiceLocaterFactory {
     
     /** Should read from a configuration file. */
     public static ServiceLocator getServiceLocator (){
-        //  return new XMLFileServiceLocator();
-        return new DiscoveryClientServiceLocator();
+          return new XMLFileServiceLocator();
+//        return new DiscoveryClientServiceLocator();
     } 
     
     
