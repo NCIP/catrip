@@ -21,26 +21,21 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }
     
     private void init(){
-        getPredicateCombo().addItem("LIKE");
-        getPredicateCombo().addItem("EQUAL_TO");
-        getPredicateCombo().addItem("NOT_EQUAL_TO");
-        getPredicateCombo().addItem("LESS_THAN");
-        getPredicateCombo().addItem("LESS_THAN_EQUAL_TO");
-        getPredicateCombo().addItem("GREATER_THAN");
-        getPredicateCombo().addItem("GREATER_THAN_EQUAL_TO");
-        getPredicateCombo().addItem("IS_NULL");
-        getPredicateCombo().addItem("IS_NOT_NULL");
+        
+        fillPredicateCombo();
+        fillCdeCombo();
+        
     }
     
     
-    public JTextField getValueBox(){ 
+    public JTextField getValueBox(){
         return valueTextBox;
     }
-
+    
     public javax.swing.JComboBox getCdeCombo() {
         return cdeCombo;
     }
-
+    
     public javax.swing.JComboBox getPredicateCombo() {
         return predicateCombo;
     }
@@ -54,10 +49,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         cdeCombo = new javax.swing.JComboBox();
+        cdeCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         valueTextBox = new javax.swing.JTextField();
         predicateCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
-
-        cdeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "class:attribute" }));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -90,4 +84,56 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private javax.swing.JTextField valueTextBox;
     // End of variables declaration//GEN-END:variables
     
+    private void fillCdeCombo(){
+        getCdeCombo().addItem("ParticipantMedicalIdentifier:  Medical Record Number");
+        
+        getCdeCombo().addItem("TissueSpecimen: Type");
+        getCdeCombo().addItem("TissueSpecimen: Status Activity");
+        getCdeCombo().addItem("TissueSpecimen: Quantity Gram");
+        getCdeCombo().addItem("TissueSpecimen: Available Quantity Gram");
+        getCdeCombo().addItem("TissueSpecimen: Position Dimension Second");
+        getCdeCombo().addItem("TissueSpecimen: Position Dimension First");
+        
+        getCdeCombo().addItem("ClinicalReport: Number Surgical Pathology");
+        
+        getCdeCombo().addItem("Participant: Genotype Sex");
+        getCdeCombo().addItem("Participant: Gender");
+        getCdeCombo().addItem("Participant: Race");
+        getCdeCombo().addItem("Participant: Ethnic Group");
+        getCdeCombo().addItem("Participant: Status Activity");
+        
+        getCdeCombo().addItem("SpecimenCharacteristics: Tissue Site");
+        getCdeCombo().addItem("SpecimenCharacteristics: Side Tissue");
+        getCdeCombo().addItem("SpecimenCharacteristics: Pathology Finding Status");
+        
+        getCdeCombo().addItem("NottinghamHistopathologicGrade: Tubular Pattern");
+        getCdeCombo().addItem("NottinghamHistopathologicGrade: Nuclear Pleomorphism");
+        getCdeCombo().addItem("NottinghamHistopathologicGrade: Total Nottingham Score");
+        getCdeCombo().addItem("NottinghamHistopathologicGrade: Missing Value Reason Total Nottingham Score");
+        
+        getCdeCombo().addItem("InvasiveBreastCarcinoma: Anatomic Site");
+        getCdeCombo().addItem("InvasiveBreastCarcinoma: Anatomic Site Missing Value Reason");
+        getCdeCombo().addItem("InvasiveBreastCarcinoma: Angioinvasion Lymphatic Invasion Venous Invasion And/Or");
+        getCdeCombo().addItem("InvasiveBreastCarcinoma: Microcalcifications Anatomic Site");
+        
+        getCdeCombo().addItem("ThreeDimensionalSize: Dimension Largest");
+        getCdeCombo().addItem("ThreeDimensionalSize: Dimension Additional First");
+        getCdeCombo().addItem("ThreeDimensionalSize: Dimension Second Additional");
+        getCdeCombo().addItem("ThreeDimensionalSize: Missing Value Reason");
+        
+        getCdeCombo().addItem("ParticipantMedicalIdentifier: Medical Record Number");
+        
+    }
+    
+    private void fillPredicateCombo(){
+        getPredicateCombo().addItem("LIKE");
+        getPredicateCombo().addItem("EQUAL_TO");
+        getPredicateCombo().addItem("NOT_EQUAL_TO");
+        getPredicateCombo().addItem("LESS_THAN");
+        getPredicateCombo().addItem("LESS_THAN_EQUAL_TO");
+        getPredicateCombo().addItem("GREATER_THAN");
+        getPredicateCombo().addItem("GREATER_THAN_EQUAL_TO");
+        getPredicateCombo().addItem("IS_NULL");
+        getPredicateCombo().addItem("IS_NOT_NULL");
+    }
 }

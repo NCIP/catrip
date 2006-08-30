@@ -31,6 +31,8 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.repaint();
         GridLayout gl = (GridLayout)filterPanel.getLayout();
         gl.setRows(4);
+        
+        initCombos();
     }
     
     
@@ -45,8 +47,10 @@ public class SimpleSearchPanel extends CPanel {
         targetPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         targetObjCombo = new javax.swing.JComboBox();
+        targetObjCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         jLabel2 = new javax.swing.JLabel();
         targetServiceCombo = new javax.swing.JComboBox();
+        targetServiceCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         jLabel3 = new javax.swing.JLabel();
         jpanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -59,11 +63,7 @@ public class SimpleSearchPanel extends CPanel {
 
         jLabel1.setText("Select");
 
-        targetObjCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel2.setText("from");
-
-        targetServiceCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("where :");
 
@@ -198,7 +198,7 @@ public class SimpleSearchPanel extends CPanel {
         FilterRowPanel jp =  new FilterRowPanel();
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
-        jp.getValueBox().setText(""+filterRows);
+//        jp.getValueBox().setText(""+filterRows);
         
         
         if (filterRows < 5){
@@ -212,7 +212,7 @@ public class SimpleSearchPanel extends CPanel {
         
         filterPanel.revalidate();
         filterPanel.repaint();
-
+        
         
     }//GEN-LAST:event_targetObjBtnActionPerformed
     
@@ -245,5 +245,31 @@ public class SimpleSearchPanel extends CPanel {
     private javax.swing.JPanel targetPanel;
     private javax.swing.JComboBox targetServiceCombo;
     // End of variables declaration//GEN-END:variables
+    
+    
+    
+    public javax.swing.JComboBox getTargetObjCombo() {
+        return targetObjCombo;
+    }
+    
+    public javax.swing.JComboBox getTargetServiceCombo() {
+        return targetServiceCombo;
+    }
+    
+    
+    
+    
+    private void initCombos(){
+        
+        getTargetServiceCombo().addItem("Tissue Bank");
+        getTargetServiceCombo().addItem("Clinical Annotation Engine");
+        
+        
+        getTargetObjCombo().addItem("Accession");
+        getTargetObjCombo().addItem("TissueSpecimen");
+        getTargetObjCombo().addItem("Participant");
+        
+        
+    }
     
 }

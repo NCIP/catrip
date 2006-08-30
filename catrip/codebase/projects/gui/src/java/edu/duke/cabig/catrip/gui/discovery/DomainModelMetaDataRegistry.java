@@ -58,7 +58,7 @@ public class DomainModelMetaDataRegistry {
     /** Populate the data from Domain Model extract into ClassBean instances and bind them into registry.  */
 
     public static void populateDomainModelMetaData(DomainModel domainModel, ServiceMetaDataBean sBean){
-        
+//        System.out.println("XXXXX---   Service name :"+sBean.getServiceName());
         ArrayList<ClassBean> serviceClassList = new ArrayList(100); // The collection of classes that belongs to only this DomainModel.
         
         UMLClass[] umlClasses = domainModel.getExposedUMLClassCollection().getUMLClass();
@@ -101,7 +101,7 @@ public class DomainModelMetaDataRegistry {
                     }
                     attributeBean.setDisplayName(cdeName);
                     attributeBean.setCDEName(cdeName);
-                    
+//                    System.out.println( classBean.getClassName()+ ":" + cdeName );
                     attributeList.add(attributeBean);
                 }
             }
