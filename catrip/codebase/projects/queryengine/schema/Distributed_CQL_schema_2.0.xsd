@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Srinivasa Akkala (Agile) -->
-<xsd:schema targetNamespace="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" xmlns:dcql="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xsd:schema targetNamespace="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dcql="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xsd:import namespace="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" schemaLocation="1_gov.nih.nci.cagrid.CQLQuery.xsd"/>
 	<xsd:element name="DCQLQuery">
 		<xsd:annotation>
@@ -8,20 +8,12 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="TargetObject" type="dcql:TargetObject"/>
+				<xsd:element name="TargetObject" type="dcql:Object"/>
+				<xsd:element name="targetServiceURL" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:complexType name="TargetObject">
-		<xsd:annotation>
-			<xsd:documentation>Object always has a service URL</xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexContent>
-			<xsd:extension base="dcql:Object">
-				<xsd:attribute name="serviceURL" type="xsd:string" use="required"/>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
+
 	<xsd:complexType name="Object">
 		<xsd:annotation>
 			<xsd:documentation>Associated Object used as search criteria</xsd:documentation>
@@ -56,8 +48,9 @@
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element name="JoinCondition" type="dcql:JoinCondition"/>
-			<xsd:element name="ForeignObject" type="dcql:TargetObject"/>
+			<xsd:element name="ForeignObject" type="dcql:Object"/>
 		</xsd:sequence>
+		<xsd:attribute name="targetServiceURL" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="JoinCondition">
 		<xsd:annotation>
