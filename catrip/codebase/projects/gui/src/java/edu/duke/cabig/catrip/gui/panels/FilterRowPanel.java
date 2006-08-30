@@ -4,8 +4,9 @@
  * Created on August 22, 2006, 3:30 PM
  */
 
-package edu.duke.cabig.catrip.gui.components;
+package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.components.*;
 import javax.swing.JTextField;
 
 /**

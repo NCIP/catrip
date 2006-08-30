@@ -2,7 +2,7 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import edu.duke.cabig.catrip.gui.components.FilterRowPanel;
+import edu.duke.cabig.catrip.gui.panels.FilterRowPanel;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
