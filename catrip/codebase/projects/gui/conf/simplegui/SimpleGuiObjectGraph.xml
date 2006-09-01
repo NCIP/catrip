@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
+	<service displayName="caTissueCore" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full" metadataXml="catissuecore-domainModel.xml">
+		<targets>
+			<objectElement className="edu.wustl.catissuecore.domainobject.TissueSpecimen" displaybleAttributes="type,barcode">
+				<associatedObjectTree>
+					<Association displaybleAttributes="activityStatus,clinicalStatus" className="edu.wustl.catissuecore.domainobject.SpecimenCollectionGroup" roleName="specimenCollectionGroup" display="false">
+						<Association displaybleAttributes="surgicalPathologyNumber" className="edu.wustl.catissuecore.domainobject.ClinicalReport" roleName="clinicalReport" display="false"/>
+					</Association>
+					<Association displaybleAttributes="tissueSite" className="edu.wustl.catissuecore.domainobject.SpecimenCharacteristics" roleName="specimenCharacteristics" display="false"/>
+				</associatedObjectTree>
+				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
+					<Association className="edu.wustl.catissuecore.domainobject.SpecimenCollectionGroup" roleName="specimenCollectionGroup">
+						<Association className="edu.wustl.catissuecore.domainobject.ClinicalReport" roleName="clinicalReport">
+							<Association className="edu.wustl.catissuecore.domainobject.ParticipantMedicalIdentifier" roleName="participantMedicalIdentifier"/>
+						</Association>
+					</Association>
+				</foreignAssociationOutboundPath>
+			</objectElement>
+			<objectElement className="edu.wustl.catissuecore.domainobject.CellSpecimen" displaybleAttributes="type,barcode">
+				<associatedObjectTree>
+					<Association displaybleAttributes="activityStatus,clinicalStatus" className="edu.wustl.catissuecore.domainobject.SpecimenCollectionGroup" roleName="specimenCollectionGroup" display="false">
+						<Association displaybleAttributes="surgicalPathologyNumber" className="edu.wustl.catissuecore.domainobject.ClinicalReport" roleName="clinicalReport" display="false"/>
+					</Association>
+					<Association displaybleAttributes="tissueSite" className="edu.wustl.catissuecore.domainobject.SpecimenCharacteristics" roleName="specimenCharacteristics" display="false"/>
+				</associatedObjectTree>
+				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
+					<Association className="edu.wustl.catissuecore.domainobject.SpecimenCollectionGroup" roleName="specimenCollectionGroup">
+						<Association className="edu.wustl.catissuecore.domainobject.ClinicalReport" roleName="clinicalReport">
+							<Association className="edu.wustl.catissuecore.domainobject.ParticipantMedicalIdentifier" roleName="participantMedicalIdentifier"/>
+						</Association>
+					</Association>
+				</foreignAssociationOutboundPath>
+			</objectElement>
+		</targets>
+		<foreignAssociationInboundTree>
+			<foreignAssociationInboundPath className="edu.wustl.catissuecore.domainobject.Participant" cdeName="medicalRecordNumber" displaybleAttributes="">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.wustl.catissuecore.domainobject.Participant" roleName="participant"/>
+				</Association>
+			</foreignAssociationInboundPath>
+		</foreignAssociationInboundTree>
+	</service>
+	<service displayName="caTissueCAE" url="http://localhost:8181/wsrf/services/cagrid/CAE" metadataXml="catissuecae-domainModel.xml">
+		<targets>
+			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" displaybleAttributes="firstName,gender">
+				<associatedObjectTree>
+					<!--
+					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParameters" display="false">					
+						<Association className="edu.pitt.cabig.cae.domain.general.SurgicalMargin" roleName="annotationSetCollection" display="false"/>
+						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" roleName="annotationSetCollection" display="false"/>
+					</Association>
+					-->
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection" display="false"/>
+					<Association className="edu.duke.catrip.cae.domain.general.Accession" roleName="accession" display="false">
+						<Association className="edu.duke.catrip.cae.domain.general.Specimen" roleName="specimen" display="false">
+							<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParameters" display="false">
+								<Association className="edu.pitt.cabig.cae.domain.general.SurgicalMargin" roleName="annotationSetCollection" display="false"/>
+								<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" roleName="annotationSetCollection" display="false"/>
+							</Association>
+						</Association>
+					</Association>
+				</associatedObjectTree>
+				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection"/>
+				</foreignAssociationOutboundPath>
+			</objectElement>
+		</targets>
+		<foreignAssociationInboundTree>
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" cdeName="medicalRecordNumber" displaybleAttributes="totalScore,mitoticCount">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+							<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.ThreeDimensionalSize" cdeName="medicalRecordNumber" displaybleAttributes="totalScore,mitoticCount">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+							<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+		</foreignAssociationInboundTree>
+	</service>
+</simpleGuiServices>
