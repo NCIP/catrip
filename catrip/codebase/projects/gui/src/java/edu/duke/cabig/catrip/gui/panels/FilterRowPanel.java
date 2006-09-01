@@ -15,6 +15,8 @@ import javax.swing.JTextField;
  */
 public class FilterRowPanel extends javax.swing.JPanel {
     
+    
+    
     /** Creates new form FilterRowPanel */
     public FilterRowPanel() {
         initComponents();

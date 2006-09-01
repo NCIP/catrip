@@ -65,7 +65,7 @@ public class SimpleSearchPanel extends CPanel {
 
         jLabel2.setText("from");
 
-        jLabel3.setText("where :");
+        jLabel3.setText("object");
 
         org.jdesktop.layout.GroupLayout targetPanelLayout = new org.jdesktop.layout.GroupLayout(targetPanel);
         targetPanel.setLayout(targetPanelLayout);
@@ -74,15 +74,15 @@ public class SimpleSearchPanel extends CPanel {
             .add(targetPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
-                .add(20, 20, 20)
-                .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 157, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(22, 22, 22)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel2)
-                .add(23, 23, 23)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 227, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(16, 16, 16)
+                .add(27, 27, 27)
                 .add(jLabel3)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .add(12, 12, 12)
+                .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 157, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(375, Short.MAX_VALUE))
         );
         targetPanelLayout.setVerticalGroup(
             targetPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -90,10 +90,10 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap()
                 .add(targetPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2)
+                    .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3)
-                    .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
