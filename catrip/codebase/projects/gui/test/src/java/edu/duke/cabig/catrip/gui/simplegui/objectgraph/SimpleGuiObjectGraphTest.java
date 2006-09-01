@@ -1,11 +1,13 @@
 package edu.duke.cabig.catrip.gui.simplegui.objectgraph;
 
 
+import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphAssociation;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
 
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
+import java.io.File;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class SimpleGuiObjectGraphTest extends TestCase {
 
     public SimpleGuiObjectGraphTest(String sTestName) {
         super(sTestName);
-        processor = new ObjectGraphProcessor("conf/simplegui/SimpleGuiObjectGraph.xml");
+        processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
     }
     protected void setUp() throws Exception {
         super.setUp();
