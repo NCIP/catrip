@@ -174,7 +174,7 @@ public class ObjectGraphProcessor {
     public List<GraphObject> getAvialbleTargetObjectsToAssociateInRemoteServices(String localServiceName) {
         List<GraphObject> avialableObjects = new ArrayList<GraphObject>();
         GraphObject targetObj = null;
-        
+        List<GraphAssociation> foreignAssociationInboundPath;
         try {
             String xpathStr = "/simpleGuiServices/service[@displayName!='"+localServiceName+"']/foreignAssociationInboundTree/foreignAssociationInboundPath";
             //System.out.println(xpathStr);
@@ -188,6 +188,17 @@ public class ObjectGraphProcessor {
                 targetObj.setDisplaybleAttributes(objectElement.getAttributeValue("displaybleAttributes"));
                 targetObj.setForeignAssociationInboundCDE(objectElement.getAttributeValue("cdeName"));
                 targetObj.setServiceName(serviceName);
+                
+                foreignAssociationInboundPath = new ArrayList<GraphAssociation>();
+                Element associationEle = objectElement.getChild("Association");
+                foreignAssociationInboundPath.add(buildGraphAssociation(associationEle));
+                
+                while (associationEle.getChild("Association") != null ) { 
+                    associationEle = associationEle.getChild("Association");
+                    foreignAssociationInboundPath.add(buildGraphAssociation(associationEle));
+                } 
+                targetObj.setForeignAssociationInboundPath(foreignAssociationInboundPath);
+                
                 avialableObjects.add(targetObj);
             }
         } catch (Exception e) {

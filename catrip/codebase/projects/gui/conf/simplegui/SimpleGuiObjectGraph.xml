@@ -76,11 +76,11 @@
 					</Association>
 				</Association>
 			</foreignAssociationInboundPath>
-			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.ThreeDimensionalSize" cdeName="medicalRecordNumber" displaybleAttributes="totalScore,mitoticCount">
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" cdeName="medicalRecordNumber" displaybleAttributes="totalScore,mitoticCount">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
 						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
-							<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection"/>
+							<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" roleName="annotationSetCollection"/>
 						</Association>
 					</Association>
 				</Association>

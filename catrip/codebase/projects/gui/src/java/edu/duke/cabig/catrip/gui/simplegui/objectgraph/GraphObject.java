@@ -5,6 +5,7 @@ import java.util.List;
 public class GraphObject {
     private String className;
     private List<GraphAssociation> foreignAssociationOutboundPath;
+    private List<GraphAssociation> foreignAssociationInboundPath;
     private List<GraphAssociation> associationPathWRTTargetObject;
     private String foreignAssociationOutboundCDE;
     private String serviceName;
@@ -68,5 +69,13 @@ public class GraphObject {
 
     public List<GraphAssociation> getAssociationPathWRTTargetObject() {
         return associationPathWRTTargetObject;
+    }
+
+    public void setForeignAssociationInboundPath(List<GraphAssociation> foreignAssociationInboundPath) {
+        this.foreignAssociationInboundPath = foreignAssociationInboundPath;
+    }
+
+    public List<GraphAssociation> getForeignAssociationInboundPath() {
+        return foreignAssociationInboundPath;
     }
 }
