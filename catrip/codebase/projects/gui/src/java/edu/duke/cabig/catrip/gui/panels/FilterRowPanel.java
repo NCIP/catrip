@@ -144,11 +144,14 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }
     
     public void fillCdeCombo(List<GraphObject> objs) {
+        
         GraphObject obj;
         GraphAssociation assoc;
         
         for (int i=0;i<objs.size();i++) {
-            getCdeCombo().addItem(objs.get(i));
+            obj = objs.get(i);
+            getCdeCombo().addItem(obj);
+            System.out.println("XXX :"+obj.getRefID());
         }
         
     }

@@ -232,6 +232,11 @@ public class SimpleSearchPanel extends CPanel {
         GraphObject selecterTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
         
         List<GraphObject> objs = processor.getAssociatedObjects(selecterTargetObject.getClassName(),selectedService.getServiceName());
+        List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+        
+        for (int i = 0; i < forObjs.size(); i++) {
+            objs.add(forObjs.get(i));
+        }
         
         jp.fillCdeCombo(objs);
         
