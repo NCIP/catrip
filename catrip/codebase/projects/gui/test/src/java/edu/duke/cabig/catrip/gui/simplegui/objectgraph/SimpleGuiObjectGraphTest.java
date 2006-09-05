@@ -19,7 +19,7 @@ public class SimpleGuiObjectGraphTest extends TestCase {
     public SimpleGuiObjectGraphTest(String sTestName) {
         super(sTestName);
         processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
-       //  processor = new ObjectGraphProcessor("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\gui\\conf\\simplegui\\SimpleGuiObjectGraph.xml");
+         //processor = new ObjectGraphProcessor("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\gui\\conf\\simplegui\\SimpleGuiObjectGraph.xml");
     }
     protected void setUp() throws Exception {
         super.setUp();
@@ -55,7 +55,7 @@ public class SimpleGuiObjectGraphTest extends TestCase {
         GraphAssociation assoc;
         for (int i=0;i<objs.size();i++) {
             obj = objs.get(i);
-            System.out.println(i+1 + ") " + obj.getClassName() + "   " + obj.getServiceName());
+            System.out.println(i+1 + ") " + obj.getClassName() + "   refID:" + obj.getRefID());
             System.out.println("    OutBound Path to associate with Foreign Association" );
             List<GraphAssociation> assos = obj.getForeignAssociationOutboundPath();
             for (int k=0; k<assos.size();k++) {
@@ -76,7 +76,7 @@ public class SimpleGuiObjectGraphTest extends TestCase {
         System.out.println("ASSOCIATED OBJECTS for " + targetObject +" ... ");
         for (int i=0;i<objs.size();i++) {
             obj = objs.get(i);
-            System.out.println(i+1 + ") " + obj.getClassName());
+            System.out.println(i+1 + ") " + obj.getClassName() + "   " + obj.getRefID());
             System.out.println("        Association path from " + targetObject);
             List<GraphAssociation> assos = obj.getAssociationPathWRTTargetObject();
             for (int k=assos.size()-1;k>=0;k--) {
@@ -96,12 +96,12 @@ public class SimpleGuiObjectGraphTest extends TestCase {
             System.out.println(i+1 + ") " + obj.getClassName());
             System.out.println("                    CDE : " + obj.getForeignAssociationInboundCDE());
             System.out.println("        Foreign Association inbound path");
-            
+
             List<GraphAssociation> assos = obj.getForeignAssociationInboundPath();
             for (int k=0;k<assos.size();k++) {
                 assoc = assos.get(k);
                 System.out.println("                    " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
-            }            
+            }
         }
     }
 

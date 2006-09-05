@@ -25,6 +25,7 @@
 			<xs:element name="Association" type="linkNodeType"/>
 		</xs:sequence>
 		<xs:attribute name="className" type="xs:string" use="required"/>
+		<xs:attribute name="refID" type="xs:string" use="required"/>
 		<xs:attribute name="depth" type="xs:string" use="optional"/>
 		<xs:attribute name="cdeName" type="xs:string" use="required"/>
 		<xs:attribute name="displaybleAttributes" type="xs:string" use="required"/>
@@ -58,6 +59,7 @@
 		</xs:sequence>
 		<xs:attribute name="childCount" type="xs:int" use="optional"/>
 		<xs:attribute name="className" type="xs:string" use="required"/>
+		<xs:attribute name="refID" type="xs:string" use="required"/>
 		<xs:attribute name="roleName" type="xs:string" use="required"/>
 		<xs:attribute name="displaybleAttributes" type="xs:string" use="optional"/>
 		<xs:attribute name="display" type="xs:boolean" use="required"/>
@@ -68,6 +70,7 @@
 			<xs:element name="foreignAssociationOutboundPath" type="outboundpathType"/>
 		</xs:sequence>
 		<xs:attribute name="className" type="xs:string" use="required"/>
+		<xs:attribute name="refID" type="xs:string" use="required"/>
 		<xs:attribute name="displaybleAttributes" type="xs:string" use="required"/>
 	</xs:complexType>
 	<xs:complexType name="targetsType">

@@ -11,6 +11,7 @@ public class GraphObject {
     private String serviceName;
     private String displaybleAttributes;
     private String foreignAssociationInboundCDE;
+    private String refID;
     
     public GraphObject() {
     }
@@ -77,5 +78,13 @@ public class GraphObject {
 
     public List<GraphAssociation> getForeignAssociationInboundPath() {
         return foreignAssociationInboundPath;
+    }
+
+    public void setRefID(String refID) {
+        this.refID = refID;
+    }
+
+    public String getRefID() {
+        return refID;
     }
 }

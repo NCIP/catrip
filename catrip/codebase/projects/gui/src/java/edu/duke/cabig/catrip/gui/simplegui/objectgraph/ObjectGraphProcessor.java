@@ -28,11 +28,12 @@ public class ObjectGraphProcessor {
     }
 
     private GraphObject buildGraphObject(Element associationEle,String serviceName, boolean remoteService){
-        GraphObject GraphObject = new GraphObject();
+        GraphObject graphObject = new GraphObject();
         String className = associationEle.getAttributeValue("className");
-        GraphObject.setClassName(className);
-        GraphObject.setDisplaybleAttributes(associationEle.getAttributeValue("displaybleAttributes"));
-        GraphObject.setServiceName(serviceName);
+        graphObject.setClassName(className);
+        graphObject.setDisplaybleAttributes(associationEle.getAttributeValue("displaybleAttributes"));
+        graphObject.setServiceName(serviceName);
+        graphObject.setRefID(associationEle.getAttributeValue("refID"));
         
         List<GraphAssociation> associationPathWRTTargetObject = new ArrayList<GraphAssociation>();
         associationPathWRTTargetObject.add(buildGraphAssociation(associationEle));
@@ -50,8 +51,8 @@ public class ObjectGraphProcessor {
                 childAssoc = childAssoc.getChild("Association");
             }
         }
-        GraphObject.setAssociationPathWRTTargetObject(associationPathWRTTargetObject);
-        return GraphObject;
+        graphObject.setAssociationPathWRTTargetObject(associationPathWRTTargetObject);
+        return graphObject;
     }
 
     private GraphAssociation buildGraphAssociation(Element associationEle){
@@ -125,10 +126,12 @@ public class ObjectGraphProcessor {
                 
                 targetObj = new GraphObject();
                 targetObj.setClassName(objectElement.getAttributeValue("className"));
+                targetObj.setRefID(objectElement.getAttributeValue("refID"));
                 targetObj.setDisplaybleAttributes(objectElement.getAttributeValue("displaybleAttributes"));
                 targetObj.setForeignAssociationOutboundCDE(foreignAssociationOutboundPathEle.getAttributeValue("cdeName"));
                 targetObj.setForeignAssociationOutboundPath(foreignAssociationOutboundPath);
                 targetObj.setServiceName(serviceName1);
+                
                 GraphObjects.add(targetObj);
                 
             }
