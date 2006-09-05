@@ -87,4 +87,14 @@ public class GraphObject {
     public String getRefID() {
         return refID;
     }
+    
+    
+     public String toString() {
+        String fullClassName = getClassName();
+        String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
+        
+        return className;
+    }
+     
+     
 }

@@ -6,7 +6,9 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
-import edu.duke.cabig.catrip.gui.components.*;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphAssociation;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import java.util.List;
 import javax.swing.JTextField;
 
 /**
@@ -26,7 +28,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private void init(){
         
         fillPredicateCombo();
-        fillCdeCombo();
+        
+//        fillCdeCombo1();
         
     }
     
@@ -87,7 +90,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private javax.swing.JTextField valueTextBox;
     // End of variables declaration//GEN-END:variables
     
-    private void fillCdeCombo(){
+    private void fillCdeCombo1(){
         getCdeCombo().addItem("ParticipantMedicalIdentifier:  Medical Record Number");
         
         getCdeCombo().addItem("TissueSpecimen: Type");
@@ -139,4 +142,34 @@ public class FilterRowPanel extends javax.swing.JPanel {
         getPredicateCombo().addItem("IS_NULL");
         getPredicateCombo().addItem("IS_NOT_NULL");
     }
+    
+    public void fillCdeCombo(List<GraphObject> objs) {
+        GraphObject obj;
+        GraphAssociation assoc;
+        
+        for (int i=0;i<objs.size();i++) {
+            getCdeCombo().addItem(objs.get(i));
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

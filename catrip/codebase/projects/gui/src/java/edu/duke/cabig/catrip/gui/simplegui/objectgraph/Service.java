@@ -7,19 +7,23 @@ public class Service {
     public Service() {
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setServiceName(String serviceName_) {
+        this.serviceName = serviceName_;
     }
 
     public String getServiceName() {
         return serviceName;
     }
 
-    public void setServiceURL(String serviceURL) {
-        this.serviceURL = serviceURL;
+    public void setServiceURL(String serviceURL_) {
+        this.serviceURL = serviceURL_;
     }
 
     public String getServiceURL() {
         return serviceURL;
+    }
+    
+    public String toString() {
+        return serviceName;
     }
 }

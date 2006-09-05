@@ -317,4 +317,15 @@ public class ClassBean{
     
     
     
+    
+    
+    
+    /** methods for simple GUI.. */
+    public void filterAttributes(){
+        
+    }
+    
+    
+    
+    
 }

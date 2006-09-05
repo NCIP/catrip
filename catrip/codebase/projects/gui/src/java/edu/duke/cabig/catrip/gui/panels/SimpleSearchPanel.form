@@ -19,7 +19,7 @@
                   <Component id="jpanel" alignment="0" max="32767" attributes="0"/>
                   <Component id="targetPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="targetObjBtn" min="-2" pref="208" max="-2" attributes="0"/>
+                      <Component id="addFilterBtn" min="-2" pref="208" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="clearFilterBtn" min="-2" pref="213" max="-2" attributes="0"/>
                   </Group>
@@ -37,7 +37,7 @@
               <Component id="jpanel" min="-2" max="-2" attributes="2"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="targetObjBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addFilterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="clearFilterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -109,6 +109,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="targetServiceComboActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="targetServiceCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();"/>
           </AuxValues>
@@ -202,12 +205,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="targetObjBtn">
+    <Component class="javax.swing.JButton" name="addFilterBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Filter"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="targetObjBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addFilterBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="clearFilterBtn">

@@ -1,9 +1,14 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import edu.duke.cabig.catrip.gui.panels.FilterRowPanel;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,6 +18,9 @@ import javax.swing.JPanel;
  */
 public class SimpleSearchPanel extends CPanel {
     int filterRows = 0;
+    
+    ObjectGraphProcessor processor  = null;
+    
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
         initComponents();
@@ -32,7 +40,9 @@ public class SimpleSearchPanel extends CPanel {
         GridLayout gl = (GridLayout)filterPanel.getLayout();
         gl.setRows(4);
         
-        initCombos();
+        processor = SimpleGuiRegistry.getProcessor();
+        
+        initServiceCombo();
     }
     
     
@@ -58,12 +68,18 @@ public class SimpleSearchPanel extends CPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        targetObjBtn = new javax.swing.JButton();
+        addFilterBtn = new javax.swing.JButton();
         clearFilterBtn = new javax.swing.JButton();
 
         jLabel1.setText("Select");
 
         jLabel2.setText("from");
+
+        targetServiceCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                targetServiceComboActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("object");
 
@@ -140,10 +156,10 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap())
         );
 
-        targetObjBtn.setText("Add Filter");
-        targetObjBtn.addActionListener(new java.awt.event.ActionListener() {
+        addFilterBtn.setText("Add Filter");
+        addFilterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                targetObjBtnActionPerformed(evt);
+                addFilterBtnActionPerformed(evt);
             }
         });
 
@@ -164,7 +180,7 @@ public class SimpleSearchPanel extends CPanel {
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jpanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, targetPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(targetObjBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 208, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(addFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 208, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -178,12 +194,25 @@ public class SimpleSearchPanel extends CPanel {
                 .add(jpanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(targetObjBtn)
+                    .add(addFilterBtn)
                     .add(clearFilterBtn))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
+        System.out.println("the target service is changed....");
+        
+        getTargetObjCombo().removeAllItems();
+
+        Service serv = (Service)getTargetServiceCombo().getSelectedItem();
+        List<GraphObject> objs = processor.getTragetObjects(serv.getServiceName());
+        
+        for (int i=0;i<objs.size();i++) {
+            getTargetObjCombo().addItem(objs.get(i));
+        }
+    }//GEN-LAST:event_targetServiceComboActionPerformed
+        
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
         filterPanel.removeAll();
         filterPanel.revalidate();
@@ -191,7 +220,7 @@ public class SimpleSearchPanel extends CPanel {
         init();
     }//GEN-LAST:event_clearFilterBtnActionPerformed
     
-    private void targetObjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetObjBtnActionPerformed
+    private void addFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterBtnActionPerformed
         
         filterRows++;
         
@@ -199,7 +228,12 @@ public class SimpleSearchPanel extends CPanel {
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
 //        jp.getValueBox().setText(""+filterRows);
+        Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+        GraphObject selecterTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
         
+        List<GraphObject> objs = processor.getAssociatedObjects(selecterTargetObject.getClassName(),selectedService.getServiceName());
+        
+        jp.fillCdeCombo(objs);
         
         if (filterRows < 5){
             filterPanel.remove(filterRows-1);
@@ -214,14 +248,16 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.repaint();
         
         
-    }//GEN-LAST:event_targetObjBtnActionPerformed
+    }//GEN-LAST:event_addFilterBtnActionPerformed
     
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame jf = new JFrame();
-                jf.setBounds(10,10,800,700);
+                CJFrame jf = new CJFrame(); 
+                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                jf.setBounds(10,10,800,400);
+                jf.center();
                 jf.getContentPane().add(new SimpleSearchPanel());
                 jf.setVisible(true);
             }
@@ -230,6 +266,7 @@ public class SimpleSearchPanel extends CPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addFilterBtn;
     private javax.swing.JButton clearFilterBtn;
     private javax.swing.JPanel filterPanel;
     private javax.swing.JLabel jLabel1;
@@ -240,7 +277,6 @@ public class SimpleSearchPanel extends CPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpanel;
-    private javax.swing.JButton targetObjBtn;
     private javax.swing.JComboBox targetObjCombo;
     private javax.swing.JPanel targetPanel;
     private javax.swing.JComboBox targetServiceCombo;
@@ -259,17 +295,15 @@ public class SimpleSearchPanel extends CPanel {
     
     
     
-    private void initCombos(){
-        
-        getTargetServiceCombo().addItem("Tissue Bank");
-        getTargetServiceCombo().addItem("Clinical Annotation Engine");
-        
-        
-        getTargetObjCombo().addItem("Accession");
-        getTargetObjCombo().addItem("TissueSpecimen");
-        getTargetObjCombo().addItem("Participant");
-        
-        
+    private void initServiceCombo(){
+
+        List<Service> services = processor.getServices();
+        Service service;
+        for (int i=0;i<services.size();i++) {
+            getTargetServiceCombo().addItem(services.get(i));
+//            System.out.println(i+1 + ") " + service.getServiceName() + "   " + service.getServiceURL());
+        }
+
     }
     
 }
