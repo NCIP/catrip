@@ -191,6 +191,7 @@ public class ObjectGraphProcessor {
                 targetObj.setDisplaybleAttributes(objectElement.getAttributeValue("displaybleAttributes"));
                 targetObj.setForeignAssociationInboundCDE(objectElement.getAttributeValue("cdeName"));
                 targetObj.setServiceName(serviceName);
+                targetObj.setRefID(objectElement.getAttributeValue("refID"));
                 
                 foreignAssociationInboundPath = new ArrayList<GraphAssociation>();
                 Element associationEle = objectElement.getChild("Association");
