@@ -6,8 +6,12 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphAssociation;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextField;
 
@@ -150,8 +154,25 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         for (int i=0;i<objs.size();i++) {
             obj = objs.get(i);
-            getCdeCombo().addItem(obj);
-            System.out.println("XXX :"+obj.getRefID());
+            System.out.println("XXX : "+obj.getDisplaybleAttributes() + ":" +obj.getRefID());
+            String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
+            ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()); 
+            System.out.println("XX-XX:"+cBean.getFullyQualifiedName());
+            cBean.filterAttributes(displaybleAttributes);
+            cBean.print();
+            ArrayList attributes = cBean.getAttributes();
+            
+            for (int j = 0; j < attributes.size(); j++) {
+                AttributeBean aBean = (AttributeBean)attributes.get(j);
+                getCdeCombo().addItem(cBean.getCDEName() + "  " +aBean.getCDEName());
+//                getCdeCombo().addItem(obj.toString() + "  " +aBean.getCDEName());
+            }
+            
+//            for (int j = 0; j < displaybleAttributes.length; j++) {
+////                System.out.println("####  :"+displaybleAttributes[j]);
+//                getCdeCombo().addItem(displaybleAttributes[j]+"  in  "+obj.toString());
+//            }
+            
         }
         
     }

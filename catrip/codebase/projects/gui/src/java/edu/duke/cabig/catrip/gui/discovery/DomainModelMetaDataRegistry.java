@@ -77,7 +77,7 @@ public class DomainModelMetaDataRegistry {
 
             SemanticMetadata[] semanticMetadata = umlClasses[i].getSemanticMetadataCollection().getSemanticMetadata();
             String classCDEName = "";
-            if ((semanticMetadata != null)  &&  (semanticMetadata.length > 1)){
+            if ((semanticMetadata != null)  &&  (semanticMetadata.length >= 1)){
                 for (int k = 0; k < semanticMetadata.length; k++) {
                     classCDEName = classCDEName + " "+ semanticMetadata[k].getConceptName() ;
                 }

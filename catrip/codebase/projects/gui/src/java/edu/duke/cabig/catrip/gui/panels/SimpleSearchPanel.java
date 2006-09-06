@@ -229,16 +229,17 @@ public class SimpleSearchPanel extends CPanel {
         
 //        jp.getValueBox().setText(""+filterRows);
         Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
-        GraphObject selecterTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+        GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
         
-        List<GraphObject> objs = processor.getAssociatedObjects(selecterTargetObject.getClassName(),selectedService.getServiceName());
+        List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
         List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
         
         for (int i = 0; i < forObjs.size(); i++) {
             objs.add(forObjs.get(i));
         }
+        objs.add(selectedTargetObject);
         
-        jp.fillCdeCombo(objs);
+        jp.fillCdeCombo(objs); 
         
         if (filterRows < 5){
             filterPanel.remove(filterRows-1);

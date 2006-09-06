@@ -321,9 +321,50 @@ public class ClassBean{
     
     
     /** methods for simple GUI.. */
-    public void filterAttributes(){
+    public void filterAttributes(String[] displaybleAttributes){
+        ArrayList attributes = getAttributes();
+        ArrayList displaybleAttributesList = new ArrayList(15);
+        try{
+            for (int j = 0; j < displaybleAttributes.length; j++) {
+                String attribute = displaybleAttributes[j];
+                for (int i = 0; i < attributes.size(); i++) {
+                    AttributeBean aBean = (AttributeBean)attributes.get(i);
+                    if (aBean.getAttributeName().equalsIgnoreCase(attribute)){
+                        displaybleAttributesList.add(aBean);
+                    }
+                }
+                
+            }
+            
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        this.setAttributes(displaybleAttributesList);
         
     }
+    
+    
+    
+    public void print(){
+        ArrayList attributes = getAttributes();
+        for (int i = 0; i < attributes.size(); i++) {
+            AttributeBean aBean = (AttributeBean)attributes.get(i);
+            System.out.println("Class CDE:"+getCDEName()+":Attribute name:"+aBean.getAttributeName() + ": Attribute CDE name:" + aBean.getCDEName()+":");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

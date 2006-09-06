@@ -1,13 +1,9 @@
-/*
- * SimpleGuiRegistry.java
- *
- * Created on September 1, 2006, 11:58 AM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package edu.duke.cabig.catrip.gui.simplegui;
+
+import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
+import java.io.File;
 
 /**
  *
@@ -15,7 +11,7 @@ package edu.duke.cabig.catrip.gui.simplegui;
  */
 public class SimpleGuiRegistry {
     // array of the filterpanel..
-    
+    private static ObjectGraphProcessor processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
     
     
     
@@ -23,11 +19,12 @@ public class SimpleGuiRegistry {
     public SimpleGuiRegistry() {
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    
+    public static ObjectGraphProcessor getProcessor(){
+        return processor;
     }
+    
+    
+    
     
 }
