@@ -12,6 +12,7 @@ public class GraphObject {
     private String displaybleAttributes;
     private String foreignAssociationInboundCDE;
     private String refID;
+    private boolean displayable;
     
     public GraphObject() {
     }
@@ -87,6 +88,16 @@ public class GraphObject {
     public String getRefID() {
         return refID;
     }
+
+
+    public void setDisplayable(boolean displayable) {
+        this.displayable = displayable;
+    }
+
+    public boolean isDisplayable() {
+        return displayable;
+    }
+
     
     
      public String toString() {
@@ -95,6 +106,5 @@ public class GraphObject {
         
         return className;
     }
-     
-     
+
 }

@@ -34,6 +34,7 @@ public class ObjectGraphProcessor {
         graphObject.setDisplaybleAttributes(associationEle.getAttributeValue("displaybleAttributes"));
         graphObject.setServiceName(serviceName);
         graphObject.setRefID(associationEle.getAttributeValue("refID"));
+        graphObject.setDisplayable(Boolean.parseBoolean(associationEle.getAttributeValue("display")));
         
         List<GraphAssociation> associationPathWRTTargetObject = new ArrayList<GraphAssociation>();
         associationPathWRTTargetObject.add(buildGraphAssociation(associationEle));
@@ -128,6 +129,7 @@ public class ObjectGraphProcessor {
                 targetObj.setClassName(objectElement.getAttributeValue("className"));
                 targetObj.setRefID(objectElement.getAttributeValue("refID"));
                 targetObj.setDisplaybleAttributes(objectElement.getAttributeValue("displaybleAttributes"));
+                targetObj.setDisplayable(Boolean.parseBoolean(objectElement.getAttributeValue("display")));
                 targetObj.setForeignAssociationOutboundCDE(foreignAssociationOutboundPathEle.getAttributeValue("cdeName"));
                 targetObj.setForeignAssociationOutboundPath(foreignAssociationOutboundPath);
                 targetObj.setServiceName(serviceName1);
@@ -190,6 +192,7 @@ public class ObjectGraphProcessor {
                 targetObj.setClassName(objectElement.getAttributeValue("className"));
                 targetObj.setDisplaybleAttributes(objectElement.getAttributeValue("displaybleAttributes"));
                 targetObj.setForeignAssociationInboundCDE(objectElement.getAttributeValue("cdeName"));
+                targetObj.setDisplayable(Boolean.parseBoolean(objectElement.getAttributeValue("display")));
                 targetObj.setServiceName(serviceName);
                 targetObj.setRefID(objectElement.getAttributeValue("refID"));
                 
