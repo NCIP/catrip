@@ -3,6 +3,7 @@ package edu.duke.cabig.catrip.gui.simplegui.objectgraph;
 public class Service {
     private String serviceName;
     private String serviceURL;
+    private String metadataXml;
     
     public Service() {
     }
@@ -23,7 +24,16 @@ public class Service {
         return serviceURL;
     }
     
+    public void setMetadataXml(String metadataXml_) {
+        this.metadataXml = metadataXml_;
+    }
+
+    public String getMetadataXml() {
+        return metadataXml;
+    }    
     public String toString() {
         return serviceName;
     }
+
+
 }
