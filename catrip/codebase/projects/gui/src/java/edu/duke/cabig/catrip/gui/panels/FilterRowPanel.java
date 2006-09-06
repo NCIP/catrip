@@ -154,18 +154,22 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         for (int i=0;i<objs.size();i++) {
             obj = objs.get(i);
-            System.out.println("XXX : "+obj.getDisplaybleAttributes() + ":" +obj.getRefID());
-            String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
-            ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()); 
-            System.out.println("XX-XX:"+cBean.getFullyQualifiedName());
-            cBean.filterAttributes(displaybleAttributes);
-            cBean.print();
-            ArrayList attributes = cBean.getAttributes();
-            
-            for (int j = 0; j < attributes.size(); j++) {
-                AttributeBean aBean = (AttributeBean)attributes.get(j);
-                getCdeCombo().addItem(cBean.getCDEName() + "  " +aBean.getCDEName());
+            boolean display = obj.isDisplayable();
+            if (display){
+                System.out.println("XXX : "+obj.getDisplaybleAttributes() + ":" +obj.getRefID());
+                String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
+                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID());
+                System.out.println("XX-XX:"+cBean.getFullyQualifiedName());
+                cBean.filterAttributes(displaybleAttributes);
+                cBean.print();
+                ArrayList attributes = cBean.getAttributes();
+                
+                for (int j = 0; j < attributes.size(); j++) {
+                    AttributeBean aBean = (AttributeBean)attributes.get(j);
+                    getCdeCombo().addItem(cBean.getCDEName() + "  " +aBean.getCDEName());
 //                getCdeCombo().addItem(obj.toString() + "  " +aBean.getCDEName());
+                }
+                
             }
             
         }
