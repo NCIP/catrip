@@ -168,11 +168,6 @@ public class FilterRowPanel extends javax.swing.JPanel {
 //                getCdeCombo().addItem(obj.toString() + "  " +aBean.getCDEName());
             }
             
-//            for (int j = 0; j < displaybleAttributes.length; j++) {
-////                System.out.println("####  :"+displaybleAttributes[j]);
-//                getCdeCombo().addItem(displaybleAttributes[j]+"  in  "+obj.toString());
-//            }
-            
         }
         
     }
