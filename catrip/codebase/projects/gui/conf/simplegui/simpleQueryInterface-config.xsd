@@ -29,6 +29,7 @@
 		<xs:attribute name="depth" type="xs:string" use="optional"/>
 		<xs:attribute name="cdeName" type="xs:string" use="required"/>
 		<xs:attribute name="displaybleAttributes" type="xs:string" use="required"/>
+		<xs:attribute name="display" type="xs:string" use="required"/>
 	</xs:complexType>
 	<xs:complexType name="outboundpathType">
 		<xs:sequence>
@@ -72,6 +73,7 @@
 		<xs:attribute name="className" type="xs:string" use="required"/>
 		<xs:attribute name="refID" type="xs:string" use="required"/>
 		<xs:attribute name="displaybleAttributes" type="xs:string" use="required"/>
+		<xs:attribute name="display" type="xs:string" use="required"/>
 	</xs:complexType>
 	<xs:complexType name="targetsType">
 		<xs:sequence>
