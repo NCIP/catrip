@@ -24,6 +24,12 @@ public class SimpleGuiRegistry {
         return processor;
     }
     
+    public static void loadMetadata(){
+        
+        
+        
+        
+    }
     
     
     
