@@ -2,32 +2,12 @@
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
 	<service displayName="caTissueCore" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full" metadataXml="catissuecore-domainModel.xml">
 		<targets>
-			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" refID="18785753-F2FC-3542-E044-0003BA4529A9" 		
-					 displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
+			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" refID="18785753-F2FC-3542-E044-0003BA4529A9" displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
 				<associatedObjectTree>
-					<Association  className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"
-								refID="18785753-F2E4-3542-E044-0003BA4529A9" roleName="specimenCollectionGroup" display="true">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber" 
-									refID="18785753-F306-3542-E044-0003BA4529A9" roleName="clinicalReport" display="true"/>
+					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus" refID="18785753-F2E4-3542-E044-0003BA4529A9" roleName="specimenCollectionGroup" display="true">
+						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber" refID="18785753-F306-3542-E044-0003BA4529A9" roleName="clinicalReport" display="true"/>
 					</Association>
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl"  displaybleAttributes="tissueSite,tissueSide,pathologicalStatus" 
-								refID="18785753-F312-3542-E044-0003BA4529A9" roleName="specimenCharacteristics" display="false"/>
-				</associatedObjectTree>
-				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
-							<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier"/>
-						</Association>
-					</Association>
-				</foreignAssociationOutboundPath>
-			</objectElement>
-			<objectElement className="edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl" refID="18785753-F315-3542-E044-0003BA4529A9" 			displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInCellCount,availableQuantityInCellCount" display="true">
-				<associatedObjectTree>
-					<Association  className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"
-								refID="18785753-F2E4-3542-E044-0003BA4529A9" roleName="specimenCollectionGroup" display="true">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber" 
-									refID="18785753-F306-3542-E044-0003BA4529A9" roleName="clinicalReport" display="true"/>
-					</Association>
+					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl" displaybleAttributes="tissueSite,tissueSide,pathologicalStatus" refID="18785753-F312-3542-E044-0003BA4529A9" roleName="specimenCharacteristics" display="false"/>
 				</associatedObjectTree>
 				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
 					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
@@ -39,7 +19,7 @@
 			</objectElement>
 		</targets>
 		<foreignAssociationInboundTree>
-			<foreignAssociationInboundPath className="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl" refID="18785753-F2E3-3542-E044-0003BA4529A9" cdeName="medicalRecordNumber" 		displaybleAttributes="sexGenotype,gender,race,ethnicity,activityStatus" display="true">
+			<foreignAssociationInboundPath className="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl" refID="18785753-F2E3-3542-E044-0003BA4529A9" cdeName="medicalRecordNumber" displaybleAttributes="sexGenotype,gender,race,ethnicity,activityStatus" display="true">
 				<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl">
 					<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl" roleName="participant"/>
 				</Association>
@@ -54,10 +34,8 @@
 					<Association className="edu.duke.catrip.cae.domain.general.Accession" refID="Accession" roleName="accession" display="false">
 						<Association className="edu.duke.catrip.cae.domain.general.Specimen" refID="Specimen" roleName="specimen" display="false">
 							<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" refID="AnnotationEventParameters" roleName="annotationEventParameters" display="false">
-								<Association className="edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin" displaybleAttributes="neoplasmPresent,extentInvolvement,otherExtentInvolvement" 
-										refID="BreastPositiveSurgicalMargin" roleName="annotationSetCollection" display="true"/>
-								<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" displaybleAttributes="greatestDimension,additionalDimensionY,additionalDimensionZ" 
-								refID="ThreeDimensionalSize" roleName="annotationSetCollection" display="true"/>
+								<Association className="edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin" displaybleAttributes="neoplasmPresent,extentInvolvement,otherExtentInvolvement" refID="BreastPositiveSurgicalMargin" roleName="annotationSetCollection" display="true"/>
+								<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" displaybleAttributes="greatestDimension,additionalDimensionY,additionalDimensionZ" refID="ThreeDimensionalSize" roleName="annotationSetCollection" display="true"/>
 							</Association>
 						</Association>
 					</Association>
@@ -77,8 +55,7 @@
 					</Association>
 				</Association>
 			</foreignAssociationInboundPath>
-			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" refID="ThreeDimensionalSize" cdeName="medicalRecordNumber" 
-			displaybleAttributes="greatestDimension,additionalDimensionY,additionalDimensionZ" display="true">
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" refID="ThreeDimensionalSize" cdeName="medicalRecordNumber" displaybleAttributes="greatestDimension,additionalDimensionY,additionalDimensionZ" display="true">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
 						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
