@@ -41,8 +41,10 @@ public class SimpleSearchPanel extends CPanel {
         gl.setRows(4);
         
         processor = SimpleGuiRegistry.getProcessor();
+        SimpleGuiRegistry.loadMetadata();
         
-        initServiceCombo();
+        
+        initServiceCombo(); 
     }
     
     

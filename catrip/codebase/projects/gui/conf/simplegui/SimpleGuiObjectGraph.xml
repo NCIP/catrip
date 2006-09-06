@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
-	<service displayName="caTissueCore" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full" metadataXml="catissuecore-domainModel.xml">
+	<service displayName="caTissueCore" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full" metadataXml="caTissueCore_domainModel.xml">
 		<targets>
 			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" refID="18785753-F2FC-3542-E044-0003BA4529A9" 		
 					 displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
@@ -46,7 +46,7 @@
 			</foreignAssociationInboundPath>
 		</foreignAssociationInboundTree>
 	</service>
-	<service displayName="caTissueCAE" url="http://localhost:8181/wsrf/services/cagrid/CAE" metadataXml="catissuecae-domainModel.xml">
+	<service displayName="caTissueCAE" url="http://localhost:8181/wsrf/services/cagrid/CAE" metadataXml="CaTRIPcaTissueCAE_domainModel.xml">
 		<targets>
 			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" refID="Participant" displaybleAttributes="gender,race,ethnicity" display="true">
 				<associatedObjectTree>

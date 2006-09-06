@@ -156,10 +156,10 @@ public class FilterRowPanel extends javax.swing.JPanel {
             obj = objs.get(i);
             boolean display = obj.isDisplayable();
             if (display){
-                System.out.println("XXX : "+obj.getDisplaybleAttributes() + ":" +obj.getRefID());
+//                System.out.println("XXX : "+obj.getDisplaybleAttributes() + ":" +obj.getRefID());
                 String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
                 ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID());
-                System.out.println("XX-XX:"+cBean.getFullyQualifiedName());
+//                System.out.println("XX-XX:"+cBean.getFullyQualifiedName());
                 cBean.filterAttributes(displaybleAttributes);
                 cBean.print();
                 ArrayList attributes = cBean.getAttributes();
