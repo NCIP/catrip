@@ -1,18 +1,15 @@
-/*
- * FilterRowPanel.java
- *
- * Created on August 22, 2006, 3:30 PM
- */
+
 
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
-import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
-import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphAssociation;
+import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
 /**
@@ -63,6 +60,18 @@ public class FilterRowPanel extends javax.swing.JPanel {
         valueTextBox = new javax.swing.JTextField();
         predicateCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
 
+        valueTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                valueTextBoxKeyReleased(evt);
+            }
+        });
+
+        predicateCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                predicateComboItemStateChanged(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,6 +96,25 @@ public class FilterRowPanel extends javax.swing.JPanel {
 
     }// </editor-fold>//GEN-END:initComponents
     
+    private void valueTextBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valueTextBoxKeyReleased
+//        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
+        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        cdeBean.getAttributeBean().setAttributeValue(valueTextBox.getText().trim());
+//        }
+    }//GEN-LAST:event_valueTextBoxKeyReleased
+    
+    private void predicateComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_predicateComboItemStateChanged
+        
+//        if (evt.getStateChange() == ItemEvent.SELECTED) {
+//        } else
+        
+        if (evt.getStateChange() == ItemEvent.DESELECTED) {
+            CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+            cdeBean.getAttributeBean().setPredicate(getPredicateCombo().getSelectedItem().toString());
+        }
+        
+    }//GEN-LAST:event_predicateComboItemStateChanged
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cdeCombo;
@@ -94,46 +122,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private javax.swing.JTextField valueTextBox;
     // End of variables declaration//GEN-END:variables
     
-    private void fillCdeCombo1(){
-        getCdeCombo().addItem("ParticipantMedicalIdentifier:  Medical Record Number");
-        
-        getCdeCombo().addItem("TissueSpecimen: Type");
-        getCdeCombo().addItem("TissueSpecimen: Status Activity");
-        getCdeCombo().addItem("TissueSpecimen: Quantity Gram");
-        getCdeCombo().addItem("TissueSpecimen: Available Quantity Gram");
-        getCdeCombo().addItem("TissueSpecimen: Position Dimension Second");
-        getCdeCombo().addItem("TissueSpecimen: Position Dimension First");
-        
-        getCdeCombo().addItem("ClinicalReport: Number Surgical Pathology");
-        
-        getCdeCombo().addItem("Participant: Genotype Sex");
-        getCdeCombo().addItem("Participant: Gender");
-        getCdeCombo().addItem("Participant: Race");
-        getCdeCombo().addItem("Participant: Ethnic Group");
-        getCdeCombo().addItem("Participant: Status Activity");
-        
-        getCdeCombo().addItem("SpecimenCharacteristics: Tissue Site");
-        getCdeCombo().addItem("SpecimenCharacteristics: Side Tissue");
-        getCdeCombo().addItem("SpecimenCharacteristics: Pathology Finding Status");
-        
-        getCdeCombo().addItem("NottinghamHistopathologicGrade: Tubular Pattern");
-        getCdeCombo().addItem("NottinghamHistopathologicGrade: Nuclear Pleomorphism");
-        getCdeCombo().addItem("NottinghamHistopathologicGrade: Total Nottingham Score");
-        getCdeCombo().addItem("NottinghamHistopathologicGrade: Missing Value Reason Total Nottingham Score");
-        
-        getCdeCombo().addItem("InvasiveBreastCarcinoma: Anatomic Site");
-        getCdeCombo().addItem("InvasiveBreastCarcinoma: Anatomic Site Missing Value Reason");
-        getCdeCombo().addItem("InvasiveBreastCarcinoma: Angioinvasion Lymphatic Invasion Venous Invasion And/Or");
-        getCdeCombo().addItem("InvasiveBreastCarcinoma: Microcalcifications Anatomic Site");
-        
-        getCdeCombo().addItem("ThreeDimensionalSize: Dimension Largest");
-        getCdeCombo().addItem("ThreeDimensionalSize: Dimension Additional First");
-        getCdeCombo().addItem("ThreeDimensionalSize: Dimension Second Additional");
-        getCdeCombo().addItem("ThreeDimensionalSize: Missing Value Reason");
-        
-        getCdeCombo().addItem("ParticipantMedicalIdentifier: Medical Record Number");
-        
-    }
+    
     
     private void fillPredicateCombo(){
         getPredicateCombo().addItem("LIKE");
@@ -145,38 +134,47 @@ public class FilterRowPanel extends javax.swing.JPanel {
         getPredicateCombo().addItem("GREATER_THAN_EQUAL_TO");
         getPredicateCombo().addItem("IS_NULL");
         getPredicateCombo().addItem("IS_NOT_NULL");
+        
+        getPredicateCombo().setSelectedIndex(0);
     }
     
-    public void fillCdeCombo(List<GraphObject> objs) {
-        
-        GraphObject obj;
-        GraphAssociation assoc;
+    
+    
+    public void fillCdeCombo2(List<GraphObject> objs) {
         
         for (int i=0;i<objs.size();i++) {
-            obj = objs.get(i);
-            boolean display = obj.isDisplayable();
-            if (display){
-//                System.out.println("XXX : "+obj.getDisplaybleAttributes() + ":" +obj.getRefID());
-                String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
-                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID());
-//                System.out.println("XX-XX:"+cBean.getFullyQualifiedName());
-                cBean.filterAttributes(displaybleAttributes);
-                cBean.print();
+            GraphObject gObj = objs.get(i);
+            if (gObj.isDisplayable()){
+                ClassBean cBean = gObj.getClassBean();
                 ArrayList attributes = cBean.getAttributes();
-                
                 for (int j = 0; j < attributes.size(); j++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(j);
-                    getCdeCombo().addItem(cBean.getCDEName() + "  " +aBean.getCDEName());
-//                getCdeCombo().addItem(obj.toString() + "  " +aBean.getCDEName());
+                    CDEComboboxBean cdeBean = new CDEComboboxBean();
+                    cdeBean.setGraphBean(gObj);
+//                    cdeBean.setClassBean(cBean);
+                    cdeBean.setAttributeBean(aBean);
+                    getCdeCombo().addItem(cdeBean);
                 }
-                
+            } 
+            
+            
+        } 
+    }
+    
+    public void fillCdeCombo(List<ClassBean> objs) {
+        
+        for (int i=0;i<objs.size();i++) {
+            ClassBean cBean = objs.get(i);
+            ArrayList attributes = cBean.getAttributes();
+            for (int j = 0; j < attributes.size(); j++) {
+                AttributeBean aBean = (AttributeBean)attributes.get(j);
+                CDEComboboxBean cdeBean = new CDEComboboxBean();
+                cdeBean.setClassBean(cBean);cdeBean.setAttributeBean(aBean);
+                getCdeCombo().addItem(cdeBean);
             }
             
         }
-        
     }
-    
-    
     
     
     
@@ -196,3 +194,15 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     
 }
+
+// ----- custom combobox model ---------------//
+class ObjectComboBoxModel extends DefaultComboBoxModel{
+    private ClassBean cBean = null;
+    
+    
+    
+    
+}
+
+
+

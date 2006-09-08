@@ -25,6 +25,7 @@ public class VisualPanel extends CPanel {
         this.mainFrame = mainFrame;
         cQLDesignerPanel.setMainFrame(mainFrame);
         visualQueryDesignerPanel.setMainFrame(mainFrame);
+        simpleSearchPanel.setMainFrame(mainFrame);
     }
     
     

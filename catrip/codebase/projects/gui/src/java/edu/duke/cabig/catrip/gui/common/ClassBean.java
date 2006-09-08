@@ -353,6 +353,13 @@ public class ClassBean{
         }
     }
     
+    public void printAttributes(){
+        ArrayList attributes = getNonNullAttributes();
+        for (int i = 0; i < attributes.size(); i++) {
+            AttributeBean aBean = (AttributeBean)attributes.get(i);
+            System.out.println("Class Name:"+getFullyQualifiedName()+": Attribute CDE name:" + aBean.getCDEName()+":Attribute value:"+aBean.getAttributeValue() );
+        }
+    }
     
     
     

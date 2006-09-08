@@ -1,5 +1,6 @@
 package edu.duke.cabig.catrip.gui.simplegui.objectgraph;
 
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import java.util.List;
 
 public class GraphObject {
@@ -14,7 +15,9 @@ public class GraphObject {
     private String refID;
     private boolean displayable;
     
-    public GraphObject() {
+    private ClassBean classBean;
+    
+    public GraphObject() { 
     }
 
     public void setClassName(String className) {
@@ -104,7 +107,19 @@ public class GraphObject {
         String fullClassName = getClassName();
         String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
         
+        if (className.endsWith("Impl")){
+            className = className.substring(0,className.length()-4);
+        }
+        
         return className;
+    }
+
+    public ClassBean getClassBean() {
+        return classBean;
+    }
+
+    public void setClassBean(ClassBean classBean) {
+        this.classBean = classBean;
     }
 
 }

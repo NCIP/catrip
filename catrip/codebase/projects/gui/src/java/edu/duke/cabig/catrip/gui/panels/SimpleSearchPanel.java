@@ -3,11 +3,13 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +22,9 @@ public class SimpleSearchPanel extends CPanel {
     int filterRows = 0;
     
     ObjectGraphProcessor processor  = null;
+    private boolean targetSetChanged = true;
+    
+    private ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
@@ -29,6 +34,16 @@ public class SimpleSearchPanel extends CPanel {
     
     
     private void init(){
+        
+        initFilters();
+        
+        processor = SimpleGuiRegistry.getProcessor();
+        SimpleGuiRegistry.loadMetadata();
+        
+        initServiceCombo();
+    }
+    
+    private void initFilters(){
         filterRows = 0;
         for (int i = 0; i < 4; i++) {
             JPanel jp =  new JPanel();
@@ -39,15 +54,7 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.repaint();
         GridLayout gl = (GridLayout)filterPanel.getLayout();
         gl.setRows(4);
-        
-        processor = SimpleGuiRegistry.getProcessor();
-        SimpleGuiRegistry.loadMetadata();
-        
-        
-        initServiceCombo(); 
     }
-    
-    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -74,6 +81,12 @@ public class SimpleSearchPanel extends CPanel {
         clearFilterBtn = new javax.swing.JButton();
 
         jLabel1.setText("Select");
+
+        targetObjCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                targetObjComboActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("from");
 
@@ -202,24 +215,37 @@ public class SimpleSearchPanel extends CPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    private void targetObjComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetObjComboActionPerformed
+        
+        cleanClean();
+        targetSetChanged = true;
+        
+    }//GEN-LAST:event_targetObjComboActionPerformed
+    
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
-        System.out.println("the target service is changed....");
+        
+        cleanClean();
+        targetSetChanged = true;
         
         getTargetObjCombo().removeAllItems();
-
+        
         Service serv = (Service)getTargetServiceCombo().getSelectedItem();
         List<GraphObject> objs = processor.getTragetObjects(serv.getServiceName());
         
         for (int i=0;i<objs.size();i++) {
             getTargetObjCombo().addItem(objs.get(i));
         }
-    }//GEN-LAST:event_targetServiceComboActionPerformed
         
+    }//GEN-LAST:event_targetServiceComboActionPerformed
+    
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
+        SimpleGuiRegistry.cleanRegistry();
+        
         filterPanel.removeAll();
         filterPanel.revalidate();
         filterPanel.repaint();
-        init();
+        initFilters();
+        
     }//GEN-LAST:event_clearFilterBtnActionPerformed
     
     private void addFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterBtnActionPerformed
@@ -230,18 +256,24 @@ public class SimpleSearchPanel extends CPanel {
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
 //        jp.getValueBox().setText(""+filterRows);
-        Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
-        GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-        
-        List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
-        List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
-        
-        for (int i = 0; i < forObjs.size(); i++) {
-            objs.add(forObjs.get(i));
+        if (targetSetChanged){
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+            
+            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+            
+            for (int i = 0; i < forObjs.size(); i++) {
+                objs.add(forObjs.get(i));
+            }
+            objs.add(selectedTargetObject);
+            targetSetChanged = false;
+            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+            SimpleGuiRegistry.setTargetObjectBean(selectedTargetObject.getClassBean());
         }
-        objs.add(selectedTargetObject);
         
-        jp.fillCdeCombo(objs); 
+        jp.fillCdeCombo2(SimpleGuiRegistry.getCurrentXMLObjectList());
+//        jp.fillCdeCombo(SimpleGuiRegistry.getCurrentClassBeanList());
         
         if (filterRows < 5){
             filterPanel.remove(filterRows-1);
@@ -251,6 +283,8 @@ public class SimpleSearchPanel extends CPanel {
             gl.setRows(filterRows);
             filterPanel.add(jp);
         }
+        
+        SimpleGuiRegistry.addFilterToList(jp);  // create a list of filters being added currently..
         
         filterPanel.revalidate();
         filterPanel.repaint();
@@ -262,7 +296,7 @@ public class SimpleSearchPanel extends CPanel {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CJFrame jf = new CJFrame(); 
+                CJFrame jf = new CJFrame();
                 jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jf.setBounds(10,10,800,400);
                 jf.center();
@@ -304,14 +338,36 @@ public class SimpleSearchPanel extends CPanel {
     
     
     private void initServiceCombo(){
-
+        
         List<Service> services = processor.getServices();
         Service service;
         for (int i=0;i<services.size();i++) {
             getTargetServiceCombo().addItem(services.get(i));
 //            System.out.println(i+1 + ") " + service.getServiceName() + "   " + service.getServiceURL());
         }
-
+        
     }
+    
+    private void cleanClean(){
+        clearFilterBtnActionPerformed(null);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

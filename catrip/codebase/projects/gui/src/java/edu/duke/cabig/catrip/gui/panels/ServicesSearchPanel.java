@@ -90,6 +90,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         resultTable = new javax.swing.JTable();
         selectBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
+        simpleGuiBtn = new javax.swing.JButton();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
         searchPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("SEARCH_SERVICES_PANEL_BORDER_STR_1"))); // NOI18N
@@ -125,8 +126,8 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                         .add(showAllBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(clearBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(commonDataElement, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                    .add(concept, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
+                    .add(commonDataElement, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                    .add(concept, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE))
                 .addContainerGap())
         );
         searchPanelLayout.setVerticalGroup(
@@ -158,13 +159,13 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             resultPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(resultPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
                 .addContainerGap())
         );
         resultPanelLayout.setVerticalGroup(
             resultPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(resultPanelLayout.createSequentialGroup()
-                .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -179,6 +180,13 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         exitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitBtnActionPerformed(evt);
+            }
+        });
+
+        simpleGuiBtn.setText("Show Simple GUI");
+        simpleGuiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpleGuiBtnActionPerformed(evt);
             }
         });
 
@@ -197,7 +205,9 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                         .add(174, 174, 174)
                         .add(selectBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(45, 45, 45)
-                        .add(exitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(exitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(41, 41, 41)
+                        .add(simpleGuiBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 174, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -210,10 +220,15 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(exitBtn)
-                    .add(selectBtn))
+                    .add(selectBtn)
+                    .add(simpleGuiBtn))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void simpleGuiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpleGuiBtnActionPerformed
+        parentFrame.fwdAction();
+    }//GEN-LAST:event_simpleGuiBtnActionPerformed
     
     /** Action for Search All button. */
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
@@ -351,6 +366,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton selectBtn;
     private javax.swing.JButton showAllBtn;
+    private javax.swing.JButton simpleGuiBtn;
     // End of variables declaration//GEN-END:variables
     
 }
