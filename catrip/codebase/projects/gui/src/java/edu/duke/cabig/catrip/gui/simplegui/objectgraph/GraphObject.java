@@ -16,6 +16,7 @@ public class GraphObject {
     private boolean displayable;
     
     private ClassBean classBean;
+    private boolean localObject = true;
     
     public GraphObject() { 
     }
@@ -120,6 +121,14 @@ public class GraphObject {
 
     public void setClassBean(ClassBean classBean) {
         this.classBean = classBean;
+    }
+
+    public boolean isLocal() {
+        return localObject;
+    }
+
+    public void setLocalStatus(boolean localObject) {
+        this.localObject = localObject;
     }
 
 }

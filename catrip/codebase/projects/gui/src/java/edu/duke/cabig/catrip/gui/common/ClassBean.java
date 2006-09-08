@@ -281,6 +281,7 @@ public class ClassBean{
         associations.add(ass);
 //        numAssociations++;
     }
+    
     public ArrayList getAssociations(){
         return associations;
     }
@@ -297,6 +298,7 @@ public class ClassBean{
     public void addForeignAssociation(ForeignAssociationBean fass){
         foreignAssociations.add(fass);
     }
+    
     /** the list that contains the list of foreign associations created on the graph. */
     public ArrayList getForeignAssociations(){
         return foreignAssociations;
@@ -319,8 +321,9 @@ public class ClassBean{
     
     
     
+    // --------------- methods for simple GUI.. ------------------ //
     
-    /** methods for simple GUI.. */
+    /** Filter the attributes based on the  displaybleAttributes element of the xml..*/
     public void filterAttributes(String[] displaybleAttributes){
         ArrayList attributes = getAttributes();
         ArrayList displaybleAttributesList = new ArrayList(15);
@@ -342,6 +345,45 @@ public class ClassBean{
         this.setAttributes(displaybleAttributesList);
         
     }
+    
+    /** to add the associations only once.. used in Simple gui  */
+    public void addUniqueForeignAssociation(ForeignAssociationBean fass){
+        boolean alreadyAdded = foreignAssociations.contains(fass);
+        if (!alreadyAdded){
+            foreignAssociations.add(fass);
+        }
+    }
+    
+    /** to add the associations only once.. used in Simple gui  */
+    public void addUuiqueAssociation(ClassBean ass){
+        boolean alreadyAdded = associations.contains(ass);
+        if (!alreadyAdded){
+            associations.add(ass);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

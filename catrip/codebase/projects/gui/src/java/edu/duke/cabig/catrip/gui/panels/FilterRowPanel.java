@@ -150,7 +150,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
                 for (int j = 0; j < attributes.size(); j++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(j);
                     CDEComboboxBean cdeBean = new CDEComboboxBean();
-                    cdeBean.setGraphBean(gObj);
+                    cdeBean.setGraphObject(gObj);
 //                    cdeBean.setClassBean(cBean);
                     cdeBean.setAttributeBean(aBean);
                     getCdeCombo().addItem(cdeBean);

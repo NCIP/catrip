@@ -38,11 +38,11 @@ public class CDEComboboxBean {
         return cBean.getCDEName() + "  " +aBean.getCDEName();
     }
 
-    public GraphObject getGraphBean() {
+    public GraphObject getGraphObject() {
         return graphBean;
     }
 
-    public void setGraphBean(GraphObject graphBean) {
+    public void setGraphObject(GraphObject graphBean) {
         this.graphBean = graphBean;
         setClassBean(graphBean.getClassBean());  
     } 

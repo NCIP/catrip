@@ -269,7 +269,7 @@ public class SimpleSearchPanel extends CPanel {
             objs.add(selectedTargetObject);
             targetSetChanged = false;
             SimpleGuiRegistry.setCurrentXMLObjectList(objs);
-            SimpleGuiRegistry.setTargetObjectBean(selectedTargetObject.getClassBean());
+            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject); 
         }
         
         jp.fillCdeCombo2(SimpleGuiRegistry.getCurrentXMLObjectList());

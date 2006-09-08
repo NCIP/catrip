@@ -29,7 +29,7 @@ public class SimpleGuiRegistry {
     private static ObjectGraphProcessor processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
     private static List<GraphObject> currentXMLObjectList = new ArrayList(50);
     private static ArrayList<ClassBean> currentClassBeanList = new ArrayList(50);
-    private static ClassBean targetObjectBean = null; // will hold the ref to target object ClassBean object..
+    private static GraphObject targetGraphObject = null; // will hold the ref to target object ClassBean object..
     
     private static ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
@@ -61,7 +61,7 @@ public class SimpleGuiRegistry {
             sBean.setIcon(SwingUtils.getTextAsRandomColorImage(service.getServiceName().trim()));
             sBean.needImpl(false);
             
-            // TODO - remove later...
+            // TODO - remove later... get this prop from properties file... same as complex gui...
             if (service.getServiceName().equalsIgnoreCase("caTissueCore")){
                 sBean.needImpl(true);
             }
@@ -96,7 +96,7 @@ public class SimpleGuiRegistry {
         setCurrentClassBeanList(new ArrayList(50));
         setCurrentXMLObjectList(new ArrayList(50));
         setFilterList(new ArrayList(10));
-        setTargetObjectBean(null);
+        setTargetGraphObject(null);
     }
     
     public static List getCurrentXMLObjectList() {
@@ -127,12 +127,12 @@ public class SimpleGuiRegistry {
         
     }
     
-    public static ClassBean getTargetObjectBean() {
-        return targetObjectBean;
+    public static GraphObject getTargetGraphObject() {
+        return targetGraphObject;
     }
     
-    public static void setTargetObjectBean(ClassBean aTargetObjectBean) {
-        targetObjectBean = aTargetObjectBean;
+    public static void setTargetGraphObject(GraphObject aTargetGraphObject) {
+        targetGraphObject = aTargetGraphObject;
     }
     
     
@@ -164,5 +164,59 @@ public class SimpleGuiRegistry {
         }
         
     }
+    
+    
+    
+    
+    public void prepareForDcql(){
+        // fill the hash map with filled objects only...
+        ArrayList<FilterRowPanel> list = getFilterList();
+        for (int i = 0; i < list.size(); i++) {
+            FilterRowPanel pnl = list.get(i);
+            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
+            ClassBean cBean = cdeBean.getClassBean();
+            addToBeanMap(cBean);
+        }
+        // pick filters one by one and keep setting the associations in each item...
+        
+        for (int i = 0; i < list.size(); i++) {
+            FilterRowPanel pnl = list.get(i);
+            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
+            GraphObject targetObject =  getTargetGraphObject();
+            GraphObject filterObject = cdeBean.getGraphObject();
+            if (filterObject.isLocal()){
+                
+            }
+            
+            
+//            ClassBean cBean = cdeBean.getClassBean();
+
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
