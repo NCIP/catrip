@@ -4,7 +4,8 @@ public class Service {
     private String serviceName;
     private String serviceURL;
     private String metadataXml;
-     
+    private boolean impls;
+    
     public Service() {
     }
 
@@ -36,4 +37,11 @@ public class Service {
     }
 
 
+    public void setImpls(boolean impls) {
+        this.impls = impls;
+    }
+
+    public boolean isImpls() {
+        return impls;
+    }
 }

@@ -4,6 +4,7 @@ public class GraphAssociation {
 
     private String className;
     private String roleName;
+   
     
     public GraphAssociation() {
     }
@@ -23,4 +24,5 @@ public class GraphAssociation {
     public String getRoleName() {
         return roleName;
     }
+
 }

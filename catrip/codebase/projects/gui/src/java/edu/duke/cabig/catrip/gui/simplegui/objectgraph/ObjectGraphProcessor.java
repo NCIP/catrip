@@ -60,7 +60,7 @@ public class ObjectGraphProcessor {
         GraphAssociation assoc = new GraphAssociation();
         assoc.setClassName(associationEle.getAttributeValue("className"));
         assoc.setRoleName(associationEle.getAttributeValue("roleName"));
-
+        //assoc.setRefID(associationEle.getAttributeValue("refID"));
         return assoc;
     }
     
@@ -90,6 +90,7 @@ public class ObjectGraphProcessor {
             service.setServiceName(serviceEle.getAttribute("displayName").getValue());
             service.setServiceURL(serviceEle.getAttribute("url").getValue());
             service.setMetadataXml(serviceEle.getAttribute("metadataXml").getValue());
+            service.setImpls(Boolean.parseBoolean(serviceEle.getAttribute("impls").getValue()));
             services.add(service);
         }
         return services;
