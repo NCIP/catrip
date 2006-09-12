@@ -73,6 +73,14 @@ public class CommandPanel extends CPanel {
     // End of variables declaration//GEN-END:variables
     
     private void executeSimpleGuiQuery(){
+        
+        
+        SimpleGuiRegistry.prepareForDcql();
+        
+        
+        
+        
+        
 //        List cBeanList = SimpleGuiRegistry.getCurrentClassBeanList();
 //        for (int i = 0; i < cBeanList.size(); i++) {
 //            ClassBean cBean = (ClassBean)cBeanList.get(i);
@@ -82,13 +90,23 @@ public class CommandPanel extends CPanel {
 //        }
 //        System.out.println("====================== total classBean size:"+cBeanList.size());
         
-        ArrayList<FilterRowPanel> list = SimpleGuiRegistry.getFilterList();
-        for (int i = 0; i < list.size(); i++) {
-            FilterRowPanel pnl = list.get(i);
-            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
-            ClassBean cBean = cdeBean.getClassBean();
-            SimpleGuiRegistry.addToBeanMap(cBean);
-        }
+        
+        
+        
+        
+        
+        
+//        ArrayList<FilterRowPanel> list = SimpleGuiRegistry.getFilterList();
+//        for (int i = 0; i < list.size(); i++) {
+//            FilterRowPnel pnl = list.get(i);
+//            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
+//            ClassBean cBean = cdeBean.getClassBean();
+//            SimpleGuiRegistry.addToBeanMap(cBean);
+//        }
+        
+        
+        
+        
         
         
         

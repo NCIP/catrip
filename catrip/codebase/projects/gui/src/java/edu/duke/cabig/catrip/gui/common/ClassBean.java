@@ -355,7 +355,7 @@ public class ClassBean{
     }
     
     /** to add the associations only once.. used in Simple gui  */
-    public void addUuiqueAssociation(ClassBean ass){
+    public void addUniqueAssociation(ClassBean ass){
         boolean alreadyAdded = associations.contains(ass);
         if (!alreadyAdded){
             associations.add(ass);
@@ -404,7 +404,26 @@ public class ClassBean{
     }
     
     
-    
+    public void printAssociations(){
+        
+        if (hasAssociations()){
+            ArrayList list = getAssociations();
+            for (int i = 0; i < list.size(); i++) {
+                ClassBean cBean = (ClassBean)list.get(i);
+                System.out.println(getClassName() + " --"+getAssociationRoleName(cBean.getId())+"-> " +cBean.getClassName() );
+                cBean.printAssociations();
+            }
+        }
+        
+        if (hasForeignAssociations()){
+            ArrayList list = getForeignAssociations();
+            for (int i = 0; i < list.size(); i++) {
+                ForeignAssociationBean fBean = (ForeignAssociationBean)list.get(i);
+                System.out.println(getClassName() +"-:-"+ fBean.getLeftObj().getClassName()+":"+fBean.getLeftProperty()+" ---> " +fBean.getRighObj().getClassName()+":"+fBean.getRightProperty());
+            }
+        }
+        
+    }
     
     
     

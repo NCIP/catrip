@@ -2,6 +2,7 @@
 package edu.duke.cabig.catrip.gui.simplegui;
 
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
@@ -33,7 +34,8 @@ public class SimpleGuiRegistry {
     
     private static ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
-    private static HashMap beanMap = new HashMap();
+    private static HashMap beanMap = new HashMap(20);
+    private static HashMap currentClassBeanMap = new HashMap(100);
     
     
     /** Creates a new instance of SimpleGuiRegistry */
@@ -116,11 +118,16 @@ public class SimpleGuiRegistry {
                 String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
                 ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
                 cBean.filterAttributes(displaybleAttributes);
+                
+                cBean.setAssociationRoleNameMap(new HashMap(20));
                 currentClassBeanList.add(cBean);
                 obj.setClassBean(cBean);
+                addToCurrentClassBeanMap(obj.getClassName(), cBean);
             }else {
                 ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
+                cBean.setAssociationRoleNameMap(new HashMap(20));
                 obj.setClassBean(cBean);
+                addToCurrentClassBeanMap(obj.getClassName(), cBean);
             }
             
         }
@@ -168,7 +175,7 @@ public class SimpleGuiRegistry {
     
     
     
-    public void prepareForDcql(){
+    public static void prepareForDcql(){
         // fill the hash map with filled objects only...
         ArrayList<FilterRowPanel> list = getFilterList();
         for (int i = 0; i < list.size(); i++) {
@@ -184,18 +191,105 @@ public class SimpleGuiRegistry {
             CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
             GraphObject targetObject =  getTargetGraphObject();
             GraphObject filterObject = cdeBean.getGraphObject();
+            
             if (filterObject.isLocal()){
+                // get the association path.. get their beans and then create classBean for each and then add association recursively..
+                GraphAssociation assoc;
+                List<GraphAssociation> assos = filterObject.getAssociationPathWRTTargetObject();
+                
+                ClassBean tmpBeanLeft = targetObject.getClassBean();
+                for (int k=assos.size()-1;k>=0;k--) {
+                    
+                    assoc = assos.get(k);
+//                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
+                    ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                    if (tmpBeanRight == null){
+                        // few classes are not defined like ParticipantMedicalIdentifierImpl.. so those are not here in map.. c
+                        // co create an instance  of class bean fpr those... after chwecking for null values..
+                        System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
+                    }
+                    
+                    tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
+                    tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
+                    tmpBeanLeft.setHasAssociations(true);
+                    tmpBeanLeft = tmpBeanRight;
+                }
+//                targetObject.getClassBean().printAssociations();
+                
+//                filterObject.getClassBean().printAttributes();
+            }else {
+                // traverse till the outermost object.. and set foreign association there..
+                
+                String leftProperty = targetObject.getForeignAssociationOutboundCDE();
+                String rightProperty = filterObject.getForeignAssociationInboundCDE();
+                
+                GraphAssociation assoc;
+                List<GraphAssociation> assos = targetObject.getForeignAssociationOutboundPath();
+                
+                ClassBean tmpBeanLeft = targetObject.getClassBean();
+                for (int k=0;k<assos.size();k++) {
+                    
+                    assoc = assos.get(k);
+//                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
+                    ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                    tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
+                    tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
+                    tmpBeanLeft.setHasAssociations(true);
+                    tmpBeanLeft = tmpBeanRight;
+                }
+                //at the end the "tmpBeanLeft" is the outer most object of that service for the foreign association..
+                // So use that object as leftObj..
+                ClassBean leftClassBeanObject = tmpBeanLeft;
+                ClassBean rightClassBeanObject;
+                
+                // now get the inbound path for filter object.. and use the first object as right join.
+                assos = filterObject.getForeignAssociationInboundPath();
+                
+                // just add the foreign association to the outermost object of target service....
+                assoc = assos.get(0);
+                rightClassBeanObject = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                if (rightClassBeanObject == null){
+                    System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
+                }
+                
+                ForeignAssociationBean foreignAssociationBean = new ForeignAssociationBean();
+                foreignAssociationBean.setLeftObj(leftClassBeanObject);
+                foreignAssociationBean.setLeftProperty(leftProperty);
+                foreignAssociationBean.setRighObj(rightClassBeanObject);
+                foreignAssociationBean.setRightProperty(rightProperty);
+                
+                tmpBeanLeft.addUniqueForeignAssociation(foreignAssociationBean);
+                tmpBeanLeft.setHasForeignAssociations(true);
+
+                // now set the local associations for the inbound path for the filter object in foreign service..
+                // now the index will start from 1.
+                tmpBeanLeft = rightClassBeanObject;
+                for (int k=1;k<assos.size();k++) {
+                    assoc = assos.get(k);
+//                    System.out.println(filterObject.getClassName()+" :" +k+":  "+ assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
+                    ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                    tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
+                    tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
+                    tmpBeanLeft.setHasAssociations(true);
+                    tmpBeanLeft = tmpBeanRight;
+                }
+                
+                
+                
+                
+                
+                
                 
             }
             
             
 //            ClassBean cBean = cdeBean.getClassBean();
-
+            
         }
         
         
-        
-        
+        getTargetGraphObject().getClassBean().printAssociations();
+        System.out.println("\n");
         
         
         
@@ -207,7 +301,17 @@ public class SimpleGuiRegistry {
         
     }
     
+    public static HashMap getCurrentClassBeanMap() {
+        return currentClassBeanMap;
+    }
     
+    public static void setCurrentClassBeanMap(HashMap aCurrentClassBeanMap) {
+        currentClassBeanMap = aCurrentClassBeanMap;
+    }
+    
+    public static void addToCurrentClassBeanMap(String key, ClassBean cBean) {
+        currentClassBeanMap.put(key, cBean);
+    }
     
     
     
