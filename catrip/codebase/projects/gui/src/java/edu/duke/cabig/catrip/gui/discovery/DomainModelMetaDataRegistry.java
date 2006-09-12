@@ -20,7 +20,10 @@ import java.util.HashMap;
 public class DomainModelMetaDataRegistry {
     
     /** This Map contains the ClassBean instances vs. class RefIds as defined in the Domain Model extract */
-    private static HashMap classMap = new HashMap(100);
+    private static HashMap classMap = new HashMap(200);
+    
+    /** This Map contains the ClassBean instances vs. fully classified class names as defined in the Domain Model extract */
+    private static HashMap classNameClassMap= new HashMap(200);
     
     /** Map of the class List vs service/model name. */
     private static HashMap domainModelMap = new HashMap(20);
@@ -34,8 +37,13 @@ public class DomainModelMetaDataRegistry {
         return (ClassBean) classMap.get(refId);
     }
     
+    public static ClassBean lookupClassByFullyQualifiedName(String className) {
+        return (ClassBean) classNameClassMap.get(className);
+    }
+    
     public static void bindClassByRefId(ClassBean classBean){
         classMap.put(classBean.getId(), classBean);
+        classNameClassMap.put(classBean.getFullyQualifiedName(), classBean);
     }
     
     public static ArrayList<ClassBean> lookupClassListByDomainModelName(String id) {

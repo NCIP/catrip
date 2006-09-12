@@ -420,6 +420,7 @@ public class ClassBean{
             for (int i = 0; i < list.size(); i++) {
                 ForeignAssociationBean fBean = (ForeignAssociationBean)list.get(i);
                 System.out.println(getClassName() +"-:-"+ fBean.getLeftObj().getClassName()+":"+fBean.getLeftProperty()+" ---> " +fBean.getRighObj().getClassName()+":"+fBean.getRightProperty());
+                fBean.getRighObj().printAssociations();
             }
         }
         

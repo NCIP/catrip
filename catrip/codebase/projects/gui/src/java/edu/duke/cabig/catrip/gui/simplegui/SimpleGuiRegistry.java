@@ -9,7 +9,9 @@ import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelRetrievalFactory;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelRetrievalStrategy;
+import edu.duke.cabig.catrip.gui.dnd.ClassNode;
 import edu.duke.cabig.catrip.gui.panels.FilterRowPanel;
+import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphAssociation;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
@@ -99,6 +101,7 @@ public class SimpleGuiRegistry {
         setCurrentXMLObjectList(new ArrayList(50));
         setFilterList(new ArrayList(10));
         setTargetGraphObject(null);
+        DCQLRegistry.setTargetNode(null);
     }
     
     public static List getCurrentXMLObjectList() {
@@ -116,7 +119,8 @@ public class SimpleGuiRegistry {
             boolean display = obj.isDisplayable();
             if (display){
                 String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
-                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
+//                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
+                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
                 cBean.filterAttributes(displaybleAttributes);
                 
                 cBean.setAssociationRoleNameMap(new HashMap(20));
@@ -124,7 +128,8 @@ public class SimpleGuiRegistry {
                 obj.setClassBean(cBean);
                 addToCurrentClassBeanMap(obj.getClassName(), cBean);
             }else {
-                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
+//                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
+                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
                 cBean.setAssociationRoleNameMap(new HashMap(20));
                 obj.setClassBean(cBean);
                 addToCurrentClassBeanMap(obj.getClassName(), cBean);
@@ -139,7 +144,12 @@ public class SimpleGuiRegistry {
     }
     
     public static void setTargetGraphObject(GraphObject aTargetGraphObject) {
-        targetGraphObject = aTargetGraphObject;
+        if (aTargetGraphObject != null){
+            targetGraphObject = aTargetGraphObject;
+            ClassNode tNode = new ClassNode();
+            tNode.setAssociatedClassObject(targetGraphObject.getClassBean());
+            DCQLRegistry.setTargetNode(tNode);
+        }
     }
     
     
@@ -206,7 +216,10 @@ public class SimpleGuiRegistry {
                     if (tmpBeanRight == null){
                         // few classes are not defined like ParticipantMedicalIdentifierImpl.. so those are not here in map.. c
                         // co create an instance  of class bean fpr those... after chwecking for null values..
-                        System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
+                        // System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
+                        tmpBeanRight = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
+                        tmpBeanRight.setAssociationRoleNameMap(new HashMap(20));
+                        addToCurrentClassBeanMap(assoc.getClassName(), tmpBeanRight);
                     }
                     
                     tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
@@ -249,7 +262,10 @@ public class SimpleGuiRegistry {
                 assoc = assos.get(0);
                 rightClassBeanObject = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
                 if (rightClassBeanObject == null){
-                    System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
+//                    System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
+                    rightClassBeanObject = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
+                    rightClassBeanObject.setAssociationRoleNameMap(new HashMap(20));
+                    addToCurrentClassBeanMap(assoc.getClassName(), rightClassBeanObject);
                 }
                 
                 ForeignAssociationBean foreignAssociationBean = new ForeignAssociationBean();
@@ -267,10 +283,13 @@ public class SimpleGuiRegistry {
                 for (int k=1;k<assos.size();k++) {
                     assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+" :" +k+":  "+ assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
-                    if (rightClassBeanObject == null){
-                        System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
-                    }
                     ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                    if (tmpBeanRight == null){
+                        System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
+                        tmpBeanRight = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
+                        tmpBeanRight.setAssociationRoleNameMap(new HashMap(20));
+                        addToCurrentClassBeanMap(assoc.getClassName(), tmpBeanRight);
+                    }
                     tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
                     tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
                     tmpBeanLeft.setHasAssociations(true);
