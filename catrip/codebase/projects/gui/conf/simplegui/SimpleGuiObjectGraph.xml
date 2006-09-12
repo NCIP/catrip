@@ -65,7 +65,7 @@
 			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" refID="NottinghamHistopathologicGrade" cdeName="medicalRecordNumber" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" display="true">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
-						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
 							<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection"/>
 						</Association>
 					</Association>
@@ -74,7 +74,7 @@
 			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" refID="ThreeDimensionalSize" cdeName="medicalRecordNumber" displaybleAttributes="greatestDimension,additionalDimensionY,additionalDimensionZ" display="true">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
-						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
 							<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" roleName="annotationSetCollection"/>
 						</Association>
 					</Association>
