@@ -220,29 +220,12 @@ public class SimpleSearchPanel extends CPanel {
         cleanClean();
         targetSetChanged = true;
         
-        if (targetSetChanged){
-            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
-            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-            
-            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
-            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
-            
-            for (int i = 0; i < forObjs.size(); i++) {
-                objs.add(forObjs.get(i));
-            } 
-            objs.add(selectedTargetObject);
-            targetSetChanged = false;
-            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
-            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject); 
-        }
-        
     }//GEN-LAST:event_targetObjComboActionPerformed
     
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
         
         cleanClean();
-        targetSetChanged = true;
-        
+        targetSetChanged = false;
         getTargetObjCombo().removeAllItems();
         
         Service serv = (Service)getTargetServiceCombo().getSelectedItem();
@@ -251,13 +234,12 @@ public class SimpleSearchPanel extends CPanel {
         for (int i=0;i<objs.size();i++) {
             getTargetObjCombo().addItem(objs.get(i));
         }
+        targetSetChanged = true;
         
     }//GEN-LAST:event_targetServiceComboActionPerformed
     
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
         SimpleGuiRegistry.cleanRegistry();
-        
-        targetSetChanged = true;
         
         filterPanel.removeAll();
         filterPanel.revalidate();
@@ -273,22 +255,24 @@ public class SimpleSearchPanel extends CPanel {
         FilterRowPanel jp =  new FilterRowPanel();
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
-//        jp.getValueBox().setText(""+filterRows);
-//        if (targetSetChanged){
-//            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
-//            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-//            
-//            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
-//            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
-//            
-//            for (int i = 0; i < forObjs.size(); i++) {
-//                objs.add(forObjs.get(i));
-//            } 
-//            objs.add(selectedTargetObject);
-//            targetSetChanged = false;
-//            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
-//            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject); 
-//        }
+        
+        if (targetSetChanged){
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+            
+            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+            
+            for (int i = 0; i < forObjs.size(); i++) {
+                objs.add(forObjs.get(i));
+            }
+            objs.add(selectedTargetObject);
+            targetSetChanged = false;
+            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        }
+        
+        
         
         jp.fillCdeCombo2(SimpleGuiRegistry.getCurrentXMLObjectList());
 //        jp.fillCdeCombo(SimpleGuiRegistry.getCurrentClassBeanList());
