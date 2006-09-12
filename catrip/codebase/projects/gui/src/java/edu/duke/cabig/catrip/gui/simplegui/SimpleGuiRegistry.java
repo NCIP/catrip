@@ -63,12 +63,12 @@ public class SimpleGuiRegistry {
             sBean.setServiceName(service.getServiceName());
             sBean.setServiceUrl(service.getServiceURL());
             sBean.setIcon(SwingUtils.getTextAsRandomColorImage(service.getServiceName().trim()));
-            sBean.needImpl(false);
+            sBean.needImpl(service.needImpls());
             
-            // TODO - remove later... get this prop from properties file... same as complex gui...
-            if (service.getServiceName().equalsIgnoreCase("caTissueCore")){
-                sBean.needImpl(true);
-            }
+//            // TODO - remove later... get this prop from properties file... same as complex gui...
+//            if (service.getServiceName().equalsIgnoreCase("caTissueCore")){
+//                sBean.needImpl(true);
+//            }
             
             DomainModelRetrievalStrategy retrievalStrategy = DomainModelRetrievalFactory.getRetrievalStrategy(sBean);
             DomainModel domainModel = retrievalStrategy.retrievDomainModel();

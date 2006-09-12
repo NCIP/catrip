@@ -90,7 +90,7 @@ public class ObjectGraphProcessor {
             service.setServiceName(serviceEle.getAttribute("displayName").getValue());
             service.setServiceURL(serviceEle.getAttribute("url").getValue());
             service.setMetadataXml(serviceEle.getAttribute("metadataXml").getValue());
-            service.setImpls(Boolean.parseBoolean(serviceEle.getAttribute("impls").getValue()));
+            service.setNeedImpls(Boolean.parseBoolean(serviceEle.getAttribute("impls").getValue()));
             services.add(service);
         }
         return services;

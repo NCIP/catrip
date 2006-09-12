@@ -37,11 +37,11 @@ public class Service {
     }
 
 
-    public void setImpls(boolean impls) {
+    public void setNeedImpls(boolean impls) {
         this.impls = impls;
     }
 
-    public boolean isImpls() {
+    public boolean needImpls() {
         return impls;
     }
 }
