@@ -4,7 +4,7 @@ public class Service {
     private String serviceName;
     private String serviceURL;
     private String metadataXml;
-    
+     
     public Service() {
     }
 

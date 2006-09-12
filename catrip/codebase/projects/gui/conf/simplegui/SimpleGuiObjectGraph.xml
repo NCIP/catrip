@@ -8,10 +8,13 @@
 					<Association  className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"
 								refID="18785753-F2E4-3542-E044-0003BA4529A9" roleName="specimenCollectionGroup" display="true">
 						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber" 
-									refID="18785753-F306-3542-E044-0003BA4529A9" roleName="clinicalReport" display="true"/>
+									refID="18785753-F306-3542-E044-0003BA4529A9" roleName="clinicalReport" display="true">
+									<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" displaybleAttributes="id"
+									refID="18785753-F302-3542-E044-0003BA4529A9" roleName="participantMedicalIdentifier" display="false"/>
+									</Association>
 					</Association>
 					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl"  displaybleAttributes="tissueSite,tissueSide,pathologicalStatus" 
-								refID="18785753-F312-3542-E044-0003BA4529A9" roleName="specimenCharacteristics" display="false"/>
+								refID="18785753-F312-3542-E044-0003BA4529A9" roleName="specimenCharacteristics" display="true"/>
 				</associatedObjectTree>
 				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
 					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
@@ -79,7 +82,7 @@
 			</foreignAssociationInboundPath>
 			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" refID="ThreeDimensionalSize" cdeName="medicalRecordNumber" 
 			displaybleAttributes="greatestDimension,additionalDimensionY,additionalDimensionZ" display="true">
-				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" >
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
 						<Association className="edu.pitt.cabig.cae.domain.breast.AnnotationEventParameters" roleName="annotationEventParametersCollection">
 							<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" roleName="annotationSetCollection"/>

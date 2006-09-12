@@ -2,7 +2,7 @@ package edu.duke.cabig.catrip.gui.simplegui.objectgraph;
 
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import java.util.List;
-
+ 
 public class GraphObject {
     private String className;
     private List<GraphAssociation> foreignAssociationOutboundPath;

@@ -145,7 +145,7 @@ public class SimpleGuiRegistry {
     
     public static ArrayList<FilterRowPanel> getFilterList() {
         return filters;
-    }
+    } 
     
     public static void setFilterList(ArrayList<FilterRowPanel> filters) {
         filters = filters;

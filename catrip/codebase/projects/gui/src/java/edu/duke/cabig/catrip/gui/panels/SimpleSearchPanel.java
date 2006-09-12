@@ -265,7 +265,7 @@ public class SimpleSearchPanel extends CPanel {
             
             for (int i = 0; i < forObjs.size(); i++) {
                 objs.add(forObjs.get(i));
-            }
+            } 
             objs.add(selectedTargetObject);
             targetSetChanged = false;
             SimpleGuiRegistry.setCurrentXMLObjectList(objs);

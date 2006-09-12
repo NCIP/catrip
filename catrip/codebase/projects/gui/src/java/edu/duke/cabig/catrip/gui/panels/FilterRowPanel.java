@@ -1,5 +1,5 @@
 
-
+ 
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;

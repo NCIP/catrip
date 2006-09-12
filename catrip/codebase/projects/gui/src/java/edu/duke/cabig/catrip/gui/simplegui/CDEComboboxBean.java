@@ -5,7 +5,7 @@ import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 
-/**
+/** 
  *
  * @author Sanjeev Agarwal
  */
