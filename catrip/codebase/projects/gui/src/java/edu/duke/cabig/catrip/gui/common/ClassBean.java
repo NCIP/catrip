@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.util.*;
 
 
-/**
+/** 
  * ClassBean represents a Class as defined in UMLClass element of Domain Model Metadata.
  *
  * @author Sanjeev Agarwal

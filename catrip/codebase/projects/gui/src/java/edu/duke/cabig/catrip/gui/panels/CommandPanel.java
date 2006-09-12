@@ -1,7 +1,7 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
-
+ 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;

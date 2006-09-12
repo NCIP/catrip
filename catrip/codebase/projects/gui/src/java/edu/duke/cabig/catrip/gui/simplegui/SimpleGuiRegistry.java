@@ -154,7 +154,7 @@ public class SimpleGuiRegistry {
     public static void addFilterToList(FilterRowPanel filter) {
         filters.add(filter);
     }
-    
+     
     public static HashMap getBeanMap() {
         return beanMap;
     }
