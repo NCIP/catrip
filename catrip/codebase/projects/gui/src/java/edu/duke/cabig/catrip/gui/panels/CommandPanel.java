@@ -8,8 +8,6 @@ import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
-import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
-import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
@@ -19,8 +17,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -74,8 +70,8 @@ public class CommandPanel extends CPanel {
     
     private void executeSimpleGuiQuery(){
         
-        
-        SimpleGuiRegistry.prepareForDcql();
+//        SimpleGuiRegistry.cleanRegistry();
+//        SimpleGuiRegistry.prepareForDcql();
         
         
         

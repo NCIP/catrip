@@ -56,5 +56,11 @@ public class ForeignAssociationBean {
         this.rightProperty = rightProperty;
     }
     
+    public boolean equals(Object obj) {
+        ForeignAssociationBean object = (ForeignAssociationBean)obj;
+        return (getLeftObj().equals( object.getLeftObj()) && getRighObj().equals(object.getRighObj()));
+    }
+    
+    
     
 }
