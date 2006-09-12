@@ -108,7 +108,7 @@ public class CommandPanel extends CPanel {
             } else {
                 
                 // TODO - put the client config files of the individual service also in the caTRIP-config.xml or the services-mapping file some how.
-                CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"qe-client-config.wsdd")));
+                CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"client-config.wsdd")));
                 
                 ArrayList classBeanList = new ArrayList();
                 
