@@ -1,13 +1,14 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
- 
+
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
@@ -26,7 +27,7 @@ import javax.swing.JOptionPane;
  */
 public class CommandPanel extends CPanel {
     boolean simpleGui = true;
-    
+    // TODO - set the variable somewhere else...
     
     /** Creates new form CommandPanel */
     public CommandPanel() {
@@ -70,68 +71,11 @@ public class CommandPanel extends CPanel {
     
     private void executeSimpleGuiQuery(){
         
-//        SimpleGuiRegistry.cleanRegistry();
-//        SimpleGuiRegistry.prepareForDcql();
+        if (SimpleGuiRegistry.isSimpleGuiChanged()){
+            SimpleGuiRegistry.prepareForDcql();
+        }
         
-        
-        
-        
-        
-//        List cBeanList = SimpleGuiRegistry.getCurrentClassBeanList();
-//        for (int i = 0; i < cBeanList.size(); i++) {
-//            ClassBean cBean = (ClassBean)cBeanList.get(i);
-//            System.out.println("XXXX-----XXXX  " + cBean.getFullyQualifiedName());
-//            cBean.printAttributes();
-//            System.out.println("XXXX-----XXXX");
-//        }
-//        System.out.println("====================== total classBean size:"+cBeanList.size());
-        
-        
-        
-        
-        
-        
-        
-//        ArrayList<FilterRowPanel> list = SimpleGuiRegistry.getFilterList();
-//        for (int i = 0; i < list.size(); i++) {
-//            FilterRowPnel pnl = list.get(i);
-//            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
-//            ClassBean cBean = cdeBean.getClassBean();
-//            SimpleGuiRegistry.addToBeanMap(cBean);
-//        }
-        
-        
-        
-        
-        
-        
-        
-        
-//        HashMap beanMap = SimpleGuiRegistry.getBeanMap();
-//        Iterator ii = beanMap.keySet().iterator();
-//        while (ii.hasNext()){
-//            String key = (String)ii.next();
-//            ClassBean cBean = (ClassBean) beanMap.get(key);
-//            System.out.println("XXXX-----XXXX  " + cBean.getFullyQualifiedName());
-//            cBean.printAttributes();
-//            System.out.println("XXXX-----XXXX");
-//        }
-        
-        
-        
-        
-//        for (int i = 0; i < list.size(); i++) {
-//            FilterRowPanel pnl = list.get(i);
-//            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
-//            ClassBean cBean = cdeBean.getClassBean();
-//            System.out.println("XXXX-----XXXX  " + cBean.getFullyQualifiedName());
-//            cBean.printAttributes();
-//            System.out.println("XXXX-----XXXX");
-//        }
-        
-        
-        
-        
+        executeVisualGuiQuery();
         
     }
     

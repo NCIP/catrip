@@ -220,6 +220,22 @@ public class SimpleSearchPanel extends CPanel {
         cleanClean();
         targetSetChanged = true;
         
+        if (targetSetChanged){
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+            
+            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+            
+            for (int i = 0; i < forObjs.size(); i++) {
+                objs.add(forObjs.get(i));
+            } 
+            objs.add(selectedTargetObject);
+            targetSetChanged = false;
+            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject); 
+        }
+        
     }//GEN-LAST:event_targetObjComboActionPerformed
     
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
@@ -241,6 +257,8 @@ public class SimpleSearchPanel extends CPanel {
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
         SimpleGuiRegistry.cleanRegistry();
         
+        targetSetChanged = true;
+        
         filterPanel.removeAll();
         filterPanel.revalidate();
         filterPanel.repaint();
@@ -256,21 +274,21 @@ public class SimpleSearchPanel extends CPanel {
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
 //        jp.getValueBox().setText(""+filterRows);
-        if (targetSetChanged){
-            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
-            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-            
-            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
-            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
-            
-            for (int i = 0; i < forObjs.size(); i++) {
-                objs.add(forObjs.get(i));
-            } 
-            objs.add(selectedTargetObject);
-            targetSetChanged = false;
-            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
-            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject); 
-        }
+//        if (targetSetChanged){
+//            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+//            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+//            
+//            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+//            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+//            
+//            for (int i = 0; i < forObjs.size(); i++) {
+//                objs.add(forObjs.get(i));
+//            } 
+//            objs.add(selectedTargetObject);
+//            targetSetChanged = false;
+//            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+//            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject); 
+//        }
         
         jp.fillCdeCombo2(SimpleGuiRegistry.getCurrentXMLObjectList());
 //        jp.fillCdeCombo(SimpleGuiRegistry.getCurrentClassBeanList());
@@ -289,6 +307,9 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.revalidate();
         filterPanel.repaint();
         
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
+        // after adding each filter.. prepare registry for DCQL..
+//        SimpleGuiRegistry.prepareForDcql();
         
     }//GEN-LAST:event_addFilterBtnActionPerformed
     

@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.util.*;
 
 
-/** 
+/**
  * ClassBean represents a Class as defined in UMLClass element of Domain Model Metadata.
  *
  * @author Sanjeev Agarwal
@@ -350,6 +350,7 @@ public class ClassBean{
     public void addUniqueForeignAssociation(ForeignAssociationBean fass){
         boolean alreadyAdded = foreignAssociations.contains(fass);
         if (!alreadyAdded){
+            System.out.println("it is not there.. baba.... adding a foreign associatin...");
             foreignAssociations.add(fass);
         }
     }
@@ -425,6 +426,8 @@ public class ClassBean{
         }
         
     }
+    
+    
     
     
     
