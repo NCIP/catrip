@@ -145,7 +145,7 @@ public class SimpleGuiRegistry {
     
     public static ArrayList<FilterRowPanel> getFilterList() {
         return filters;
-    } 
+    }
     
     public static void setFilterList(ArrayList<FilterRowPanel> filters) {
         filters = filters;
@@ -154,7 +154,7 @@ public class SimpleGuiRegistry {
     public static void addFilterToList(FilterRowPanel filter) {
         filters.add(filter);
     }
-     
+    
     public static HashMap getBeanMap() {
         return beanMap;
     }
@@ -249,7 +249,7 @@ public class SimpleGuiRegistry {
                 assoc = assos.get(0);
                 rightClassBeanObject = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
                 if (rightClassBeanObject == null){
-                    System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
+                    System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
                 }
                 
                 ForeignAssociationBean foreignAssociationBean = new ForeignAssociationBean();
@@ -260,13 +260,16 @@ public class SimpleGuiRegistry {
                 
                 tmpBeanLeft.addUniqueForeignAssociation(foreignAssociationBean);
                 tmpBeanLeft.setHasForeignAssociations(true);
-
+                
                 // now set the local associations for the inbound path for the filter object in foreign service..
                 // now the index will start from 1.
                 tmpBeanLeft = rightClassBeanObject;
                 for (int k=1;k<assos.size();k++) {
                     assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+" :" +k+":  "+ assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
+                    if (rightClassBeanObject == null){
+                        System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
+                    }
                     ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
                     tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
                     tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
