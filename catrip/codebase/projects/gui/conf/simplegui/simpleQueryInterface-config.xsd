@@ -46,6 +46,7 @@
 		<xs:attribute name="displayName" type="xs:string" use="required"/>
 		<xs:attribute name="url" type="xs:string" use="required"/>
 		<xs:attribute name="metadataXml" type="xs:string" use="required"/>
+		<xs:attribute name="impls" type="xs:string" use="required"/>
 	</xs:complexType>
 	<xs:element name="simpleGuiServices">
 		<xs:complexType>
