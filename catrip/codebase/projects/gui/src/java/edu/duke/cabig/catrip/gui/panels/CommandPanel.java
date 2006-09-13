@@ -14,6 +14,7 @@ import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
 import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngine;
 import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
+import java.awt.Cursor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Method;
@@ -26,8 +27,9 @@ import javax.swing.JOptionPane;
  * @author  Sanjeev Agarwal
  */
 public class CommandPanel extends CPanel {
-    boolean simpleGui = true;
     // TODO - set the variable somewhere else...
+    boolean simpleGui = true;
+    
     
     /** Creates new form CommandPanel */
     public CommandPanel() {
@@ -41,7 +43,19 @@ public class CommandPanel extends CPanel {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        pnlOne = new javax.swing.JPanel();
+        resultCountLbl = new javax.swing.JLabel();
+        pnlTwo = new javax.swing.JPanel();
         ExecuteCommand = new javax.swing.JButton();
+
+        setLayout(new java.awt.GridLayout());
+
+        pnlOne.setLayout(new java.awt.GridLayout());
+
+        resultCountLbl.setFont(new java.awt.Font("Arial", 1, 14));
+        pnlOne.add(resultCountLbl);
+
+        add(pnlOne);
 
         ExecuteCommand.setText("Execute Query");
         ExecuteCommand.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +64,9 @@ public class CommandPanel extends CPanel {
             }
         });
 
-        add(ExecuteCommand);
+        pnlTwo.add(ExecuteCommand);
+
+        add(pnlTwo);
 
     }// </editor-fold>//GEN-END:initComponents
     
@@ -67,16 +83,20 @@ public class CommandPanel extends CPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExecuteCommand;
+    private javax.swing.JPanel pnlOne;
+    private javax.swing.JPanel pnlTwo;
+    private javax.swing.JLabel resultCountLbl;
     // End of variables declaration//GEN-END:variables
     
     private void executeSimpleGuiQuery(){
+        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         if (SimpleGuiRegistry.isSimpleGuiChanged()){
             SimpleGuiRegistry.prepareForDcql();
         }
-        
         executeVisualGuiQuery();
         
+        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
     
     private void executeVisualGuiQuery(){
@@ -138,9 +158,11 @@ public class CommandPanel extends CPanel {
                     classBeanList.add(classBeanTmp);
                 }
                 
+                resultCountLbl.setText("   Total Row Count : "+classBeanList.size());
                 getMainFrame().getOutputPanel().setResults(classBeanList);
             }
         } catch (Exception ex) {
+            resultCountLbl.setText(" ");
             ex.printStackTrace();
         }
     }
