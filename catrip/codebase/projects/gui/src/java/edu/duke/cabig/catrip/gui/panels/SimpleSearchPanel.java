@@ -28,19 +28,22 @@ public class SimpleSearchPanel extends CPanel {
     
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
+        initBefore();
         initComponents();
-        init();
+        initAfter();
     }
     
     
-    private void init(){
-        
-        initFilters();
-        
+    private void initBefore(){
+        // TODO - call these methods from an initail screen so that we have enough time to load these..
         processor = SimpleGuiRegistry.getProcessor();
         SimpleGuiRegistry.loadMetadata();
-        
-        initServiceCombo();
+    }
+    
+    private void initAfter(){
+        initFilters();
+//        initServiceCombo();
+        initTargetObjectCombo();
     }
     
     private void initFilters(){
@@ -70,7 +73,6 @@ public class SimpleSearchPanel extends CPanel {
         jLabel2 = new javax.swing.JLabel();
         targetServiceCombo = new javax.swing.JComboBox();
         targetServiceCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
-        jLabel3 = new javax.swing.JLabel();
         jpanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         filterPanel = new javax.swing.JPanel();
@@ -96,8 +98,6 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
-        jLabel3.setText("object");
-
         org.jdesktop.layout.GroupLayout targetPanelLayout = new org.jdesktop.layout.GroupLayout(targetPanel);
         targetPanel.setLayout(targetPanelLayout);
         targetPanelLayout.setHorizontalGroup(
@@ -105,15 +105,13 @@ public class SimpleSearchPanel extends CPanel {
             .add(targetPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 227, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(27, 27, 27)
-                .add(jLabel3)
-                .add(12, 12, 12)
+                .add(16, 16, 16)
                 .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 157, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .add(19, 19, 19)
+                .add(jLabel2)
+                .add(23, 23, 23)
+                .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 227, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(396, Short.MAX_VALUE))
         );
         targetPanelLayout.setVerticalGroup(
             targetPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -121,10 +119,9 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap()
                 .add(targetPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
+                    .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2)
-                    .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3)
-                    .add(targetObjCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,29 +214,35 @@ public class SimpleSearchPanel extends CPanel {
     
     private void targetObjComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetObjComboActionPerformed
         
-        cleanClean();
+//        cleanClean();
         targetSetChanged = true;
+        getTargetServiceCombo().removeAllItems();
+        
+        GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+        Service serv = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());
+        getTargetServiceCombo().addItem(serv);
         
     }//GEN-LAST:event_targetObjComboActionPerformed
     
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
         
-        cleanClean();
-        targetSetChanged = false;
-        getTargetObjCombo().removeAllItems();
-        
-        Service serv = (Service)getTargetServiceCombo().getSelectedItem();
-        List<GraphObject> objs = processor.getTragetObjects(serv.getServiceName());
-        
-        for (int i=0;i<objs.size();i++) {
-            getTargetObjCombo().addItem(objs.get(i));
-        }
-        targetSetChanged = true;
+//        cleanClean();
+//        targetSetChanged = false;
+//        getTargetObjCombo().removeAllItems();
+//
+//        Service serv = (Service)getTargetServiceCombo().getSelectedItem();
+//        List<GraphObject> objs = processor.getTragetObjects(serv.getServiceName());
+//
+//        for (int i=0;i<objs.size();i++) {
+//            getTargetObjCombo().addItem(objs.get(i));
+//        }
+//        targetSetChanged = true;
         
     }//GEN-LAST:event_targetServiceComboActionPerformed
     
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
         SimpleGuiRegistry.cleanRegistry();
+        targetSetChanged = true;
         
         filterPanel.removeAll();
         filterPanel.revalidate();
@@ -318,7 +321,6 @@ public class SimpleSearchPanel extends CPanel {
     private javax.swing.JPanel filterPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -351,6 +353,15 @@ public class SimpleSearchPanel extends CPanel {
 //            System.out.println(i+1 + ") " + service.getServiceName() + "   " + service.getServiceURL());
         }
         
+    }
+    
+    private void initTargetObjectCombo(){
+        targetSetChanged = true;
+        List<GraphObject> objs = processor.getTargetObjects();
+        
+        for (int i=0;i<objs.size();i++) {
+            getTargetObjCombo().addItem(objs.get(i));
+        }
     }
     
     private void cleanClean(){
