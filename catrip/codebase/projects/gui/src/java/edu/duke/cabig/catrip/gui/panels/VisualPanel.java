@@ -26,7 +26,7 @@ public class VisualPanel extends CPanel {
         this.mainFrame = mainFrame;
         cQLDesignerPanel.setMainFrame(mainFrame);
         visualQueryDesignerPanel.setMainFrame(mainFrame);
-        simpleSearchPanel.setMainFrame(mainFrame);
+        getSimpleSearchPanel().setMainFrame(mainFrame);
     }
     
     
@@ -36,6 +36,14 @@ public class VisualPanel extends CPanel {
     
     public edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel getVisualQueryDesignerPanel() {
         return visualQueryDesignerPanel;
+    }
+    
+    public edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel getSimpleSearchPanel() {
+        return simpleSearchPanel;
+    }
+    
+    public javax.swing.JTabbedPane getTabbedPane() {
+        return tabbedPane;
     }
     
     
@@ -74,7 +82,7 @@ public class VisualPanel extends CPanel {
     private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
         // parse the DCQL and show here...
         
-        int id = tabbedPane.getSelectedIndex();
+        int id = getTabbedPane().getSelectedIndex();
         if (id == 1){ // it is the dcql tab.. now show the DCQL..
             XmlOptions xmlOptions = new XmlOptions();
             xmlOptions.setSavePrettyPrint();
@@ -113,6 +121,8 @@ public class VisualPanel extends CPanel {
             }
         });
     }
+    
+    
     
     
     
