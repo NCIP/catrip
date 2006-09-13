@@ -23,11 +23,11 @@ public class MainFrame extends CJFrame {
     
     
     private void buildView(){
-        visualPanel.getVisualQueryDesignerPanel().setDnDGraphView(getListServicesPanel());
+        getVisualPanel().getVisualQueryDesignerPanel().setDnDGraphView(getListServicesPanel());
         repaint();
         
         //set main frame in all the panels..
-        visualPanel.setMainFrame(this);
+        getVisualPanel().setMainFrame(this);
         commandPanel.setMainFrame(this);
         listServicesPanel.setMainFrame(this);
         outputPanel.setMainFrame(this);
@@ -294,6 +294,10 @@ public class MainFrame extends CJFrame {
     
     public edu.duke.cabig.catrip.gui.panels.PropertiesPanel getPropertiesPanel() {
         return propertiesPanel;
+    }
+
+    public edu.duke.cabig.catrip.gui.panels.VisualPanel getVisualPanel() {
+        return visualPanel;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

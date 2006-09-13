@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.wizard;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.security.AuthenticationManager;
 import edu.duke.cabig.catrip.gui.security.LoginProviderLocatorFactory;
+import java.awt.Cursor;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -47,20 +48,22 @@ public class LoginScreen extends CJFrame {
         loginBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
+        visualGuiChkBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("TITLE_LOGIN_SCREEN"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        setTitle(bundle.getString("TITLE_LOGIN_SCREEN")); // NOI18N
         setAlwaysOnTop(true);
         setName("LoginScreen");
         setResizable(false);
         loginIdLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        loginIdLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID"));
+        loginIdLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID")); // NOI18N
 
         passwordLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        passwordLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_PASSWORD"));
+        passwordLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_PASSWORD")); // NOI18N
 
         identityProviderLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        identityProviderLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER"));
+        identityProviderLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER")); // NOI18N
 
         userId.setText("User ID");
 
@@ -89,6 +92,10 @@ public class LoginScreen extends CJFrame {
             }
         });
 
+        visualGuiChkBox.setText(" Show Visual Query Designer");
+        visualGuiChkBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        visualGuiChkBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,15 +108,16 @@ public class LoginScreen extends CJFrame {
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, loginIdLbl))
                 .add(17, 17, 17)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(loginBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                    .add(visualGuiChkBox)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(loginBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                         .add(29, 29, 29)
-                        .add(clearBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                        .add(clearBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                         .add(30, 30, 30)
-                        .add(exitBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
-                    .add(password, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                    .add(userId, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                    .add(identityProvider, 0, 320, Short.MAX_VALUE))
+                        .add(exitBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                    .add(password, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .add(userId, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                    .add(identityProvider, 0, 330, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -130,12 +138,14 @@ public class LoginScreen extends CJFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(identityProviderLbl)
                     .add(identityProvider, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(17, 17, 17)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(visualGuiChkBox)
+                .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(loginBtn)
                     .add(clearBtn)
-                    .add(exitBtn)
-                    .add(loginBtn))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(exitBtn))
+                .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,10 +163,24 @@ public class LoginScreen extends CJFrame {
         
         if (AuthenticationManager.authenticate(userId.getText().trim(), password.getPassword().toString().trim(), identityProvider.getSelectedItem().toString() )){
             
-            SearchServicesScreen screen= new SearchServicesScreen();
-            screen.center();
-            screen.setVisible(true);
+            if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
+                SearchServicesScreen screen= new SearchServicesScreen();
+                screen.center();
+                screen.setVisible(true);
+                
+            }else { // show simple gui main screen directly..
+                // disable all the buttons first and show a waiting cursor..
+                disableButtons();
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                
+                MainFrame mf = new MainFrame();
+                mf.getVisualPanel().getTabbedPane().setSelectedIndex(2);
+                mf.setVisible(true);
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+            
             this.dispose();
+            
             
         }
     }//GEN-LAST:event_loginBtnActionPerformed
@@ -178,6 +202,12 @@ public class LoginScreen extends CJFrame {
         return cb;
     }
     
+    private void disableButtons(){
+        clearBtn.setEnabled(false);
+        exitBtn.setEnabled(false);
+        loginBtn.setEnabled(false);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton exitBtn;
@@ -188,6 +218,7 @@ public class LoginScreen extends CJFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JTextField userId;
+    private javax.swing.JCheckBox visualGuiChkBox;
     // End of variables declaration//GEN-END:variables
     
 }
