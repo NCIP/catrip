@@ -2,7 +2,7 @@
 <catripConfiguration xmlns="config.catrip.duke.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="config.catrip.duke.edu
 C:\work\fqe\xmlbeans-2.1.0\BeanGeneration\gui\catripConfig.xsd">
 	<guiConfiguration rootDirectory="@conf.dir@">
-		<indexService name="Local Index Service" url="http://localhost:8080/wsrf/services/DefaultIndexService"/>
+		<indexService use="false" name="Local Index Service" url="http://localhost:8080/wsrf/services/DefaultIndexService"/>
 		<federatedQueryEngineService name="Local" url="http://localhost:8080/wsrf/services/cagrid/FederatedQeueryEngineService"/>
 		<gridIndentityProviders>
 			<indentityProvider name="Local IDP." url="localhost" type="dummy" keystore="none"/>

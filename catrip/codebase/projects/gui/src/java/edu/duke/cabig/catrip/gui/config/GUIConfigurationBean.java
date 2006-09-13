@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class GUIConfigurationBean {
     
+    private boolean useIndexService;
     private String indexServiceUrl;
     private String indexServiceName;
     private String queryEngineServiceUrl;
@@ -29,6 +30,14 @@ public class GUIConfigurationBean {
      */
     public GUIConfigurationBean() {
     }
+    
+    public boolean useIndexService(){
+        return useIndexService;
+    }
+    
+    public void useIndexService(boolean use){
+        useIndexService = use;
+    } 
     
     public String getIndexServiceUrl() {
         return indexServiceUrl;
