@@ -1,6 +1,7 @@
 package edu.duke.cabig.catrip.gui.simplegui.objectgraph;
 
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import java.util.List;
  
 public class GraphObject {
@@ -105,14 +106,17 @@ public class GraphObject {
     
     
      public String toString() {
-        String fullClassName = getClassName();
-        String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
-        
-        if (className.endsWith("Impl")){
-            className = className.substring(0,className.length()-4);
-        }
-        
-        return className;
+         ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(getClassName()).clone();
+         
+//        String fullClassName = getClassName();
+//        String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
+//        
+//        if (className.endsWith("Impl")){
+//            className = className.substring(0,className.length()-4);
+//        }
+//        
+//        return className;
+         return cBean.getCDEName();
     }
 
     public ClassBean getClassBean() {
