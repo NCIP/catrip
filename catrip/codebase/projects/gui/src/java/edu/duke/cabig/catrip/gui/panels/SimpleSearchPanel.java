@@ -3,11 +3,11 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +28,13 @@ public class SimpleSearchPanel extends CPanel {
     
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
-        initBefore();
-        initComponents();
-        initAfter();
+        
+        if (GUIConstants.simpleGui){
+            initBefore();
+            initComponents();
+            initAfter();
+        }
+        
     }
     
     
@@ -369,7 +373,10 @@ public class SimpleSearchPanel extends CPanel {
     }
     
     
-    
+//    public void disableAll(){
+//        getTargetObjCombo().setEnabled(false);
+//
+//    }
     
     
     

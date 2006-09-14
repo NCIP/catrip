@@ -30,7 +30,30 @@ public class GUIConstants {
     public static final String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_SERVICES_CONFIG_FILE_NAME = "services-config.xml";
     
+    
+    
+    // runtime properties..
+    public static boolean simpleGui = true;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
+     *
+     *
+     *
      * Creates a new instance of GUIConstants
      */
     public GUIConstants () { 

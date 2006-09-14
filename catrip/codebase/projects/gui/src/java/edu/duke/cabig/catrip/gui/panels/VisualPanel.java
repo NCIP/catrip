@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import javax.swing.*;
 import org.apache.xmlbeans.XmlOptions;
@@ -90,7 +91,7 @@ public class VisualPanel extends CPanel {
             xmlOptions.setUseDefaultNamespace();
             
             // if the simple gui was changed.. than show the DCQL from simple gui.. after preparing the SimpleGuiRegistry for DCQL.
-            if (SimpleGuiRegistry.isSimpleGuiChanged()){
+            if (GUIConstants.simpleGui && SimpleGuiRegistry.isSimpleGuiChanged()){ 
                 SimpleGuiRegistry.prepareForDcql();
             }
             

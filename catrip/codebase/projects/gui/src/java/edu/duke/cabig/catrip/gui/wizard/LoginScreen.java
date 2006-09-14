@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.wizard;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.security.AuthenticationManager;
 import edu.duke.cabig.catrip.gui.security.LoginProviderLocatorFactory;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.Cursor;
 import javax.swing.DefaultComboBoxModel;
 
@@ -164,6 +165,9 @@ public class LoginScreen extends CJFrame {
         if (AuthenticationManager.authenticate(userId.getText().trim(), password.getPassword().toString().trim(), identityProvider.getSelectedItem().toString() )){
             
             if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
+                
+                GUIConstants.simpleGui = false;
+                
                 SearchServicesScreen screen= new SearchServicesScreen();
                 screen.center();
                 screen.setVisible(true);
@@ -172,6 +176,8 @@ public class LoginScreen extends CJFrame {
                 // disable all the buttons first and show a waiting cursor..
                 disableButtons();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                
+                GUIConstants.simpleGui = true; 
                 
                 MainFrame mf = new MainFrame();
                 mf.getVisualPanel().getTabbedPane().setSelectedIndex(2);

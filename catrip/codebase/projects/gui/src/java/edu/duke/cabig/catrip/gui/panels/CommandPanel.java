@@ -9,6 +9,7 @@ import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
@@ -28,7 +29,6 @@ import javax.swing.JOptionPane;
  */
 public class CommandPanel extends CPanel {
     // TODO - set the variable somewhere else...
-    boolean simpleGui = true;
     
     
     /** Creates new form CommandPanel */
@@ -71,13 +71,15 @@ public class CommandPanel extends CPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
+        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
-        if (simpleGui){
+        if (GUIConstants.simpleGui){
             executeSimpleGuiQuery();
         }else {
             executeVisualGuiQuery();
         }
         
+        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_ExecuteCommandActionPerformed
     
     
@@ -89,14 +91,12 @@ public class CommandPanel extends CPanel {
     // End of variables declaration//GEN-END:variables
     
     private void executeSimpleGuiQuery(){
-        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         if (SimpleGuiRegistry.isSimpleGuiChanged()){
             SimpleGuiRegistry.prepareForDcql();
         }
         executeVisualGuiQuery();
         
-        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
     
     private void executeVisualGuiQuery(){

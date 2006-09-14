@@ -12,6 +12,7 @@ import edu.duke.cabig.catrip.gui.discovery.ServiceLocaterFactory;
 import edu.duke.cabig.catrip.gui.discovery.ServiceLocator;
 import edu.duke.cabig.catrip.gui.discovery.ServiceMetaDataRegistry;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
+import java.awt.Cursor;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JButton;
@@ -68,6 +69,9 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         
         column = resultTable.getColumnModel().getColumn(4);
         column.setCellRenderer(new ButtonRenderer());
+        
+        simpleGuiBtn.setEnabled(false);
+        
     }
     
     /**
@@ -232,6 +236,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     
     /** Action for Search All button. */
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         // TODO - need to replace these direct calls with the Spring Framework.
         ServiceLocator serviceLocator = ServiceLocaterFactory.getServiceLocator();
@@ -256,6 +261,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             tableModel.addRow(tableRow);
         }
         
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); 
     }//GEN-LAST:event_showAllBtnActionPerformed
     
     /**
@@ -263,6 +269,8 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
      */
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
         // Here get the list of the Services and then populate the ServiceMetaDataRegistry
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        
         int numSelectedRows = getResultTable().getRowCount();//getSelectedRows();
         
         for (int i = 0; i < numSelectedRows; i++) {
@@ -283,6 +291,8 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         
         // to handle the window.. call parent action..
         parentFrame.fwdAction();
+        
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); 
     }//GEN-LAST:event_selectBtnActionPerformed
     
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
