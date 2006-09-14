@@ -428,8 +428,12 @@ public class ClassBean{
     }
     
     
+    // thought it will be required in the simple gui for comparing two ClassBean objects.
     
-    
+//    public boolean equals(Object obj) {
+//        ClassBean cBean = (ClassBean)obj;
+//        return getFullyQualifiedName().equalsIgnoreCase(cBean.getFullyQualifiedName());
+//    }
     
     
     

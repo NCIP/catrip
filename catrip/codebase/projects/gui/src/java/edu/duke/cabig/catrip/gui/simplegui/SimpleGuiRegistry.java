@@ -108,6 +108,7 @@ public class SimpleGuiRegistry {
         setFilterList(new ArrayList(10));
         beanMap = new HashMap(20);
         currentClassBeanMap = new HashMap(100);
+        filters = new ArrayList(10);
         
         setTargetGraphObject(null);
         DCQLRegistry.clean();
@@ -238,8 +239,6 @@ public class SimpleGuiRegistry {
 //                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
                 ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
                 if (tmpBeanRight == null){
-                    // few classes are not defined like ParticipantMedicalIdentifierImpl.. so those are not here in map.. c
-                    // co create an instance  of class bean fpr those... after chwecking for null values..
                     // System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
                     tmpBeanRight = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
                     tmpBeanRight.setAssociationRoleNameMap(new HashMap(20));
