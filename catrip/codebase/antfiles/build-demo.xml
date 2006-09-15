@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<!-- ================================================================= -->
+<!-- caTRIP demo build file                                            -->
+<!-- ================================================================= -->
+<project name="catrip-1.0-demo" default="reports" basedir=".">
+
+	<target name="demo-start-services" depends="" description="Starts mysql and globus containers">
+		<exec dir="c:\mysql4.0.22" executable="c:\mysql4.0.22\bin\mysqld" spawn="true">
+			<arg line="--console"/>
+		</exec>
+		<exec dir="c:\Globus4.0.2-cae" executable="c:\Globus4.0.2-cae\bin\globus-start-container.bat" spawn="true">
+			<arg line="-p 8181 -nosec"/>
+			<env key="GLOBUS_LOCATION" value="c:\Globus4.0.2-cae"/>
+		</exec>
+		<exec dir="c:\Globus4.0.2-catissuecore" executable="c:\Globus4.0.2-catissuecore\bin\globus-start-container.bat" spawn="true">
+			<arg line="-p 8282 -nosec"/>
+			<env key="GLOBUS_LOCATION" value="c:\Globus4.0.2-catissuecore"/>
+		</exec>
+	</target>
+
+	<target name="demo-local" depends="" description="Run the demo gui locally">
+		<copy file="${antfiles.dir}/demo/LOCAL-query_engine_services_config.xml" 
+		    tofile="C:/Documents and Settings/MCCON012/.caTRIP/query_engine_services_config.xml"
+		    overwrite="true"
+		/>
+		<copy file="${antfiles.dir}/demo/LOCAL-services-config.xml" 
+		    tofile="${projects.dir}/gui/conf/service-config.xml"
+		    overwrite="true"
+		/>
+		<copy file="${antfiles.dir}/demo/LOCAL-SimpleGuiObjectGraph.xml" 
+		    tofile="${projects.dir}/gui/conf/simplegui/SimpleGuiObjectGraph.xml"
+		    overwrite="true"
+		/>
+		<ant dir="${projects.dir}/gui" target="run"/>
+	</target>
+
+	<target name="demo-remote" depends="" description="Run the demo gui locally">
+		<copy file="${antfiles.dir}/demo/REMOTE-query_engine_services_config.xml" 
+		    tofile="C:/Documents and Settings/MCCON012/.caTRIP/query_engine_services_config.xml"
+		    overwrite="true"
+		/>
+		<copy file="${antfiles.dir}/demo/REMOTE-services-config.xml" 
+		    tofile="${projects.dir}/gui/conf/service-config.xml"
+		    overwrite="true"
+		/>
+		<copy file="${antfiles.dir}/demo/REMOTE-SimpleGuiObjectGraph.xml" 
+		    tofile="${projects.dir}/gui/conf/simplegui/SimpleGuiObjectGraph.xml"
+		    overwrite="true"
+		/>
+		<ant dir="${projects.dir}/gui" target="run"/>
+	</target>
+</project>
