@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class name="PatientIdentifier" table="PATIENT_IDENTIFIER">
+		<id
+			name="id"
+			type="long"
+			column="ID"
+		>
+		</id>
+
+		<property
+			name="medicalRecordNumber"
+			column="MEDICAL_RECORD_NUMBER"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+
+	<!--	<one-to-one name="patient" class="Patient" cascade="all"/> -->
+		<one-to-one name="patient" outer-join="false" class="Patient" cascade="all"/>
+
+	</class>	
+</hibernate-mapping>

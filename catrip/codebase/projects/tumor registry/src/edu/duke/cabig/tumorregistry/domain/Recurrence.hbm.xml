@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class name="Recurrence" table="RECURRENCE">
+	
+		<id
+			name="Id"
+			type="long"
+			column="ID"
+		>
+			
+		</id>
+
+		<property
+			name="date"
+			column="RECURRENCE_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="type"
+			column="TYPE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+
+		<set name="distantSiteCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="RECURRENCE_ID"/>
+			<one-to-many class="DistantSite"/>
+		</set>
+
+
+
+	</class>	
+</hibernate-mapping>

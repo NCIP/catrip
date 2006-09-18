@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class
+		name="Followup"
+		table="FOLLOW_UP"
+	>
+		
+		<id
+			name="Id"
+			type="long"
+			column="ID"
+		>
+		</id>
+
+		<property
+			name="cancerStatus"
+			column="CANCER_STATUS"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="contactMethod"
+			column="CONTACT_METHOD"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="date"
+			column="CONTACT_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<one-to-one  name="recurrence" outer-join="false" class="Recurrence" cascade="all"/>
+
+
+	</class>	
+</hibernate-mapping>

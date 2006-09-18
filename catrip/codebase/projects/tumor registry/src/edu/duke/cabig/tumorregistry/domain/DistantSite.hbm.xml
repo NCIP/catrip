@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class name="DistantSite" table="DISTANT_SITE">
+ 		<id	name="id" type="long" column="ID"/>
+
+		<property
+			name="name"
+			column="NAME"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+<!--		<property
+			name="RecurrenceId"
+			column="RECURRENCE_ID"
+			type="integer"
+			not-null="false"
+			length="8"
+		/>
+		
+-->
+
+	</class>	
+</hibernate-mapping>

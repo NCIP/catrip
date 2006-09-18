@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class
+		name="ActivitySummary"
+		table="ACTIVITY_SUMMARY"
+	>
+		
+		<id	name="id" type="long" column="ID"/>
+
+		<property
+			name="LocalDate"
+			column="LOCAL_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="SummaryDate"
+			column="SUMMARY_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="localCharacterization"
+			column="LOCAL_CHARACTERIZATION"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="SummaryCharacterization"
+			column="SUMMARY_CHARACTERIZATION"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+
+
+	</class>
+</hibernate-mapping>

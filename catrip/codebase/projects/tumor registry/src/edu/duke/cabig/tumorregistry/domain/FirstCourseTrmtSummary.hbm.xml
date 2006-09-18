@@ -1,0 +1,41 @@
+<?xml version="1.0"?> 
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class name="FirstCourseTreatmentSummary" table="FIRST_COURSE_TRMT_SUMMARY">
+ 		<id	name="id" type="long" column="ID"/>
+
+		<property
+			name="FirstSurgeryDate"
+			column="FIRST_SURGERY_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="MostDefinitiveSurgeryDate"
+			column="MOST_DEFINITIVE_SURGERY_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="FirstTreatmentDate"
+			column="FIRST_TREATMENT_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="FirstSystemicTreatmentDate"
+			column="FIRST_SYSTEMIC_TREATMENT_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+
+
+	</class>
+</hibernate-mapping>
