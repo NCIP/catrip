@@ -25,7 +25,7 @@
 		    overwrite="true"
 		/>
 		<copy file="${antfiles.dir}/demo/LOCAL-services-config.xml" 
-		    tofile="${projects.dir}/gui/conf/service-config.xml"
+		    tofile="${projects.dir}/gui/conf/services-config.xml"
 		    overwrite="true"
 		/>
 		<copy file="${antfiles.dir}/demo/LOCAL-SimpleGuiObjectGraph.xml" 
@@ -41,7 +41,7 @@
 		    overwrite="true"
 		/>
 		<copy file="${antfiles.dir}/demo/REMOTE-services-config.xml" 
-		    tofile="${projects.dir}/gui/conf/service-config.xml"
+		    tofile="${projects.dir}/gui/conf/services-config.xml"
 		    overwrite="true"
 		/>
 		<copy file="${antfiles.dir}/demo/REMOTE-SimpleGuiObjectGraph.xml" 
