@@ -305,7 +305,7 @@ class FederatedQueryProcessor {
     }
     
     /**
-     * Merge Groups 
+     * check for existing groups in a group. Append to the existing groups 
      * @param cqlGroup
      * @param groupArray
      * @return
