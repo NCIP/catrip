@@ -269,8 +269,8 @@ class FederatedQueryProcessor {
             gov.nih.nci.cagrid.cqlquery.Group cqlNestedGroup = processGroup((Group)dcqlGroupArray[i]);
             cqlGroupArray[i]=cqlNestedGroup;           
          }
-         cqlGroup.setGroup(cqlGroupArray);
-
+         //cqlGroup.setGroup(cqlGroupArray);
+          cqlGroup.setGroup(mergeGroups(cqlGroup,cqlGroupArray));
         return cqlGroup;
     }
     
@@ -288,25 +288,62 @@ class FederatedQueryProcessor {
          ForeignAssociation[] foreignAssociationArray = dcqlGroup.getForeignAssociationArray();         
          
          //gov.nih.nci.cagrid.cqlquery.Group[] groupsTomerge =  new gov.nih.nci.cagrid.cqlquery.Group[foreignAssociationArray.length];
-             gov.nih.nci.cagrid.cqlquery.Group[] g = new gov.nih.nci.cagrid.cqlquery.Group[foreignAssociationArray.length];
+             gov.nih.nci.cagrid.cqlquery.Group[] groupArray  = new gov.nih.nci.cagrid.cqlquery.Group[foreignAssociationArray.length];
              for (int i=0;i<foreignAssociationArray.length;i++){
                  // need to attach the results as crieteria ... 
                  gov.nih.nci.cagrid.cqlquery.Group resultedGroup = processForeignAssociation((ForeignAssociation)foreignAssociationArray[i]);
                  //groupsTomerge[i] = resultedGroup; 
                  if (resultedGroup.getAttribute().length > 0 ) {
-                   g[i]=resultedGroup;          
-                   cqlGroup.setGroup(g);
+                   groupArray[i]=resultedGroup;          
+                   
                  }
              }
-              /*
-               gov.nih.nci.cagrid.cqlquery.Group aggregatedGroup = ResultAggregator.aggregateGroups(groupsTomerge);
-               cqlGroup.addNewGroup();
-               cqlGroup.setGroupArray(0,aggregatedGroup);  
-              */
+             //cqlGroup.setGroup(groupArray);
+              cqlGroup.setGroup(mergeGroups(cqlGroup,groupArray));
+
         return cqlGroup;
     }
-   
-
+    
+    /**
+     * Merge Groups 
+     * @param cqlGroup
+     * @param groupArray
+     * @return
+     */
+    private gov.nih.nci.cagrid.cqlquery.Group[] mergeGroups(gov.nih.nci.cagrid.cqlquery.Group cqlGroup,gov.nih.nci.cagrid.cqlquery.Group[] groupArray){
+        gov.nih.nci.cagrid.cqlquery.Group[] existingGroupArray = cqlGroup.getGroup();
+        
+        // merge Group Arrays . 
+        if (existingGroupArray != null) {            
+            gov.nih.nci.cagrid.cqlquery.Group[] mergedGroups = new gov.nih.nci.cagrid.cqlquery.Group[existingGroupArray.length+groupArray.length];
+            gov.nih.nci.cagrid.cqlquery.Group[] lerfOverGroups;
+            int i,j,rest,merged;
+            i=j=merged=0;
+            
+            // add groups of both arrays to merged groups . 
+            while (i< existingGroupArray.length && j<groupArray.length) {
+                mergedGroups[merged++] = existingGroupArray[i++];
+                mergedGroups[merged++] = groupArray[j++];
+            }
+            
+            // check for exahusted array .  Get the current index of un exhausted array and assign it to varible "rest"            
+            if (i == existingGroupArray.length) {
+                rest = j;
+                lerfOverGroups=groupArray;
+            } else {
+                rest = i;
+                lerfOverGroups=existingGroupArray;
+            }
+            
+            // add the left over groups to mergedGroups.
+            while (rest < lerfOverGroups.length) {
+                mergedGroups[merged++] = lerfOverGroups[rest++];
+            }
+            return mergedGroups; 
+        }        
+        // return the same input array if there is no Group exists 
+        return groupArray;        
+    }
 
 
 }
