@@ -21,7 +21,7 @@
 
 	<target name="demo-local" depends="" description="Run the demo gui locally">
 		<copy file="${antfiles.dir}/demo/LOCAL-query_engine_services_config.xml" 
-		    tofile="C:/Documents and Settings/MCCON012/.caTRIP/query_engine_services_config.xml"
+		    tofile="${user.home}/.caTRIP/query_engine_services_config.xml"
 		    overwrite="true"
 		/>
 		<copy file="${antfiles.dir}/demo/LOCAL-services-config.xml" 
@@ -37,7 +37,7 @@
 
 	<target name="demo-remote" depends="" description="Run the demo gui locally">
 		<copy file="${antfiles.dir}/demo/REMOTE-query_engine_services_config.xml" 
-		    tofile="C:/Documents and Settings/MCCON012/.caTRIP/query_engine_services_config.xml"
+		    tofile="${user.home}/.caTRIP/query_engine_services_config.xml"
 		    overwrite="true"
 		/>
 		<copy file="${antfiles.dir}/demo/REMOTE-services-config.xml" 
