@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping auto-import="false">
+    <class name="edu.pitt.cabig.cae.domain.general.AnnotatableEntity" table="annotatable_entity" lazy="false">
+        <id name="id" column="ID" type="long">
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-AdditionalFindings.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+ 		
+
+    		<set name="annotationEventParametersCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="annotatable_entity_id"/>
+      			<one-to-many class="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" />
+    		</set>
+    
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Participant" table="Participant" lazy="false">
+       		<key column="annotatable_entity_id"/>
+                        <set name="medicalRecordNumberCollection" lazy="false"  inverse="false" cascade="all">
+                                <key column="participant_id"/>
+                                <one-to-many class="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" />
+                        </set>
+     			<set name="accessionCollection" lazy="false"  inverse="false" cascade="all">
+      				<key column="participant_id"/>
+      				<one-to-many class="edu.duke.catrip.cae.domain.general.Accession" />
+    			</set>
+       			<property name="lastName" column="last_Name" type="string"/>
+       			<property name="firstName" column="first_Name" type="string"/>
+       			<property name="birthDate" column="birth_Date" type="string"/>
+       			<property name="uniquePatientIdentifier" column="Patient_Identifier" type="string"/>
+       			
+       			<property name="gender" column="gender" type="string"/>
+       			<property name="race" column="race" type="string"/>
+       			<property name="ethnicity" column="ethnicity" type="string"/>
+ 			
+		</joined-subclass>
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Accession" table="Accession" lazy="false">
+       		<key column="annotatable_entity_id"/>
+     		<set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="accession_id"/>
+      			<one-to-many class="edu.duke.catrip.cae.domain.general.Specimen" />
+    		</set>
+    		<!-- <many-to-one name="participant" class="edu.duke.catrip.cae.domain.general.Participant" column="participant_id" lazy="false" insert="false" update="false"/> -->
+    		<property name="diseaseType" column="disease_type" type="string"/>
+        	<property name="accessionDate" column="accession_Date" type="date"/>
+       		<property name="surgicalPathologyNumber" column="surgical_Pathology_Number" type="string"/>
+		</joined-subclass>
+       	<joined-subclass name="edu.duke.catrip.cae.domain.general.Specimen" table="Specimen" lazy="false">
+       		<key column="annotatable_entity_id"/>
+     		 <set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="parent_specimen_id" not-null="false"/>
+      			<one-to-many class="edu.duke.catrip.cae.domain.general.Specimen" />
+    		</set>
+       
+       			<property name="surgicalLabel" column="surgical_Label" type="string"/>
+ 			
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!-- TEST -->
+<hibernate-configuration>
+    <session-factory>
+
+      <!-- Settings for a remote Oracle9/10g database.  -->
+      <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+      <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
+ 
+   
+      <property name="connection.url">jdbc:oracle:thin:@localhost:1521:caesid</property>
+     
+   
+      <property name="connection.username">cae_1.2</property>
+      <property name="connection.password">cae_1.2</property>
+             
+      <!-- Use the C3P0 connection pool.  -->
+      <property name="c3p0.min_size">3</property>
+      <property name="c3p0.max_size">5</property>
+      <property name="c3p0.timeout">2800</property>
+   
+      <!-- Print SQL to stdout. -->
+      <property name="show_sql">true</property>
+         
+      <!--  mapping files. -->
+       
+      <mapping resource="edu/pitt/cabig/cae/domain/general/AnnotationSet.hbm.xml"/> 
+      <mapping resource="edu/pitt/cabig/cae/domain/general/AnnotatableEntity.hbm.xml"/>
+      <mapping resource="edu/pitt/cabig/cae/domain/general/EventParameters.hbm.xml"/>
+      <mapping resource="edu/duke/catrip/cae/domain/general/ParticipantMedicalIdentifier.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+
