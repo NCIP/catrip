@@ -95,10 +95,12 @@ public class XMLFileServiceLocator extends ServiceLocator{
         serviceMetaDataBean.setHostingResearchCenter(researchCenter.getDisplayName() + "("+researchCenter.getShortName()+")"+":"+serviceMetaDataBean.getPointOfContact());
         
         // TODO - remove this later.  only for the demo..
+        try {
         String needImpl = bundle.getString(serviceName);
         if ((needImpl != null) && (Boolean.valueOf(needImpl))){
             serviceMetaDataBean.needImpl(true);
         }
+        } catch (Exception e){}
         // only for the demo..
         
         serviceBeanlist.add(serviceMetaDataBean);

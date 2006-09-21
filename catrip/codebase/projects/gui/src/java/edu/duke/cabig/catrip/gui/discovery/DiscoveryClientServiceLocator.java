@@ -11,7 +11,10 @@ import gov.nih.nci.cagrid.discovery.client.DiscoveryClient;
 import gov.nih.nci.cagrid.metadata.ServiceMetadata;
 import gov.nih.nci.cagrid.metadata.common.PointOfContact;
 import gov.nih.nci.cagrid.metadata.common.ResearchCenter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.PropertyResourceBundle;
 import org.apache.axis.message.addressing.EndpointReferenceType;
 
 /**
@@ -37,8 +40,8 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
         GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
         String indexServiceUrl = guiConfiguration.getIndexServiceUrl();
         String indexServiceName = "Default Index Service";
-                
-        try { 
+        
+        try {
             client = new DiscoveryClient(GUIConstants.DEFAULT_INDEX_SERVICE_URL);
             
             if (indexServiceUrl != null){
@@ -88,6 +91,30 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                             np.printStackTrace();
                             serviceMetaDataBean.setHostingResearchCenter("No Hosting Research Center found in the Metadata.");
                         }
+                        
+                        
+                        
+                        
+                        // impl stuff..
+//                        
+                        // TODO - remove this later.  only for the demo..
+                        try {
+//                            PropertyResourceBundle bundle = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
+//                            String needImpl = bundle.getString(serviceMetaDataBean.getServiceName());
+                            boolean hasCaTissueCore =  endpointReference.getAddress().toString().endsWith("CaTissueCore_Full");
+                            boolean hasCaTissueCore_ = endpointReference.getAddress().toString().contentEquals("CaTissueCore");
+                            if (hasCaTissueCore || hasCaTissueCore_){
+                                serviceMetaDataBean.needImpl(true);
+                            }
+//                            if ((needImpl != null) && (Boolean.valueOf(needImpl))){
+//                                serviceMetaDataBean.needImpl(true);
+//                            }
+                        } catch (Exception e){}
+                        // only for the demo..
+                        // impl stuff..
+                        
+                        
+                        
                         
                         serviceList.add(serviceMetaDataBean);
                         
