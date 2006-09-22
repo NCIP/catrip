@@ -54,7 +54,7 @@ class FederatedQueryExecutor {
      
         } catch (Exception e) {
             log.fatal(e); 
-            System.exit(1);
+            //System.exit(1);
             throw new QueryExecutionException("Error in executiong CQL for service URL : " + serviceURL, e);
         }
         return results;
