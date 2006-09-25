@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="edu.pitt.cabig.cae.domain.general.EventParameters" table="event_parameters">
+        <id name="id" column="ID" type="long">
+            <generator class="native">
+            </generator>
+        </id>
+        <property name="timeStamp" type="date" update="true" insert="true" column="TIME_STAMP" />
+       	
+       	<joined-subclass name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" table="Annotation_Event_Parameter">
+       		<key column="event_parameters_id"/>
+        	<property name="source" type="string" column="source"/>
+        	<property name="sourceDate" type="date" column="source_date"/>
+    		<set name="annotationSetCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="annotation_event_parm_id" not-null="false"/>
+      			<one-to-many class="edu.pitt.cabig.cae.domain.general.AnnotationSet" />
+    		</set>
+       	</joined-subclass>
+    </class>
+
+</hibernate-mapping>

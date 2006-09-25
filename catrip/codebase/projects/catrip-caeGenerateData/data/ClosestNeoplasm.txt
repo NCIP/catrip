@@ -1,0 +1,16 @@
+Invasive Breast Carcinoma
+invasive carcinoma
+in situ carcinoma
+ductal carcinoma-in-situ
+DCIS
+Carcinoma-lobular
+Carcinoma-tubulolobular
+Carcinoma-tubular
+Carcinoma-papillary
+Carcinoma-mucinous
+Carcinoma-cribriform
+Carcinoma-medullary
+Carcinoma-adenoid cystic
+Carcinoma-sarcomatoid (metaplastic)
+Carcinoma-squamous
+Carcinoma-adenosquamous
