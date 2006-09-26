@@ -38,7 +38,6 @@
 	<classpathentry kind="var" path="GT4_LOCATION/lib/puretls.jar"/>
 	<classpathentry kind="var" path="GT4_LOCATION/lib/resolver.jar"/>
 	<classpathentry kind="var" path="GT4_LOCATION/lib/saaj.jar"/>
-	<classpathentry kind="var" path="GT4_LOCATION/lib/servlet.jar"/>
 	<classpathentry kind="var" path="GT4_LOCATION/lib/wsdl4j.jar"/>
 	<classpathentry kind="var" path="GT4_LOCATION/lib/wsrf_common.jar"/>
 	<classpathentry kind="var" path="GT4_LOCATION/lib/wsrf_core_registry_stubs.jar"/>
@@ -85,8 +84,6 @@
 	<classpathentry kind="lib" path="ext/lib/caGrid-introduce-security-common-1.0.jar"/>
 	<classpathentry kind="lib" path="ext/lib/caGrid-introduce-security-service-1.0.jar"/>
 	<classpathentry kind="lib" path="ext/lib/caGrid-introduce-security-stubs-1.0.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-metadata-common-1.0.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-metadata-data-1.0.jar"/>
 	<classpathentry kind="lib" path="ext/lib/castor-0.9.9.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CaTissueCore_Full-client.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CaTissueCore_Full-common.jar"/>
@@ -117,5 +114,7 @@
 	<classpathentry kind="lib" path="lib/z_CAE-service.jar"/>
 	<classpathentry kind="lib" path="lib/z_CAE-stubs.jar"/>
 	<classpathentry kind="lib" path="lib/cagrid_dcql_schema_beans.jar"/>
+	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-metadata-common.jar"/>
+	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-metadata-data.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
