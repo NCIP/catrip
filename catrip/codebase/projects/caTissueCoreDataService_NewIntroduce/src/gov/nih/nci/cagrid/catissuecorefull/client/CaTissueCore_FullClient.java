@@ -90,7 +90,7 @@ public class CaTissueCore_FullClient extends ServiceSecurityClient implements Ca
         try{
 
 
-            CaTissueCore_FullClient client = new CaTissueCore_FullClient("http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full");
+            CaTissueCore_FullClient client = new CaTissueCore_FullClient("http://localhost:8080/wsrf/services/cagrid/CaTissueCore_Full");
 
 
     		CQLQuery cqlQuery = new CQLQuery();
