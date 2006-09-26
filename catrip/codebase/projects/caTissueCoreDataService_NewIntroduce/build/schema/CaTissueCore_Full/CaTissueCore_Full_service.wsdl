@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CaTissueCore_Full" targetNamespace="http://helloworld.cagrid.nci.nih.gov/CaTissueCore_Full/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:binding="http://helloworld.cagrid.nci.nih.gov/CaTissueCore_Full/bindings" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://helloworld.cagrid.nci.nih.gov/CaTissueCore_Full/bindings" location="CaTissueCore_Full_bindings.wsdl"/>
+  <wsdl:service name="CaTissueCore_FullService">
+    <wsdl:port name="CaTissueCore_FullPortTypePort" binding="binding:CaTissueCore_FullPortTypeSOAPBinding">
+      <soap:address location="http://localhost:8080/wsrf/services/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
