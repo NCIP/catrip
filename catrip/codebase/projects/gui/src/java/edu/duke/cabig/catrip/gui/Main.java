@@ -1,6 +1,7 @@
 
 package edu.duke.cabig.catrip.gui;
 
+import edu.duke.cabig.catrip.gui.webstart.WebstartConfigurator;
 import edu.duke.cabig.catrip.gui.wizard.WelcomeScreen;
 
 /**
@@ -23,6 +24,18 @@ public class Main {
         // perform the static initializations also if required.
         // Check:
         // caTRIP_config.xml for Index service and Dorian Urls.
+        
+        
+        // check if the application is launched via the webstart context.
+        String webstartStr = System.getProperty("deployment.user.cachedir");
+        if(webstartStr != null){
+            System.out.println("This is a webstart version of caTRIP");
+            WebstartConfigurator.configure(); 
+        } else {
+            System.out.println("This is a stand alone version of caTRIP");
+        }
+        
+
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
