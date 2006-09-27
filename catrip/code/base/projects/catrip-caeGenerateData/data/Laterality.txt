@@ -1,4 +1,0 @@
-Right
-Left
-Both
-N/A
