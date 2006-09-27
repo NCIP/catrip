@@ -16,7 +16,7 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import edu.pitt.cabig.cae.dao.util.HibernateUtil;
+import edu.duke.catrip.cae.util.HibernateUtil;
 import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFinding;
 import edu.pitt.cabig.cae.domain.breast.BreastNegativeSurgicalMargin;
 import edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin;

@@ -18,7 +18,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import edu.pitt.cabig.cae.dao.util.HibernateUtil;
+import edu.duke.catrip.cae.util.HibernateUtil;
 
 public class DataGeneratorToolKit extends TestCase
 {
