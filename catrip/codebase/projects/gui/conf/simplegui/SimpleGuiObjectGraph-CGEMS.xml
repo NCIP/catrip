@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
+	<service displayName="CGEMS" url="http://catrip1.duhs.duke.edu:8080/wsrf_cgems/services/cagrid/CGEMS" metadataXml="CaTRIPCGEMS_domainModel.xml" impls="false">
+		<targets>
+			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" 
+							displaybleAttributes="administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode" display="true">
+				<associatedObjectTree>
+					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" 
+								displaybleAttributes="name,description,methods"  roleName="analysisGroupCollection" display="true">
+						<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis" 
+								displaybleAttributes="neoplasmPresent,extentInvolvement,otherExtentInvolvement" roleName="snpAssociationAnalysis" display="true">
+								<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationFinding"
+									 displaybleAttributes="pvalue,rank" roleName="snpAssociationFindingCollection" display="true"/>
+						</Association>
+					</Association>
+				</associatedObjectTree>
+				<foreignAssociationOutboundPath cdeName="studySubjectIdentifier"/>
+			</objectElement>
+		</targets>
+		
+		
+		<foreignAssociationInboundTree>
+
+			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" 
+										 cdeName="studySubjectIdentifier" displaybleAttributes="name,description,memberCount" display="true">
+				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection"/>
+				</Association>
+			</foreignAssociationInboundPath>
+			
+			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis" 
+										 cdeName="studySubjectIdentifier" displaybleAttributes="name,description,methods" display="true">
+				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection">
+						<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis" roleName="snpAssociationAnalysis"/>
+				      </Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationFinding" 
+										 cdeName="studySubjectIdentifier" displaybleAttributes="pvalue,rank" display="true">
+				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection">
+						<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis" roleName="snpAssociationAnalysis">
+							<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationFinding" roleName="snpAssociationFindingCollection"/>
+						</Association>							
+				      </Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPPanel" 
+										 cdeName="studySubjectIdentifier" displaybleAttributes="assayCount,description,name,technology,vendor" display="true">
+				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+					<Association className="gov.nih.nci.caintegrator.domain.study.bean.Study" roleName="study">	
+						<Association className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPPanel" roleName="snpPanelCollection"/>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay" 
+										 cdeName="studySubjectIdentifier" displaybleAttributes="designAlleles,designScore,designSequence,designStrand,status" display="true">
+				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+					<Association className="gov.nih.nci.caintegrator.domain.study.bean.Study" roleName="study">	
+						<Association className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPPanel" roleName="snpPanelCollection">
+							<Association className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay" roleName="snpAssayCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAnnotation" 
+										 cdeName="studySubjectIdentifier" 
+										 displaybleAttributes="chromosomeLocation,chromosomeName,dbsnpBuild,geneLocation,genomeBuild,referenceSequence,referenceStrand" display="true">
+				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+					<Association className="gov.nih.nci.caintegrator.domain.study.bean.Study" roleName="study">	
+						<Association className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPPanel" roleName="snpPanelCollection">
+							<Association className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay" roleName="snpAssayCollection">
+								<Association className="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAnnotation" roleName="snpAnnotation"/>
+							</Association>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+															
+		</foreignAssociationInboundTree>
+	</service>
+</simpleGuiServices>
