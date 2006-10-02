@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<!-- ================================================================= -->
+<!-- caTRIP Master docs build file                                     -->
+<!-- ================================================================= -->
+<project name="catrip-1.0-docs" default="test" basedir=".">
+
+	<property name="docs.dir" location="${basedir}/docs"/>
+	<property name="silverapi.dir" location="${docs.dir}/silver_api"/>
+
+	<!-- =============================================================== -->
+	<!-- Call test for each project and aggregates the log resutls       -->
+	<!-- =============================================================== -->
+	<target name="docs-api" depends="" description="Generates API documentation.">
+		<javadoc
+			destdir="${silverapi.dir}"
+			author="true"
+			version="true"
+			use="true"
+			windowtitle="caTRIP Silver API Documentation"
+		>
+
+			<fileset dir="${projects.dir}/caTissueCAEDataService/src" defaultexcludes="yes">
+				<include name="**/*Client.java"/>
+				<exclude name="**"/>
+			</fileset>
+
+			<doctitle><![CDATA[<h1>caTRIP Silver API Documentation</h1>]]></doctitle>
+			<bottom><![CDATA[<i>Copyright &#169; 2006 Duke Comprehensive Cancer Center. All Rights Reserved.</i>]]></bottom>
+			<!-- 
+			<group title="Group 1 Packages" packages="com.dummy.test.a*"/>
+			<group title="Group 2 Packages" packages="com.dummy.test.b*:com.dummy.test.c*"/>
+			-->
+			<link offline="true" href="http://java.sun.com/products/jdk/1.2/docs/api/" packagelistLoc="C:\tmp"/>
+			<link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+		</javadoc>
+	</target>
+
+</project>
