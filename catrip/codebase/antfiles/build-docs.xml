@@ -8,31 +8,81 @@
 	<property name="docs.dir" location="${basedir}/docs"/>
 	<property name="silverapi.dir" location="${docs.dir}/silver_api"/>
 
+	<property name="cae.src.dir" location="${projects.dir}/cae_reengineering/src"/>
+	<property name="catissuecore.src.dir" location="C:/caBIG/cacorecvs/caCORE Code Generation"/>
+
 	<!-- =============================================================== -->
 	<!-- Call test for each project and aggregates the log resutls       -->
 	<!-- =============================================================== -->
-	<target name="docs-api" depends="" description="Generates API documentation.">
+	<target name="docs-silverapi" depends="" description="Generates API documentation.">
+		<mkdir dir="${silverapi.dir}"/>
+		<delete dir="${silverapi.dir}"/>
+		<mkdir dir="${silverapi.dir}"/>
+		<copy file="../documentation/images/logo/catrip_logo.jpg" todir="${silverapi.dir}" failonerror="false"/>
 		<javadoc
 			destdir="${silverapi.dir}"
-			author="true"
-			version="true"
-			use="true"
+			author="false"
+			version="false"
+			use="false"
 			windowtitle="caTRIP Silver API Documentation"
+			linksource="false"
 		>
 
+			<!-- ============================= -->
+			<!-- CAE                           -->
+			<!-- ============================= -->
 			<fileset dir="${projects.dir}/caTissueCAEDataService/src" defaultexcludes="yes">
 				<include name="**/*Client.java"/>
-				<exclude name="**"/>
 			</fileset>
+			<fileset dir="${projects.dir}/caTissueCAEDataService/build/stubs-CAE/src" defaultexcludes="yes">
+				<include name="**/*.java"/>
+				<exclude name="**/bindings/*"/>
+				<exclude name="**/service/*"/>
+				<exclude name="**/metadata/**"/>
+				<exclude name="**/*PortType.java"/>
+				<exclude name="**/*ResourceProperties.java"/>
+				<exclude name="**/*Request.java"/>
+				<exclude name="**/*Response.java"/>
+			</fileset>
+			<fileset dir="${cae.src.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+
+			<!-- ============================= -->
+			<!-- caTissue CORE                 -->
+			<!-- ============================= -->
+			<fileset dir="${projects.dir}/caTissueCoreDataService/src" defaultexcludes="yes">
+				<include name="**/*Client.java"/>
+			</fileset>
+			<fileset dir="${projects.dir}/caTissueCoreDataService/build/stubs-CaTissueCore_Full/src" defaultexcludes="yes">
+				<include name="**/*.java"/>
+				<exclude name="**/bindings/*"/>
+				<exclude name="**/service/*"/>
+				<exclude name="**/metadata/**"/>
+				<exclude name="**/*PortType.java"/>
+				<exclude name="**/*ResourceProperties.java"/>
+				<exclude name="**/*Request.java"/>
+				<exclude name="**/*Response.java"/>
+			</fileset>
+			<fileset dir="${catissuecore.src.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+
+			<!-- ============================= -->
+			<!-- Distributed Query Engine      -->
+			<!-- ============================= -->
+			<fileset dir="${projects.dir}/queryengine/src/java" defaultexcludes="yes">
+				<include name="gov/nih/nci/catrip/fqe/engine/FederatedQueryEngineImpl.java"/>
+			</fileset>
+
+			<group title="Distributed Query Engine" packages="gov.nih.nci.catrip.fqe*"/>
+			<group title="caTissue CORE" packages="gov.nih.nci.cagrid.catissuecorefull*:edu.wustl.catissuecore*"/>
+			<group title="CAE" packages="edu.duke.catrip.cae*:gov.nih.nci.cagrid.cae*:edu.pitt.cabig.cae*"/>
+			<group title="caGrid Data Service" packages="gov.nih.nci.cagrid.cqlquery*:gov.nih.nci.cagrid.data*:gov.nih.nci.cagrid.cqlresultset"/>
 
 			<doctitle><![CDATA[<h1>caTRIP Silver API Documentation</h1>]]></doctitle>
 			<bottom><![CDATA[<i>Copyright &#169; 2006 Duke Comprehensive Cancer Center. All Rights Reserved.</i>]]></bottom>
-			<!-- 
-			<group title="Group 1 Packages" packages="com.dummy.test.a*"/>
-			<group title="Group 2 Packages" packages="com.dummy.test.b*:com.dummy.test.c*"/>
-			-->
-			<link offline="true" href="http://java.sun.com/products/jdk/1.2/docs/api/" packagelistLoc="C:\tmp"/>
-			<link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+			<header><![CDATA[<img src="catrip_logo.jpg" width="60" height="60"/>]]></header>
 		</javadoc>
 	</target>
 
