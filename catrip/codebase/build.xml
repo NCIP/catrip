@@ -31,6 +31,7 @@
 	<import file="${antfiles.dir}/build-reports.xml" />
 	<import file="${antfiles.dir}/build-deploy.xml" />
 	<import file="${antfiles.dir}/build-demo.xml" />
+	<import file="${antfiles.dir}/build-docs.xml" />
 
 	<!-- define global properties -->
 	<property name="cobertura.home" location="${basedir}/share/cobertura-1.8"/>
