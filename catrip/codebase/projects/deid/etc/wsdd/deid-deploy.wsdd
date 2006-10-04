@@ -1,0 +1,14 @@
+<deployment 
+	name="DeIdServiceDeployment"
+	xmlns="http://xml.apache.org/axis/wsdd/" 
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java"
+	xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance"
+>
+
+	<service name="DeIdService" style="rpc">
+		<parameter name="className" value="edu.duke.cabig.catrip.deid.DeIdServiceImpl" />
+		<parameter name="allowedMethods" value="deid" />
+		<parameter name="scope" value="Application" />
+	</service>
+  
+</deployment>
