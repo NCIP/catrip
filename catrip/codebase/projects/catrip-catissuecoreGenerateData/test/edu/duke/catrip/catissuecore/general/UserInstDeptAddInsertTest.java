@@ -33,6 +33,9 @@ public class UserInstDeptAddInsertTest extends TestCase {
   private static String inFile13 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ZipCodes.txt";
   private static String inFile14 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PhoneNums.txt";
 
+  //cancer group file
+  private static String inFile15 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ResearchGroup.txt";	
+
   public String[][] dataarr = new String[500][2];
   public String[] dataarr1 = new String[500];
   public String[] dataarr2 = new String[500];
@@ -49,6 +52,7 @@ public class UserInstDeptAddInsertTest extends TestCase {
   public String[] dataarr13 = new String[500];
   public String[] dataarr14 = new String[500];
   public String[] dataarr15 = new String[500];
+  public String[] dataarr16 = new String[500];
     
   public UserInstDeptAddInsertTest(String sTestName) {
       super(sTestName);
@@ -202,9 +206,18 @@ public class UserInstDeptAddInsertTest extends TestCase {
 	       	}
 		}
 		
+//CANCER GROUP STUFF
+		dataarr16=dg.randomReadFile(maxrecs,inFile15);
+
+		if (DEBUG) {
+			for (int row=0; row<maxrecs; row++) {
+       	    	System.out.println("\t\t\tGROUP: " + dataarr16[row]);
+	       	}
+		}
+		
 		if (DEBUG) System.out.println("\tBack Inside testReadFile()");
 
-		dg.buildUserInstDeptAdd(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9,dataarr10,dataarr11,dataarr12,dataarr13,dataarr14,dataarr15);
+		dg.buildUserInstDeptAdd(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9,dataarr10,dataarr11,dataarr12,dataarr13,dataarr14,dataarr15,dataarr16);
 		
 		if (DEBUG) System.out.println("\tEnd Of testReadFile...");
 		

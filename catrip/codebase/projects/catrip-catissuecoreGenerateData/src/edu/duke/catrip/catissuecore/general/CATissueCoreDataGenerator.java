@@ -265,7 +265,6 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		}
 
 		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			InstitutionImpl i = new InstitutionImpl();
 			CancerResearchGroupImpl crg = new CancerResearchGroupImpl();
 			crg.setName(dataInsertTable[rowcnt][0]);
 			System.out.println("\t\t\t\tCalling create(i) to insert: "+crg.getName());
@@ -874,20 +873,20 @@ I GET THE FOLLOWING ERROR:
 		    System.out.println("\t\t\t\tExiting buildParticipantIdent()");
 	}
 	
-	public void buildUserInstDeptAdd(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15) throws ParseException
+	public void buildUserInstDeptAdd(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15,String[] col16) throws ParseException
 	{
 			List result=null;
 			if (DEBUG) System.out.println("\tInside buildSiteInstDeptAdd()");
 			
-			String[][] dataInsertTable = new String[maxrecs][15];
+			String[][] dataInsertTable = new String[maxrecs][16];
 			
-			Object[] objsArr = new Object[4];
-			int objcnt=-1;
+			Object[] objsArr = new Object[5];
 			
 			int insrow=0;
 
 			//load the array
 			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
+
 				//USER STUFF
 					//UserComments
 					dataInsertTable[insrow][0]=rmvTrailingBlanks(col1[rowcnt]);
@@ -921,14 +920,17 @@ I GET THE FOLLOWING ERROR:
 					dataInsertTable[insrow][13]=col14[rowcnt];
 					//fax
 					dataInsertTable[insrow][14]=col15[rowcnt];
+				//CANCER GROUP STUFF
+					//ResearchGroup
+					dataInsertTable[insrow][15]=col16[rowcnt];
 					
 					insrow++;
 			}
 
 			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			
-				UserImpl u = new UserImpl();
-				
+							
+				int objcnt=-1;
+			//ADDRESS STUFF
 				AddressImpl a = new AddressImpl();
 				a.setStreet(dataInsertTable[rowcnt][9]);
 				a.setCity(dataInsertTable[rowcnt][10]);
@@ -938,30 +940,38 @@ I GET THE FOLLOWING ERROR:
 				a.setPhoneNumber(dataInsertTable[rowcnt][13]);
 				a.setFaxNumber(dataInsertTable[rowcnt][14]);
 				System.out.println("\t\t\t\tAdding Address object to objsArr, that contains: "+a.getStreet()+", "+a.getCity()+", "+a.getState()+", "+a.getZipCode()+", "+a.getCountry()+", "+a.getPhoneNumber()+", "+a.getFaxNumber());
-				//create(a);
 				++objcnt;
 				objsArr[objcnt]=a;
 
+			//INSTITUTION STUFF
 				InstitutionImpl i = new InstitutionImpl();
 				if(dataInsertTable[rowcnt][7].length()>50)
 					i.setName(dataInsertTable[rowcnt][7].substring(0,49));
 				else
 					i.setName(dataInsertTable[rowcnt][7]);
 				System.out.println("\t\t\t\tAdding Institution object to objsArr, that contains: "+i.getName());
-				//create(i);
 				++objcnt;
 				objsArr[objcnt]=i;
 
+			//DEPARTMENT STUFF
 				DepartmentImpl d = new DepartmentImpl();	
 				if(dataInsertTable[rowcnt][8].length()>50)
 					d.setName(dataInsertTable[rowcnt][8].substring(0,49));
 				else
 					d.setName(dataInsertTable[rowcnt][8]);
 				System.out.println("\t\t\t\tAdding Department object to objsArr, that contains: "+d.getName());
-				//create(d);
 				++objcnt;
 				objsArr[objcnt]=d;
-								
+				
+			//CANCER GROUP STUFF
+				CancerResearchGroupImpl crg = new CancerResearchGroupImpl();
+				crg.setName(dataInsertTable[rowcnt][15]);
+				System.out.println("\t\t\t\tAdding Department object to objsArr, that contains: "+crg.getName());			
+				++objcnt;
+				objsArr[objcnt]=crg;
+						
+			//USER STUFF
+				UserImpl u = new UserImpl();
 				u.setComments(rmvTrailingBlanks(dataInsertTable[rowcnt][0]));
 				u.setEmailAddress(dataInsertTable[rowcnt][1]);
 				u.setFirstName(dataInsertTable[rowcnt][2]);
@@ -972,15 +982,13 @@ I GET THE FOLLOWING ERROR:
 				Date sdate = sdf.parse( dataInsertTable[rowcnt][6] );
 				u.setStartDate(sdate);
 				u.setActivityStatus("Active");
-				
-//				u.setCollectionProtocolCollection(null);
-//				u.setDepartment(null);
-//				u.setAddress(null);
-//				u.setInstitution(null);
 
+			//ADDING THE OBJECTS TO THE USER OBJECT
 				u.setAddress(a);
 				u.setDepartment(d);
 				u.setInstitution(i);
+				u.setCancerResearchGroup(crg);
+				
 				System.out.println("\t\t\t\tAdding Institution object to objsArr, that contains: "+u.getActivityStatus()+", "+u.getComments()+", "+u.getEmailAddress()+", "+u.getFirstName()+", "+u.getLastName()+", "+u.getLoginName()+", "+u.getPassword()+", "+u.getStartDate());
 				//create(u);
 				++objcnt;
@@ -988,9 +996,10 @@ I GET THE FOLLOWING ERROR:
 				
 				System.out.println("\t\t\t\tCalling create(objsArr) to save/commit all associated objects, in the array of objects...");
 				
-				//create(objsArr);
+			//CALLING THE CREATE METHOD, TO USE THE HIBERNATE APIS (save,commit,etc)
+				create(objsArr);
 				
-				create(u);
+				//create(u);
 
 		     }
 		    
