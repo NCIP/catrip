@@ -1,0 +1,1000 @@
+Malignant
+Non-Malignant
+Malignant
+Malignant
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant
+Non-Malignant
+Metastatic
+Non-Malignant
+Malignant
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant, Diseased
+Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Malignant
+Non-Malignant
+Non-Malignant
+Malignant, Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant
+Malignant, Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Invasive
+Not Specified
+Non-Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
+Not Specified
+Non-Malignant
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant, Diseased
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant
+Not Specified
+Malignant, Invasive
+Not Specified
+Not Specified
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant
+Not Specified
+Malignant
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Metastatic
+Malignant
+Malignant
+Metastatic
+Metastatic
+Malignant, Invasive
+Metastatic
+Non-Malignant
+Non-Malignant
+Non-Malignant, Diseased
+Malignant
+Malignant
+Malignant
+Metastatic
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Malignant
+Not Specified
+Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant, Invasive
+Metastatic
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Invasive
+Non-Malignant
+Malignant
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Not Specified
+Metastatic
+Malignant, Pre-Invasive
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant
+Not Specified
+Non-Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Not Specified
+Not Specified
+Malignant
+Non-Malignant
+Malignant
+Malignant
+Metastatic
+Malignant, Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant
+Metastatic
+Malignant
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Metastatic
+Malignant
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant
+Not Specified
+Not Specified
+Not Specified
+Not Specified
+Malignant, Pre-Invasive
+Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant
+Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
+Not Specified
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Malignant
+Non-Malignant, Diseased
+Non-Malignant
+Malignant
+Malignant
+Metastatic
+Non-Malignant
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
+Non-Malignant
+Malignant
+Malignant
+Malignant, Invasive
+Metastatic
+Metastatic
+Metastatic
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
+Malignant
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant
+Metastatic
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant
+Metastatic
+Non-Malignant
+Malignant
+Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Malignant
+Malignant
+Malignant, Invasive
+Malignant
+Not Specified
+Not Specified
+Non-Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Malignant
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Pre-Invasive
+Metastatic
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant
+Malignant
+Metastatic
+Non-Malignant, Diseased
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Invasive
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Not Specified
+Malignant, Pre-Invasive
+Not Specified
+Not Specified
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
+Malignant
+Not Specified
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Metastatic
+Metastatic
+Metastatic
+Metastatic
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Not Specified
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
+Metastatic
+Non-Malignant, Diseased
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant
+Malignant, Invasive
+Not Specified
+Malignant, Invasive
+Not Specified
+Non-Malignant
+Non-Malignant
+Non-Malignant, Diseased
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant
+Not Specified
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant
+Not Specified
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Not Specified
+Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Metastatic
+Malignant, Invasive
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Invasive
+Non-Malignant
+Malignant, Invasive
+Not Specified
+Not Specified
+Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant
+Non-Malignant, Diseased
+Metastatic
+Malignant
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant
+Not Specified
+Non-Malignant
+Malignant
+Malignant
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
+Non-Malignant
+Malignant
+Malignant, Invasive
+Non-Malignant, Diseased
+Not Specified
+Malignant
+Non-Malignant
+Malignant
+Malignant
+Malignant
+Malignant
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Metastatic
+Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Malignant
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant
+Malignant, Invasive
+Not Specified
+Non-Malignant
+Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Metastatic
+Metastatic
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
+Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant
+Not Specified
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant
+Non-Malignant
+Not Specified
+Not Specified
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Metastatic
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Not Specified
+Malignant
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Not Specified
+Not Specified
+Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Not Specified
+Metastatic
+Metastatic
+Malignant
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Metastatic
+Malignant, Invasive
+Metastatic
+Non-Malignant
+Not Specified
+Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Metastatic
+Metastatic
+Not Specified
+Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant
+Not Specified
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Not Specified
+Malignant
+Non-Malignant
+Malignant
+Non-Malignant, Diseased
+Malignant
+Non-Malignant
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
+Metastatic
+Not Specified
+Malignant, Invasive
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Invasive
+Not Specified
+Metastatic
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Malignant, Invasive
+Malignant, Pre-Invasive
+Metastatic
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Malignant
+Not Specified
+Non-Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant
+Malignant
+Malignant
+Metastatic
+Malignant
+Malignant, Invasive
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant
+Not Specified
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant, Invasive
+Non-Malignant
+Non-Malignant
+Malignant
+Non-Malignant
+Non-Malignant
+Not Specified
+Malignant
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Malignant
+Metastatic
+Malignant
+Metastatic
+Not Specified
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Invasive
+Metastatic
+Non-Malignant, Diseased
+Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
+Metastatic
+Malignant, Invasive
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Malignant
+Malignant
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant
+Not Specified
+Malignant
+Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Malignant
+Non-Malignant
+Not Specified
+Malignant
+Malignant
+Malignant
+Not Specified
+Non-Malignant
+Not Specified
+Malignant
+Malignant
+Malignant
+Malignant
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
+Metastatic
+Metastatic
+Non-Malignant, Diseased
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant
+Malignant
+Malignant
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Not Specified
+Malignant
+Malignant
+Malignant
+Malignant
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant
+Not Specified
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Malignant, Invasive
+Not Specified
+Metastatic
+Non-Malignant
+Malignant, Invasive
+Not Specified
+Not Specified
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Non-Malignant
+Malignant
+Malignant
+Non-Malignant
+Not Specified
+Malignant
+Malignant
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
+Not Specified
+Malignant, Invasive
+Malignant, Invasive
+Malignant
+Not Specified
+Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Malignant
+Malignant
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Invasive
+Not Specified
+Non-Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Metastatic
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Malignant
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Malignant, Pre-Invasive
+Malignant, Invasive
+Metastatic
+Non-Malignant
+Not Specified
+Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant
+Not Specified
+Non-Malignant, Diseased
+Malignant, Invasive
+Malignant, Pre-Invasive
+Metastatic
+Metastatic
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Metastatic
+Not Specified
+Non-Malignant
+Not Specified
+Not Specified
+Metastatic
+Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Malignant
+Non-Malignant
+Malignant, Invasive

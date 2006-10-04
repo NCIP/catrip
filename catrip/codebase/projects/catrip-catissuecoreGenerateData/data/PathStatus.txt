@@ -1,0 +1,7 @@
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant
+Not Specified
+Non-Malignant, Diseased
+Malignant, Invasive
+Metastatic
