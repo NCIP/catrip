@@ -114,7 +114,16 @@
 				<include name="**\*" />
 			</fileset>
 		</copy>
-		<delete dir="tmp" />
+		<delete dir="tmp" /> 
+
+		<copy overwrite="true" toDir="${tomcat.deploy.dir}/classes">
+          <fileset dir="${basedir}">
+            <include name="tumor_hibernate.cfg.xml" />
+            <include name="hibernate.properties" />
+            <include name="log4j.properties" />
+          </fileset>
+        </copy> 
+
 	</target>
 	
 	<!-- make deployment configured gar -->
