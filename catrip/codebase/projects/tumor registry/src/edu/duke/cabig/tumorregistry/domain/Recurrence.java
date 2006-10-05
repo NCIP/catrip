@@ -17,6 +17,7 @@ public class Recurrence {
 	private Date date;
 	private String type;
 	private java.util.Set distantSiteCollection;
+	private Followup followup;
 
 	public Recurrence(){
 
@@ -56,6 +57,14 @@ public class Recurrence {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public Followup getFollowup() {
+		return followup;
+	}
+
+	public void setFollowup(Followup followup) {
+		this.followup = followup;
 	}
 
 }

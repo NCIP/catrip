@@ -113,9 +113,9 @@ public class PatientToActivityTest extends TestCase {
 		diagnosis.setActivitySummary(activitySummary);
 
 		// activities
-		Set<Hormone> activityCollection = new HashSet<Hormone>();
+		Set<HormoneTherapy> activityCollection = new HashSet<HormoneTherapy>();
 		for (int i = 10; i < 13; i++) {
-			Hormone h = new Hormone();
+			HormoneTherapy h = new HormoneTherapy();
 			h.setId(Long.valueOf((i)));
 			h.setAtLocalFacility(Boolean.valueOf(true));
 			activityCollection.add(h);

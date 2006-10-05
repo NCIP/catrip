@@ -33,6 +33,110 @@ public class DiseaseExtentTest extends TestCase {
 	public static Test suite() {
 		return new TestSuite(DiseaseExtentTest.class);
 	}
+	public void testActivityToDiagnosis() throws Exception {
+		Diagnosis diagnosis = new Diagnosis();
+		diagnosis.setId(Long.valueOf(105));
+		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
+		diagnosis.setCauseOfDeath("infection");
+				
+		HormoneTherapy h = new HormoneTherapy();
+		h.setId(Long.valueOf((108)));
+		h.setAtLocalFacility(Boolean.valueOf(true));
+		//activityCollection.add(h);		
+		h.setDiagnosis(diagnosis);
+		try{
+			HibernateUtil.create(h);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
+
+	public void testFollowupToDiagnosis() throws Exception {
+		Diagnosis diagnosis = new Diagnosis();
+		diagnosis.setId(Long.valueOf(104));
+		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
+		diagnosis.setCauseOfDeath("infection");
+				
+		Followup followup = new Followup();
+		followup.setId(Long.valueOf((22)));
+		followup.setContactMethod("contactMethod");
+		followup.setCancerStatus("cancerStatus");
+		followup.setDate(new java.sql.Date(0));
+		
+		followup.setDiagnosis(diagnosis);
+		try{
+			HibernateUtil.create(followup);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
+
+	public void testDistantSiteToRecurrence() throws Exception {
+		Recurrence recurrence = new Recurrence();
+		recurrence.setId(Long.valueOf((100)));
+		recurrence.setType("type");
+		recurrence.setDate(new java.sql.Date(0));
+		
+		DistantSite distantSite = new DistantSite();
+		distantSite.setId(getNextDistantSiteId());
+		distantSite.setName("name0");
+		
+		distantSite.setRecurrence(recurrence);
+		try{
+			HibernateUtil.create(distantSite);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
+
+	public void testDistantSiteToDiseaseExtent() throws Exception {
+		DiseaseExtent diseaseExtent = new DiseaseExtent();
+		diseaseExtent.setId(getNextId());
+		diseaseExtent.setBestAJCCStage("bestAJCCStage");
+		diseaseExtent.setBestSEERSummaryStage("bestSEERsummaryStage");
+		diseaseExtent.setClinicalAJCCStage("clinicalAJCCStage");
+		
+		DistantSite distantSite = new DistantSite();
+		distantSite.setId(getNextDistantSiteId());
+		distantSite.setName("name0");
+		
+		distantSite.setDiseaseExtent(diseaseExtent);
+		try{
+			HibernateUtil.create(distantSite);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
+	public void testDiseaseExtentToDiagnosis() throws Exception {
+		DiseaseExtent diseaseExtent = new DiseaseExtent();
+		diseaseExtent.setId(getNextId());
+		diseaseExtent.setBestAJCCStage("bestAJCCStage");
+		diseaseExtent.setBestSEERSummaryStage("bestSEERsummaryStage");
+		diseaseExtent.setClinicalAJCCStage("clinicalAJCCStage");
+		
+		Diagnosis diagnosis = new Diagnosis();
+		diagnosis.setId(Long.valueOf(103));
+		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
+		diagnosis.setCauseOfDeath("infection");
+		
+		diseaseExtent.setDiagnosis(diagnosis);
+		try{
+			HibernateUtil.create(diseaseExtent);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
+	/// TBD - class cast exception
 	public void testInsert() throws Exception {
 		// get this id so duplicate ids are created when this is run multiple times
 		Long nextid = getNextDistantSiteId();
@@ -50,12 +154,14 @@ public class DiseaseExtentTest extends TestCase {
 		diseaseExtent.setPathologicMetStage("pathologicMetStage");
 		diseaseExtent.setPathologicNodeStage("pathologicNodeStage");
 		diseaseExtent.setPathologicTumorStage("pathologicTumorStage");
-		diseaseExtent.setRegionalNodesExamined("regionalNodesExamined");
-		diseaseExtent.setRegionalNodesPositive("regionalNodesPositive");
+		//diseaseExtent.setRegionalNodesExamined(Integer.valueOf("23"));
+		//diseaseExtent.setRegionalNodesPositive(Integer.valueOf("23"));
 		diseaseExtent.setTnmEdition("tnmEdition");
 		diseaseExtent.setTumorMarker1("tumorMarker1");
 		diseaseExtent.setTumorMarker2("tumorMarker2");
 		diseaseExtent.setTumorMarker3("tumorMarker3");
+		diseaseExtent.setRegionalNodesExaminedQualifier("regionalNodesExaminedQualifier");
+		diseaseExtent.setRegionalNodesPositiveQualifier("regionalNodesPositiveQualifier");
 		diseaseExtent.setTumorSize(Float.valueOf("33.4"));
 
 		Set<DistantSite> distantSiteCollection = new HashSet<DistantSite>();
@@ -160,6 +266,7 @@ public class DiseaseExtentTest extends TestCase {
 		}
 		return new Long((maxId.longValue() + 1));
 	}
+	
 
 } // end of class
 

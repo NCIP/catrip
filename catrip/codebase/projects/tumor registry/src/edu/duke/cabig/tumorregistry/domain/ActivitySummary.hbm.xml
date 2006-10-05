@@ -4,13 +4,14 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
-	<class
-		name="ActivitySummary"
-		table="ACTIVITY_SUMMARY"
-	>
+	<class name="ActivitySummary" table="ACTIVITY_SUMMARY">
 		
-		<id	name="id" type="long" column="ID"/>
-
+		<id name="id" column="ID" type="long">
+			<generator class="foreign">
+				<param name="property">diagnosis</param>
+			</generator>
+		</id>
+		<one-to-one name="diagnosis" class="Diagnosis" constrained="true"/>
 		<property
 			name="LocalDate"
 			column="LOCAL_DATE"
@@ -40,6 +41,14 @@
 			length="50"
 		/>
 
+		<set name="summaryActivityCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="summary_activity_id"/>
+			<one-to-many class="Activity"/>
+		</set>
+		<set name="localActivityCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="local_activity_id"/>
+			<one-to-many class="Activity"/>
+		</set>
 
 	</class>
 </hibernate-mapping>

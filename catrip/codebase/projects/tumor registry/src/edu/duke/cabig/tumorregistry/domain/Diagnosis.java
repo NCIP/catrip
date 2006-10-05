@@ -31,8 +31,18 @@ public class Diagnosis {
 	private java.util.Set followUpCollection;
 	private CollaborativeStaging collaborativeStaging;
 	private Address address;
-	public FirstCourseTreatmentSummary firstTreatment;
+	private FirstCourseTreatmentSummary firstTreatment;
 	private ActivitySummary activitySummary;
+	private Patient patient;
+	private DiseaseExtent diseaseExtent;
+
+	public DiseaseExtent getDiseaseExtent() {
+		return diseaseExtent;
+	}
+
+	public void setDiseaseExtent(DiseaseExtent diseaseExtent) {
+		this.diseaseExtent = diseaseExtent;
+	}
 
 	public Diagnosis(){
 
@@ -204,6 +214,14 @@ public class Diagnosis {
 
 	public void setPrimarySiteCode(String primarySiteCode) {
 		this.primarySiteCode = primarySiteCode;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 }

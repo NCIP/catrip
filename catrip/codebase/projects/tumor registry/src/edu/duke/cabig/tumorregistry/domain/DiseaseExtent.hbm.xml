@@ -149,16 +149,17 @@
 			not-null="false"
 			length="50"
 		/>
-<!--
+
 		<many-to-one
 			name="Diagnosis"
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
 			not-null="false"
+			cascade="all"
 		>
 		</many-to-one>
 	
--->
+
 		<set name="distantSiteCollection" lazy="false"  inverse="false" cascade="all">
 			<key column="disease_extent_id" not-null="false"/>
 			<one-to-many class="DistantSite"/>

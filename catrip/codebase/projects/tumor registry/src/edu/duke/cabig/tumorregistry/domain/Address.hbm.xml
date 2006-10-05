@@ -62,7 +62,9 @@
 			not-null="false"
 			length="50"
 		/>
-		<!-- <one-to-one name="id" class="Diagnosis" property-ref="address"/> -->
-		
+	<one-to-one name="patient" property-ref="address" outer-join="false" class="Patient" cascade="all"/>
+	<one-to-one name="diagnosis" property-ref="address" outer-join="false" class="Diagnosis" cascade="all"/> 
+	<!-- <many-to-one name="diagnosis" class="Diagnosis" column="ADDRESS_ID" not-null="false" unique="true" lazy="false" cascade="all"/>
+	-->
 	</class>	
 </hibernate-mapping>

@@ -17,6 +17,7 @@ public class FirstCourseTreatmentSummary {
 	private Date mostDefinitiveSurgeryDate;
 	private Date firstTreatmentDate;
 	private Date FirstSystemicTreatmentDate;
+	private Diagnosis diagnosis;
 
 	public FirstCourseTreatmentSummary(){
 
@@ -64,6 +65,14 @@ public class FirstCourseTreatmentSummary {
 
 	public void setMostDefinitiveSurgeryDate(Date mostDefinitiveSurgeryDate) {
 		this.mostDefinitiveSurgeryDate = mostDefinitiveSurgeryDate;
+	}
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
 	}
 
 }

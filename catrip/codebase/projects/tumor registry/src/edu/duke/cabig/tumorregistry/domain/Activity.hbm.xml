@@ -45,6 +45,21 @@
 			not-null="false"
 			length="50"
 		/>
+		<property
+			name="performedIndicator"
+			column="PERFORMED_INDICATOR"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<many-to-one
+			name="diagnosis"
+			column="DIAGNOSIS_ID"
+			class="Diagnosis"
+			not-null="false"
+			cascade="all" lazy="false"
+		>
+		</many-to-one>
 		<subclass name="SubstanceAdministration" discriminator-value="SubstanceAdministration">
 			<property
 				name="StopDate"
@@ -53,9 +68,9 @@
 				not-null="false"
 				length="7"
 			/>
-			<subclass name="Hormone" discriminator-value="hormone"/>
+			<subclass name="HormoneTherapy" discriminator-value="hormone"/>
 			<subclass name="Immunotherapy" discriminator-value="Immunotherapy"/>
-			<subclass name="OtherTherapy" discriminator-value="OtherTherapy"/>
+			<subclass name="OtherTherapy" discriminator-value="OtherTherapy" lazy="false"/>
 			<subclass name="Chemotherapy" discriminator-value="Chemotherapy"/>
 		</subclass>
 		<subclass name="Surgery" discriminator-value="Surgery">
@@ -68,8 +83,9 @@
 		<subclass name="Procedure" discriminator-value="Procedure">
 			<!-- place holder for future attributes for Procedure -->
 			<subclass name="OtherProcedure" discriminator-value="otherprocedure"/>
-			<subclass name="HemTransplantEndocrine" discriminator-value="HemTransplantEndocrine"/>
-			<subclass name="Radiation" discriminator-value="radiation">
+			<subclass name="HemTransplantEndocrineProcedure" discriminator-value="HemTransplantEndocrineProcedure"/>
+			<subclass name="Radiation" discriminator-value="Radiation"/>
+			<subclass name="FirstCourseRadiation" discriminator-value="firstCourseRadiation">
 			
 				<property
 					name="StopDate"

@@ -14,15 +14,23 @@
 			not-null="false"
 			length="50"
 		/>
-<!--		<property
-			name="RecurrenceId"
-			column="RECURRENCE_ID"
-			type="integer"
+		<many-to-one
+			name="diseaseExtent"
+			column="DISEASE_EXTENT_ID"
+			class="DiseaseExtent"
 			not-null="false"
-			length="8"
-		/>
-		
--->
+			cascade="all"
+		>
+		</many-to-one>
+		<many-to-one
+			name="recurrence"
+			column="RECURRENCE_ID"
+			class="Recurrence"
+			not-null="false"
+			cascade="all"
+		>
+		</many-to-one>
+
 
 	</class>	
 </hibernate-mapping>

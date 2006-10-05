@@ -38,7 +38,14 @@
 			length="7"
 		/>
 		<one-to-one  name="recurrence" outer-join="false" class="Recurrence" cascade="all"/>
-
+		<many-to-one
+			name="diagnosis"
+			column="DIAGNOSIS_ID"
+			class="Diagnosis"
+			not-null="false" lazy="false"
+			cascade="all"
+		>
+		</many-to-one>
 
 	</class>	
 </hibernate-mapping>

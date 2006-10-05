@@ -108,17 +108,17 @@ public class CollaborativeStagingTest extends TestCase {
 
 		List result = new ArrayList();
 		result = session.createQuery(
-				"from CollaborativeStaging where id = (select max(id) from CollaborativeStaging)").list();
+				"from Diagnosis where id = (select max(id) from Diagnosis)").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();
 		if (result.size() != 0) {
-			CollaborativeStaging obj = (CollaborativeStaging) result.get(0);
+			Diagnosis obj = (Diagnosis) result.get(0);
 			maxId = obj.getId();
 		}
 		
-		maxId = new Long((maxId.longValue() + 1));
-
+		maxId = new Long((maxId.longValue()));
+System.out.println("********** id ********  " + maxId);
 		return maxId;
 	}
 

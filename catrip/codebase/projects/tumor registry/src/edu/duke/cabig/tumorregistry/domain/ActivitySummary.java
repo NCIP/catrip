@@ -19,6 +19,7 @@ public class ActivitySummary {
 	private String summaryCharacterization;
 	private java.util.Set localActivityCollection;
 	private java.util.Set summaryActivityCollection;
+	private Diagnosis diagnosis;
 
 	public ActivitySummary(){
 
@@ -82,6 +83,14 @@ public class ActivitySummary {
 
 	public void setSummaryDate(Date summaryDate) {
 		this.summaryDate = summaryDate;
+	}
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
 	}
 
 }

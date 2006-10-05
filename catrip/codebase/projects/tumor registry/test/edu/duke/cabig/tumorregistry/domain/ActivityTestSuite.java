@@ -14,22 +14,13 @@ public class ActivityTestSuite {
         suite.addTestSuite(PatientToActivityTest.class);
         suite.addTestSuite(ProcedureTest.class);
         suite.addTestSuite(AddressTest.class);
-        suite.addTestSuite(CollaborativeStagingTest.class);
         suite.addTestSuite(DiseaseExtentTest.class);
         suite.addTestSuite(ProcedureTest.class);
         suite.addTestSuite(SubstanceAdministrationTest.class);
         suite.addTestSuite(SurgeryTest.class);
+        suite.addTestSuite(CollaborativeStagingTest.class);
 
-        //
-        // Another example test suite of tests.
-        // 
-        //suite.addTest(CreditCardTestSuite.suite());
-
-        //
-        // Add more tests here
-        //
-
-        return suite;
+         return suite;
     }
 
     /**

@@ -16,6 +16,16 @@ public class Address {
 	private String state;
 	private String county;
 	private String country;
+	private Patient patient;
+	private Diagnosis diagnosis;
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
 
 	public Address(){
 
@@ -87,6 +97,14 @@ public class Address {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
 	}
 
 }

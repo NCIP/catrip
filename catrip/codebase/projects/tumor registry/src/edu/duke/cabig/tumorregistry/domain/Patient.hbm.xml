@@ -8,10 +8,7 @@
 		name="Patient"
 		table="PATIENT"
 	>
-		<id name="id" type="long" column="ID">
-			
-			
-		</id>
+		<id name="id" type="long" column="ID"></id>
 
 
 		<property
@@ -85,10 +82,12 @@
 			length="200"
 		/>
 		
-	<!--	<one-to-one name="patientIdentifier" class="PatientIdentifier" column="id" cascade="all"/> -->
 		<one-to-one name="patientIdentifier" outer-join="false" class="PatientIdentifier" cascade="all"/>
-		<many-to-one name="address" class="Address" column="address_id" unique="true" lazy="false" cascade="all"/> 
-		<set name="diagnosisCollection" lazy="false" inverse="false" cascade="all">
+
+		<many-to-one name="address" class="Address" column="address_id" not-null="false" unique="true" lazy="false" cascade="all"/> 
+
+
+		<set name="diagnosisCollection" lazy="false" inverse="true" cascade="all">
 			<key column="PATIENT_ID"/>
 			<one-to-many class="Diagnosis"/>
 		</set>

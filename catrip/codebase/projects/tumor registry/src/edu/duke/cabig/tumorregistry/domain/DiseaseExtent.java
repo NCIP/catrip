@@ -17,56 +17,34 @@ public class DiseaseExtent {
 	private String clinicalMetStage;
 	private String clinicalNodeStage;
 	private String clinicalTumorStage;
-	/**
-	 * Tumor Registry : Dg_path_m
-	 * 
-	 */
 	private String pathologicMetStage;
-	/**
-	 * Tumor Registry : Dg_path_n
-	 * 
-	 */
 	private String pathologicNodeStage;
-	/**
-	 * Tumor Registry : Dg_path_t
-	 * 
-	 */
 	private String pathologicTumorStage;
-	/**
-	 * Tumor Registry : Dg_TNM_Editn
-	 * 
-	 */
 	private String tnmEdition;
-	/**
-	 * measurement is in centimeters
-	 */
 	private Float tumorSize;
 	private String pathologicAJCCStage;
 	private String pathologicAJCCStageDescriptor;
 	private String clinicalAJCCStage;
 	private String clinicalAJCCStageDescriptor;
-	/**
-	 * Dg_Nd_Inv - Regional Nodes Positive
-	 * 
-	 */
-	private String regionalNodesPositive;
-	/**
-	 * Dg_Nd_Exam - Regional Nodes Examined
-	 * 
-	 */
-	private String regionalNodesExamined;
-	/**
-	 * Dg_Best_Stage
-	 * Best AJCC stage, as calculated from derived Collaborative AJCC stage, or if no
-	 * Collaborative stage, from Best of Path and Clin AJCC Stage.
-	 * 
-	 */ 
+	private Integer regionalNodesPositive;
+	private Integer regionalNodesExamined;
 	private String bestAJCCStage;
 	private String bestSEERSummaryStage;
 	private String tumorMarker1;
 	private String tumorMarker2;
 	private String tumorMarker3;
+	private String regionalNodesExaminedQualifier;
+	private String regionalNodesPositiveQualifier;
 	private java.util.Set distantSiteCollection;
+	private Diagnosis diagnosis;
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
+	}
 
 	public DiseaseExtent(){
 
@@ -189,22 +167,6 @@ public class DiseaseExtent {
 		this.pathologicTumorStage = pathologicTumorStage;
 	}
 
-	public String getRegionalNodesExamined() {
-		return regionalNodesExamined;
-	}
-
-	public void setRegionalNodesExamined(String regionalNodesExamined) {
-		this.regionalNodesExamined = regionalNodesExamined;
-	}
-
-	public String getRegionalNodesPositive() {
-		return regionalNodesPositive;
-	}
-
-	public void setRegionalNodesPositive(String regionalNodesPositive) {
-		this.regionalNodesPositive = regionalNodesPositive;
-	}
-
 	public String getTnmEdition() {
 		return tnmEdition;
 	}
@@ -243,6 +205,40 @@ public class DiseaseExtent {
 
 	public void setTumorSize(Float tumorSize) {
 		this.tumorSize = tumorSize;
+	}
+
+	public String getRegionalNodesExaminedQualifier() {
+		return regionalNodesExaminedQualifier;
+	}
+
+	public void setRegionalNodesExaminedQualifier(
+			String regionalNodesExaminedQualifier) {
+		this.regionalNodesExaminedQualifier = regionalNodesExaminedQualifier;
+	}
+
+	public String getRegionalNodesPositiveQualifier() {
+		return regionalNodesPositiveQualifier;
+	}
+
+	public void setRegionalNodesPositiveQualifier(
+			String regionalNodesPositiveQualifier) {
+		this.regionalNodesPositiveQualifier = regionalNodesPositiveQualifier;
+	}
+
+	public void setRegionalNodesExamined(Integer regionalNodesExamined) {
+		this.regionalNodesExamined = regionalNodesExamined;
+	}
+
+	public void setRegionalNodesPositive(Integer regionalNodesPositive) {
+		this.regionalNodesPositive = regionalNodesPositive;
+	}
+
+	public Integer getRegionalNodesExamined() {
+		return regionalNodesExamined;
+	}
+
+	public Integer getRegionalNodesPositive() {
+		return regionalNodesPositive;
 	}
 
 }

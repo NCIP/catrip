@@ -31,8 +31,9 @@ public class ProcedureTest extends TestCase {
 	public static Test suite() {
 		return new TestSuite(ProcedureTest.class);
 	}
+	
 	public void testHemTransplantEndocrineInsert() throws Exception {
-		HemTransplantEndocrine endocrine = new HemTransplantEndocrine();
+		HemTransplantEndocrineProcedure endocrine = new HemTransplantEndocrineProcedure();
 		endocrine.setId(getNextId());
 		endocrine.setAtLocalFacility(Boolean.valueOf(true));
 		endocrine.setCharacterization("characterization");
@@ -62,9 +63,25 @@ public class ProcedureTest extends TestCase {
 			assertTrue(false);
 		}
 	}
-
+	
 	public void testRadiationInsert() throws Exception {
 		Radiation obj = new Radiation();
+		obj.setId(getNextId());
+		obj.setAtLocalFacility(Boolean.valueOf(true));
+		obj.setCharacterization("radiation characterization");
+		obj.setStartDate(new Date(0));
+		obj.setCourse(Integer.valueOf(2222));
+		try{
+			HibernateUtil.create(obj);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
+
+	public void testFirstCourseRadiationInsert() throws Exception {
+		FirstCourseRadiation obj = new FirstCourseRadiation();
 		obj.setId(getNextId());
 		obj.setAtLocalFacility(Boolean.valueOf(true));
 		obj.setCharacterization("Chemotherapy characterization");
@@ -86,26 +103,26 @@ public class ProcedureTest extends TestCase {
 			assertTrue(false);
 		}
 	}
+	
 	public void testHemTransplantEndocrineSelect() throws Exception {
 
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 
 		List result = new ArrayList();
-		result = session.createQuery("from HemTransplantEndocrine").list();
+		result = session.createQuery("from HemTransplantEndocrineProcedure").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();
 		System.out.println("*********** HemTransplantEndocrine ***********");
 		for (int i = 0; i < result.size(); i++) {
-			HemTransplantEndocrine obj = (HemTransplantEndocrine) result.get(i);
+			HemTransplantEndocrineProcedure obj = (HemTransplantEndocrineProcedure) result.get(i);
 			System.out.println("ID is " + obj.getId());
 			System.out.println("AtLocalFacility is " + obj.getAtLocalFacility());
 			System.out.println("Characterization is " + obj.getCharacterization());
 			System.out.println("start date is " + obj.getStartDate());
 			System.out.println("course is " + obj.getCourse());
 		}
-
 	}
 	
 	public void testOtherProcedureSelect() throws Exception {
@@ -127,9 +144,8 @@ public class ProcedureTest extends TestCase {
 			System.out.println("start date is " + obj.getStartDate());
 			System.out.println("course is " + obj.getCourse());
 		}
-
 	}
-
+	
 	public void testRadiationSelect() throws Exception {
 
 		Session session = HibernateUtil.currentSession();
@@ -143,6 +159,27 @@ public class ProcedureTest extends TestCase {
 		System.out.println("*********** Radiation ***********");
 		for (int i = 0; i < result.size(); i++) {
 			Radiation obj = (Radiation) result.get(i);
+			System.out.println("ID is " + obj.getId());
+			System.out.println("AtLocalFacility is " + obj.getAtLocalFacility());
+			System.out.println("Characterization is " + obj.getCharacterization());
+			System.out.println("start date is " + obj.getStartDate());
+			System.out.println("course is " + obj.getCourse());
+		}
+	}
+
+	public void testFirstCourseRadiationSelect() throws Exception {
+
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+
+		List result = new ArrayList();
+		result = session.createQuery("from FirstCourseRadiation").list();
+
+		tx.commit();
+		HibernateUtil.closeSession();
+		System.out.println("*********** Radiation ***********");
+		for (int i = 0; i < result.size(); i++) {
+			FirstCourseRadiation obj = (FirstCourseRadiation) result.get(i);
 			System.out.println("ID is " + obj.getId());
 			System.out.println("AtLocalFacility is " + obj.getAtLocalFacility());
 			System.out.println("Characterization is " + obj.getCharacterization());

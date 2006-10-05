@@ -14,6 +14,7 @@ public class Followup {
 	private String contactMethod;
 	private Date date;
 	private Recurrence recurrence;
+	private Diagnosis diagnosis;
 
 	public Followup(){
 
@@ -61,6 +62,14 @@ public class Followup {
 
 	public void setRecurrence(Recurrence recurrence) {
 		this.recurrence = recurrence;
+	}
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
 	}
 
 }

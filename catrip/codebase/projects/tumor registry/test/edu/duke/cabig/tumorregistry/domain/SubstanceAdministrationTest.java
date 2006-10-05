@@ -31,7 +31,7 @@ public class SubstanceAdministrationTest extends TestCase {
 		return new TestSuite(SubstanceAdministrationTest.class);
 	}
 	public void testHormoneInsert() throws Exception {
-		Hormone hormone = new Hormone();
+		HormoneTherapy hormone = new HormoneTherapy();
 		hormone.setId(getNextId());
 		hormone.setAtLocalFacility(Boolean.valueOf(true));
 		hormone.setCharacterization("characterization");
@@ -104,12 +104,12 @@ public class SubstanceAdministrationTest extends TestCase {
 		Transaction tx = session.beginTransaction();
 
 		List result = new ArrayList();
-		result = session.createQuery("from Hormone").list();
+		result = session.createQuery("from HormoneTherapy").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();
 		for (int i = 0; i < result.size(); i++) {
-			Hormone obj = (Hormone) result.get(i);
+			HormoneTherapy obj = (HormoneTherapy) result.get(i);
 			System.out.println("*********** Hormone "+(j++) + " ***********");
 			System.out.println("ID is " + obj.getId());
 			System.out.println("AtLocalFacility is " + obj.getAtLocalFacility());

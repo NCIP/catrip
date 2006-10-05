@@ -29,12 +29,12 @@
 			length="50"
 		/>
 
-		<set name="distantSiteCollection"  lazy="false"  inverse="false" cascade="all">
+		<set name="distantSiteCollection"  lazy="false"  inverse="true" cascade="all">
 			<key column="RECURRENCE_ID"/>
 			<one-to-many class="DistantSite"/>
 		</set>
 
-
+<one-to-one  name="followup" outer-join="false" class="Followup" cascade="all" lazy="false" />
 
 	</class>	
 </hibernate-mapping>

@@ -40,7 +40,7 @@ public class Patient {
 	private String autopsy;
 	private Address address;
 	private PatientIdentifier patientIdentifier;
-	public java.util.Set diagnosisCollection;
+	private java.util.Set diagnosisCollection;
 
 	public Patient(){
 

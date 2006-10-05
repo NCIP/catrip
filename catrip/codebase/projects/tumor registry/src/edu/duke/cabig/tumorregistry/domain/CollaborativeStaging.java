@@ -32,6 +32,7 @@ public class CollaborativeStaging {
 	private String siteSpecificFactor5;
 	private String siteSpecificFactor6;
 	private Long diagnosisId;
+	private Diagnosis diagnosis;
 
 	public CollaborativeStaging(){
 
@@ -231,6 +232,14 @@ public class CollaborativeStaging {
 
 	public void setDiagnosisId(Long diagnosisId) {
 		this.diagnosisId = diagnosisId;
+	}
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
 	}
 
 }

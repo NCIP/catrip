@@ -36,11 +36,116 @@ public class PatientTest extends TestCase {
 	public static Test suite() {
 		return new TestSuite(PatientTest.class);
 	}
+	public void testAddressToPatientAssociation(){
+		try{
+			Long patientId = getNextPatientId();
+			Address address = new Address();
+			address.setId(getNextAddressId());
+			address.setAddress1("123 Main Street");
+			address.setAddress2("po box 100");
+			address.setCity("Atlanta");
+			address.setCountry("USA");
+
+			Patient patient = new Patient();
+			patient.setId(patientId);
+			patient.setDateOfBirth(new Date(0));
+			patient.setDateOfDeath(new Date(0));
+			// inserts both
+			patient.setAddress(address);
+			HibernateUtil.create(patient);
+
+			// inserts both
+			//address.setPatient(patient);
+			//HibernateUtil.create(address);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}		
+	}
+	public void testReadDiagnosisToAddress(){
+		
+	}
+	public void testDiagnosisToAddress(){
+		try{
+			Long patientId = getNextPatientId();
+			Diagnosis diagnosis = new Diagnosis();
+			diagnosis.setId(Long.valueOf(102));
+			diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
+			diagnosis.setCauseOfDeath("infection");
+			Address address = new Address();
+			address.setId(getNextAddressId());
+			address.setAddress1("123 Main Street");
+			address.setAddress2("po box 100");
+			address.setCity("Atlanta");
+			address.setCountry("USA");
+			// inserts both
+			//diagnosis.setAddress(address);
+			//HibernateUtil.create(diagnosis);
+			// inserts address only
+			address.setDiagnosis(diagnosis);
+			HibernateUtil.create(address);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}		
+	}
+	public void testDiagnosisToPatientAssociation(){
+		try{
+		Long patientId = getNextPatientId();
+		Diagnosis diagnosis = new Diagnosis();
+		diagnosis.setId(getNextPatientId());
+		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
+		diagnosis.setCauseOfDeath("infection");
+		Patient patient = new Patient();
+		patient.setId(patientId);
+		patient.setDateOfBirth(new Date(0));
+		patient.setDateOfDeath(new Date(0));
+		diagnosis.setPatient(patient);
+			HibernateUtil.create(diagnosis);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}		
+	}
+	
+	public void testPatientIdentifierToPatientAssociation(){
+		try{
+			Long patientId = getNextPatientId();
+			PatientIdentifier patientIdentifier = new PatientIdentifier();
+			patientIdentifier.setId(patientId);
+			patientIdentifier.setMedicalRecordNumber("200");
+
+			Patient patient = new Patient();
+			patient.setId(patientId);
+			patient.setDateOfBirth(new Date(0));
+			patient.setDateOfDeath(new Date(0));
+			patientIdentifier.setPatient(patient);
+//			 inserts patient and updates patientIdentifer
+			//patient.setPatientIdentifier(patientIdentifier);
+			//HibernateUtil.create(patient);
+			
+			//inserts both patient and patientIdentifier - uses the patient ID for both tables
+			patientIdentifier.setPatient(patient);
+			HibernateUtil.create(patientIdentifier); 
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}		
+	}
+
 	public void testInsert() throws Exception {
 		Patient patient = new Patient();
 		patient.setId(getNextPatientId());
 		patient.setDateOfBirth(new Date(0));
-		patient.setAutopsy("autopsy");
+		patient.setDateOfDeath(new Date(0));
+		patient.setAutopsy("0"); //0-2,9
+		patient.setEthnicGroup("Hispanic");
+		patient.setRace("0");
+		patient.setSex("Male"); //1-4,9
 		patient.setFirstName("Joe");
 		patient.setLastName("Brown");
 		// add an address
@@ -53,22 +158,22 @@ public class PatientTest extends TestCase {
 		address.setCounty("dekalb");
 		address.setZipcode("23233");
 		patient.setAddress(address);
-		
-	// PatientIdentifier
-	 
-	  PatientIdentifier patientIdentifier = new PatientIdentifier();
+
+		// PatientIdentifier
+
+		PatientIdentifier patientIdentifier = new PatientIdentifier();
 		patientIdentifier.setMedicalRecordNumber("mrn300");
 		patientIdentifier.setId(getNextPatientIdentifierId());
 		//patientIdentifier.setPatient(patient);
 		patient.setPatientIdentifier(patientIdentifier);
-		
+
 		// add a diagnosis
 		Set<Diagnosis> diagnosisCollection = new HashSet<Diagnosis>();
 		for (int i = 0; i <2; i++) {
 			Diagnosis diagnosis = new Diagnosis();
 			diagnosis.setId(Long.valueOf(i));
 			diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
-			diagnosis.setCauseOfDeath("strangulation");
+			diagnosis.setCauseOfDeath("infection");
 			diagnosis.setClassOfCaseCode(Integer.valueOf(2));
 			//add followup(s)
 			Set<Followup> followupCollection = new HashSet<Followup>();
@@ -78,10 +183,10 @@ public class PatientTest extends TestCase {
 				followup.setContactMethod("contactMethod");
 				followup.setCancerStatus("cancerStatus");
 				followup.setDate(new java.sql.Date(0));
-				
+
 				followupCollection.add(followup);
 			}	
-				
+
 			diagnosis.setFollowUpCollection(followupCollection);
 			//add disease extent(s)
 			Set<DiseaseExtent> diseaseExtentCollection = new HashSet<DiseaseExtent>();
@@ -90,7 +195,7 @@ public class PatientTest extends TestCase {
 				diseaseExtent.setId(Long.valueOf(otherId++));
 				//add distant Site(s)
 				Set<DistantSite> distantSiteCollection = new HashSet<DistantSite>();
-				for (int k = 0; k <23; k++) {
+				for (int k = 0; k <2; k++) {
 					DistantSite distantSite = new DistantSite();
 					distantSite.setId(Long.valueOf((otherId++)));
 					distantSite.setName("name");
@@ -99,8 +204,8 @@ public class PatientTest extends TestCase {
 				diseaseExtent.setDistantSiteCollection(distantSiteCollection);
 				diseaseExtentCollection.add(diseaseExtent);
 			}	
-			
-			
+
+
 			diagnosis.setDiseaseExtentCollection(diseaseExtentCollection);
 			diagnosisCollection.add(diagnosis);
 			patient.setDiagnosisCollection(diagnosisCollection);
@@ -115,7 +220,7 @@ public class PatientTest extends TestCase {
 	}
 
 	public void testSelect() throws Exception {
-if (1==1) return;
+
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 
@@ -158,7 +263,27 @@ if (1==1) return;
 		}
 
 	}
-	
+	// TBD - not working!!
+	public void testSelectFollowupToRecurrance() throws Exception {
+
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+
+		List result = new ArrayList();
+		result = session.createQuery("from Followup").list();
+
+		tx.commit();
+		HibernateUtil.closeSession();
+
+		for (int i = 0; i < result.size(); i++) {
+			Followup obj = (Followup) result.get(i);
+			System.out.println("id = " + obj.getId());
+			Recurrence d = obj.getRecurrence();
+			//System.out.println(d.getId());
+		}
+
+	}
+
 	public Long getNextPatientId() throws Exception {
 		Long maxId = Long.valueOf(0);
 		Session session = HibernateUtil.currentSession();
@@ -166,7 +291,7 @@ if (1==1) return;
 
 		List result = new ArrayList();
 		result = session.createQuery(
-				"from Patient where id = (select max(id) from Patient)").list();
+		"from Patient where id = (select max(id) from Patient)").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();
@@ -176,8 +301,8 @@ if (1==1) return;
 		}
 		return new Long((maxId.longValue() + 1));
 	}
-	
-	
+
+
 	public Long getNextAddressId() throws Exception {
 		Long maxId = Long.valueOf(0);
 		Session session = HibernateUtil.currentSession();
@@ -185,7 +310,7 @@ if (1==1) return;
 
 		List result = new ArrayList();
 		result = session.createQuery(
-				"from Address where id = (select max(id) from Address)").list();
+		"from Address where id = (select max(id) from Address)").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();
@@ -202,7 +327,7 @@ if (1==1) return;
 
 		List result = new ArrayList();
 		result = session.createQuery(
-				"from PatientIdentifier where id = (select max(id) from PatientIdentifier)").list();
+		"from PatientIdentifier where id = (select max(id) from PatientIdentifier)").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();

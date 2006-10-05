@@ -173,6 +173,6 @@
 			length="50"
 		/>
 		
-
+<one-to-one name="diagnosis" outer-join="false" class="Diagnosis" cascade="all"/> 
 	</class>	
 </hibernate-mapping>

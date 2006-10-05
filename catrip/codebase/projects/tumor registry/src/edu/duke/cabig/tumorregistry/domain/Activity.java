@@ -19,6 +19,18 @@ public abstract class Activity {
 	private Boolean atLocalFacility;
 	private Date startDate;
 	private String characterization;
+	private Integer performedIndicator;
+	private Diagnosis diagnosis;
+	private ActivitySummary localActivity;
+	private ActivitySummary summaryActivity;
+	
+	public Integer getPerformedIndicator() {
+		return performedIndicator;
+	}
+
+	public void setPerformedIndicator(Integer performedIndicator) {
+		this.performedIndicator = performedIndicator;
+	}
 
 	public Activity(){
 
@@ -66,6 +78,30 @@ public abstract class Activity {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
+	}
+
+	public Diagnosis getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(Diagnosis diagnosis) {
+		this.diagnosis = diagnosis;
+	}
+
+	public ActivitySummary getLocalActivity() {
+		return localActivity;
+	}
+
+	public void setLocalActivity(ActivitySummary localActivity) {
+		this.localActivity = localActivity;
+	}
+
+	public ActivitySummary getSummaryActivity() {
+		return summaryActivity;
+	}
+
+	public void setSummaryActivity(ActivitySummary summaryActivity) {
+		this.summaryActivity = summaryActivity;
 	}
 
 }
