@@ -178,8 +178,10 @@
 		<resolveDependencies extdir="${projects.dir}/queryengine/ext">
 			<artifact refid="common.test.jars" />
 			<artifact refid="xmlbeans.jars" />
-			<artifact refid="caTissueCAEDataService.jars" />
-			<artifact refid="caTissueCoreDataService.jars" />
+			<artifact refid="cagrid.cadsr.jars" />
+			<artifact refid="cagrid.data.jars" />
+			<!-- artifact refid="caTissueCAEDataService.jars" / -->
+			<!-- artifact refid="caTissueCoreDataService.jars" / -->
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
