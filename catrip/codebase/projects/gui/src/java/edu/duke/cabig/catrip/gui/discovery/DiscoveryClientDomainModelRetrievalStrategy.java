@@ -1,8 +1,8 @@
 
 package edu.duke.cabig.catrip.gui.discovery;
 
-import gov.nih.nci.cagrid.discovery.MetadataConstants;
-import gov.nih.nci.cagrid.discovery.ResourcePropertyHelper;
+import gov.nih.nci.cagrid.metadata.MetadataConstants; 
+import gov.nih.nci.cagrid.metadata.ResourcePropertyHelper;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 import javax.xml.namespace.QName;
 import org.apache.axis.message.addressing.EndpointReferenceType;
