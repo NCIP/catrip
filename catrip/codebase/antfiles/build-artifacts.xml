@@ -56,6 +56,12 @@
 			</fileset>
 		</artifact>
 
+		<artifact track="main" type="jars" id="cagrid.misc.jars">
+			<fileset dir="${cagrid.dir}/misc">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
 		<artifact track="main" type="jars" id="cagrid.data.jars">
 			<fileset dir="${cagrid.dir}/data">
 				<include name="*.jar" />

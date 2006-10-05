@@ -158,12 +158,13 @@
 			<artifact refid="common.test.jars" />
 			<artifact refid="queryengine.jars" />
 			<artifact refid="queryengine.schemas" />
-			<artifact refid="caTissueCoreDataService.jars" />
+			<!-- artifact refid="caTissueCoreDataService.jars" / -->  <!-- Old jars..	 -->
 			<artifact refid="cagrid.cadsr.jars" />
 			<artifact refid="cagrid.data.jars" />
 			<artifact refid="cagrid.discovery.jars" />
 			<artifact refid="cagrid.introduce.jars" />
 			<artifact refid="cagrid.metadata.jars" />
+			<artifact refid="cagrid.misc.jars" />  <!-- New jars that have been added in caGRID..	 -->
 			<artifact refid="ant-contrib.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="all" />
