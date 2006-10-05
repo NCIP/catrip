@@ -44,6 +44,16 @@ public class ClassBean{
     // ----- DCQL helper attributes ---- //
     
     
+    
+    // ---- UML Generalization Collection attributes ----//
+    private String superClassRefId;
+    private String superClassName;
+    private ArrayList<String> superClassAssociatedClassList = new ArrayList(20);
+    // ---- UML Generalization Collection attributes ----//
+    
+    
+    
+    
     /** Creates a new instance of ClassBean */
     public ClassBean() {
     }
@@ -145,7 +155,9 @@ public class ClassBean{
     
     /** add to the list of associated classes. Associations are defined in domain model. */
     public void addAssociatedClass(String refId){
-        associatedClasses.add(refId);
+        if (!associatedClasses.contains(refId)){
+            associatedClasses.add(refId);
+        }
     }
     
     /** this is to display the tree node name as class name only. */
@@ -181,7 +193,7 @@ public class ClassBean{
         cBean.setServiceName(getServiceName());
         cBean.setServiceUrl(getServiceUrl());
         cBean.setVersion(getVersion());
-        cBean.setAssociationRoleNameMap(getAssociationRoleNameMap());
+        cBean.setAssociationRoleNameMap(this.getAssociationRoleNameMap());
         cBean.needImpl(needImpl());
         
         return cBean;
@@ -210,7 +222,7 @@ public class ClassBean{
      * Built from the Domain model element "exposedUMLAssociationCollection"
      */
     public HashMap getAssociationRoleNameMap() {
-        return associationRoleNameMap;
+        return this.associationRoleNameMap;
     }
     
     public void setAssociationRoleNameMap(HashMap associationRoleNameMap) {
@@ -219,13 +231,15 @@ public class ClassBean{
     
     /** get the role name for a particular associated class. */
     public String getAssociationRoleName(String classId) {
-        String roleName = (String)getAssociationRoleNameMap().get(classId);
+        String roleName = (String)this.getAssociationRoleNameMap().get(classId);
         return roleName;
     }
     
     /** set the role name for a particular associated class and add to the map. */
     public void addAssociationRoleName(String classId, String associationRoleName) {
-        this.getAssociationRoleNameMap().put(classId, associationRoleName) ;
+        if (!this.getAssociationRoleNameMap().containsKey(classId)){
+            this.getAssociationRoleNameMap().put(classId, associationRoleName) ;
+        }
     }
     
     
@@ -435,6 +449,43 @@ public class ClassBean{
 //        return getFullyQualifiedName().equalsIgnoreCase(cBean.getFullyQualifiedName());
 //    }
     
+    
+    
+    
+    
+    
+    
+    public String getSuperClassRefId() {
+        return superClassRefId;
+    }
+    
+    public void setSuperClassRefId(String superClassRefId) {
+        this.superClassRefId = superClassRefId;
+    }
+    
+    public ArrayList<String> getSuperClassAssociatedClassList() {
+        return superClassAssociatedClassList;
+    }
+    
+    public void setSuperClassAssociatedClassList(ArrayList<String> superClassAssociatedClassList) {
+        this.superClassAssociatedClassList = superClassAssociatedClassList;
+    }
+    
+    public void addSuperClassAssociatedClassList(String superClassAssociatedClass) {
+        
+        boolean alreadyAdded = superClassAssociatedClassList.contains(superClassAssociatedClass);
+        if (!alreadyAdded){
+            this.superClassAssociatedClassList.add(superClassAssociatedClass);
+        }
+    }
+
+    public String getSuperClassName() {
+        return superClassName;
+    }
+
+    public void setSuperClassName(String superClassName) {
+        this.superClassName = superClassName;
+    }
     
     
     

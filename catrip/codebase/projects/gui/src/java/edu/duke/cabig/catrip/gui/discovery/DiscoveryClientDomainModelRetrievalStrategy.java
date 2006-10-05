@@ -6,6 +6,7 @@ import gov.nih.nci.cagrid.discovery.ResourcePropertyHelper;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 import javax.xml.namespace.QName;
 import org.apache.axis.message.addressing.EndpointReferenceType;
+import org.apache.axis.utils.XMLUtils;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.w3c.dom.Element;
 
@@ -35,6 +36,11 @@ public class DiscoveryClientDomainModelRetrievalStrategy extends DomainModelRetr
         
         try {
             Element resourceProperty = ResourcePropertyHelper.getResourceProperty(endPontRef,new QName(MetadataConstants.CAGRID_DATA_MD_NAMESPACE, "DomainModel"));
+             // TODO - put this under debug option..
+//            System.out.println("The Retrieved Domain Model extract is:\n\n");
+//            System.out.println(XMLUtils.ElementToString(resourceProperty)); 
+//            System.out.println("\n\n");
+            
             model = (DomainModel) ObjectDeserializer.toObject(resourceProperty, DomainModel.class);
             System.out.println("Loading the Domain Model for Project: "+model.getProjectLongName());
         } catch (Exception e){

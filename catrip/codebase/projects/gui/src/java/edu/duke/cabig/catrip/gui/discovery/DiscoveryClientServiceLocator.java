@@ -62,7 +62,7 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
         if (allServices != null) {
             for (int ii = 0; ii < allServices.length; ii++) {
                 EndpointReferenceType endpointReference = allServices[ii];
-                System.out.println("Service End Point Address :" + endpointReference.getAddress()+"\n");
+                System.out.println("\nService End Point Address :" + endpointReference.getAddress());
                 try {
                     ServiceMetadata serviceMetadata = MetadataUtils.getServiceMetadata(endpointReference);
                     if (serviceMetadata != null) {
@@ -71,6 +71,7 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                         
                         serviceMetaDataBean.setDomainModelEndPointRef(endpointReference);
                         serviceMetaDataBean.setServiceName(serviceMetadata.getServiceDescription().getService().getName());
+                        System.out.println("Service Name:"+serviceMetaDataBean.getServiceName()+"\n\n");
                         serviceMetaDataBean.setDescription(serviceMetadata.getServiceDescription().getService().getDescription());
                         
                         serviceMetaDataBean.setServiceUrl(endpointReference.getAddress().toString());
@@ -96,20 +97,23 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                         
                         
                         // impl stuff..
-//                        
+//
                         // TODO - remove this later.  only for the demo..
                         try {
-//                            PropertyResourceBundle bundle = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
-//                            String needImpl = bundle.getString(serviceMetaDataBean.getServiceName());
-                            boolean hasCaTissueCore =  endpointReference.getAddress().toString().endsWith("CaTissueCore_Full");
-                            boolean hasCaTissueCore_ = endpointReference.getAddress().toString().contentEquals("CaTissueCore");
-                            if (hasCaTissueCore || hasCaTissueCore_){
-                                serviceMetaDataBean.needImpl(true);
-                            }
-//                            if ((needImpl != null) && (Boolean.valueOf(needImpl))){
+                            PropertyResourceBundle bundle = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
+                            String needImpl = bundle.getString(serviceMetaDataBean.getServiceName());
+//                            System.out.println("################### Need impl for service: "+serviceMetaDataBean.getServiceName()+":"+needImpl);
+//                            boolean hasCaTissueCore =  endpointReference.getAddress().toString().endsWith("CaTissueCore_Full");
+//                            boolean hasCaTissueCore_ = endpointReference.getAddress().toString().contentEquals("CaTissueCore");
+//                            if (hasCaTissueCore || hasCaTissueCore_){
 //                                serviceMetaDataBean.needImpl(true);
 //                            }
-                        } catch (Exception e){}
+                            if ((needImpl != null) && (Boolean.valueOf(needImpl))){
+                                serviceMetaDataBean.needImpl(true);
+                            }
+                        } catch (Exception e){
+//                            e.printStackTrace();
+                        }
                         // only for the demo..
                         // impl stuff..
                         

@@ -10,6 +10,7 @@ import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import edu.duke.cabig.catrip.gui.util.HTMLResultExporter;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
@@ -125,6 +126,7 @@ public class CommandPanel extends CPanel {
             
             if ( (results == null) || (results.getObjectResult() == null) || (results.getObjectResult().length == 0) ){
                 JOptionPane.showMessageDialog(getMainFrame(), "No results found. Please check your query.");
+                resultCountLbl.setText("   ");
             } else {
                 
                 // TODO - put the client config files of the individual service also in the caTRIP-config.xml or the services-mapping file some how.
@@ -144,7 +146,7 @@ public class CommandPanel extends CPanel {
                         AttributeBean aBean = (AttributeBean) attributeList.get(i);
                         String attributeName = aBean.getAttributeName();
                         String methodName ="get"+attributeName.substring(0,1).toUpperCase() + attributeName.substring(1);
-                        String value = "";
+                        String value = " ";
                         try{
                             Object attributeValue = ((Method)obj.getClass().getMethod(methodName)).invoke(obj);
                             if (attributeValue != null){
@@ -160,6 +162,11 @@ public class CommandPanel extends CPanel {
                 
                 resultCountLbl.setText("   Total Row Count : "+classBeanList.size());
                 getMainFrame().getOutputPanel().setResults(classBeanList);
+                
+                // set that results are available for export..
+                GUIConstants.resultAvailable = true;
+//                HTMLResultExporter.exportToHtml( getMainFrame().getOutputPanel().getOutputTable());
+                
             }
         } catch (Exception ex) {
             resultCountLbl.setText(" ");

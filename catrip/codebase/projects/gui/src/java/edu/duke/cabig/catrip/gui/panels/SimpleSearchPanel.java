@@ -28,6 +28,8 @@ public class SimpleSearchPanel extends CPanel {
     
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
+       
+         // TODO - comment these (except initComponents();) if you want to change the gui...
         
         if (GUIConstants.simpleGui){
             initBefore();

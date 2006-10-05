@@ -34,8 +34,7 @@ public class GUIConstants {
     
     // runtime properties..
     public static boolean simpleGui = true;
-    
-    
+    public static boolean resultAvailable = false;
     
     
     

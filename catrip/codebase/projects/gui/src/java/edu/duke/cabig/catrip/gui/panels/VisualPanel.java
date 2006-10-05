@@ -107,21 +107,21 @@ public class VisualPanel extends CPanel {
     private edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel visualQueryDesignerPanel;
     // End of variables declaration//GEN-END:variables
     
-    
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JFrame jf = new JFrame("Testing this panel");
-                VisualPanel vp = new VisualPanel();
-                VisualQueryDesignerPanel vv = new VisualQueryDesignerPanel();
-                vp.getVisualQueryDesignerPanel().setDnDGraphView(new ListServicesPanel());
-                jf.getContentPane().add(vp);
-                jf.setBounds(10,10,400,200);
-                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jf.setVisible(true);
-            }
-        });
-    }
+//    
+//    public static void main(String[] args) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                JFrame jf = new JFrame("Testing this panel");
+//                VisualPanel vp = new VisualPanel();
+//                VisualQueryDesignerPanel vv = new VisualQueryDesignerPanel();
+//                vp.getVisualQueryDesignerPanel().setDnDGraphView(new ListServicesPanel());
+//                jf.getContentPane().add(vp);
+//                jf.setBounds(10,10,400,200);
+//                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                jf.setVisible(true);
+//            }
+//        });
+//    }
     
     
     
