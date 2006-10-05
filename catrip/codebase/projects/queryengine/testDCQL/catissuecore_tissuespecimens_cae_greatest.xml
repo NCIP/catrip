@@ -3,7 +3,7 @@
 <DCQLQuery xmlns="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql .\schema\Distributed_CQL_schema.xsd">
 	
-    <TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" serviceURL="http://localhost:8181/wsrf/services/cagrid/CaTissueCore_Full">
+    <TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" serviceURL="http://localhost:8181/wsrf/services/cagrid/CaTissueCore">
         <Group logicRelation="AND">
             <Attribute name="activityStatus" predicate="EQUAL_TO" value="Active"/>
             <Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
@@ -20,7 +20,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
                                     <Property>medicalRecordNumber</Property>
                                 </RightJoin>
                             </JoinCondition>
-                            <ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" serviceURL="http://localhost:8181/wsrf_cae/services/cagrid/CAE">
+                            <ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" serviceURL="http://localhost:8181/wsrf/services/cagrid/CAE">
                                 <Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
                                     <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
                                         <Association name="edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize" roleName="annotationSetCollection">
