@@ -163,7 +163,7 @@
 	<!-- =============================================================== -->
 
 	<target name="build-caTissueCAEDataService" depends="prepare" description="Builds the caTissueCAEDataService project">
-		<resolveDependencies extdir="${projects.dir}/CAEDataServiceV2/lib">
+		<resolveDependencies extdir="${projects.dir}/CAEDataServiceV2">
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
 		<ant dir="${projects.dir}/CAEDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
@@ -174,7 +174,7 @@
 	<!-- =============================================================== -->
 
 	<target name="build-caTissueCoreDataService" depends="prepare" description="Builds the caTissueCoreDataService project">
-		<resolveDependencies extdir="${projects.dir}/CaTissueCoreDataServiceV2/lib">
+		<resolveDependencies extdir="${projects.dir}/CaTissueCoreDataServiceV2">
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
 		<ant dir="${projects.dir}/CaTissueCoreDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
@@ -185,7 +185,7 @@
 	<!-- =============================================================== -->
 
 	<target name="build-CGEMSDataService" depends="prepare" description="Builds the CGEMSDataService project">
-		<resolveDependencies extdir="${projects.dir}/CGEMSDataServiceV2/lib">
+		<resolveDependencies extdir="${projects.dir}/CGEMSDataServiceV2">
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
 		<ant dir="${projects.dir}/CGEMSDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
