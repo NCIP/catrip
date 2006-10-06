@@ -8,8 +8,10 @@
 	<property name="docs.dir" location="${basedir}/docs"/>
 	<property name="silverapi.dir" location="${docs.dir}/silver_api"/>
 
-	<property name="cae.src.dir" location="${projects.dir}/cae_reengineering/src"/>
+	<property name="cae.src.dir" location="${projects.dir}/cae_reengineering/1.2/src"/>
 	<property name="catissuecore.src.dir" location="C:/caBIG/cacorecvs/caCORE Code Generation"/>
+	<property name="tumorregistry.src.dir" location="${projects.dir}/tumor registry/src"/>
+	<property name="cgems.src.dir" location="${projects.dir}/cgems-beans/src"/>
 
 	<!-- =============================================================== -->
 	<!-- Call test for each project and aggregates the log resutls       -->
@@ -26,23 +28,26 @@
 			use="false"
 			windowtitle="caTRIP Silver API Documentation"
 			linksource="false"
+			useexternalfile="true"
 		>
 
 			<!-- ============================= -->
 			<!-- CAE                           -->
 			<!-- ============================= -->
-			<fileset dir="${projects.dir}/caTissueCAEDataService/src" defaultexcludes="yes">
+			<fileset dir="${projects.dir}/CAEDataServiceV2/src" defaultexcludes="yes">
 				<include name="**/*Client.java"/>
 			</fileset>
-			<fileset dir="${projects.dir}/caTissueCAEDataService/build/stubs-CAE/src" defaultexcludes="yes">
+			<fileset dir="${projects.dir}/CAEDataServiceV2/build/stubs-CAE/src" defaultexcludes="yes">
 				<include name="**/*.java"/>
 				<exclude name="**/bindings/*"/>
 				<exclude name="**/service/*"/>
+				<exclude name="**/stubs/**"/>
 				<exclude name="**/metadata/**"/>
 				<exclude name="**/*PortType.java"/>
 				<exclude name="**/*ResourceProperties.java"/>
 				<exclude name="**/*Request.java"/>
 				<exclude name="**/*Response.java"/>
+				<exclude name="**/DataService.types/*"/>
 			</fileset>
 			<fileset dir="${cae.src.dir}" defaultexcludes="yes">
 				<include name="**/*.java"/>
@@ -51,21 +56,70 @@
 			<!-- ============================= -->
 			<!-- caTissue CORE                 -->
 			<!-- ============================= -->
-			<fileset dir="${projects.dir}/caTissueCoreDataService/src" defaultexcludes="yes">
+			<fileset dir="${projects.dir}/CaTissueCoreDataServiceV2/src" defaultexcludes="yes">
 				<include name="**/*Client.java"/>
 			</fileset>
-			<fileset dir="${projects.dir}/caTissueCoreDataService/build/stubs-CaTissueCore_Full/src" defaultexcludes="yes">
+			<fileset dir="${projects.dir}/CaTissueCoreDataServiceV2/build/stubs-CaTissueCore/src" defaultexcludes="yes">
 				<include name="**/*.java"/>
 				<exclude name="**/bindings/*"/>
 				<exclude name="**/service/*"/>
+				<exclude name="**/stubs/**"/>
+				<exclude name="**/metadata/**"/>
+				<exclude name="**/*PortType.java"/>
+				<exclude name="**/*ResourceProperties.java"/>
+				<exclude name="**/*Request.java"/>
+				<exclude name="**/*Response.java"/>
+				<exclude name="**/DataService.types/*"/>
+			</fileset>
+			<fileset dir="${catissuecore.src.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+				<exclude name="**/ws/*"/>
+				<exclude name="**/domainobject/*"/>
+			</fileset>
+
+			<!-- ============================= -->
+			<!-- TumorRegistry                 -->
+			<!-- ============================= -->
+			<fileset dir="${projects.dir}/TumorRegistryDataService/src" defaultexcludes="yes">
+				<include name="**/*Client.java"/>
+			</fileset>
+			<fileset dir="${projects.dir}/TumorRegistryDataService/build/stubs-CaTRIPTumorRegistry/src" defaultexcludes="yes">
+				<include name="**/*.java"/>
+				<exclude name="**/bindings/*"/>
+				<exclude name="**/service/*"/>
+				<exclude name="**/stubs/**"/>
+				<exclude name="**/metadata/**"/>
+				<exclude name="**/*PortType.java"/>
+				<exclude name="**/*ResourceProperties.java"/>
+				<exclude name="**/*Request.java"/>
+				<exclude name="**/*Response.java"/>
+				<exclude name="**/DataService.types/*"/>
+			</fileset>
+			<fileset dir="${tumorregistry.src.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+
+			<!-- ============================= -->
+			<!-- CGEMS SNP                     -->
+			<!-- ============================= -->
+			<fileset dir="${projects.dir}/CGEMSDataServiceV2/src" defaultexcludes="yes">
+				<include name="**/*Client.java"/>
+			</fileset>
+			<fileset dir="${projects.dir}/CGEMSDataServiceV2/build/stubs-CGEMS/src" defaultexcludes="yes">
+				<include name="**/*.java"/>
+				<exclude name="**/bindings/*"/>
+				<exclude name="**/service/*"/>
+				<exclude name="**/stubs/**"/>
 				<exclude name="**/metadata/**"/>
 				<exclude name="**/*PortType.java"/>
 				<exclude name="**/*ResourceProperties.java"/>
 				<exclude name="**/*Request.java"/>
 				<exclude name="**/*Response.java"/>
 			</fileset>
-			<fileset dir="${catissuecore.src.dir}" defaultexcludes="yes">
+			<fileset dir="${cgems.src.dir}" defaultexcludes="yes">
 				<include name="**/*.java"/>
+				<exclude name="**/util/*"/>
+				<exclude name="**/exceptions/*"/>
 			</fileset>
 
 			<!-- ============================= -->
@@ -74,11 +128,21 @@
 			<fileset dir="${projects.dir}/queryengine/src/java" defaultexcludes="yes">
 				<include name="gov/nih/nci/catrip/fqe/engine/FederatedQueryEngineImpl.java"/>
 			</fileset>
+			<fileset dir="${projects.dir}/data/build/src" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
 
-			<group title="Distributed Query Engine" packages="gov.nih.nci.catrip.fqe*"/>
-			<group title="caTissue CORE" packages="gov.nih.nci.cagrid.catissuecorefull*:edu.wustl.catissuecore*"/>
+			<group title="Tumor Registry" packages="edu.duke.cabig.tumorregistry*:gov.nih.nci.cagrid.catriptumorregistry*"/>
+
+			<group title="caIntegrator SNP" packages="gov.nih.nci.cagrid.cgems*:gov.nih.nci.caintegrator*"/>
+
+			<group title="caTissue CORE" packages="gov.nih.nci.cagrid.catissuecore*:edu.wustl.catissuecore*"/>
+
 			<group title="CAE" packages="edu.duke.catrip.cae*:gov.nih.nci.cagrid.cae*:edu.pitt.cabig.cae*"/>
-			<group title="caGrid Data Service" packages="gov.nih.nci.cagrid.cqlquery*:gov.nih.nci.cagrid.data*:gov.nih.nci.cagrid.cqlresultset"/>
+
+			<group title="Distributed Query Engine" packages="gov.nih.nci.catrip.fqe*:gov.nih.nci.catrip.dcql*:gov.nih.nci.catrip.cqlquery*"/>
+
+			<group title="caGrid Data Service" packages="gov.nih.nci.cagrid.cqlquery*:gov.nih.nci.cagrid.data*:gov.nih.nci.cagrid.cqlresultset:data.cagrid*"/>
 
 			<doctitle><![CDATA[<h1>caTRIP Silver API Documentation</h1>]]></doctitle>
 			<bottom><![CDATA[<i>Copyright &#169; 2006 Duke Comprehensive Cancer Center. All Rights Reserved.</i>]]></bottom>
