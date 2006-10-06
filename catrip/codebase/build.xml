@@ -47,7 +47,7 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
-	<property name="projects.list" value="ctom, gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
+	<property name="projects.list" value="localsdkquery, ctom, gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
 
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
@@ -104,7 +104,24 @@
 		</taskdef>
 	</target>
 
+	<!-- =============================================================== -->
+	<!-- LOCAL SDK QUERY                                                      -->
+	<!-- =============================================================== -->
 
+	<target name="build-localsdkquery" depends="prepare" description="Builds the localsdkquery project">
+		<resolveDependencies extdir="${projects.dir}/localsdkquery/ext">
+			<artifact refid="common.test.jars" />
+			
+			<artifact refid="cagrid.cadsr.jars" />
+			<artifact refid="cagrid.data.jars" />
+			<artifact refid="cagrid.metadata.jars" />
+			<artifact refid="cagrid.misc.jars" />
+
+
+		</resolveDependencies>
+		<ant dir="${projects.dir}/localsdkquery" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
 	<!-- =============================================================== -->
 	<!-- CTOM                                                            -->
 	<!-- =============================================================== -->
@@ -132,10 +149,10 @@
 	<!-- =============================================================== -->
 
 	<target name="build-caTissueCAEDataService" depends="prepare" description="Builds the caTissueCAEDataService project">
-		<resolveDependencies extdir="${projects.dir}/caTissueCAEDataService/ext">
-			<artifact refid="common.test.jars" />
+		<resolveDependencies extdir="${projects.dir}/CAEDataServiceV2/lib">
+			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
-		<ant dir="${projects.dir}/caTissueCAEDataService" inheritAll="false" antfile="build.xml" target="all" />
+		<ant dir="${projects.dir}/CAEDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 	<!-- =============================================================== -->
@@ -143,12 +160,24 @@
 	<!-- =============================================================== -->
 
 	<target name="build-caTissueCoreDataService" depends="prepare" description="Builds the caTissueCoreDataService project">
-		<resolveDependencies extdir="${projects.dir}/caTissueCoreDataService/ext">
-			<artifact refid="common.test.jars" />
+		<resolveDependencies extdir="${projects.dir}/CaTissueCoreDataServiceV2/lib">
+			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
-		<ant dir="${projects.dir}/caTissueCoreDataService" inheritAll="false" antfile="build.xml" target="all" />
+		<ant dir="${projects.dir}/CaTissueCoreDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
+	<!-- =============================================================== -->
+	<!-- CGEMSDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-CGEMSDataService" depends="prepare" description="Builds the CGEMSDataService project">
+		<resolveDependencies extdir="${projects.dir}/CGEMSDataServiceV2/lib">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/CGEMSDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
+	
 	<!-- =============================================================== -->
 	<!-- GUI                                                             -->
 	<!-- =============================================================== -->
@@ -185,10 +214,15 @@
 			<artifact refid="cagrid.metadata.jars" />
 			<artifact refid="cagrid.misc.jars" />
 
+			<artifact refid="caTissueCAEDataService.jars" />
+			<artifact refid="caTissueCoreDataService.jars" />
+			<artifact refid="CGEMSDataService.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
+
+	
 	<!-- =============================================================== -->
 	<!-- SECURITY-PASSWORD                                               -->
 	<!-- =============================================================== -->
