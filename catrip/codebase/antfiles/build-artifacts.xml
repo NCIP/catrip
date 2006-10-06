@@ -146,6 +146,13 @@
 				<exclude name="*test*.jar" />
 			</fileset>
 		</artifact>
+
+		<artifact track="main" type="jars" id="data.jars">
+			<fileset dir="${projects.dir}/data/build/jars">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
 		
 		
 		<artifact track="main" type="jars" id="queryengine.jars">

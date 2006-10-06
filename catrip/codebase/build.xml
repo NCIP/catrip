@@ -47,7 +47,7 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
-	<property name="projects.list" value="localsdkquery, ctom, gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
+	<property name="projects.list" value="localsdkquery, data, ctom, gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
 
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
@@ -121,6 +121,20 @@
 		</resolveDependencies>
 		<ant dir="${projects.dir}/localsdkquery" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
+
+	<!-- =============================================================== -->
+	<!-- DATA - dcql beans                                                       -->
+	<!-- =============================================================== -->
+
+	<target name="build-data" depends="prepare" description="Builds the data project">
+		<resolveDependencies extdir="${projects.dir}/data/ext">
+			<artifact refid="common.test.jars" />
+			
+			<artifact refid="xmlbeans.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/data" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
 	
 	<!-- =============================================================== -->
 	<!-- CTOM                                                            -->
@@ -187,6 +201,7 @@
 			<artifact refid="common.test.jars" />
 			<artifact refid="queryengine.jars" />
 			<artifact refid="queryengine.schemas" />
+			<artifact refid="data.jars" />
 			<!-- artifact refid="caTissueCoreDataService.jars" / -->  <!-- Old jars..	 -->
 			<artifact refid="cagrid.cadsr.jars" />
 			<artifact refid="cagrid.data.jars" />
@@ -207,7 +222,7 @@
 		<resolveDependencies extdir="${projects.dir}/queryengine/ext">
 			<artifact refid="common.test.jars" />
 			<artifact refid="xmlbeans.jars" />
-			
+			<artifact refid="data.jars" />
 			<artifact refid="cagrid.cadsr.jars" />
 			<artifact refid="cagrid.data.jars" />
 
