@@ -1,0 +1,20 @@
+<!-- An xsdconfig file must begin with a "config" element in the 
+        http://www.bea.com/2002/09/xbean/config namespace. Also, be sure
+        to declare any namespaces used to qualify types in your schema (here,
+        the namespace corresponding to the pol prefix. -->
+        
+<xb:config xmlns:dcql="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" 
+    xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"    
+    xmlns:xb="http://www.bea.com/2002/09/xbean/config">
+
+    <!-- Use the "namespace" element to map a namespace to the Java package
+        name that should be generated. -->
+    <xb:namespace uri="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">
+        <xb:package>gov.nih.nci.catrip.dcql</xb:package>
+    </xb:namespace>
+    
+    <xb:namespace uri="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+        <xb:package>gov.nih.nci.catrip.cqlquery</xb:package>
+    </xb:namespace>
+
+</xb:config>
