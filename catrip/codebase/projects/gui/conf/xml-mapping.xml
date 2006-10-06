@@ -1201,8 +1201,12 @@
 <!-- ####################################################### -->
 
 
+
+
+<!-- Tumor Registry mappings... -->
+
 <class name="edu.duke.cabig.tumorregistry.domain.Activity">
-    <map-to xml="Activity" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Activity" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1218,9 +1222,12 @@
     <field name="characterization" type="string">
       <bind-xml name="characterization" node="attribute" />
     </field>
+    <field name="performedIndicator" type="integer">
+      <bind-xml name="performedIndicator" node="attribute" />
+    </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Diagnosis">
-    <map-to xml="Diagnosis" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Diagnosis" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1265,10 +1272,10 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Procedure" extends="edu.duke.cabig.tumorregistry.domain.Activity">
-    <map-to xml="Procedure" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Procedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
-  <class name="edu.duke.cabig.tumorregistry.domain.Radiation" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
-    <map-to xml="Radiation" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+  <class name="edu.duke.cabig.tumorregistry.domain.FirstCourseRadiation" extends="edu.duke.cabig.tumorregistry.domain.Radiation">
+    <map-to xml="FirstCourseRadiation" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="stopDate" type="date">
       <bind-xml name="stopDate" node="attribute" />
     </field>
@@ -1295,7 +1302,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Followup">
-    <map-to xml="Followup" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Followup" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1310,19 +1317,19 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Chemotherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
-    <map-to xml="Chemotherapy" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Chemotherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
-  <class name="edu.duke.cabig.tumorregistry.domain.Hormone" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
-    <map-to xml="Hormone" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+  <class name="edu.duke.cabig.tumorregistry.domain.HormoneTherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
+    <map-to xml="HormoneTherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Immunotherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
-    <map-to xml="Immunotherapy" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Immunotherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.OtherProcedure" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
-    <map-to xml="OtherProcedure" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="OtherProcedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.DistantSite">
-    <map-to xml="DistantSite" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="DistantSite" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1331,7 +1338,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Recurrence">
-    <map-to xml="Recurrence" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Recurrence" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1343,25 +1350,25 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.RegionalDistantSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
-    <map-to xml="RegionalDistantSurgery" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="RegionalDistantSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.PrimarySiteSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
-    <map-to xml="PrimarySiteSurgery" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="PrimarySiteSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Surgery" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
-    <map-to xml="Surgery" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Surgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.RegionalLymphNodeSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
-    <map-to xml="RegionalLymphNodeSurgery" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="RegionalLymphNodeSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration" extends="edu.duke.cabig.tumorregistry.domain.Activity">
-    <map-to xml="SubstanceAdministration" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="SubstanceAdministration" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="stopDate" type="date">
       <bind-xml name="stopDate" node="attribute" />
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.CollaborativeStaging">
-    <map-to xml="CollaborativeStaging" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="CollaborativeStaging" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1433,7 +1440,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
-    <map-to xml="PatientIdentifier" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="PatientIdentifier" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1442,7 +1449,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.DiseaseExtent">
-    <map-to xml="DiseaseExtent" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="DiseaseExtent" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1470,9 +1477,6 @@
     <field name="tumorSize" type="float">
       <bind-xml name="tumorSize" node="attribute" />
     </field>
-    <field name="seerSummaryStage" type="string">
-      <bind-xml name="seerSummaryStage" node="attribute" />
-    </field>
     <field name="pathologicAJCCStage" type="string">
       <bind-xml name="pathologicAJCCStage" node="attribute" />
     </field>
@@ -1485,10 +1489,10 @@
     <field name="clinicalAJCCStageDescriptor" type="string">
       <bind-xml name="clinicalAJCCStageDescriptor" node="attribute" />
     </field>
-    <field name="regionalNodesPositive" type="string">
+    <field name="regionalNodesPositive" type="integer">
       <bind-xml name="regionalNodesPositive" node="attribute" />
     </field>
-    <field name="regionalNodesExamined" type="string">
+    <field name="regionalNodesExamined" type="integer">
       <bind-xml name="regionalNodesExamined" node="attribute" />
     </field>
     <field name="bestAJCCStage" type="string">
@@ -1506,18 +1510,24 @@
     <field name="tumorMarker3" type="string">
       <bind-xml name="tumorMarker3" node="attribute" />
     </field>
+    <field name="regionalNodesExaminedQualifier" type="string">
+      <bind-xml name="regionalNodesExaminedQualifier" node="attribute" />
+    </field>
+    <field name="regionalNodesPositiveQualifier" type="string">
+      <bind-xml name="regionalNodesPositiveQualifier" node="attribute" />
+    </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.OtherTherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
-    <map-to xml="OtherTherapy" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="OtherTherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.NonCancerDirectedSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
-    <map-to xml="NonCancerDirectedSurgery" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="NonCancerDirectedSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
-  <class name="edu.duke.cabig.tumorregistry.domain.HemTransplantEndocrine" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
-    <map-to xml="HemTransplantEndocrine" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+  <class name="edu.duke.cabig.tumorregistry.domain.HemTransplantEndocrineProcedure" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
+    <map-to xml="HemTransplantEndocrineProcedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.FirstCourseTreatmentSummary">
-    <map-to xml="FirstCourseTreatmentSummary" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="FirstCourseTreatmentSummary" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1535,7 +1545,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Patient">
-    <map-to xml="Patient" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Patient" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1571,7 +1581,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Address">
-    <map-to xml="Address" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="Address" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1598,7 +1608,7 @@
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.ActivitySummary">
-    <map-to xml="ActivitySummary" ns-uri="gme://caCORE.caBIG/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <map-to xml="ActivitySummary" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -1615,6 +1625,10 @@
       <bind-xml name="summaryCharacterization" node="attribute" />
     </field>
   </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Radiation" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
+    <map-to xml="Radiation" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+
 
 
 <!-- Tumor Registry mappings... -->
