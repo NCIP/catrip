@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl"
+        table="CATISSUE_SPECIMEN"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <discriminator
+            column="SPECIMEN_CLASS"
+            type="string"
+        />
+
+        <property
+            name="type"
+            type="string"
+            update="true"
+            insert="true"
+            column="TYPE"
+            length="50"
+        />
+
+        <property
+            name="available"
+            type="boolean"
+            update="true"
+            insert="true"
+            column="AVAILABLE"
+        />
+
+        <property
+            name="positionDimensionOne"
+            type="int"
+            update="true"
+            insert="true"
+            column="POSITION_DIMENSION_ONE"
+            length="30"
+        />
+
+        <property
+            name="positionDimensionTwo"
+            type="int"
+            update="true"
+            insert="true"
+            column="POSITION_DIMENSION_TWO"
+            length="50"
+        />
+
+        <property
+            name="barcode"
+            type="string"
+            update="true"
+            insert="true"
+            column="BARCODE"
+            length="50"
+            unique="true"
+        />
+
+        <property
+            name="comments"
+            type="string"
+            update="true"
+            insert="true"
+            column="COMMENTS"
+            length="200"
+        />
+
+        <property
+            name="activityStatus"
+            type="string"
+            update="true"
+            insert="true"
+            column="ACTIVITY_STATUS"
+            length="50"
+        />
+
+        <many-to-one
+            name="parentSpecimen"
+            class="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PARENT_SPECIMEN_ID"
+        />
+
+        <set
+            name="biohazardCollection"
+            table="CATISSUE_SPECIMEN_BIOHZ_REL"
+            lazy="false"
+            inverse="false"
+            cascade="none"
+            sort="unsorted"
+        >
+
+              <key
+                  column="SPECIMEN_ID"
+              />
+
+              <many-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.BiohazardImpl"
+                  column="BIOHAZARD_ID"
+                  outer-join="auto"
+              />
+
+        </set>
+
+        <set
+            name="specimenEventCollection"
+            table="CATISSUE_SPECIMEN_EVENT"
+            lazy="false"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="SPECIMEN_ID"
+              />
+
+              <one-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl"
+              />
+        </set>
+
+        <set
+            name="childrenSpecimen"
+            table="CATISSUE_SPECIMEN"
+            lazy="false"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="PARENT_SPECIMEN_ID"
+              />
+
+              <one-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl"
+              />
+        </set>
+
+        <many-to-one
+            name="storageContainer"
+            class="edu.wustl.catissuecore.domainobject.impl.StorageContainerImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="STORAGE_CONTAINER_IDENTIFIER"
+        />
+
+        <set
+            name="externalIdentifierCollection"
+            table="CATISSUE_EXTERNAL_IDENTIFIER"
+            lazy="false"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="SPECIMEN_ID"
+              />
+
+              <one-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.ExternalIdentifierImpl"
+              />
+        </set>
+
+        <many-to-one
+            name="specimenCollectionGroup"
+            class="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SPECIMEN_COLLECTION_GROUP_ID"
+        />
+
+        <many-to-one
+            name="specimenCharacteristics"
+            class="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SPECIMEN_CHARACTERISTICS_ID"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Specimen.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.FluidSpecimenImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Fluid"
+        >
+        <property
+            name="quantityInMilliliter"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+        <property
+            name="availableQuantityInMilliliter"
+            type="double"
+            update="true"
+            insert="true"
+            column="AVAILABLE_QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-FluidSpecimen.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Cell"
+        >
+        <property
+            name="quantityInCellCount"
+            type="int"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+        <property
+            name="availableQuantityInCellCount"
+            type="int"
+            update="true"
+            insert="true"
+            column="AVAILABLE_QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-CellSpecimen.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Molecular"
+        >
+        <property
+            name="concentrationInMicrogramPerMicroliter"
+            type="double"
+            update="true"
+            insert="true"
+            column="CONCENTRATION"
+            length="50"
+        />
+
+        <property
+            name="quantityInMicrogram"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+        <property
+            name="availableQuantityInMicrogram"
+            type="double"
+            update="true"
+            insert="true"
+            column="AVAILABLE_QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-MolecularSpecimen.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Tissue"
+        >
+        <property
+            name="quantityInGram"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+        <property
+            name="availableQuantityInGram"
+            type="double"
+            update="true"
+            insert="true"
+            column="AVAILABLE_QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-TissueSpecimen.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

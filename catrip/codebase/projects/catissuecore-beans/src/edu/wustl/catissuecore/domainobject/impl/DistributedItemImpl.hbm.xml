@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.DistributedItemImpl"
+        table="CATISSUE_DISTRIBUTED_ITEM"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <property
+            name="quantity"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="30"
+        />
+
+        <many-to-one
+            name="specimen"
+            class="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SPECIMEN_ID"
+        />
+
+        <many-to-one
+            name="distribution"
+            class="edu.wustl.catissuecore.domainobject.impl.DistributionImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="DISTRIBUTION_ID"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-DistributedItem.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

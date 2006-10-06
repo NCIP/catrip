@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.StorageTypeImpl"
+        table="CATISSUE_STORAGE_TYPE"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <property
+            name="type"
+            type="string"
+            update="true"
+            insert="true"
+            column="TYPE"
+            length="50"
+            not-null="true"
+            unique="true"
+        />
+
+        <property
+            name="defaultTempratureInCentigrade"
+            type="double"
+            update="true"
+            insert="true"
+            column="DEFAULT_TEMP_IN_CENTIGRADE"
+            length="30"
+        />
+
+        <property
+            name="oneDimensionLabel"
+            type="string"
+            update="true"
+            insert="true"
+            column="ONE_DIMENSION_LABEL"
+            length="50"
+        />
+
+        <property
+            name="twoDimensionLabel"
+            type="string"
+            update="true"
+            insert="true"
+            column="TWO_DIMENSION_LABEL"
+            length="50"
+        />
+
+        <many-to-one
+            name="defaultStorageCapacity"
+            class="edu.wustl.catissuecore.domainobject.impl.StorageContainerCapacityImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="STORAGE_CONTAINER_CAPACITY_ID"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-StorageType.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
