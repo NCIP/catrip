@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CQLQuery xmlns="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery
+C:\CVS-CodeBase\catrip\codebase\projects\data\schema\1_gov.nih.nci.cagrid.CQLQuery.xsd">
+
+	<Target name="edu.duke.catrip.cae.domain.general.Participant">
+	    <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+		<Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection">
+		    <Attribute name="totalScore" predicate="GREATER_THAN" value="7"/>
+		</Association>
+	    </Association>
+	</Target>	 
+	 
+</CQLQuery>
+
+
+<!--
+Gnerated HQL from LocalHQLQueryProcessor..
+
+From edu.duke.catrip.cae.domain.general.Participant as xxTargetAliasxx where 
+	xxTargetAliasxx.class = edu.duke.catrip.cae.domain.general.Participant and 
+	xxTargetAliasxx.annotationEventParametersCollection.id in 
+	(select id From edu.pitt.cabig.cae.domain.general.AnnotationEventParameters where 
+	annotationSetCollection.id in (select id From edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade 
+	where totalScore > '4'))
+
+Converted SQL .. 
+
+select participan0_.annotatable_entity_id as ID16_, participan0_.last_Name as last2_17_, participan0_.first_Name as first3_17_, participan0_.birth_Date as birth4_17_, participan0_.Patient_Identifier as Patient5_17_, participan0_.gender as gender17_, participan0_.race as race17_, participan0_.ethnicity as ethnicity17_ from 
+Participant participan0_ inner join annotatable_entity participan0_1_ on participan0_.annotatable_entity_id=participan0_1_.ID, 
+Annotation_Event_Parameter annotation1_ where participan0_.annotatable_entity_id=annotation1_.annotatable_entity_id and 
+case when participan0_.annotatable_entity_id is not null then 1 end=1 and (annotation1_.event_parameters_id in 
+(select annotation2_.event_parameters_id from Annotation_Event_Parameter annotation2_ inner join event_parameters annotation2_1_ on 
+annotation2_.event_parameters_id=annotation2_1_.ID, annotation_set annotation3_ where 
+annotation2_.event_parameters_id=annotation3_.annotation_event_parm_id and 
+(annotation3_.ID in (select nottingham4_.id from BREAST_NOTT_HISTOPATH_GRADES nottingham4_ inner join annotation_set 
+nottingham4_1_ on nottingham4_.id=nottingham4_1_.ID where nottingham4_.TOTAL_SCORE>'7'))))
+
+
+Converted SQL based Critera LocalQueryProcessor 
+
+select this_.annotatable_entity_id as ID16_2_, this_.last_Name as last2_17_2_, this_.first_Name as first3_17_2_, this_.birth_Date as birth4_17_2_, this_.Patient_Identifier as Patient5_17_2_, this_.gender as gender17_2_, this_.race as race17_2_, this_.ethnicity as ethnicity17_2_, annotation1_.event_parameters_id as ID20_0_, annotation1_1_.TIME_STAMP as TIME2_20_0_, annotation1_.source as source21_0_, annotation1_.source_date as source3_21_0_, annotation2_.ID as ID0_1_, annotation2_1_.OTHER_FINDINGS as OTHER2_1_1_, annotation2_2_.SPATIAL_REL_TO_PATIENT as SPATIAL2_2_1_, annotation2_2_.OTHER_SPA_REL_TO_PATIENT as OTHER3_2_1_, annotation2_2_.MVR as MVR2_1_, 
+annotation2_3_.CLOSEST_NEOPLASM_PRESENT as CLOSEST2_3_1_, annotation2_3_.DIS_TO_CLOSEST_NEOPLASM as DIS3_3_1_, annotation2_4_.NEOPLASM_PRESENT as NEOPLASM2_4_1_, annotation2_4_.EXTENT_INVOLVEMENT as EXTENT3_4_1_, annotation2_4_.OTHER_EXTENT_INVOLVEMENT as OTHER4_4_1_, annotation2_5_.SYSTEM_NAME as SYSTEM2_5_1_, annotation2_5_.SCORE as SCORE5_1_, annotation2_5_.SCORE_MVR as SCORE4_5_1_, annotation2_5_.MITOTIC_COUNT as MITOTIC5_5_1_, annotation2_6_.TUBULE_FORMATION as TUBULE2_6_1_, annotation2_6_.NUCLEAR_PLEOMORPHISM as NUCLEAR3_6_1_, annotation2_6_.MITOTIC_COUNT as MITOTIC4_6_1_, annotation2_6_.TOTAL_SCORE as TOTAL5_6_1_, annotation2_6_.TOTAL_SCORE_MVR as TOTAL6_6_1_, annotation2_7_.OTHER_SURGICAL_PROCEDURE as OTHER2_7_1_, annotation2_7_.LYMPH_NODE_PROCEDURE as LYMPH3_7_1_, 
+annotation2_7_.LATERALITY as LATERALITY7_1_, annotation2_7_.LATERALITY_MVR as LATERALITY5_7_1_, annotation2_7_.SURGICAL_PROCEDURE_MVR as SURGICAL6_7_1_, annotation2_8_.GREATEST_DIMENSION as GREATEST2_9_1_, annotation2_8_.ADDITIONAL_DIMENSION_Y as ADDITIONAL3_9_1_, annotation2_8_.ADDITIONAL_DIMENSION_Z as ADDITIONAL4_9_1_, annotation2_8_.MVR as MVR9_1_, annotation2_9_.LOCATION_MVR as LOCATION2_10_1_, annotation2_9_.VENOUS_LYMPHATIC_INVASION as VENOUS3_10_1_, annotation2_10_.NAME as NAME13_1_, annotation2_10_.NAME_MVR as NAME3_13_1_, annotation2_10_.OTHER_NAME as OTHER4_13_1_, annotation2_11_.NUMBER_NODES_EXAMINED as NUMBER2_14_1_, annotation2_11_.NUMBER_NODES_INVOLVED as NUMBER3_14_1_, annotation2_11_.OTHER_MET_ANATOMIC_SITE as OTHER4_14_1_, annotation2_11_.CATEGORY as CATEGORY14_1_, annotation2_11_.PRIMARY_TUMOR_FINDING as PRIMARY6_14_1_, 
+annotation2_11_.REGIONAL_NODES_FINDING as REGIONAL7_14_1_, annotation2_11_.DISTANT_MET_FINDING as DISTANT8_14_1_, case when annotation2_3_.id is not null then 3 when annotation2_4_.id is not null then 4 when annotation2_1_.id is not null then 1 when annotation2_2_.id is not null then 2 when annotation2_5_.id is not null then 5 when annotation2_6_.id is not null then 6 when annotation2_7_.id is not null then 7 when annotation2_8_.id is not null then 8 when annotation2_9_.id is not null then 9 when annotation2_10_.id is not null then 10 when annotation2_11_.id is not null then 11 when annotation2_.ID is not null then 0 end as clazz_1_ from Participant this_ inner join annotatable_entity this_1_ on this_.annotatable_entity_id=this_1_.ID inner join Annotation_Event_Parameter annotation1_ on this_.annotatable_entity_id=annotation1_.annotatable_entity_id left outer join event_parameters annotation1_1_ on annotation1_.event_parameters_id=annotation1_1_.ID inner join annotation_set annotation2_ 
+on annotation1_.event_parameters_id=annotation2_.annotation_event_parm_id left outer join ADDITIONAL_FINDINGS annotation2_1_ on annotation2_.ID=annotation2_1_.id left outer join BREAST_SURGICAL_MARGINS annotation2_2_ on annotation2_.ID=annotation2_2_.id left outer join BREAST_NEG_SURGICAL_MARGINS annotation2_3_ on annotation2_.ID=annotation2_3_.id 
+left outer join BREAST_POS_SURGICAL_MARGINS annotation2_4_ on annotation2_.ID=annotation2_4_.id left outer join BREAST_OTHER_HISTOPATH_GRADES 
+annotation2_5_ on annotation2_.ID=annotation2_5_.id left outer join BREAST_NOTT_HISTOPATH_GRADES annotation2_6_ on 
+annotation2_.ID=annotation2_6_.id left outer join BREAST_SUR_PATHO_SPECIMANS annotation2_7_ on annotation2_.ID=annotation2_7_.id 
+left outer join THREE_DIMENSIONAL_SIZES annotation2_8_ on annotation2_.ID=annotation2_8_.id left outer join INVASIVE_BREAST_CARCINOMA annotation2_9_ on annotation2_.ID=annotation2_9_.id left outer join BREAST_NEO_HSTOPTHLGC_TYPES annotation2_10_ on annotation2_.ID=annotation2_10_.id 
+left outer join BREAST_CANCER_TNMF_FINDINGS annotation2_11_ on annotation2_.ID=annotation2_11_.id where annotation2_6_.TOTAL_SCORE>?
+
+
+
+-->
+
+
