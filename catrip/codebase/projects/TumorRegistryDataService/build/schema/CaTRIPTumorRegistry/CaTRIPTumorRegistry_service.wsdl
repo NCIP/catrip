@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="CaTRIPTumorRegistry" targetNamespace="http://catriptumorregistry.cagrid.nci.nih.gov/CaTRIPTumorRegistry/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:binding="http://catriptumorregistry.cagrid.nci.nih.gov/CaTRIPTumorRegistry/bindings" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:import namespace="http://catriptumorregistry.cagrid.nci.nih.gov/CaTRIPTumorRegistry/bindings" location="CaTRIPTumorRegistry_bindings.wsdl"/>
-  <wsdl:service name="CaTRIPTumorRegistryService">
-    <wsdl:port name="CaTRIPTumorRegistryPortTypePort" binding="binding:CaTRIPTumorRegistryPortTypeSOAPBinding">
-      <soap:address location="http://localhost:8080/wsrf/services/"/>
-    </wsdl:port>
-  </wsdl:service>
-</wsdl:definitions>
