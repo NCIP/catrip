@@ -41,20 +41,31 @@ public class DeIdServiceImpl
 	{
 		Properties props = null;
 		
-		// try to load from axis home
-		if (props == null) {
-			String axis2Home = System.getenv("AXIS2_HOME");
-			if (axis2Home != null) {
-				props = new Properties();
-				BufferedInputStream is = new BufferedInputStream(new FileInputStream(
-					new File(axis2Home, "repository" + File.separator + "deid-config.properties")
-				));
-				props.load(is);
-				is.close();
-			}
+		String axisPath = "repository" + File.separator + "services" + File.separator + "DeIdService" + File.separator + "conf" + File.separator + "deid-config.properties";
+		String tomcatPath = "webapps" + File.separator + "axis2" + File.separator + "WEB-INF" + File.separator + "services" + File.separator + "DeIdService" + File.separator + "conf" + File.separator + "deid-config.properties";
+		
+		File[] files = new File[] {
+			new File(System.getProperty("user.home"), axisPath),
+			new File(System.getProperty("user.home"), ".." + File.separator + axisPath),
+			new File(System.getProperty("user.home"), tomcatPath),
+			new File(System.getProperty("user.home"), ".." + File.separator + tomcatPath),
+			new File(System.getenv("AXIS2_HOME"), axisPath),
+			new File(System.getenv("AXIS2_HOME"), ".." + File.separator + axisPath),
+			new File(System.getenv("CATALINA_HOME"), tomcatPath),
+			new File(System.getenv("CATALINA_HOME"), ".." + File.separator + tomcatPath),
+		};
+		
+		for (File file : files) {
+			if (! file.exists()) continue;
+			
+			props = new Properties();
+			BufferedInputStream is = new BufferedInputStream(new FileInputStream(file));
+			props.load(is);
+			is.close();
+			break;
 		}
 		
-		// try to load from 
+		// try to load from classpath
 		if (props == null) {
 	        Class clazz = Object.class;
 			InputStream is = clazz.getResourceAsStream("/edu/duke/cabig/catrip/deid/deid-config.properties");
@@ -65,7 +76,7 @@ public class DeIdServiceImpl
 			}
 		}
 		
-		if (props == null) throw new IOException("could not load deid service properties");		
+		if (props == null) throw new IOException("could not load deid service properties (" + System.getProperty("user.dir") + ")");		
 		return props;
 	}
 	
