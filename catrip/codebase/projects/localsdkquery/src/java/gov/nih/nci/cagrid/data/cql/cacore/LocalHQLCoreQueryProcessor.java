@@ -9,6 +9,7 @@ import gov.nih.nci.cagrid.data.QueryProcessingException;
 import gov.nih.nci.cagrid.data.cql.LazyCQLQueryProcessor;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsUtil;
 import gov.nih.nci.common.util.HQLCriteria;
+import gov.nih.nci.system.applicationservice.ApplicationException;
 import gov.nih.nci.system.applicationservice.ApplicationService;
 
 import java.io.ByteArrayInputStream;
@@ -17,10 +18,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
@@ -35,14 +39,15 @@ import org.hibernate.Session;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.1 2006-10-06 14:19:12 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.2 2006-10-09 17:40:21 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
 	public static final String APPLICATION_SERVICE_URL = "appserviceUrl";
         public static final String HIBERNATE_CONFIG_FILE = "hibernateConfigFile";
 	
-	private static Logger LOG = Logger.getLogger(HQLCoreQueryProcessor.class);
+	private static Logger LOG = Logger.getLogger(LocalHQLCoreQueryProcessor.class);
+        private static Map cache = null;
 	
 	//private ApplicationService coreService;
 	private StringBuffer wsddContents; 
@@ -112,16 +117,20 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		return coreResultsList.iterator();
 	}
 	
-	
+
+    
 	private List queryCoreService(CQLQuery query) 
 		throws MalformedQueryException, QueryProcessingException {
-		// get the caCORE application service
-		//ApplicationService service = getApplicationService();
-		
+
+		 String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
+                //String hibernateCfgFile ="hibernate.cfg.xml";
+            
+            
 		// see if the target has subclasses
-		//boolean subclassesDetected = SubclassCheckCache.hasClassProperty(query.getTarget().getName(), service);
-		boolean subclassesDetected = false;
-		// generate the HQL to perform the query
+		boolean subclassesDetected = LocalSubclassCheckCache.hasClassProperty(query.getTarget().getName(),hibernateCfgFile);
+		//boolean subclassesDetected = false;
+		
+                // generate the HQL to perform the query
 		String hql = null;
 		if (subclassesDetected) {
 			// simplify the query by removing modifiers
@@ -136,7 +145,7 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		
 		// process the query
 		HQLCriteria hqlCriteria = new HQLCriteria(hql);
-                String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
+                
                 Session session = HibernateUtil.currentSession(hibernateCfgFile);
 		List targetObjects = null;
 		try {
@@ -226,20 +235,7 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		throw new NoSuchFieldException("No field " + name + " found on " + o.getClass().getName());
 	}
 	
-/*	
-	private ApplicationService getApplicationService() throws QueryProcessingException {
-		if (coreService == null) {
-			String url = getConfiguredParameters().getProperty(APPLICATION_SERVICE_URL);
-			if (url == null || url.length() == 0) {
-				throw new QueryProcessingException(
-					"Required parameter " + APPLICATION_SERVICE_URL + " was not defined!");
-			}
-			coreService = ApplicationService.getRemoteInstance(url);
-		}
-		return coreService;
-	}
 	
-*/	
     public Properties getRequiredParameters() {
             Properties params = new Properties();
             params.setProperty(APPLICATION_SERVICE_URL, DEFAULT_LOCALHOST_CACORE_URL);
