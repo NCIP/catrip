@@ -19,7 +19,7 @@ public class TestCGEMS extends TestCase {
 
     private String url = "http://localhost:8181/wsrf/services/cagrid/CGEMS";
     private String clientConfig = "src/gov/nih/nci/cagrid/cgems/client/client-config.wsdd";
-    public static String CQL_FILES_DIR = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\CGEMSDataServiceV2\\test\\cql";
+    public static String CQL_FILES_DIR = "cql";//C:\\CVS-CodeBase\\catrip\\codebase\\projects\\CGEMSDataServiceV2\\test\\cql";
 
     public TestCGEMS (String sTestName) {
         super(sTestName);
