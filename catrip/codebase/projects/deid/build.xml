@@ -174,11 +174,6 @@
             	<exclude name="**/*.java"/>
         	</fileset>
 		</copy>
-		<copy todir="${classes.dir}">
-			<fileset dir="${etc.dir}/axis2">
-            	<include name="**/*.xml"/>
-        	</fileset>
-		</copy>
 		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
@@ -229,22 +224,42 @@
 		</java>
 	</target>
 	-->
-	
+
+	<target name="createAAR" depends="jar">
+		<jar jarfile="${project.aarfile}">
+			<zipfileset dir="${lib.dir}" prefix="lib">
+				<include name="**/*.jar"/>
+			</zipfileset>
+			<zipfileset file="${project.jarfile}" prefix="lib"/>
+			<zipfileset dir="${etc.dir}/axis2" prefix=".">
+            	<include name="**/*.xml"/>
+        	</zipfileset>
+			<zipfileset file="${src.dir}/edu/duke/cabig/catrip/deid/deid-config.properties" prefix="conf"/>
+		</jar>
+	</target>
+
 	<!-- ============================================================== -->
 	<!-- Deploys the web service to the Axis2 container                 -->
 	<!-- ============================================================== -->
-	<target name="deployAxis2" depends="jar">
-		<mkdir dir="${env.AXIS2_HOME}/repository/services"/>
-		<copy file="${project.jarfile}" tofile="${env.AXIS2_HOME}/repository/services/${project.aarfile}"/>
-		<copy file="${src.dir}/edu/duke/cabig/catrip/deid/deid-config.properties" todir="${env.AXIS2_HOME}/repository/"/>
-		<copy todir="${env.AXIS2_HOME}/lib" flatten="true">
-			<fileset dir="${lib.dir}">
-				<include name="**/*.jar"/>
-			</fileset>
-			<fileset dir="${ext.lib.dir}">
-				<include name="**/*.jar"/>
-			</fileset>
-		</copy>
+	<target name="deployAxis" depends="createAAR">
+		<property name="deploy.dir" location="${env.AXIS2_HOME}/repository/services/DeIdService"/>
+		<mkdir dir="${deploy.dir}"/>
+		<delete dir="${deploy.dir}"/>
+		<mkdir dir="${deploy.dir}"/>
+		
+		<unjar src="${project.aarfile}" dest="${deploy.dir}"/>
+	</target>
+	
+	<!-- ============================================================== -->
+	<!-- Deploys the web service to the Tomcat container                -->
+	<!-- ============================================================== -->
+	<target name="deployTomcat" depends="createAAR">
+		<property name="deploy.dir" location="${env.CATALINA_HOME}/webapps/axis2/WEB-INF/services/DeIdService"/>
+		<mkdir dir="${deploy.dir}"/>
+		<delete dir="${deploy.dir}"/>
+		<mkdir dir="${deploy.dir}"/>
+
+		<unjar src="${project.aarfile}" dest="${deploy.dir}"/>
 	</target>
 
 	<!-- ============================================================== -->
