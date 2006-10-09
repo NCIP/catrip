@@ -19,7 +19,7 @@ public class DeIdServiceClientTest
 		super(name);
 		
 		service = new DeIdServiceClient(
-			System.getProperty("serviceUrl", "http://localhost:8080/axis2/services/catrip-deid-1.0")
+			System.getProperty("serviceUrl", "http://localhost:8080/axis2/services/DeIdService")
 		);
 	}
 
