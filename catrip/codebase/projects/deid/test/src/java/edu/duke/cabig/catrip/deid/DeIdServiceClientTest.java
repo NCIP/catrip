@@ -3,23 +3,23 @@
  */
 package edu.duke.cabig.catrip.deid;
 
+import edu.duke.cabig.catrip.deid.client.DeIdServiceClient;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
-public class DeIdServiceImplTest
+public class DeIdServiceClientTest
 	extends DeIdServiceTest
 {
 	private DeIdService service;
 	
-	public DeIdServiceImplTest(String name)
+	public DeIdServiceClientTest(String name) 
+		throws Exception
 	{
 		super(name);
 		
-		service = new DeIdServiceImpl(
-			System.getProperty("dbUrl", "jdbc:mysql://localhost/mysql"),
-			System.getProperty("user", "root"),
-			System.getProperty("password", "")
+		service = new DeIdServiceClient(
+			System.getProperty("serviceUrl", "http://localhost:8080/axis2/services/catrip-deid-1.0")
 		);
 	}
 
@@ -31,7 +31,7 @@ public class DeIdServiceImplTest
 	public static void main(String[] args) throws Exception
 	{
 		TestRunner runner = new TestRunner();
-		TestResult result = runner.doRun(new TestSuite(DeIdServiceImplTest.class));
+		TestResult result = runner.doRun(new TestSuite(DeIdServiceClientTest.class));
 		System.exit(result.errorCount() + result.failureCount());
 	}
 }

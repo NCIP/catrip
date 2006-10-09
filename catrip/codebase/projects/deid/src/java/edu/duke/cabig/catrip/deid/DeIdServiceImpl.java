@@ -3,26 +3,70 @@
  */
 package edu.duke.cabig.catrip.deid;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
 import java.util.Random;
+
+import edu.duke.cabig.catrip.deid.util.RandomUtils;
 
 public class DeIdServiceImpl
 	implements DeIdService
 {
-	public static final int RANDOM_SIZE = 40;
-	public static final char[] RANDOM_CHARS = new String("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890").toCharArray();
+	protected Random rand = new Random();
+	protected String dbUrl;
+	protected String user;
+	protected String password;
 	
-	private Random rand = new Random();
-	private String dbUrl;
-	private String user;
-	private String password;
-	
-	public DeIdServiceImpl()
+	public DeIdServiceImpl() 
+		throws IOException
 	{
 		super();
+
+		Properties props = loadProperties();
+		this.dbUrl = props.getProperty("dbUrl");
+		this.user = props.getProperty("user");
+		this.password = props.getProperty("password");
+	}
+	
+	protected Properties loadProperties()
+		throws IOException
+	{
+		Properties props = null;
+		
+		// try to load from axis home
+		if (props == null) {
+			String axis2Home = System.getenv("AXIS2_HOME");
+			if (axis2Home != null) {
+				props = new Properties();
+				BufferedInputStream is = new BufferedInputStream(new FileInputStream(
+					new File(axis2Home, "repository" + File.separator + "deid-config.properties")
+				));
+				props.load(is);
+				is.close();
+			}
+		}
+		
+		// try to load from 
+		if (props == null) {
+	        Class clazz = Object.class;
+			InputStream is = clazz.getResourceAsStream("/edu/duke/cabig/catrip/deid/deid-config.properties");
+			if (is != null) {
+				props = new Properties();
+				props.load(is);
+				is.close();
+			}
+		}
+		
+		if (props == null) throw new IOException("could not load deid service properties");		
+		return props;
 	}
 	
 	public DeIdServiceImpl(String dbUrl, String user, String password)
@@ -55,7 +99,7 @@ public class DeIdServiceImpl
 			int checkCount = 100;
 			do {
 				if (--checkCount == 0) throw new Exception("unable to find a random value for your phi");
-				val = generateRandomValue();
+				val = RandomUtils.generateRandomValue(rand);
 				rs = stmt.executeQuery("select count(id) from deid.deid where val='" + val + "'");
 				rs.next();
 				int count = rs.getInt(1);
@@ -69,19 +113,5 @@ public class DeIdServiceImpl
 		} finally {
 			try { con.close(); } catch (Exception e) { }
 		}
-	}
-	
-	protected String generateRandomValue()
-	{
-		return generateRandomValue(RANDOM_SIZE);
-	}
-	
-	protected String generateRandomValue(int len)
-	{
-		char[] ch = new char[len];
-		for (int i = 0; i < ch.length; i++) {
-			ch[i] = RANDOM_CHARS[rand.nextInt(RANDOM_CHARS.length)];
-		}
-		return new String(ch);
 	}
 }
