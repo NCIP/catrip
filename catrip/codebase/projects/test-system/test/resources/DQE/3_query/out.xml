@@ -1,0 +1,305 @@
+<queryResults targetClassname="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl">
+ <ns1:ObjectResult xmlns:ns1="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns2:TissueSpecimen id="1" type="Frozen Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="2" barcode="B32K" comments="" activityStatus="Active" quantityInGram="1221.0" availableQuantityInGram="1220.0" xmlns:ns2="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns1:ObjectResult>
+ <ns2:ObjectResult xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns3:TissueSpecimen id="3" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="100.0" availableQuantityInGram="100.0" xmlns:ns3="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns2:ObjectResult>
+ <ns3:ObjectResult xmlns:ns3="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns4:TissueSpecimen id="4" type="Frozen Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="8" barcode="e2gfqwerg" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns4="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns3:ObjectResult>
+ <ns4:ObjectResult xmlns:ns4="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns5:TissueSpecimen id="5" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.1" availableQuantityInGram="0.1" xmlns:ns5="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns4:ObjectResult>
+ <ns5:ObjectResult xmlns:ns5="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns6:TissueSpecimen id="6" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.5" availableQuantityInGram="0.5" xmlns:ns6="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns5:ObjectResult>
+ <ns6:ObjectResult xmlns:ns6="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns7:TissueSpecimen id="9" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="3" barcode="123456" comments="" activityStatus="Active" quantityInGram="1000.0" availableQuantityInGram="1000.0" xmlns:ns7="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns6:ObjectResult>
+ <ns7:ObjectResult xmlns:ns7="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns8:TissueSpecimen id="10" type="Frozen Tissue" available="true" positionDimensionOne="3" positionDimensionTwo="4" barcode="123456-01" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="495.0" xmlns:ns8="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns7:ObjectResult>
+ <ns8:ObjectResult xmlns:ns8="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns9:TissueSpecimen id="12" type="Frozen Tissue Slide" available="true" positionDimensionOne="1" positionDimensionTwo="1" barcode="w34y65e4yyju" comments="" activityStatus="Active" quantityInGram="0.1" availableQuantityInGram="0.04" xmlns:ns9="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns8:ObjectResult>
+ <ns9:ObjectResult xmlns:ns9="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns10:TissueSpecimen id="17" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="45.0" availableQuantityInGram="45.0" xmlns:ns10="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns9:ObjectResult>
+ <ns10:ObjectResult xmlns:ns10="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns11:TissueSpecimen id="18" type="Frozen Tissue" available="true" positionDimensionOne="14" positionDimensionTwo="12" comments="" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="200.0" xmlns:ns11="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns10:ObjectResult>
+ <ns11:ObjectResult xmlns:ns11="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns12:TissueSpecimen id="19" type="Frozen Tissue Slide" available="true" positionDimensionOne="2" positionDimensionTwo="22" comments="" activityStatus="Active" quantityInGram="233.0" availableQuantityInGram="233.0" xmlns:ns12="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns11:ObjectResult>
+ <ns12:ObjectResult xmlns:ns12="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns13:TissueSpecimen id="20" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns13="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns12:ObjectResult>
+ <ns13:ObjectResult xmlns:ns13="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns14:TissueSpecimen id="21" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns14="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns13:ObjectResult>
+ <ns14:ObjectResult xmlns:ns14="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns15:TissueSpecimen id="22" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="4" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns15="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns14:ObjectResult>
+ <ns15:ObjectResult xmlns:ns15="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns16:TissueSpecimen id="23" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="5" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns16="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns15:ObjectResult>
+ <ns16:ObjectResult xmlns:ns16="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns17:TissueSpecimen id="24" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="6" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns17="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns16:ObjectResult>
+ <ns17:ObjectResult xmlns:ns17="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns18:TissueSpecimen id="25" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="7" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns18="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns17:ObjectResult>
+ <ns18:ObjectResult xmlns:ns18="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns19:TissueSpecimen id="26" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="9" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns19="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns18:ObjectResult>
+ <ns19:ObjectResult xmlns:ns19="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns20:TissueSpecimen id="27" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="200.0" xmlns:ns20="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns19:ObjectResult>
+ <ns20:ObjectResult xmlns:ns20="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns21:TissueSpecimen id="29" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="5" comments="" activityStatus="Active" quantityInGram="300.0" availableQuantityInGram="300.0" xmlns:ns21="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns20:ObjectResult>
+ <ns21:ObjectResult xmlns:ns21="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns22:TissueSpecimen id="30" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns22="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns21:ObjectResult>
+ <ns22:ObjectResult xmlns:ns22="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns23:TissueSpecimen id="31" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns23="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns22:ObjectResult>
+ <ns23:ObjectResult xmlns:ns23="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns24:TissueSpecimen id="32" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns24="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns23:ObjectResult>
+ <ns24:ObjectResult xmlns:ns24="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns25:TissueSpecimen id="33" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns25="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns24:ObjectResult>
+ <ns25:ObjectResult xmlns:ns25="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns26:TissueSpecimen id="34" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="200.0" xmlns:ns26="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns25:ObjectResult>
+ <ns26:ObjectResult xmlns:ns26="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns27:TissueSpecimen id="35" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns27="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns26:ObjectResult>
+ <ns27:ObjectResult xmlns:ns27="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns28:TissueSpecimen id="36" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="400.0" availableQuantityInGram="400.0" xmlns:ns28="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns27:ObjectResult>
+ <ns28:ObjectResult xmlns:ns28="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns29:TissueSpecimen id="37" type="Frozen Tissue" available="true" positionDimensionOne="3" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns29="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns28:ObjectResult>
+ <ns29:ObjectResult xmlns:ns29="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns30:TissueSpecimen id="38" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns30="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns29:ObjectResult>
+ <ns30:ObjectResult xmlns:ns30="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns31:TissueSpecimen id="39" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns31="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns30:ObjectResult>
+ <ns31:ObjectResult xmlns:ns31="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns32:TissueSpecimen id="41" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns32="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns31:ObjectResult>
+ <ns32:ObjectResult xmlns:ns32="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns33:TissueSpecimen id="42" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns33="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns32:ObjectResult>
+ <ns33:ObjectResult xmlns:ns33="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns34:TissueSpecimen id="43" type="Not Specified" available="true" positionDimensionOne="3" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="200.0" xmlns:ns34="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns33:ObjectResult>
+ <ns34:ObjectResult xmlns:ns34="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns35:TissueSpecimen id="44" type="Frozen Tissue" available="true" positionDimensionOne="3" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns35="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns34:ObjectResult>
+ <ns35:ObjectResult xmlns:ns35="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns36:TissueSpecimen id="45" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns36="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns35:ObjectResult>
+ <ns36:ObjectResult xmlns:ns36="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns37:TissueSpecimen id="46" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns37="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns36:ObjectResult>
+ <ns37:ObjectResult xmlns:ns37="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns38:TissueSpecimen id="47" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns38="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns37:ObjectResult>
+ <ns38:ObjectResult xmlns:ns38="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns39:TissueSpecimen id="48" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns39="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns38:ObjectResult>
+ <ns39:ObjectResult xmlns:ns39="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns40:TissueSpecimen id="49" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="100.0" availableQuantityInGram="100.0" xmlns:ns40="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns39:ObjectResult>
+ <ns40:ObjectResult xmlns:ns40="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns41:TissueSpecimen id="50" type="Frozen Tissue" available="true" positionDimensionOne="4" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns41="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns40:ObjectResult>
+ <ns41:ObjectResult xmlns:ns41="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns42:TissueSpecimen id="51" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="4" comments="" activityStatus="Active" quantityInGram="500.0" availableQuantityInGram="500.0" xmlns:ns42="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns41:ObjectResult>
+ <ns42:ObjectResult xmlns:ns42="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns43:TissueSpecimen id="53" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="300.0" availableQuantityInGram="300.0" xmlns:ns43="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns42:ObjectResult>
+ <ns43:ObjectResult xmlns:ns43="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns44:TissueSpecimen id="54" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns44="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns43:ObjectResult>
+ <ns44:ObjectResult xmlns:ns44="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns45:TissueSpecimen id="55" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns45="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns44:ObjectResult>
+ <ns45:ObjectResult xmlns:ns45="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns46:TissueSpecimen id="56" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns46="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns45:ObjectResult>
+ <ns46:ObjectResult xmlns:ns46="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns47:TissueSpecimen id="57" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="4" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns47="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns46:ObjectResult>
+ <ns47:ObjectResult xmlns:ns47="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns48:TissueSpecimen id="58" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="5" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns48="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns47:ObjectResult>
+ <ns48:ObjectResult xmlns:ns48="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns49:TissueSpecimen id="59" type="Frozen Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="1" barcode="B32K2" comments="" activityStatus="Active" quantityInGram="3434.0" availableQuantityInGram="3434.0" xmlns:ns49="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns48:ObjectResult>
+ <ns49:ObjectResult xmlns:ns49="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns50:TissueSpecimen id="60" type="Frozen Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="2" barcode="B32K4" comments="" activityStatus="Active" quantityInGram="40.0" availableQuantityInGram="40.0" xmlns:ns50="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns49:ObjectResult>
+ <ns50:ObjectResult xmlns:ns50="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns51:TissueSpecimen id="61" type="Frozen Tissue Block" available="true" positionDimensionOne="23" positionDimensionTwo="3" barcode="B32K44" comments="" activityStatus="Active" quantityInGram="20.0" availableQuantityInGram="20.0" xmlns:ns51="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns50:ObjectResult>
+ <ns51:ObjectResult xmlns:ns51="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns52:TissueSpecimen id="62" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="4" comments="" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="200.0" xmlns:ns52="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns51:ObjectResult>
+ <ns52:ObjectResult xmlns:ns52="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns53:TissueSpecimen id="63" type="Microdissected" available="true" positionDimensionOne="2" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns53="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns52:ObjectResult>
+ <ns53:ObjectResult xmlns:ns53="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns54:TissueSpecimen id="64" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="4" comments="" activityStatus="Active" quantityInGram="600.0" availableQuantityInGram="600.0" xmlns:ns54="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns53:ObjectResult>
+ <ns54:ObjectResult xmlns:ns54="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns55:TissueSpecimen id="66" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="5" comments="" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="200.0" xmlns:ns55="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns54:ObjectResult>
+ <ns55:ObjectResult xmlns:ns55="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns56:TissueSpecimen id="67" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="5.0" availableQuantityInGram="5.0" xmlns:ns56="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns55:ObjectResult>
+ <ns56:ObjectResult xmlns:ns56="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns57:TissueSpecimen id="70" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns57="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns56:ObjectResult>
+ <ns57:ObjectResult xmlns:ns57="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns58:TissueSpecimen id="71" type="Fixed Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns58="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns57:ObjectResult>
+ <ns58:ObjectResult xmlns:ns58="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns59:TissueSpecimen id="73" type="Fresh Tissue" available="true" positionDimensionOne="6" positionDimensionTwo="6" comments="" activityStatus="Active" quantityInGram="34.0" availableQuantityInGram="34.0" xmlns:ns59="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns58:ObjectResult>
+ <ns59:ObjectResult xmlns:ns59="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns60:TissueSpecimen id="74" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.5" availableQuantityInGram="0.5" xmlns:ns60="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns59:ObjectResult>
+ <ns60:ObjectResult xmlns:ns60="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns61:TissueSpecimen id="75" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.4" availableQuantityInGram="0.4" xmlns:ns61="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns60:ObjectResult>
+ <ns61:ObjectResult xmlns:ns61="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns62:TissueSpecimen id="77" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.6" availableQuantityInGram="0.6" xmlns:ns62="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns61:ObjectResult>
+ <ns62:ObjectResult xmlns:ns62="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns63:TissueSpecimen id="78" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.6" availableQuantityInGram="0.6" xmlns:ns63="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns62:ObjectResult>
+ <ns63:ObjectResult xmlns:ns63="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns64:TissueSpecimen id="79" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.8" availableQuantityInGram="0.8" xmlns:ns64="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns63:ObjectResult>
+ <ns64:ObjectResult xmlns:ns64="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns65:TissueSpecimen id="80" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.7" availableQuantityInGram="0.7" xmlns:ns65="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns64:ObjectResult>
+ <ns65:ObjectResult xmlns:ns65="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns66:TissueSpecimen id="81" type="Frozen Tissue" available="true" positionDimensionOne="3" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.6" availableQuantityInGram="0.6" xmlns:ns66="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns65:ObjectResult>
+ <ns66:ObjectResult xmlns:ns66="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns67:TissueSpecimen id="82" type="Frozen Tissue" available="true" positionDimensionOne="4" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.7" availableQuantityInGram="0.7" xmlns:ns67="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns66:ObjectResult>
+ <ns67:ObjectResult xmlns:ns67="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns68:TissueSpecimen id="83" type="Frozen Tissue" available="true" positionDimensionOne="5" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="1.1" availableQuantityInGram="1.1" xmlns:ns68="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns67:ObjectResult>
+ <ns68:ObjectResult xmlns:ns68="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns69:TissueSpecimen id="84" type="Frozen Tissue" available="true" positionDimensionOne="6" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.9" xmlns:ns69="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns68:ObjectResult>
+ <ns69:ObjectResult xmlns:ns69="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns70:TissueSpecimen id="85" type="Frozen Tissue" available="true" positionDimensionOne="7" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.57" availableQuantityInGram="0.57" xmlns:ns70="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns69:ObjectResult>
+ <ns70:ObjectResult xmlns:ns70="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns71:TissueSpecimen id="86" type="Frozen Tissue" available="true" positionDimensionOne="8" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.8" availableQuantityInGram="0.8" xmlns:ns71="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns70:ObjectResult>
+ <ns71:ObjectResult xmlns:ns71="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns72:TissueSpecimen id="87" type="Frozen Tissue" available="true" positionDimensionOne="9" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="1.1" availableQuantityInGram="1.1" xmlns:ns72="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns71:ObjectResult>
+ <ns72:ObjectResult xmlns:ns72="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns73:TissueSpecimen id="89" type="Frozen Tissue" available="true" positionDimensionOne="4" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.75" availableQuantityInGram="0.75" xmlns:ns73="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns72:ObjectResult>
+ <ns73:ObjectResult xmlns:ns73="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns74:TissueSpecimen id="90" type="Frozen Tissue" available="true" positionDimensionOne="5" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.68" availableQuantityInGram="0.68" xmlns:ns74="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns73:ObjectResult>
+ <ns74:ObjectResult xmlns:ns74="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns75:TissueSpecimen id="92" type="Frozen Tissue" available="true" positionDimensionOne="9" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.8" availableQuantityInGram="0.8" xmlns:ns75="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns74:ObjectResult>
+ <ns75:ObjectResult xmlns:ns75="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns76:TissueSpecimen id="95" type="Frozen Tissue" available="true" positionDimensionOne="8" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.7" availableQuantityInGram="0.7" xmlns:ns76="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns75:ObjectResult>
+ <ns76:ObjectResult xmlns:ns76="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns77:TissueSpecimen id="98" type="Frozen Tissue" available="true" positionDimensionOne="10" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.8" availableQuantityInGram="0.8" xmlns:ns77="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns76:ObjectResult>
+ <ns77:ObjectResult xmlns:ns77="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns78:TissueSpecimen id="101" type="Frozen Tissue" available="true" positionDimensionOne="10" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.9" xmlns:ns78="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns77:ObjectResult>
+ <ns78:ObjectResult xmlns:ns78="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns79:TissueSpecimen id="102" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="1.2" availableQuantityInGram="1.0" xmlns:ns79="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns78:ObjectResult>
+ <ns79:ObjectResult xmlns:ns79="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns80:TissueSpecimen id="103" type="Frozen Tissue" available="true" positionDimensionOne="6" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="1.4" availableQuantityInGram="1.4" xmlns:ns80="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns79:ObjectResult>
+ <ns80:ObjectResult xmlns:ns80="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns81:TissueSpecimen id="113" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="100.0" availableQuantityInGram="100.0" xmlns:ns81="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns80:ObjectResult>
+ <ns81:ObjectResult xmlns:ns81="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns82:TissueSpecimen id="114" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.6" availableQuantityInGram="0.6" xmlns:ns82="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns81:ObjectResult>
+ <ns82:ObjectResult xmlns:ns82="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns83:TissueSpecimen id="118" type="Not Specified" available="true" positionDimensionOne="3" positionDimensionTwo="3" barcode="45w4wd" comments="erwewe" activityStatus="Active" quantityInGram="2.0" availableQuantityInGram="2.0" xmlns:ns83="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns82:ObjectResult>
+ <ns83:ObjectResult xmlns:ns83="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns84:TissueSpecimen id="119" type="Fresh Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="5.0" availableQuantityInGram="5.0" xmlns:ns84="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns83:ObjectResult>
+ <ns84:ObjectResult xmlns:ns84="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns85:TissueSpecimen id="121" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.2" availableQuantityInGram="0.2" xmlns:ns85="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns84:ObjectResult>
+ <ns85:ObjectResult xmlns:ns85="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns86:TissueSpecimen id="123" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="12.0" availableQuantityInGram="12.0" xmlns:ns86="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns85:ObjectResult>
+ <ns86:ObjectResult xmlns:ns86="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns87:TissueSpecimen id="124" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns87="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns86:ObjectResult>
+ <ns87:ObjectResult xmlns:ns87="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns88:TissueSpecimen id="125" type="Fresh Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="9" comments="" activityStatus="Active" quantityInGram="50.0" availableQuantityInGram="50.0" xmlns:ns88="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns87:ObjectResult>
+ <ns88:ObjectResult xmlns:ns88="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns89:TissueSpecimen id="126" type="Fixed Tissue Slide" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.5" availableQuantityInGram="0.5" xmlns:ns89="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns88:ObjectResult>
+ <ns89:ObjectResult xmlns:ns89="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns90:TissueSpecimen id="128" type="Microdissected" available="true" positionDimensionOne="1" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="0.25" availableQuantityInGram="0.25" xmlns:ns90="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns89:ObjectResult>
+ <ns90:ObjectResult xmlns:ns90="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns91:TissueSpecimen id="129" type="Microdissected" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="0.1" availableQuantityInGram="0.1" xmlns:ns91="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns90:ObjectResult>
+ <ns91:ObjectResult xmlns:ns91="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns92:TissueSpecimen id="130" type="Fixed Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="2" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns92="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns91:ObjectResult>
+ <ns92:ObjectResult xmlns:ns92="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns93:TissueSpecimen id="131" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="4" comments="tissue sample for Barbara's study" activityStatus="Active" quantityInGram="2.0" availableQuantityInGram="2.0" xmlns:ns93="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns92:ObjectResult>
+ <ns93:ObjectResult xmlns:ns93="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns94:TissueSpecimen id="132" type="Frozen Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="7" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns94="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns93:ObjectResult>
+ <ns94:ObjectResult xmlns:ns94="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns95:TissueSpecimen id="133" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="8" comments="" activityStatus="Active" quantityInGram="2.0" availableQuantityInGram="2.0" xmlns:ns95="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns94:ObjectResult>
+ <ns95:ObjectResult xmlns:ns95="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns96:TissueSpecimen id="134" type="Fresh Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="10.0" xmlns:ns96="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns95:ObjectResult>
+ <ns96:ObjectResult xmlns:ns96="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns97:TissueSpecimen id="138" type="Not Specified" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="12.0" availableQuantityInGram="12.0" xmlns:ns97="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns96:ObjectResult>
+ <ns97:ObjectResult xmlns:ns97="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns98:TissueSpecimen id="139" type="Frozen Tissue Slide" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="12.0" availableQuantityInGram="12.0" xmlns:ns98="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns97:ObjectResult>
+ <ns98:ObjectResult xmlns:ns98="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns99:TissueSpecimen id="140" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="1" barcode="barcode456" comments="" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="1.0" xmlns:ns99="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns98:ObjectResult>
+ <ns99:ObjectResult xmlns:ns99="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns100:TissueSpecimen id="141" type="Frozen Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="4.0" availableQuantityInGram="3.0" xmlns:ns100="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns99:ObjectResult>
+ <ns100:ObjectResult xmlns:ns100="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns101:TissueSpecimen id="143" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="3" comments="" activityStatus="Active" quantityInGram="6.0" availableQuantityInGram="5.0" xmlns:ns101="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns100:ObjectResult>
+ <ns101:ObjectResult xmlns:ns101="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns102:TissueSpecimen id="144" type="Not Specified" available="true" positionDimensionOne="2" positionDimensionTwo="1" comments="" activityStatus="Active" quantityInGram="0.5" availableQuantityInGram="0.5" xmlns:ns102="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns101:ObjectResult>
+</queryResults>
