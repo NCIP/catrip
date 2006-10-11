@@ -124,8 +124,6 @@
 	<classpathentry kind="lib" path="lib/asm-attrs.jar"/>
 	<classpathentry kind="lib" path="lib/c3p0-0.9.0.jar"/>
 	<classpathentry kind="lib" path="lib/cae_domain.jar"/>
-	<classpathentry kind="lib" path="lib/catissuecore_domain.jar"/>
-	<classpathentry kind="lib" path="lib/cgems_domain.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-2.1.3.jar"/>
 	<classpathentry kind="lib" path="lib/cleanimports.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections-2.1.1.jar"/>

@@ -114,7 +114,6 @@
 	<classpathentry kind="var" path="GT4_LOCATION/lib/xml-apis.jar"/>
 	<classpathentry kind="var" path="GT4_LOCATION/lib/xmlsec.jar"/>
 	<classpathentry kind="lib" path="lib/_consolidated.xml.mapping.TumorRegistry.jar"/>
-	<classpathentry kind="lib" path="lib/_tumor_registry_domain.jar"/>
 	<classpathentry kind="lib" path="lib/antlr-2.7.5H3.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/ehcache-1.1.jar"/>
