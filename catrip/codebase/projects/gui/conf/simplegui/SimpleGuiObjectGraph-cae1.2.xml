@@ -1,52 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
-	
-	
-	<service displayName="Tissue Bank" url="http://localhost:8080/wsrf/services/cagrid/CaTissueCore_Full" metadataXml="_SimpleGUI_caTissueCore_domainModel.xml" impls="true">
-		<targets>
-			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
-				<associatedObjectTree>
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"   roleName="specimenCollectionGroup" display="true">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber"   roleName="clinicalReport" display="true">
-							<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" displaybleAttributes="id"   roleName="participantMedicalIdentifier" display="false"/>
-						</Association>
-					</Association>
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl" displaybleAttributes="tissueSite,tissueSide,pathologicalStatus"   roleName="specimenCharacteristics" display="true"/>
-				</associatedObjectTree>
-				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
-							<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier"/>
-						</Association>
-					</Association>
-				</foreignAssociationOutboundPath>
-			</objectElement>
-			<objectElement className="edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl"   displaybleAttributes="barcode,activityStatus,type,quantityInCellCount,positionDimensionOne,positionDimensionTwo,available,availableQuantityInCellCount" display="true">
-				<associatedObjectTree>
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"   roleName="specimenCollectionGroup" display="true">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber"   roleName="clinicalReport" display="true"/>
-					</Association>
-				</associatedObjectTree>
-				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
-							<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier"/>
-						</Association>
-					</Association>
-				</foreignAssociationOutboundPath>
-			</objectElement>
-		</targets>
-		<foreignAssociationInboundTree>
-			<foreignAssociationInboundPath className="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl"   cdeName="medicalRecordNumber" displaybleAttributes="sexGenotype,gender,race,ethnicity,activityStatus" display="true">
-				<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl">
-					<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl" roleName="participant"/>
-				</Association>
-			</foreignAssociationInboundPath>
-		</foreignAssociationInboundTree>
-	</service>
-	
-
-	
 	<service displayName="Clinical Annotation Engine" url="http://localhost:8080/wsrf_cae/services/cagrid/CAE" metadataXml="_SimpleGUI_CAE_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="edu.duke.catrip.cae.domain.general.Participant"   displaybleAttributes="gender,race,ethnicity" display="true">

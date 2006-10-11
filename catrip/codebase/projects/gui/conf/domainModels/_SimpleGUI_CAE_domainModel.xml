@@ -1067,7 +1067,7 @@
 					</ns19:ValueDomain>
 				</ns19:UMLAttribute>
 			</ns19:umlAttributeCollection>
-			<ns19:SemanticMetadata conceptCode="C47866" conceptDefinition="definition pending" conceptName="Three Dimensional Tumor Size" order="0" xsi:type="ns19:SemanticMetadata"/>
+			<ns19:SemanticMetadata conceptCode="C47866" conceptDefinition="definition pending" conceptName="Three Dimensional Size" order="0" xsi:type="ns19:SemanticMetadata"/>
 		</ns19:UMLClass>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<ns22:UMLClass className="AdditionalFindings" description="Significant pathologic findings that are present in addition to the tumor." id="18785753-F3E0-3542-E044-0003BA4529A9-CAE1-2" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTissueCAE" projectVersion="1" xsi:type="ns22:UMLClass" xmlns:ns22="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
