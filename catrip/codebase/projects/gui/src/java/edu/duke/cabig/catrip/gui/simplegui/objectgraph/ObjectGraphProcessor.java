@@ -12,6 +12,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
 
+
 public class ObjectGraphProcessor {
     private Document doc = null;
     public ObjectGraphProcessor(String filename) {
@@ -164,12 +165,16 @@ public class ObjectGraphProcessor {
                 //System.out.println(associationEle.getAttributeValue("className"));
                 while (associationEle!=null && associationEle.getChildren("Association").size() > 0 ) {
                     List assx = associationEle.getChildren("Association");
-                    //System.out.println(assx.size());
+//                    System.out.println("XXXXXXXXXXXXXXXXXXXXXX :"+assx.size());
                     Iterator itr = assx.iterator();
                     while (itr.hasNext()) {
-                        associatedObjects.add(buildGraphObject((Element)itr.next(),serviceName,remoteService));
-                        associationEle = associationEle.getChild("Association");
+                        Element e = (Element)itr.next();
+//                        System.out.println(" #####  :"+e.getAttribute("className")+"\n" );
+                        associatedObjects.add(buildGraphObject(e,serviceName,remoteService));
+//                        associationEle = associationEle.getChild("Association"); 
+                          // this line creates problem when there are more than 2 association element exist at same level. Moving it down works.
                     }
+                    associationEle = associationEle.getChild("Association");
                 }
             }
         } catch (Exception e) {
