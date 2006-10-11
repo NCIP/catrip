@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="clientConfigWsdd">C:\caBIG\catrip\codebase\projects\gui\conf\qe-client-config.wsdd</entry>
+<entry key="http://localhost:8080/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
+<entry key="http://localhost:8080/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
+<entry key="http://localhost:8080/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
+<entry key="http://localhost:8080/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
+</properties>
