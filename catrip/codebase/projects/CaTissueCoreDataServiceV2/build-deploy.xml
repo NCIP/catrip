@@ -90,11 +90,7 @@
 			</fileset>
 		</copy>
 		
-		<copy overwrite="true" toDir="${tomcat.deploy.dir}/classes">
-			<fileset dir="${basedir}">
-				<include name="catissuecore-hibernate.cfg.xml" />
-			</fileset>
-		</copy>	
+
 		<!-- prepare the jndi file -->
 		
 		<copy overwrite="true" todir="tmp" file="jndi-config.xml" filtering="true"/>

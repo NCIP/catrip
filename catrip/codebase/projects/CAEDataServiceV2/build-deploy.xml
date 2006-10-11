@@ -87,11 +87,7 @@
 				<include name="server-config.wsdd" />
 			</fileset>
 		</copy>
-		<copy overwrite="true" toDir="${tomcat.deploy.dir}/classes">
-			<fileset dir="${basedir}">
-				<include name="cae-hibernate.cfg.xml" />
-			</fileset>
-		</copy>
+
 		<!-- prepare the jndi file -->
 		
 		<copy overwrite="true" todir="tmp" file="jndi-config.xml" filtering="true"/>
