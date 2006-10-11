@@ -1143,6 +1143,24 @@
 			<ns24:SemanticMetadata conceptCode="C12345" conceptDefinition="Definition.." conceptName="Accession Characteristic" order="0" xsi:type="ns24:SemanticMetadata"/>
 		</ns24:UMLClass>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<ns24:UMLClass className="BreastCancerAccessionCharacteristics" description="description." id="18785753-F3D3-3542-E044-0003BA4529A9-CAE1-2N" packageName="edu.pitt.cabig.cae.domain.general" projectName="caTissueCAE" projectVersion="1" xsi:type="ns24:UMLClass" xmlns:ns24="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+			<ns24:umlAttributeCollection>
+				<ns24:UMLAttribute dataTypeName="java.util.Collection" description="description." name="surgicalProcedure" publicID="12345" version="1.0" xsi:type="ns24:UMLAttribute">
+					<ns24:SemanticMetadata conceptCode="C12345" conceptDefinition="description." conceptName="Surgical Procedure" order="0" xsi:type="ns24:SemanticMetadata"/>
+					<ns24:ValueDomain longName="java.lang.String" xsi:type="ns24:ValueDomain">
+						<ns24:enumerationCollection/>
+					</ns24:ValueDomain>
+				</ns24:UMLAttribute>
+				<ns24:UMLAttribute dataTypeName="java.lang.String" description="description." name="otherSurgicalProcedure" publicID="12345" version="1.0" xsi:type="ns24:UMLAttribute">
+					<ns24:SemanticMetadata conceptCode="C12345" conceptDefinition="description." conceptName="Other Surgical Procedure" order="0" xsi:type="ns24:SemanticMetadata"/>
+					<ns24:ValueDomain longName="java.lang.String" xsi:type="ns24:ValueDomain">
+						<ns24:enumerationCollection/>
+					</ns24:ValueDomain>
+				</ns24:UMLAttribute>
+			</ns24:umlAttributeCollection>
+			<ns24:SemanticMetadata conceptCode="C12345" conceptDefinition="Definition.." conceptName="Breast Cancer Accession Characteristic" order="0" xsi:type="ns24:SemanticMetadata"/>
+		</ns24:UMLClass>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<ns24:UMLClass className="BreastCancerBiomarkers" description="description." id="18785753-F3E4-3542-E044-0003BA4529A9-CAE1-2" packageName="edu.pitt.cabig.cae.domain.breast" projectName="caTissueCAE" projectVersion="1" xsi:type="ns24:UMLClass" xmlns:ns24="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns24:umlAttributeCollection>
 				<ns24:UMLAttribute dataTypeName="java.lang.String" description="description." name="estrogenReceptor" publicID="12345" version="1.0" xsi:type="ns24:UMLAttribute">
