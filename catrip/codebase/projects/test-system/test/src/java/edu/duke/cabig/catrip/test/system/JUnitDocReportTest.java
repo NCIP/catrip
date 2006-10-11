@@ -12,9 +12,9 @@ import junit.textui.TestRunner;
 
 import com.atomicobject.haste.framework.Story;
 
-import edu.duke.cabig.catrip.test.system.steps.CheckJUnitDocReportStep;
-import edu.duke.cabig.catrip.test.system.steps.CreateJUnitDocReportAntFile;
-import edu.duke.cabig.catrip.test.system.steps.RunJUnitDocReportStep;
+import edu.duke.cabig.catrip.test.system.steps.JUnitDocReportCheckStep;
+import edu.duke.cabig.catrip.test.system.steps.JUnitDocReportCreateAntFileStep;
+import edu.duke.cabig.catrip.test.system.steps.JUnitDocReportRunStep;
 
 /**
  * This is a integration test that tests the user's ability to run the JUnitDocReport ant task.
@@ -60,9 +60,9 @@ public class JUnitDocReportTest
 			));
 			
 			Vector steps = new Vector();
-			steps.add(new CreateJUnitDocReportAntFile(antFile, xmlDir, destFile, coberturaDir));
-			steps.add(new RunJUnitDocReportStep(antFile));
-			steps.add(new CheckJUnitDocReportStep(destFile));
+			steps.add(new JUnitDocReportCreateAntFileStep(antFile, xmlDir, destFile, coberturaDir));
+			steps.add(new JUnitDocReportRunStep(antFile));
+			steps.add(new JUnitDocReportCheckStep(destFile));
 			return steps;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
