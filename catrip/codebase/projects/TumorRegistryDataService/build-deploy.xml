@@ -61,8 +61,17 @@
 		<filter filtersfile="${service.properties.file}"/>
 	</target>
 	
+		<target name="jarWithHibernate">
+		        <jar jarfile="${lib.dir}/tumor_registry_domain.jar" update="true">
+		            	<fileset dir="${basedir}">
+			    		<include name="tumor_hibernate.cfg.xml" />
+			    		<include name="hibernate.properties" />
+				</fileset>
+		        </jar>
+    	</target>
+	
 	<!-- deploy  a gar to tomcat -->
-	<target name="deployTomcat" depends="addFilters, all" description="Deploys to CATALINA_HOME (to set the services properties file set the ant command line variable -Dservice.properties.file)">
+	<target name="deployTomcat" depends="jarWithHibernate,addFilters, all" description="Deploys to CATALINA_HOME (to set the services properties file set the ant command line variable -Dservice.properties.file)">
 		<echo message="Deploying service ${service.deployment.path} under Tomcat at ${tomcat.dir}" />
 
 		<property name="service.deployment.dir" value="${tomcat.deploy.dir}/etc/${service.deployment.dir.name}" />
@@ -118,8 +127,6 @@
 
 		<copy overwrite="true" toDir="${tomcat.deploy.dir}/classes">
           <fileset dir="${basedir}">
-            <include name="tumor_hibernate.cfg.xml" />
-            <include name="hibernate.properties" />
             <include name="log4j.properties" />
           </fileset>
         </copy> 
@@ -166,7 +173,7 @@
 	
 	
 	<!-- deploy a gar to globus -->
-	<target name="deployGlobus" depends="checkGlobus, createDeploymentGar" description="Deploys a gar to GLOBUS_LOCATION (to set the services properties file set the ant command line variable -Dservice.properties.file)">
+	<target name="deployGlobus" depends="jarWithHibernate,checkGlobus, createDeploymentGar" description="Deploys a gar to GLOBUS_LOCATION (to set the services properties file set the ant command line variable -Dservice.properties.file)">
 		<echo message="Deploying server to Globus Container" />
 		
 		<java classname="org.globus.bootstrap.AntBootstrap" fork="yes" failonerror="true">

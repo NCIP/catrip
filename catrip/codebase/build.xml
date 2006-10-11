@@ -190,6 +190,17 @@
 		</resolveDependencies>
 		<ant dir="${projects.dir}/CGEMSDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
+
+	<!-- =============================================================== -->
+	<!-- TumorRegistryDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-TumorRegistryDataService" depends="prepare" description="Builds the TumorRegistryDataService project">
+		<resolveDependencies extdir="${projects.dir}/TumorRegistryDataService">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/TumorRegistryDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
 	
 	
 	<!-- =============================================================== -->
@@ -232,6 +243,7 @@
 			<artifact refid="caTissueCAEDataService.jars" />
 			<artifact refid="caTissueCoreDataService.jars" />
 			<artifact refid="CGEMSDataService.jars" />
+			<artifact refid="TumorRegistryDataService.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
 	</target>

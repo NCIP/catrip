@@ -46,32 +46,32 @@ import java.io.FileInputStream;
 public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements CaTRIPTumorRegistryI {
     protected CaTRIPTumorRegistryPortType portType;
     private Object portTypeMutex;
-    
+
     public CaTRIPTumorRegistryClient(String url) throws MalformedURIException, RemoteException {
         this(url,null);
     }
-    
+
     public CaTRIPTumorRegistryClient(String url, GlobusCredential proxy) throws MalformedURIException, RemoteException {
         super(url,proxy);
         initialize();
     }
-    
+
     public CaTRIPTumorRegistryClient(EndpointReferenceType epr) throws MalformedURIException, RemoteException {
         this(epr,null);
     }
-    
+
     public CaTRIPTumorRegistryClient(EndpointReferenceType epr, GlobusCredential proxy) throws MalformedURIException, RemoteException {
         super(epr,proxy);
         initialize();
     }
-    
+
     private void initialize() throws RemoteException {
         this.portTypeMutex = new Object();
         this.portType = createPortType();
     }
-    
+
     private CaTRIPTumorRegistryPortType createPortType() throws RemoteException {
-        
+
         CaTRIPTumorRegistryServiceAddressingLocator locator = new CaTRIPTumorRegistryServiceAddressingLocator();
         // attempt to load our context sensitive wsdd file
         InputStream resourceAsStream = ClassUtils.getResourceAsStream(getClass(), "client-config.wsdd");
@@ -87,74 +87,50 @@ public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements 
         } catch (Exception e) {
             throw new RemoteException("Unable to locate portType:" + e.getMessage(), e);
         }
-        
+
         return port;
     }
-    
+
     public static void usage(){
         System.out.println(CaTRIPTumorRegistryClient.class.getName() + " -url <service url>");
     }
-    
+
     public static void main(String [] args){
         System.out.println("Running the Grid Service Client");
         try{
-            if(!(args.length < 2)){
-                if(args[0].equals("-url")){
-                    CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient(args[1]);
+
+                    CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient("http://localhost:8181/wsrf/services/cagrid/CaTRIPTumorRegistry");
                     // place client calls here if you want to use this main as a
                     // test....
-                    
-                    
-                    
-                    
-                    
-                    
+
                     client.getServiceSecurityMetadata();
-                    
-                    
+
+
                     CQLQuery cqlQuery = new CQLQuery();
-                    
+
                     Object target = new Object();
-                    
+
                     target.setName(Patient.class.getName());//WashU_sanju_baba
-                    
-                    
+
+
                     target.setAttribute(new Attribute("id", Predicate.GREATER_THAN, "1"));
-                    
+
                     cqlQuery.setTarget(target);
                     CQLQueryResults results = client.query(cqlQuery);
-                    
+
                     CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("client-config.wsdd")));
                     while (iter.hasNext()) {
                         Patient de = (Patient) iter.next();
                         System.out.println("Xxxxx  "+de.getClass().getName());
                         System.out.println("Xxxxx  Dep name is:"+de.getFirstName() + ", id: " +de.getId()+"  " + de.getLastName() +"\n" );
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                } else {
-                    usage();
-                    System.exit(1);
-                }
-            } else {
-                usage();
-                System.exit(1);
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
         }
     }
-    
+
     public gov.nih.nci.cagrid.metadata.security.ServiceSecurityMetadata getServiceSecurityMetadata() throws RemoteException {
         synchronized(portTypeMutex){
             configureStubSecurity((Stub)portType,"getServiceSecurityMetadata");
@@ -174,5 +150,5 @@ public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements 
             return boxedResult.getCQLQueryResultCollection();
         }
     }
-    
+
 }

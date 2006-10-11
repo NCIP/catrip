@@ -140,6 +140,17 @@
 			</fileset>			
 		</artifact>
 
+		<artifact track="main" type="jars" id="TumorRegistryDataService.jars">
+			<antcall target="build-TumorRegistryDataService" />
+			<fileset dir="${projects.dir}/TumorRegistryDataService/build/lib">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+			<fileset dir="${projects.dir}/TumorRegistryDataService/lib">
+				<include name="tumor_registry_domain.jar" />
+			</fileset>			
+		</artifact>
+		
 		<artifact track="main" type="jars" id="localsqkquery.jars">
 			<fileset dir="${projects.dir}/localsdkquery/build/jars">
 				<include name="*.jar" />
