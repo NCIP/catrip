@@ -7,8 +7,10 @@ package edu.duke.catrip.catissuecore.general;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +28,7 @@ import edu.wustl.catissuecore.domainobject.Institution;
 import edu.wustl.catissuecore.domainobject.ParticipantMedicalIdentifier;
 import edu.wustl.catissuecore.domainobject.impl.AddressImpl;
 import edu.wustl.catissuecore.domainobject.impl.CancerResearchGroupImpl;
+import edu.wustl.catissuecore.domainobject.impl.CollectionProtocolEventImpl;
 import edu.wustl.catissuecore.domainobject.impl.CollectionProtocolImpl;
 import edu.wustl.catissuecore.domainobject.impl.CollectionProtocolRegistrationImpl;
 import edu.wustl.catissuecore.domainobject.impl.DepartmentImpl;
@@ -33,6 +36,8 @@ import edu.wustl.catissuecore.domainobject.impl.InstitutionImpl;
 import edu.wustl.catissuecore.domainobject.impl.ParticipantImpl;
 import edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl;
 import edu.wustl.catissuecore.domainobject.impl.SiteImpl;
+import edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl;
+import edu.wustl.catissuecore.domainobject.impl.SpecimenProtocolImpl;
 import edu.wustl.catissuecore.domainobject.impl.StorageContainerCapacityImpl;
 import edu.wustl.catissuecore.domainobject.impl.StorageContainerImpl;
 import edu.wustl.catissuecore.domainobject.impl.StorageTypeImpl;
@@ -63,7 +68,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 
 
 	//builds participant recs in db
-	public void buildParticipant(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8) throws ParseException
+	public void buildParticipant(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9) throws ParseException
 
 	{
 		
@@ -71,12 +76,18 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		
 		String[][] dataInsertTable = new String[maxrecs][10];
 		int insrow=0;
+		Object[] objsArr = new Object[2];
+		int objcnt=0;
+		
+		List result = new ArrayList();
 
 		String curID="";
 		System.out.println("\t\t\t\tArray size is: "+col1.length);
 		//load the arrays
 		for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
 			System.out.println("\t\t\t\tInside loop");
+			
+			//Participant
 				//lname
 				//dataInsertTable[insrow][0]=removeChar(col1[randomInRange(0,maxrecs-1)],' ');
 				dataInsertTable[insrow][0]=removeChar(col1[rowcnt],' ');
@@ -117,12 +128,16 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				//gender
 				dataInsertTable[insrow][8]="Female";
 				
-				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]+", "+dataInsertTable[insrow][2]+", "+dataInsertTable[insrow][3]+", "+dataInsertTable[insrow][4]+", "+dataInsertTable[insrow][5]+", "+dataInsertTable[insrow][6]+", "+dataInsertTable[insrow][7]+", "+dataInsertTable[insrow][8]);
+			//ParticipantIdent
+				//MRN
+				dataInsertTable[insrow][9]=col9[rowcnt];
+				
 				insrow++;
 		}
 			//TODO: WRITE CODE TO insert current tables' recs into db
 		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
 		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			objcnt=-1;
 			ParticipantImpl p = new ParticipantImpl();
 			//p.setId(Long.valueOf(globalId));
 			p.setLastName(dataInsertTable[rowcnt][0]);
@@ -136,752 +151,60 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 			p.setSocialSecurityNumber(dataInsertTable[rowcnt][6]);
 			p.setGender(dataInsertTable[rowcnt][8]);
 			p.setActivityStatus("Active");
-			//p.setAnnotationEventParametersCollection(accessionSet);
+
+    		System.out.println("\t\t\t\tAdding Participant object to objsArr, that contains: "+p.getFirstName()+", "+p.getLastName());
+
+			++objcnt;
+			objsArr[objcnt]=p;
 			
-			//if(rowcnt<50) {
-				System.out.println("\t\t\t\tCalling create(p) to insert: "+p.getFirstName()+", "+p.getMiddleName()+", "+p.getLastName()+", "+p.getGender()+", "+p.getBirthDate()+", "+p.getRace()+", "+p.getEthnicity()+", "+p.getSocialSecurityNumber());
-				create(p);
-			//}
-	     }
-
-	}
-	
-	//builds address recs in db
-	public void buildAddress(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6) throws ParseException
-
-	{
-		
-		if (DEBUG) System.out.println("\tInside buildAddress()");
-		
-		String[][] dataInsertTable = new String[maxrecs][6];
-		int insrow=0;
-
-		String curID="";
-		System.out.println("\t\t\t\tArray size is: "+col1.length);
-		//load the arrays
-		for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-			System.out.println("\t\t\t\tInside loop");
-				//streets
-				dataInsertTable[insrow][0]=col1[rowcnt];
-
-				//cities
-				dataInsertTable[insrow][1]=col2[rowcnt];
-
-				//states
-				dataInsertTable[insrow][2]=col3[rowcnt];
-
-				//zip
-				dataInsertTable[insrow][3]=col4[rowcnt];
-
-				//phone
-				dataInsertTable[insrow][4]=col5[rowcnt];
-
-				//fax
-				dataInsertTable[insrow][5]=col6[rowcnt];
-				
-				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]+", "+dataInsertTable[insrow][2]+", "+dataInsertTable[insrow][3]+", "+dataInsertTable[insrow][4]+", "+dataInsertTable[insrow][5]);
-				insrow++;
-		}
-			//TODO: WRITE CODE TO insert current tables' recs into db
-		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			AddressImpl a = new AddressImpl();
-			//p.setId(Long.valueOf(globalId));
-			a.setStreet(dataInsertTable[rowcnt][0]);
-			a.setCity(dataInsertTable[rowcnt][1]);
-			a.setState(dataInsertTable[rowcnt][2]);
-			a.setZipCode(dataInsertTable[rowcnt][3]);
-			a.setCountry("United States");
-			a.setPhoneNumber(dataInsertTable[rowcnt][4]);
-			a.setFaxNumber(dataInsertTable[rowcnt][5]);
+			ParticipantMedicalIdentifierImpl pmi = new ParticipantMedicalIdentifierImpl();
 			
-			//if(rowcnt<50) {
-				System.out.println("\t\t\t\tCalling create(p) to insert: "+a.getStreet()+", "+a.getCity()+", "+a.getState()+", "+a.getZipCode()+", "+a.getCountry()+", "+a.getPhoneNumber()+", "+a.getFaxNumber());
-				create(a);
-			//}
-	     }
-
-	}
-	
-	
-	//builds InstitutionInstitution recs in db
-	public void buildInstitutionDept(int maxrecs, String[] col1, String[] col2) throws ParseException
-
-	{
-		
-		if (DEBUG) System.out.println("\tInside buildInstitution()");
-		
-		String[][] dataInsertTable = new String[maxrecs][2];
-		int insrow=0;
-
-		System.out.println("\t\t\t\tArray size is: "+col1.length);
-		//load the arrays
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			System.out.println("\t\t\t\tInside loop");
-				//institutions
-				dataInsertTable[insrow][0]=col1[rowcnt];
-				
-				//departments
-				dataInsertTable[insrow][1]=col2[rowcnt];
-
-				
-				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]);
-				insrow++;
-		}
-
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			InstitutionImpl i = new InstitutionImpl();
-			DepartmentImpl d = new DepartmentImpl();
-			i.setName(dataInsertTable[rowcnt][0]);
-			System.out.println("\t\t\t\tCalling create(i) to insert: "+i.getName());
-			create(i);
-			d.setName(dataInsertTable[rowcnt][1]);
-			System.out.println("\t\t\t\tCalling create(d) to insert: "+d.getName());
-			create(d);
-
-	     }
-
-	}
-	
-	//builds CancerResearchGroup recs in db
-	public void buildCancerResearchGroup(int maxrecs, String[] col1) throws ParseException
-
-	{
-		
-		if (DEBUG) System.out.println("\tInside buildCancerResearchGroup()");
-		
-		String[][] dataInsertTable = new String[maxrecs][1];
-		int insrow=0;
-
-		System.out.println("\t\t\t\tArray size is: "+col1.length);
-		//load the arrays
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			System.out.println("\t\t\t\tInside loop");
-				//institutions
-				dataInsertTable[insrow][0]=col1[rowcnt];
-				
-				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]);
-				insrow++;
-		}
-
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			CancerResearchGroupImpl crg = new CancerResearchGroupImpl();
-			crg.setName(dataInsertTable[rowcnt][0]);
-			System.out.println("\t\t\t\tCalling create(i) to insert: "+crg.getName());
-			create(crg);
-
-	     }
-
-	}
-	
-	//builds users recs in db
-	public void buildUser(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7) throws ParseException
-
-	{
-		
-		if (DEBUG) System.out.println("\tInside buildUser()");
-		
-		String[][] dataInsertTable = new String[maxrecs][7];
-		int insrow=0;
-		List result=null;
-		List result2=null;
-		List result3=null;
-		List result4=null;
-
-		String curID="";
-		System.out.println("\t\t\t\tArray size is: "+col1.length);
-		//load the arrays
-		for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-			System.out.println("\t\t\t\tInside loop");
-				//UserComments
-				dataInsertTable[insrow][0]=rmvTrailingBlanks(col1[rowcnt]);
-
-				//EmailAddress
-				dataInsertTable[insrow][1]=col2[rowcnt];
-
-				//FirstNamesFemales
-				dataInsertTable[insrow][2]=col3[rowcnt];
-
-				//LastNames
-				dataInsertTable[insrow][3]=col4[rowcnt];
-
-				//Logins
-				dataInsertTable[insrow][4]=col5[rowcnt];
-
-				//Passwords
-				dataInsertTable[insrow][5]=col6[rowcnt];
-				
-				//Dates
-				dataInsertTable[insrow][6]=col7[rowcnt];
-
-				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]+", "+dataInsertTable[insrow][2]+", "+dataInsertTable[insrow][3]+", "+dataInsertTable[insrow][4]+", "+dataInsertTable[insrow][5]+", "+dataInsertTable[insrow][6]);
-				insrow++;
-		}
-			//TODO: WRITE CODE TO insert current tables' recs into db
-        Session session = HibernateUtil.currentSession();
-        Transaction tx = session.beginTransaction();
-
-        result = new ArrayList();
-	    result = session.createQuery("from AddressImpl").list();
-	    tx.commit();
-	    
-        result2 = new ArrayList();
-	    result2 = session.createQuery("from CancerResearchGroupImpl").list();
-	    tx.commit();
-	    
-        result3 = new ArrayList();
-	    result3 = session.createQuery("from DepartmentImpl").list();
-	    tx.commit();
-	    
-        result4 = new ArrayList();
-	    result4 = session.createQuery("from InstitutionImpl").list();
-	    tx.commit();
-	    
-	    HibernateUtil.closeSession();
-	    
-		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			UserImpl u = new UserImpl();
-			//p.setId(Long.valueOf(globalId));
-			u.setComments(rmvTrailingBlanks(dataInsertTable[rowcnt][0]));
-			u.setEmailAddress(dataInsertTable[rowcnt][1]);
-			u.setFirstName(dataInsertTable[rowcnt][2]);
-			u.setLastName(dataInsertTable[rowcnt][3]);
-			u.setLoginName(dataInsertTable[rowcnt][4]);
-			u.setPassword(dataInsertTable[rowcnt][5]);
-			SimpleDateFormat sdf = new SimpleDateFormat( "MM/dd/yyyy" );
-			Date sdate = sdf.parse( dataInsertTable[rowcnt][6] );
-			u.setStartDate(sdate);
-			u.setActivityStatus("Active");
-			
-		    if(result.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	AddressImpl a = (AddressImpl) result.get(i);
-
-			    	if(i==rowcnt){
-			    		u.setAddress(null);
-			    		System.out.println("\t\t\t\tFound Address: "+a.getCity());
-			    		break;
-			    	}
-			    }
-		    }
-
-		    if(result2.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	CancerResearchGroupImpl crg = (CancerResearchGroupImpl) result2.get(i);
-			    	if(i==rowcnt){
-			    		u.setCancerResearchGroup(crg);
-			    		System.out.println("\t\t\t\tFound CancerResearchGroup: "+crg.getName());
-			    		break;
-			    	}
-			    }
-		    }
-
-		    if(result3.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	DepartmentImpl d = (DepartmentImpl) result3.get(i);
-			    	if(i==rowcnt){
-			    		u.setDepartment(d);
-			    		System.out.println("\t\t\t\tFound Department: "+d.getName());
-			    		break;
-			    	}
-			    }
-		    }
-
-		    if(result4.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	InstitutionImpl in = (InstitutionImpl) result4.get(i);
-			    	if(i==rowcnt){
-			    		u.setInstitution(in);
-			    		System.out.println("\t\t\t\tFound Institution: "+in.getName());
-			    		break;
-			    	}
-			    }
-		    }		
-
-				System.out.println("\t\t\t\tCalling create(u) to insert: "+u.getActivityStatus()+", "+u.getComments()+", "+u.getEmailAddress()+", "+u.getFirstName()+", "+u.getLastName()+", "+u.getLoginName()+", "+u.getPassword()+", "+u.getStartDate());
-
-				create(u);
-
-	     }
-
-	}
-	
-	public void buildSite(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
-	{
-			List result=null;
-			if (DEBUG) System.out.println("\tInside buildSite()");
-			
-			String[][] dataInsertTable = new String[maxrecs][3];
-			int insrow=0;
-			
-			System.out.println("\t\t\t\tArray size is: "+col1.length);
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//SITE
-					dataInsertTable[insrow][0]=col1[randomInRange(0,maxrecs-1)];
-					//SITE TYPE
-					dataInsertTable[insrow][1]=col2[randomInRange(0,maxrecs-1)];
-					//EMAIL
-					dataInsertTable[insrow][2]=col3[randomInRange(0,maxrecs-1)];
-					insrow++;
-			}
-				
-	        Session session = HibernateUtil.currentSession();
-	        Transaction tx = session.beginTransaction();
-	
-	        result = new ArrayList();
-		    result = session.createQuery("from AddressImpl").list();
-		    tx.commit();
-		    HibernateUtil.closeSession();
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				SiteImpl s = new SiteImpl();
-				s.setName(dataInsertTable[rowcnt][0]);
-				s.setType(dataInsertTable[rowcnt][1]);
-				s.setEmailAddress(dataInsertTable[rowcnt][2]);
-				s.setAddress(null);
-				s.setCoordinator(null);
-
-			    if(result.size()>0){
-				    //for (int i = 0; i<result.size(); i++) {
-				    for (int i = 0; i<maxrecs; i++) {
-				    	AddressImpl a = (AddressImpl) result.get(i);
-
-				    	if(i==rowcnt){
-				    		s.setAddress(a);
-				    		System.out.println("\t\t\t\tFound Street Address: "+a.getStreet());
-				    		break;
-				    	}
-				    }
-			    }
-
-				System.out.println("\t\t\t\tCalling create(s) to insert: "+s.getName()+", "+s.getType()+", "+s.getEmailAddress());
-
-				create(s);
-
-		     }
-		    
-		    System.out.println("\t\t\t\tExiting buildSite()");
-	}
-	
-	public void buildStorageContCapacity(int maxrecs,String[] col1,String[] col2) throws ParseException
-	{
-			List result=null;
-			if (DEBUG) System.out.println("\tInside buildStorageContCapacity()");
-			
-			String[][] dataInsertTable = new String[maxrecs][3];
-			int insrow=0;
-			
-			System.out.println("\t\t\t\tArray size is: "+col1.length);
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//ONE DIM
-					dataInsertTable[insrow][0]=col1[rowcnt];
-					//TWO DIM
-					dataInsertTable[insrow][1]=col1[rowcnt];
-					insrow++;
-			}
-				
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				StorageContainerCapacityImpl c = new StorageContainerCapacityImpl();
-				c.setOneDimensionCapacity(Integer.valueOf(dataInsertTable[rowcnt][0]));
-				c.setTwoDimensionCapacity(Integer.valueOf(dataInsertTable[rowcnt][1]));
-
-				System.out.println("\t\t\t\tCalling create(c) to insert: "+c.getOneDimensionCapacity()+", "+c.getTwoDimensionCapacity());
-
-				create(c);
-
-		     }
-		    
-		    System.out.println("\t\t\t\tExiting buildSite()");
-	}
-	
-	public void buildStorageType(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
-	{
-			List result=null;
-			if (DEBUG) System.out.println("\tInside buildStorageType()");
-			
-			String[][] dataInsertTable = new String[maxrecs][3];
-			int insrow=0;
-			
-			System.out.println("\t\t\t\tArray size is: "+col1.length);
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//Storage Type
-					dataInsertTable[insrow][0]=col1[rowcnt];
-					//One Dim Label
-					dataInsertTable[insrow][1]=col2[rowcnt];
-					//Two Dim Label
-					dataInsertTable[insrow][2]=col3[rowcnt];
-					insrow++;
-			}
-				
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				StorageTypeImpl s = new StorageTypeImpl();
-				s.setType(dataInsertTable[rowcnt][0]);
-				System.out.println("\t\t\t\tType: "+s.getType());
-
-				s.setOneDimensionLabel(dataInsertTable[rowcnt][1]);
-				s.setTwoDimensionLabel(dataInsertTable[rowcnt][2]);
-				int end = dataInsertTable[rowcnt][0].indexOf("-");
-				if(end==0){
-					s.setDefaultTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][0].substring(0, 3)));
-				}else{
-					s.setDefaultTempratureInCentigrade(Double.valueOf(0));
-				}
-
-				s.setDefaultStorageCapacity(null);
-				System.out.println("\t\t\t\tCalling create(s) to insert: "+s.getType()+", "+s.getOneDimensionLabel()+", "+s.getTwoDimensionLabel()+", "+s.getDefaultTempratureInCentigrade());
-
-				I GET THE FOLLOWING ERROR:
-					junit.framework.AssertionFailedError
-					at junit.framework.Assert.fail(Assert.java:47)
-					at junit.framework.Assert.assertTrue(Assert.java:20)
-					at junit.framework.Assert.assertTrue(Assert.java:27)
-				create(s);
-
-		     }
-		    
-		    System.out.println("\t\t\t\tExiting buildSite()");
-	}
-	
-	public void buildStorageContainer(int maxrecs,String[] col1) throws ParseException
-	{
-			List result=null;
-			if (DEBUG) System.out.println("\tInside buildStorageContainer()");
-			
-			String[][] dataInsertTable = new String[maxrecs][1];
-			int insrow=0;
-							
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//Storage Container
-					dataInsertTable[insrow][0]=col1[rowcnt];
-					insrow++;
-			}
-			
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				StorageContainerImpl c = new StorageContainerImpl();
-				c.setNumber(Integer.valueOf(rowcnt));
-				c.setTempratureInCentigrade(Double.valueOf(0));
-				c.setIsFull(Boolean.TRUE);
-				c.setBarcode(dataInsertTable[rowcnt][0]);
-				c.setActivityStatus("Active");
-				c.setStorageType(null);
-				c.setSite(null);
-				c.setStorageContainerCapacity(null);
-				c.setPositionDimensionOne(Integer.valueOf(randomInRange(0,9)));
-				c.setPositionDimensionTwo(Integer.valueOf(randomInRange(0,9)));
-				
-
-				System.out.println("\t\t\t\tCalling create(c) to insert: "+c.getNumber()+", "+c.getTempratureInCentigrade()+", "+c.getIsFull()+", "+c.getBarcode()+", "+c.getActivityStatus()+", "+c.getPositionDimensionOne()+", "+c.getPositionDimensionTwo());
-
-				I GET THE FOLLOWING ERROR:
-					junit.framework.AssertionFailedError
-					at junit.framework.Assert.fail(Assert.java:47)
-					at junit.framework.Assert.assertTrue(Assert.java:20)
-					at junit.framework.Assert.assertTrue(Assert.java:27)
-				create(c);
-
-		     }
-		    
-		    System.out.println("\t\t\t\tExiting buildSite()");
-	}
-	
-	public void buildCollProtReg(int maxrecs,String[] col1,String[] col2) throws ParseException
-	{
-			List result=null;
-			if (DEBUG) System.out.println("\tInside buildCollProtReg()");
-			
-			String[][] dataInsertTable = new String[maxrecs][2];
-			int insrow=0;
-			
-			System.out.println("\t\t\t\tArray size is: "+col1.length);
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//ProtPartID
-					dataInsertTable[insrow][0]=col1[randomInRange(0,maxrecs-1)];
-					//RegDate
-					dataInsertTable[insrow][1]=col2[rowcnt];
-					insrow++;
-			}
-				
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				CollectionProtocolRegistrationImpl r = new CollectionProtocolRegistrationImpl();
-				r.setProtocolParticipantIdentifier(dataInsertTable[rowcnt][0]);
-				SimpleDateFormat sdf = new SimpleDateFormat( "MM/dd/yyyy" );
-				Date sdate = sdf.parse( dataInsertTable[rowcnt][1] );
-				r.setRegistrationDate(sdate);
-				r.setActivityStatus("Active");
-				r.setCollectionProtocol(null);
-				r.setParticipant(null);
-			
-				System.out.println("\t\t\t\tCalling create(s) to insert: "+r.getProtocolParticipantIdentifier()+", "+r.getRegistrationDate()+", "+r.getActivityStatus());
-
-				I GET THE FOLLOWING ERROR:
-					junit.framework.AssertionFailedError
-					at junit.framework.Assert.fail(Assert.java:47)
-					at junit.framework.Assert.assertTrue(Assert.java:20)
-					at junit.framework.Assert.assertTrue(Assert.java:27)
-				create(r);
-
-		     }
-		    
-		    System.out.println("\t\t\t\tExiting buildSite()");
-	}
-	
-	
-	public void buildSpecimenChar(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
-	{
-			List result=null;
-			if (DEBUG) System.out.println("\tInside buildSpecimenChar()");
-			
-			String[][] dataInsertTable = new String[maxrecs][3];
-			int insrow=0;
-			
-			System.out.println("\t\t\t\tArray size is: "+col1.length);
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//Tissue Site
-					dataInsertTable[insrow][0]=col1[rowcnt];
-					//Tissue Side
-					dataInsertTable[insrow][1]=col2[rowcnt];
-					//Path Stat
-					dataInsertTable[insrow][2]=col3[rowcnt];
-					insrow++;
-			}
-				
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				SpecimenCharacteristicsImpl sc = new SpecimenCharacteristicsImpl();
-				
-				sc.setTissueSite(dataInsertTable[rowcnt][0]);
-				sc.setTissueSide(dataInsertTable[rowcnt][1]);
-				sc.setPathologicalStatus(dataInsertTable[rowcnt][2]);
-
-				System.out.println("\t\t\t\tCalling create(s) to insert: "+sc.getTissueSite()+", "+sc.getTissueSide()+", "+sc.getPathologicalStatus());
-
-				create(sc);
-
-		     }
-		    
-		    System.out.println("\t\t\t\tExiting buildSpecimenChar()");
-	}
-	
-	//builds users recs in db
-	public void buildSpecimen(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6) throws ParseException
-
-	{
-		
-		if (DEBUG) System.out.println("\tInside buildSpecimen()");
-		
-		String[][] dataInsertTable = new String[maxrecs][6];
-		int insrow=0;
-		List result=null;
-
-		String curID="";
-		System.out.println("\t\t\t\tArray size is: "+col1.length);
-		//load the arrays
-		for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-			System.out.println("\t\t\t\tInside loop");
-				//SpecimenClass
-				dataInsertTable[insrow][0]=col1[rowcnt];
-
-				//SpecimenType
-				dataInsertTable[insrow][1]=col2[rowcnt];
-
-				//SpecimenQuantity
-				dataInsertTable[insrow][2]=col3[rowcnt];
-
-				//SpecimenQuantityAvail
-				dataInsertTable[insrow][3]=col4[rowcnt];
-
-				//SpecimenCmmts
-				dataInsertTable[insrow][4]=col5[rowcnt];
-
-				//SpecimenBarcodes
-				dataInsertTable[insrow][5]=col6[rowcnt];
-
-				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]+", "+dataInsertTable[insrow][2]+", "+dataInsertTable[insrow][3]+", "+dataInsertTable[insrow][4]+", "+dataInsertTable[insrow][5]);
-				insrow++;
-		}
-			//TODO: WRITE CODE TO insert current tables' recs into db
-		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
-		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-			//SpecimenImpl s = new SpecimenImpl();
-			
-			TissueSpecimenImpl ts = new TissueSpecimenImpl();
-			
-			ts.setType(dataInsertTable[rowcnt][1]);
-			ts.setActivityStatus("Active");
-			ts.setAvailable(true);
-			ts.setBarcode(dataInsertTable[rowcnt][5]);
-			ts.setComments(dataInsertTable[rowcnt][4]);
-			ts.setPositionDimensionOne(null);
-			ts.setPositionDimensionTwo(null);
-
+			pmi.setMedicalRecordNumber(dataInsertTable[rowcnt][9]);
+			pmi.setParticipant(p);
 			
 	        Session session = HibernateUtil.currentSession();
 	        Transaction tx = session.beginTransaction();
-	
-	        result = new ArrayList();
-		    result = session.createQuery("from AddressImpl").list();
-		    tx.commit();
-		    //HibernateUtil.closeSession();
-		    if(result.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	Address a = (Address) result.get(i);
 
-			    	if(i==rowcnt){
-			    		u.setAddress(null);
-			    		System.out.println("\t\t\t\tFound Address"+a);
-			    		break;
-			    	}
-			    }
-		    }
-		    
-	        result = new ArrayList();
-		    result = session.createQuery("from CancerResearchGroupImpl").list();
+		    result = session.createQuery("from SiteImpl").list();
 		    tx.commit();
-		    //HibernateUtil.closeSession();
-		    if(result.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	CancerResearchGroup crg = (CancerResearchGroup) result.get(i);
-			    	if(i==rowcnt){
-			    		u.setCancerResearchGroup(crg);
-			    		System.out.println("\t\t\t\tFound CancerResearchGroup"+crg);
-			    		break;
-			    	}
-			    }
-		    }
 		    
-	        result = new ArrayList();
-		    result = session.createQuery("from DepartmentImpl").list();
-		    tx.commit();
-		    //HibernateUtil.closeSession();
-		    if(result.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
-			    for (int i = 0; i<maxrecs; i++) {
-			    	Department d = (Department) result.get(i);
-			    	if(i==rowcnt){
-			    		u.setDepartment(d);
-			    		System.out.println("\t\t\t\tFound Department"+d);
-			    		break;
-			    	}
-			    }
-		    }
-		    
-	        result = new ArrayList();
-		    result = session.createQuery("from InstitutionImpl").list();
-		    tx.commit();
 		    HibernateUtil.closeSession();
 		    if(result.size()>0){
-			    //for (int i = 0; i<result.size(); i++) {
 			    for (int i = 0; i<maxrecs; i++) {
-			    	Institution in = (Institution) result.get(i);
+			    	SiteImpl obj = (SiteImpl) result.get(i);
+
 			    	if(i==rowcnt){
-			    		u.setInstitution(in);
-			    		System.out.println("\t\t\t\tFound Institution: "+in);
+			    		pmi.setSite(obj);
+			    		System.out.println("\t\t\t\tFound Site Name: "+obj.getName());
 			    		break;
 			    	}
 			    }
-		    }		
+		    }
+			
+    		System.out.println("\t\t\t\tAdding ParticipantIdent object to objsArr, that contains: "+pmi.getMedicalRecordNumber());
 
-				System.out.println("\t\t\t\tCalling create(u) to insert: "+u.getActivityStatus()+", "+u.getComments()+", "+u.getEmailAddress()+", "+u.getFirstName()+", "+u.getLastName()+", "+u.getLoginName()+", "+u.getPassword()+", "+u.getStartDate());
-I GET THE FOLLOWING ERROR:
-	junit.framework.AssertionFailedError
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.assertTrue(Assert.java:20)
-	at junit.framework.Assert.assertTrue(Assert.java:27)
-				create(u);
-
+			++objcnt;
+			objsArr[objcnt]=pmi;
+			   		
+			System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to save/commit all associated objects, in the array of objects...");
+			create(objsArr);
 	     }
 
 	}
 	
-	public void buildParticipantIdent(int maxrecs,String[] col1) throws ParseException
-	{
-			
-			if (DEBUG) System.out.println("\tInside buildParticipantIdent()");
-			
-			String[][] dataInsertTable = new String[maxrecs][4];
-			int insrow=0;
-			List result=null;
-			List result2=null;
-			
-			//load the array
-			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
-					//MRN
-					dataInsertTable[insrow][0]=col1[randomInRange(0,maxrecs-1)];
-					insrow++;
-			}
-				
-	        Session session = HibernateUtil.currentSession();
-	        Transaction tx = session.beginTransaction();
-
-	        result = new ArrayList();
-		    result = session.createQuery("from ParticipantImpl").list();
-		    tx.commit();
-
-	        result2 = new ArrayList();
-		    result2 = session.createQuery("from SiteImpl").list();
-		    tx.commit();
-		    
-		    HibernateUtil.closeSession();
-		    
-			//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
-			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-				ParticipantMedicalIdentifierImpl pmi = new ParticipantMedicalIdentifierImpl();
-						
-				pmi.setMedicalRecordNumber(dataInsertTable[rowcnt][0]);
-			       	
-			    if(result.size()>0){
-				    for (int i = 0; i<maxrecs; i++) {
-				    	ParticipantImpl obj = (ParticipantImpl) result.get(i);
-
-				    	if(i==rowcnt){
-				    		pmi.setParticipant(obj);
-				    		System.out.println("\t\t\t\tFound Part. Name: "+obj.getLastName());
-				    		break;
-				    	}
-				    }
-			    }
-			    
-			    if(result2.size()>0){
-				    for (int i = 0; i<maxrecs; i++) {
-				    	SiteImpl obj = (SiteImpl) result2.get(i);
-
-				    	if(i==rowcnt){
-				    		pmi.setSite(obj);
-				    		System.out.println("\t\t\t\tFound Site Name: "+obj.getName());
-				    		break;
-				    	}
-				    }
-			    }
-			       		
-					//if(i<5) {
-						//System.out.println("\t\t\t\tCalling create(pmi) to insert: "+pmi.getMedicalRecordNumber()+", "+pmi.getParticipant());
-						create(pmi);
-					//}
-			    }
-		    
-		    System.out.println("\t\t\t\tExiting buildParticipantIdent()");
-	}
-	
-	public void buildUserInstDeptAdd(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15,String[] col16) throws ParseException
+	public void buildUser(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15,String[] col16,String[] col17,String[] col18,String[] col19) throws ParseException
 	{
 			List result=null;
-			if (DEBUG) System.out.println("\tInside buildSiteInstDeptAdd()");
+			if (DEBUG) System.out.println("\tInside buildUser()");
 			
-			String[][] dataInsertTable = new String[maxrecs][16];
+			String[][] dataInsertTable = new String[maxrecs][20];
 			
 			Object[] objsArr = new Object[5];
 			
+			String[] nodupInst = new String[maxrecs];
+			int dupcnt=0;
+			String[] nodupSite = new String[maxrecs];
+			int dupcntSite=0;
 			int insrow=0;
 
 			//load the array
@@ -924,12 +247,25 @@ I GET THE FOLLOWING ERROR:
 					//ResearchGroup
 					dataInsertTable[insrow][15]=col16[rowcnt];
 					
+				//Site
+					//int nxt = randomInRange(0,maxrecs-1);
+					//SITE
+					if(col17.length > rowcnt){
+						dataInsertTable[insrow][16]=col17[rowcnt];
+						System.out.println("SITE = "+dataInsertTable[insrow][16]);
+						//SITE TYPE
+						dataInsertTable[insrow][17]=col18[rowcnt];
+						//EMAIL
+						dataInsertTable[insrow][18]=col19[rowcnt];
+					}
+					
 					insrow++;
 			}
 
+			int objcnt=0;
 			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
 							
-				int objcnt=-1;
+				objcnt=-1;
 			//ADDRESS STUFF
 				AddressImpl a = new AddressImpl();
 				a.setStreet(dataInsertTable[rowcnt][9]);
@@ -939,12 +275,29 @@ I GET THE FOLLOWING ERROR:
 				a.setCountry("United States");
 				a.setPhoneNumber(dataInsertTable[rowcnt][13]);
 				a.setFaxNumber(dataInsertTable[rowcnt][14]);
-				System.out.println("\t\t\t\tAdding Address object to objsArr, that contains: "+a.getStreet()+", "+a.getCity()+", "+a.getState()+", "+a.getZipCode()+", "+a.getCountry()+", "+a.getPhoneNumber()+", "+a.getFaxNumber());
+				System.out.println("\n\t\t\t\tAdding Address object to objsArr, that contains: "+a.getStreet()+", "+a.getCity()+", "+a.getState()+", "+a.getZipCode()+", "+a.getCountry()+", "+a.getPhoneNumber()+", "+a.getFaxNumber());
 				++objcnt;
 				objsArr[objcnt]=a;
 
 			//INSTITUTION STUFF
 				InstitutionImpl i = new InstitutionImpl();
+				
+				//check for dups
+				for (int j=0;j<maxrecs;j++){
+					if(rowcnt>0 && rowcnt<maxrecs){				
+						for (int cnt = 0; cnt < rowcnt; cnt++) {
+							if(dataInsertTable[rowcnt][7].equals(nodupInst[cnt])){
+								++rowcnt;
+							}
+						}
+					}else{
+						break;
+					}
+				}
+				
+				//add selected institution into nodupInst array
+				nodupInst[dupcnt++]=dataInsertTable[rowcnt][7];
+				
 				if(dataInsertTable[rowcnt][7].length()>50)
 					i.setName(dataInsertTable[rowcnt][7].substring(0,49));
 				else
@@ -966,7 +319,7 @@ I GET THE FOLLOWING ERROR:
 			//CANCER GROUP STUFF
 				CancerResearchGroupImpl crg = new CancerResearchGroupImpl();
 				crg.setName(dataInsertTable[rowcnt][15]);
-				System.out.println("\t\t\t\tAdding Department object to objsArr, that contains: "+crg.getName());			
+				System.out.println("\t\t\t\tAdding CancerGroup object to objsArr, that contains: "+crg.getName());			
 				++objcnt;
 				objsArr[objcnt]=crg;
 						
@@ -989,40 +342,517 @@ I GET THE FOLLOWING ERROR:
 				u.setInstitution(i);
 				u.setCancerResearchGroup(crg);
 				
-				System.out.println("\t\t\t\tAdding Institution object to objsArr, that contains: "+u.getActivityStatus()+", "+u.getComments()+", "+u.getEmailAddress()+", "+u.getFirstName()+", "+u.getLastName()+", "+u.getLoginName()+", "+u.getPassword()+", "+u.getStartDate());
+				System.out.println("\t\t\t\tAdding User object to objsArr, that contains: "+u.getActivityStatus()+", "+u.getComments()+", "+u.getEmailAddress()+", "+u.getFirstName()+", "+u.getLastName()+", "+u.getLoginName()+", "+u.getPassword()+", "+u.getStartDate());
 				//create(u);
 				++objcnt;
 				objsArr[objcnt]=u;
 				
-				System.out.println("\t\t\t\tCalling create(objsArr) to save/commit all associated objects, in the array of objects...");
+				System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to save/commit all associated objects, in the array of objects...");
 				
-			//CALLING THE CREATE METHOD, TO USE THE HIBERNATE APIS (save,commit,etc)
 				create(objsArr);
 				
-				//create(u);
+			//Site STUFF
+				
+				//check for dup sites
+				boolean nodups=true;
+				for (int cnt = 0; cnt < dupcntSite; cnt++) {
+					if(dataInsertTable[rowcnt][16].equals(nodupInst[cnt])){
+						nodups=false;
+					}
+				}
+				
+				if(nodups){
+					//then, add the site
+					nodupSite[dupcntSite++]=dataInsertTable[rowcnt][16];
+				
+					SiteImpl s = new SiteImpl();
+					s.setActivityStatus("Active");
+					s.setName(dataInsertTable[rowcnt][16]);
+					s.setType(dataInsertTable[rowcnt][17]);
+					s.setEmailAddress(dataInsertTable[rowcnt][18]);
+					
+					//Objects attached to Site
+						//Address STUFF
+			    		s.setAddress(a);
+
+			    		//Coordinator STUFF
+			    		s.setCoordinator(u);
+		
+			    		System.out.println("\t\t\t\tAdding Site object to objsArr, that contains: "+s.getName());
+			    		
+						System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to save/commit all associated objects, in the array of objects...");
+						
+						create(s);
+				}
+				
 
 		     }
 		    
-		    System.out.println("\t\t\t\tExiting buildSite()");
+			System.out.println("\n\n\t\t\t\tCreated ("+maxrecs+") Records, Times ("+objcnt+") objects...\n");
+
 	}
 	
-//	private edu.wustl.catissuecore.domainobject.Department department; 
-//    public edu.wustl.catissuecore.domainobject.Department getDepartment(){ 
-//               ApplicationService applicationService = ApplicationService.getApplicationService(); 
-//      edu.wustl.catissuecore.domainobject.User thisIdSet = new edu.wustl.catissuecore.domainobject.impl.UserImpl(); 
-//      thisIdSet.setId(this.getId()); 
-//       
-//      try { 
-//         java.util.List resultList = applicationService.search("edu.wustl.catissuecore.domainobject.Department", thisIdSet);                      
-//            if (resultList!=null && resultList.size()>0) { 
-//               department = (edu.wustl.catissuecore.domainobject.Department)resultList.get(0); 
-//            } 
-//          
-//      } catch(Exception ex)  
-//      {  
-//               System.out.println("User:getDepartment throws exception ... ..."); 
-//                 ex.printStackTrace();  
-//      } 
-//      return department;                
-//             } 
+	//builds users recs in db
+//	public void buildSpecimen(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15,String[] col16,String[] col17,String[] col18,String[] col19,String[] col20,String[] col21,String[] col22,String[] col23,String[] col24,String[] col25,String[] col26,String[] col27,String[] col28,String[] col29,String[] col30,String[] col31,String[] col32,String[] col33,String[] col34,String[] col35,String[] col36,String[] col37) throws ParseException
+	public void buildSpecimen(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15,String[] col16,String[] col17,String[] col18,String[] col19,String[] col20,String[] col21,String[] col22,String[] col23,String[] col27,String[] col28,String[] col29,String[] col30,String[] col31,String[] col32,String[] col33,String[] col34,String[] col35,String[] col36,String[] col37) throws ParseException
+
+	{
+		
+		if (DEBUG) System.out.println("\tInside buildSpecimen()");
+		
+		String[][] dataInsertTable = new String[maxrecs][37];
+
+		Object[] objsArr = new Object[10];
+		
+		String[] nodupInst = new String[maxrecs];
+		int dupcnt=0;
+		
+		int insrow=0;
+
+		String curID="";
+		
+        Session session = HibernateUtil.currentSession();
+        Transaction tx = session.beginTransaction();
+
+        List result = new ArrayList();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat( "MM/dd/yyyy" );
+        Date sdate = null;
+        
+		//load the arrays
+		//for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
+		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			//Specimen
+				//SpecimenType
+				dataInsertTable[insrow][0]=col1[rowcnt];
+				//SpecimenQuantity
+				dataInsertTable[insrow][1]=col2[rowcnt];
+				//SpecimenQuantityAvail
+				dataInsertTable[insrow][2]=col3[rowcnt];
+				//SpecimenCmmts
+				dataInsertTable[insrow][3]=col4[rowcnt];
+				//SpecimenBarcodes
+				dataInsertTable[insrow][4]=col5[rowcnt];
+				//PositionDimensionOne
+				dataInsertTable[insrow][5]=col6[rowcnt];
+				//PositionDimensionTwo
+				dataInsertTable[insrow][6]=col7[rowcnt];
+				
+			//SpecimenChar
+				//Tissue Site
+				dataInsertTable[insrow][7]=col8[rowcnt];
+				//Tissue Side
+				dataInsertTable[insrow][8]=col9[rowcnt];
+				//Path Stat
+				dataInsertTable[insrow][9]=col10[rowcnt];
+				
+			//SpecimenCollectionGroup
+				//ClinicalDiag
+				dataInsertTable[insrow][10]=col11[rowcnt];
+				//ClinicalStatus
+				dataInsertTable[insrow][11]=col12[rowcnt];
+				
+			//CollectionProtocolEvent
+				//Clinical Status
+				dataInsertTable[insrow][12]=col13[rowcnt];
+				//StudyCalendarEventPoint
+				dataInsertTable[insrow][13]=col14[rowcnt];
+				
+			//CollectionProtocol (extends SpecimenProtocol)
+				//DescriptionURL
+				dataInsertTable[insrow][14]=col15[rowcnt];
+				//EndDate
+				dataInsertTable[insrow][15]=col16[rowcnt];
+				//Enrollment
+				dataInsertTable[insrow][16]=col17[rowcnt];
+				//IrbIdentifier
+				dataInsertTable[insrow][17]=col18[rowcnt];
+				//ShortTitle
+				dataInsertTable[insrow][18]=col19[rowcnt];
+				//StartDate
+				dataInsertTable[insrow][19]=col20[rowcnt];
+				//Title
+				dataInsertTable[insrow][20]=col21[rowcnt];
+	
+			//CollectionProtocolRegistration
+				//ProtocolParticipantIdentifier
+				dataInsertTable[insrow][21]=col22[rowcnt];
+				//RegistrationDate
+				dataInsertTable[insrow][22]=col23[rowcnt];
+	
+//			//Site
+//				//SITE
+//				dataInsertTable[insrow][23]=col24[randomInRange(0,maxrecs-1)];
+//				//SITE TYPE
+//				dataInsertTable[insrow][24]=col25[randomInRange(0,maxrecs-1)];
+//				//EMAIL
+//				dataInsertTable[insrow][25]=col26[randomInRange(0,maxrecs-1)];
+	
+			//StorageContainer
+				//Barcode
+				dataInsertTable[insrow][26]=col27[rowcnt];
+				//Number
+				//dataInsertTable[insrow][27]=col28[rowcnt];
+				dataInsertTable[insrow][27]=removeChars(col28[rowcnt],"  ");
+				
+				//PositionDimensionOne
+				dataInsertTable[insrow][28]=col29[rowcnt];
+				//PositionDimensionTwo
+				dataInsertTable[insrow][29]=col30[rowcnt];
+				//TempratureInCentigrade
+				dataInsertTable[insrow][30]=col31[rowcnt];
+	
+			//StorageContainerCapacity 
+				//OneDimensionCapacity 
+				dataInsertTable[insrow][31]=col32[rowcnt];
+				//TwoDimensionCapacity 
+				dataInsertTable[insrow][32]=col33[rowcnt];
+	
+			//StorageType  
+				//DefaultTempratureInCentigrade 
+				dataInsertTable[insrow][33]=col34[rowcnt];
+				//OneDimensionLabel 
+				dataInsertTable[insrow][34]=col35[rowcnt];
+				//TwoDimensionLabel 
+				dataInsertTable[insrow][35]=col36[rowcnt];
+				//Type 
+				dataInsertTable[insrow][36]=col37[rowcnt];
+
+				insrow++;
+		}
+			//TODO: WRITE CODE TO insert current tables' recs into db
+		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
+		int fndcnt=0;
+		int objcnt=0;
+		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			objcnt=-1;
+			
+		//TissueSpecimen STUFF
+			TissueSpecimenImpl ts = new TissueSpecimenImpl();
+			
+			ts.setType(dataInsertTable[rowcnt][0]);
+			ts.setQuantityInGram(Double.valueOf(dataInsertTable[rowcnt][1]));
+			ts.setAvailableQuantityInGram(Double.valueOf(Float.parseFloat(dataInsertTable[rowcnt][2])-.5));
+			//ts.setAvailableQuantityInGram(Double.valueOf(dataInsertTable[rowcnt][2]));
+			ts.setComments(dataInsertTable[rowcnt][3]);
+			ts.setBarcode(dataInsertTable[rowcnt][4]);
+			ts.setPositionDimensionOne(Integer.valueOf(dataInsertTable[rowcnt][5]));
+			ts.setPositionDimensionTwo(Integer.valueOf(dataInsertTable[rowcnt][6]));
+			ts.setActivityStatus("Active");
+			ts.setAvailable(Boolean.TRUE);
+			
+			//objects attached, that need to be populated
+			//SpecimenCharacteristics STUFF
+				SpecimenCharacteristicsImpl sc = new SpecimenCharacteristicsImpl();
+				sc.setTissueSite(dataInsertTable[rowcnt][7]);
+				sc.setTissueSide(dataInsertTable[rowcnt][8]);
+				sc.setPathologicalStatus(dataInsertTable[rowcnt][9]);
+				System.out.println("\n\t\t\t\tAdding SpecimenCharacteristics object to objsArr, that contains: "+sc.getPathologicalStatus()+", "+sc.getTissueSide()+", "+sc.getTissueSite());			
+
+				++objcnt;
+				objsArr[objcnt]=sc;
+				
+			ts.setSpecimenCharacteristics(sc);
+			
+			//SpecimenCollectionGroup STUFF
+				SpecimenCollectionGroupImpl scg = new SpecimenCollectionGroupImpl();
+				scg.setActivityStatus("Active");
+				scg.setClinicalDiagnosis(dataInsertTable[rowcnt][10]);
+				scg.setClinicalStatus(dataInsertTable[rowcnt][11]);
+			
+				//Objects attached to SpecimenCollectionGroup, that need to be populated
+				//CollectionProtocolEvent STUFF
+					CollectionProtocolEventImpl cpe = new CollectionProtocolEventImpl();
+					cpe.setClinicalStatus(dataInsertTable[rowcnt][12]);
+					cpe.setStudyCalendarEventPoint(Double.valueOf(dataInsertTable[rowcnt][13]));
+					//Objects attached to CollectionProtocolEvent
+					//CollectionProtocol STUFF (extends SpecimenProtocol)
+					
+//						SpecimenProtocolImpl sp = new SpecimenProtocolImpl();
+//						sp.setActivityStatus("Active");
+//						sp.setDescriptionURL(dataInsertTable[rowcnt][14]);
+//	
+//						sdate = sdf.parse( dataInsertTable[rowcnt][15]);
+//						System.out.println("end date: "+sdate);
+//						sp.setEndDate(sdate);	
+//						sp.setEnrollment(Integer.valueOf(dataInsertTable[rowcnt][16]));
+//						sp.setIrbIdentifier(dataInsertTable[rowcnt][17]);
+//						sp.setShortTitle(dataInsertTable[rowcnt][18]);
+//						sdate = sdf.parse( dataInsertTable[rowcnt][19]);
+//						System.out.println("start date: "+sdate);
+//						sp.setStartDate(sdate);
+//						if(dataInsertTable[rowcnt][20].length()>50)
+//							sp.setTitle(dataInsertTable[rowcnt][20].substring(0,49));
+//						else
+//							sp.setTitle(dataInsertTable[rowcnt][20]);
+//						
+//						//PrincipalInvestigator STUFF
+//				        result = session.createQuery("from UserImpl").list();
+//				        tx.commit();
+//					    
+//				        //HibernateUtil.closeSession();
+//			        	if(result.size()>0){
+//			        		for (int i = 0; i<maxrecs; i++) {
+//			        			UserImpl obj = (UserImpl) result.get(i);
+//			        			if(i==fndcnt){
+//			        				sp.setPrincipalInvestigator(obj);
+//						    		System.out.println("\t\t\t\tFound PI: "+obj.getFirstName()+", "+obj.getLastName());
+//						    		break;
+//			        			}
+//			        		}
+//			        	}
+//			        	System.out.println("\t\t\t\tAdding SpecimenProtocol object to objsArr, that contains: "+sp.getStartDate()+", "+sp.getEndDate());
+//						++objcnt;
+//						objsArr[objcnt]=sp;
+					
+					CollectionProtocolImpl cp = new CollectionProtocolImpl();
+					
+					cp.setActivityStatus("Active");
+					cp.setDescriptionURL(dataInsertTable[rowcnt][14]);
+				
+					sdate = sdf.parse( dataInsertTable[rowcnt][15]);
+					cp.setEndDate(sdate);	
+					cp.setEnrollment(Integer.valueOf(dataInsertTable[rowcnt][16]));
+					cp.setIrbIdentifier(dataInsertTable[rowcnt][17]);
+					cp.setShortTitle(dataInsertTable[rowcnt][18]);
+					sdate = sdf.parse( dataInsertTable[rowcnt][19]);
+					cp.setStartDate(sdate);
+					if(dataInsertTable[rowcnt][20].length()>50)
+						cp.setTitle(dataInsertTable[rowcnt][20].substring(0,49));
+					else
+						cp.setTitle(dataInsertTable[rowcnt][20]);
+					//Objects attached to CollectionProtocol
+//						List collProtEvt = new ArrayList();
+//						collProtEvt.add("New Diagnosis");
+//						cp.setCollectionProtocolEventCollection(collProtEvt);
+					
+//						List collDistProt = new ArrayList();
+//						collDistProt.add("Active");
+//						cp.setDistributionProtocolCollection(collDistProt);
+
+						List collUsr = new ArrayList();
+				        result = session.createQuery("from UserImpl").list();
+				        tx.commit();
+				        //HibernateUtil.closeSession();
+				        //for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
+				        	if(result.size()>0){
+				        		for (int i = 0; i<maxrecs; i++) {
+				        			UserImpl obj = (UserImpl) result.get(i);
+				        			//if(i==rcnt){
+				        			if(i==fndcnt){
+				        				collUsr.add(obj);
+							    		System.out.println("\t\t\t\tFound PI: "+obj.getFirstName()+", "+obj.getLastName());
+							    		break;
+				        			}
+				        		}
+				        	}
+				        //}
+				        					        
+						cp.setUserCollection(collUsr);
+							System.out.println("\t\t\t\tAdding CollectionProtocol object to objsArr, that contains: "+cp.getStartDate()+", "+cp.getEndDate());
+						++objcnt;
+						objsArr[objcnt]=cp;
+						
+					cpe.setCollectionProtocol(cp);
+	
+					
+//					List collSpecReq = new ArrayList();
+//					collSpecReq.add("Tissue");
+//					cpe.setSpecimenRequirementCollection(collSpecReq);
+					
+					System.out.println("\t\t\t\tAdding CollectionProtocolEvent object to objsArr, that contains: "+cpe.getClinicalStatus());
+						
+					++objcnt;
+					objsArr[objcnt]=cpe;
+					
+				scg.setCollectionProtocolEvent(cpe);
+
+					//CollectionProtocolRegistration STUFF
+						CollectionProtocolRegistrationImpl cpr = new CollectionProtocolRegistrationImpl();
+						cpr.setActivityStatus("Active");
+						cpr.setProtocolParticipantIdentifier(dataInsertTable[rowcnt][21]);
+						sdate = sdf.parse( dataInsertTable[rowcnt][22]);
+						cpr.setRegistrationDate(sdate);
+						//Objects attached
+							cpr.setCollectionProtocol(null);
+							
+						//Participant STUFF
+
+					        result = session.createQuery("from ParticipantImpl").list();
+					        tx.commit();
+						    
+					        //HibernateUtil.closeSession();
+					        //for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
+					        	if(result.size()>0){
+					        		for (int i = 0; i<maxrecs; i++) {
+					        			ParticipantImpl obj = (ParticipantImpl) result.get(i);
+
+					        			//if(i==rcnt){
+					        			if(i==fndcnt){
+					        				cpr.setParticipant(obj);
+								    		System.out.println("\t\t\t\tFound Part. Name: "+obj.getLastName());
+								    		break;
+					        			}
+					        		}
+					        	}
+					        //}
+			
+					    System.out.println("\t\t\t\tAdding CollectionProtocolRegistration object to objsArr, that contains: "+cpr.getProtocolParticipantIdentifier());
+						++objcnt;
+						objsArr[objcnt]=cpr;
+							
+				scg.setCollectionProtocolRegistration(cpr);
+						
+		        result = session.createQuery("from SiteImpl").list();
+		        tx.commit();
+			    
+		        //HibernateUtil.closeSession();
+		        //for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
+		        	if(result.size()>0){
+		        		for (int i = 0; i<maxrecs; i++) {
+		        			SiteImpl obj = (SiteImpl) result.get(i);
+
+		        			//if(i==rcnt){
+		        			if(i==fndcnt){
+		        				scg.setSite(obj);
+					    		System.out.println("\t\t\t\tFound Site Name: "+obj.getName());
+					    		break;
+		        			}
+		        		}
+		        	}
+		        //}
+						
+				//scg.setSite(s);
+				
+				//collection
+//				List collSpec = new ArrayList();
+//				collSpecReq.add(null);
+//				scg.setSpecimenCollection(collSpec);
+		
+				System.out.println("\t\t\t\tAdding SpecimenCollectionGroup object to objsArr, that contains: "+scg.getClinicalStatus());
+				++objcnt;
+				objsArr[objcnt]=scg;
+				
+			ts.setSpecimenCollectionGroup(scg);
+			
+			//StorageContainer STUFF
+				StorageContainerImpl stc = new StorageContainerImpl();
+				stc.setActivityStatus("Active");
+				stc.setBarcode(dataInsertTable[rowcnt][26]);
+				stc.setIsFull(Boolean.TRUE);
+				stc.setNumber(Integer.valueOf(dataInsertTable[rowcnt][27]));
+				stc.setPositionDimensionOne(Integer.valueOf(dataInsertTable[rowcnt][28]));
+				stc.setPositionDimensionTwo(Integer.valueOf(dataInsertTable[rowcnt][29]));
+				stc.setTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][30]));
+				//Objects attached
+				//Site STUFF
+	        		result = session.createQuery("from SiteImpl").list();
+	        		tx.commit();
+		    
+	        		//HibernateUtil.closeSession();
+	        		//boolean fnd=false;
+	        		//for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
+		        		if(result.size()>0){
+		        			for (int i = 0; i<maxrecs; i++) {
+		        				SiteImpl obj = (SiteImpl) result.get(i);
+	
+		        				//if(i==rcnt){
+		        				if(i==fndcnt){
+		        					stc.setSite(obj);
+		        					System.out.println("\t\t\t\tFound Site: "+obj.getName());
+		        					//fnd=true;
+		           					break;
+		        				}
+		        			}
+		        		}
+		        		//if(fnd) break;
+		        	//}
+				
+				//StorageContainerCapacity STUFF
+					StorageContainerCapacityImpl scc = new StorageContainerCapacityImpl();
+					scc.setOneDimensionCapacity(Integer.valueOf(dataInsertTable[rowcnt][31]));
+					scc.setTwoDimensionCapacity(Integer.valueOf(dataInsertTable[rowcnt][32]));
+					
+					System.out.println("\t\t\t\tAdding StorageContainerCapacity object to objsArr, that contains: "+scc.getOneDimensionCapacity());
+					++objcnt;
+					objsArr[objcnt]=scc;
+					
+				stc.setStorageContainerCapacity(scc);
+				
+				//StorageType STUFF
+					StorageTypeImpl st = new StorageTypeImpl();
+					st.setDefaultTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][33]));
+					st.setOneDimensionLabel(dataInsertTable[rowcnt][34]);
+					st.setTwoDimensionLabel(dataInsertTable[rowcnt][35]);
+					st.setType(dataInsertTable[rowcnt][36]);
+					//Objects attached
+					//DefaultStorageCapacity STUFF
+					st.setDefaultStorageCapacity(scc);
+					
+					System.out.println("\t\t\t\tAdding StorageType object to objsArr, that contains: "+st.getType());
+					++objcnt;
+					objsArr[objcnt]=st;
+					
+				stc.setStorageType(st);
+				
+				System.out.println("\t\t\t\tAdding StorageContainer object to objsArr, that contains: "+stc.getNumber());
+				++objcnt;
+				objsArr[objcnt]=stc;
+				
+			ts.setStorageContainer(stc);
+			
+			System.out.println("\t\t\t\tAdding TissueSpecimen object to objsArr, that contains: "+ts.getType());
+			++objcnt;
+			objsArr[objcnt]=ts;
+			
+			System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to create all the objects...\n");
+
+			create(objsArr);
+			
+			++fndcnt;
+
+	     }
+		
+		System.out.println("\n\n\t\t\t\tCreated ("+fndcnt+") Records, Times ("+objcnt+") objects...\n");
+		HibernateUtil.closeSession();
+	}
+	
+//	public void buildCollProt(int maxrecs) throws ParseException
+//	{
+//        Session session = HibernateUtil.currentSession();
+//        Transaction tx = session.beginTransaction();
+//
+//        List result = new ArrayList();
+//		SimpleDateFormat sdf = new SimpleDateFormat( "MM/dd/yyyy" );
+//		CollectionProtocolImpl cp = new CollectionProtocolImpl();
+//		
+//		cp.setActivityStatus("Active");
+//		cp.setDescriptionURL("http://biospecimen_protocol_bloodsample1");
+//		cp.setEndDate(sdf.parse("12/1/2006"));	
+//		cp.setEnrollment(Integer.valueOf(390));
+//		cp.setIrbIdentifier("IRB0000001");
+//		cp.setShortTitle("BR 10+ NODES");
+//		cp.setStartDate(sdf.parse("12/1/2005"));	
+//		cp.setTitle("Breast, Adj: 10+ Nodes: CAF> CCB/BR");
+//		//Objects attached to CollectionProtocol
+//			List collProtEvt = new ArrayList();
+//			collProtEvt.add("New Diagnosis");
+//			cp.setCollectionProtocolEventCollection(collProtEvt);
+//		
+//			List collDistProt = new ArrayList();
+//			collDistProt.add("Active");
+//			cp.setDistributionProtocolCollection(collDistProt);
+//		
+//			List collUsr = new ArrayList();
+//	        result = session.createQuery("from UserImpl").list();
+//	        tx.commit();
+//
+//	        if(result.size()>0){
+//	        	UserImpl obj = (UserImpl) result.get(0);
+//	        	collUsr.add(obj);
+//        	}
+//		        
+//		cp.setUserCollection(collUsr);
+//		create(cp);
+//	}
 }

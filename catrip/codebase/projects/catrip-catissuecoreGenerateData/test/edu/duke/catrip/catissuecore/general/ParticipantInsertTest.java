@@ -18,6 +18,7 @@ public class ParticipantInsertTest extends TestCase {
   private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\race.txt";
   private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ssns.txt";
   private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ParticipantID.txt";
+  private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\mrn.txt";
 
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];
@@ -63,9 +64,7 @@ public class ParticipantInsertTest extends TestCase {
 		dataarr1=dg.ReadFile(maxrecs,inFile1);
 
 		if (DEBUG) {
-			arrsiz=dataarr1.length;
-	        //print fields
-	        for (int row=0; row<arrsiz; row++) {
+			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tLNAME: " + dataarr1[row]);
 	       	}
 		}
@@ -82,9 +81,7 @@ public class ParticipantInsertTest extends TestCase {
 		}
 
 		if (DEBUG) {
-			arrsiz=dataarr1.length;
-	        //print fields
-	        for (int row=0; row<arrsiz; row++) {
+			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tFNAME: " + dataarr2[row]);
        	    	System.out.println("\t\t\tMNAME: " + dataarr3[row]);
 	       	}
@@ -96,9 +93,7 @@ public class ParticipantInsertTest extends TestCase {
 		dataarr4=dg.ReadFile(maxrecs,inFile3);
 
 		if (DEBUG) {
-			arrsiz=dataarr4.length;
-	        //print fields
-	        for (int row=0; row<arrsiz; row++) {
+			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tDOB: " + dataarr4[row]);
 	       	}
 		}
@@ -114,9 +109,7 @@ public class ParticipantInsertTest extends TestCase {
 		}
 
 		if (DEBUG) {
-			arrsiz=dataarr5.length;
-	        //print fields
-	        for (int row=0; row<arrsiz; row++) {
+			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tRACE: " + dataarr5[row]);
        	    	System.out.println("\t\t\tETHNICITY: " + dataarr6[row]);
 	       	}
@@ -131,9 +124,7 @@ public class ParticipantInsertTest extends TestCase {
 		dataarr7=dg.ReadFile(maxrecs,inFile5);
 
 		if (DEBUG) {
-			arrsiz=dataarr7.length;
-	        //print fields
-	        for (int row=0; row<arrsiz; row++) {
+			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tSSNS: " + dataarr7[row]);
 	       	}
 		}
@@ -144,14 +135,20 @@ public class ParticipantInsertTest extends TestCase {
 		dataarr8=dg.ReadFile(maxrecs,inFile6);
 
 		if (DEBUG) {
-			arrsiz=dataarr8.length;
-	        //print fields
-	        for (int row=0; row<arrsiz; row++) {
+			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tuniquePatientIdentifier: " + dataarr8[row]);
 	       	}
 		}
+		//mrn
+		dataarr9=dg.ReadFile(maxrecs,inFile7);
+
+		if (DEBUG) {
+			for (int row=0; row<maxrecs; row++) {
+       	    	System.out.println("\t\t\tmrn: " + dataarr9[row]);
+	       	}
+		}
 		
-		dg.buildParticipant(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8);
+		dg.buildParticipant(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9);
 		
 		if (DEBUG) System.out.println("\tEnd Of testReadFile...");
 		
