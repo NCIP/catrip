@@ -120,7 +120,8 @@
   type="java:org.oasis.wsrf.properties.QueryExpressionType"
   xmlns:ns12="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"/>
   
-  <!-- START CADSR INTRODUCE TYPEMAPPINGS -->
+
+<!-- START CADSR INTRODUCE TYPEMAPPINGS -->
 
 <ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nci.cadsr.umlproject.domain.Project" qname="ns2:Project" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caCORE.caBIG/3.0/gov.nih.nci.cadsr.umlproject.domain" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
 
