@@ -27,12 +27,23 @@ public class DQEConfigureStep
 	public void runStep() 
 		throws IOException
 	{
+		// copy file
 		File configDir = new File(System.getProperty("user.home"), ".caTRIP");
 		configDir.mkdir();
 		File dqeConfigFile = new File(configDir, "query_engine_services_config.xml");
 		FileUtils.copy(this.dqeConfigFile, dqeConfigFile);
+		
+		// configure port
 		FileUtils.replace(
 			dqeConfigFile, "8080", String.valueOf(port)
+		);
+
+		// configure client config
+		File dqeClientConfig = new File(System.getProperty("dqe.client.config",
+			".." + File.separator + "gui" + File.separator + "conf" + File.separator + "client-config.wsdd"
+		));
+		FileUtils.replace(
+			dqeConfigFile, "@clientConfigWsdd@", dqeClientConfig.getAbsolutePath()
 		);
 	}
 }
