@@ -14,7 +14,7 @@ import com.atomicobject.haste.framework.Step;
  * This test case creates an ant file that will generate a JUnitDocReport.
  * @author MCCON012
  */
-public class CreateJUnitDocReportAntFile
+public class JUnitDocReportCreateAntFileStep
 	extends Step
 {
 	private File antFile;
@@ -22,7 +22,7 @@ public class CreateJUnitDocReportAntFile
 	private File destFile;
 	private File coberturaDir;
 	
-	public CreateJUnitDocReportAntFile(File antFile, File xmlDir, File destFile, File coberturaDir)
+	public JUnitDocReportCreateAntFileStep(File antFile, File xmlDir, File destFile, File coberturaDir)
 	{
 		super();
 		

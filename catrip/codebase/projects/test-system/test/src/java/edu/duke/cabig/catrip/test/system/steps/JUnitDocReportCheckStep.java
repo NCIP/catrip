@@ -11,12 +11,12 @@ import com.atomicobject.haste.framework.Step;
  * This test case ensures that a JUnitDocReport result file has been generated.
  * @author MCCON012
  */
-public class CheckJUnitDocReportStep
+public class JUnitDocReportCheckStep
 	extends Step
 {
 	private File destFile;
 	
-	public CheckJUnitDocReportStep(File destFile)
+	public JUnitDocReportCheckStep(File destFile)
 	{
 		super();
 		

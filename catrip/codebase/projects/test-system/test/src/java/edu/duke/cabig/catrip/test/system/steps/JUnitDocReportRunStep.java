@@ -13,12 +13,12 @@ import com.atomicobject.haste.framework.Step;
  * This test case runs a JUnitDocReport ant file to generate results.
  * @author MCCON012
  */
-public class RunJUnitDocReportStep
+public class JUnitDocReportRunStep
 	extends Step
 {
 	private File antFile;
 	
-	public RunJUnitDocReportStep(File antFile)
+	public JUnitDocReportRunStep(File antFile)
 	{
 		super();
 		
