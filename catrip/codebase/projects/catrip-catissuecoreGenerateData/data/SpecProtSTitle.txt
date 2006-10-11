@@ -1,0 +1,642 @@
+5FU POST BR   
+BR 10+ NODES  
+BR AFM RAND   
+BR COAG FACT  
+BR G/GM       
+BR IL-11      
+BR MET BREAST 
+BR PURGE      
+ACOS Z0010      
+ACOS Z0011      
+ADR-529/BREAST  
+ALNDRNT-DBL-B   
+AMGEN 951023-01 
+BAXTER          
+BCOG Hot Flash  
+BETA INF        
+BLANKET BR    
+BM MF 4265      
+BMT ICAM BREAST 
+BRCA CONSORT    
+Breast And Bowe 
+BREAST BANK     
+Breast Ca Bank  
+Breast CA Genes 
+BREAST CA/BODY  
+Breast Dx       
+Breast FNA      
+BREAST IL-6     
+BREAST MARKERS  
+Breast Prevent  
+Breast SPORE    
+BREAST TEST 1   
+BREAST TISSUE   
+BREAST VACCINE  
+BREAST-IMAGING  
+BREAST-SURVEY   
+BREAST: PET     
+BREAST:WT GAIN  
+Brst Ultrasound 
+CA Breast & Pro 
+Ca recurrence   
+CAIX SPORE      
+BGLAC 49901     
+BGLAC 79804     
+BGLAC 79809     
+BGLAC 8541      
+BGLAC 8642      
+BGLAC 8662      
+BGLAC 8741      
+BGLAC 8742      
+BGLAC 8782      
+BGLAC 8861      
+BGLAC 8862      
+BGLAC 8864      
+BGLAC 8869      
+BGLAC 8897      
+BGLAC 8944      
+BGLAC 9140      
+BGLAC 9141      
+BGLAC 9192      
+BGLAC 9193      
+BGLAC 9194      
+BGLAC 9242      
+BGLAC 9243      
+BGLAC 9364      
+BGLAC 9371      
+BGLAC 9484      
+BGLAC 9670      
+BGLAC 9872      
+CanThrive       
+CanThrive II    
+CENTOCOR        
+CI 5-FU         
+Cog tx insomnia 
+COSTS BREAST TX 
+CT EMESIS       
+"CT,RT +/- HT    "
+DANIPLESTIM     
+Decision Tamox  
+DLI/SOLID       
+DOX/RT ON HEART 
+DUET 8902       
+Econ Eval 9343  
+EFF GCSF NEUTRO 
+EGF104900       
+ENDOMETR SCREEN 
+FDG-PEM         
+FRESH START     
+GENENTECH 659   
+Genome models   
+Ginger study    
+GM MOUTHWASH    
+Healing Skills  
+Healthy Lung    
+HER2/neu NED    
+HYERPLASIA BR   
+ICA 9201        
+In Vitro CTLs   
+IV NAVELBINE BR 
+JANSSEN BREAST  
+LESBIAN BREAST  
+LIGAND FLT3     
+LN MAP & RT-PCR 
+MAMMOG/BLACKS   
+Markers Breast  
+MDX-1307/breast 
+MODEL BREAST CA 
+Model of Insoma 
+MRI-BREAST      
+NAVELBINE-BREAS 
+NCCN Outcomes   
+NEEDLE BX       
+PC B-17    
+PC B-19     
+PC B-20     
+PC B-24      
+PC B-25    
+PC P-1     
+OVARY/BREAST   
+P-20 Exercise  
+P.O. NAVELBINE 
+P53 BREAST CA  
+PK COMPANION    
+Project LEAD    
+PV BLOCK/BREAST 
+QOL EARLY BREAS 
+QOL/BREAST      
+RE-186 BREAST  
+READY SURVEY    
+Recruit Blacks  
+Retinoid Rcptor 
+RIMER ADJBREAST 
+RPR TAXOTERE    
+RT PNEUM/BREAST 
+SANDOZ 08341    
+SC-68420        
+Social Support  
+SPECT           
+SPLIT DOSE BCNU 
+STAR            
+STRENGTH        
+T92-0027        
+TAM/ENDOMETRIUM 
+Tamoxifen info  
+TGF BETA BREAST 
+Tissue Acq/brst 
+TOP 0102        
+TOREM VS TAM    
+TRC 9202        
+UNC BREAST      
+V. Reality I    
+V. Reality II   
+V. Reality:Brst 
+Veloc. Profiles 
+VitB6 Hot Flash 
+WELL-BEING      
+WOMEN RISK      
+WRIT-EXP BREAST 
+Yoga/menopause  
+Zoled/Aredia    
+BRCA149901     
+BRCA179804     
+BRCA179809     
+BRCA18541      
+BRCA18642      
+BRCA18662      
+BRCA18741      
+BRCA18742      
+BRCA18782      
+BRCA18861      
+BRCA18862      
+BRCA18864      
+BRCA18869      
+BRCA18897      
+BRCA18944      
+BRCA19140      
+BRCA19141      
+BRCA19192      
+BRCA19193      
+BRCA19194      
+BRCA19242      
+BRCA19243      
+BRCA19364      
+BRCA19371      
+BRCA19484      
+BRCA19670      
+BRCA19872      
+BRCA249901     
+BRCA279804     
+BRCA279809     
+BRCA28541      
+BRCA28642      
+BRCA28662      
+BRCA28741      
+BRCA28742      
+BRCA28782      
+BRCA28861      
+BRCA28862      
+BRCA28864      
+BRCA28869      
+BRCA28897      
+BRCA28944      
+BRCA29140      
+BRCA29141      
+BRCA29192      
+BRCA29193      
+BRCA29194      
+BRCA29242      
+BRCA29243      
+BRCA29364      
+BRCA29371      
+BRCA29484      
+BRCA29670      
+BRCA29872      
+5FU POST BR   
+BR 10+ NODES  
+BR AFM RAND   
+BR COAG FACT  
+BR G/GM       
+BR IL-11      
+BR MET Breast Cancer 
+BR PURGE      
+ACOS Z0010      
+ACOS Z0011      
+ADR-529/Breast Cancer  
+ALNDRNT-DBL-B   
+AMGEN 951023-01 
+BAXTER          
+BCOG Hot Flash  
+BETA INF        
+BLANKET BR    
+BM MF 4265      
+BMT ICAM Breast Cancer 
+BRCA CONSORT    
+Breast Cancer And Bowe 
+Breast Cancer BANK     
+Breast Cancer Ca Bank  
+Breast Cancer CA Genes 
+Breast Cancer CA/BODY  
+Breast Cancer Dx       
+Breast Cancer FNA      
+Breast Cancer IL-6     
+Breast Cancer MARKERS  
+Breast Cancer Prevent  
+Breast Cancer SPORE    
+Breast Cancer TEST 1   
+Breast Cancer TISSUE   
+Breast Cancer VACCINE  
+Breast Cancer-IMAGING  
+Breast Cancer-SURVEY   
+Breast Cancer: PET     
+Breast Cancer:WT GAIN  
+Brst Ultrasound 
+CA Breast Cancer & Pro 
+Ca recurrence   
+CAIX SPORE      
+BGLAC 49901     
+BGLAC 79804     
+BGLAC 79809     
+BGLAC 8541      
+BGLAC 8642      
+BGLAC 8662      
+BGLAC 8741      
+BGLAC 8742      
+BGLAC 8782      
+BGLAC 8861      
+BGLAC 8862      
+BGLAC 8864      
+BGLAC 8869      
+BGLAC 8897      
+BGLAC 8944      
+BGLAC 9140      
+BGLAC 9141      
+BGLAC 9192      
+BGLAC 9193      
+BGLAC 9194      
+BGLAC 9242      
+BGLAC 9243      
+BGLAC 9364      
+BGLAC 9371      
+BGLAC 9484      
+BGLAC 9670      
+BGLAC 9872      
+CanThrive       
+CanThrive II    
+CENTOCOR        
+CI 5-FU         
+Cog tx insomnia 
+COSTS Breast Cancer TX 
+CT EMESIS       
+"CT,RT +/- HT  
+DANIPLESTIM     
+Decision Tamox  
+DLI/SOLID       
+DOX/RT ON HEART 
+DUET 8902       
+Econ Eval 9343  
+EFF GCSF NEUTRO 
+EGF104900       
+ENDOMETR SCREEN 
+FDG-PEM         
+FRESH START     
+GENENTECH 659   
+Genome models   
+Ginger study    
+GM MOUTHWASH    
+Healing Skills  
+Healthy Lung    
+HER2/neu NED    
+HYERPLASIA BR   
+ICA 9201        
+In Vitro CTLs   
+IV NAVELBINE BR 
+JANSSEN Breast Cancer  
+LESBIAN Breast Cancer  
+LIGAND FLT3     
+LN MAP & RT-PCR 
+MAMMOG/BLACKS   
+Markers Breast Cancer  
+MDX-1307/Breast Cancer 
+MODEL Breast Cancer CA 
+Model of Insoma 
+MRI-Breast Cancer      
+NAVELBINE-BREAS 
+NCCN Outcomes   
+NEEDLE BX       
+PC B-17      
+PC B-19      
+PC B-20      
+PC B-24      
+PC B-25      
+PC P-1       
+OVARY/Breast Cancer    
+P-20 Exercise   
+P.O. NAVELBINE  
+P53 Breast Cancer CA   
+PK COMPANION    
+Project LEAD    
+PV BLOCK/Breast Cancer 
+QOL EARLY BREAS 
+QOL/Breast Cancer      
+RE-186 Breast Cancer   
+READY SURVEY    
+Recruit Blacks  
+Retinoid Rcptor 
+RIMER ADJBreast Cancer 
+RPR TAXOTERE    
+RT PNEUM/Breast Cancer 
+SANDOZ 08341    
+SC-68420        
+Social Support  
+SPECT           
+SPLIT DOSE BCNU 
+STAR            
+STRENGTH        
+T92-0027        
+TAM/ENDOMETRIUM 
+Tamoxifen info  
+TGF BETA Breast Cancer 
+Tissue Acq/brst 
+TOP 0102        
+TOREM VS TAM    
+TRC 9202        
+UNC Breast Cancer      
+V. Reality I    
+V. Reality II   
+V. Reality:Brst 
+Veloc. Profiles 
+VitB6 Hot Flash 
+WELL-BEING      
+WOMEN RISK      
+WRIT-EXP Breast Cancer 
+Yoga/menopause  
+Zoled/Aredia    
+BC149901     
+BC179804     
+BC179809     
+BC18541      
+BC18642      
+BC18662      
+BC18741      
+BC18742      
+BC18782      
+BC18861      
+BC18862      
+BC18864      
+BC18869      
+BC18897      
+BC18944      
+BC19140      
+BC19141      
+BC19192      
+BC19193      
+BC19194      
+BC19242      
+BC19243      
+BC19364      
+BC19371      
+BC19484      
+BC19670      
+BC19872      
+BC249901     
+BC279804     
+BC279809     
+BC28541      
+BC28642      
+BC28662      
+BC28741      
+BC28742      
+BC28782      
+BC28861      
+BC28862      
+BC28864      
+BC28869      
+BC28897      
+BC28944      
+BC29140      
+BC29141      
+BC29192      
+BC29193      
+BC29194      
+BC29242      
+BC29243      
+BC29364      
+BC29371      
+BC29484      
+BC29670      
+BC29872      
+5FU POST BrCa  
+BrCa10+ NODES  
+BrCaAFM RAND   
+BrCaCOAG FACT  
+BrCaG/GM       
+BrCaIL-11      
+BrCaMET BrCa 
+BrCaPURGE      
+ACOS Z0010      
+ACOS Z0011      
+ADR-529/BrCa  
+ALNDRNT-DBL-B   
+AMGEN 951023-01 
+BAXTER          
+BrCaOG Hot Flash  
+BETA INF        
+BLANKET BrCa   
+BM MF 4265      
+BMT ICAM BrCa 
+BRCA CONSORT    
+BrCa And Bowe 
+BrCa BANK     
+BrCa Ca Bank  
+BrCa CA Genes 
+BrCa CA/BODY  
+BrCa Dx       
+BrCa FNA      
+BrCa IL-6     
+BrCa MARKERS  
+BrCa Prevent  
+BrCa SPORE    
+BrCa TEST 1   
+BrCa TISSUE   
+BrCa VACCINE  
+BrCa-IMAGING  
+BrCa-SURVEY   
+BrCa: PET     
+BrCa:WT GAIN  
+Brst Ultrasound 
+CA BrCa & Pro 
+Ca recurrence   
+CAIX SPORE      
+BrCa 49901     
+BrCa 79804     
+BrCa 79809     
+BrCa 8541      
+BrCa 8642      
+BrCa 8662      
+BrCa 8741      
+BrCa 8742      
+BrCa 8782      
+BrCa 8861      
+BrCa 8862      
+BrCa 8864      
+BrCa 8869      
+BrCa 8897      
+BrCa 8944      
+BrCa 9140      
+BrCa 9141      
+BrCa 9192      
+BrCa 9193      
+BrCa 9194      
+BrCa 9242      
+BrCa 9243      
+BrCa 9364      
+BrCa 9371      
+BrCa 9484      
+BrCa 9670      
+BrCa 9872      
+CanThrive       
+CanThrive II    
+CENTOCOR        
+CI 5-FU         
+Cog tx insomnia 
+COSTS BrCa TX 
+CT EMESIS       
+"CT,RT +/- HT    
+DANIPLESTIM     
+Decision Tamox  
+DLI/SOLID       
+DOX/RT ON HEART 
+DUET 8902       
+Econ Eval 9343  
+EFF GCSF NEUTRO 
+EGF104900       
+ENDOMETR SCREEN 
+FDG-PEM         
+FRESH START     
+GENENTECH 659   
+Genome models   
+Ginger study    
+GM MOUTHWASH    
+Healing Skills  
+Healthy Lung    
+HER2/neu NED    
+HYERPLASIA BrCa  
+ICA 9201        
+In Vitro CTLs   
+IV NAVELBINE BrCa
+JANSSEN BrCa  
+LESBIAN BrCa  
+LIGAND FLT3     
+LN MAP & RT-PCR 
+MAMMOG/BLACKS   
+Markers BrCa  
+MDX-1307/BrCa 
+MODEL BrCa CA 
+Model of Insoma 
+MRI-BrCa      
+NAVELBINE-BREAS 
+NCCN Outcomes   
+NEEDLE BX       
+BrCaB-17      
+BrCaB-19      
+BrCaB-20      
+BrCaB-24      
+BrCaB-25      
+BrCaP-1      
+OVARY/BrCa    
+P-20 Exercise   
+P.O. NAVELBINE 
+P53 BrCa CA   
+PK COMPANION    
+Project LEAD    
+PV BLOCK/BrCa 
+QOL EARLY BREAS 
+QOL/BrCa      
+RE-186 BrCa   
+READY SURVEY    
+Recruit Blacks  
+Retinoid Rcptor 
+RIMER ADJBrCa 
+RPR TAXOTERE    
+RT PNEUM/BrCa 
+SANDOZ 08341    
+SC-68420        
+Social Support  
+SPECT           
+SPLIT DOSE BrCaNU 
+STAR            
+STRENGTH        
+T92-0027        
+TAM/ENDOMETRIUM 
+Tamoxifen info  
+TGF BETA BrCa 
+Tissue Acq/brst 
+TOP 0102        
+TOREM VS TAM    
+TRC 9202        
+UNC BrCa      
+V. Reality I    
+V. Reality II   
+V. Reality:Brst 
+Veloc. Profiles 
+VitB6 Hot Flash 
+WELL-BEING      
+WOMEN RISK      
+WRIT-EXP BrCa 
+Yoga/menopause  
+Zoled/Aredia    
+BrCa149901     
+BrCa179804     
+BrCa179809     
+BrCa18541      
+BrCa18642      
+BrCa18662      
+BrCa18741      
+BrCa18742      
+BrCa18782      
+BrCa18861      
+BrCa18862      
+BrCa18864      
+BrCa18869      
+BrCa18897      
+BrCa18944      
+BrCa19140      
+BrCa19141      
+BrCa19192      
+BrCa19193      
+BrCa19194      
+BrCa19242      
+BrCa19243      
+BrCa19364      
+BrCa19371      
+BrCa19484      
+BrCa19670      
+BrCa19872      
+BrCa249901     
+BrCa279804     
+BrCa279809     
+BrCa28541      
+BrCa28642      
+BrCa28662      
+BrCa28741      
+BrCa28742      
+BrCa28782      
+BrCa28861      
+BrCa28862      
+BrCa28864      
+BrCa28869      
+BrCa28897      
+BrCa28944      
+BrCa29140      
+BrCa29141      
+BrCa29192      
+BrCa29193      
+BrCa29194      
+BrCa29242      
+BrCa29243      
+BrCa29364      
+BrCa29371      
+BrCa29484      
+BrCa29670      
+BrCa29872      

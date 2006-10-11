@@ -1,1000 +1,1000 @@
-Sweat
-Urine
-Fixed Tissue Block
 Synovial Fluid
-Fixed Tissue Slide
+Microdissected
 Frozen Cell Block
-Feces
-Microdissected
-Frozen Tissue Block
-Microdissected
-Frozen Tissue Slide
-Fixed Tissue Slide
-Plasma
-Serum
-RNA
-Sweat
-Serum
-RNA
-Urine
-Bile
-Frozen Tissue Slide
-Whole Blood
-Not Specified
-Synovial Fluid
-Whole Bone Marrow
-Synovial Fluid
-Urine
-Fixed Tissue
-Bile
-Fixed Tissue
-Fixed Tissue Slide
-Cerebrospinal Fluid
-Frozen Tissue Slide
-Whole Bone Marrow
-Whole Blood
-Microdissected
-Plasma
-Fixed Tissue
-Urine
-Not Specified
-RNA
-Not Specified
-Microdissected
-Frozen Tissue
-Urine
-Frozen Tissue Block
-Frozen Tissue Block
-Frozen Tissue Slide
-Whole Blood
-Frozen Tissue Block
-Fixed Tissue
-Whole Blood
-Bile
-Sweat
 Fresh Tissue
-Plasma
-Frozen Tissue
-Microdissected
-Fixed Tissue Block
-Whole Bone Marrow
-Serum
-Not Specified
-Whole Bone Marrow
-Fixed Tissue Block
-DNA
-Synovial Fluid
-Sweat
-Fixed Tissue Slide
-RNA
-Fixed Tissue Slide
-Fixed Tissue
-RNA
-Frozen Tissue Block
-Fixed Tissue
-Feces
-Whole Bone Marrow
-Frozen Tissue
-Whole Blood
-RNA
-Fresh Tissue
-Synovial Fluid
-Microdissected
-Urine
-Fixed Tissue Slide
-Fixed Tissue Block
-Not Specified
-Whole Blood
-DNA
-Feces
-Cerebrospinal Fluid
-Cerebrospinal Fluid
-Bile
-Fixed Tissue Block
-Serum
-Cerebrospinal Fluid
-Fixed Tissue
-Plasma
-Fixed Tissue Block
 RNA
 Microdissected
-Whole Bone Marrow
-Sweat
-Frozen Tissue Slide
-Fixed Tissue
-Microdissected
-Fixed Tissue Slide
-Fixed Tissue Block
-Fixed Tissue Slide
-Bile
-Feces
-Microdissected
-Synovial Fluid
-Serum
-RNA
-Fixed Tissue Block
-RNA
-Synovial Fluid
-Plasma
-Plasma
-Synovial Fluid
-Plasma
-Whole Bone Marrow
-Fixed Tissue
-Frozen Tissue Slide
-Feces
-Frozen Tissue Block
-Synovial Fluid
-Bile
-Fixed Tissue Block
-Frozen Tissue Slide
-Fixed Tissue Slide
-Microdissected
-Synovial Fluid
-Microdissected
-Whole Blood
-Fixed Tissue
-Fixed Tissue Block
-Plasma
-Sweat
-Bile
-Feces
-Fixed Tissue
-RNA
-Frozen Tissue Slide
-Microdissected
-Fixed Tissue Slide
-Frozen Cell Block
-Bile
-Fixed Tissue
-RNA
-Plasma
-Cerebrospinal Fluid
-Sweat
-Urine
-Sweat
-DNA
-Fixed Tissue Slide
-Whole Blood
-Plasma
-Plasma
-Bile
-Synovial Fluid
-Synovial Fluid
-Cerebrospinal Fluid
-Frozen Tissue
-Sweat
-Feces
-Frozen Tissue Block
-Cerebrospinal Fluid
-Fixed Tissue
-Bile
-Serum
-Bile
-RNA
-Frozen Cell Block
-Fixed Tissue
-Not Specified
-Not Specified
-Fixed Tissue
-Cerebrospinal Fluid
-Fixed Tissue Block
-RNA
-DNA
-Urine
-DNA
-Urine
-Cerebrospinal Fluid
-Frozen Cell Block
-Frozen Tissue
-Cerebrospinal Fluid
-Fresh Tissue
-Frozen Tissue
-Bile
-Urine
-Bile
-Frozen Cell Block
-Frozen Tissue Block
-Fixed Tissue Block
-Frozen Tissue
-Cerebrospinal Fluid
-Sweat
-Frozen Cell Block
-Fixed Tissue
-Serum
-Frozen Tissue Block
-Microdissected
-Synovial Fluid
-Fresh Tissue
-Feces
-Urine
-Whole Blood
-Bile
-Feces
-Whole Bone Marrow
-Plasma
-Fresh Tissue
-Urine
-Frozen Cell Block
-Whole Blood
-Sweat
-Urine
-RNA
-Whole Bone Marrow
-DNA
-RNA
-RNA
-Serum
-Whole Blood
-Whole Bone Marrow
-Plasma
-DNA
-Whole Bone Marrow
-Bile
-Fixed Tissue
-Frozen Tissue Block
-Cerebrospinal Fluid
-Fixed Tissue
-Fixed Tissue
-Serum
-Frozen Cell Block
-Frozen Cell Block
-Fixed Tissue Slide
-DNA
-Bile
-DNA
-Synovial Fluid
-Serum
-Fixed Tissue Block
-Bile
-Bile
-Not Specified
-Sweat
-Frozen Tissue
-Fixed Tissue Slide
-Not Specified
-Sweat
-Frozen Cell Block
-Serum
-Whole Bone Marrow
-Sweat
-Synovial Fluid
-Feces
-Cerebrospinal Fluid
-Frozen Cell Block
-DNA
-Cerebrospinal Fluid
-Fixed Tissue
-Whole Bone Marrow
-Synovial Fluid
-Frozen Tissue Slide
-Frozen Tissue Block
-Frozen Cell Block
-Plasma
-Urine
-Frozen Cell Block
-Urine
-DNA
-Bile
-Fixed Tissue Slide
-Feces
-Frozen Tissue Block
-Synovial Fluid
-Serum
-Whole Bone Marrow
-DNA
-Frozen Tissue
-Fixed Tissue
-Serum
-RNA
-Frozen Tissue Block
-Serum
-Whole Blood
-Frozen Tissue
-RNA
-Feces
-Frozen Tissue Slide
-Urine
-Urine
-Synovial Fluid
-Feces
-Frozen Cell Block
-RNA
-Fixed Tissue Block
-Frozen Tissue Slide
-Not Specified
-Serum
-Fixed Tissue Block
-RNA
-Microdissected
-Not Specified
-Serum
-Bile
-Plasma
-Serum
-Cerebrospinal Fluid
-Microdissected
-Microdissected
-RNA
-Frozen Tissue Block
-RNA
-RNA
-Frozen Cell Block
-Fixed Tissue Slide
-Fixed Tissue
-Whole Bone Marrow
-Whole Blood
-Microdissected
-RNA
-Fixed Tissue Slide
-Synovial Fluid
-Whole Bone Marrow
-Urine
-Whole Blood
-Fixed Tissue
-Frozen Tissue Slide
-Whole Bone Marrow
-Sweat
-Serum
-Microdissected
-RNA
-Urine
-Whole Bone Marrow
-Urine
-Frozen Tissue
 Frozen Tissue Block
 Fixed Tissue Block
 Fresh Tissue
-Frozen Cell Block
-Whole Blood
-Plasma
-Whole Bone Marrow
-Whole Blood
-Fixed Tissue
-Frozen Cell Block
-Bile
-Frozen Cell Block
-Plasma
-Plasma
-Not Specified
-Frozen Cell Block
-Bile
-Not Specified
+Frozen Tissue Slide
 Fresh Tissue
-Not Specified
-DNA
-Fixed Tissue Slide
-Cerebrospinal Fluid
-Fixed Tissue Slide
-Frozen Tissue Slide
-Microdissected
-Microdissected
-Plasma
-Fixed Tissue
-Fixed Tissue Block
-Frozen Tissue Block
-Plasma
-Frozen Tissue Slide
-Frozen Tissue
-Frozen Cell Block
-Synovial Fluid
-Fixed Tissue Slide
-DNA
-Bile
-Fixed Tissue
-Frozen Cell Block
-Not Specified
-Cerebrospinal Fluid
-Not Specified
-Bile
-DNA
-Cerebrospinal Fluid
-Fresh Tissue
-Not Specified
-Frozen Tissue
-Plasma
-Whole Blood
-DNA
 Urine
-Fixed Tissue Slide
-Microdissected
-Synovial Fluid
-Frozen Tissue Slide
-Whole Blood
-Whole Bone Marrow
-RNA
-Bile
-Serum
 Not Specified
-Cerebrospinal Fluid
-Feces
 Frozen Tissue Slide
-Frozen Tissue Slide
-Frozen Tissue
-Frozen Tissue Block
-Bile
-Serum
-Whole Bone Marrow
-Synovial Fluid
-Plasma
-Cerebrospinal Fluid
 Fixed Tissue Block
-Frozen Tissue
-Sweat
-RNA
-Urine
-Serum
-Cerebrospinal Fluid
-Fixed Tissue
+Synovial Fluid
+Fixed Tissue Slide
+DNA
 Whole Blood
-Feces
-Fixed Tissue
 Plasma
-Microdissected
-Bile
-Urine
-Bile
-Serum
-Fixed Tissue Block
-Cerebrospinal Fluid
-Feces
-Cerebrospinal Fluid
-Fixed Tissue
-Sweat
-DNA
-Microdissected
-Synovial Fluid
-Fixed Tissue
-Frozen Tissue Slide
-Frozen Tissue
-Whole Bone Marrow
-Fixed Tissue
-DNA
-Frozen Tissue
-Sweat
-Frozen Tissue Block
-DNA
-RNA
-Microdissected
-Cerebrospinal Fluid
-DNA
-Cerebrospinal Fluid
 Fixed Tissue Slide
-Frozen Tissue
-Serum
-Frozen Tissue
-Microdissected
-Frozen Tissue Slide
-Feces
-DNA
-Feces
-Fixed Tissue Slide
-Serum
 Fresh Tissue
 Frozen Tissue
-Frozen Cell Block
-Frozen Tissue Block
-Not Specified
+Frozen Tissue Slide
+Cerebrospinal Fluid
 Whole Bone Marrow
-Synovial Fluid
-Fixed Tissue Slide
-DNA
-Microdissected
-Plasma
+Fixed Tissue
 Feces
-Cerebrospinal Fluid
-Sweat
-Bile
-Cerebrospinal Fluid
-Frozen Tissue Slide
-Not Specified
-Fixed Tissue
-Frozen Tissue
-Sweat
-Serum
-Fixed Tissue
-Cerebrospinal Fluid
-Sweat
+Fixed Tissue Slide
 Fresh Tissue
-Frozen Tissue Slide
-RNA
-DNA
-Whole Blood
+Frozen Cell Block
 Frozen Tissue Block
-RNA
-Microdissected
-Fixed Tissue
-Fixed Tissue
 Plasma
-Synovial Fluid
-Feces
-DNA
-Serum
-Fixed Tissue Slide
-Whole Bone Marrow
-Bile
-Fixed Tissue Block
-Frozen Cell Block
 RNA
-RNA
-Frozen Tissue Block
-Whole Bone Marrow
-Frozen Tissue
-Frozen Cell Block
-DNA
-RNA
-Fixed Tissue
-RNA
-Urine
-Synovial Fluid
-Whole Bone Marrow
-Fresh Tissue
-Frozen Tissue Block
-Serum
-Serum
-Frozen Tissue Block
-Fixed Tissue Slide
-Whole Bone Marrow
-Frozen Tissue Slide
-DNA
-Microdissected
-Microdissected
-Fixed Tissue Slide
-Not Specified
-Fixed Tissue Block
 Cerebrospinal Fluid
-Fresh Tissue
-Frozen Cell Block
-Bile
+Synovial Fluid
 RNA
 Frozen Tissue
-Frozen Tissue Block
-Whole Bone Marrow
-Urine
-Synovial Fluid
-DNA
-Bile
-Urine
-Not Specified
-Not Specified
-RNA
-Fixed Tissue Slide
-Frozen Tissue Slide
-RNA
-Serum
-Whole Bone Marrow
-Frozen Cell Block
-Urine
-Frozen Cell Block
-Urine
-Fixed Tissue Block
-Bile
-Serum
-Frozen Tissue Block
-Urine
 Fresh Tissue
-Not Specified
-Whole Bone Marrow
-Not Specified
-Fixed Tissue Block
-Fixed Tissue Block
-Cerebrospinal Fluid
-Whole Bone Marrow
-Frozen Tissue Block
-Fixed Tissue
-Serum
-Synovial Fluid
-Microdissected
-Frozen Cell Block
-DNA
 Bile
 Whole Blood
-Frozen Tissue Slide
-Sweat
-DNA
-Fixed Tissue Block
-DNA
-Whole Blood
-Cerebrospinal Fluid
-Frozen Tissue
-Cerebrospinal Fluid
-Whole Blood
-Plasma
-Whole Bone Marrow
-Bile
-DNA
-Frozen Tissue Block
-Fixed Tissue
-Fixed Tissue
-Bile
-DNA
-Frozen Cell Block
-RNA
-Sweat
-Frozen Tissue Slide
-Feces
-Sweat
-Frozen Tissue
-Fresh Tissue
-Plasma
-Fixed Tissue
-Whole Blood
-Fresh Tissue
-Fixed Tissue
-Not Specified
-Fixed Tissue Slide
-Fixed Tissue Slide
-Plasma
-Frozen Tissue Slide
-Feces
-Feces
-Cerebrospinal Fluid
-Microdissected
-Sweat
-Fixed Tissue
-Serum
-Bile
-Frozen Tissue Slide
-Frozen Tissue Slide
-Feces
-Not Specified
-Fixed Tissue Block
-Feces
-Plasma
-Fixed Tissue Slide
-Fixed Tissue Block
-Whole Bone Marrow
-Bile
-RNA
-Frozen Tissue
-Bile
-Not Specified
-Feces
 Urine
 Fixed Tissue Slide
-Plasma
+Whole Bone Marrow
+Frozen Tissue
+Frozen Cell Block
+Synovial Fluid
+Fixed Tissue Slide
+Sweat
+DNA
+Fixed Tissue Slide
+Frozen Cell Block
+Frozen Cell Block
+Urine
+Fixed Tissue
+Whole Bone Marrow
+Fixed Tissue Block
+Bile
+Bile
+Whole Blood
+Fresh Tissue
 Plasma
 Synovial Fluid
-RNA
-Frozen Tissue Block
+Microdissected
+Whole Bone Marrow
 DNA
+Frozen Cell Block
+Fresh Tissue
+Plasma
+Fresh Tissue
+Frozen Cell Block
+Frozen Cell Block
+Frozen Tissue Block
+Microdissected
+Fresh Tissue
+DNA
+Synovial Fluid
+Urine
+Frozen Tissue Block
+Microdissected
+Sweat
+Frozen Tissue
+Feces
+Microdissected
+Feces
+Fixed Tissue Block
 Cerebrospinal Fluid
+Serum
+Whole Bone Marrow
+Feces
+Sweat
+DNA
+DNA
+Serum
+DNA
+Sweat
+RNA
+Whole Blood
+Frozen Tissue
+Fixed Tissue Block
+Feces
+Frozen Tissue Block
+RNA
+Frozen Tissue
+Frozen Tissue Block
+Frozen Tissue Block
+Fixed Tissue
+Frozen Tissue Block
+Urine
+Feces
+Microdissected
+DNA
+Microdissected
+Plasma
+Plasma
+Cerebrospinal Fluid
+Frozen Tissue Block
+Fresh Tissue
+Feces
+Serum
+Fixed Tissue
+Frozen Cell Block
+Fresh Tissue
+Serum
+Frozen Cell Block
+Frozen Cell Block
+Frozen Tissue
+Not Specified
+Urine
+Sweat
+Urine
+Fixed Tissue Slide
+Frozen Cell Block
+Fresh Tissue
+Plasma
+Bile
+Frozen Tissue
+Frozen Cell Block
+Frozen Tissue Block
+Fresh Tissue
+Fixed Tissue Slide
+Plasma
+Sweat
+RNA
+Sweat
+Frozen Tissue Block
+Fixed Tissue Block
+Fresh Tissue
+Sweat
+Microdissected
+Frozen Tissue Slide
+Frozen Tissue Block
+Whole Bone Marrow
+Serum
+Frozen Tissue Slide
+Fixed Tissue
+Not Specified
+Plasma
+RNA
+Fixed Tissue
+Frozen Tissue Slide
+Whole Blood
+RNA
+Plasma
+Fresh Tissue
+Bile
+Feces
+Synovial Fluid
+Sweat
+Plasma
+Fixed Tissue Block
+Fixed Tissue Slide
+Fixed Tissue Block
+Frozen Cell Block
+Bile
+Bile
+Fixed Tissue Slide
+Not Specified
+Fixed Tissue
+Serum
+Feces
+Fixed Tissue
+Bile
+Frozen Cell Block
+Urine
+Fixed Tissue Slide
+Fixed Tissue Slide
+Whole Blood
+Fixed Tissue
+Frozen Tissue
+Bile
+RNA
+Fixed Tissue
+Sweat
+Bile
+Synovial Fluid
+Sweat
+Fixed Tissue Slide
+Whole Blood
+Fresh Tissue
+Cerebrospinal Fluid
+Sweat
+Cerebrospinal Fluid
+Fresh Tissue
+Cerebrospinal Fluid
+Fixed Tissue Block
+Frozen Cell Block
+RNA
+Microdissected
+Frozen Tissue Slide
+Fresh Tissue
+Sweat
+Feces
+Frozen Tissue Slide
+Fixed Tissue Slide
+Not Specified
+Synovial Fluid
+Not Specified
+Sweat
+Microdissected
+Frozen Tissue
+DNA
+Whole Bone Marrow
+Microdissected
 Microdissected
 Cerebrospinal Fluid
 Feces
-Fixed Tissue
+Serum
+Fixed Tissue Block
+RNA
+RNA
+Fixed Tissue Slide
+Bile
+Whole Bone Marrow
+Bile
+Whole Bone Marrow
+Plasma
+Plasma
+Serum
+Frozen Tissue Block
+Feces
+Fixed Tissue Slide
+Fixed Tissue Slide
+Not Specified
+Whole Bone Marrow
+Cerebrospinal Fluid
+Sweat
+Cerebrospinal Fluid
+Whole Blood
+Fixed Tissue Slide
 Urine
 Not Specified
-Whole Blood
+Whole Bone Marrow
 Bile
-Fixed Tissue Block
-Serum
-RNA
+Bile
 Frozen Tissue Slide
+Fresh Tissue
+Cerebrospinal Fluid
+Whole Bone Marrow
+Frozen Tissue
+Frozen Tissue Block
+Fresh Tissue
+Fixed Tissue Block
+Microdissected
+Fixed Tissue Block
+Frozen Tissue
+Cerebrospinal Fluid
+Whole Blood
+Microdissected
+Microdissected
+DNA
+RNA
+Bile
+Bile
+RNA
+Whole Blood
+Frozen Tissue Block
+Fixed Tissue Slide
+Whole Bone Marrow
+Serum
+Serum
+Frozen Tissue Block
+Fixed Tissue Block
+Not Specified
+DNA
+Plasma
+DNA
+Frozen Tissue Block
+Frozen Tissue
+Frozen Tissue Block
+Not Specified
+Frozen Tissue Block
+Frozen Tissue
+Frozen Cell Block
+Plasma
+Cerebrospinal Fluid
+RNA
+Feces
 Serum
 Cerebrospinal Fluid
+Frozen Tissue Slide
+Frozen Tissue Block
+Not Specified
+Frozen Tissue Block
+Frozen Tissue Block
+Microdissected
+Frozen Cell Block
+Synovial Fluid
+Fixed Tissue Block
+Frozen Tissue Slide
+DNA
+Whole Bone Marrow
+Fresh Tissue
+Frozen Cell Block
+Synovial Fluid
+Fixed Tissue Block
+Frozen Tissue
+Fresh Tissue
+Fresh Tissue
+DNA
+DNA
+Fresh Tissue
+Synovial Fluid
+Fixed Tissue Block
+Whole Blood
+Fixed Tissue Block
+Cerebrospinal Fluid
+Serum
+Fresh Tissue
+Frozen Cell Block
+Not Specified
 Urine
+Urine
+Feces
+DNA
+Plasma
+Fixed Tissue Block
+Urine
+Serum
+Feces
+Microdissected
+DNA
+Whole Bone Marrow
+Plasma
+RNA
+Whole Blood
+RNA
+Whole Bone Marrow
+Fixed Tissue Slide
+Feces
+Fixed Tissue Block
+Not Specified
+DNA
+Whole Bone Marrow
+Not Specified
+Serum
+Fixed Tissue Block
+Cerebrospinal Fluid
+RNA
+Fixed Tissue
+Urine
+Frozen Cell Block
+Fresh Tissue
+Fixed Tissue Block
+Not Specified
+Frozen Cell Block
+Serum
+Whole Bone Marrow
+RNA
+DNA
+Fixed Tissue Slide
+Serum
+Feces
+Whole Bone Marrow
+Synovial Fluid
+Whole Blood
+Bile
+RNA
+Fixed Tissue Slide
+Synovial Fluid
+Cerebrospinal Fluid
+Fresh Tissue
+DNA
+Sweat
+Whole Blood
+Frozen Cell Block
+DNA
+Cerebrospinal Fluid
+Feces
+Not Specified
+Sweat
+Frozen Tissue
+Fresh Tissue
+Not Specified
+Plasma
+Fixed Tissue
+Plasma
+Fresh Tissue
+Urine
+Urine
+Whole Blood
+Urine
+Plasma
+Urine
+Sweat
+Bile
+Frozen Tissue
+Fixed Tissue Block
+Frozen Tissue Block
+Fixed Tissue Slide
+Feces
+Frozen Tissue Slide
+Microdissected
+RNA
+Frozen Tissue Block
+Fresh Tissue
+Fixed Tissue Block
+Synovial Fluid
+Synovial Fluid
 Frozen Tissue Slide
 Plasma
+Not Specified
+Frozen Tissue
+Sweat
+Fixed Tissue Block
+Cerebrospinal Fluid
+Plasma
+Whole Blood
+DNA
+Whole Bone Marrow
+Whole Blood
+Whole Blood
+Feces
+Frozen Tissue Slide
+Fixed Tissue Block
+Synovial Fluid
+Fresh Tissue
+Whole Blood
+Serum
+Microdissected
+Not Specified
+Sweat
+Not Specified
+DNA
+Cerebrospinal Fluid
+Urine
+Plasma
+Serum
+Not Specified
+Serum
+Serum
+Frozen Tissue Block
+Bile
+Urine
+Fresh Tissue
+Bile
+Frozen Tissue Block
+Feces
+Cerebrospinal Fluid
+Fixed Tissue Block
+Whole Blood
+Fixed Tissue
+Frozen Tissue Block
+Microdissected
+Fixed Tissue Slide
+Bile
+Bile
+Fixed Tissue Slide
+Cerebrospinal Fluid
+RNA
+Serum
+Frozen Tissue
+Whole Bone Marrow
+Frozen Tissue Slide
+Frozen Cell Block
+DNA
+Whole Blood
+RNA
+Whole Bone Marrow
+Plasma
+Fixed Tissue
+Cerebrospinal Fluid
+RNA
+Sweat
+Frozen Tissue Block
+Synovial Fluid
+Frozen Tissue Block
+Fixed Tissue
+Fixed Tissue Block
+Fixed Tissue Slide
+RNA
+Fresh Tissue
+Fixed Tissue
+RNA
+Synovial Fluid
+Fresh Tissue
+Synovial Fluid
+Whole Bone Marrow
+Urine
+Frozen Cell Block
+Fixed Tissue Slide
+Frozen Cell Block
+Frozen Cell Block
+Fixed Tissue Slide
+Frozen Tissue
+Frozen Tissue Block
+Sweat
+Feces
+Plasma
+Frozen Tissue Block
+DNA
+Frozen Tissue
+Whole Blood
+Whole Blood
+Frozen Tissue Block
+Bile
+Frozen Tissue
+Synovial Fluid
+Frozen Tissue
+Synovial Fluid
+Synovial Fluid
+Frozen Tissue
+Fixed Tissue Slide
+DNA
+Frozen Cell Block
+RNA
+Whole Bone Marrow
+Frozen Tissue Slide
+Fresh Tissue
+Not Specified
+Whole Bone Marrow
+Microdissected
+Fresh Tissue
+DNA
+RNA
+Synovial Fluid
+Frozen Tissue
+Microdissected
+Frozen Tissue
+Not Specified
+RNA
+Fixed Tissue
+Urine
+Synovial Fluid
+Frozen Tissue Slide
+Cerebrospinal Fluid
+Fixed Tissue
+Fresh Tissue
+Frozen Tissue Slide
+Serum
+DNA
+Fixed Tissue
+Bile
+Cerebrospinal Fluid
+DNA
+Frozen Tissue Slide
+DNA
+Urine
+Fixed Tissue
+Urine
+Frozen Tissue Block
+Feces
+Fixed Tissue
+DNA
+Cerebrospinal Fluid
+Cerebrospinal Fluid
+Urine
+Fixed Tissue Block
+Frozen Tissue Slide
+Plasma
+Fixed Tissue Block
+Whole Bone Marrow
+Frozen Tissue Block
+Not Specified
+Synovial Fluid
+Not Specified
+Fixed Tissue
+Plasma
+Frozen Cell Block
+Bile
+Frozen Tissue Block
+Microdissected
+Plasma
+Sweat
+Fixed Tissue Block
+Whole Bone Marrow
+Whole Blood
+Fresh Tissue
+Feces
+Fixed Tissue
+Frozen Tissue Block
+Fixed Tissue Block
+Bile
+Serum
+Plasma
+Frozen Cell Block
+Whole Blood
+Feces
+DNA
+Cerebrospinal Fluid
+Synovial Fluid
+Frozen Tissue Block
+Frozen Tissue
+Serum
+Sweat
+Cerebrospinal Fluid
+Fixed Tissue
+Cerebrospinal Fluid
+Microdissected
+Microdissected
+Frozen Cell Block
+Not Specified
+Synovial Fluid
+Sweat
+Frozen Tissue Slide
+Synovial Fluid
+Fixed Tissue
+Fixed Tissue
+Frozen Tissue
+Synovial Fluid
+Cerebrospinal Fluid
+Synovial Fluid
+Whole Blood
+Cerebrospinal Fluid
+Synovial Fluid
+Feces
+Feces
+Frozen Tissue Block
+Fixed Tissue Block
+Microdissected
+Frozen Tissue
+Fixed Tissue Block
+Microdissected
+Sweat
+Frozen Tissue
+Frozen Tissue Block
+Whole Blood
+Fresh Tissue
+Frozen Tissue Slide
+Fixed Tissue Slide
+Frozen Tissue Slide
+Fresh Tissue
+Frozen Tissue
+Frozen Tissue
+Whole Blood
+Frozen Tissue
+Plasma
+Frozen Cell Block
+Synovial Fluid
+Frozen Tissue
+DNA
+Not Specified
+Whole Blood
+Fixed Tissue Block
+Frozen Tissue Block
+Fixed Tissue
+Not Specified
+Feces
+Plasma
+Serum
+Cerebrospinal Fluid
+Fixed Tissue Slide
+Bile
+Microdissected
+Fixed Tissue Block
+Feces
+Feces
+Cerebrospinal Fluid
+Fixed Tissue Block
+Frozen Tissue Slide
+Whole Blood
+Urine
+Fixed Tissue
+Fixed Tissue
+Feces
+Not Specified
+Serum
+DNA
+Synovial Fluid
+Whole Bone Marrow
+Fixed Tissue
+Cerebrospinal Fluid
+Serum
+Bile
+Fresh Tissue
+Sweat
+Fresh Tissue
+Whole Blood
+RNA
+Sweat
+Fixed Tissue Block
+Microdissected
+Microdissected
+Frozen Tissue Slide
+Frozen Tissue
+Fixed Tissue Block
+Fixed Tissue
+Fixed Tissue Block
+Frozen Tissue
+Sweat
+Whole Bone Marrow
+Serum
+Frozen Tissue
+Sweat
+Cerebrospinal Fluid
+Whole Blood
+Fresh Tissue
+Fixed Tissue Slide
+Serum
+Plasma
+Plasma
+Bile
+Frozen Tissue
+Frozen Tissue
+Frozen Cell Block
+Frozen Cell Block
+Urine
+DNA
+Serum
+Sweat
+Not Specified
+Fixed Tissue Block
+Frozen Tissue
+Fresh Tissue
+Bile
+Frozen Tissue Block
+Frozen Tissue Slide
+DNA
+Fixed Tissue Slide
+Fixed Tissue
+Whole Blood
+Urine
+Urine
+Sweat
+RNA
+Fixed Tissue Block
+RNA
+Whole Bone Marrow
+Synovial Fluid
+Not Specified
+Sweat
+RNA
+Plasma
+Frozen Tissue Slide
+Whole Blood
+Frozen Tissue Block
+Fixed Tissue Block
+Urine
+DNA
+Bile
+Fixed Tissue Slide
+Fixed Tissue Slide
+RNA
+Sweat
+DNA
+Microdissected
+Whole Blood
+Frozen Cell Block
+Urine
+Frozen Tissue Slide
+Frozen Tissue Block
+Whole Blood
+Urine
+Fixed Tissue Block
+Whole Bone Marrow
+Plasma
+DNA
+Fixed Tissue Block
+Serum
+Whole Bone Marrow
+Frozen Tissue
+Feces
+Frozen Tissue
+Bile
+Not Specified
+Fixed Tissue Slide
+Frozen Tissue Block
+Plasma
+Urine
+Plasma
+Feces
+Serum
+Not Specified
+Sweat
+Frozen Tissue
+Plasma
+Fixed Tissue
+Not Specified
+Frozen Tissue Block
+Whole Blood
+Frozen Tissue Slide
+Frozen Cell Block
+Frozen Tissue Slide
+Bile
+Not Specified
+Feces
+Frozen Tissue Block
+DNA
+Frozen Tissue Block
+Frozen Tissue Block
+Feces
+Whole Blood
+Microdissected
+Frozen Tissue Block
+Plasma
+Fixed Tissue
+Serum
+Frozen Tissue Slide
+Frozen Cell Block
+DNA
+DNA
+Cerebrospinal Fluid
+Frozen Cell Block
+Frozen Tissue Block
+Fixed Tissue Block
+Whole Blood
+Synovial Fluid
+Fixed Tissue Slide
+Cerebrospinal Fluid
+Urine
+Whole Blood
+Sweat
+Frozen Tissue Slide
+Not Specified
+Microdissected
+Urine
+Whole Blood
+Whole Bone Marrow
+Frozen Tissue
+Fixed Tissue Block
+Fixed Tissue Slide
+Microdissected
+Not Specified
+Frozen Cell Block
+Fixed Tissue
+DNA
+Frozen Tissue Block
+Frozen Tissue
+Cerebrospinal Fluid
+Fresh Tissue
+Frozen Tissue Block
+Bile
+Fixed Tissue Slide
+Sweat
+Fixed Tissue
+DNA
+Synovial Fluid
+Plasma
+Synovial Fluid
+Frozen Tissue Block
+Frozen Tissue Slide
+Fixed Tissue
+Fixed Tissue Slide
+Not Specified
+Fixed Tissue Slide
+Plasma
+Feces
+Serum
+Whole Blood
+Fresh Tissue
+Not Specified
+Synovial Fluid
+Frozen Tissue
+Fixed Tissue Block
+Urine
+Urine
+Whole Bone Marrow
+Fixed Tissue Block
+Whole Blood
+Bile
+Urine
+Frozen Cell Block
+RNA
+Sweat
+Cerebrospinal Fluid
+Plasma
+Serum
+Frozen Tissue Block
+Whole Blood
+Serum
+Frozen Tissue
+Fixed Tissue Block
+Serum
+Whole Blood
 Whole Blood
 Feces
 Bile
+Frozen Tissue Block
 DNA
+Urine
 Whole Blood
-Fresh Tissue
+DNA
+Serum
+Whole Bone Marrow
+Fixed Tissue Block
 Frozen Tissue Slide
-Microdissected
-Whole Bone Marrow
-Fresh Tissue
-Frozen Tissue Block
-Cerebrospinal Fluid
-RNA
-Frozen Tissue Block
-Synovial Fluid
-Fresh Tissue
-Fixed Tissue
-Cerebrospinal Fluid
-Microdissected
 Whole Blood
-Frozen Tissue Block
-Fixed Tissue Block
-Fixed Tissue Slide
-Fixed Tissue Block
-Whole Bone Marrow
-Cerebrospinal Fluid
-Serum
-Bile
-Fixed Tissue
-Frozen Cell Block
-Microdissected
-Bile
-Frozen Tissue
-Urine
-Bile
-Plasma
-Serum
-Frozen Tissue
 Fresh Tissue
-Bile
-Frozen Tissue
+Serum
+Whole Blood
+Fresh Tissue
 Fixed Tissue
-Cerebrospinal Fluid
-Frozen Tissue Block
-DNA
-Not Specified
 Urine
-Sweat
-Fixed Tissue Block
-Microdissected
-Synovial Fluid
+Whole Blood
 Feces
-Synovial Fluid
+Serum
 Fixed Tissue Block
-Fixed Tissue
-Bile
-Not Specified
-Fresh Tissue
-Frozen Tissue Slide
-Fixed Tissue
-Feces
+RNA
 Cerebrospinal Fluid
-Fixed Tissue Block
-Fixed Tissue Block
-Serum
-Whole Blood
-Fixed Tissue Block
-Bile
-Frozen Tissue
-Feces
-Not Specified
-Urine
-Synovial Fluid
-Frozen Tissue
-DNA
-DNA
-Plasma
-Fixed Tissue Block
-Not Specified
-Serum
-Whole Bone Marrow
-DNA
-Sweat
-Frozen Tissue
-Frozen Cell Block
-Bile
-Urine
-Plasma
-Sweat
-Not Specified
-Serum
-Not Specified
-Synovial Fluid
 Microdissected
-Plasma
-Synovial Fluid
-Whole Blood
-Sweat
-Fresh Tissue
-Synovial Fluid
-Sweat
-Plasma
-Frozen Tissue Block
-Synovial Fluid
-Fixed Tissue Slide
-Fresh Tissue
-Fixed Tissue Slide
-Frozen Tissue Slide
 Urine
-Frozen Tissue Slide
 Cerebrospinal Fluid
-DNA
-Sweat
-Fixed Tissue Slide
-Microdissected
-Frozen Tissue Block
-Synovial Fluid
-Frozen Cell Block
-DNA
-Frozen Tissue
-Plasma
-Frozen Tissue
-Microdissected
-Serum
-Bile
-Not Specified
-Whole Blood
-Plasma
-Fresh Tissue
-Not Specified
-Fresh Tissue
-Bile
-Whole Bone Marrow
-Whole Blood
-Whole Bone Marrow
-DNA
-Bile
-RNA
-Frozen Tissue
-Frozen Tissue
-Fixed Tissue
-Not Specified
-Sweat
-Plasma
-Fixed Tissue
-Not Specified
-RNA
-Feces
-Microdissected
-Fixed Tissue
-Not Specified
-Fresh Tissue
-Synovial Fluid
-Not Specified
-Microdissected
-Not Specified
-Frozen Tissue Slide
-RNA
-Feces
-Frozen Tissue
-Plasma
-Urine
-Frozen Tissue Slide
-Not Specified
-Sweat
-Synovial Fluid
-Fixed Tissue Block
-Frozen Tissue
-DNA
-Cerebrospinal Fluid
-DNA
-RNA
-Synovial Fluid
-Fresh Tissue
-Frozen Tissue Block
-Fixed Tissue Block
-Serum
-Plasma
-Frozen Tissue Slide
-Whole Blood
-Frozen Tissue
-Plasma
-DNA
-Synovial Fluid
-Whole Bone Marrow
-Frozen Cell Block
-Fixed Tissue
-Synovial Fluid
-Urine
-RNA
-Sweat
-Bile
-Frozen Tissue
-Plasma
-RNA
-DNA
-Fixed Tissue Slide
-Microdissected
-Whole Bone Marrow
-Fixed Tissue Block
-Frozen Tissue Block
-Plasma
-Frozen Tissue
-Fresh Tissue
-Fixed Tissue Slide
-Frozen Tissue
-Fixed Tissue Block
-Bile
-Fixed Tissue Block
-Frozen Tissue Block
-Serum
-Microdissected
 Feces
 Plasma
-Whole Bone Marrow
-Frozen Tissue Block
+Frozen Cell Block
 Frozen Tissue
-Bile
-Cerebrospinal Fluid
-Not Specified
-Frozen Cell Block
-Fresh Tissue
-Frozen Cell Block
-Feces
-Fixed Tissue Block
-Serum
-Microdissected
-Serum
-Bile
-Urine
-Frozen Tissue Block
-Fresh Tissue
-Whole Blood
-Fixed Tissue Slide
-Bile
 RNA
-Synovial Fluid
-Whole Blood
-Sweat
-Cerebrospinal Fluid
-Urine
+Fixed Tissue Slide
+Whole Bone Marrow
+Feces
+Fixed Tissue Slide
 Frozen Tissue Block
-Serum
-Cerebrospinal Fluid
+Bile
+Not Specified
 Microdissected
+Fixed Tissue
+Urine
+Frozen Cell Block
+Not Specified
+Frozen Tissue Slide
+Whole Blood
+Urine
+Whole Blood
+Bile
 Frozen Tissue Slide
 Plasma
-Not Specified
-Serum
+Feces
 Frozen Tissue
-Fixed Tissue Slide
-Urine
+Frozen Cell Block
 Plasma
-Serum
-Sweat
-Sweat
-Not Specified
-Frozen Tissue Block
-Whole Blood
 Synovial Fluid
-Sweat
+Frozen Cell Block
+Whole Bone Marrow
 Bile
-Cerebrospinal Fluid
-Urine
-DNA
-Microdissected
+Serum
 Plasma
-Fixed Tissue Block
-Frozen Tissue
-Microdissected
-Not Specified
 Bile
-Fixed Tissue Slide
-Cerebrospinal Fluid
-Fixed Tissue
-Whole Blood
-Frozen Cell Block
-RNA
-RNA
-DNA
-Fixed Tissue
-Plasma
-Whole Blood
-Sweat
-Sweat
-Serum
-Frozen Cell Block
-Fixed Tissue
-Frozen Tissue
-DNA
 Not Specified
-Fixed Tissue Slide
-Microdissected
-Serum
-Cerebrospinal Fluid
-Fresh Tissue
-Sweat
-Fixed Tissue Block
-Frozen Cell Block
-Cerebrospinal Fluid
-Sweat
-RNA
-Frozen Cell Block
 Frozen Tissue Block
-Whole Blood
-Not Specified
-DNA
-Plasma
-Serum
+Frozen Tissue
 Cerebrospinal Fluid
 Whole Bone Marrow
-Synovial Fluid
-Frozen Tissue
-Whole Blood
-Synovial Fluid
-Frozen Tissue
-Frozen Cell Block
-Microdissected
-Cerebrospinal Fluid
-Whole Blood
+DNA
+Fixed Tissue Block
 Frozen Tissue
 Fixed Tissue
+Serum
+RNA
+Synovial Fluid
+Fixed Tissue Slide
+DNA
+Fixed Tissue Slide
+Urine
+Plasma
+Fixed Tissue
+Fixed Tissue Slide
+Frozen Tissue Slide
+Feces
+Fixed Tissue
+Not Specified
+Sweat
+Frozen Tissue Block
+Whole Blood
+Feces
+Frozen Tissue Slide
+Frozen Tissue Block
+Frozen Tissue
+Cerebrospinal Fluid
+Frozen Cell Block
+Frozen Tissue Block
+Sweat
+Frozen Tissue
+Cerebrospinal Fluid
+Synovial Fluid
+Microdissected
+Plasma
+Whole Bone Marrow
+Whole Blood
+Feces
+Frozen Tissue Block
+Whole Bone Marrow
+Feces
+RNA
+RNA
+Feces
+Bile
+Fixed Tissue Slide
+Frozen Tissue Block
+Fixed Tissue Block
+Serum

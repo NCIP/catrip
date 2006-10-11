@@ -1,6 +1,13 @@
-Not Specified
-Lab
-Repository
-Collection Site
 Laboratory
 Bank
+Repository
+Collection Site
+Bank
+Laboratory
+Collection Site
+Bank
+Laboratory
+Repository
+Collection Site
+Lab
+Not Specified

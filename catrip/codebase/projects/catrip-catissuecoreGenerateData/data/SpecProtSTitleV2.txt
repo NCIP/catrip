@@ -1,0 +1,1000 @@
+BrCa18782      
+BR 10+ NODES  
+BC19364      
+BGLAC 9243      
+BrCa18642      
+MODEL BREAST CA 
+RE-186 Breast Cancer   
+ACOS Z0010      
+ACOS Z0011      
+V. Reality I    
+EGF104900       
+BrCa Dx       
+MAMMOG/BLACKS   
+BrCa And Bowe 
+BRCA28741      
+BrCa28862      
+Healthy Lung    
+Breast Cancer FNA      
+V. Reality:Brst 
+BGLAC 9141      
+BrCa 9243      
+Econ Eval 9343  
+BGLAC 8742      
+Breast FNA      
+PV BLOCK/BREAST 
+CA BrCa & Pro 
+BrCa 8864      
+BRCA28862      
+BrCa279804     
+BC19242      
+Breast Cancer And Bowe 
+Genome models   
+BC279809     
+BRCA18662      
+FRESH START     
+BGLAC 9193      
+STRENGTH        
+Tissue Acq/brst 
+Breast Cancer BANK     
+BMT ICAM Breast Cancer 
+BrCa Ca Bank  
+Breast Ca Bank  
+BRCA19193      
+CanThrive       
+Breast Cancer Prevent  
+BrCaOG Hot Flash  
+BrCa249901     
+STAR            
+Zoled/Aredia    
+V. Reality I    
+V. Reality I    
+MODEL BREAST CA 
+In Vitro CTLs   
+BrCa19872      
+Brst Ultrasound 
+BrCa279809     
+BRCA29243      
+VitB6 Hot Flash 
+BGLAC 9364      
+STAR            
+BGLAC 9193      
+ENDOMETR SCREEN 
+BrCa Prevent  
+BCOG Hot Flash  
+BRCA19670      
+WRIT-EXP BrCa 
+DOX/RT ON HEART 
+BREAST TISSUE   
+BLANKET BR    
+BC18782      
+BrCa29193      
+BRCA19140      
+BGLAC 8662      
+BGLAC 9371      
+QOL EARLY BREAS 
+BGLAC 9371      
+ENDOMETR SCREEN 
+Ca recurrence   
+BRCA19193      
+BC18541      
+Ginger study    
+CI 5-FU         
+BrCa29243      
+Breast Cancer Dx       
+BrCa19670      
+BRCA18862      
+BrCa 9192      
+5FU POST BR   
+WELL-BEING      
+NCCN Outcomes   
+BR MET Breast Cancer 
+BrCa19192      
+Econ Eval 9343  
+EFF GCSF NEUTRO 
+QOL EARLY BREAS 
+PC B-19     
+Genome models   
+ICA 9201        
+BGLAC 9140      
+BC18662      
+SPECT           
+BrCa Prevent  
+BGLAC 9484      
+CanThrive II    
+BCOG Hot Flash  
+BC18742      
+BrCa19371      
+BGLAC 9484      
+Retinoid Rcptor 
+BrCa249901     
+Breast Cancer BANK     
+TGF BETA BrCa 
+CI 5-FU         
+BC29193      
+BrCaB-17      
+EGF104900       
+BREAST TEST 1   
+BGLAC 8662      
+ACOS Z0010      
+PC B-20      
+Cog tx insomnia 
+Breast Cancer TEST 1   
+P-20 Exercise   
+ACOS Z0011      
+BAXTER          
+BETA INF        
+BGLAC 8862      
+BrCa18741      
+BRCA18741      
+BC18662      
+PK COMPANION    
+ENDOMETR SCREEN 
+BGLAC 8944      
+BrCa29484      
+SANDOZ 08341    
+NEEDLE BX       
+LN MAP & RT-PCR 
+CA BrCa & Pro 
+BRCA19364      
+P53 Breast Cancer CA   
+Project LEAD    
+WRIT-EXP Breast Cancer 
+NCCN Outcomes   
+TOP 0102        
+CanThrive       
+Breast Cancer IL-6     
+BC18864      
+BrCa 9193      
+MRI-BREAST      
+BrCa29141      
+STAR            
+BREAST:WT GAIN  
+SPLIT DOSE BCNU 
+MRI-Breast Cancer      
+BR 10+ NODES  
+BC28642      
+BETA INF        
+5FU POST BR   
+Social Support  
+EFF GCSF NEUTRO 
+Econ Eval 9343  
+Breast Prevent  
+BrCa29140      
+BRCA28642      
+BC18897      
+BrCa179804     
+OVARY/Breast Cancer    
+UNC BREAST      
+CI 5-FU         
+OVARY/Breast Cancer    
+DLI/SOLID       
+BRCA18741      
+Social Support  
+HYERPLASIA BR   
+BrCa 9371      
+BGLAC 8782      
+Breast Cancer SPORE    
+BrCa29484      
+PC B-25    
+Model of Insoma 
+P53 BrCa CA   
+Breast Cancer SPORE    
+BrCa 9872      
+Markers Breast  
+OVARY/Breast Cancer    
+CT EMESIS       
+Breast Cancer SPORE    
+BGLAC 8862      
+FRESH START     
+BrCa28742      
+BRCA28742      
+BrCa19872      
+QOL EARLY BREAS 
+Healing Skills  
+Ca recurrence   
+ADR-529/BrCa  
+BCOG Hot Flash  
+BrCaOG Hot Flash  
+BrCa29242      
+Breast Cancer BANK     
+Decision Tamox  
+BrCa: PET     
+BRCA249901     
+BC28642      
+BrCa28782      
+BRCA19371      
+RE-186 BREAST  
+HER2/neu NED    
+Breast Cancer-SURVEY   
+RIMER ADJBREAST 
+AMGEN 951023-01 
+WELL-BEING      
+BC19484      
+BC29364      
+BRCA19192      
+Decision Tamox  
+BR AFM RAND   
+BrCa28862      
+Markers Breast Cancer  
+BC28741      
+Yoga/menopause  
+Tamoxifen info  
+BGLAC 8869      
+ACOS Z0011      
+GM MOUTHWASH    
+BGLAC 8662      
+BM MF 4265      
+BMT ICAM Breast Cancer 
+BrCa279809     
+HER2/neu NED    
+SPECT           
+DLI/SOLID       
+Breast Cancer-IMAGING  
+BrCa BANK     
+BC19364      
+BrCa29194      
+WRIT-EXP BREAST 
+P-20 Exercise   
+BGLAC 9371      
+BREAST-SURVEY   
+BGLAC 9242      
+BGLAC 8861      
+BC29141      
+BrCa28897      
+Brst Ultrasound 
+CI 5-FU         
+BGLAC 9192      
+BrCa 9364      
+CENTOCOR        
+Breast Cancer VACCINE  
+BC18944      
+BrCa19193      
+BGLAC 8662      
+WOMEN RISK      
+NEEDLE BX       
+Breast Dx       
+BR G/GM       
+BRCA CONSORT    
+BC28861      
+GM MOUTHWASH    
+BrCa 9141      
+BGLAC 8642      
+BGLAC 9193      
+BrCaAFM RAND   
+ACOS Z0011      
+Decision Tamox  
+CENTOCOR        
+BrCa 9484      
+BrCaB-20      
+PV BLOCK/BrCa 
+BRCA18864      
+Econ Eval 9343  
+ICA 9201        
+BrCa 9141      
+CanThrive       
+T92-0027        
+RIMER ADJBrCa 
+ALNDRNT-DBL-B   
+Econ Eval 9343  
+V. Reality II   
+PC B-25    
+CanThrive II    
+SPLIT DOSE BCNU 
+CENTOCOR        
+BC19484      
+ACOS Z0011      
+Veloc. Profiles 
+T92-0027        
+BGLAC 8742      
+V. Reality II   
+BrCa19872      
+BRCA18662      
+BC29484      
+BC19193      
+BrCa28864      
+BRCA19484      
+BRCA279809     
+JANSSEN Breast Cancer  
+BGLAC 8642      
+BrCa Dx       
+5FU POST BR   
+BrCa19242      
+BRCA28864      
+BC19872      
+BrCa 9141      
+BGLAC 8782      
+NCCN Outcomes   
+"CT,RT +/- HT  
+BrCaPURGE      
+IV NAVELBINE BR 
+MDX-1307/Breast Cancer 
+P-20 Exercise   
+NAVELBINE-BREAS 
+MDX-1307/breast 
+LIGAND FLT3     
+MDX-1307/BrCa 
+BrCa And Bowe 
+BGLAC 9243      
+Tissue Acq/brst 
+PC B-25    
+5FU POST BR   
+Tissue Acq/brst 
+BC19194      
+BrCaB-24      
+MODEL BREAST CA 
+BGLAC 8782      
+BrCa29484      
+BRCA28662      
+GENENTECH 659   
+5FU POST BR   
+BC179809     
+Recruit Blacks  
+CENTOCOR        
+BR G/GM       
+IV NAVELBINE BR 
+BGLAC 8541      
+BGLAC 8741      
+BGLAC 8864      
+BrCa28541      
+BrCa28862      
+TOP 0102        
+BrCa 8944      
+DUET 8902       
+AMGEN 951023-01 
+MODEL BREAST CA 
+In Vitro CTLs   
+MDX-1307/Breast Cancer 
+MRI-BrCa      
+EFF GCSF NEUTRO 
+PC B-20      
+COSTS Breast Cancer TX 
+Brst Ultrasound 
+RPR TAXOTERE    
+BRCA19193      
+BGLAC 79809     
+BGLAC 9670      
+"CT,RT +/- HT  
+CENTOCOR        
+HER2/neu NED    
+Breast Cancer CA/BODY  
+DUET 8902       
+BGLAC 8662      
+Breast Cancer:WT GAIN  
+BrCaCOAG FACT  
+BC28862      
+BrCa 79809     
+P.O. NAVELBINE 
+Tissue Acq/brst 
+Breast Cancer TEST 1   
+BrCa 9141      
+NEEDLE BX       
+Social Support  
+Social Support  
+BrCa Ca Bank  
+BrCa 9193      
+BrCaIL-11      
+BrCa18541      
+BrCa19484      
+STAR            
+BGLAC 9364      
+BrCa TISSUE   
+BrCa 8897      
+BGLAC 9193      
+BRCA18782      
+ACOS Z0010      
+BrCa28782      
+BrCa29193      
+5FU POST BR   
+ACOS Z0011      
+BrCa 8864      
+BGLAC 8541      
+In Vitro CTLs   
+MODEL BREAST CA 
+OVARY/BrCa    
+RE-186 BrCa   
+BrCa19242      
+Recruit Blacks  
+DANIPLESTIM     
+BGLAC 9872      
+BGLAC 79804     
+LESBIAN Breast Cancer  
+BREAST VACCINE  
+BCOG Hot Flash  
+RPR TAXOTERE    
+DUET 8902       
+TOP 0102        
+BrCa VACCINE  
+BETA INF        
+Tissue Acq/brst 
+Ca recurrence   
+BrCa 8862      
+BGLAC 9194      
+BREAST: PET     
+BRCA29484      
+BrCa 49901     
+Cog tx insomnia 
+Breast SPORE    
+BrCaB-19      
+QOL EARLY BREAS 
+JANSSEN Breast Cancer  
+PV BLOCK/Breast Cancer 
+Healthy Lung    
+BGLAC 8944      
+FRESH START     
+TOREM VS TAM    
+CT EMESIS       
+Tamoxifen info  
+BGLAC 8642      
+AMGEN 951023-01 
+Breast Cancer Dx       
+WRIT-EXP BrCa 
+BrCa28861      
+BRCA19243      
+BC18861      
+BC29872      
+CI 5-FU         
+SPLIT DOSE BrCaNU 
+IV NAVELBINE BrCa
+NCCN Outcomes   
+BGLAC 8869      
+Recruit Blacks  
+Econ Eval 9343  
+P-20 Exercise  
+Cog tx insomnia 
+BrCa 8741      
+BC29140      
+BC279804     
+BrCa29242      
+V. Reality:Brst 
+BCOG Hot Flash  
+BrCa179809     
+BrCa249901     
+BrCa28742      
+EGF104900       
+CT EMESIS       
+CA Breast Cancer & Pro 
+BrCa 9192      
+BGLAC 9364      
+Breast Cancer:WT GAIN  
+Breast And Bowe 
+BREAST CA/BODY  
+V. Reality:Brst 
+BGLAC 9364      
+Genome models   
+CanThrive II    
+BrCa 9670      
+PC B-19     
+BGLAC 9140      
+CanThrive II    
+BrCa 9194      
+BrCa29194      
+BrCa28782      
+BREAST:WT GAIN  
+BrCa TISSUE   
+"CT,RT +/- HT    
+BrCa 8864      
+Ca recurrence   
+BGLAC 8662      
+BrCa29371      
+BrCa28869      
+BrCa29243      
+BRCA29192      
+TOREM VS TAM    
+Breast Cancer CA Genes 
+SC-68420        
+Social Support  
+BrCa29140      
+P.O. NAVELBINE 
+BR MET Breast Cancer 
+BrCa18862      
+BrCa28897      
+Breast SPORE    
+BGLAC 9192      
+PV BLOCK/BREAST 
+TOP 0102        
+BGLAC 8742      
+Breast SPORE    
+BGLAC 8869      
+PC B-17    
+Cog tx insomnia 
+BGLAC 9243      
+Breast Prevent  
+Ginger study    
+BRCA29670      
+CanThrive       
+PK COMPANION    
+TOREM VS TAM    
+PC B-24      
+Tamoxifen info  
+BC18662      
+BrCa TEST 1   
+EGF104900       
+HER2/neu NED    
+BGLAC 9872      
+NAVELBINE-BREAS 
+BrCa179809     
+Ginger study    
+BGLAC 9371      
+V. Reality II   
+BGLAC 8742      
+BC28862      
+BrCa19193      
+BRCA18782      
+UNC Breast Cancer      
+HYERPLASIA BR   
+T92-0027        
+BC19670      
+QOL EARLY BREAS 
+LESBIAN Breast Cancer  
+GM MOUTHWASH    
+GM MOUTHWASH    
+Retinoid Rcptor 
+TAM/ENDOMETRIUM 
+CanThrive II    
+BLANKET BR    
+BGLAC 8869      
+BMT ICAM BREAST 
+BrCaCOAG FACT  
+TGF BETA BrCa 
+BrCa18662      
+BC179809     
+WELL-BEING      
+T92-0027        
+TRC 9202        
+Tissue Acq/brst 
+BrCa18864      
+ADR-529/BREAST  
+BrCa28864      
+BGLAC 8782      
+V. Reality II   
+Econ Eval 9343  
+BC249901     
+BC28862      
+ALNDRNT-DBL-B   
+BRCA279809     
+BRCA179809     
+BrCaB-24      
+RE-186 BrCa   
+Brst Ultrasound 
+BC29193      
+BETA INF        
+BETA INF        
+BRCA29192      
+Breast Cancer:WT GAIN  
+DUET 8902       
+BrCa29484      
+BREAST TISSUE   
+BrCa28741      
+VitB6 Hot Flash 
+Yoga/menopause  
+RT PNEUM/BREAST 
+Retinoid Rcptor 
+ICA 9201        
+BGLAC 9192      
+HYERPLASIA BR   
+NEEDLE BX       
+BGLAC 8642      
+PC P-1     
+QOL/BREAST      
+JANSSEN Breast Cancer  
+BGLAC 8642      
+BrCa10+ NODES  
+Breast Ca Bank  
+Project LEAD    
+BrCa19141      
+BRCA19243      
+BR IL-11      
+BR IL-11      
+BC29484      
+ALNDRNT-DBL-B   
+BR AFM RAND   
+BC18782      
+Zoled/Aredia    
+BC28742      
+P53 BrCa CA   
+V. Reality:Brst 
+BC18869      
+RPR TAXOTERE    
+RT PNEUM/BrCa 
+HYERPLASIA BR   
+NEEDLE BX       
+MDX-1307/Breast Cancer 
+BC19364      
+Recruit Blacks  
+BrCa19872      
+BR IL-11      
+NEEDLE BX       
+P.O. NAVELBINE  
+DLI/SOLID       
+"CT,RT +/- HT    "
+Breast Cancer Ca Bank  
+BC18862      
+BrCa 8741      
+BRCA19243      
+BMT ICAM BrCa 
+BrCa Ca Bank  
+LN MAP & RT-PCR 
+TGF BETA BrCa 
+P-20 Exercise   
+STAR            
+JANSSEN BREAST  
+ENDOMETR SCREEN 
+BrCa 9192      
+CanThrive       
+Genome models   
+Healing Skills  
+COSTS BrCa TX 
+BrCa29192      
+Healing Skills  
+QOL EARLY BREAS 
+READY SURVEY    
+Markers Breast Cancer  
+CanThrive       
+Zoled/Aredia    
+STRENGTH        
+BrCa28782      
+BRCA18862      
+BRCA19670      
+BrCaAFM RAND   
+BR PURGE      
+BGLAC 8782      
+Genome models   
+BGLAC 8861      
+SPECT           
+CENTOCOR        
+HER2/neu NED    
+SANDOZ 08341    
+BGLAC 79804     
+BRCA CONSORT    
+BrCa Ca Bank  
+BrCa19364      
+BREAST: PET     
+BRCA28642      
+BRCA18741      
+Recruit Blacks  
+TOP 0102        
+BrCa29141      
+BRCA19193      
+PC B-17      
+CanThrive II    
+BrCa 9192      
+P53 BrCa CA   
+BGLAC 9670      
+ICA 9201        
+CT EMESIS       
+BGLAC 8869      
+MDX-1307/BrCa 
+BGLAC 8862      
+BRCA28862      
+BC18642      
+MAMMOG/BLACKS   
+Breast Cancer CA Genes 
+JANSSEN BREAST  
+BRCA19192      
+STAR            
+BC18662      
+BrCa 8742      
+BGLAC 79804     
+BGLAC 8864      
+RE-186 BREAST  
+PC P-1       
+EFF GCSF NEUTRO 
+MODEL BrCa CA 
+TOP 0102        
+PV BLOCK/BREAST 
+In Vitro CTLs   
+BC28642      
+BrCa179804     
+TOREM VS TAM    
+BGLAC 8741      
+ALNDRNT-DBL-B   
+BrCa28897      
+MAMMOG/BLACKS   
+BrCa28862      
+BRCA18944      
+BC18864      
+BC29364      
+DANIPLESTIM     
+BRCA18741      
+BC18741      
+WRIT-EXP Breast Cancer 
+Cog tx insomnia 
+BGLAC 8897      
+BRCA28782      
+BGLAC 49901     
+BrCa CA Genes 
+BMT ICAM BrCa 
+Markers BrCa  
+BGLAC 8864      
+BGLAC 8782      
+BrCa TEST 1   
+BrCa29242      
+SANDOZ 08341    
+BrCa18869      
+P53 Breast Cancer CA   
+MAMMOG/BLACKS   
+BGLAC 8897      
+Decision Tamox  
+"CT,RT +/- HT  
+ICA 9201        
+MRI-BrCa      
+VitB6 Hot Flash 
+RIMER ADJBREAST 
+Breast FNA      
+BMT ICAM BREAST 
+BC19243      
+BREAST: PET     
+BR MET BREAST 
+BGLAC 8782      
+BrCa19194      
+PK COMPANION    
+EFF GCSF NEUTRO 
+BGLAC 9364      
+DANIPLESTIM     
+BGLAC 8861      
+EFF GCSF NEUTRO 
+Breast Dx       
+BGLAC 8862      
+Markers Breast Cancer  
+ACOS Z0010      
+PC P-1       
+BGLAC 9364      
+BGLAC 9364      
+CanThrive       
+CanThrive II    
+GM MOUTHWASH    
+BGLAC 79804     
+BGLAC 8662      
+BRCA18741      
+NAVELBINE-BREAS 
+"CT,RT +/- HT    
+LESBIAN BrCa  
+MDX-1307/breast 
+MODEL Breast Cancer CA 
+HYERPLASIA BrCa  
+NEEDLE BX       
+BrCa19194      
+BC18541      
+TAM/ENDOMETRIUM 
+DUET 8902       
+SPLIT DOSE BCNU 
+BGLAC 8869      
+BRCA29872      
+GENENTECH 659   
+BrCa19872      
+Breast Cancer TEST 1   
+BRCA29364      
+ENDOMETR SCREEN 
+BrCa 8642      
+JANSSEN BrCa  
+Tamoxifen info  
+TRC 9202        
+Healthy Lung    
+SPECT           
+BGLAC 9872      
+P53 Breast Cancer CA   
+CAIX SPORE      
+Breast Cancer Ca Bank  
+BETA INF        
+UNC BrCa      
+ADR-529/BREAST  
+SPLIT DOSE BrCaNU 
+CanThrive       
+BrCaB-24      
+BC29364      
+P53 BrCa CA   
+BrCa18541      
+BM MF 4265      
+5FU POST BrCa  
+BC29192      
+Breast FNA      
+BRCA279804     
+BC18862      
+QOL EARLY BREAS 
+TRC 9202        
+DLI/SOLID       
+BRCA19364      
+JANSSEN BREAST  
+JANSSEN Breast Cancer  
+BrCa Ca Bank  
+Brst Ultrasound 
+BREAST TISSUE   
+BC29670      
+BrCa Dx       
+STAR            
+BrCa18782      
+CanThrive II    
+BC29243      
+BRCA18869      
+RPR TAXOTERE    
+ENDOMETR SCREEN 
+CT EMESIS       
+Breast Dx       
+BRCA28897      
+QOL/BREAST      
+TRC 9202        
+NCCN Outcomes   
+GM MOUTHWASH    
+RPR TAXOTERE    
+HER2/neu NED    
+BGLAC 8662      
+BGLAC 8861      
+AMGEN 951023-01 
+BC29194      
+BrCa10+ NODES  
+TOP 0102        
+BRCA18864      
+BRCA29141      
+WOMEN RISK      
+BrCa18782      
+BR PURGE      
+BC29192      
+BrCa MARKERS  
+BrCa28782      
+AMGEN 951023-01 
+Tamoxifen info  
+TOP 0102        
+BrCa: PET     
+BREAST VACCINE  
+BrCa 8944      
+FRESH START     
+V. Reality II   
+BRCA18944      
+BC19371      
+V. Reality II   
+BrCa29192      
+TOREM VS TAM    
+BRCA19194      
+BC19872      
+BrCaOG Hot Flash  
+DUET 8902       
+BrCa 8742      
+BREAST CA/BODY  
+BETA INF        
+BrCa MARKERS  
+BrCa29141      
+BrCa28741      
+BGLAC 8782      
+PC B-19     
+CAIX SPORE      
+BGLAC 9872      
+BC29484      
+BREAST MARKERS  
+BRCA28869      
+BRCA29242      
+BrCa 8642      
+BR PURGE      
+CT EMESIS       
+BrCa18897      
+LESBIAN BREAST  
+Econ Eval 9343  
+BC149901     
+CENTOCOR        
+BC19371      
+Yoga/menopause  
+BrCa-IMAGING  
+JANSSEN BrCa  
+SPECT           
+TOREM VS TAM    
+STAR            
+SANDOZ 08341    
+BrCa 9670      
+BrCa 9194      
+BGLAC 9484      
+MRI-BREAST      
+Model of Insoma 
+BrCa 8861      
+Markers Breast  
+BGLAC 9364      
+BC28541      
+P.O. NAVELBINE  
+Recruit Blacks  
+Ginger study    
+NCCN Outcomes   
+BGLAC 9242      
+PV BLOCK/BrCa 
+Breast Cancer-SURVEY   
+BC28741      
+BrCa 8662      
+BrCa 79804     
+Breast Cancer TISSUE   
+BrCa TISSUE   
+SPECT           
+RT PNEUM/BREAST 
+MODEL BREAST CA 
+PV BLOCK/Breast Cancer 
+Breast CA Genes 
+BGLAC 9192      
+BRCA28642      
+BRCA19670      
+Breast Cancer CA/BODY  
+WOMEN RISK      
+ALNDRNT-DBL-B   
+BrCa29371      
+BRCA18662      
+BrCa FNA      
+BrCa-SURVEY   
+Ginger study    
+BGLAC 8869      
+COSTS Breast Cancer TX 
+BrCa 9192      
+BRCA18861      
+BRCA18741      
+BRCA19193      
+Zoled/Aredia    
+BrCa19194      
+BRCA19242      
+TAM/ENDOMETRIUM 
+PC P-1       
+BC29242      
+BRCA18869      
+V. Reality:Brst 
+MRI-BREAST      
+CA Breast Cancer & Pro 
+BrCa BANK     
+BC179809     
+HYERPLASIA BR   
+BGLAC 9242      
+BrCa 8742      
+Healing Skills  
+BrCaMET BrCa 
+BrCa28662      
+BC28861      
+BGLAC 8642      
+BrCa29193      
+STAR            
+BRCA19243      
+BC28541      
+WOMEN RISK      
+BrCa29140      
+BRCA19192      
+CanThrive       
+BrCaPURGE      
+BrCa28861      
+Breast FNA      
+V. Reality:Brst 
+TOP 0102        
+READY SURVEY    
+CanThrive II    
+DLI/SOLID       
+BMT ICAM Breast Cancer 
+BC19141      
+BrCa279804     
+BrCa18742      
+BRCA18869      
+Tissue Acq/brst 
+Retinoid Rcptor 
+CAIX SPORE      
+BC279804     
+BC28862      
+BrCa29194      
+BREAST TISSUE   
+DANIPLESTIM     
+BrCa Prevent  
+BrCa 8862      
+BrCa 9140      
+Breast Cancer Dx       
+BM MF 4265      
+BC28741      
+BC19872      
+In Vitro CTLs   
+BR IL-11      
+BGLAC 9242      
+Brst Ultrasound 
+Breast Cancer TEST 1   
+BC29242      
+BrCa-SURVEY   
+BrCa19193      
+Ca recurrence   
+ENDOMETR SCREEN 
+BLANKET BrCa   
+Breast SPORE    
+BRCA19140      
+Breast Cancer VACCINE  
+Ginger study    
+BrCa 9243      
+ICA 9201        
+RE-186 BREAST  
+LESBIAN Breast Cancer  
+BRCA28862      
