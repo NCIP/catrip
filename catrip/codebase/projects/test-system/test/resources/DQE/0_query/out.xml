@@ -1,0 +1,218 @@
+<queryResults targetClassname="edu.duke.catrip.cae.domain.general.Participant">
+ <ns1:ObjectResult xmlns:ns1="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns2:Participant id="4" lastName="Mickey" firstName="Mouse" gender="Male" xmlns:ns2="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns1:ObjectResult>
+ <ns2:ObjectResult xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns3:Participant id="5" lastName="t" firstName="re" gender="Male" xmlns:ns3="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns2:ObjectResult>
+ <ns3:ObjectResult xmlns:ns3="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns4:Participant id="6" lastName="May" firstName="Locke" gender="Male" xmlns:ns4="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns3:ObjectResult>
+ <ns4:ObjectResult xmlns:ns4="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns5:Participant id="7" gender="Male" xmlns:ns5="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns4:ObjectResult>
+ <ns5:ObjectResult xmlns:ns5="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns6:Participant id="8" lastName="Locke" firstName="May" gender="Male" xmlns:ns6="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns5:ObjectResult>
+ <ns6:ObjectResult xmlns:ns6="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns7:Participant id="9" lastName="Locke" firstName="May" gender="Male" xmlns:ns7="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns6:ObjectResult>
+ <ns7:ObjectResult xmlns:ns7="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns8:Participant id="10" lastName="Locke" firstName="May" gender="Male" xmlns:ns8="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns7:ObjectResult>
+ <ns8:ObjectResult xmlns:ns8="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns9:Participant id="11" lastName="Fruitmick" firstName="Fruita" gender="Male" xmlns:ns9="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns8:ObjectResult>
+ <ns9:ObjectResult xmlns:ns9="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns10:Participant id="12" lastName="rai" firstName="ash" gender="Male" xmlns:ns10="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns9:ObjectResult>
+ <ns10:ObjectResult xmlns:ns10="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns11:Participant id="13" lastName="Martha" firstName="Stewert" gender="Male" xmlns:ns11="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns10:ObjectResult>
+ <ns11:ObjectResult xmlns:ns11="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns12:Participant id="14" lastName="Smith" firstName="Sally" gender="Male" xmlns:ns12="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns11:ObjectResult>
+ <ns12:ObjectResult xmlns:ns12="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns13:Participant id="15" lastName="Demo" firstName="Demo" gender="Male" xmlns:ns13="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns12:ObjectResult>
+ <ns13:ObjectResult xmlns:ns13="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns14:Participant id="16" gender="Male" xmlns:ns14="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns13:ObjectResult>
+ <ns14:ObjectResult xmlns:ns14="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns15:Participant id="17" lastName="Public" firstName="Joe" gender="Male" xmlns:ns15="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns14:ObjectResult>
+ <ns15:ObjectResult xmlns:ns15="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns16:Participant id="18" lastName="Doe" firstName="John" gender="Male" xmlns:ns16="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns15:ObjectResult>
+ <ns16:ObjectResult xmlns:ns16="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns17:Participant id="19" gender="Male" xmlns:ns17="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns16:ObjectResult>
+ <ns17:ObjectResult xmlns:ns17="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns18:Participant id="20" lastName="Patient1" firstName="Jack" gender="Male" xmlns:ns18="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns17:ObjectResult>
+ <ns18:ObjectResult xmlns:ns18="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns19:Participant id="21" lastName="Patient2" firstName="Bob" gender="Male" xmlns:ns19="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns18:ObjectResult>
+ <ns19:ObjectResult xmlns:ns19="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns20:Participant id="22" lastName="Patient3" firstName="Charlie" gender="Male" xmlns:ns20="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns19:ObjectResult>
+ <ns20:ObjectResult xmlns:ns20="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns21:Participant id="23" lastName="Patient4" firstName="David" gender="Male" xmlns:ns21="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns20:ObjectResult>
+ <ns21:ObjectResult xmlns:ns21="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns22:Participant id="24" lastName="Patient5" firstName="Ernie" gender="Male" xmlns:ns22="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns21:ObjectResult>
+ <ns22:ObjectResult xmlns:ns22="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns23:Participant id="25" lastName="Patient6" firstName="Frank" gender="Male" xmlns:ns23="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns22:ObjectResult>
+ <ns23:ObjectResult xmlns:ns23="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns24:Participant id="26" gender="Male" xmlns:ns24="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns23:ObjectResult>
+ <ns24:ObjectResult xmlns:ns24="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns25:Participant id="27" gender="Male" xmlns:ns25="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns24:ObjectResult>
+ <ns25:ObjectResult xmlns:ns25="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns26:Participant id="28" lastName="Patient10" firstName="Jack" gender="Male" xmlns:ns26="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns25:ObjectResult>
+ <ns26:ObjectResult xmlns:ns26="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns27:Participant id="29" lastName="Patient11" firstName="Bill" gender="Male" xmlns:ns27="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns26:ObjectResult>
+ <ns27:ObjectResult xmlns:ns27="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns28:Participant id="30" lastName="Patient12" firstName="James" gender="Male" xmlns:ns28="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns27:ObjectResult>
+ <ns28:ObjectResult xmlns:ns28="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns29:Participant id="31" lastName="Patient13" firstName="Charles" gender="Male" xmlns:ns29="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns28:ObjectResult>
+ <ns29:ObjectResult xmlns:ns29="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns30:Participant id="32" lastName="Patient14" firstName="Howard" gender="Male" xmlns:ns30="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns29:ObjectResult>
+ <ns30:ObjectResult xmlns:ns30="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns31:Participant id="33" lastName="Patient15" firstName="Peter" gender="Male" xmlns:ns31="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns30:ObjectResult>
+ <ns31:ObjectResult xmlns:ns31="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns32:Participant id="34" lastName="Patient16" firstName="Michael" gender="Male" xmlns:ns32="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns31:ObjectResult>
+ <ns32:ObjectResult xmlns:ns32="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns33:Participant id="35" lastName="Patient17" firstName="Rufus" gender="Male" xmlns:ns33="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns32:ObjectResult>
+ <ns33:ObjectResult xmlns:ns33="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns34:Participant id="36" lastName="Patient18" firstName="George" gender="Male" xmlns:ns34="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns33:ObjectResult>
+ <ns34:ObjectResult xmlns:ns34="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns35:Participant id="37" lastName="Patient19" firstName="Trevor" gender="Male" xmlns:ns35="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns34:ObjectResult>
+ <ns35:ObjectResult xmlns:ns35="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns36:Participant id="38" lastName="Patient20" firstName="Thomas" gender="Male" xmlns:ns36="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns35:ObjectResult>
+ <ns36:ObjectResult xmlns:ns36="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns37:Participant id="39" lastName="Patient21" firstName="Kyle" gender="Male" xmlns:ns37="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns36:ObjectResult>
+ <ns37:ObjectResult xmlns:ns37="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns38:Participant id="40" lastName="Patient22" firstName="Ronald" gender="Male" xmlns:ns38="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns37:ObjectResult>
+ <ns38:ObjectResult xmlns:ns38="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns39:Participant id="41" lastName="Pateint23" firstName="Arnold" gender="Male" xmlns:ns39="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns38:ObjectResult>
+ <ns39:ObjectResult xmlns:ns39="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns40:Participant id="42" lastName="Patiemt24" firstName="Brian" gender="Male" xmlns:ns40="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns39:ObjectResult>
+ <ns40:ObjectResult xmlns:ns40="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns41:Participant id="43" lastName="Patient25" firstName="Daniel" gender="Male" xmlns:ns41="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns40:ObjectResult>
+ <ns41:ObjectResult xmlns:ns41="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns42:Participant id="44" lastName="Patient26" firstName="Ernie" gender="Male" xmlns:ns42="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns41:ObjectResult>
+ <ns42:ObjectResult xmlns:ns42="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns43:Participant id="45" lastName="Patient27" firstName="Frank" gender="Male" xmlns:ns43="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns42:ObjectResult>
+ <ns43:ObjectResult xmlns:ns43="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns44:Participant id="46" lastName="Patient28" firstName="Gary" gender="Male" xmlns:ns44="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns43:ObjectResult>
+ <ns44:ObjectResult xmlns:ns44="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns45:Participant id="47" lastName="Patient30" firstName="Horace" gender="Male" xmlns:ns45="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns44:ObjectResult>
+ <ns45:ObjectResult xmlns:ns45="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns46:Participant id="48" lastName="Patient31" firstName="Jason" gender="Male" xmlns:ns46="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns45:ObjectResult>
+ <ns46:ObjectResult xmlns:ns46="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns47:Participant id="49" lastName="Patient32" firstName="Leonard" gender="Male" xmlns:ns47="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns46:ObjectResult>
+ <ns47:ObjectResult xmlns:ns47="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns48:Participant id="50" lastName="Patient33" firstName="Michael" gender="Male" xmlns:ns48="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns47:ObjectResult>
+ <ns48:ObjectResult xmlns:ns48="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns49:Participant id="51" lastName="Patient34" firstName="Nathan" gender="Male" xmlns:ns49="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns48:ObjectResult>
+ <ns49:ObjectResult xmlns:ns49="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns50:Participant id="52" lastName="Patient35" firstName="Oscar" gender="Male" xmlns:ns50="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns49:ObjectResult>
+ <ns50:ObjectResult xmlns:ns50="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns51:Participant id="53" lastName="jones" firstName="billy" gender="Male" xmlns:ns51="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns50:ObjectResult>
+ <ns51:ObjectResult xmlns:ns51="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns52:Participant id="54" lastName="dummy" firstName="patient" gender="Male" xmlns:ns52="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns51:ObjectResult>
+ <ns52:ObjectResult xmlns:ns52="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns53:Participant id="55" lastName="Schmoe" firstName="Joe" gender="Male" xmlns:ns53="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns52:ObjectResult>
+ <ns53:ObjectResult xmlns:ns53="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns54:Participant id="56" lastName="plea" firstName="bargain" gender="Male" xmlns:ns54="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns53:ObjectResult>
+ <ns54:ObjectResult xmlns:ns54="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns55:Participant id="57" lastName="JKPart" firstName="a" gender="Male" xmlns:ns55="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns54:ObjectResult>
+ <ns55:ObjectResult xmlns:ns55="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns56:Participant id="58" gender="Male" xmlns:ns56="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns55:ObjectResult>
+ <ns56:ObjectResult xmlns:ns56="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns57:Participant id="59" lastName="kaake" firstName="koon" gender="Male" xmlns:ns57="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns56:ObjectResult>
+ <ns57:ObjectResult xmlns:ns57="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns58:Participant id="60" lastName="Cancer" firstName="Patient" gender="Male" xmlns:ns58="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns57:ObjectResult>
+ <ns58:ObjectResult xmlns:ns58="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns59:Participant id="61" gender="Male" xmlns:ns59="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns58:ObjectResult>
+ <ns59:ObjectResult xmlns:ns59="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns60:Participant id="62" gender="Male" xmlns:ns60="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns59:ObjectResult>
+ <ns60:ObjectResult xmlns:ns60="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns61:Participant id="63" lastName="t" firstName="t" gender="Male" xmlns:ns61="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns60:ObjectResult>
+ <ns61:ObjectResult xmlns:ns61="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns62:Participant id="64" lastName="Doe" firstName="Jane" gender="Male" xmlns:ns62="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns61:ObjectResult>
+ <ns62:ObjectResult xmlns:ns62="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns63:Participant id="65" gender="Male" xmlns:ns63="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns62:ObjectResult>
+ <ns63:ObjectResult xmlns:ns63="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns64:Participant id="66" gender="Male" xmlns:ns64="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns63:ObjectResult>
+ <ns64:ObjectResult xmlns:ns64="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns65:Participant id="67" gender="Male" xmlns:ns65="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns64:ObjectResult>
+ <ns65:ObjectResult xmlns:ns65="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns66:Participant id="68" gender="Male" xmlns:ns66="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns65:ObjectResult>
+ <ns66:ObjectResult xmlns:ns66="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns67:Participant id="69" gender="Male" xmlns:ns67="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns66:ObjectResult>
+ <ns67:ObjectResult xmlns:ns67="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns68:Participant id="70" gender="Male" xmlns:ns68="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns67:ObjectResult>
+ <ns68:ObjectResult xmlns:ns68="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns69:Participant id="71" lastName="Smith" firstName="Smith" gender="Male" xmlns:ns69="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns68:ObjectResult>
+ <ns69:ObjectResult xmlns:ns69="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns70:Participant id="72" lastName="Smithe" firstName="Smithe" gender="Male" xmlns:ns70="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns69:ObjectResult>
+ <ns70:ObjectResult xmlns:ns70="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns71:Participant id="1" lastName="Mouse" firstName="Mickey" gender="Male" xmlns:ns71="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns70:ObjectResult>
+ <ns71:ObjectResult xmlns:ns71="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns72:Participant id="2" lastName="Smith" firstName="Mary" gender="Male" xmlns:ns72="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns71:ObjectResult>
+ <ns72:ObjectResult xmlns:ns72="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns73:Participant id="3" gender="Male" xmlns:ns73="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general"/>
+ </ns72:ObjectResult>
+</queryResults>
