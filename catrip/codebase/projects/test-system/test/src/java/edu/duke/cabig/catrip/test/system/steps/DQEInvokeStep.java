@@ -9,7 +9,11 @@ import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
 import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+
+import javax.xml.namespace.QName;
 
 import com.atomicobject.haste.framework.Step;
 
@@ -35,6 +39,15 @@ public class DQEInvokeStep
 		// run query
 		FederatedQueryEngineImpl dqe = new FederatedQueryEngineImpl();
 		CQLQueryResults results = dqe.execute(query);
+		
+		// write the results
+		BufferedWriter out = new BufferedWriter(new FileWriter(new File(queryDir, "out_dynamic.xml")));
+		try {
+			Utils.serializeObject(results, new QName("queryResults"), out);
+		} finally {
+			out.flush();
+			out.close();
+		}
 		
 		// check results
 		File resultsFile = new File(queryDir, "out.xml");
