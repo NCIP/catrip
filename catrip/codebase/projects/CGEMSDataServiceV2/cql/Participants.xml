@@ -3,9 +3,6 @@
 C:\CVS-CodeBase\catrip\codebase\projects\data\schema\1_gov.nih.nci.cagrid.CQLQuery.xsd">
 
 	 <Target name="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
-	  	<Association name="gov.nih.nci.caintegrator.domain.study.bean.Specimen" roleName="specimenCollection" >
-	   		<Attribute name="materialType" predicate="LIKE" value="Tissuex%"/>
-	  	</Association>
 	 </Target>	 
 	 
 </CQLQuery>

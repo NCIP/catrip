@@ -2,26 +2,14 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery C:\CVS-
 CodeBase\catrip\codebase\projects\data\schema\1_gov.nih.nci.cagrid.CQLQuery.xsd">
 
-	 <Target name="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant"> <Association
-		name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection" >
-		<Attribute name="name" predicate="EQUAL_TO" value="BRCA1"/> </Association> </Target>
+	 <Target name="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant"> 
+	 	<Association
+			name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection" >
+			<Attribute name="name" predicate="EQUAL_TO" value="BRCA1"/> 
+		</Association> 
+	 </Target>
 
 </CQLQuery>
 
-<!-- Gnerated HQL from LocalHQLQueryProcessor..
 
-From gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant as xxTargetAliasxx where xxTargetAliasxx.analysisGroupCollection.id
-in (select id From gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup where name = 'BRCA1')
-
-Converted SQL ..
-
-select studyparti0_.PARTICIPANT_DID as PARTICIP1_18_, studyparti0_.CASE_CONTROL_STATUS as CASE2_18_, studyparti0_.GENDER as GENDER18_, studyparti0_.AGE_AT_DIAGNOSIS as AGE4_18_, studyparti0_.AGE_AT_DIAGNOSIS_MIN as AGE5_18_, studyparti0_.AGE_AT_DIAGNOSIS_MAX as AGE6_18_, studyparti0_.AGE_AT_DEATH as AGE7_18_, studyparti0_.AGE_AT_DEATH_MIN as AGE8_18_, studyparti0_.AGE_AT_DEATH_MAX as AGE9_18_, studyparti0_.AGE_AT_ENROLL as AGE10_18_, studyparti0_.AGE_AT_ENROLL_MIN as AGE11_18_, studyparti0_.AGE_AT_ENROLL_MAX as AGE12_18_, studyparti0_.DAYS_ON_STUDY as DAYS13_18_, studyparti0_.ETHNIC_GROUP_CODE as ETHNIC14_18_, studyparti0_.FAMILY_HISTORY as FAMILY15_18_, studyparti0_.INSTITUTION_NAME as INSTITU16_18_, studyparti0_.DAYS_OFF_STUDY as DAYS17_18_, studyparti0_.RACE_CODE as RACE18_18_, studyparti0_.SURVIVAL_STATUS as SURVIVAL19_18_, studyparti0_.OFF_STUDY as OFF20_18_, studyparti0_.STUDY_NAME as STUDY21_18_, studyparti0_.POPULATION_ID as POPULATION22_18_ from STUDY_PARTICIPANT studyparti0_, STDPT_ANALYSIS_GRP_AS analysisgr1_, SNP_ANALYSIS_GROUP snpanalysi2_ where studyparti0_.PARTICIPANT_DID=analysisgr1_.PARTICIPANT_DID and analysisgr1_.ANA_GRP_ID=snpanalysi2_.ANA_GRP_ID and (snpanalysi2_.ANA_GRP_ID in (select snpanalysi3_.ANA_GRP_ID from SNP_ANALYSIS_GROUP snpanalysi3_ where snpanalysi3_.ANA_GRP_NAME='BRCA1'))
-
-
-Converted SQL based Critera LocalQueryProcessor
-
-select this_.PARTICIPANT_DID as PARTICIP1_18_1_, this_.CASE_CONTROL_STATUS as CASE2_18_1_, this_.GENDER as GENDER18_1_, this_.AGE_AT_DIAGNOSIS as AGE4_18_1_, this_.AGE_AT_DIAGNOSIS_MIN as AGE5_18_1_, this_.AGE_AT_DIAGNOSIS_MAX as AGE6_18_1_, this_.AGE_AT_DEATH as AGE7_18_1_, this_.AGE_AT_DEATH_MIN as AGE8_18_1_, this_.AGE_AT_DEATH_MAX as AGE9_18_1_, this_.AGE_AT_ENROLL as AGE10_18_1_, this_.AGE_AT_ENROLL_MIN as AGE11_18_1_, this_.AGE_AT_ENROLL_MAX as AGE12_18_1_, this_.DAYS_ON_STUDY as DAYS13_18_1_, this_.ETHNIC_GROUP_CODE as ETHNIC14_18_1_, this_.FAMILY_HISTORY as FAMILY15_18_1_, this_.INSTITUTION_NAME as INSTITU16_18_1_, this_.DAYS_OFF_STUDY as DAYS17_18_1_, this_.RACE_CODE as RACE18_18_1_, this_.SURVIVAL_STATUS as SURVIVAL19_18_1_, this_.OFF_STUDY as OFF20_18_1_, this_.STUDY_NAME as STUDY21_18_1_, this_.POPULATION_ID as POPULATION22_18_1_, analysisgr3_.PARTICIPANT_DID as PARTICIP2_, snpanalysi1_.ANA_GRP_ID as ANA1_, snpanalysi1_.ANA_GRP_ID as ANA1_6_0_, snpanalysi1_.MEMBER_COUNT as MEMBER2_6_0_, snpanalysi1_.ANA_GRP_NAME as ANA3_6_0_, snpanalysi1_.ANA_GRP_DESCRIPTION as ANA4_6_0_, snpanalysi1_.ASSO_ANALYSIS_ID as ASSO5_6_0_ from STUDY_PARTICIPANT this_ inner join STDPT_ANALYSIS_GRP_AS analysisgr3_ on this_.PARTICIPANT_DID=analysisgr3_.PARTICIPANT_DID inner join SNP_ANALYSIS_GROUP snpanalysi1_ on analysisgr3_.ANA_GRP_ID=snpanalysi1_.ANA_GRP_ID where snpanalysi1_.ANA_GRP_NAME=?
-
-
--->
 
