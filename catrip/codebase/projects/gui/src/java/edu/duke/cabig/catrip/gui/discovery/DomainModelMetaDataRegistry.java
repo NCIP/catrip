@@ -228,8 +228,15 @@ public class DomainModelMetaDataRegistry {
 //            System.out.println("XXXXX   Class:  "+subName+"  --extends->   "+superName);
         
         // set the super Class RefId to the Sub Class..
-        subClass.setSuperClassRefId(superRefId);
+        
+        try {
+            subClass.setSuperClassRefId(superRefId);
         subClass.setSuperClassName(superClass.getClassName());
+        } catch (Exception e) {
+            System.out.println("#### the Super class Id is:"+superRefId);
+            e.printStackTrace();
+        }
+        
         
         // attach all the association of super class to sub class.. one by one..
         ArrayList<String>  assClassList = superClass.getAssociatedClasses();
