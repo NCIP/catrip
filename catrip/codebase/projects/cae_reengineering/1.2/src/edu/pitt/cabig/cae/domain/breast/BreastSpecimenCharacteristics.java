@@ -1,5 +1,5 @@
 package edu.pitt.cabig.cae.domain.breast;
-
+import edu.pitt.cabig.cae.domain.general.SpecimenCharacteristics;
 	/**
 	 * @version 1.0
 	 * @created 15-Sep-2006 3:07:06 PM
