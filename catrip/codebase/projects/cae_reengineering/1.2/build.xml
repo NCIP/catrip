@@ -107,7 +107,11 @@
         <include name="**/*.hbm.xml"/>
       </fileset>
     </copy>
-
+    <copy todir="${class.dir}">
+      <fileset dir="${src.dir}">
+        <include name="**/cae-xml-mapping.xml"/>
+      </fileset>
+    </copy>
   </target>
 
   <target name="compiletests" depends="hibernate">
