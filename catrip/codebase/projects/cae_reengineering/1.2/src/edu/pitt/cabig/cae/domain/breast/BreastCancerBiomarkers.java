@@ -7,12 +7,14 @@ import edu.pitt.cabig.cae.domain.general.AnnotationSet;
  * @created 15-Sep-2006 3:19:24 PM
  */
 public class BreastCancerBiomarkers extends AnnotationSet {
-	
+
 	private static final long serialVersionUID = 1234567890L;
 	private String estrogenReceptor;
 	private String progesteroneReceptor;
 	private String HER2Status;
 	private String HER2TestType;
+	private String EGFRStatus;
+
 
 	public BreastCancerBiomarkers(){
 
@@ -52,6 +54,13 @@ public class BreastCancerBiomarkers extends AnnotationSet {
 
 	public void setProgesteroneReceptor(String progesteroneReceptor) {
 		this.progesteroneReceptor = progesteroneReceptor;
+	}
+	public String getEGFRStatus() {
+		return EGFRStatus;
+	}
+
+	public void setEGFRStatus(String EGFRStatus) {
+		this.EGFRStatus = EGFRStatus;
 	}
 
 }
