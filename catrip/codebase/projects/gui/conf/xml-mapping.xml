@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN" "http://www.castor.org/mapping.dtd">
-<mapping> 
-
+<mapping>
 	<!-- caDSR  mappings... -->
 	<!-- Adding the mapping from the caDSR project like SemanticMetaData etc. -->
 	
@@ -941,19 +940,6 @@
 <!-- ############################################ -->
 
 	<!-- CAE mappings... -->
-
-  <class name="edu.pitt.cabig.cae.domain.general.Participant" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
-    <map-to xml="Participant" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-  </class>
-  <class name="edu.pitt.cabig.cae.domain.general.Accession" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
-    <map-to xml="Accession" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-    <field name="diseaseType" type="string">
-      <bind-xml name="diseaseType" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.pitt.cabig.cae.domain.general.Specimen" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
-    <map-to xml="Specimen" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-  </class>
   <class name="edu.pitt.cabig.cae.domain.general.EventParameters">
     <map-to xml="EventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
     <field name="id" type="long">
@@ -963,6 +949,7 @@
       <bind-xml name="timeStamp" node="attribute" />
     </field>
   </class>
+  
   <class name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" extends="edu.pitt.cabig.cae.domain.general.EventParameters">
     <map-to xml="AnnotationEventParameters" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
     <field name="source" type="string">
@@ -984,48 +971,9 @@
       <bind-xml name="id" node="attribute" />
     </field>
   </class>
-  <class name="edu.pitt.cabig.cae.domain.general.Demographics" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
-    <map-to xml="Demographics" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-    <field name="gender" type="string">
-      <bind-xml name="gender" node="attribute" />
-    </field>
-    <field name="race" type="string">
-      <bind-xml name="race" node="attribute" />
-    </field>
-    <field name="ethnicity" type="string">
-      <bind-xml name="ethnicity" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.pitt.cabig.cae.domain.general.ParticipantIdentifiers" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
-    <map-to xml="ParticipantIdentifiers" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-    <field name="lastName" type="string">
-      <bind-xml name="lastName" node="attribute" />
-    </field>
-    <field name="firstName" type="string">
-      <bind-xml name="firstName" node="attribute" />
-    </field>
-    <field name="middleName" type="string">
-      <bind-xml name="middleName" node="attribute" />
-    </field>
-    <field name="birthDate" type="date">
-      <bind-xml name="birthDate" node="attribute" />
-    </field>
-    <field name="uniquePatientIdentifier" type="string">
-      <bind-xml name="uniquePatientIdentifier" node="attribute" />
-    </field>
-    <field name="medicalRecordNumber" type="string" collection="collection">
-      <bind-xml name="medicalRecordNumber" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.pitt.cabig.cae.domain.general.AccessionIdentifiers" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
-    <map-to xml="AccessionIdentifiers" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-    <field name="accessionDate" type="date">
-      <bind-xml name="accessionDate" node="attribute" />
-    </field>
-    <field name="surgicalPathologyNumber" type="string">
-      <bind-xml name="surgicalPathologyNumber" node="attribute" />
-    </field>
-  </class>
+
+
+
   <class name="edu.pitt.cabig.cae.domain.general.AdditionalFindings" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
     <map-to xml="AdditionalFindings" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
     <field name="otherFindings" type="string">
@@ -1083,9 +1031,7 @@
   <class name="edu.pitt.cabig.cae.domain.general.Neoplasm" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
     <map-to xml="Neoplasm" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
   </class>
-  <class name="edu.pitt.cabig.cae.domain.general.SpecimenCharacteristics" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
-    <map-to xml="SpecimenCharacteristics" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
-  </class>
+
   <class name="edu.pitt.cabig.cae.domain.general.AccessionCharacteristics" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
     <map-to xml="AccessionCharacteristics" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
     <field name="surgicalProcedure" type="string" collection="collection">
@@ -1161,6 +1107,9 @@
       <bind-xml name="mitoticCount" node="attribute" />
     </field>
   </class>
+  <class name="edu.pitt.cabig.cae.domain.general.SpecimenCharacteristics" extends="edu.pitt.cabig.cae.domain.general.AnnotationSet">
+      <map-to xml="SpecimenCharacteristics" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.general" />
+  </class>
   <class name="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" extends="edu.pitt.cabig.cae.domain.general.SpecimenCharacteristics">
     <map-to xml="BreastSpecimenCharacteristics" ns-uri="gme://caCORE.cabig/3.0/edu.pitt.cabig.cae.domain.breast" />
     <field name="lymphNodeSamplingProcedure" type="string">
@@ -1194,16 +1143,13 @@
       <bind-xml name="EGFRStatus" node="attribute" />
     </field>
   </class>
-  <class name="edu.duke.catrip.cae.domain.general.Specimen" extends="edu.pitt.cabig.cae.domain.general.Specimen">
+  <class name="edu.duke.catrip.cae.domain.general.Specimen" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
     <map-to xml="Specimen" ns-uri="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general" />
-    <field name="identifier" type="string">
-      <bind-xml name="identifier" node="attribute" />
-    </field>
     <field name="surgicalLabel" type="string">
       <bind-xml name="surgicalLabel" node="attribute" />
     </field>
   </class>
-  <class name="edu.duke.catrip.cae.domain.general.Participant" extends="edu.pitt.cabig.cae.domain.general.Participant">
+  <class name="edu.duke.catrip.cae.domain.general.Participant" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
     <map-to xml="Participant" ns-uri="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general" />
     <field name="lastName" type="string">
       <bind-xml name="lastName" node="attribute" />
@@ -1230,13 +1176,16 @@
       <bind-xml name="ethnicity" node="attribute" />
     </field>
   </class>
-  <class name="edu.duke.catrip.cae.domain.general.Accession" extends="edu.pitt.cabig.cae.domain.general.Accession">
+  <class name="edu.duke.catrip.cae.domain.general.Accession" extends="edu.pitt.cabig.cae.domain.general.AnnotatableEntity">
     <map-to xml="Accession" ns-uri="gme://caCORE.cabig/3.0/edu.duke.catrip.cae.domain.general" />
     <field name="accessionDate" type="date">
       <bind-xml name="accessionDate" node="attribute" />
     </field>
     <field name="surgicalPathologyNumber" type="string">
       <bind-xml name="surgicalPathologyNumber" node="attribute" />
+    </field>
+    <field name="diseaseType" type="string">
+      <bind-xml name="diseaseType" node="attribute" />
     </field>
   </class>
   <class name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
@@ -1248,7 +1197,6 @@
       <bind-xml name="medicalRecordNumber" node="attribute" />
     </field>
   </class>
-
 	<!-- CAE mappings... -->
 
 <!-- ####################################################### -->
