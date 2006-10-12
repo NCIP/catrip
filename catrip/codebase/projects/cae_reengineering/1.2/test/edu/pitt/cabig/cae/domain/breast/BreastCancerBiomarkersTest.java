@@ -40,7 +40,7 @@ public class BreastCancerBiomarkersTest extends TestCase {
 		obj.setHER2Status("HER2Status");
 		obj.setHER2TestType("HER2TestType");
 		obj.setProgesteroneReceptor("ProgesteroneReceptor");
-
+		obj.setEGFRStatus("EGFRStatus");
 		create(obj);
 	}
 
