@@ -295,20 +295,6 @@
 		<resolveDependencies extdir="${projects.dir}/test-system/ext">
 			<artifact refid="common.test.jars" />
 			<artifact refid="cagrid.coretests.jars" />
-			<artifact refid="queryengine.jars" />
-
-			<artifact refid="xmlbeans.jars" />
-			<artifact refid="data.jars" />
-			<artifact refid="cagrid.cadsr.jars" />
-			<artifact refid="cagrid.data.jars" />
-
-			<artifact refid="cagrid.metadata.jars" />
-			<artifact refid="cagrid.misc.jars" />
-
-			<artifact refid="caTissueCoreDataService.jars" />
-			<artifact refid="caTissueCAEDataService.jars" />
-			<artifact refid="CGEMSDataService.jars" />
-			<artifact refid="TumorRegistryDataService.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/test-system" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
