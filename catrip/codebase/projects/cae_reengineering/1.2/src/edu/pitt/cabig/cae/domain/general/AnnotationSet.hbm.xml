@@ -24,7 +24,7 @@
             column="OTHER_FINDINGS"
         />
         <property
-            name="mvr"
+            name="MVR"
             type="java.lang.String"
             update="true"
             insert="true"
@@ -186,7 +186,7 @@
     <!-- ThreeDimensionalSize ***************-->
     <joined-subclass
         name="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize"
-        table="THREE_DIMENSIONAL_TUMOE_SIZE"
+        table="THREE_DIMENSIONAL_TUMOR_SIZE"
     >
 		<key column="id"/>
 
