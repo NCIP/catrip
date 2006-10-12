@@ -104,7 +104,7 @@
     </ns4:Method>
    </ns4:Methods>
    <ns12:ResourcePropertiesList xsi:type="ns12:ResourcePropertiesListType" xmlns:ns12="gme://gov.nih.nci.cagrid.introduce/1/Resources">
-    <ns12:ResourceProperty qName="ns13:DomainModel" fileLocation="domainModel.xml" populateFromFile="false" register="true" xsi:type="ns12:ResourcePropertyType" xmlns:ns13="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice"/>
+    <ns12:ResourceProperty qName="ns13:DomainModel" fileLocation="domainModel.xml" populateFromFile="true" register="true" xsi:type="ns12:ResourcePropertyType" xmlns:ns13="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice"/>
    </ns12:ResourcePropertiesList>
   </ns3:Service>
  </ns3:Services>
@@ -116,6 +116,8 @@
           <ns15:JarName xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">caGrid-caTrip-sdkQuery-1.0.jar</ns15:JarName>
 
      </ns15:AdditionalLibraries>
+
+         <ns15:CadsrInformation suppliedDomainModel="C:\CVS-CodeBase\catrip\codebase\projects\gui\conf\domainModels\cae_10-04_cae-1.2_fixed.xml" xsi:type="ns15:CadsrInformation"/>
 
          <ns15:ServiceFeatures useGridIdeitifiers="false" useSdkDataSource="false" useWsEnumeration="false" xsi:type="ns15:ServiceFeatures"/>
 
@@ -134,8 +136,8 @@
   <ns15:Property isFromETC="false" key="queryProcessorClass" value="gov.nih.nci.cagrid.data.cql.cacore.LocalCoreQueryProcessor"/>
   <ns15:Property key="dataService_cqlValidatorClass" value="gov.nih.nci.cagrid.data.cql.validation.ObjectWalkingCQLValidator"/>
   <ns15:Property key="dataService_domainModelValidatorClass" value="gov.nih.nci.cagrid.data.cql.validation.DomainModelValidator"/>
-  <ns15:Property key="dataService_validateCqlFlag" value="false"/>
-  <ns15:Property key="dataService_validateDomainModelFlag" value="false"/>
+  <ns15:Property isFromETC="false" key="dataService_validateCqlFlag" value="false"/>
+  <ns15:Property isFromETC="false" key="dataService_validateDomainModelFlag" value="false"/>
   <ns15:Property isFromETC="false" key="cqlQueryProcessorConfig_appserviceUrl" value="http://localhost:8080/cacore31/server/HTTPServer"/>
   <ns15:Property isFromETC="false" key="cqlQueryProcessorConfig_hibernateConfigFile" value="cae-hibernate.cfg.xml"/>
  </ns15:ServiceProperties>

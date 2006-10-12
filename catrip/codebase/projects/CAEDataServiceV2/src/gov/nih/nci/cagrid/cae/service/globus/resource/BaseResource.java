@@ -184,10 +184,24 @@ public class BaseResource implements Resource, ResourceProperties {
 
 	private void populateResourceProperty() {
 	
+		loadDomainModelFromFile();
+	
 	}
 
 
-			
+		
+	private void loadDomainModelFromFile() {
+		try {
+			File dataFile = new File(ContainerConfig.getBaseDirectory() + File.separator
+					+ getConfiguration().getDomainModelFile());
+			this.domainModelMD = (gov.nih.nci.cagrid.metadata.dataservice.DomainModel) Utils.deserializeDocument(dataFile.getAbsolutePath(),
+				gov.nih.nci.cagrid.metadata.dataservice.DomainModel.class);
+		} catch (Exception e) {
+			logger.error("ERROR: problem populating metadata from file: " + e.getMessage(), e);
+		}
+	}		
+	
+		
 
 
 	//Getters/Setters for ResourceProperties

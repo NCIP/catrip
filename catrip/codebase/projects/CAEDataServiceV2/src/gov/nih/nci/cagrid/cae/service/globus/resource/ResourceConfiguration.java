@@ -3,6 +3,7 @@ package gov.nih.nci.cagrid.cae.service.globus.resource;
 public class ResourceConfiguration {
 	private String registrationTemplateFile;
 	private boolean performRegistration;
+	private String domainModelFile;
 
 
 
@@ -23,6 +24,17 @@ public class ResourceConfiguration {
 
 	public void setRegistrationTemplateFile(String registrationTemplateFile) {
 		this.registrationTemplateFile = registrationTemplateFile;
+	}
+	
+	
+	
+	public String getDomainModelFile() {
+		return domainModelFile;
+	}
+	
+	
+	public void setDomainModelFile(String domainModelFile) {
+		this.domainModelFile = domainModelFile;
 	}
 		
 }

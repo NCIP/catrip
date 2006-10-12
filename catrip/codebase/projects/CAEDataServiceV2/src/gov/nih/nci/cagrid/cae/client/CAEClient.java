@@ -93,8 +93,6 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
 		try{
             CAEClient client = new CAEClient("http://localhost:8181/wsrf/services/cagrid/CAE");
 
-
-
             CQLQuery cqlQuery = new CQLQuery();
 
             Object target = new Object();
@@ -105,9 +103,9 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
         a.setRoleName("annotationEventParametersCollection");
 
 		Association b1 = new Association();
-		b1.setName("edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade");
+		b1.setName("edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers");
 		b1.setRoleName("annotationSetCollection");
-        b1.setAttribute(new Attribute("mitoticCount",Predicate.EQUAL_TO,"4"));
+        b1.setAttribute(new Attribute("EGFRStatus",Predicate.LIKE,"egfr%"));
 
         a.setAssociation(b1);
         target.setAssociation(a);
@@ -131,10 +129,6 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
 
                 System.out.println(de.getFirstName() );
             }
-
-
-
-
 
 		} catch (Exception e) {
 			e.printStackTrace();
