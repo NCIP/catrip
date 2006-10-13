@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jnlp PUBLIC "-//Sun Microsystems, Inc.//DTD JNLP 1.5//EN" "http://www.netbeans.org/jnlp/DTD/jnlp.dtd">
+<jnlp codebase="@codebase@" href="jce-jdk13-125.jar.jnlp">
+  <information>
+      <title>WS Core lib: jce-jdk13-125.jar</title>
+      <vendor>BouncyCastle.org</vendor>
+      <icon href="@codebase@/catrip_logo.jpg"/>
+      <offline-allowed/>
+   </information>
+   <offline-allowed/>
+   <resources>
+      <jar download="eager" href="lib/jce-jdk13-125.jar"/>
+   </resources>
+   <component-desc/>
+</jnlp>
