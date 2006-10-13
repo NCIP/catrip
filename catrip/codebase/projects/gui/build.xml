@@ -3,198 +3,360 @@
 <!-- caTRIP 1.0 gui build file                                         -->
 <!-- ================================================================= -->
 <project name="catrip-1.0-gui" default="all" basedir=".">
-	<!-- Environment -->
-	<property environment="env" />
-	<property file="${basedir}/build.properties" />
-	<property file="${user.dir}/build.properties" />
-	<property name="globus.dir" location="${env.GLOBUS_LOCATION}" />
+    <!-- Environment -->
+    <property environment="env" />
+    <property file="${basedir}/build.properties" />
+    <property file="${user.dir}/build.properties" />
+    <property name="globus.dir" location="${env.GLOBUS_LOCATION}" />
 
-	<!-- Information -->
-	<property name="project.name" value="catrip-gui" />
-	<property name="project.version" value="1.0" />
+    <!-- Information -->
+    <property name="project.name" value="catrip-gui" />
+    <property name="project.version" value="1.0" />
 
-	<property name="src.dir" value="${basedir}/src/java" />
-	<property name="build.dir" value="${basedir}/build" />
-	<property name="classes.dir" value="${build.dir}/classes" />
-	<property name="jar.dir" value="${build.dir}/jars" />
-	<property name="project.jarfile" value="${jar.dir}/${project.name}-${project.version}.jar" />
-	<property name="lib.dir" value="${basedir}/lib" />
-	<property name="ext.lib.dir" value="${basedir}/ext/lib" />
-	<property name="ext.test.lib.dir" location="${basedir}/ext/test/lib" />
+    <property name="src.dir" value="${basedir}/src/java" />
+    <property name="build.dir" value="${basedir}/build" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="jar.dir" value="${build.dir}/jars" />
+    <property name="project.jarfile" value="${jar.dir}/${project.name}-${project.version}.jar" />
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="ext.lib.dir" value="${basedir}/ext/lib" />
+    <property name="ext.test.lib.dir" location="${basedir}/ext/test/lib" />
 
-	<!-- testing stuff -->
-	<property name="test.dir" location="${basedir}/test" />
-	<property name="test.src.dir" location="${test.dir}/src/java" />
-	<property name="test.classes.dir" location="${build.dir}/classes-test" />
-	<property name="test.lib.dir" location="${test.dir}/lib" />
-	<property name="test.logs.dir" location="${test.dir}/logs" />
-	<property name="test.project.jar" location="${jar.dir}/${project.name}-tests-${project.version}.jar" />
+    <!-- testing stuff -->
+    <property name="test.dir" location="${basedir}/test" />
+    <property name="test.src.dir" location="${test.dir}/src/java" />
+    <property name="test.classes.dir" location="${build.dir}/classes-test" />
+    <property name="test.lib.dir" location="${test.dir}/lib" />
+    <property name="test.logs.dir" location="${test.dir}/logs" />
+    <property name="test.project.jar" location="${jar.dir}/${project.name}-tests-${project.version}.jar" />
 
-	<!-- Load common util path -->
-	<import file="antfiles/build-test.xml" />
 
-	<!-- build properties -->
-	<property name="debug" value="on"/>
+	<!-- webstart stuff -->
+    <property name="tomcat.dir" value="${env.CATALINA_HOME}" />
+    <property name="tomcat.webstart.deploy.dir" value="${tomcat.dir}/webapps/catrip-webstart" />
+    <property name="webstart.build.dir" value="webstart-build" />
+    <property name="webstart.conf.dir" value="webstart-conf" />
+
+
+    <!-- Load common util path -->
+    <import file="antfiles/build-test.xml" />
+
+    <!-- build properties -->
+    <property name="debug" value="on"/>
 	
-	<!-- =============================================================== -->
-	<!-- The Build Classpath                                             -->
-	<!-- =============================================================== -->
-	<path id="build.classpath">
-		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${ext.lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${globus.dir}/lib">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
+    <!-- =============================================================== -->
+    <!-- The Build Classpath                                             -->
+    <!-- =============================================================== -->
+    <path id="build.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${ext.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${globus.dir}/lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
 
-	<!-- =============================================================== -->
-	<!-- The Run Classpath                                                   -->
-	<!-- =============================================================== -->
-	<path id="run.classpath">
-	    <pathelement location="${basedir}/conf" />
-		<fileset dir="${jar.dir}">
-			<include name="**/*.jar" />
-			<exclude name="**/*test*.jar" />
-		</fileset>
-		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${ext.lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${globus.dir}/lib">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
+    <!-- =============================================================== -->
+    <!-- The Run Classpath                                                   -->
+    <!-- =============================================================== -->
+    <path id="run.classpath">
+        <pathelement location="${basedir}/conf" />
+        <fileset dir="${jar.dir}">
+            <include name="**/*.jar" />
+            <exclude name="**/*test*.jar" />
+        </fileset>
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${ext.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${globus.dir}/lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
 
-	<!-- =============================================================== -->
-	<!-- The Test Classpath                                                   -->
-	<!-- =============================================================== -->
-	<path id="test.classpath">
-            <pathelement location="${basedir}/conf" />
-		<fileset dir="${jar.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${ext.lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${test.lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${ext.test.lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-		<fileset dir="${globus.dir}/lib">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
+    <!-- =============================================================== -->
+    <!-- The Test Classpath                                                   -->
+    <!-- =============================================================== -->
+    <path id="test.classpath">
+        <pathelement location="${basedir}/conf" />
+        <fileset dir="${jar.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${ext.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${test.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${ext.test.lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+        <fileset dir="${globus.dir}/lib">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
 
-	<!-- =============================================================== -->
-	<!-- Prepares the build directory                                    -->
-	<!-- =============================================================== -->
-	<target name="prepare">
-		<tstamp />
-		<mkdir dir="${build.dir}" />
-		<mkdir dir="${user.home}/.caTRIP" />  <!-- Create the conf dir also. later this will be created by the installer. -->
-	</target>
+    <!-- =============================================================== -->
+    <!-- Prepares the build directory                                    -->
+    <!-- =============================================================== -->
+    <target name="prepare">
+        <tstamp />
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${user.home}/.caTRIP" />  <!-- Create the conf dir also. later this will be created by the installer. -->
+    </target>
 
-	<!-- =============================================================== -->
-	<!-- Compiles the source code                                        -->
-	<!-- =============================================================== -->
-	<target name="compile" depends="prepare" description="compiles.">
-		<mkdir dir="${classes.dir}" />
-		<mkdir dir="${ext.lib.dir}" />
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" deprecation="off" optimize="off">
-			<classpath refid="build.classpath" />
-		</javac>
-	</target>
+    <!-- =============================================================== -->
+    <!-- Compiles the source code                                        -->
+    <!-- =============================================================== -->
+    <target name="compile" depends="prepare" description="compiles.">
+        <mkdir dir="${classes.dir}" />
+        <mkdir dir="${ext.lib.dir}" />
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" deprecation="off" optimize="off">
+            <classpath refid="build.classpath" />
+        </javac>
+    </target>
 
-	<!-- =============================================================== -->
-	<!-- Compiles the test source code                                        -->
-	<!-- =============================================================== -->
-	<target name="compile-tests" depends="prepare" description="compiles.">
-		<mkdir dir="${test.classes.dir}" />
-		<mkdir dir="${ext.test.lib.dir}" />
-		<mkdir dir="${test.src.dir}" />
-		<javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" debug="${debug}" deprecation="off" optimize="off">
-			<classpath refid="test.classpath" />
-		</javac>
-	</target>
+    <!-- =============================================================== -->
+    <!-- Compiles the test source code                                        -->
+    <!-- =============================================================== -->
+    <target name="compile-tests" depends="prepare" description="compiles.">
+        <mkdir dir="${test.classes.dir}" />
+        <mkdir dir="${ext.test.lib.dir}" />
+        <mkdir dir="${test.src.dir}" />
+        <javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" debug="${debug}" deprecation="off" optimize="off">
+            <classpath refid="test.classpath" />
+        </javac>
+    </target>
 
-
-	<!-- ============================================================== -->
-	<!-- Cleans up generated stuff                                      -->
-	<!-- ============================================================== -->
-	<target name="clean" depends="" description="Removes generated files.">
-		<delete dir="${build.dir}" />
-	</target>
-
-
-	<!-- ============================================================== -->
-	<!-- Creates the jar files                                     -->
-	<!-- ============================================================== -->
-	<target name="jar" depends="compile" description="Builds the Jar Files">
-		<mkdir dir="${jar.dir}" />
-                <copy todir="${classes.dir}">
-                  <fileset dir="${src.dir}">
-                     <exclude name="**/*.java"/>
-                  </fileset>
-                </copy>
-		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-				<attribute name="Main-Class" value="${main.class}" />
-			</manifest>
-		</jar>
-	</target>
-
-	<!-- ============================================================== -->
-	<!-- Creates the test jar files                                          -->
-	<!-- ============================================================== -->
-	<target name="jar-tests" depends="compile-tests" description="Builds the Jar Files">
-		<mkdir dir="${jar.dir}" />
-		<jar jarfile="${test.project.jar}" basedir="${test.classes.dir}">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-			</manifest>
-		</jar>
-	</target>
 
     <!-- ============================================================== -->
-	<!-- Run the GUI                                                    -->
-	<!-- ============================================================== -->
-	<target name="run" depends="all,install" description="Run the GUI">
-		<java classname="${main.class}" fork="true" >
-			<classpath refid="run.classpath" />
+    <!-- Cleans up generated stuff                                      -->
+    <!-- ============================================================== -->
+    <target name="clean" depends="" description="Removes generated files.">
+        <delete dir="${build.dir}" />
+		<delete dir="${webstart.build.dir}" />
+    </target>
+
+
+    <!-- ============================================================== -->
+    <!-- Creates the jar files                                     -->
+    <!-- ============================================================== -->
+    <target name="jar" depends="compile" description="Builds the Jar Files">
+        <mkdir dir="${jar.dir}" />
+        <copy todir="${classes.dir}">
+            <fileset dir="${src.dir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <jar jarfile="${project.jarfile}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}" />
+                <attribute name="Main-Class" value="${main.class}" />
+            </manifest>
+        </jar>
+
+        
+        <echo message="---- Copying client jars from Grid Services. -----" />
+        
+        <copy overwrite="true" toDir="${ext.lib.dir}">
+            <fileset dir="${basedir}/../CAEDataServiceV2/build/lib">
+                <include name="*.jar" />
+            </fileset>
+            <fileset dir="${basedir}/../CaTissueCoreDataServiceV2/build/lib">
+                <include name="*.jar" />
+            </fileset>
+            <fileset dir="${basedir}/../CGEMSDataServiceV2/build/lib">
+                <include name="*.jar" />
+            </fileset>
+            <fileset dir="${basedir}/../TumorRegistryDataService/build/lib">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+
+
+    </target>
+
+    <!-- ============================================================== -->
+    <!-- Creates the test jar files                                          -->
+    <!-- ============================================================== -->
+    <target name="jar-tests" depends="compile-tests" description="Builds the Jar Files">
+        <mkdir dir="${jar.dir}" />
+        <jar jarfile="${test.project.jar}" basedir="${test.classes.dir}">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- ============================================================== -->
+    <!-- Run the GUI                                                    -->
+    <!-- ============================================================== -->
+    <target name="run" depends="all,install" description="Run the GUI">
+        <java classname="${main.class}" fork="true" >
+            <classpath refid="run.classpath" />
         </java>
     </target>
 
     <!-- ============================================================== -->
-	<!-- Install the GUI                                                -->
-	<!-- ============================================================== -->
-	<target name="install" depends="all" description="Install the GUI">
-		<property name="catrip.dir" location="${user.home}/.caTRIP" />
-		<property name="conf.dir" location="${basedir}/conf" />
-		<property name="client.config" location="${basedir}/conf/qe-client-config.wsdd" />
+    <!-- Install the GUI                                                -->
+    <!-- ============================================================== -->
+    <target name="install" depends="all" description="Install the GUI">
+        <property name="catrip.dir" location="${user.home}/.caTRIP" />
+        <property name="conf.dir" location="${basedir}/conf" />
+        <property name="client.config" location="${basedir}/conf/qe-client-config.wsdd" />
 
-		<mkdir dir="${catrip.dir}"/>
-		<copy file="${conf.dir}/catrip-config.xml" todir="${catrip.dir}" />
-		<copy file="${conf.dir}/query_engine_services_config.xml" todir="${catrip.dir}" />
+        <mkdir dir="${catrip.dir}"/>
+        <copy file="${conf.dir}/catrip-config.xml" todir="${catrip.dir}" />
+        <copy file="${conf.dir}/query_engine_services_config.xml" todir="${catrip.dir}" />
 
-		<replace file="${catrip.dir}/catrip-config.xml" token="@conf.dir@" value="${conf.dir}"/>
-		<replace file="${catrip.dir}/query_engine_services_config.xml" token="@client.config@" value="${client.config}"/>
+        <replace file="${catrip.dir}/catrip-config.xml" token="@conf.dir@" value="${conf.dir}"/>
+        <replace file="${catrip.dir}/query_engine_services_config.xml" token="@client.config@" value="${client.config}"/>
     </target>
 
-	<!-- ============================================================== -->
-	<!-- Builds from scratch                                                -->
-	<!-- ============================================================== -->
-	<target name="all" description="Builds the entire application" depends="jar,jar-tests" />
+    <!-- ============================================================== -->
+    <!-- Builds from scratch                                                -->
+    <!-- ============================================================== -->
+    <target name="all" description="Builds the entire application" depends="jar,jar-tests" />
+    
+    
+    
+    
+    <!-- ============================================================== -->
+    <!-- Build Webstart                                                 -->
+    <!-- ============================================================== -->
+    
+    <condition property="use.keystore" value="${user.home}/.caTripKeyStore" >
+        <available property="store" file="${user.home}/.caTripKeyStore"/>
+    </condition>
+    <condition property="use.keystore" value=".caTrip_Tmp_KeyStore" >
+        <and>
+            <available property="store-local" file=".caTrip_Tmp_KeyStore"/>
+            <not>
+                <available property="store" file="${user.home}/.caTripKeyStore"/>
+            </not>
+        </and>
+    </condition>
+    
+    <target name="webstart-build" description="Build WebStart Version of caTrip Application.">
+        <mkdir dir="${webstart.build.dir}"/>
+        
+        <echo message="---- Building set of jars for Webstart -----" />
+        
+        <copy overwrite="true" toDir="${webstart.build.dir}/lib">
+            <fileset dir="build/jars">
+                <include name="*" />
+            </fileset>
+        </copy>
+        
+        <copy overwrite="false" toDir="${webstart.build.dir}/lib">
+            <fileset dir="${globus.dir}/lib">
+                <include name="*.jar" />
+            </fileset>            
+            <fileset dir="lib">
+                <include name="*.jar" />
+            </fileset>
+            <fileset dir="ext/lib">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+        
+        <echo message="----------------------------------------------------------------------------------------" />
+        <echo message="Signing Jars Using keystore: ${use.keystore}" />
+        <echo message="----------------------------------------------------------------------------------------" />
+        
+        <signjar keypass="catrip" verbose="false" maxmemory="512m" 
+            alias="catrip" keystore="${user.home}/.caTripKeyStore"
+            storepass="catrip" lazy="true">
+            <fileset dir="${webstart.build.dir}/lib">
+                <include name="*.jar" />
+                <exclude name="jce-jdk13-125.jar" />
+                <exclude name="wsrf_provider_jce.jar" />
+            </fileset>
+        </signjar>
+
+        
+        <copy overwrite="true" toDir="${webstart.build.dir}">
+            <fileset dir="${webstart.conf.dir}">
+                <include name="*" />
+            </fileset>
+        </copy>     
+    </target>
+    
+    
+    <!-- ============================================================== -->
+    <!-- Deploy Webstart App on Tomcat                                  -->
+    <!-- ============================================================== -->
+    
+    <target name="webstart-deploy-tomcat" depends="webstart-build" description="Deploy WebStart Version of caTrip Application on Tomcat." >
+        
+        <copy overwrite="true" toDir="${webstart.build.dir}">
+            <fileset dir="${webstart.conf.dir}">
+                <include name="*" />
+            </fileset>
+        </copy> 
+        <echo message="    " />
+        <echo message="---- ############ Please Enter Host URL Details for Webstart. ############# -----" />
+        <echo message="    " />
+        <echo message="    " />
+        <input message="---- ############ Enter Host URL or Press Enter for Default value: http://localhost:8080 ############# -----"
+        addproperty="host.port" defaultvalue="http://localhost:8080"/>
+        
+        <replace file="${webstart.build.dir}/jce-jdk13-125.jar.jnlp" token="@codebase@" value="${host.port}/catrip-webstart"/>
+        <replace file="${webstart.build.dir}/wsrf_provider_jce.jar.jnlp" token="@codebase@" value="${host.port}/catrip-webstart"/>
+        <replace file="${webstart.build.dir}/catrip.jnlp" token="@codebase@" value="${host.port}/catrip-webstart"/>
+    
+        <mkdir dir="${tomcat.webstart.deploy.dir}"/>
+        
+        <copy overwrite="true" toDir="${tomcat.webstart.deploy.dir}">
+            <fileset dir="${webstart.build.dir}">
+                <include name="**/*" />
+            </fileset>
+        </copy>     
+		<echo message="    " />
+        <echo message="----------------------------------------------------------------------------------------" />
+        <echo message="caTRIP Webstart Application Url: ${host.port}/catrip-webstart/catrip.jnlp              " />
+        <echo message="----------------------------------------------------------------------------------------" />
+    
+        <echo message="    " />
+        
+    </target>
+    
+    
+    <!-- ============================================================== -->
+    <!-- Test  Webstart                                                 -->
+    <!-- ============================================================== -->
+    
+    <target name="webstart-test" depends="webstart-build" description="Test WebStart Version of caTrip Application.">
+    
+        <copy overwrite="true" toDir="${webstart.build.dir}">
+            <fileset dir="${webstart.conf.dir}">
+                <include name="*" />
+            </fileset>
+        </copy> 
+        
+        <replace file="${webstart.build.dir}/jce-jdk13-125.jar.jnlp" token="@codebase@" value="file:///${basedir}/${webstart.build.dir}"/>
+        <replace file="${webstart.build.dir}/wsrf_provider_jce.jar.jnlp" token="@codebase@" value="file:///${basedir}/${webstart.build.dir}"/>
+        <replace file="${webstart.build.dir}/catrip.jnlp" token="@codebase@" value="file:///${basedir}/${webstart.build.dir}"/>
+    
+        <exec dir="${webstart.build.dir}" executable="javaws">
+            <arg line="catrip.jnlp"/>
+        </exec>
+    
+    </target>
+    
+    
+    
+    
+    
+    
+    
 </project>
 
