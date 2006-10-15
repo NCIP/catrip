@@ -91,7 +91,7 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
 
 		System.out.println("Running the Grid Service Client");
 		try{
-            CGEMSClient client = new CGEMSClient("http://localhost:8181/wsrf/services/cagrid/CGEMS");
+            CGEMSClient client = new CGEMSClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CGEMS");
 
 
 
@@ -106,8 +106,17 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
 			a.setName("gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup");
         	a.setRoleName("analysisGroupCollection");
 
-        	a.setAttribute(new Attribute("name",Predicate.LIKE,"BRCA%"));
 
+			Association b = new Association();
+
+			b.setName("gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis");
+        	b.setRoleName("snpAssociationAnalysis");
+
+
+
+        	b.setAttribute(new Attribute("name",Predicate.LIKE,"Single selection sampling, Unadjusted score test"));
+
+			a.setAssociation(b);
         	target.setAssociation(a);
 
             cqlQuery.setTarget(target);
@@ -118,7 +127,7 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
             while (iter.hasNext()) {
                 gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant de = (gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant) iter.next();
 
-               System.out.println(de.getStudySubjectIdentifier() + "     " + de.getInstitutionName());
+               System.out.println(de.getStudySubjectIdentifier());
             }
         System.out.println("done ");
 
