@@ -1,0 +1,4 @@
+INSERT INTO STUDY_PANEL_ASSO ( STUDY_NAME, SNP_PANEL_ID ) VALUES ( 
+'CGEMS Prostate Cancer WGAS Phase 1A', 100); 
+commit;
+ 
