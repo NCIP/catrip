@@ -47,6 +47,8 @@ public class BaseResource implements Resource, ResourceProperties {
 	//Define the metadata resource properties
 	private ResourceProperty domainModelRP;
 	private gov.nih.nci.cagrid.metadata.dataservice.DomainModel domainModelMD;
+private ResourceProperty serviceMetadataRP;
+	private gov.nih.nci.cagrid.metadata.ServiceMetadata serviceMetadataMD;
 	
 
 
@@ -65,6 +67,12 @@ public class BaseResource implements Resource, ResourceProperties {
 		this.domainModelRP.add(this.domainModelMD);
 		//add the rp to the prop set
 		this.propSet.add(this.domainModelRP);
+		//init the rp
+		this.serviceMetadataRP = new SimpleResourceProperty(ResourceConstants.SERVICEMETADATA_MD_RP);
+		//add the value to the rp
+		this.serviceMetadataRP.add(this.serviceMetadataMD);
+		//add the rp to the prop set
+		this.propSet.add(this.serviceMetadataRP);
 	
 
 
@@ -186,6 +194,8 @@ public class BaseResource implements Resource, ResourceProperties {
 	
 		loadDomainModelFromFile();
 	
+		loadServiceMetadataFromFile();
+	
 	}
 
 
@@ -196,6 +206,18 @@ public class BaseResource implements Resource, ResourceProperties {
 					+ getConfiguration().getDomainModelFile());
 			this.domainModelMD = (gov.nih.nci.cagrid.metadata.dataservice.DomainModel) Utils.deserializeDocument(dataFile.getAbsolutePath(),
 				gov.nih.nci.cagrid.metadata.dataservice.DomainModel.class);
+		} catch (Exception e) {
+			logger.error("ERROR: problem populating metadata from file: " + e.getMessage(), e);
+		}
+	}		
+	
+	
+	private void loadServiceMetadataFromFile() {
+		try {
+			File dataFile = new File(ContainerConfig.getBaseDirectory() + File.separator
+					+ getConfiguration().getServiceMetadataFile());
+			this.serviceMetadataMD = (gov.nih.nci.cagrid.metadata.ServiceMetadata) Utils.deserializeDocument(dataFile.getAbsolutePath(),
+				gov.nih.nci.cagrid.metadata.ServiceMetadata.class);
 		} catch (Exception e) {
 			logger.error("ERROR: problem populating metadata from file: " + e.getMessage(), e);
 		}
@@ -218,6 +240,20 @@ public class BaseResource implements Resource, ResourceProperties {
 	public void setDomainModelMD(gov.nih.nci.cagrid.metadata.dataservice.DomainModel domainModel ){
 		this.domainModelMD=domainModel;
 		getDomainModelRP().set(0,domainModel);
+	}
+	
+	
+	protected ResourceProperty getServiceMetadataRP(){
+		return this.serviceMetadataRP;
+	}
+	
+	public gov.nih.nci.cagrid.metadata.ServiceMetadata getServiceMetadataMD(){
+		return this.serviceMetadataMD;
+	}
+	
+	public void setServiceMetadataMD(gov.nih.nci.cagrid.metadata.ServiceMetadata serviceMetadata ){
+		this.serviceMetadataMD=serviceMetadata;
+		getServiceMetadataRP().set(0,serviceMetadata);
 	}
 		
 

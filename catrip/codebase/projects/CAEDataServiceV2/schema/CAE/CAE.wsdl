@@ -23,6 +23,7 @@
         <complexType>
           <sequence>
             <element ref="ns4:DomainModel" />
+            <element ref="ns6:ServiceMetadata" />
           </sequence>
         </complexType>
       </element>
