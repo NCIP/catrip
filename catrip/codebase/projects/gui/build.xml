@@ -290,7 +290,7 @@
         
         <copy overwrite="true" toDir="${webstart.build.dir}">
             <fileset dir="${webstart.conf.dir}">
-                <include name="*" />
+                <include name="**/*" />
             </fileset>
         </copy>     
     </target>
