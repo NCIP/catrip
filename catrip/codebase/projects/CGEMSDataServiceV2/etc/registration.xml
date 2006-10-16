@@ -7,7 +7,7 @@
   <!-- The ServiceGroupEPR defines the servicegroup to which registrations will be made -->
   <ServiceGroupEPR>
     <!-- TODO: deploytime template this for the Index Service EPR -->
-    <wsa:Address>http://cagrid01.bmi.ohio-state.edu:8080/wsrf/services/DefaultIndexService</wsa:Address>
+    <wsa:Address>http://localhost:8080/wsrf/services/DefaultIndexService</wsa:Address>
   </ServiceGroupEPR>
   <!-- Specifies that the registration will be renewed every 10 minutes -->
   <RefreshIntervalSecs>600</RefreshIntervalSecs>
@@ -27,6 +27,8 @@
         <agg:PollIntervalMillis>300000</agg:PollIntervalMillis>
         <!-- specifies all Resource Properties that should be retrieved from the service -->
 		<agg:ResourcePropertyNames>ns4:DomainModel</agg:ResourcePropertyNames>
+	
+		<agg:ResourcePropertyNames>ns6:ServiceMetadata</agg:ResourcePropertyNames>
 	
       </agg:GetMultipleResourcePropertiesPollType>
     </agg:AggregatorConfig>

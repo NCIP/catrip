@@ -1,0 +1,5 @@
+<ns1:DomainModel projectDescription="CaTrip CGEMS Project" projectLongName="CGEMS" projectShortName="CGEMS" projectVersion="1" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice">
+ <ns1:exposedUMLAssociationCollection/>
+ <ns1:exposedUMLClassCollection/>
+ <ns1:umlGeneralizationCollection/>
+</ns1:DomainModel>

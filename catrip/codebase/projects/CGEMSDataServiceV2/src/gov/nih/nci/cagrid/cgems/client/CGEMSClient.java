@@ -93,8 +93,6 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
 		try{
             CGEMSClient client = new CGEMSClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CGEMS");
 
-
-
             CQLQuery cqlQuery = new CQLQuery();
 
             Object target = new Object();
@@ -106,13 +104,10 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
 			a.setName("gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup");
         	a.setRoleName("analysisGroupCollection");
 
-
 			Association b = new Association();
 
 			b.setName("gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis");
         	b.setRoleName("snpAssociationAnalysis");
-
-
 
         	b.setAttribute(new Attribute("name",Predicate.LIKE,"Single selection sampling, Unadjusted score test"));
 
