@@ -99,7 +99,7 @@ public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements 
         System.out.println("Running the Grid Service Client");
         try{
 
-                    CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient("http://localhost:8181/wsrf/services/cagrid/CaTRIPTumorRegistry");
+                    CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CaTRIPTumorRegistry");
                     // place client calls here if you want to use this main as a
                     // test....
 

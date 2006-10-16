@@ -91,7 +91,7 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
 
 		System.out.println("Running the Grid Service Client");
 		try{
-            CAEClient client = new CAEClient("http://localhost:8181/wsrf/services/cagrid/CAE");
+            CAEClient client = new CAEClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CAE");
 
             CQLQuery cqlQuery = new CQLQuery();
 
