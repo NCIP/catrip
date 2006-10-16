@@ -1,45 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<entry key="clientConfigWsdd">C:\tmp\conf\client-config.wsdd</entry>
+<comment>Modified via webstart.</comment>
 
-<!-- Localhost -->
-<entry key="http://localhost:8080/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
-<entry key="http://localhost:8080/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
-<entry key="http://localhost:8080/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
-<entry key="http://localhost:8080/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
+<entry key="clientConfigWsdd">C:\Documents and Settings\sanju\.caTRIP\conf\client-config.wsdd</entry>
 
-
-<!-- catrip1.duhs.duke.edu -->
-<entry key="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
-<entry key="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
-<entry key="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
-<entry key="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
-
-<entry key="http://152.16.7.203:8080/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
-<entry key="http://152.16.7.203:8080/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
-<entry key="http://152.16.7.203:8080/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
-<entry key="http://152.16.7.203:8080/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
-
-
-
-<!-- cagrid2.duhs.duke.edu -->
-<entry key="http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
-<entry key="http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
-<entry key="http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
-<entry key="http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
-
-<entry key="http://152.16.7.250/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
-<entry key="http://152.16.7.250/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
-<entry key="http://152.16.7.250/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
-<entry key="http://152.16.7.250/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
+<entry key="CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
+<entry key="CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
+<entry key="CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
+<entry key="CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
 
 
 </properties>
-
-<!-- 
-<entry key="http://##########/wsrf/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
-<entry key="http://##########/wsrf/services/cagrid/CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
-<entry key="http://##########/wsrf/services/cagrid/CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
-<entry key="http://##########/wsrf/services/cagrid/CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
--->
