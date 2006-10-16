@@ -572,7 +572,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 			List mcloca = new ArrayList();
 			mcloca.add(dataInsertTable[randomInRange(1,maxrecs-1)][1]);
 			ibc.setMicrocalcificationLocation(mcloca);
-			
+
 			//collection of location(s)
 			List loca = new ArrayList();
 			loca.add(dataInsertTable[randomInRange(1,maxrecs-1)][2]);
