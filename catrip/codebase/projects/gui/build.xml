@@ -267,6 +267,11 @@
                 <include name="*.jar" />
             </fileset>
         </copy>
+		<copy overwrite="true" toDir="${webstart.build.dir}/lib">
+            <fileset dir="lib">
+                <include name="client.jar" />
+            </fileset>            
+        </copy>
         
         <echo message="----------------------------------------------------------------------------------------" />
         <echo message="Signing Jars Using keystore: ${use.keystore}" />
