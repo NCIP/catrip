@@ -273,7 +273,7 @@
         <echo message="----------------------------------------------------------------------------------------" />
         
         <signjar keypass="catrip" verbose="false" maxmemory="512m" 
-            alias="catrip" keystore="${user.home}/.caTripKeyStore"
+            alias="catrip" keystore="${use.keystore}"
             storepass="catrip" lazy="true">
             <fileset dir="${webstart.build.dir}/lib">
                 <include name="*.jar" />
