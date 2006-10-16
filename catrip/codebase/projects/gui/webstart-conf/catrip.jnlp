@@ -123,7 +123,6 @@
 <jar download="eager" href="lib/puretls.jar"/>
 <jar download="eager" href="lib/resolver.jar"/>
 <jar download="eager" href="lib/saaj.jar"/>
-<jar download="eager" href="lib/servlet.jar"/>
 <jar download="eager" href="lib/spring.jar"/>
 <jar download="eager" href="lib/subject-0.2.1.jar"/>
 <jar download="eager" href="lib/swing-layout-1.0.jar"/>
