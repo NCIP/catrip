@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
 	
 	
-	<service displayName="Tissue Bank" url="http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CaTissueCore" metadataXml="_SimpleGUI_caTissueCore_domainModel.xml" impls="true">
+	<service displayName="Tissue Bank" url="http://152.16.96.114/wsrf/services/cagrid/CaTissueCore" metadataXml="_SimpleGUI_caTissueCore_domainModel.xml" impls="true">
 		<targets>
 			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
 				<associatedObjectTree>
@@ -47,7 +47,7 @@
 	
 
 	
-	<service displayName="Clinical Annotation Engine" url="http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CAE" metadataXml="_SimpleGUI_CAE_domainModel.xml" impls="false">
+	<service displayName="Clinical Annotation Engine" url="http://152.16.96.114/wsrf/services/cagrid/CAE" metadataXml="_SimpleGUI_CAE_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="edu.duke.catrip.cae.domain.general.Participant"   displaybleAttributes="gender,race,ethnicity" display="true">
 				<associatedObjectTree>
@@ -117,3 +117,6 @@
 		</foreignAssociationInboundTree>
 	</service>
 </simpleGuiServices>
+
+<!-- cagrid2.duhs.duke.edu = 152.16.96.114 -->
+
