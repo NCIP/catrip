@@ -319,7 +319,7 @@ public class DomainModelMetaDataRegistry {
     
     
     
-    
+     
     public static ArrayList<String> getAllSubClassFromHierarchy(ClassBean cBean){
         ArrayList<String> subClasses = new ArrayList<String>(100);
         ArrayList<String> subclassRefs = cBean.getSubClassIds();

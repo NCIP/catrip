@@ -485,7 +485,7 @@ public class ClassBean{
     }
 
     public void setSuperClassName(String superClassName) {
-        this.superClassName = sup erClassName;
+        this.superClassName = superClassName;
     }
 
     public ArrayList<String> getSubClassIds() {
