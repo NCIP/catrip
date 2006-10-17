@@ -49,6 +49,7 @@ public class ClassBean{
     private String superClassRefId;
     private String superClassName;
     private ArrayList<String> superClassAssociatedClassList = new ArrayList(20);
+    private ArrayList<String> subClassIds = new ArrayList(100);
     // ---- UML Generalization Collection attributes ----//
     
     
@@ -486,7 +487,20 @@ public class ClassBean{
     public void setSuperClassName(String superClassName) {
         this.superClassName = superClassName;
     }
-    
+
+    public ArrayList<String> getSubClassIds() {
+        return subClassIds;
+    }
+    public void setSubClassIds(ArrayList<String> subClassIds) {
+        this.subClassIds = subClassIds;
+    }
+    public void addSubClassId(String subClassId) {
+        boolean alreadyAdded = getSubClassIds().contains(subClassId);
+        if (!alreadyAdded){
+            getSubClassIds().add( subClassId );
+        }
+        
+    }
     
     
     
