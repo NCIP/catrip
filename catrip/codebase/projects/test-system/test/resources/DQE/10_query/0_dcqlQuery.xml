@@ -1,0 +1,13 @@
+<DCQLQuery xmlns="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">
+    <TargetObject name="edu.duke.catrip.cae.domain.general.Participant" serviceURL="http://localhost:8080/wsrf/services/cagrid/CAE">
+        <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+            <Association name="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" roleName="">
+                <Group logicRelation="AND">
+                    <Attribute name="estrogenReceptor" predicate="EQUAL_TO" value="negative"/>
+                    <Attribute name="HER2Status" predicate="EQUAL_TO" value="negative"/>
+                    <Attribute name="progesteroneReceptor" predicate="EQUAL_TO" value="negative"/>
+                </Group>
+            </Association>
+        </Association>
+    </TargetObject>
+</DCQLQuery>
