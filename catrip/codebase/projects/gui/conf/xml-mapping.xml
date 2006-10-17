@@ -279,6 +279,13 @@
   </class>
 
 	<!-- Adding the mapping from the caDSR project like SemanticMetaData etc. -->
+
+<!-- ####################################################### -->
+<!-- ####################################################### -->
+<!-- ####################################################### -->
+
+
+
 	<!-- CaTissueCore mappings... -->
 	<class name="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl">
 		<map-to xml="Participant" ns-uri="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
@@ -935,9 +942,9 @@
 	</class>
 
 
-<!-- ############################################ -->
-<!-- ############################################ -->
-<!-- ############################################ -->
+<!-- ####################################################### -->
+<!-- ####################################################### -->
+<!-- ####################################################### -->
 
 	<!-- CAE mappings... -->
   <class name="edu.pitt.cabig.cae.domain.general.EventParameters">
@@ -1225,7 +1232,7 @@
     <field name="characterization" type="string">
       <bind-xml name="characterization" node="attribute" />
     </field>
-    <field name="performedIndicator" type="integer">
+    <field name="performedIndicator" type="string">
       <bind-xml name="performedIndicator" node="attribute" />
     </field>
   </class>
@@ -1638,6 +1645,648 @@
 
 
 
+
+
+
+<!-- ####################################################### -->
+<!-- ####################################################### -->
+<!-- ####################################################### -->
+
+
+<!-- CGEMS mappings... -->
+
+
+
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.Activity">
+		<map-to xml="Activity" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+		<field name="startDayNumber" type="long">
+			<bind-xml name="startDayNumber" node="attribute"/>
+		</field>
+		<field name="status" type="string">
+			<bind-xml name="status" node="attribute"/>
+		</field>
+		<field name="stopDayNumber" type="long">
+			<bind-xml name="stopDayNumber" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.Agent">
+		<map-to xml="Agent" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="formCode" type="string">
+			<bind-xml name="formCode" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.DNASpecimen" extends="gov.nih.nci.caintegrator.domain.study.bean.Specimen">
+		<map-to xml="DNASpecimen" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="dnaAmplificationMethod" type="string">
+			<bind-xml name="dnaAmplificationMethod" node="attribute"/>
+		</field>
+		<field name="dnaExtractionMethod" type="string">
+			<bind-xml name="dnaExtractionMethod" node="attribute"/>
+		</field>
+		<field name="dnaMaterialType" type="string">
+			<bind-xml name="dnaMaterialType" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.Histology">
+		<map-to xml="Histology" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="comment" type="string">
+			<bind-xml name="comment" node="attribute"/>
+		</field>
+		<field name="diagnosisName" type="string">
+			<bind-xml name="diagnosisName" node="attribute"/>
+		</field>
+		<field name="grade" type="string">
+			<bind-xml name="grade" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="invasivePresentation" type="string">
+			<bind-xml name="invasivePresentation" node="attribute"/>
+		</field>
+		<field name="stage" type="string">
+			<bind-xml name="stage" node="attribute"/>
+		</field>
+		<field name="type" type="string">
+			<bind-xml name="type" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.Population">
+		<map-to xml="Population" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="memberCount" type="integer">
+			<bind-xml name="memberCount" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+		<field name="source" type="string">
+			<bind-xml name="source" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.SecondaryParticipantIdentifier">
+		<map-to xml="SecondaryParticipantIdentifier" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="organizationName" type="string">
+			<bind-xml name="organizationName" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.Specimen">
+		<map-to xml="Specimen" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="collectionMethod" type="string">
+			<bind-xml name="collectionMethod" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="materialType" type="string">
+			<bind-xml name="materialType" node="attribute"/>
+		</field>
+		<field name="specimenIdentifier" type="string">
+			<bind-xml name="specimenIdentifier" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
+		<map-to xml="StudyParticipant" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="administrativeGenderCode" type="string">
+			<bind-xml name="administrativeGenderCode" node="attribute"/>
+		</field>
+		<field name="caseControlStatus" type="string">
+			<bind-xml name="caseControlStatus" node="attribute"/>
+		</field>
+		<field name="daysOffStudy" type="integer">
+			<bind-xml name="daysOffStudy" node="attribute"/>
+		</field>
+		<field name="daysOnStudy" type="integer">
+			<bind-xml name="daysOnStudy" node="attribute"/>
+		</field>
+		<field name="ethnicGroupCode" type="string">
+			<bind-xml name="ethnicGroupCode" node="attribute"/>
+		</field>
+		<field name="familyHistory" type="string">
+			<bind-xml name="familyHistory" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="institutionName" type="string">
+			<bind-xml name="institutionName" node="attribute"/>
+		</field>
+		<field name="isOffStudy" type="boolean">
+			<bind-xml name="isOffStudy" node="attribute"/>
+		</field>
+		<field name="raceCode" type="string">
+			<bind-xml name="raceCode" node="attribute"/>
+		</field>
+		<field name="studySubjectIdentifier" type="string">
+			<bind-xml name="studySubjectIdentifier" node="attribute"/>
+		</field>
+		<field name="survivalStatus" type="string">
+			<bind-xml name="survivalStatus" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.TimeCourse">
+		<map-to xml="TimeCourse" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.study.bean.Study">
+		<map-to xml="Study" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.study"/>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="endDate" type="date">
+			<bind-xml name="endDate" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+		<field name="sponsorStudyIdentifier" type="string">
+			<bind-xml name="sponsorStudyIdentifier" node="attribute"/>
+		</field>
+		<field name="startDate" type="date">
+			<bind-xml name="startDate" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis">
+		<map-to xml="SNPAssociationAnalysis" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.analysis.snp"/>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="methods" type="string">
+			<bind-xml name="methods" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationFinding" extends="gov.nih.nci.caintegrator.domain.finding.bean.Finding">
+		<map-to xml="SNPAssociationFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.analysis.snp"/>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="pvalue" type="float">
+			<bind-xml name="pvalue" node="attribute"/>
+		</field>
+		<field name="rank" type="integer">
+			<bind-xml name="rank" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup">
+		<map-to xml="SNPAnalysisGroup" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.analysis.snp"/>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="memberCount" type="integer">
+			<bind-xml name="memberCount" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneExprReporter">
+		<map-to xml="GeneExprReporter" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+		<field name="type" type="string">
+			<bind-xml name="type" node="attribute"/>
+		</field>
+	</class>
+	<class  name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneReporterAnnotation">
+		<map-to xml="GeneReporterAnnotation" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="chromosome" type="string">
+			<bind-xml name="chromosome" node="attribute"/>
+		</field>
+		<field name="cytoband" type="string">
+			<bind-xml name="cytoband" node="attribute"/>
+		</field>
+		<field name="endPhysicalLocation" type="long">
+			<bind-xml name="endPhysicalLocation" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="startPhysicalLocation" type="long">
+			<bind-xml name="startPhysicalLocation" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker">
+		<map-to xml="GeneBiomarker" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="chromosome" type="string">
+			<bind-xml name="chromosome" node="attribute"/>
+		</field>
+		<field name="cytoband" type="string">
+			<bind-xml name="cytoband" node="attribute"/>
+		</field>
+		<field name="entrezGeneID" type="string">
+			<bind-xml name="entrezGeneID" node="attribute"/>
+		</field>
+		<field name="hugoGeneSymbol" type="string">
+			<bind-xml name="hugoGeneSymbol" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="endPhysicalLocation" type="long">
+			<bind-xml name="endPhysicalLocation" node="attribute"/>
+		</field>
+		<field name="startPhyscialLocation" type="long">
+			<bind-xml name="startPhyscialLocation" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.Pathway">
+		<map-to xml="Pathway" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneAlias">
+		<map-to xml="GeneAlias" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="alias" type="string">
+			<bind-xml name="alias" node="attribute"/>
+		</field>
+		<field name="hugoGeneSymbol" type="string">
+			<bind-xml name="hugoGeneSymbol" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.GOTerm">
+		<map-to xml="GOTerm" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.gene.bean.GenBankAccession">
+		<map-to xml="GenBankAccession" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.gene"/>
+		<field name="hugoGeneSymbol" type="string">
+			<bind-xml name="hugoGeneSymbol" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="number" type="string">
+			<bind-xml name="number" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.protein.bean.UniprotAccession">
+		<map-to xml="UniprotAccession" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.protein"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="number" type="string">
+			<bind-xml name="number" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.protein.bean.ProteinBiomarker">
+		<map-to xml="ProteinBiomarker" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.protein"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.protein.bean.ProteinAlias">
+		<map-to xml="ProteinAlias" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.protein"/>
+		<field name="alias" type="string">
+			<bind-xml name="alias" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.snp.bean.BACCloneReporter" extends="gov.nih.nci.caintegrator.domain.annotation.snp.bean.VariationReporter">
+		<map-to xml="BACCloneReporter" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.snp"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.snp.bean.VariationReporter">
+		<map-to xml="VariationReporter" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.snp"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay">
+		<map-to xml="SNPAssay" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.snp"/>
+		<field name="designAlleles" type="string">
+			<bind-xml name="designAlleles" node="attribute"/>
+		</field>
+		<field name="designScore" type="float">
+			<bind-xml name="designScore" node="attribute"/>
+		</field>
+		<field name="designSequence" type="string">
+			<bind-xml name="designSequence" node="attribute"/>
+		</field>
+		<field name="designStrand" type="string">
+			<bind-xml name="designStrand" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="status" type="string">
+			<bind-xml name="status" node="attribute"/>
+		</field>
+		<field name="vendorAssayId" type="string">
+			<bind-xml name="vendorAssayId" node="attribute"/>
+		</field>
+		<field name="version" type="string">
+			<bind-xml name="version" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPPanel">
+		<map-to xml="SNPPanel" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.snp"/>
+		<field name="assayCount" type="integer">
+			<bind-xml name="assayCount" node="attribute"/>
+		</field>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+		<field name="technology" type="string">
+			<bind-xml name="technology" node="attribute"/>
+		</field>
+		<field name="vendor" type="string">
+			<bind-xml name="vendor" node="attribute"/>
+		</field>
+		<field name="vendorPanelId" type="string">
+			<bind-xml name="vendorPanelId" node="attribute"/>
+		</field>
+		<field name="version" type="string">
+			<bind-xml name="version" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAnnotation">
+		<map-to xml="SNPAnnotation" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.annotation.snp"/>
+		<field name="chromosomeLocation" type="long">
+			<bind-xml name="chromosomeLocation" node="attribute"/>
+		</field>
+		<field name="chromosomeName" type="string">
+			<bind-xml name="chromosomeName" node="attribute"/>
+		</field>
+		<field name="dbsnpBuild" type="string">
+			<bind-xml name="dbsnpBuild" node="attribute"/>
+		</field>
+		<field name="dbsnpId" type="string">
+			<bind-xml name="dbsnpId" node="attribute"/>
+		</field>
+		<field name="geneLocation" type="string">
+			<bind-xml name="geneLocation" node="attribute"/>
+		</field>
+		<field name="genomeBuild" type="string">
+			<bind-xml name="genomeBuild" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="referenceSequence" type="string">
+			<bind-xml name="referenceSequence" node="attribute"/>
+		</field>
+		<field name="referenceStrand" type="string">
+			<bind-xml name="referenceStrand" node="attribute"/>
+		</field>
+		<field name="secondaryIdentifier" type="string">
+			<bind-xml name="secondaryIdentifier" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.common.bean.TextMeasurement" extends="gov.nih.nci.caintegrator.domain.common.bean.Measurement">
+		<map-to xml="TextMeasurement" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.common"/>
+		<field name="value" type="string">
+			<bind-xml name="value" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.common.bean.NumericMeasurement" extends="gov.nih.nci.caintegrator.domain.common.bean.Measurement">
+		<map-to xml="NumericMeasurement" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.common"/>
+		<field name="absoluteValue" type="double">
+			<bind-xml name="absoluteValue" node="attribute"/>
+		</field>
+		<field name="maxValue" type="double">
+			<bind-xml name="maxValue" node="attribute"/>
+		</field>
+		<field name="minValue" type="double">
+			<bind-xml name="minValue" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.common.bean.Measurement">
+		<map-to xml="Measurement" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.common"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="unitOfMeasure" type="string">
+			<bind-xml name="unitOfMeasure" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.bean.SpecimenBasedMolecularFinding" extends="gov.nih.nci.caintegrator.domain.finding.bean.Finding">
+		<map-to xml="SpecimenBasedMolecularFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding"/>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.bean.Finding">
+		<map-to xml="Finding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding"/>
+	</class>
+<!--
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.bean.snpFinding" extends="gov.nih.nci.caintegrator.domain.finding.variation.bean.VariationFinding">
+		<map-to xml="snpFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation"/>
+	</class>
+-->
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.bean.FunctionalProteinDomain">
+		<map-to xml="FunctionalProteinDomain" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation"/>
+		<field name="code" type="string">
+			<bind-xml name="code" node="attribute"/>
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.bean.FunctionalDNADomain">
+		<map-to xml="FunctionalDNADomain" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation"/>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.bean.VariationFinding" extends="gov.nih.nci.caintegrator.domain.finding.bean.SpecimenBasedMolecularFinding">
+		<map-to xml="VariationFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation"/>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.somaticMutation.bean.SomaticMutationFinding" extends="gov.nih.nci.caintegrator.domain.finding.variation.bean.VariationFinding">
+		<map-to xml="SomaticMutationFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation.somaticMutation"/>
+		<field name="baseNumber" type="integer">
+			<bind-xml name="baseNumber" node="attribute"/>
+		</field>
+		<field name="functionalChange" type="string">
+			<bind-xml name="functionalChange" node="attribute"/>
+		</field>
+		<field name="locationByCodon" type="integer">
+			<bind-xml name="locationByCodon" node="attribute"/>
+		</field>
+		<field name="locationByExon" type="integer">
+			<bind-xml name="locationByExon" node="attribute"/>
+		</field>
+		<field name="locationByIntron" type="integer">
+			<bind-xml name="locationByIntron" node="attribute"/>
+		</field>
+		<field name="mutantAminoAcid" type="string">
+			<bind-xml name="mutantAminoAcid" node="attribute"/>
+		</field>
+		<field name="mutantCodon" type="string">
+			<bind-xml name="mutantCodon" node="attribute"/>
+		</field>
+		<field name="mutationStatus" type="string">
+			<bind-xml name="mutationStatus" node="attribute"/>
+		</field>
+		<field name="mutationType" type="string">
+			<bind-xml name="mutationType" node="attribute"/>
+		</field>
+		<field name="numberOfCodonsAffected" type="long">
+			<bind-xml name="numberOfCodonsAffected" node="attribute"/>
+		</field>
+		<field name="sizeOfMutation" type="long">
+			<bind-xml name="sizeOfMutation" node="attribute"/>
+		</field>
+		<field name="wildtypeAminoAcid" type="string">
+			<bind-xml name="wildtypeAminoAcid" node="attribute"/>
+		</field>
+		<field name="wildtypeCodon" type="string">
+			<bind-xml name="wildtypeCodon" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.germline.bean.GenotypeFinding" extends="gov.nih.nci.caintegrator.domain.finding.variation.bean.VariationFinding">
+		<map-to xml="GenotypeFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation.germline"/>
+		<field name="allele1" type="string">
+			<bind-xml name="allele1" node="attribute"/>
+		</field>
+		<field name="allele2" type="string">
+			<bind-xml name="allele2" node="attribute"/>
+		</field>
+		<field name="normalizedXIntensity" type="float">
+			<bind-xml name="normalizedXIntensity" node="attribute"/>
+		</field>
+		<field name="normalizedYIntensity" type="float">
+			<bind-xml name="normalizedYIntensity" node="attribute"/>
+		</field>
+		<field name="qualityScore" type="float">
+			<bind-xml name="qualityScore" node="attribute"/>
+		</field>
+		<field name="rawXIntensity" type="float">
+			<bind-xml name="rawXIntensity" node="attribute"/>
+		</field>
+		<field name="rawYIntensity" type="float">
+			<bind-xml name="rawYIntensity" node="attribute"/>
+		</field>
+		<field name="status" type="string">
+			<bind-xml name="status" node="attribute"/>
+		</field>
+	</class>
+	<class name="gov.nih.nci.caintegrator.domain.finding.variation.snpFrequency.bean.SNPFrequencyFinding" extends="gov.nih.nci.caintegrator.domain.finding.bean.Finding">
+		<map-to xml="SNPFrequencyFinding" ns-uri="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation.snpFrequency"/>
+		<field name="hardyWeinbergPValue" type="float">
+			<bind-xml name="hardyWeinbergPValue" node="attribute"/>
+		</field>
+		<field name="heterozygoteCount" type="integer">
+			<bind-xml name="heterozygoteCount" node="attribute"/>
+		</field>
+		<field name="id" type="long">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="minorAlleleFrequency" type="float">
+			<bind-xml name="minorAlleleFrequency" node="attribute"/>
+		</field>
+		<field name="missingAlleleCount" type="integer">
+			<bind-xml name="missingAlleleCount" node="attribute"/>
+		</field>
+		<field name="missingGenotypeCount" type="integer">
+			<bind-xml name="missingGenotypeCount" node="attribute"/>
+		</field>
+		<field name="otherAllele" type="string">
+			<bind-xml name="otherAllele" node="attribute"/>
+		</field>
+		<field name="otherAlleleCount" type="integer">
+			<bind-xml name="otherAlleleCount" node="attribute"/>
+		</field>
+		<field name="otherHomozygoteCount" type="integer">
+			<bind-xml name="otherHomozygoteCount" node="attribute"/>
+		</field>
+		<field name="referenceAllele" type="string">
+			<bind-xml name="referenceAllele" node="attribute"/>
+		</field>
+		<field name="referenceAlleleCount" type="integer">
+			<bind-xml name="referenceAlleleCount" node="attribute"/>
+		</field>
+		<field name="referenceHomozygoteCount" type="integer">
+			<bind-xml name="referenceHomozygoteCount" node="attribute"/>
+		</field>
+	</class>
+
+
+
+<!-- CGEMS mappings... -->
 
 
 
