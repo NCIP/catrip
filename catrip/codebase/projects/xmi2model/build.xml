@@ -158,6 +158,26 @@
 	</target>
 
 	<!-- ============================================================== -->
+	<!-- Runs xmi2model                                                 -->
+	<!-- ============================================================== -->
+	<target name="xmi2model" depends="all" description="Runs xmi2model">
+		<java classpathref="run.classpath" classname="edu.duke.cabig.catrip.xmi2model.XMI2Model">
+			<arg value="-xmi"/>
+			<arg value="${xmi}"/>
+			<arg value="-model"/>
+			<arg value="${model}"/>
+			<arg value="-projectShortName"/>
+			<arg value="${projectShortName}"/>
+			<arg value="-projectVersion"/>
+			<arg value="${projectVersion}"/>
+			<arg value="-projectLongName"/>
+			<arg value="${projectLongName}"/>
+			<arg value="-projectDescription"/>
+			<arg value="${projectDescription}"/>
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
 	<!-- Builds from scratch                                                -->
 	<!-- ============================================================== -->
 	<target name="all" description="Builds the entire application" depends="jar,jar-tests" />
