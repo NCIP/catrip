@@ -73,7 +73,7 @@
 <jar download="eager" href="lib/caGrid-introduce-core-1.0.jar"/>
 <jar download="eager" href="lib/caGrid-introduce-portal-1.0.jar"/>
 <jar download="eager" href="lib/cae_domain.jar"/>
-<jar download="eager" href="lib/cagrid_dcql_schema_beans.jar"/>
+<jar download="eager" href="lib/dcql-schema-beans-1.0.jar"/>
 <jar download="eager" href="lib/castor-0.9.9.jar"/>
 <jar download="eager" href="lib/catissuecore_domain_local_modified.jar"/>
 <jar download="eager" href="lib/catrip-queryengine-1.0.jar"/>
