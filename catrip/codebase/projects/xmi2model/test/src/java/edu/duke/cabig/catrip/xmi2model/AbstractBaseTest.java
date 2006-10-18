@@ -13,6 +13,8 @@ public abstract class AbstractBaseTest
 {
 	protected File xmiDir = null;
 	protected File modelsDir = null;
+	protected String projectShortName = null;
+	protected String projectVersion = null;
 	
 	public AbstractBaseTest(String name)
 	{
@@ -24,6 +26,8 @@ public abstract class AbstractBaseTest
 		this.modelsDir = new File(System.getProperty("models.dir",
 			"test" + File.separator + "resources" + File.separator + "models"
 		));
+		this.projectShortName = System.getProperty("projectShortName", "Test Project Short Name");
+		this.projectVersion = System.getProperty("projectVersion", "1");
 	}
 	
 	public abstract void performTest(File xmiFile, File modelFile) throws Exception;

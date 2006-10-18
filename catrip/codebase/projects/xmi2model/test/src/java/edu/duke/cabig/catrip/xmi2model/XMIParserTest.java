@@ -30,7 +30,7 @@ public class XMIParserTest
 
 	public void performTest(File xmiFile, File modelFile) throws Exception
 	{
-		DomainModel model = new XMIParser().parse(xmiFile);
+		DomainModel model = new XMIParser(projectShortName, projectVersion).parse(xmiFile);
 
 		File outFile = new File(outDir, getModelName(xmiFile));
 		Utils.serializeDocument(outFile.toString(), model, new QName("extract"));

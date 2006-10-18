@@ -6,6 +6,7 @@ package edu.duke.cabig.catrip.xmi2model;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,6 +35,20 @@ import gov.nih.nci.cagrid.metadata.dataservice.UMLGeneralization;
 public class XMIParser
 {
 	private DomainModel model;
+	private boolean filterPrimitiveClasses = true;
+	private String projectDescription;
+	private String projectLongName;
+	private String projectShortName;
+	private String projectVersion;
+	private float attributeVersion = 1.0f;
+	
+	public XMIParser(String projectShortName, String projectVersion)
+	{
+		super();
+		
+		this.projectShortName = projectShortName;
+		this.projectVersion = projectVersion;
+	}
 	
 	public DomainModel parse(File file) 
 		throws SAXException, IOException, ParserConfigurationException
@@ -62,6 +77,7 @@ public class XMIParser
 		private UMLAssociationEdge edge;
 		private boolean sourceNavigable = false;
 		private boolean targetNavigable = false;
+		private String pkg = "";
 		
 		public XMIHandler()
 		{
@@ -77,7 +93,11 @@ public class XMIParser
 		@Override
 		public void endElement(String uri, String localName, String qName) throws SAXException
 		{
-			if (qName.equals("UML:Class")) {
+			if (qName.equals("UML:Package")) {
+				int index = pkg.lastIndexOf('.');
+				if (index == -1) pkg = "";
+				else pkg = pkg.substring(0, index);
+			} else if (qName.equals("UML:Class")) {
 				UMLClass cl = clList.get(clList.size()-1);
 				cl.setUmlAttributeCollection(new UMLClassUmlAttributeCollection(attList.toArray(new UMLAttribute[0])));
 				attList.clear();
@@ -99,16 +119,26 @@ public class XMIParser
 		{
 			chars.delete(0, chars.length());
 			
-			if (qName.equals("UML:Class")) {
+			if (qName.equals("UML:Package")) {
+				String name = atts.getValue("name");
+				if (! name.equals("Logical View") && ! name.equals("Logical Model")) {
+					if (! pkg.equals("")) pkg += ".";
+					pkg += atts.getValue("name");
+				}
+			} else if (qName.equals("UML:Class")) {
 				UMLClass cl = new UMLClass();
 				cl.setClassName(atts.getValue("name"));
 				cl.setId(atts.getValue("xmi.id"));
+				cl.setPackageName(pkg);
+				cl.setProjectName(projectShortName);
+				cl.setProjectVersion(projectVersion);
 				clList.add(cl);
 				clTable.put(cl.getId(), cl);
 			} else if (qName.equals("UML:Attribute")) {
 				UMLAttribute att = new UMLAttribute();
 				att.setName(atts.getValue("name"));
 				att.setPublicID(atts.getValue("xmi.id").hashCode());
+				att.setVersion(attributeVersion);
 				attList.add(att);
 				attTable.put(String.valueOf(att.getPublicID()), att);
 			} else if (qName.equals("UML:Association")) {
@@ -187,8 +217,15 @@ public class XMIParser
 			applySemanticMetadata();
 			applyDataTypes();
 			flattenAttributes();
+			applyFilters();
 			
 			model = new DomainModel();
+			
+			model.setProjectShortName(projectShortName);
+			model.setProjectLongName(projectLongName);
+			model.setProjectVersion(projectVersion);
+			model.setProjectDescription(projectDescription);
+			
 			model.setExposedUMLClassCollection(new DomainModelExposedUMLClassCollection(clList.toArray(new UMLClass[0])));
 			model.setExposedUMLAssociationCollection(new DomainModelExposedUMLAssociationCollection(assList.toArray(new UMLAssociation[0])));
 			model.setUmlGeneralizationCollection(new DomainModelUmlGeneralizationCollection(genList.toArray(new UMLGeneralization[0])));
@@ -257,5 +294,110 @@ public class XMIParser
 			
 			return attList;
 		}
+		
+		private void applyFilters()
+		{
+			// build filter set
+			HashSet<String> filterSet = new HashSet<String>();
+			// filter primtives
+			if (filterPrimitiveClasses) {
+				for (UMLClass cl : clList) {
+					if (cl.getPackageName().startsWith("java")) filterSet.add(cl.getId());
+				}
+			}
+			// filter root class
+			for (UMLClass cl : clList) {
+				if (cl.getPackageName().equals("")) filterSet.add(cl.getId());
+			}
+			
+			// filter classes
+			ArrayList<UMLClass> clList = new ArrayList<UMLClass>(this.clList.size());
+			for (UMLClass cl : this.clList) {
+				if (! filterSet.contains(cl.getId())) clList.add(cl);
+			}
+			this.clList = clList;
+			
+			// filter assocations
+			ArrayList<UMLAssociation> assList = new ArrayList<UMLAssociation>(this.assList.size());
+			for (UMLAssociation ass : this.assList) {
+				if (! filterSet.contains(ass.getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid())
+					&& ! filterSet.contains(ass.getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid())
+				) {
+					assList.add(ass);
+				}
+			}
+			this.assList = assList;
+			
+			// filter generalizations
+			ArrayList<UMLGeneralization> genList = new ArrayList<UMLGeneralization>(this.genList.size());
+			for (UMLGeneralization gen : this.genList) {
+				if (! filterSet.contains(gen.getSubClassReference().getRefid())
+					&& ! filterSet.contains(gen.getSuperClassReference().getRefid())
+				) {
+					genList.add(gen);
+				}
+			}
+			this.genList = genList;
+		}
+	}
+
+	public boolean isFilterPrimitiveClasses()
+	{
+		return filterPrimitiveClasses;
+	}
+
+	public void setFilterPrimitiveClasses(boolean filterPrimitiveClasses)
+	{
+		this.filterPrimitiveClasses = filterPrimitiveClasses;
+	}
+
+	public String getProjectDescription()
+	{
+		return projectDescription;
+	}
+
+	public void setProjectDescription(String projectDescription)
+	{
+		this.projectDescription = projectDescription;
+	}
+
+	public String getProjectLongName()
+	{
+		return projectLongName;
+	}
+
+	public void setProjectLongName(String projectLongName)
+	{
+		this.projectLongName = projectLongName;
+	}
+
+	public String getProjectShortName()
+	{
+		return projectShortName;
+	}
+
+	public void setProjectShortName(String projectShortName)
+	{
+		this.projectShortName = projectShortName;
+	}
+
+	public String getProjectVersion()
+	{
+		return projectVersion;
+	}
+
+	public void setProjectVersion(String projectVersion)
+	{
+		this.projectVersion = projectVersion;
+	}
+
+	public float getAttributeVersion()
+	{
+		return attributeVersion;
+	}
+
+	public void setAttributeVersion(float attributeVersion)
+	{
+		this.attributeVersion = attributeVersion;
 	}
 }

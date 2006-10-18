@@ -8,7 +8,6 @@ import java.io.File;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 
 public class XMI2ModelTest
 	extends AbstractBaseTest
@@ -27,12 +26,12 @@ public class XMI2ModelTest
 
 	public void performTest(File xmiFile, File modelFile) throws Exception
 	{
-		DomainModel model = new XMIParser().parse(xmiFile);
-
 		File outFile = new File(outDir, getModelName(xmiFile));
 		XMI2Model.main(new String[] {
 			"-xmi", xmiFile.toString(),
 			"-model", outFile.toString(),
+			"-projectShortName", projectShortName,
+			"-projectVersion", projectVersion,
 		});
 		
 		checkModel(modelFile, outFile);

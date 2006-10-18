@@ -41,10 +41,24 @@ public class XMI2Model
 			.isRequired(true)
 			.withDescription("the output model file")
 			.create("model");
+
+		Option projectShortName = OptionBuilder.withArgName("projectShortName")
+			.hasArg()
+			.isRequired(true)
+			.withDescription("the short name of the project")
+			.create("projectShortName");
+
+		Option projectVersion = OptionBuilder.withArgName("projectVersion")
+			.hasArg()
+			.isRequired(true)
+			.withDescription("the version of the project")
+			.create("projectVersion");
 		
 		Options options = new Options();
 		options.addOption(xmi);		
 		options.addOption(model);		
+		options.addOption(projectShortName);		
+		options.addOption(projectVersion);		
 		return options;
 	}
 	
@@ -63,7 +77,9 @@ public class XMI2Model
 			return;
 		}
 		
-		DomainModel model = new XMIParser().parse(new File(cmd.getOptionValue("xmi")));
+		DomainModel model = new XMIParser(
+			cmd.getOptionValue("projectShortName"), cmd.getOptionValue("projectVersion")
+		).parse(new File(cmd.getOptionValue("xmi")));
 		Utils.serializeDocument(cmd.getOptionValue("model"), model, new QName("extract"));
     }
 }
