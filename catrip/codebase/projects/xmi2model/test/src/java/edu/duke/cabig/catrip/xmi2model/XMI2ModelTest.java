@@ -33,6 +33,7 @@ public class XMI2ModelTest
 			"-projectShortName", projectShortName,
 			"-projectVersion", projectVersion,
 			"-projectLongName", projectLongName,
+			"-projectDescription", projectDescription,
 		});
 		
 		checkModel(modelFile, outFile);
