@@ -82,12 +82,12 @@
 			length="200"
 		/>
 		
-		<one-to-one name="patientIdentifier" outer-join="false" class="PatientIdentifier" cascade="all"/>
+		<one-to-one name="patientIdentifier" lazy="false" outer-join="false" class="PatientIdentifier" cascade="all"/>
 
 		<many-to-one name="address" class="Address" column="address_id" not-null="false" unique="true" lazy="false" cascade="all"/> 
 
 
-		<set name="diagnosisCollection" lazy="false" inverse="true" cascade="all">
+		<set name="diagnosisCollection" lazy="false" inverse="false" cascade="all">
 			<key column="PATIENT_ID"/>
 			<one-to-many class="Diagnosis"/>
 		</set>

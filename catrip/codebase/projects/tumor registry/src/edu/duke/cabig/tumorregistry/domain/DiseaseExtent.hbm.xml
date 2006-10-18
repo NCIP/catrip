@@ -103,14 +103,14 @@
 		<property
 			name="regionalNodesPositive"
 			column="REGIONAL_NODES_POSITIVE"
-			type="string"
+			type="java.lang.Integer"
 			not-null="false"
 			length="50"
 		/>
 		<property
 			name="regionalNodesExamined"
 			column="REGIONAL_NODES_EXAMINED"
-			type="string"
+			type="java.lang.Integer"
 			not-null="false"
 			length="50"
 		/>

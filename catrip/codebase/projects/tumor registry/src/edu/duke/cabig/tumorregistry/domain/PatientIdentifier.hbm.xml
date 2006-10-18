@@ -6,11 +6,7 @@
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
 	<class name="PatientIdentifier" table="PATIENT_IDENTIFIER">
 		
-	    <id name="id" column="id" type="long">
-	        <generator class="foreign">
-	            <param name="property">patient</param>
-	        </generator>
-	    </id>
+		<id name="id" type="long" column="ID"></id>
 
 		<property
 			name="medicalRecordNumber"
@@ -20,7 +16,7 @@
 			length="50"
 		/>
 
-		<one-to-one name="patient" outer-join="false" class="Patient" cascade="all"/>
+		<one-to-one name="patient" outer-join="false" class="Patient" cascade="all" lazy="false"/>
 
 	</class>	
 </hibernate-mapping>

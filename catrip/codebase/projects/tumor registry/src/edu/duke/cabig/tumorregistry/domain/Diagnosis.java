@@ -35,6 +35,8 @@ public class Diagnosis {
 	private ActivitySummary activitySummary;
 	private Patient patient;
 	private DiseaseExtent diseaseExtent;
+	
+	
 
 	public DiseaseExtent getDiseaseExtent() {
 		return diseaseExtent;
@@ -223,5 +225,6 @@ public class Diagnosis {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
+
 
 }

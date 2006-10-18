@@ -19,16 +19,20 @@ public abstract class Activity {
 	private Boolean atLocalFacility;
 	private Date startDate;
 	private String characterization;
-	private Integer performedIndicator;
+	private String performedIndicator;
 	private Diagnosis diagnosis;
 	private ActivitySummary localActivity;
 	private ActivitySummary summaryActivity;
 	
-	public Integer getPerformedIndicator() {
+	// for data load
+	private Long sequenceNumber;
+	private Long accountNumber;
+	
+	public String getPerformedIndicator() {
 		return performedIndicator;
 	}
 
-	public void setPerformedIndicator(Integer performedIndicator) {
+	public void setPerformedIndicator(String performedIndicator) {
 		this.performedIndicator = performedIndicator;
 	}
 
@@ -102,6 +106,22 @@ public abstract class Activity {
 
 	public void setSummaryActivity(ActivitySummary summaryActivity) {
 		this.summaryActivity = summaryActivity;
+	}
+
+	public Long getSequenceNumber() {
+		return sequenceNumber;
+	}
+
+	public void setSequenceNumber(Long sequenceNumber) {
+		this.sequenceNumber = sequenceNumber;
+	}
+
+	public Long getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(Long accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 }

@@ -15,7 +15,10 @@ public class Followup {
 	private Date date;
 	private Recurrence recurrence;
 	private Diagnosis diagnosis;
-
+	// data loading
+	private Long accnNo;
+	private Long seqNo;
+	
 	public Followup(){
 
 	}
@@ -70,6 +73,22 @@ public class Followup {
 
 	public void setDiagnosis(Diagnosis diagnosis) {
 		this.diagnosis = diagnosis;
+	}
+
+	public Long getAccnNo() {
+		return accnNo;
+	}
+
+	public void setAccnNo(Long accnNo) {
+		this.accnNo = accnNo;
+	}
+
+	public Long getSeqNo() {
+		return seqNo;
+	}
+
+	public void setSeqNo(Long seqNo) {
+		this.seqNo = seqNo;
 	}
 
 }

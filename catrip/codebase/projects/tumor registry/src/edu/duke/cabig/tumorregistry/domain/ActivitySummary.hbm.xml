@@ -11,7 +11,7 @@
 				<param name="property">diagnosis</param>
 			</generator>
 		</id>
-		<one-to-one name="diagnosis" class="Diagnosis" constrained="true"/>
+		<one-to-one name="diagnosis" class="Diagnosis" outer-join="false" cascade="all"/>
 		<property
 			name="LocalDate"
 			column="LOCAL_DATE"

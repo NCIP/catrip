@@ -37,7 +37,7 @@
 			not-null="false"
 			length="7"
 		/>
-		<one-to-one  name="recurrence" outer-join="false" class="Recurrence" cascade="all"/>
+		<one-to-one  name="recurrence" outer-join="false" class="Recurrence" cascade="all" lazy="false"/>
 		<many-to-one
 			name="diagnosis"
 			column="DIAGNOSIS_ID"
