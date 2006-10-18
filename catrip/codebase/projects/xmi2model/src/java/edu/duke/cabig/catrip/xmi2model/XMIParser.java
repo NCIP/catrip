@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 
+import javax.xml.namespace.QName;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -17,6 +18,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.metadata.common.SemanticMetadata;
 import gov.nih.nci.cagrid.metadata.common.UMLAttribute;
 import gov.nih.nci.cagrid.metadata.common.UMLClass;
@@ -42,6 +44,20 @@ public class XMIParser
 	private String projectVersion;
 	private float attributeVersion = 1.0f;
 	
+	private static final Hashtable<String,String> DATATYPE_MAP = new Hashtable<String,String>();
+	{
+		DATATYPE_MAP.put("Date", "java.util.Date");
+		DATATYPE_MAP.put("Short", "java.lang.Short");
+		DATATYPE_MAP.put("Integer", "java.lang.Integer");
+		DATATYPE_MAP.put("Long", "java.lang.Long");
+		DATATYPE_MAP.put("Float", "java.lang.Float");
+		DATATYPE_MAP.put("Double", "java.lang.Double");
+		DATATYPE_MAP.put("Boolean", "java.lang.Boolean");
+		DATATYPE_MAP.put("Byte", "java.lang.Byte");
+		DATATYPE_MAP.put("String", "java.lang.String");
+		DATATYPE_MAP.put("Character", "java.lang.Character");
+	}
+
 	public XMIParser(String projectShortName, String projectVersion)
 	{
 		super();
@@ -57,6 +73,15 @@ public class XMIParser
 		XMIHandler handler = new XMIHandler();
 		parser.parse(file, handler);
 		return model;
+	}
+	
+	public static void writeDomainModel(DomainModel model, File outFile) 
+		throws Exception
+	{
+		Utils.serializeDocument(
+			outFile.toString(), model, 
+			new QName("gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice", "DomainModel", "ns1")
+		);
 	}
 	
 	private class XMIHandler
@@ -255,9 +280,26 @@ public class XMIParser
 				UMLAttribute att = attTable.get(id);
 				String typeRef = att.getDataTypeName();
 
-				UMLClass typeCl = clTable.get(typeRef);
-				if (typeCl != null) att.setDataTypeName(typeCl.getClassName());
-				else att.setDataTypeName(typeTable.get(typeRef));
+				String dataType = null;
+
+				// check for class
+				if (dataType == null) {
+					UMLClass typeCl = clTable.get(typeRef);
+					if (typeCl != null) dataType = typeCl.getClassName();
+				}
+				
+				// check type table
+				if (dataType == null) {
+					dataType = typeTable.get(typeRef);
+				}
+				
+				// perform mapping
+				if (dataType != null && DATATYPE_MAP.containsKey(dataType)) {
+					dataType = DATATYPE_MAP.get(dataType);
+				}
+				
+				// set data type
+				att.setDataTypeName(dataType);
 			}
 		}
 		
