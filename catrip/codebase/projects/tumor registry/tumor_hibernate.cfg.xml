@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Activity.hbm.xml" />
+
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Diagnosis.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Followup.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/DistantSite.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Recurrence.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/CollaborativeStaging.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/PatientIdentifier.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/DiseaseExtent.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/FirstCourseTrmtSummary.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Patient.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Address.hbm.xml" />
+ 
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/ActivitySummary.hbm.xml" />
+ 
+  </session-factory>
+</hibernate-configuration>
+
