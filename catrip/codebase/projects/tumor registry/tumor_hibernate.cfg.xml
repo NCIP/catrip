@@ -7,7 +7,7 @@
 
     <mapping resource="edu/duke/cabig/tumorregistry/domain/Diagnosis.hbm.xml" />
  
-    <mapping resource="edu/duke/cabig/tumorregistry/domain/Followup.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/FollowUp.hbm.xml" />
  
     <mapping resource="edu/duke/cabig/tumorregistry/domain/DistantSite.hbm.xml" />
  
