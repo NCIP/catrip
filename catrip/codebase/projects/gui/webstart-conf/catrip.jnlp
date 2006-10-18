@@ -158,6 +158,7 @@
 <jar download="eager" href="lib/CAE-service.jar"/>
 <jar download="eager" href="lib/CAE-stubs.jar"/>
 <jar download="eager" href="lib/CAE-tests.jar"/>
+<jar download="eager" href="lib/cgems-domain.jar"/>
 <jar download="eager" href="lib/CGEMS-client.jar"/>
 <jar download="eager" href="lib/CGEMS-common.jar"/>
 <jar download="eager" href="lib/CGEMS-service.jar"/>
