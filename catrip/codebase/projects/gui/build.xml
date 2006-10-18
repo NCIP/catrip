@@ -207,6 +207,9 @@
             <fileset dir="${basedir}/../data/build/jars">
                 <include name="dcql-schema-beans-1.0.jar" />
             </fileset>
+			<fileset dir="${basedir}/../../share/xmlbeans">
+                <include name="*.jar" />
+            </fileset>
         </copy>
 
 
