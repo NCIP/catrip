@@ -65,7 +65,6 @@
 		        <jar jarfile="${lib.dir}/tumor_registry_domain.jar" update="true">
 		            	<fileset dir="${basedir}">
 			    		<include name="tumor_hibernate.cfg.xml" />
-			    		<include name="hibernate.properties" />
 				</fileset>
 		        </jar>
     	</target>
