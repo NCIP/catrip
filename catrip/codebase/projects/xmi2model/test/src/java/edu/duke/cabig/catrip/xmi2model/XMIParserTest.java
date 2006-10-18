@@ -5,12 +5,9 @@ package edu.duke.cabig.catrip.xmi2model;
 
 import java.io.File;
 
-import javax.xml.namespace.QName;
-
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 
 public class XMIParserTest
@@ -36,7 +33,7 @@ public class XMIParserTest
 		DomainModel model = parser.parse(xmiFile);
 
 		File outFile = new File(outDir, getModelName(xmiFile));
-		Utils.serializeDocument(outFile.toString(), model, new QName("ns1:DomainModel"));
+		XMIParser.writeDomainModel(model, outFile);
 
 		checkModel(modelFile, outFile);
 	}

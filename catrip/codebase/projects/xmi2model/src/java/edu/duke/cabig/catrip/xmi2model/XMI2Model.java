@@ -5,11 +5,6 @@ package edu.duke.cabig.catrip.xmi2model;
 
 import java.io.File;
 
-import javax.xml.namespace.QName;
-
-import gov.nih.nci.cagrid.common.Utils;
-import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
-
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
@@ -17,6 +12,8 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+
+import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 
 public class XMI2Model
 {
@@ -99,6 +96,6 @@ public class XMI2Model
 		if (cmd.hasOption("projectDescription")) parser.setProjectDescription(cmd.getOptionValue("projectDescription"));
 		
 		DomainModel model = parser.parse(new File(cmd.getOptionValue("xmi")));
-		Utils.serializeDocument(cmd.getOptionValue("model"), model, new QName("ns1:DomainModel"));
+		XMIParser.writeDomainModel(model, new File(cmd.getOptionValue("model")));
     }
 }
