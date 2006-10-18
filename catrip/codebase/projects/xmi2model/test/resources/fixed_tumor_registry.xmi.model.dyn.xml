@@ -1,0 +1,657 @@
+<extract xsi:type="ns1:DomainModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice">
+ <ns1:exposedUMLAssociationCollection>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="1" roleName="localActivityCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="localActivity" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="1" roleName="summaryActivityCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="summaryActivity" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="activityCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="firstTreatment" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_AEBBD5A3_0927_4265_B89E_5B8432C270E7" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="activitySummary" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="address" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_91947BB1_5401_4b68_822C_2807DDFA4F6C" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="followUpCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C6BD3EC7_ECDB_4c50_A12A_54A48CBF26DF" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="collaborativeStaging" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_A03C15D8_876D_456b_B786_D9F944C12293" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="diseaseExtentCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_F74BCADD_0390_4efa_A486_A215D68624D0" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diagnosis" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="diagnosisCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="patient" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="recurrence" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_4D311CB2_4B09_4f09_A0B9_052A7971B845" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="followup" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C6BD3EC7_ECDB_4c50_A12A_54A48CBF26DF" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="distantSiteCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C8EC29A4_EB16_4b40_9430_9504FF2765BE" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="diseaseExtent" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_F74BCADD_0390_4efa_A486_A215D68624D0" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="distantSiteCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C8EC29A4_EB16_4b40_9430_9504FF2765BE" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="recurrence" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_4D311CB2_4B09_4f09_A0B9_052A7971B845" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="patientIdentifier" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_A6C5BD70_19F0_4f71_B9E1_4595ACC9A09A" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="patient" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="address" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_91947BB1_5401_4b68_822C_2807DDFA4F6C" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="patient" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+ </ns1:exposedUMLAssociationCollection>
+ <ns1:exposedUMLClassCollection>
+  <ns2:UMLClass className="EARootClass" id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" xsi:type="ns2:UMLClass" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns2:umlAttributeCollection/>
+  </ns2:UMLClass>
+  <ns3:UMLClass className="String" id="EAID_DE564F45_EC5B_4f3d_B7DC_4CEF859792EC" xsi:type="ns3:UMLClass" xmlns:ns3="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns3:umlAttributeCollection/>
+  </ns3:UMLClass>
+  <ns4:UMLClass className="Boolean" id="EAID_A6A4E25F_C016_45db_B080_2743F7E41883" xsi:type="ns4:UMLClass" xmlns:ns4="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns4:umlAttributeCollection/>
+  </ns4:UMLClass>
+  <ns5:UMLClass className="Float" id="EAID_828F4140_2045_435e_AAF4_27D4BAA548FE" xsi:type="ns5:UMLClass" xmlns:ns5="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns5:umlAttributeCollection/>
+  </ns5:UMLClass>
+  <ns6:UMLClass className="Integer" id="EAID_B71433D1_863B_4904_8930_8E9241578630" xsi:type="ns6:UMLClass" xmlns:ns6="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns6:umlAttributeCollection/>
+  </ns6:UMLClass>
+  <ns7:UMLClass className="Double" id="EAID_2CBEC960_82C3_4966_991C_9807EB2C803B" xsi:type="ns7:UMLClass" xmlns:ns7="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns7:umlAttributeCollection/>
+  </ns7:UMLClass>
+  <ns8:UMLClass className="Long" id="EAID_C8339A19_9DFA_43f6_89C5_827C63154431" xsi:type="ns8:UMLClass" xmlns:ns8="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns8:umlAttributeCollection/>
+  </ns8:UMLClass>
+  <ns9:UMLClass className="Date" id="EAID_CF46361D_509A_4402_8CA5_17956F705C15" xsi:type="ns9:UMLClass" xmlns:ns9="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns9:umlAttributeCollection/>
+  </ns9:UMLClass>
+  <ns10:UMLClass className="Collection" id="EAID_5D057926_10AC_4f61_917F_02888DB3C433" xsi:type="ns10:UMLClass" xmlns:ns10="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns10:umlAttributeCollection/>
+  </ns10:UMLClass>
+  <ns11:UMLClass className="Activity" id="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns11:UMLClass" xmlns:ns11="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns11:umlAttributeCollection>
+    <ns11:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns11:UMLAttribute"/>
+    <ns11:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns11:UMLAttribute"/>
+    <ns11:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns11:UMLAttribute"/>
+    <ns11:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns11:UMLAttribute"/>
+    <ns11:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns11:UMLAttribute"/>
+    <ns11:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns11:UMLAttribute"/>
+   </ns11:umlAttributeCollection>
+  </ns11:UMLClass>
+  <ns12:UMLClass className="Diagnosis" id="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns12:UMLClass" xmlns:ns12="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns12:umlAttributeCollection>
+    <ns12:UMLAttribute dataTypeName="Long" name="id" publicID="-920884875" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="Date" name="firstContactDate" publicID="-920884874" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="Date" name="initialDiagnosisDate" publicID="-920884873" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="Integer" name="ageAtDiagnosis" publicID="-920884872" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="causeOfDeath" publicID="-920884871" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="behavior" publicID="-920884870" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="histology" publicID="-920884869" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="Integer" name="histologyCode" publicID="-920884868" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="histologicGrade" publicID="-920884867" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="laterality" publicID="-920884866" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="primarySite" publicID="1517340026" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="classOfCase" publicID="1517340027" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="Integer" name="classOfCaseCode" publicID="1517340028" version="0.0" xsi:type="ns12:UMLAttribute"/>
+    <ns12:UMLAttribute dataTypeName="String" name="primarySiteCode" publicID="1517340029" version="0.0" xsi:type="ns12:UMLAttribute"/>
+   </ns12:umlAttributeCollection>
+  </ns12:UMLClass>
+  <ns13:UMLClass className="Procedure" id="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns13:UMLClass" xmlns:ns13="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns13:umlAttributeCollection>
+    <ns13:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns13:UMLAttribute"/>
+    <ns13:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns13:UMLAttribute"/>
+    <ns13:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns13:UMLAttribute"/>
+    <ns13:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns13:UMLAttribute"/>
+    <ns13:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns13:UMLAttribute"/>
+    <ns13:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns13:UMLAttribute"/>
+   </ns13:umlAttributeCollection>
+  </ns13:UMLClass>
+  <ns14:UMLClass className="FirstCourseRadiation" id="EAID_45628B13_10BC_4658_8B50_059117BAEA52" xsi:type="ns14:UMLClass" xmlns:ns14="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns14:umlAttributeCollection>
+    <ns14:UMLAttribute dataTypeName="Date" name="stopDate" publicID="-1501421444" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="numberOfTreatments" publicID="-1501421443" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="location" publicID="-1501421442" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="volume" publicID="-1501421441" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="regionalDose" publicID="-1501421440" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="boostDose" publicID="-1501421439" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="boostModality" publicID="-1501421438" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="regionalModality" publicID="-1501421437" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns14:UMLAttribute"/>
+    <ns14:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns14:UMLAttribute"/>
+   </ns14:umlAttributeCollection>
+  </ns14:UMLClass>
+  <ns15:UMLClass className="Followup" id="EAID_C6BD3EC7_ECDB_4c50_A12A_54A48CBF26DF" xsi:type="ns15:UMLClass" xmlns:ns15="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns15:umlAttributeCollection>
+    <ns15:UMLAttribute dataTypeName="Long" name="id" publicID="1098546600" version="0.0" xsi:type="ns15:UMLAttribute"/>
+    <ns15:UMLAttribute dataTypeName="String" name="cancerStatus" publicID="1098546601" version="0.0" xsi:type="ns15:UMLAttribute"/>
+    <ns15:UMLAttribute dataTypeName="String" name="contactMethod" publicID="1098546602" version="0.0" xsi:type="ns15:UMLAttribute"/>
+    <ns15:UMLAttribute dataTypeName="Date" name="date" publicID="1098546603" version="0.0" xsi:type="ns15:UMLAttribute"/>
+   </ns15:umlAttributeCollection>
+  </ns15:UMLClass>
+  <ns16:UMLClass className="Chemotherapy" id="EAID_3CBA9959_6638_4584_9E2F_49F0E75A03A4" xsi:type="ns16:UMLClass" xmlns:ns16="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns16:umlAttributeCollection>
+    <ns16:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns16:UMLAttribute"/>
+    <ns16:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns16:UMLAttribute"/>
+    <ns16:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns16:UMLAttribute"/>
+    <ns16:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns16:UMLAttribute"/>
+    <ns16:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns16:UMLAttribute"/>
+    <ns16:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns16:UMLAttribute"/>
+    <ns16:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns16:UMLAttribute"/>
+   </ns16:umlAttributeCollection>
+  </ns16:UMLClass>
+  <ns17:UMLClass className="HormoneTherapy" id="EAID_6DA06CFA_A581_4d28_9E12_010F12FD1EE2" xsi:type="ns17:UMLClass" xmlns:ns17="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns17:umlAttributeCollection>
+    <ns17:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns17:UMLAttribute"/>
+    <ns17:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns17:UMLAttribute"/>
+    <ns17:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns17:UMLAttribute"/>
+    <ns17:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns17:UMLAttribute"/>
+    <ns17:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns17:UMLAttribute"/>
+    <ns17:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns17:UMLAttribute"/>
+    <ns17:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns17:UMLAttribute"/>
+   </ns17:umlAttributeCollection>
+  </ns17:UMLClass>
+  <ns18:UMLClass className="Immunotherapy" id="EAID_6E1DB443_10F2_40a1_AA0B_CBFEA1E1F71A" xsi:type="ns18:UMLClass" xmlns:ns18="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns18:umlAttributeCollection>
+    <ns18:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns18:UMLAttribute"/>
+    <ns18:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns18:UMLAttribute"/>
+   </ns18:umlAttributeCollection>
+  </ns18:UMLClass>
+  <ns19:UMLClass className="OtherProcedure" id="EAID_62219028_CF89_4da7_849F_92C01801E9DF" xsi:type="ns19:UMLClass" xmlns:ns19="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns19:umlAttributeCollection>
+    <ns19:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns19:UMLAttribute"/>
+    <ns19:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns19:UMLAttribute"/>
+   </ns19:umlAttributeCollection>
+  </ns19:UMLClass>
+  <ns20:UMLClass className="DistantSite" id="EAID_C8EC29A4_EB16_4b40_9430_9504FF2765BE" xsi:type="ns20:UMLClass" xmlns:ns20="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns20:umlAttributeCollection>
+    <ns20:UMLAttribute dataTypeName="Long" name="id" publicID="-1343793349" version="0.0" xsi:type="ns20:UMLAttribute"/>
+    <ns20:UMLAttribute dataTypeName="String" name="name" publicID="-1343793348" version="0.0" xsi:type="ns20:UMLAttribute"/>
+   </ns20:umlAttributeCollection>
+  </ns20:UMLClass>
+  <ns21:UMLClass className="Recurrence" id="EAID_4D311CB2_4B09_4f09_A0B9_052A7971B845" xsi:type="ns21:UMLClass" xmlns:ns21="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns21:umlAttributeCollection>
+    <ns21:UMLAttribute dataTypeName="Long" name="id" publicID="-1663504916" version="0.0" xsi:type="ns21:UMLAttribute"/>
+    <ns21:UMLAttribute dataTypeName="Date" name="date" publicID="-1663504915" version="0.0" xsi:type="ns21:UMLAttribute"/>
+    <ns21:UMLAttribute dataTypeName="String" name="type" publicID="-1663504914" version="0.0" xsi:type="ns21:UMLAttribute"/>
+   </ns21:umlAttributeCollection>
+  </ns21:UMLClass>
+  <ns22:UMLClass className="RegionalDistantSurgery" id="EAID_8A5B7FFA_C0C4_4b47_B330_DFD6257B8260" xsi:type="ns22:UMLClass" xmlns:ns22="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns22:umlAttributeCollection>
+    <ns22:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns22:UMLAttribute"/>
+    <ns22:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns22:UMLAttribute"/>
+   </ns22:umlAttributeCollection>
+  </ns22:UMLClass>
+  <ns23:UMLClass className="PrimarySiteSurgery" id="EAID_2994AAD9_2E2C_40c2_8213_264CD34ECEEA" xsi:type="ns23:UMLClass" xmlns:ns23="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns23:umlAttributeCollection>
+    <ns23:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns23:UMLAttribute"/>
+    <ns23:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns23:UMLAttribute"/>
+   </ns23:umlAttributeCollection>
+  </ns23:UMLClass>
+  <ns24:UMLClass className="Surgery" id="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns24:UMLClass" xmlns:ns24="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns24:umlAttributeCollection>
+    <ns24:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns24:UMLAttribute"/>
+    <ns24:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns24:UMLAttribute"/>
+    <ns24:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns24:UMLAttribute"/>
+    <ns24:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns24:UMLAttribute"/>
+    <ns24:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns24:UMLAttribute"/>
+    <ns24:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns24:UMLAttribute"/>
+   </ns24:umlAttributeCollection>
+  </ns24:UMLClass>
+  <ns25:UMLClass className="RegionalLymphNodeSurgery" id="EAID_68292677_E333_40ab_9BEE_F5976C674B4D" xsi:type="ns25:UMLClass" xmlns:ns25="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns25:umlAttributeCollection>
+    <ns25:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns25:UMLAttribute"/>
+    <ns25:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns25:UMLAttribute"/>
+   </ns25:umlAttributeCollection>
+  </ns25:UMLClass>
+  <ns26:UMLClass className="SubstanceAdministration" id="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns26:UMLClass" xmlns:ns26="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns26:umlAttributeCollection>
+    <ns26:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns26:UMLAttribute"/>
+    <ns26:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns26:UMLAttribute"/>
+    <ns26:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns26:UMLAttribute"/>
+    <ns26:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns26:UMLAttribute"/>
+    <ns26:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns26:UMLAttribute"/>
+    <ns26:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns26:UMLAttribute"/>
+    <ns26:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns26:UMLAttribute"/>
+   </ns26:umlAttributeCollection>
+  </ns26:UMLClass>
+  <ns27:UMLClass className="CollaborativeStaging" id="EAID_A03C15D8_876D_456b_B786_D9F944C12293" xsi:type="ns27:UMLClass" xmlns:ns27="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns27:umlAttributeCollection>
+    <ns27:UMLAttribute dataTypeName="Long" name="id" publicID="866381803" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="extension" publicID="866381804" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="tumorSize" publicID="866381805" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="tumorSizeExtEvaluation" publicID="866381806" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="lymphNodes" publicID="866381807" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="lymphNodesAtEvaluation" publicID="866381808" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="metEvaluation" publicID="866381809" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="metAtDiagnosis" publicID="866381810" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedTumorStage" publicID="866381811" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedTumorDescriptor" publicID="866381812" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedNodeStage" publicID="1088032196" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedNodeDescriptor" publicID="1088032197" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedMetStage" publicID="1088032198" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedMetDescriptor" publicID="1088032199" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedAJCCStage" publicID="1088032200" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedSEERSummary1977" publicID="1088032201" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedSEERSummary2000" publicID="1088032202" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor1" publicID="1088032203" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor2" publicID="1088032204" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor3" publicID="1088032205" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor4" publicID="1088032227" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor5" publicID="1088032228" version="0.0" xsi:type="ns27:UMLAttribute"/>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor6" publicID="1088032229" version="0.0" xsi:type="ns27:UMLAttribute"/>
+   </ns27:umlAttributeCollection>
+  </ns27:UMLClass>
+  <ns28:UMLClass className="PatientIdentifier" id="EAID_A6C5BD70_19F0_4f71_B9E1_4595ACC9A09A" xsi:type="ns28:UMLClass" xmlns:ns28="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns28:umlAttributeCollection>
+    <ns28:UMLAttribute dataTypeName="Long" name="id" publicID="1872783036" version="0.0" xsi:type="ns28:UMLAttribute"/>
+    <ns28:UMLAttribute dataTypeName="String" name="medicalRecordNumber" publicID="1872783037" version="0.0" xsi:type="ns28:UMLAttribute"/>
+   </ns28:umlAttributeCollection>
+  </ns28:UMLClass>
+  <ns29:UMLClass className="DiseaseExtent" id="EAID_F74BCADD_0390_4efa_A486_A215D68624D0" xsi:type="ns29:UMLClass" xmlns:ns29="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns29:umlAttributeCollection>
+    <ns29:UMLAttribute dataTypeName="Long" name="id" publicID="-1158013912" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="clinicalMetStage" publicID="-1158013911" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="clinicalNodeStage" publicID="-1158013910" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="clinicalTumorStage" publicID="-1158013909" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="pathologicMetStage" publicID="-1158013908" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="pathologicNodeStage" publicID="-1158013907" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="pathologicTumorStage" publicID="-1158013906" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="tnmEdition" publicID="-1158013905" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="Float" name="tumorSize" publicID="-1158013904" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="pathologicAJCCStage" publicID="-1158013903" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="pathologicAJCCStageDescriptor" publicID="-1538692825" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="clinicalAJCCStage" publicID="-1538692824" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="clinicalAJCCStageDescriptor" publicID="-1538692823" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="Integer" name="regionalNodesPositive" publicID="-1538692822" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="Integer" name="regionalNodesExamined" publicID="-1538692821" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="bestAJCCStage" publicID="-1538692820" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="bestSEERSummaryStage" publicID="-1538692819" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="tumorMarker1" publicID="-1538692818" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="tumorMarker2" publicID="-1538692817" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="tumorMarker3" publicID="-1538692816" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="regionalNodesExaminedQualifier" publicID="-1538692794" version="0.0" xsi:type="ns29:UMLAttribute"/>
+    <ns29:UMLAttribute dataTypeName="String" name="regionalNodesPositiveQualifier" publicID="-1538692793" version="0.0" xsi:type="ns29:UMLAttribute"/>
+   </ns29:umlAttributeCollection>
+  </ns29:UMLClass>
+  <ns30:UMLClass className="OtherTherapy" id="EAID_9B2768AC_72D9_48e0_B6E8_2E88B9F2B9BB" xsi:type="ns30:UMLClass" xmlns:ns30="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns30:umlAttributeCollection>
+    <ns30:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns30:UMLAttribute"/>
+    <ns30:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns30:UMLAttribute"/>
+    <ns30:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns30:UMLAttribute"/>
+    <ns30:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns30:UMLAttribute"/>
+    <ns30:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns30:UMLAttribute"/>
+    <ns30:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns30:UMLAttribute"/>
+    <ns30:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns30:UMLAttribute"/>
+   </ns30:umlAttributeCollection>
+  </ns30:UMLClass>
+  <ns31:UMLClass className="NonCancerDirectedSurgery" id="EAID_C343555E_DF2F_44df_8057_6514BDD3EBEB" xsi:type="ns31:UMLClass" xmlns:ns31="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns31:umlAttributeCollection>
+    <ns31:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns31:UMLAttribute"/>
+    <ns31:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns31:UMLAttribute"/>
+   </ns31:umlAttributeCollection>
+  </ns31:UMLClass>
+  <ns32:UMLClass className="HemTransplantEndocrineProcedure" id="EAID_6EC40548_4D63_481b_9AEB_620D4B750AB1" xsi:type="ns32:UMLClass" xmlns:ns32="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns32:umlAttributeCollection>
+    <ns32:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns32:UMLAttribute"/>
+    <ns32:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns32:UMLAttribute"/>
+    <ns32:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns32:UMLAttribute"/>
+    <ns32:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns32:UMLAttribute"/>
+    <ns32:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns32:UMLAttribute"/>
+    <ns32:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns32:UMLAttribute"/>
+   </ns32:umlAttributeCollection>
+  </ns32:UMLClass>
+  <ns33:UMLClass className="FirstCourseTreatmentSummary" id="EAID_AEBBD5A3_0927_4265_B89E_5B8432C270E7" xsi:type="ns33:UMLClass" xmlns:ns33="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns33:umlAttributeCollection>
+    <ns33:UMLAttribute dataTypeName="Long" name="id" publicID="807023373" version="0.0" xsi:type="ns33:UMLAttribute"/>
+    <ns33:UMLAttribute dataTypeName="Date" name="firstSurgeryDate" publicID="807023374" version="0.0" xsi:type="ns33:UMLAttribute"/>
+    <ns33:UMLAttribute dataTypeName="Date" name="mostDefinitiveSurgeryDate" publicID="807023375" version="0.0" xsi:type="ns33:UMLAttribute"/>
+    <ns33:UMLAttribute dataTypeName="Date" name="firstTreatmentDate" publicID="807023376" version="0.0" xsi:type="ns33:UMLAttribute"/>
+    <ns33:UMLAttribute dataTypeName="Date" name="firstSystemicTreatmentDate" publicID="807023377" version="0.0" xsi:type="ns33:UMLAttribute"/>
+   </ns33:umlAttributeCollection>
+  </ns33:UMLClass>
+  <ns34:UMLClass className="Patient" id="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns34:UMLClass" xmlns:ns34="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns34:umlAttributeCollection>
+    <ns34:UMLAttribute dataTypeName="Long" name="id" publicID="-667070996" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="firstName" publicID="-667070995" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="middleName" publicID="-667070994" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="lastName" publicID="-667070993" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="suffix" publicID="-667070992" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="Date" name="dateOfBirth" publicID="-667070991" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="Date" name="dateOfDeath" publicID="-667070990" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="race" publicID="-667070989" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="sex" publicID="-667070988" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="ethnicGroup" publicID="-667070987" version="0.0" xsi:type="ns34:UMLAttribute"/>
+    <ns34:UMLAttribute dataTypeName="String" name="autopsy" publicID="795635683" version="0.0" xsi:type="ns34:UMLAttribute"/>
+   </ns34:umlAttributeCollection>
+  </ns34:UMLClass>
+  <ns35:UMLClass className="Address" id="EAID_91947BB1_5401_4b68_822C_2807DDFA4F6C" xsi:type="ns35:UMLClass" xmlns:ns35="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns35:umlAttributeCollection>
+    <ns35:UMLAttribute dataTypeName="Long" name="id" publicID="165939952" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="address1" publicID="165939953" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="address2" publicID="165939954" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="zipcode" publicID="165939955" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="city" publicID="165939956" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="state" publicID="165939957" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="county" publicID="165939958" version="0.0" xsi:type="ns35:UMLAttribute"/>
+    <ns35:UMLAttribute dataTypeName="String" name="country" publicID="165939959" version="0.0" xsi:type="ns35:UMLAttribute"/>
+   </ns35:umlAttributeCollection>
+  </ns35:UMLClass>
+  <ns36:UMLClass className="ActivitySummary" id="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns36:UMLClass" xmlns:ns36="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns36:umlAttributeCollection>
+    <ns36:UMLAttribute dataTypeName="Long" name="id" publicID="65797432" version="0.0" xsi:type="ns36:UMLAttribute"/>
+    <ns36:UMLAttribute dataTypeName="Date" name="localDate" publicID="65797433" version="0.0" xsi:type="ns36:UMLAttribute"/>
+    <ns36:UMLAttribute dataTypeName="Date" name="summaryDate" publicID="65797434" version="0.0" xsi:type="ns36:UMLAttribute"/>
+    <ns36:UMLAttribute dataTypeName="String" name="localCharacterization" publicID="65797435" version="0.0" xsi:type="ns36:UMLAttribute"/>
+    <ns36:UMLAttribute dataTypeName="String" name="summaryCharacterization" publicID="65797436" version="0.0" xsi:type="ns36:UMLAttribute"/>
+   </ns36:umlAttributeCollection>
+  </ns36:UMLClass>
+  <ns37:UMLClass className="Radiation" id="EAID_15AF1698_0CB6_4f7a_B7B6_B39C223B1A78" xsi:type="ns37:UMLClass" xmlns:ns37="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns37:umlAttributeCollection>
+    <ns37:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns37:UMLAttribute"/>
+    <ns37:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns37:UMLAttribute"/>
+    <ns37:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns37:UMLAttribute"/>
+    <ns37:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns37:UMLAttribute"/>
+    <ns37:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns37:UMLAttribute"/>
+    <ns37:UMLAttribute dataTypeName="Integer" name="performedIndicator" publicID="214266596" version="0.0" xsi:type="ns37:UMLAttribute"/>
+   </ns37:umlAttributeCollection>
+  </ns37:UMLClass>
+ </ns1:exposedUMLClassCollection>
+ <ns1:umlGeneralizationCollection>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_15AF1698_0CB6_4f7a_B7B6_B39C223B1A78" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_62219028_CF89_4da7_849F_92C01801E9DF" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_6EC40548_4D63_481b_9AEB_620D4B750AB1" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_45628B13_10BC_4658_8B50_059117BAEA52" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_15AF1698_0CB6_4f7a_B7B6_B39C223B1A78" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_3CBA9959_6638_4584_9E2F_49F0E75A03A4" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_6DA06CFA_A581_4d28_9E12_010F12FD1EE2" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_6E1DB443_10F2_40a1_AA0B_CBFEA1E1F71A" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_8A5B7FFA_C0C4_4b47_B330_DFD6257B8260" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_2994AAD9_2E2C_40c2_8213_264CD34ECEEA" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_C343555E_DF2F_44df_8057_6514BDD3EBEB" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_68292677_E333_40ab_9BEE_F5976C674B4D" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_9B2768AC_72D9_48e0_B6E8_2E88B9F2B9BB" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+ </ns1:umlGeneralizationCollection>
+</extract>

@@ -1,0 +1,1343 @@
+<extract xsi:type="ns1:DomainModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice">
+ <ns1:exposedUMLAssociationCollection>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="1" roleName="localActivityCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="1" roleName="summaryActivityCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="activityCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="firstTreatment" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_AEBBD5A3_0927_4265_B89E_5B8432C270E7" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="activitySummary" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="address" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_91947BB1_5401_4b68_822C_2807DDFA4F6C" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="followUpCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C6BD3EC7_ECDB_4c50_A12A_54A48CBF26DF" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="collaborativeStaging" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_A03C15D8_876D_456b_B786_D9F944C12293" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="diseaseExtentCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_F74BCADD_0390_4efa_A486_A215D68624D0" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="diagnosisCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="recurrence" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_4D311CB2_4B09_4f09_A0B9_052A7971B845" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C6BD3EC7_ECDB_4c50_A12A_54A48CBF26DF" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="-1" minCardinality="0" roleName="distantSiteCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C8EC29A4_EB16_4b40_9430_9504FF2765BE" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_F74BCADD_0390_4efa_A486_A215D68624D0" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="distantSiteCollection" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_C8EC29A4_EB16_4b40_9430_9504FF2765BE" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_4D311CB2_4B09_4f09_A0B9_052A7971B845" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="true" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="patientIdentifier" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_A6C5BD70_19F0_4f71_B9E1_4595ACC9A09A" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" roleName="patient" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+  <ns1:UMLAssociation bidirectional="false" xsi:type="ns1:UMLAssociation">
+   <ns1:targetUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="1" roleName="address" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_91947BB1_5401_4b68_822C_2807DDFA4F6C" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:targetUMLAssociationEdge>
+   <ns1:sourceUMLAssociationEdge>
+    <ns1:UMLAssociationEdge maxCardinality="1" minCardinality="0" xsi:type="ns1:UMLAssociationEdge">
+     <ns1:UMLClassReference refid="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns1:UMLClassReference"/>
+    </ns1:UMLAssociationEdge>
+   </ns1:sourceUMLAssociationEdge>
+  </ns1:UMLAssociation>
+ </ns1:exposedUMLAssociationCollection>
+ <ns1:exposedUMLClassCollection>
+  <ns2:UMLClass className="EARootClass" id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" xsi:type="ns2:UMLClass" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns2:umlAttributeCollection/>
+  </ns2:UMLClass>
+  <ns3:UMLClass className="String" id="EAID_DE564F45_EC5B_4f3d_B7DC_4CEF859792EC" xsi:type="ns3:UMLClass" xmlns:ns3="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns3:umlAttributeCollection/>
+   <ns3:SemanticMetadata conceptCode="C45253" conceptDefinition="An expression consisting of a linear sequence of symbols (characters or words or phrases)." conceptName="String" order="0" xsi:type="ns3:SemanticMetadata"/>
+  </ns3:UMLClass>
+  <ns4:UMLClass className="Boolean" id="EAID_A6A4E25F_C016_45db_B080_2743F7E41883" xsi:type="ns4:UMLClass" xmlns:ns4="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns4:umlAttributeCollection/>
+   <ns4:SemanticMetadata conceptCode="C45254" conceptDefinition="The type of an expression with two possible values, &quot;true&quot; and &quot;false&quot;. Also, a variable of Boolean type or a function with Boolean arguments or result. The most common Boolean functions are AND, OR and NOT." conceptName="Boolean" order="0" xsi:type="ns4:SemanticMetadata"/>
+  </ns4:UMLClass>
+  <ns5:UMLClass className="Float" id="EAID_828F4140_2045_435e_AAF4_27D4BAA548FE" xsi:type="ns5:UMLClass" xmlns:ns5="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns5:umlAttributeCollection/>
+   <ns5:SemanticMetadata conceptCode="C48150" conceptDefinition="A number that can have its decimal point in any position." conceptName="Float" order="0" xsi:type="ns5:SemanticMetadata"/>
+  </ns5:UMLClass>
+  <ns6:UMLClass className="Integer" id="EAID_B71433D1_863B_4904_8930_8E9241578630" xsi:type="ns6:UMLClass" xmlns:ns6="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns6:umlAttributeCollection/>
+   <ns6:SemanticMetadata conceptCode="C45255" conceptDefinition="A number with no fractional part." conceptName="Integer" order="0" xsi:type="ns6:SemanticMetadata"/>
+  </ns6:UMLClass>
+  <ns7:UMLClass className="Double" id="EAID_2CBEC960_82C3_4966_991C_9807EB2C803B" xsi:type="ns7:UMLClass" xmlns:ns7="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns7:umlAttributeCollection/>
+   <ns7:SemanticMetadata conceptCode="C48870" conceptDefinition="A 64-bit floating point primitive. When wrapped in an immutable Object, it is called a Double." conceptName="Double" order="0" xsi:type="ns7:SemanticMetadata"/>
+  </ns7:UMLClass>
+  <ns8:UMLClass className="Long" id="EAID_C8339A19_9DFA_43f6_89C5_827C63154431" xsi:type="ns8:UMLClass" xmlns:ns8="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns8:umlAttributeCollection/>
+   <ns8:SemanticMetadata conceptCode="C48311" conceptDefinition="A variable that is stored as a signed 64-bit (8-byte) integer." conceptName="Long" order="0" xsi:type="ns8:SemanticMetadata"/>
+  </ns8:UMLClass>
+  <ns9:UMLClass className="Date" id="EAID_CF46361D_509A_4402_8CA5_17956F705C15" xsi:type="ns9:UMLClass" xmlns:ns9="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns9:umlAttributeCollection/>
+   <ns9:SemanticMetadata conceptCode="C48871" conceptDefinition="A string unique to a time duration of 24 hours between 2 successive midnights defined by the local time zone. The specific representation of a date will depend on which calendar convention is in force as well as local ordering conventions." conceptName="Date" order="0" xsi:type="ns9:SemanticMetadata"/>
+  </ns9:UMLClass>
+  <ns10:UMLClass className="Collection" id="EAID_5D057926_10AC_4f61_917F_02888DB3C433" xsi:type="ns10:UMLClass" xmlns:ns10="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns10:umlAttributeCollection/>
+   <ns10:SemanticMetadata conceptCode="C43446" conceptDefinition="An object that holds the values or locations of other objects." conceptName="Container Object" order="0" xsi:type="ns10:SemanticMetadata"/>
+  </ns10:UMLClass>
+  <ns11:UMLClass className="Activity" id="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns11:UMLClass" xmlns:ns11="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns11:umlAttributeCollection>
+    <ns11:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns11:UMLAttribute">
+     <ns11:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns11:SemanticMetadata"/>
+    </ns11:UMLAttribute>
+    <ns11:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns11:UMLAttribute">
+     <ns11:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns11:SemanticMetadata"/>
+    </ns11:UMLAttribute>
+    <ns11:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns11:UMLAttribute">
+     <ns11:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns11:SemanticMetadata"/>
+     <ns11:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns11:SemanticMetadata"/>
+     <ns11:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns11:SemanticMetadata"/>
+    </ns11:UMLAttribute>
+    <ns11:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns11:UMLAttribute">
+     <ns11:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns11:SemanticMetadata"/>
+     <ns11:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns11:SemanticMetadata"/>
+    </ns11:UMLAttribute>
+    <ns11:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns11:UMLAttribute">
+     <ns11:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns11:SemanticMetadata"/>
+    </ns11:UMLAttribute>
+   </ns11:umlAttributeCollection>
+   <ns11:SemanticMetadata conceptCode="C43431" conceptDefinition="An action taken in pursuit of an objective; the state of being active." conceptName="Activity" order="0" xsi:type="ns11:SemanticMetadata"/>
+  </ns11:UMLClass>
+  <ns12:UMLClass className="Diagnosis" id="EAID_08C305EA_A97D_4005_88B8_6731754DC753" xsi:type="ns12:UMLClass" xmlns:ns12="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns12:umlAttributeCollection>
+    <ns12:UMLAttribute dataTypeName="Long" name="id" publicID="-920884875" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="Date" name="firstContactDate" publicID="-920884874" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C25716" conceptDefinition="The act of going to see some person or place or thing; it can cover a short or long period but refers to a non-permanent arrangement." conceptName="Visit" order="1" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="2" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="Date" name="initialDiagnosisDate" publicID="-920884873" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C15220" conceptDefinition="The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation." conceptName="Diagnosis" order="1" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="2" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="Integer" name="ageAtDiagnosis" publicID="-920884872" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25150" conceptDefinition="How long something has existed; elapsed time since birth." conceptName="Age" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C15220" conceptDefinition="The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation." conceptName="Diagnosis" order="1" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="causeOfDeath" publicID="-920884871" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C28554" conceptDefinition="The absence of life or state of being dead." conceptName="Death" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C16390" conceptDefinition="The cause of a disease." conceptName="Etiology" order="1" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="behavior" publicID="-920884870" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C16326" conceptDefinition="The actions or reactions of an object or organism, usually in relation to the environment or surrounding world of stimuli." conceptName="Behavior" order="0" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="histology" publicID="-920884869" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C16681" conceptDefinition="The study of the structure of the cells and their arrangement to constitute tissues and, finally, the association among these to form organs.  In pathology, the microscopic process of identifying normal and abnormal morphologic characteristics in tissues, by employing various cytochemical and immunocytochemical stains." conceptName="Histology" order="0" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="Integer" name="histologyCode" publicID="-920884868" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25162" conceptDefinition="A system, often of numbered categories, for representation of data." conceptName="Code" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C16681" conceptDefinition="The study of the structure of the cells and their arrangement to constitute tissues and, finally, the association among these to form organs.  In pathology, the microscopic process of identifying normal and abnormal morphologic characteristics in tissues, by employing various cytochemical and immunocytochemical stains." conceptName="Histology" order="1" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="histologicGrade" publicID="-920884867" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C18000" conceptDefinition="The degree of abnormality of cancer cells, a measure of differentiation, the extent to which cancer cells are similar in appearance and function to healthy cells of the same tissue type. The degree of differentiation often relates to the clinical behavior of the particular tumor. Based on the microscopic findings, tumor grade is commonly described by one of four degrees of severity. Histopathologic grade of a tumor may be used to plan treatment and estimate the future course, outcome, and overall prognosis of disease. Certain types of cancers, such as soft tissue sarcoma, primary brain tumors, lymphomas, and breast have special grading systems." conceptName="Histologic Grade" order="0" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="laterality" publicID="-920884866" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25185" conceptDefinition="Dominant use or manifestations of one side of the body versus the other; an indication or right versus left." conceptName="Laterality" order="0" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="primarySite" publicID="1517340026" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C37901" conceptDefinition="A position in relation to its surroundings." conceptName="Site" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C25251" conceptDefinition="Occurring first in time or sequence; original; of greatest rank or importance or value." conceptName="Primary" order="1" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="classOfCase" publicID="1517340027" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25346" conceptDefinition="A grouping of things based on shared common attributes." conceptName="Class" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C49152" conceptDefinition="A problem requiring investigation." conceptName="Case" order="1" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="Integer" name="classOfCaseCode" publicID="1517340028" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25162" conceptDefinition="A system, often of numbered categories, for representation of data." conceptName="Code" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C25346" conceptDefinition="A grouping of things based on shared common attributes." conceptName="Class" order="1" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C49152" conceptDefinition="A problem requiring investigation." conceptName="Case" order="2" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+    <ns12:UMLAttribute dataTypeName="String" name="primarySiteCode" publicID="1517340029" version="0.0" xsi:type="ns12:UMLAttribute">
+     <ns12:SemanticMetadata conceptCode="C25162" conceptDefinition="A system, often of numbered categories, for representation of data." conceptName="Code" order="0" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C37901" conceptDefinition="A position in relation to its surroundings." conceptName="Site" order="1" xsi:type="ns12:SemanticMetadata"/>
+     <ns12:SemanticMetadata conceptCode="C25251" conceptDefinition="Occurring first in time or sequence; original; of greatest rank or importance or value." conceptName="Primary" order="2" xsi:type="ns12:SemanticMetadata"/>
+    </ns12:UMLAttribute>
+   </ns12:umlAttributeCollection>
+   <ns12:SemanticMetadata conceptCode="C15220" conceptDefinition="The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation." conceptName="Diagnosis" order="0" xsi:type="ns12:SemanticMetadata"/>
+  </ns12:UMLClass>
+  <ns13:UMLClass className="Procedure" id="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns13:UMLClass" xmlns:ns13="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns13:umlAttributeCollection>
+    <ns13:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns13:UMLAttribute">
+     <ns13:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns13:SemanticMetadata"/>
+    </ns13:UMLAttribute>
+    <ns13:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns13:UMLAttribute">
+     <ns13:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns13:SemanticMetadata"/>
+    </ns13:UMLAttribute>
+    <ns13:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns13:UMLAttribute">
+     <ns13:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns13:SemanticMetadata"/>
+     <ns13:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns13:SemanticMetadata"/>
+     <ns13:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns13:SemanticMetadata"/>
+    </ns13:UMLAttribute>
+    <ns13:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns13:UMLAttribute">
+     <ns13:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns13:SemanticMetadata"/>
+     <ns13:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns13:SemanticMetadata"/>
+    </ns13:UMLAttribute>
+    <ns13:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns13:UMLAttribute">
+     <ns13:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns13:SemanticMetadata"/>
+    </ns13:UMLAttribute>
+   </ns13:umlAttributeCollection>
+   <ns13:SemanticMetadata conceptCode="C25218" conceptDefinition="A particular course of action intended to achieve a result." conceptName="Procedure" order="0" xsi:type="ns13:SemanticMetadata"/>
+  </ns13:UMLClass>
+  <ns14:UMLClass className="Radiation" id="EAID_45628B13_10BC_4658_8B50_059117BAEA52" xsi:type="ns14:UMLClass" xmlns:ns14="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns14:umlAttributeCollection>
+    <ns14:UMLAttribute dataTypeName="Date" name="stopDate" publicID="-1501421444" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25496" conceptDefinition="The point or place at which something terminates in time, space, or extent." conceptName="End" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="numberOfTreatments" publicID="-1501421443" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25337" conceptDefinition="A numeral or string of numerals expressing value, quantity, or identification." conceptName="Number" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="location" publicID="-1501421442" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25341" conceptDefinition="A position, site, or point in space where something can be found." conceptName="Location" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="volume" publicID="-1501421441" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C43320" conceptDefinition="A publication that is one of a set of several similar publications." conceptName="Volume" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25335" conceptDefinition="The amount of three dimensional space occupied by an object or the capacity of a space or container." conceptName="Volume" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Integer" name="regionalDose" publicID="-1501421440" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25488" conceptDefinition="The total quantity or strength of a substance administered at one time." conceptName="Dose" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25643" conceptDefinition="Limited to a particular location or area." conceptName="Regional" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Integer" name="boostDose" publicID="-1501421439" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25488" conceptDefinition="The total quantity or strength of a substance administered at one time." conceptName="Dose" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25438" conceptDefinition="Increase or raise." conceptName="Boost" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="boostModality" publicID="-1501421438" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C41147" conceptDefinition="A specific manner, characteristic, pattern of application or the employment of, any therapeutic agent or method of treatment, especially involving the physical treatment of a condition." conceptName="Modality" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25438" conceptDefinition="Increase or raise." conceptName="Boost" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="regionalModality" publicID="-1501421437" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C41147" conceptDefinition="A specific manner, characteristic, pattern of application or the employment of, any therapeutic agent or method of treatment, especially involving the physical treatment of a condition." conceptName="Modality" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25643" conceptDefinition="Limited to a particular location or area." conceptName="Regional" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns14:SemanticMetadata"/>
+     <ns14:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+    <ns14:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns14:UMLAttribute">
+     <ns14:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns14:SemanticMetadata"/>
+    </ns14:UMLAttribute>
+   </ns14:umlAttributeCollection>
+   <ns14:SemanticMetadata conceptCode="C15313" conceptDefinition="Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation." conceptName="Radiation Therapy" order="0" xsi:type="ns14:SemanticMetadata"/>
+  </ns14:UMLClass>
+  <ns15:UMLClass className="Followup" id="EAID_C6BD3EC7_ECDB_4c50_A12A_54A48CBF26DF" xsi:type="ns15:UMLClass" xmlns:ns15="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns15:umlAttributeCollection>
+    <ns15:UMLAttribute dataTypeName="Long" name="id" publicID="1098546600" version="0.0" xsi:type="ns15:UMLAttribute">
+     <ns15:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns15:SemanticMetadata"/>
+    </ns15:UMLAttribute>
+    <ns15:UMLAttribute dataTypeName="String" name="cancerStatus" publicID="1098546601" version="0.0" xsi:type="ns15:UMLAttribute">
+     <ns15:SemanticMetadata conceptCode="C25688" conceptDefinition="A condition or state at a particular time." conceptName="Status" order="0" xsi:type="ns15:SemanticMetadata"/>
+     <ns15:SemanticMetadata conceptCode="C9305" conceptDefinition="A tumor composed of atypical neoplastic, often pleomorphic cells that invade other tissues.  Malignant neoplasms often metastasize to distant anatomic sites and may recur after excision." conceptName="Malignant Neoplasm" order="1" xsi:type="ns15:SemanticMetadata"/>
+    </ns15:UMLAttribute>
+    <ns15:UMLAttribute dataTypeName="String" name="contactMethod" publicID="1098546602" version="0.0" xsi:type="ns15:UMLAttribute">
+     <ns15:SemanticMetadata conceptCode="C47955" conceptDefinition="A way of doing something; how a result is obtained or an end is achieved." conceptName="Means" order="0" xsi:type="ns15:SemanticMetadata"/>
+     <ns15:SemanticMetadata conceptCode="C47954" conceptDefinition="A channel for communication between groups." conceptName="Communication Contact" order="1" xsi:type="ns15:SemanticMetadata"/>
+    </ns15:UMLAttribute>
+    <ns15:UMLAttribute dataTypeName="Date" name="date" publicID="1098546603" version="0.0" xsi:type="ns15:UMLAttribute">
+     <ns15:SemanticMetadata conceptCode="C48871" conceptDefinition="A string unique to a time duration of 24 hours between 2 successive midnights defined by the local time zone. The specific representation of a date will depend on which calendar convention is in force as well as local ordering conventions." conceptName="Date" order="0" xsi:type="ns15:SemanticMetadata"/>
+     <ns15:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="1" xsi:type="ns15:SemanticMetadata"/>
+    </ns15:UMLAttribute>
+   </ns15:umlAttributeCollection>
+   <ns15:SemanticMetadata conceptCode="C16033" conceptDefinition="The process by which information about the health status of an individual is obtained after a study has officially closed; an activity that continues something that has already begun or that repeats something that has already been done." conceptName="Follow-up" order="0" xsi:type="ns15:SemanticMetadata"/>
+  </ns15:UMLClass>
+  <ns16:UMLClass className="Chemotherapy" id="EAID_3CBA9959_6638_4584_9E2F_49F0E75A03A4" xsi:type="ns16:UMLClass" xmlns:ns16="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns16:umlAttributeCollection>
+    <ns16:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns16:UMLAttribute">
+     <ns16:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns16:SemanticMetadata"/>
+     <ns16:SemanticMetadata conceptCode="C25496" conceptDefinition="The point or place at which something terminates in time, space, or extent." conceptName="End" order="1" xsi:type="ns16:SemanticMetadata"/>
+    </ns16:UMLAttribute>
+    <ns16:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns16:UMLAttribute">
+     <ns16:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns16:SemanticMetadata"/>
+    </ns16:UMLAttribute>
+    <ns16:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns16:UMLAttribute">
+     <ns16:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns16:SemanticMetadata"/>
+    </ns16:UMLAttribute>
+    <ns16:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns16:UMLAttribute">
+     <ns16:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns16:SemanticMetadata"/>
+     <ns16:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns16:SemanticMetadata"/>
+     <ns16:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns16:SemanticMetadata"/>
+    </ns16:UMLAttribute>
+    <ns16:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns16:UMLAttribute">
+     <ns16:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns16:SemanticMetadata"/>
+     <ns16:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns16:SemanticMetadata"/>
+    </ns16:UMLAttribute>
+    <ns16:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns16:UMLAttribute">
+     <ns16:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns16:SemanticMetadata"/>
+    </ns16:UMLAttribute>
+   </ns16:umlAttributeCollection>
+   <ns16:SemanticMetadata conceptCode="C15632" conceptDefinition="The use of synthetic or naturally-occurring chemicals for the treatment of diseases.  Although this term is used to describe any therapy involving the use of chemical-based agents, particularly, it refers to the variety of chemical-based agents employed to treat cancer. Antineoplastic chemotherapy works by arresting or killing the growth and spread of cancer cells. Chemotherapy may also include agents that enhance immune function or alter hormonal activity." conceptName="Chemotherapy" order="0" xsi:type="ns16:SemanticMetadata"/>
+  </ns16:UMLClass>
+  <ns17:UMLClass className="Hormone" id="EAID_6DA06CFA_A581_4d28_9E12_010F12FD1EE2" xsi:type="ns17:UMLClass" xmlns:ns17="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns17:umlAttributeCollection>
+    <ns17:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns17:UMLAttribute">
+     <ns17:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns17:SemanticMetadata"/>
+     <ns17:SemanticMetadata conceptCode="C25496" conceptDefinition="The point or place at which something terminates in time, space, or extent." conceptName="End" order="1" xsi:type="ns17:SemanticMetadata"/>
+    </ns17:UMLAttribute>
+    <ns17:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns17:UMLAttribute">
+     <ns17:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns17:SemanticMetadata"/>
+    </ns17:UMLAttribute>
+    <ns17:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns17:UMLAttribute">
+     <ns17:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns17:SemanticMetadata"/>
+    </ns17:UMLAttribute>
+    <ns17:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns17:UMLAttribute">
+     <ns17:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns17:SemanticMetadata"/>
+     <ns17:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns17:SemanticMetadata"/>
+     <ns17:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns17:SemanticMetadata"/>
+    </ns17:UMLAttribute>
+    <ns17:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns17:UMLAttribute">
+     <ns17:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns17:SemanticMetadata"/>
+     <ns17:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns17:SemanticMetadata"/>
+    </ns17:UMLAttribute>
+    <ns17:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns17:UMLAttribute">
+     <ns17:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns17:SemanticMetadata"/>
+    </ns17:UMLAttribute>
+   </ns17:umlAttributeCollection>
+   <ns17:SemanticMetadata conceptCode="C15445" conceptDefinition="Various treatment modalities that produce the desired therapeutic effect by means of change of hormone/hormones level. The treatment may include administration of hormones or hormone analogs to the patient, or decreasing the level of hormones in the body by using hormone antagonists, or hormone ablation therapy. The concept covers but not limited to: intermittent or permanent hormone suppression or ablation in treatment of hormone-dependent tumors, hormone replacement therapy of any kind, hormonal component of gender reassignment therapy, hormonal contraception, surgical and radiation castration." conceptName="Hormone Therapy" order="0" xsi:type="ns17:SemanticMetadata"/>
+  </ns17:UMLClass>
+  <ns18:UMLClass className="Immunotherapy" id="EAID_6E1DB443_10F2_40a1_AA0B_CBFEA1E1F71A" xsi:type="ns18:UMLClass" xmlns:ns18="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns18:umlAttributeCollection>
+    <ns18:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C25496" conceptDefinition="The point or place at which something terminates in time, space, or extent." conceptName="End" order="1" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns18:SemanticMetadata"/>
+     <ns18:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+    <ns18:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns18:UMLAttribute">
+     <ns18:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns18:SemanticMetadata"/>
+    </ns18:UMLAttribute>
+   </ns18:umlAttributeCollection>
+   <ns18:SemanticMetadata conceptCode="C15262" conceptDefinition="Therapy that designed to induce changes of patient's immune status in treatment of disease. The concept encompassing various treatment modalities including active and passive immunization, treatment with immunopotentiators, immunosuppressants and nonspecific systemic immunostimulators and adjuvants, desensitization to any allergens, bone marrow transplantation, thymus implantation." conceptName="Immunotherapy" order="0" xsi:type="ns18:SemanticMetadata"/>
+  </ns18:UMLClass>
+  <ns19:UMLClass className="OtherProcedure" id="EAID_62219028_CF89_4da7_849F_92C01801E9DF" xsi:type="ns19:UMLClass" xmlns:ns19="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns19:umlAttributeCollection>
+    <ns19:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns19:SemanticMetadata"/>
+     <ns19:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns19:SemanticMetadata"/>
+     <ns19:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns19:SemanticMetadata"/>
+     <ns19:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns19:SemanticMetadata"/>
+     <ns19:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns19:SemanticMetadata"/>
+     <ns19:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns19:SemanticMetadata"/>
+     <ns19:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+    <ns19:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns19:UMLAttribute">
+     <ns19:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns19:SemanticMetadata"/>
+    </ns19:UMLAttribute>
+   </ns19:umlAttributeCollection>
+   <ns19:SemanticMetadata conceptCode="C25218" conceptDefinition="A particular course of action intended to achieve a result." conceptName="Procedure" order="0" xsi:type="ns19:SemanticMetadata"/>
+   <ns19:SemanticMetadata conceptCode="C17649" conceptDefinition="Different than the one(s) previously specified or mentioned." conceptName="Other" order="1" xsi:type="ns19:SemanticMetadata"/>
+  </ns19:UMLClass>
+  <ns20:UMLClass className="DistantSite" id="EAID_C8EC29A4_EB16_4b40_9430_9504FF2765BE" xsi:type="ns20:UMLClass" xmlns:ns20="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns20:umlAttributeCollection>
+    <ns20:UMLAttribute dataTypeName="Long" name="id" publicID="-1343793349" version="0.0" xsi:type="ns20:UMLAttribute">
+     <ns20:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns20:SemanticMetadata"/>
+    </ns20:UMLAttribute>
+    <ns20:UMLAttribute dataTypeName="String" name="name" publicID="-1343793348" version="0.0" xsi:type="ns20:UMLAttribute">
+     <ns20:SemanticMetadata conceptCode="C42614" conceptDefinition="The words or language units by which a thing is known." conceptName="Name" order="0" xsi:type="ns20:SemanticMetadata"/>
+    </ns20:UMLAttribute>
+   </ns20:umlAttributeCollection>
+   <ns20:SemanticMetadata conceptCode="C37901" conceptDefinition="A position in relation to its surroundings." conceptName="Site" order="0" xsi:type="ns20:SemanticMetadata"/>
+   <ns20:SemanticMetadata conceptCode="C25321" conceptDefinition="Far apart in space, time, or relevance." conceptName="Distant" order="1" xsi:type="ns20:SemanticMetadata"/>
+  </ns20:UMLClass>
+  <ns21:UMLClass className="Recurrence" id="EAID_4D311CB2_4B09_4f09_A0B9_052A7971B845" xsi:type="ns21:UMLClass" xmlns:ns21="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns21:umlAttributeCollection>
+    <ns21:UMLAttribute dataTypeName="Long" name="id" publicID="-1663504916" version="0.0" xsi:type="ns21:UMLAttribute">
+     <ns21:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns21:SemanticMetadata"/>
+    </ns21:UMLAttribute>
+    <ns21:UMLAttribute dataTypeName="Date" name="date" publicID="-1663504915" version="0.0" xsi:type="ns21:UMLAttribute">
+     <ns21:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns21:SemanticMetadata"/>
+    </ns21:UMLAttribute>
+    <ns21:UMLAttribute dataTypeName="String" name="type" publicID="-1663504914" version="0.0" xsi:type="ns21:UMLAttribute">
+     <ns21:SemanticMetadata conceptCode="C25284" conceptDefinition="Something distinguishable as an identifiable class based on common qualities." conceptName="Type" order="0" xsi:type="ns21:SemanticMetadata"/>
+    </ns21:UMLAttribute>
+   </ns21:umlAttributeCollection>
+   <ns21:SemanticMetadata conceptCode="C4798" conceptDefinition="The reemergence of neoplasm after a period of remission" conceptName="Recurrent Neoplasm" order="0" xsi:type="ns21:SemanticMetadata"/>
+  </ns21:UMLClass>
+  <ns22:UMLClass className="RegionalDistantSurgery" id="EAID_8A5B7FFA_C0C4_4b47_B330_DFD6257B8260" xsi:type="ns22:UMLClass" xmlns:ns22="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns22:umlAttributeCollection>
+    <ns22:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns22:SemanticMetadata"/>
+     <ns22:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+    <ns22:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns22:UMLAttribute">
+     <ns22:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns22:SemanticMetadata"/>
+    </ns22:UMLAttribute>
+   </ns22:umlAttributeCollection>
+   <ns22:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="0" xsi:type="ns22:SemanticMetadata"/>
+   <ns22:SemanticMetadata conceptCode="C35933" conceptDefinition="A malignant tumor that has spread from its original (primary) site of growth to another site distant from the primary site." conceptName="Distantly Metastatic Malignant Neoplasm" order="1" xsi:type="ns22:SemanticMetadata"/>
+  </ns22:UMLClass>
+  <ns23:UMLClass className="PrimarySiteSurgery" id="EAID_2994AAD9_2E2C_40c2_8213_264CD34ECEEA" xsi:type="ns23:UMLClass" xmlns:ns23="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns23:umlAttributeCollection>
+    <ns23:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns23:SemanticMetadata"/>
+     <ns23:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+    <ns23:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns23:UMLAttribute">
+     <ns23:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns23:SemanticMetadata"/>
+    </ns23:UMLAttribute>
+   </ns23:umlAttributeCollection>
+   <ns23:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="0" xsi:type="ns23:SemanticMetadata"/>
+   <ns23:SemanticMetadata conceptCode="C37901" conceptDefinition="A position in relation to its surroundings." conceptName="Site" order="1" xsi:type="ns23:SemanticMetadata"/>
+   <ns23:SemanticMetadata conceptCode="C25251" conceptDefinition="Occurring first in time or sequence; original; of greatest rank or importance or value." conceptName="Primary" order="2" xsi:type="ns23:SemanticMetadata"/>
+  </ns23:UMLClass>
+  <ns24:UMLClass className="Surgery" id="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns24:UMLClass" xmlns:ns24="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns24:umlAttributeCollection>
+    <ns24:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns24:UMLAttribute">
+     <ns24:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns24:SemanticMetadata"/>
+    </ns24:UMLAttribute>
+    <ns24:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns24:UMLAttribute">
+     <ns24:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns24:SemanticMetadata"/>
+    </ns24:UMLAttribute>
+    <ns24:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns24:UMLAttribute">
+     <ns24:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns24:SemanticMetadata"/>
+     <ns24:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns24:SemanticMetadata"/>
+     <ns24:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns24:SemanticMetadata"/>
+    </ns24:UMLAttribute>
+    <ns24:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns24:UMLAttribute">
+     <ns24:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns24:SemanticMetadata"/>
+     <ns24:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns24:SemanticMetadata"/>
+    </ns24:UMLAttribute>
+    <ns24:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns24:UMLAttribute">
+     <ns24:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns24:SemanticMetadata"/>
+    </ns24:UMLAttribute>
+   </ns24:umlAttributeCollection>
+   <ns24:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="0" xsi:type="ns24:SemanticMetadata"/>
+  </ns24:UMLClass>
+  <ns25:UMLClass className="RegionalLymphNodeSurgery" id="EAID_68292677_E333_40ab_9BEE_F5976C674B4D" xsi:type="ns25:UMLClass" xmlns:ns25="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns25:umlAttributeCollection>
+    <ns25:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns25:SemanticMetadata"/>
+     <ns25:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns25:SemanticMetadata"/>
+     <ns25:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns25:SemanticMetadata"/>
+     <ns25:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns25:SemanticMetadata"/>
+     <ns25:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns25:SemanticMetadata"/>
+     <ns25:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns25:SemanticMetadata"/>
+     <ns25:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+    <ns25:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns25:UMLAttribute">
+     <ns25:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns25:SemanticMetadata"/>
+    </ns25:UMLAttribute>
+   </ns25:umlAttributeCollection>
+   <ns25:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="0" xsi:type="ns25:SemanticMetadata"/>
+   <ns25:SemanticMetadata conceptCode="C49018" conceptDefinition="A lymph node that drains lymph from a region of interest." conceptName="Regional Lymph Node" order="1" xsi:type="ns25:SemanticMetadata"/>
+  </ns25:UMLClass>
+  <ns26:UMLClass className="SubstanceAdministration" id="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns26:UMLClass" xmlns:ns26="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns26:umlAttributeCollection>
+    <ns26:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns26:UMLAttribute">
+     <ns26:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns26:SemanticMetadata"/>
+     <ns26:SemanticMetadata conceptCode="C25496" conceptDefinition="The point or place at which something terminates in time, space, or extent." conceptName="End" order="1" xsi:type="ns26:SemanticMetadata"/>
+    </ns26:UMLAttribute>
+    <ns26:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns26:UMLAttribute">
+     <ns26:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns26:SemanticMetadata"/>
+    </ns26:UMLAttribute>
+    <ns26:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns26:UMLAttribute">
+     <ns26:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns26:SemanticMetadata"/>
+    </ns26:UMLAttribute>
+    <ns26:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns26:UMLAttribute">
+     <ns26:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns26:SemanticMetadata"/>
+     <ns26:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns26:SemanticMetadata"/>
+     <ns26:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns26:SemanticMetadata"/>
+    </ns26:UMLAttribute>
+    <ns26:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns26:UMLAttribute">
+     <ns26:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns26:SemanticMetadata"/>
+     <ns26:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns26:SemanticMetadata"/>
+    </ns26:UMLAttribute>
+    <ns26:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns26:UMLAttribute">
+     <ns26:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns26:SemanticMetadata"/>
+    </ns26:UMLAttribute>
+   </ns26:umlAttributeCollection>
+   <ns26:SemanticMetadata conceptCode="C25409" conceptDefinition="The act of the dispensing, applying, or tendering of something to another, such as administration of a medicine." conceptName="Administration" order="0" xsi:type="ns26:SemanticMetadata"/>
+  </ns26:UMLClass>
+  <ns27:UMLClass className="CollaborativeStaging" id="EAID_A03C15D8_876D_456b_B786_D9F944C12293" xsi:type="ns27:UMLClass" xmlns:ns27="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns27:umlAttributeCollection>
+    <ns27:UMLAttribute dataTypeName="Long" name="id" publicID="866381803" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="extension" publicID="866381804" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25270" conceptDefinition="An addition to the length of something; the spreading of something into new regions." conceptName="Extension" order="0" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="tumorSize" publicID="866381805" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25483" conceptDefinition="The magnitude of something in a particular direction, especially length or width or height." conceptName="Dimension" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25550" conceptDefinition="Greatest in size of those under consideration." conceptName="Largest" order="1" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="tumorSizeExtEvaluation" publicID="866381806" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C47955" conceptDefinition="A way of doing something; how a result is obtained or an end is achieved." conceptName="Means" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25214" conceptDefinition="Systematic, objective appraisal of the significance, effectiveness, and impact of activities or condition according to specified objectives and criteria." conceptName="Evaluation" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25270" conceptDefinition="An addition to the length of something; the spreading of something into new regions." conceptName="Extension" order="2" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25483" conceptDefinition="The magnitude of something in a particular direction, especially length or width or height." conceptName="Dimension" order="3" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25550" conceptDefinition="Greatest in size of those under consideration." conceptName="Largest" order="4" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="lymphNodes" publicID="866381807" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C49018" conceptDefinition="A lymph node that drains lymph from a region of interest." conceptName="Regional Lymph Node" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25548" conceptDefinition="To have a connection by participation or association or use; sharing in an activity or process." conceptName="Involvement" order="1" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="lymphNodesAtEvaluation" publicID="866381808" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C47955" conceptDefinition="A way of doing something; how a result is obtained or an end is achieved." conceptName="Means" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25214" conceptDefinition="Systematic, objective appraisal of the significance, effectiveness, and impact of activities or condition according to specified objectives and criteria." conceptName="Evaluation" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C49018" conceptDefinition="A lymph node that drains lymph from a region of interest." conceptName="Regional Lymph Node" order="2" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25548" conceptDefinition="To have a connection by participation or association or use; sharing in an activity or process." conceptName="Involvement" order="3" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="metEvaluation" publicID="866381809" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C47955" conceptDefinition="A way of doing something; how a result is obtained or an end is achieved." conceptName="Means" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25214" conceptDefinition="Systematic, objective appraisal of the significance, effectiveness, and impact of activities or condition according to specified objectives and criteria." conceptName="Evaluation" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C36263" conceptDefinition="A malignant tumor that has spread from its original (primary) site of growth to another site close to or distant from the primary site.--2004" conceptName="Metastatic Malignant Neoplasm" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="metAtDiagnosis" publicID="866381810" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C15220" conceptDefinition="The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation." conceptName="Diagnosis" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C36263" conceptDefinition="A malignant tumor that has spread from its original (primary) site of growth to another site close to or distant from the primary site.--2004" conceptName="Metastatic Malignant Neoplasm" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25626" conceptDefinition="Being or existing in a specified place or at the specified time." conceptName="Present" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedTumorStage" publicID="866381811" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25728" conceptDefinition="One criteria of the TMN staging system.  T refers to the extent of tumor involvement at the primary site (T, followed by a number indicating size and depth of invasion)." conceptName="T Stage" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="1" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedTumorDescriptor" publicID="866381812" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25365" conceptDefinition="A written or verbal account, representation, statement, or explanation of something." conceptName="Description" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25728" conceptDefinition="One criteria of the TMN staging system.  T refers to the extent of tumor involvement at the primary site (T, followed by a number indicating size and depth of invasion)." conceptName="T Stage" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedNodeStage" publicID="1088032196" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25580" conceptDefinition="One criteria of the TMN staging system.  N refers to the extent of lymph node involvement." conceptName="N Stage" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="1" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedNodeDescriptor" publicID="1088032197" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25365" conceptDefinition="A written or verbal account, representation, statement, or explanation of something." conceptName="Description" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25580" conceptDefinition="One criteria of the TMN staging system.  N refers to the extent of lymph node involvement." conceptName="N Stage" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedMetStage" publicID="1088032198" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25727" conceptDefinition="One criteria of the TMN staging system.  M refers to the presence of metastasis." conceptName="M Stage" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="1" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedMetDescriptor" publicID="1088032199" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25365" conceptDefinition="A written or verbal account, representation, statement, or explanation of something." conceptName="Description" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25727" conceptDefinition="One criteria of the TMN staging system.  M refers to the presence of metastasis." conceptName="M Stage" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedAJCCStage" publicID="1088032200" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C39315" conceptDefinition="A group formed for the purpose of developing a system of clinical staging for cancer that is acceptable to the American medical profession and is compatible with other accepted classifications." conceptName="American Joint Committee on Cancer" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedSEERSummary1977" publicID="1088032201" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C62611" conceptDefinition="An international coding scheme for tumors. These rules governed staging for cases diagnosed before 2001." conceptName="Summary Staging Guide 1977" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="derivedSEERSummary2000" publicID="1088032202" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C42885" conceptDefinition="To take, obtain, or receive from a source; having been determined by mathematical computation." conceptName="Derived" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C62610" conceptDefinition="An international coding scheme for tumors. The SSS2000 is an update and clarification of the Summary Staging Guide (1977)." conceptName="SEER Summary Staging Manual 2000" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor1" publicID="1088032203" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C13717" conceptDefinition="Named locations of or within the body." conceptName="Anatomic Site" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor2" publicID="1088032204" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C13717" conceptDefinition="Named locations of or within the body." conceptName="Anatomic Site" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25666" conceptDefinition="Coming next after the first in position in space or time or degree or magnitude." conceptName="Second" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor3" publicID="1088032205" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C13717" conceptDefinition="Named locations of or within the body." conceptName="Anatomic Site" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C25260" conceptDefinition="Following the second position in an ordering or series; coming next after the second and just before the fourth in position." conceptName="Third" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor4" publicID="1088032227" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C13717" conceptDefinition="Named locations of or within the body." conceptName="Anatomic Site" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C54566" conceptDefinition="Following the third position in an ordering or series; coming next after the third and just before the fifth in position." conceptName="Fourth" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor5" publicID="1088032228" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C13717" conceptDefinition="Named locations of or within the body." conceptName="Anatomic Site" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C54567" conceptDefinition="Following the fourth position in an ordering or series; coming next after the fourth and just before the sixth in position." conceptName="Fifth" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+    <ns27:UMLAttribute dataTypeName="String" name="siteSpecificFactor6" publicID="1088032229" version="0.0" xsi:type="ns27:UMLAttribute">
+     <ns27:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C13717" conceptDefinition="Named locations of or within the body." conceptName="Anatomic Site" order="1" xsi:type="ns27:SemanticMetadata"/>
+     <ns27:SemanticMetadata conceptCode="C54568" conceptDefinition="Following the fifth position in an ordering or series; coming next after the fifth and just before the seventh in position." conceptName="Sixth" order="2" xsi:type="ns27:SemanticMetadata"/>
+    </ns27:UMLAttribute>
+   </ns27:umlAttributeCollection>
+   <ns27:SemanticMetadata conceptCode="C62575" conceptDefinition="A coding system for staging of cancer bringing together the principles of Summary Stage, the TNM categories and stage groupings, and the SEER Extent of Disease (EOD) coding structure, creating a carefully selected set of data items that describe how far a cancer has spread at the time of diagnosis. The Collaborative Staging System uses a modified EOD coding system, a five-field, 10 digit system: tumor size (3 digits), extension of the primary tumor (2 digits), regional lymph node involvement (highest specific lymph node chain involved by tumor) (1 digit), the number of pathologically reviewed regional lymph nodes that are positive (2 digits), and the number of pathologically examined regional lymph nodes (2 digits)." conceptName="Collaborative Staging" order="0" xsi:type="ns27:SemanticMetadata"/>
+  </ns27:UMLClass>
+  <ns28:UMLClass className="Factor" id="EAID_74C27F56_7CF5_43a0_92C6_FF2618F66B6A" xsi:type="ns28:UMLClass" xmlns:ns28="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns28:umlAttributeCollection>
+    <ns28:UMLAttribute dataTypeName="Long" name="id" publicID="-1426453428" version="0.0" xsi:type="ns28:UMLAttribute">
+     <ns28:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns28:SemanticMetadata"/>
+    </ns28:UMLAttribute>
+    <ns28:UMLAttribute dataTypeName="String" name="description" publicID="-1426453427" version="0.0" xsi:type="ns28:UMLAttribute">
+     <ns28:SemanticMetadata conceptCode="C25365" conceptDefinition="A written or verbal account, representation, statement, or explanation of something." conceptName="Description" order="0" xsi:type="ns28:SemanticMetadata"/>
+    </ns28:UMLAttribute>
+   </ns28:umlAttributeCollection>
+   <ns28:SemanticMetadata conceptCode="C25506" conceptDefinition="Anything that contributes causally to a result." conceptName="Factor" order="0" xsi:type="ns28:SemanticMetadata"/>
+  </ns28:UMLClass>
+  <ns29:UMLClass className="PatientIdentifier" id="EAID_A6C5BD70_19F0_4f71_B9E1_4595ACC9A09A" xsi:type="ns29:UMLClass" xmlns:ns29="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns29:umlAttributeCollection>
+    <ns29:UMLAttribute dataTypeName="Long" name="id" publicID="1872783036" version="0.0" xsi:type="ns29:UMLAttribute">
+     <ns29:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns29:SemanticMetadata"/>
+    </ns29:UMLAttribute>
+    <ns29:UMLAttribute dataTypeName="String" name="medicalRecordNumber" publicID="1872783037" version="0.0" xsi:type="ns29:UMLAttribute">
+     <ns29:SemanticMetadata conceptCode="C25337" conceptDefinition="A numeral or string of numerals expressing value, quantity, or identification." conceptName="Number" order="0" xsi:type="ns29:SemanticMetadata"/>
+     <ns29:SemanticMetadata conceptCode="C45258" conceptDefinition="A chronological written account of a patient's examination and treatment that includes the patient's medical history and complaints, the physician's physical findings, the results of diagnostic tests and procedures, and medications and therapeutic procedures. (dictionary.com)" conceptName="Medical Record" order="1" xsi:type="ns29:SemanticMetadata"/>
+    </ns29:UMLAttribute>
+   </ns29:umlAttributeCollection>
+   <ns29:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns29:SemanticMetadata"/>
+   <ns29:SemanticMetadata conceptCode="C16960" conceptDefinition="A person who receives medical attention, care, or treatment, or who is registered with medical professional or institution with the purpose to receive medical care when necessary." conceptName="Patient" order="1" xsi:type="ns29:SemanticMetadata"/>
+  </ns29:UMLClass>
+  <ns30:UMLClass className="DiseaseExtent" id="EAID_F74BCADD_0390_4efa_A486_A215D68624D0" xsi:type="ns30:UMLClass" xmlns:ns30="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns30:umlAttributeCollection>
+    <ns30:UMLAttribute dataTypeName="Long" name="id" publicID="-1158013912" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="clinicalMetStage" publicID="-1158013911" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25727" conceptDefinition="One criteria of the TMN staging system.  M refers to the presence of metastasis." conceptName="M Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25398" conceptDefinition="Relating to the examination and treatment of patients dependent on direct observation.  The term may also refer to the institution (clinic) providing this activity." conceptName="Clinical" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="clinicalNodeStage" publicID="-1158013910" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25580" conceptDefinition="One criteria of the TMN staging system.  N refers to the extent of lymph node involvement." conceptName="N Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25398" conceptDefinition="Relating to the examination and treatment of patients dependent on direct observation.  The term may also refer to the institution (clinic) providing this activity." conceptName="Clinical" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="clinicalTumorStage" publicID="-1158013909" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25728" conceptDefinition="One criteria of the TMN staging system.  T refers to the extent of tumor involvement at the primary site (T, followed by a number indicating size and depth of invasion)." conceptName="T Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25398" conceptDefinition="Relating to the examination and treatment of patients dependent on direct observation.  The term may also refer to the institution (clinic) providing this activity." conceptName="Clinical" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="pathologicMetStage" publicID="-1158013908" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25727" conceptDefinition="One criteria of the TMN staging system.  M refers to the presence of metastasis." conceptName="M Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25610" conceptDefinition="Caused by or altered by or manifesting disease or pathology." conceptName="Pathologic" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="pathologicNodeStage" publicID="-1158013907" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25580" conceptDefinition="One criteria of the TMN staging system.  N refers to the extent of lymph node involvement." conceptName="N Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25610" conceptDefinition="Caused by or altered by or manifesting disease or pathology." conceptName="Pathologic" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="pathologicTumorStage" publicID="-1158013906" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25728" conceptDefinition="One criteria of the TMN staging system.  T refers to the extent of tumor involvement at the primary site (T, followed by a number indicating size and depth of invasion)." conceptName="T Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25610" conceptDefinition="Caused by or altered by or manifesting disease or pathology." conceptName="Pathologic" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="tnmEdition" publicID="-1158013905" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C62613" conceptDefinition="The form in which a text (especially a printed book) is published." conceptName="Edition" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C62612" conceptDefinition="A small handbook." conceptName="Manual" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25384" conceptDefinition="A system of clinicopathologic evaluation of tumors based on the extent of tumor involvement at the primary site (T, followed by a number indicating size and depth of invasion), and lymph node involvement (N) and metastasis (M) each followed by a number starting at 0 for no evident metastasis; numbers used depend on the organ involved and influence the prognosis and choice of treatment." conceptName="TNM Staging System" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="Float" name="tumorSize" publicID="-1158013904" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25483" conceptDefinition="The magnitude of something in a particular direction, especially length or width or height." conceptName="Dimension" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25550" conceptDefinition="Greatest in size of those under consideration." conceptName="Largest" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="seerSummaryStage" publicID="-1158013903" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C42581" conceptDefinition="A shortened version of a speech or written text, containing only the main points." conceptName="Summary" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C15432" conceptDefinition="A cancer registry mandated under the National Cancer Act of 1971 to operate and maintain a population-based cancer reporting system, reporting periodically estimates of cancer incidence and mortality in the United States. The Surveillance, Epidemiology, and End Results (SEER) Program is a continuing project of the National Cancer Institute of the National Institutes of Health. Among its goals, in addition to assembling and reporting cancer statistics, are the monitoring of annual cancer incident trends and the promoting of studies designed to identify factors amenable to cancer control interventions. (From a brochure of the National Cancer Institute, NIH Publication No. 91-3074, October 1990)" conceptName="Surveillance, Epidemiology, and End Results Program" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="pathologicAJCCStage" publicID="-1538692825" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25610" conceptDefinition="Caused by or altered by or manifesting disease or pathology." conceptName="Pathologic" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C39315" conceptDefinition="A group formed for the purpose of developing a system of clinical staging for cancer that is acceptable to the American medical profession and is compatible with other accepted classifications." conceptName="American Joint Committee on Cancer" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="pathologicAJCCStageDescriptor" publicID="-1538692824" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25365" conceptDefinition="A written or verbal account, representation, statement, or explanation of something." conceptName="Description" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25610" conceptDefinition="Caused by or altered by or manifesting disease or pathology." conceptName="Pathologic" order="2" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C39315" conceptDefinition="A group formed for the purpose of developing a system of clinical staging for cancer that is acceptable to the American medical profession and is compatible with other accepted classifications." conceptName="American Joint Committee on Cancer" order="3" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="clinicalAJCCStage" publicID="-1538692823" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25398" conceptDefinition="Relating to the examination and treatment of patients dependent on direct observation.  The term may also refer to the institution (clinic) providing this activity." conceptName="Clinical" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C39315" conceptDefinition="A group formed for the purpose of developing a system of clinical staging for cancer that is acceptable to the American medical profession and is compatible with other accepted classifications." conceptName="American Joint Committee on Cancer" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="clinicalAJCCStageDescriptor" publicID="-1538692822" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25365" conceptDefinition="A written or verbal account, representation, statement, or explanation of something." conceptName="Description" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25398" conceptDefinition="Relating to the examination and treatment of patients dependent on direct observation.  The term may also refer to the institution (clinic) providing this activity." conceptName="Clinical" order="2" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C39315" conceptDefinition="A group formed for the purpose of developing a system of clinical staging for cancer that is acceptable to the American medical profession and is compatible with other accepted classifications." conceptName="American Joint Committee on Cancer" order="3" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="regionalNodesPositive" publicID="-1538692821" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25337" conceptDefinition="A numeral or string of numerals expressing value, quantity, or identification." conceptName="Number" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C49018" conceptDefinition="A lymph node that drains lymph from a region of interest." conceptName="Regional Lymph Node" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C38758" conceptDefinition="An observation confirming the presence of a disease, condition, or microorganism." conceptName="Positive Finding" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="regionalNodesExamined" publicID="-1538692820" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C25337" conceptDefinition="A numeral or string of numerals expressing value, quantity, or identification." conceptName="Number" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C49018" conceptDefinition="A lymph node that drains lymph from a region of interest." conceptName="Regional Lymph Node" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25500" conceptDefinition="Having been subjected to inspection or evaluation." conceptName="Examined" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="bestAJCCStage" publicID="-1538692819" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25432" conceptDefinition="Having the most positive qualities." conceptName="Best" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C39315" conceptDefinition="A group formed for the purpose of developing a system of clinical staging for cancer that is acceptable to the American medical profession and is compatible with other accepted classifications." conceptName="American Joint Committee on Cancer" order="2" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="bestSEERSummaryStage" publicID="-1538692818" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C16899" conceptDefinition="The extent of a cancer within the body, especially whether the disease has spread from the original site to other parts of the body." conceptName="Stage" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C42581" conceptDefinition="A shortened version of a speech or written text, containing only the main points." conceptName="Summary" order="1" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25432" conceptDefinition="Having the most positive qualities." conceptName="Best" order="2" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C15432" conceptDefinition="A cancer registry mandated under the National Cancer Act of 1971 to operate and maintain a population-based cancer reporting system, reporting periodically estimates of cancer incidence and mortality in the United States. The Surveillance, Epidemiology, and End Results (SEER) Program is a continuing project of the National Cancer Institute of the National Institutes of Health. Among its goals, in addition to assembling and reporting cancer statistics, are the monitoring of annual cancer incident trends and the promoting of studies designed to identify factors amenable to cancer control interventions. (From a brochure of the National Cancer Institute, NIH Publication No. 91-3074, October 1990)" conceptName="Surveillance, Epidemiology, and End Results Program" order="3" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="tumorMarker1" publicID="-1538692817" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C17220" conceptDefinition="A substance present in or produced by a tumor or by the host, that can be used for differentiating neoplastic from normal tissue based on measurements in body fluids, secretions, cells, and/or tissues. Markers are used in diagnosis, staging and prognosis of cancer, provide an estimation of tumor burden, and serve for monitoring effects of therapy, detecting recurrence, localization of tumors, and screening in general populations." conceptName="Tumor Marker" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="tumorMarker2" publicID="-1538692816" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C17220" conceptDefinition="A substance present in or produced by a tumor or by the host, that can be used for differentiating neoplastic from normal tissue based on measurements in body fluids, secretions, cells, and/or tissues. Markers are used in diagnosis, staging and prognosis of cancer, provide an estimation of tumor burden, and serve for monitoring effects of therapy, detecting recurrence, localization of tumors, and screening in general populations." conceptName="Tumor Marker" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25666" conceptDefinition="Coming next after the first in position in space or time or degree or magnitude." conceptName="Second" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+    <ns30:UMLAttribute dataTypeName="String" name="tumorMarker3" publicID="-1538692794" version="0.0" xsi:type="ns30:UMLAttribute">
+     <ns30:SemanticMetadata conceptCode="C17220" conceptDefinition="A substance present in or produced by a tumor or by the host, that can be used for differentiating neoplastic from normal tissue based on measurements in body fluids, secretions, cells, and/or tissues. Markers are used in diagnosis, staging and prognosis of cancer, provide an estimation of tumor burden, and serve for monitoring effects of therapy, detecting recurrence, localization of tumors, and screening in general populations." conceptName="Tumor Marker" order="0" xsi:type="ns30:SemanticMetadata"/>
+     <ns30:SemanticMetadata conceptCode="C25260" conceptDefinition="Following the second position in an ordering or series; coming next after the second and just before the fourth in position." conceptName="Third" order="1" xsi:type="ns30:SemanticMetadata"/>
+    </ns30:UMLAttribute>
+   </ns30:umlAttributeCollection>
+   <ns30:SemanticMetadata conceptCode="C25332" conceptDefinition="The range, magnitude, or distance over which a thing spans an interval of distance, space, or time." conceptName="Extent" order="0" xsi:type="ns30:SemanticMetadata"/>
+   <ns30:SemanticMetadata conceptCode="C2991" conceptDefinition="Any abnormal condition of the body or mind that causes discomfort, dysfunction, or distress to the person affected or those in contact with the person. Sometimes the term is used broadly to include injuries, disabilities, syndromes, symptoms, deviant behaviors, and atypical variations of structure and function. (from Wikipedia)" conceptName="Diseases and Disorders" order="1" xsi:type="ns30:SemanticMetadata"/>
+  </ns30:UMLClass>
+  <ns31:UMLClass className="OtherTherapy" id="EAID_9B2768AC_72D9_48e0_B6E8_2E88B9F2B9BB" xsi:type="ns31:UMLClass" xmlns:ns31="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns31:umlAttributeCollection>
+    <ns31:UMLAttribute dataTypeName="Date" name="stopDate" publicID="822350007" version="0.0" xsi:type="ns31:UMLAttribute">
+     <ns31:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns31:SemanticMetadata"/>
+     <ns31:SemanticMetadata conceptCode="C25496" conceptDefinition="The point or place at which something terminates in time, space, or extent." conceptName="End" order="1" xsi:type="ns31:SemanticMetadata"/>
+    </ns31:UMLAttribute>
+    <ns31:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns31:UMLAttribute">
+     <ns31:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns31:SemanticMetadata"/>
+    </ns31:UMLAttribute>
+    <ns31:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns31:UMLAttribute">
+     <ns31:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns31:SemanticMetadata"/>
+    </ns31:UMLAttribute>
+    <ns31:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns31:UMLAttribute">
+     <ns31:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns31:SemanticMetadata"/>
+     <ns31:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns31:SemanticMetadata"/>
+     <ns31:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns31:SemanticMetadata"/>
+    </ns31:UMLAttribute>
+    <ns31:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns31:UMLAttribute">
+     <ns31:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns31:SemanticMetadata"/>
+     <ns31:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns31:SemanticMetadata"/>
+    </ns31:UMLAttribute>
+    <ns31:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns31:UMLAttribute">
+     <ns31:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns31:SemanticMetadata"/>
+    </ns31:UMLAttribute>
+   </ns31:umlAttributeCollection>
+   <ns31:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns31:SemanticMetadata"/>
+   <ns31:SemanticMetadata conceptCode="C17649" conceptDefinition="Different than the one(s) previously specified or mentioned." conceptName="Other" order="1" xsi:type="ns31:SemanticMetadata"/>
+  </ns31:UMLClass>
+  <ns32:UMLClass className="NonCancerDirectedSurgery" id="EAID_C343555E_DF2F_44df_8057_6514BDD3EBEB" xsi:type="ns32:UMLClass" xmlns:ns32="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns32:umlAttributeCollection>
+    <ns32:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns32:SemanticMetadata"/>
+     <ns32:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+    <ns32:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns32:UMLAttribute">
+     <ns32:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns32:SemanticMetadata"/>
+    </ns32:UMLAttribute>
+   </ns32:umlAttributeCollection>
+   <ns32:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="0" xsi:type="ns32:SemanticMetadata"/>
+   <ns32:SemanticMetadata conceptCode="C53529" conceptDefinition="Any disorder other than abnormal tissue growth resulting from uncontrolled cell proliferation." conceptName="Non-Neoplastic Disorder" order="1" xsi:type="ns32:SemanticMetadata"/>
+  </ns32:UMLClass>
+  <ns33:UMLClass className="HemTransplantEndocrine" id="EAID_6EC40548_4D63_481b_9AEB_620D4B750AB1" xsi:type="ns33:UMLClass" xmlns:ns33="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns33:umlAttributeCollection>
+    <ns33:UMLAttribute dataTypeName="Long" name="id" publicID="214266591" version="0.0" xsi:type="ns33:UMLAttribute">
+     <ns33:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns33:SemanticMetadata"/>
+    </ns33:UMLAttribute>
+    <ns33:UMLAttribute dataTypeName="Integer" name="course" publicID="214266592" version="0.0" xsi:type="ns33:UMLAttribute">
+     <ns33:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="0" xsi:type="ns33:SemanticMetadata"/>
+    </ns33:UMLAttribute>
+    <ns33:UMLAttribute dataTypeName="Boolean" name="atLocalFacility" publicID="214266593" version="0.0" xsi:type="ns33:UMLAttribute">
+     <ns33:SemanticMetadata conceptCode="C43578" conceptDefinition="An indicator that can be set or unset in order to signal whether a particular condition is true." conceptName="Flag" order="0" xsi:type="ns33:SemanticMetadata"/>
+     <ns33:SemanticMetadata conceptCode="C62574" conceptDefinition="Services and space and equipment provided for a particular purpose; a building or place that provides a particular service or is used for a particular industry." conceptName="Facility" order="1" xsi:type="ns33:SemanticMetadata"/>
+     <ns33:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="2" xsi:type="ns33:SemanticMetadata"/>
+    </ns33:UMLAttribute>
+    <ns33:UMLAttribute dataTypeName="Date" name="startDate" publicID="214266594" version="0.0" xsi:type="ns33:UMLAttribute">
+     <ns33:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns33:SemanticMetadata"/>
+     <ns33:SemanticMetadata conceptCode="C25431" conceptDefinition="Have a beginning, in a temporal, spatial, or evaluative sense; the point in space or time where something begins." conceptName="Begin" order="1" xsi:type="ns33:SemanticMetadata"/>
+    </ns33:UMLAttribute>
+    <ns33:UMLAttribute dataTypeName="String" name="characterization" publicID="214266595" version="0.0" xsi:type="ns33:UMLAttribute">
+     <ns33:SemanticMetadata conceptCode="C49236" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Therapeutic Procedure" order="0" xsi:type="ns33:SemanticMetadata"/>
+    </ns33:UMLAttribute>
+   </ns33:umlAttributeCollection>
+   <ns33:SemanticMetadata conceptCode="C25284" conceptDefinition="Something distinguishable as an identifiable class based on common qualities." conceptName="Type" order="0" xsi:type="ns33:SemanticMetadata"/>
+   <ns33:SemanticMetadata conceptCode="C15342" conceptDefinition="The grafting of tissues from one individual to another or place to place within a single individual." conceptName="Transplantation" order="1" xsi:type="ns33:SemanticMetadata"/>
+   <ns33:SemanticMetadata conceptCode="C16673" conceptDefinition="The branch of medicine that deals with the blood and blood-forming organs and the diseases thereof." conceptName="Hematology" order="2" xsi:type="ns33:SemanticMetadata"/>
+   <ns33:SemanticMetadata conceptCode="C15445" conceptDefinition="Various treatment modalities that produce the desired therapeutic effect by means of change of hormone/hormones level. The treatment may include administration of hormones or hormone analogs to the patient, or decreasing the level of hormones in the body by using hormone antagonists, or hormone ablation therapy. The concept covers but not limited to: intermittent or permanent hormone suppression or ablation in treatment of hormone-dependent tumors, hormone replacement therapy of any kind, hormonal component of gender reassignment therapy, hormonal contraception, surgical and radiation castration." conceptName="Hormone Therapy" order="3" xsi:type="ns33:SemanticMetadata"/>
+   <ns33:SemanticMetadata conceptCode="C37998" conceptDefinition="An article used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise." conceptName="Or" order="4" xsi:type="ns33:SemanticMetadata"/>
+  </ns33:UMLClass>
+  <ns34:UMLClass className="FirstCourseTreatmentSummary" id="EAID_AEBBD5A3_0927_4265_B89E_5B8432C270E7" xsi:type="ns34:UMLClass" xmlns:ns34="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns34:umlAttributeCollection>
+    <ns34:UMLAttribute dataTypeName="Long" name="id" publicID="807023373" version="0.0" xsi:type="ns34:UMLAttribute">
+     <ns34:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns34:SemanticMetadata"/>
+    </ns34:UMLAttribute>
+    <ns34:UMLAttribute dataTypeName="Date" name="firstSurgeryDate" publicID="807023374" version="0.0" xsi:type="ns34:UMLAttribute">
+     <ns34:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="1" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="2" xsi:type="ns34:SemanticMetadata"/>
+    </ns34:UMLAttribute>
+    <ns34:UMLAttribute dataTypeName="Date" name="mostDefinitiveSurgeryDate" publicID="807023375" version="0.0" xsi:type="ns34:UMLAttribute">
+     <ns34:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C17173" conceptDefinition="The branch of medical science that treats disease or injury by operative procedures." conceptName="Surgery" order="1" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C62607" conceptDefinition="Supplying or being a final or conclusive settlement or result." conceptName="Definitive" order="2" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C25258" conceptDefinition="Greatest in amount, extent, or degree." conceptName="Most" order="3" xsi:type="ns34:SemanticMetadata"/>
+    </ns34:UMLAttribute>
+    <ns34:UMLAttribute dataTypeName="Date" name="firstTreatmentDate" publicID="807023376" version="0.0" xsi:type="ns34:UMLAttribute">
+     <ns34:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C15368" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Treatment" order="1" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="2" xsi:type="ns34:SemanticMetadata"/>
+    </ns34:UMLAttribute>
+    <ns34:UMLAttribute dataTypeName="Date" name="firstSystemicTreatmentDate" publicID="807023377" version="0.0" xsi:type="ns34:UMLAttribute">
+     <ns34:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C15368" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Treatment" order="1" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C13310" conceptDefinition="Affecting an entire system." conceptName="Systemic" order="2" xsi:type="ns34:SemanticMetadata"/>
+     <ns34:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="3" xsi:type="ns34:SemanticMetadata"/>
+    </ns34:UMLAttribute>
+   </ns34:umlAttributeCollection>
+   <ns34:SemanticMetadata conceptCode="C42581" conceptDefinition="A shortened version of a speech or written text, containing only the main points." conceptName="Summary" order="0" xsi:type="ns34:SemanticMetadata"/>
+   <ns34:SemanticMetadata conceptCode="C15368" conceptDefinition="An action or administration of therapeutic agents to produce an effect that is intended to alter the course of a pathologic process." conceptName="Treatment" order="1" xsi:type="ns34:SemanticMetadata"/>
+   <ns34:SemanticMetadata conceptCode="C25379" conceptDefinition="Passage through time; duration; a systematic or/and orderly succession; a sequence, e.g. course of treatment; a mode of action or behavior; natural development, typical manner of proceeding." conceptName="Course" order="2" xsi:type="ns34:SemanticMetadata"/>
+   <ns34:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="3" xsi:type="ns34:SemanticMetadata"/>
+  </ns34:UMLClass>
+  <ns35:UMLClass className="Patient" id="EAID_427C7C74_847A_48ac_8382_0637C98F207B" xsi:type="ns35:UMLClass" xmlns:ns35="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns35:umlAttributeCollection>
+    <ns35:UMLAttribute dataTypeName="Long" name="id" publicID="-667070996" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="firstName" publicID="-667070995" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C40974" conceptDefinition="A word or group of words indicating a person's first (personal or given) name; the name that precedes the surname." conceptName="First Name" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="middleName" publicID="-667070994" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C25191" conceptDefinition="A word or group of words indicating the identity of a person usually consisting of a first (personal) name and a last (family) name with an optional middle name.  In some cultural traditions the family name comes first." conceptName="Person Name" order="0" xsi:type="ns35:SemanticMetadata"/>
+     <ns35:SemanticMetadata conceptCode="C25569" conceptDefinition="An intermediate part or section; an area that is approximately central within some larger region." conceptName="Middle" order="1" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="lastName" publicID="-667070993" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C40975" conceptDefinition="A word or group of words indicating a person's last (family) name." conceptName="Last Name" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="suffix" publicID="-667070992" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C49106" conceptDefinition="An affix occurring at the end of a word, word base, phrase, or name." conceptName="Suffix" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="Date" name="dateOfBirth" publicID="-667070991" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns35:SemanticMetadata"/>
+     <ns35:SemanticMetadata conceptCode="C25155" conceptDefinition="The event of being born." conceptName="Birth" order="1" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="Date" name="dateOfDeath" publicID="-667070990" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns35:SemanticMetadata"/>
+     <ns35:SemanticMetadata conceptCode="C28554" conceptDefinition="The absence of life or state of being dead." conceptName="Death" order="1" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="race" publicID="-667070989" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C17049" conceptDefinition="An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by common history, nationality, or geographic distribution." conceptName="Race" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="sex" publicID="-667070988" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C28421" conceptDefinition="The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female." conceptName="Sex" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="ethnicGroup" publicID="-667070987" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C16564" conceptDefinition="A social group characterized by a distinctive social and cultural tradition maintained from generation to generation, a common history and origin and a sense of identification with the group; members of the group have distinctive features in their way of life, shared experiences and often a common genetic heritage; these features may be reflected in their experience of health and disease." conceptName="Ethnic Group" order="0" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+    <ns35:UMLAttribute dataTypeName="String" name="autopsy" publicID="795635683" version="0.0" xsi:type="ns35:UMLAttribute">
+     <ns35:SemanticMetadata conceptCode="C49565" conceptDefinition="A subject domain utilized for the submission of information encompassing and representing data, vocabulary or records related to autopsy." conceptName="Autopsy Domain" order="0" xsi:type="ns35:SemanticMetadata"/>
+     <ns35:SemanticMetadata conceptCode="C25153" conceptDefinition="A postmortem examination of the body that includes an examination of the internal organs and structures after dissection to determine the cause of death and the nature of pathological changes." conceptName="Autopsy" order="1" xsi:type="ns35:SemanticMetadata"/>
+    </ns35:UMLAttribute>
+   </ns35:umlAttributeCollection>
+   <ns35:SemanticMetadata conceptCode="C16960" conceptDefinition="A person who receives medical attention, care, or treatment, or who is registered with medical professional or institution with the purpose to receive medical care when necessary." conceptName="Patient" order="0" xsi:type="ns35:SemanticMetadata"/>
+  </ns35:UMLClass>
+  <ns36:UMLClass className="Address" id="EAID_91947BB1_5401_4b68_822C_2807DDFA4F6C" xsi:type="ns36:UMLClass" xmlns:ns36="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns36:umlAttributeCollection>
+    <ns36:UMLAttribute dataTypeName="Long" name="id" publicID="165939952" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="address1" publicID="165939953" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C49259" conceptDefinition="Text consisting of a row of words written across a page or computer screen." conceptName="Text Line" order="0" xsi:type="ns36:SemanticMetadata"/>
+     <ns36:SemanticMetadata conceptCode="C25509" conceptDefinition="Preceding all others in time or space or degree." conceptName="First" order="1" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="address2" publicID="165939954" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C49259" conceptDefinition="Text consisting of a row of words written across a page or computer screen." conceptName="Text Line" order="0" xsi:type="ns36:SemanticMetadata"/>
+     <ns36:SemanticMetadata conceptCode="C25666" conceptDefinition="Coming next after the first in position in space or time or degree or magnitude." conceptName="Second" order="1" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="zipcode" publicID="165939955" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C25621" conceptDefinition="Any system designed to expedite the sorting and delivery of mail by assigning a series of alphanumeric codes to each delivery area.  Also used to refer to any individual delivery area code." conceptName="Postal Code" order="0" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="city" publicID="165939956" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C25160" conceptDefinition="A large and densely populated urban area; a city specified in an address." conceptName="City" order="0" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="state" publicID="165939957" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C30010" conceptDefinition="One of the fifty states which is a member of the federation known as the United States of America. Other US geographic areas, such as Puerto Rico and the District of Columbia, are essentially equivalent to State when used in an address." conceptName="State" order="0" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="county" publicID="165939958" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C49292" conceptDefinition="A region created by territorial division for the purpose of local government." conceptName="County" order="0" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+    <ns36:UMLAttribute dataTypeName="String" name="country" publicID="165939959" version="0.0" xsi:type="ns36:UMLAttribute">
+     <ns36:SemanticMetadata conceptCode="C25464" conceptDefinition="A collective generic term that refers here to a wide variety of dependencies, areas of special sovereignty, uninhabited islands, and other entities in addition to the traditional countries or independent states." conceptName="Country" order="0" xsi:type="ns36:SemanticMetadata"/>
+    </ns36:UMLAttribute>
+   </ns36:umlAttributeCollection>
+   <ns36:SemanticMetadata conceptCode="C25407" conceptDefinition="A standardized representation of the geographical location of a person, business, building, or organization." conceptName="Address" order="0" xsi:type="ns36:SemanticMetadata"/>
+  </ns36:UMLClass>
+  <ns37:UMLClass className="ActivitySummary" id="EAID_B2BBF43F_687A_45cf_8487_B28C939C592B" xsi:type="ns37:UMLClass" xmlns:ns37="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns37:umlAttributeCollection>
+    <ns37:UMLAttribute dataTypeName="Long" name="id" publicID="65797432" version="0.0" xsi:type="ns37:UMLAttribute">
+     <ns37:SemanticMetadata conceptCode="C25364" conceptDefinition="One or more characters used to identify, name, or characterize the nature, properties, or contents of a thing." conceptName="Identifier" order="0" xsi:type="ns37:SemanticMetadata"/>
+    </ns37:UMLAttribute>
+    <ns37:UMLAttribute dataTypeName="Date" name="localDate" publicID="65797433" version="0.0" xsi:type="ns37:UMLAttribute">
+     <ns37:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns37:SemanticMetadata"/>
+     <ns37:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="1" xsi:type="ns37:SemanticMetadata"/>
+    </ns37:UMLAttribute>
+    <ns37:UMLAttribute dataTypeName="Date" name="summaryDate" publicID="65797434" version="0.0" xsi:type="ns37:UMLAttribute">
+     <ns37:SemanticMetadata conceptCode="C25164" conceptDefinition="The particular day, month and year an event has happened or will happen." conceptName="Date" order="0" xsi:type="ns37:SemanticMetadata"/>
+     <ns37:SemanticMetadata conceptCode="C42581" conceptDefinition="A shortened version of a speech or written text, containing only the main points." conceptName="Summary" order="1" xsi:type="ns37:SemanticMetadata"/>
+    </ns37:UMLAttribute>
+    <ns37:UMLAttribute dataTypeName="String" name="localCharacterization" publicID="65797435" version="0.0" xsi:type="ns37:UMLAttribute">
+     <ns37:SemanticMetadata conceptCode="C62606" conceptDefinition="The act of describing distinctive characteristics or essential features." conceptName="Characterization" order="0" xsi:type="ns37:SemanticMetadata"/>
+     <ns37:SemanticMetadata conceptCode="C25388" conceptDefinition="Affecting only a restricted part or area (of the body)." conceptName="Local" order="1" xsi:type="ns37:SemanticMetadata"/>
+    </ns37:UMLAttribute>
+    <ns37:UMLAttribute dataTypeName="String" name="summaryCharacterization" publicID="65797436" version="0.0" xsi:type="ns37:UMLAttribute">
+     <ns37:SemanticMetadata conceptCode="C62606" conceptDefinition="The act of describing distinctive characteristics or essential features." conceptName="Characterization" order="0" xsi:type="ns37:SemanticMetadata"/>
+     <ns37:SemanticMetadata conceptCode="C42581" conceptDefinition="A shortened version of a speech or written text, containing only the main points." conceptName="Summary" order="1" xsi:type="ns37:SemanticMetadata"/>
+    </ns37:UMLAttribute>
+   </ns37:umlAttributeCollection>
+   <ns37:SemanticMetadata conceptCode="C42581" conceptDefinition="A shortened version of a speech or written text, containing only the main points." conceptName="Summary" order="0" xsi:type="ns37:SemanticMetadata"/>
+   <ns37:SemanticMetadata conceptCode="C18020" conceptDefinition="Methods, procedures, and tests performed to diagnose disease, disordered function, or disability." conceptName="Diagnostic Procedure" order="1" xsi:type="ns37:SemanticMetadata"/>
+  </ns37:UMLClass>
+ </ns1:exposedUMLClassCollection>
+ <ns1:umlGeneralizationCollection>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_1620576B_0602_44d4_AC15_8D4CCB9FF851" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_62219028_CF89_4da7_849F_92C01801E9DF" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_45628B13_10BC_4658_8B50_059117BAEA52" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_6EC40548_4D63_481b_9AEB_620D4B750AB1" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_C9AC3233_13E5_4232_944D_B52A9D311D55" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_3CBA9959_6638_4584_9E2F_49F0E75A03A4" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_6DA06CFA_A581_4d28_9E12_010F12FD1EE2" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_6E1DB443_10F2_40a1_AA0B_CBFEA1E1F71A" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_8A5B7FFA_C0C4_4b47_B330_DFD6257B8260" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_2994AAD9_2E2C_40c2_8213_264CD34ECEEA" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_C343555E_DF2F_44df_8057_6514BDD3EBEB" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_68292677_E333_40ab_9BEE_F5976C674B4D" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_BA45CE33_6962_4dd0_A794_BDD60E05EA76" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+  <ns1:UMLGeneralization xsi:type="ns1:UMLGeneralization">
+   <ns1:subClassReference refid="EAID_9B2768AC_72D9_48e0_B6E8_2E88B9F2B9BB" xsi:type="ns1:UMLClassReference"/>
+   <ns1:superClassReference refid="EAID_F4B62428_BE9C_45f0_8D38_AF650DA9261E" xsi:type="ns1:UMLClassReference"/>
+  </ns1:UMLGeneralization>
+ </ns1:umlGeneralizationCollection>
+</extract>
