@@ -30,10 +30,13 @@ public class XMIParserTest
 
 	public void performTest(File xmiFile, File modelFile) throws Exception
 	{
-		DomainModel model = new XMIParser(projectShortName, projectVersion).parse(xmiFile);
+		XMIParser parser = new XMIParser(projectShortName, projectVersion);
+		parser.setProjectLongName(projectLongName);
+		parser.setProjectDescription(projectDescription);
+		DomainModel model = parser.parse(xmiFile);
 
 		File outFile = new File(outDir, getModelName(xmiFile));
-		Utils.serializeDocument(outFile.toString(), model, new QName("extract"));
+		Utils.serializeDocument(outFile.toString(), model, new QName("ns1:DomainModel"));
 
 		checkModel(modelFile, outFile);
 	}

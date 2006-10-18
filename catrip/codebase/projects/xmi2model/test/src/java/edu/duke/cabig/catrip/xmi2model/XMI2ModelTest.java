@@ -32,6 +32,7 @@ public class XMI2ModelTest
 			"-model", outFile.toString(),
 			"-projectShortName", projectShortName,
 			"-projectVersion", projectVersion,
+			"-projectLongName", projectLongName,
 		});
 		
 		checkModel(modelFile, outFile);

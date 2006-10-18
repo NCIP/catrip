@@ -48,17 +48,31 @@ public class XMI2Model
 			.withDescription("the short name of the project")
 			.create("projectShortName");
 
+		Option projectLongName = OptionBuilder.withArgName("projectLongName")
+			.hasArg()
+			.isRequired(false)
+			.withDescription("the long name of the project")
+			.create("projectLongName");
+
 		Option projectVersion = OptionBuilder.withArgName("projectVersion")
 			.hasArg()
 			.isRequired(true)
 			.withDescription("the version of the project")
 			.create("projectVersion");
+
+		Option projectDescription = OptionBuilder.withArgName("projectDescription")
+			.hasArg()
+			.isRequired(false)
+			.withDescription("the description of the project")
+			.create("projectDescription");
 		
 		Options options = new Options();
 		options.addOption(xmi);		
 		options.addOption(model);		
 		options.addOption(projectShortName);		
+		options.addOption(projectLongName);		
 		options.addOption(projectVersion);		
+		options.addOption(projectDescription);		
 		return options;
 	}
 	
@@ -77,9 +91,14 @@ public class XMI2Model
 			return;
 		}
 		
-		DomainModel model = new XMIParser(
+		XMIParser parser = new XMIParser(
 			cmd.getOptionValue("projectShortName"), cmd.getOptionValue("projectVersion")
-		).parse(new File(cmd.getOptionValue("xmi")));
-		Utils.serializeDocument(cmd.getOptionValue("model"), model, new QName("extract"));
+		);
+
+		if (cmd.hasOption("projectLongName")) parser.setProjectLongName(cmd.getOptionValue("projectLongName"));
+		if (cmd.hasOption("projectDescription")) parser.setProjectDescription(cmd.getOptionValue("projectDescription"));
+		
+		DomainModel model = parser.parse(new File(cmd.getOptionValue("xmi")));
+		Utils.serializeDocument(cmd.getOptionValue("model"), model, new QName("ns1:DomainModel"));
     }
 }
