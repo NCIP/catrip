@@ -15,4 +15,5 @@ An example of this is:
 	
 Limitations:
 
-1) Does not map value domains
+1) Does not map actual public IDs for the CDEs
+2) Does not map value domains
