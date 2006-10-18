@@ -182,6 +182,24 @@
         </copy>
 
 
+		<echo message="---- Copying services domain jars from Grid Services. -----" />
+        
+        <copy overwrite="true" toDir="${ext.lib.dir}">
+            <fileset dir="${basedir}/../CAEDataServiceV2/lib">
+                <include name="cae_domain.jar" />
+            </fileset>
+            <fileset dir="${basedir}/../CaTissueCoreDataServiceV2/lib">
+                <include name="catissuecore_domain.jar" />
+            </fileset>
+            <fileset dir="${basedir}/../CGEMSDataServiceV2/lib">
+                <include name="cgems-domain.jar" />
+            </fileset>
+            <fileset dir="${basedir}/../TumorRegistryDataService/lib">
+                <include name="tumor_registry_domain.jar" />
+            </fileset>
+        </copy>
+
+
     </target>
 
     <!-- ============================================================== -->
