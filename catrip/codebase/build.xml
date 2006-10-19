@@ -221,6 +221,7 @@
 			<artifact refid="cagrid.metadata.jars" />
 			<artifact refid="cagrid.misc.jars" />  <!-- New jars that have been added in caGRID..	 -->
 			<artifact refid="ant-contrib.jars" />
+			<artifact refid="xmlbeans.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
@@ -295,6 +296,13 @@
 		<resolveDependencies extdir="${projects.dir}/test-system/ext">
 			<artifact refid="common.test.jars" />
 			<artifact refid="cagrid.coretests.jars" />
+            <!-- Added by Sanjeev -->
+            <artifact refid="data.jars" />
+			<artifact refid="cagrid.data.jars" />
+            <artifact refid="queryengine.jars" />
+			<artifact refid="queryengine.schemas" />
+			<artifact refid="xmlbeans.jars" />
+			<!-- Added by Sanjeev -->
 		</resolveDependencies>
 		<ant dir="${projects.dir}/test-system" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
