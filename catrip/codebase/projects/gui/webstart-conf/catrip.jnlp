@@ -75,7 +75,7 @@
 <jar download="eager" href="lib/cae_domain.jar"/>
 <jar download="eager" href="lib/dcql-schema-beans-1.0.jar"/>
 <jar download="eager" href="lib/castor-0.9.9.jar"/>
-<jar download="eager" href="lib/catissuecore_domain_local_modified.jar"/>
+<jar download="eager" href="lib/catissuecore_domain.jar"/>
 <jar download="eager" href="lib/catrip-queryengine-1.0.jar"/>
 <jar download="eager" href="lib/catrip_config_beans.jar"/>
 <jar download="eager" href="lib/cglib-full-2.0.1.jar"/>
