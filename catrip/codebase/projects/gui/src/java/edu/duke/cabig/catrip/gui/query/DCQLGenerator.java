@@ -160,9 +160,11 @@ public class DCQLGenerator {
             
             
         }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            
+            // check if the associations are more than 1 than create a AND Group and than add these to the Group.
+            int numOfForeignAssociations = outerObjectBean.getForeignAssociations().size();
             int numOfAssociations = outerObjectBean.getAssociations().size();
-            if (numOfAssociations>1){
+            int numTotalAssociations = numOfForeignAssociations+numOfAssociations;
+            if (numTotalAssociations>1){
                 dcqlGroup = dcqlOuterObject.addNewGroup();
                 dcqlGroup.setLogicRelation(LogicalOperator.AND);
                 createAssociations(dcqlGroup, outerObjectBean);
@@ -305,7 +307,15 @@ public class DCQLGenerator {
                 
             }
             
+            
+            
+            
         }
     }
+    
+    
+    
+    
+    
     
 }
