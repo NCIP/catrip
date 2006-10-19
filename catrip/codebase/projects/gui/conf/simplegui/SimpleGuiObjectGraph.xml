@@ -21,6 +21,8 @@
 					</Association>
 				</foreignAssociationOutboundPath>
 			</objectElement>
+
+<!-- 
 			<objectElement className="edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl"   displaybleAttributes="barcode,activityStatus,type,quantityInCellCount,positionDimensionOne,positionDimensionTwo,available,availableQuantityInCellCount" display="true">
 				<associatedObjectTree>
 					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"   roleName="specimenCollectionGroup" display="true">
@@ -35,6 +37,8 @@
 					</Association>
 				</foreignAssociationOutboundPath>
 			</objectElement>
+ -->
+
 		</targets>
 		<foreignAssociationInboundTree>
 			<foreignAssociationInboundPath className="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl"   cdeName="medicalRecordNumber" displaybleAttributes="sexGenotype,gender,race,ethnicity,activityStatus" display="true">

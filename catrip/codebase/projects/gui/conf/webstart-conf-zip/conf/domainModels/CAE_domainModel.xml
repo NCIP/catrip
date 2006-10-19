@@ -1273,9 +1273,13 @@
 					</ns29:ValueDomain>
 				</ns29:UMLAttribute>
 			</ns29:umlAttributeCollection>
+<!-- 
 			<ns29:SemanticMetadata conceptCode="C19157" conceptDefinition="Specimen; a bit of tissue or blood or urine that is taken or used for research purposes." conceptName="Specimen" order="1" xsi:type="ns29:SemanticMetadata"/>
+ -->
 			<ns29:SemanticMetadata conceptCode="C29867" conceptDefinition="Someone who takes part in an activity." conceptName="Participant" order="0" xsi:type="ns29:SemanticMetadata"/>
+<!-- 
 			<ns29:SemanticMetadata conceptCode="C25453" conceptDefinition="The act of gathering something together." conceptName="Collection" order="2" xsi:type="ns29:SemanticMetadata"/>
+ -->
 		</ns29:UMLClass>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<ns4:UMLClass className="Accession" description="A procedure event" id="18785753-F33A-3542-E044-0003BA4529A9-DUKE" packageName="edu.duke.catrip.cae.domain.general" projectName="caTissueCAE" projectVersion="1" xsi:type="ns4:UMLClass" xmlns:ns4="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
