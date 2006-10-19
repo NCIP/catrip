@@ -43,6 +43,7 @@ public class XMIParser
 	private String projectShortName;
 	private String projectVersion;
 	private float attributeVersion = 1.0f;
+	private boolean debug = false;
 	
 	private static final Hashtable<String,String> DATATYPE_MAP = new Hashtable<String,String>();
 	{
@@ -197,9 +198,12 @@ public class XMIParser
 				String modelElement = atts.getValue("modelElement");
 				String value = atts.getValue("value");
 				
+				if (debug) System.out.print(tag + " on " + modelElement);
 				if (tag.startsWith("Property")) {
 					modelElement = String.valueOf(modelElement.hashCode());
+					if (debug) System.out.print(" (" + modelElement + ")");
 				}
+				if (debug) System.out.println(" = " + value);
 				
 				if (tag.equals("description")) {
 					if (clTable.containsKey(modelElement)) {
@@ -210,25 +214,17 @@ public class XMIParser
 				} else if (tag.startsWith("ObjectClassConceptCode") || tag.startsWith("ObjectClassQualifierConceptCode") 
 					|| tag.startsWith("PropertyConceptCode") || tag.startsWith("PropertyQualifierConceptCode")
 				) {
-					int order = getSemanticMetadataOrder(tag);
-					SemanticMetadata sm = new SemanticMetadata();
-					sm.setConceptCode(value);
-					sm.setOrder(order);
-					ArrayList<SemanticMetadata> smList = smTable.get(modelElement);
-					if (smList == null) smTable.put(modelElement, smList = new ArrayList<SemanticMetadata>(9));
-					smList.add(sm);					
+					addSemanticMetadata(tag, modelElement, value);
 				} else if (tag.startsWith("ObjectClassConceptPreferredName") || tag.startsWith("ObjectClassQualifierConceptPreferredName")
 					|| tag.startsWith("PropertyConceptPreferredName") || tag.startsWith("PropertyQualifierConceptPreferredName")
 				) {
-					int order = getSemanticMetadataOrder(tag);
-					smTable.get(modelElement).get(order).setConceptName(value);
+					addSemanticMetadata(tag, modelElement, value);
 				} else if ((tag.startsWith("ObjectClassConceptDefinition") && ! tag.startsWith("ObjectClassConceptDefinitionSource"))
 					|| (tag.startsWith("ObjectClassQualifierConceptDefinition") && ! tag.startsWith("ObjectClassQualifierConceptDefinitionSource"))
 					|| (tag.startsWith("PropertyConceptDefinition") && ! tag.startsWith("PropertyConceptDefinitionSource"))
 					|| (tag.startsWith("PropertyQualifierConceptDefinition") && ! tag.startsWith("PropertyQualifierConceptDefinitionSource"))
 				) {
-					int order = getSemanticMetadataOrder(tag);
-					smTable.get(modelElement).get(order).setConceptDefinition(value);
+					addSemanticMetadata(tag, modelElement, value);
 				}
 			} else if (qName.equals("UML:DataType")) {
 				typeTable.put(atts.getValue("xmi.id"), atts.getValue("name"));
@@ -261,6 +257,31 @@ public class XMIParser
 			char c = tag.charAt(tag.length()-1);
 			if (Character.isDigit(c)) return Integer.parseInt(String.valueOf(c));
 			return 0;
+		}
+
+		private void addSemanticMetadata(String tag, String modelElement, String value)
+		{
+			int order = getSemanticMetadataOrder(tag);
+
+			ArrayList<SemanticMetadata> smList = smTable.get(modelElement);
+			if (smList == null) smTable.put(modelElement, smList = new ArrayList<SemanticMetadata>(9));
+			
+			int size = smList.size();
+			if (size <= order) {
+				for (int i = smList.size(); i <= order; i++) {
+					smList.add(new SemanticMetadata());
+				}
+			}
+			
+			SemanticMetadata sm = smList.get(order);			
+			if (tag.indexOf("ConceptCode") != -1) {
+				sm.setOrder(order);
+				sm.setConceptCode(value);
+			} else if (tag.indexOf("PreferredName") != -1) {
+				sm.setConceptName(value);
+			} else if (tag.indexOf("ConceptDefinition") != -1) {
+				sm.setConceptDefinition(value);
+			}
 		}
 		
 		private void applySemanticMetadata()
@@ -441,5 +462,15 @@ public class XMIParser
 	public void setAttributeVersion(float attributeVersion)
 	{
 		this.attributeVersion = attributeVersion;
+	}
+
+	public boolean isDebug()
+	{
+		return debug;
+	}
+
+	public void setDebug(boolean debug)
+	{
+		this.debug = debug;
 	}
 }
