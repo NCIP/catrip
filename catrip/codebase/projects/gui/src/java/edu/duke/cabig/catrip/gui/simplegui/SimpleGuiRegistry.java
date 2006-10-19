@@ -130,7 +130,14 @@ public class SimpleGuiRegistry {
             if (display){
                 String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
 //                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
-                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
+                ClassBean cBean =null;
+                try {
+                     cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
+                } catch (Exception e) {
+                    System.out.println("XXXX cound not find the class in registry: "+obj.getClassName());
+                   e.printStackTrace();
+                }
+                 
                 cBean.filterAttributes(displaybleAttributes);
                 
                 cBean.setAssociationRoleNameMap(new HashMap(20));
