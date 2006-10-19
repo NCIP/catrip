@@ -203,14 +203,14 @@
          <!-- jars from other projects.. -->
 		 <echo message="---- Copying jars from other projects. -----" />
 
-         <copy overwrite="true" toDir="${ext.lib.dir}">
+         <!-- <copy overwrite="true" toDir="${ext.lib.dir}">
             <fileset dir="${basedir}/../data/build/jars">
                 <include name="dcql-schema-beans-1.0.jar" />
             </fileset>
 			<fileset dir="${basedir}/../../share/xmlbeans">
                 <include name="*.jar" />
             </fileset>
-        </copy>
+        </copy> -->
 
 
 
