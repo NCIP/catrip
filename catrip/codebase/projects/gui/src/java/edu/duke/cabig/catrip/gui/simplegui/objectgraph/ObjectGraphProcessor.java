@@ -18,7 +18,7 @@ public class ObjectGraphProcessor {
     public ObjectGraphProcessor(String filename) {
         loadDocument(filename);
     }
-    
+
     private void loadDocument(String filename){
         try {
             SAXBuilder builder = new SAXBuilder();
@@ -36,10 +36,10 @@ public class ObjectGraphProcessor {
         graphObject.setServiceName(serviceName);
         graphObject.setRefID(associationEle.getAttributeValue("refID"));
         graphObject.setDisplayable(Boolean.parseBoolean(associationEle.getAttributeValue("display")));
-        
+
         List<GraphAssociation> associationPathWRTTargetObject = new ArrayList<GraphAssociation>();
         associationPathWRTTargetObject.add(buildGraphAssociation(associationEle));
-        
+
         if (!remoteService) {
             Element parentAssoc = associationEle.getParentElement();
             while (parentAssoc.getName().equals("Association")) {
@@ -64,7 +64,7 @@ public class ObjectGraphProcessor {
         //assoc.setRefID(associationEle.getAttributeValue("refID"));
         return assoc;
     }
-    
+
     private List getNodeListForXpath(String xpathStr){
         XPath xpath;
         List nodeList=null;
@@ -76,11 +76,11 @@ public class ObjectGraphProcessor {
         }
         return nodeList;
     }
-    
+
     public List<Service> getServices(){
         Element rootElement = doc.getRootElement();
         List serviceEleList = rootElement.getChildren();
-        
+
         Iterator servicesItr = serviceEleList.iterator();
         Element serviceEle = null;
         Service service = null;
@@ -104,13 +104,13 @@ public class ObjectGraphProcessor {
         List<GraphObject> GraphObjects = new ArrayList<GraphObject>();
         GraphObject targetObj = null;
         List<GraphAssociation> foreignAssociationOutboundPath = null;
-        
-        
-        try {           
+
+
+        try {
             String xpathStr;
             xpathStr = "/simpleGuiServices/service/targets/objectElement";
             if (serviceName != null) {
-                xpathStr = "/simpleGuiServices/service[@displayName='"+serviceName+"']/targets/objectElement";  
+                xpathStr = "/simpleGuiServices/service[@displayName='"+serviceName+"']/targets/objectElement";
             }
             GraphObjectsNodes = getNodeListForXpath(xpathStr);
             for (int i=0;i<GraphObjectsNodes.size();i++){
@@ -119,15 +119,29 @@ public class ObjectGraphProcessor {
                 String serviceName1 =  objectElement.getParentElement().getParentElement().getAttributeValue("displayName");
                 Element foreignAssociationOutboundPathEle = objectElement.getChild("foreignAssociationOutboundPath");
                 Element associationEle = null;
-                
+
+                /*
                 associationEle = foreignAssociationOutboundPathEle.getChild("Association");
                 foreignAssociationOutboundPath.add(buildGraphAssociation(associationEle));
-                
-                while (associationEle.getChild("Association") != null ) { 
+
+                while (associationEle.getChild("Association") != null ) {
                     associationEle = associationEle.getChild("Association");
                     foreignAssociationOutboundPath.add(buildGraphAssociation(associationEle));
-                }              
-                
+                }
+                */
+                // added check for null Srini Akkala 10/19
+                associationEle = foreignAssociationOutboundPathEle.getChild("Association");
+                if (associationEle!=null){
+                    foreignAssociationOutboundPath.add(buildGraphAssociation(associationEle));
+
+
+                    while (associationEle.getChild("Association") != null ) {
+                        associationEle = associationEle.getChild("Association");
+                        foreignAssociationOutboundPath.add(buildGraphAssociation(associationEle));
+                    }
+                }
+
+
                 targetObj = new GraphObject();
                 targetObj.setClassName(objectElement.getAttributeValue("className"));
                 targetObj.setRefID(objectElement.getAttributeValue("refID"));
@@ -136,9 +150,9 @@ public class ObjectGraphProcessor {
                 targetObj.setForeignAssociationOutboundCDE(foreignAssociationOutboundPathEle.getAttributeValue("cdeName"));
                 targetObj.setForeignAssociationOutboundPath(foreignAssociationOutboundPath);
                 targetObj.setServiceName(serviceName1);
-                
+
                 GraphObjects.add(targetObj);
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,12 +169,12 @@ public class ObjectGraphProcessor {
         try {
             xpathStr = "/simpleGuiServices/service[@displayName='"+serviceName+"']/targets/objectElement[@className='"+className+"']/associatedObjectTree/Association";
             if (remoteService){
-                xpathStr = "/simpleGuiServices/service[@displayName='"+serviceName+"']/foreignAssociationInboundTree/foreignAssociationInboundPath[@className='"+className+"']/Association";  
+                xpathStr = "/simpleGuiServices/service[@displayName='"+serviceName+"']/foreignAssociationInboundTree/foreignAssociationInboundPath[@className='"+className+"']/Association";
             }
             associationsNodes = getNodeListForXpath(xpathStr);
 
             for (int i=0;i<associationsNodes.size();i++){
-                Element associationEle = (Element)associationsNodes.get(i);                
+                Element associationEle = (Element)associationsNodes.get(i);
                 associatedObjects.add(buildGraphObject(associationEle,serviceName,remoteService));
                 //System.out.println(associationEle.getAttributeValue("className"));
                 while (associationEle!=null && associationEle.getChildren("Association").size() > 0 ) {
@@ -171,7 +185,7 @@ public class ObjectGraphProcessor {
                         Element e = (Element)itr.next();
 //                        System.out.println(" #####  :"+e.getAttribute("className")+"\n" );
                         associatedObjects.add(buildGraphObject(e,serviceName,remoteService));
-//                        associationEle = associationEle.getChild("Association"); 
+//                        associationEle = associationEle.getChild("Association");
                           // this line creates problem when there are more than 2 association element exist at same level. Moving it down works.
                     }
                     associationEle = associationEle.getChild("Association");
@@ -193,7 +207,7 @@ public class ObjectGraphProcessor {
             List objectsFound = getNodeListForXpath(xpathStr);
             String serviceName;
             for (int i=0;i<objectsFound.size();i++){
-                Element objectElement = (Element)objectsFound.get(i); 
+                Element objectElement = (Element)objectsFound.get(i);
                 serviceName = objectElement.getParentElement().getParentElement().getAttributeValue("displayName");
                 targetObj = new GraphObject();
                 targetObj.setClassName(objectElement.getAttributeValue("className"));
@@ -203,24 +217,24 @@ public class ObjectGraphProcessor {
                 targetObj.setServiceName(serviceName);
                 targetObj.setRefID(objectElement.getAttributeValue("refID"));
                 targetObj.setLocalStatus(false); //  mark this object as foreign object to the target service..
-                
+
                 foreignAssociationInboundPath = new ArrayList<GraphAssociation>();
                 Element associationEle = objectElement.getChild("Association");
                 foreignAssociationInboundPath.add(buildGraphAssociation(associationEle));
-                
-                while (associationEle.getChild("Association") != null ) { 
+
+                while (associationEle.getChild("Association") != null ) {
                     associationEle = associationEle.getChild("Association");
                     foreignAssociationInboundPath.add(buildGraphAssociation(associationEle));
-                } 
+                }
                 targetObj.setForeignAssociationInboundPath(foreignAssociationInboundPath);
-                
+
                 avialableObjects.add(targetObj);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return avialableObjects;
-        
+
     }
 
 }
