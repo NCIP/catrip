@@ -1,11 +1,11 @@
 <ns1:ServiceMetadata xsi:type="ns1:ServiceMetadata" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <ns1:serviceDescription>
-  <ns2:Service description="caTissueCore service on catrip1.duhs.duke.edu" name="caTissueCore_catrip1" version="1.0" xsi:type="ns2:Service" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.service">
+  <ns2:Service description="caTissueCAE service " name="caTissueCAE" version="1.0" xsi:type="ns2:Service" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.service">
    <ns2:pointOfContactCollection>
     <com:PointOfContact affiliation="SB" email="Sanjeev@SemanticBits.com" firstName="Sanjeev" lastName="Agarwal" role="Maintainer" xmlns:com="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common"/>
    </ns2:pointOfContactCollection>
    <ns2:serviceContextCollection>
-    <ns2:ServiceContext description="" name="caTissueCore" xsi:type="ns2:ServiceContext">
+    <ns2:ServiceContext description="" name="caTissueCAE" xsi:type="ns2:ServiceContext">
      <ns2:operationCollection>
       <ns2:Operation description="" name="getServiceSecurityMetadata" xsi:type="ns2:Operation">
        <ns2:inputParameterCollection/>
