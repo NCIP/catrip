@@ -337,6 +337,7 @@
 				<echo message="Cleaning project @{project.name}." />
 				<delete dir="${projects.dir}/@{project.name}/ext" />
 				<ant dir="${projects.dir}/@{project.name}" inheritAll="false" antfile="build.xml" target="clean" />
+				<delete file="${projects.dir}/@{project.name}/lib/caGrid-caTrip-sdkQuery-1.0.jar" />
 			</sequential>
 		</for>
 
