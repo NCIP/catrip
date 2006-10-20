@@ -142,7 +142,7 @@
 				<exclude name="*test*.jar" />
 			</fileset>
 			<fileset dir="${projects.dir}/CGEMSDataServiceV2/lib">
-				<include name="cgems_domain.jar" />
+				<include name="cgems-domain.jar" />
 			</fileset>			
 		</artifact>
 
