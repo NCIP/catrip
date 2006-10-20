@@ -14,6 +14,8 @@ public class CAEConfigureStep
 	extends Step
 {
 	private File serviceDir;
+	private File origFile;
+	private File configFile;
 	
 	public CAEConfigureStep(File serviceDir) 
 	{
@@ -25,10 +27,49 @@ public class CAEConfigureStep
 	public void runStep() 
 		throws IOException
 	{
+		origFile = File.createTempFile("CAEConfigureStep", ".cfg.xml");
+		configFile = new File(serviceDir, "cae-hibernate.cfg.xml");
+		FileUtils.copy(configFile, origFile);
+		
+		String connectionUrl = System.getProperty("cae.connectionurl", 
+			"jdbc:oracle:thin:@pparker:1521:TRIP"
+		); 
+		String user = System.getProperty("cae.username", 
+			"caedba"
+		); 
+		String password = System.getProperty("cae.password", 
+			"cae"
+		); 
+		
 		FileUtils.replace(
-			new File(serviceDir, "cae-hibernate.cfg.xml"),
-			"jdbc:oracle:thin:@localhost:1521:agile",
-			System.getProperty("cae.connection.url", "jdbc:oracle:thin:@pparker:1521:TRIP")
+			configFile,
+			"<property name=\"connection.url\">jdbc:oracle:thin:@pparker:1521:trip</property>",
+			"<property name=\"connection.url\">" + connectionUrl + "</property>"			
 		);
+		FileUtils.replace(
+			configFile,
+			"<property name=\"connection.username\">catissue_core</property>",
+			"<property name=\"connection.username\">" + user + "</property>"			
+		);
+		FileUtils.replace(
+			configFile,
+			"<property name=\"connection.password\">catissue_core</property>",
+			"<property name=\"connection.password\">" + password + "</property>"			
+		);
+	}
+
+	public File getConfigFile()
+	{
+		return configFile;
+	}
+
+	public File getOrigFile()
+	{
+		return origFile;
+	}
+
+	public File getServiceDir()
+	{
+		return serviceDir;
 	}
 }

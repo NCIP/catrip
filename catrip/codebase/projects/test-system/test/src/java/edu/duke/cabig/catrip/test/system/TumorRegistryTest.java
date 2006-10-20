@@ -3,6 +3,7 @@
  */
 package edu.duke.cabig.catrip.test.system;
 
+import edu.duke.cabig.catrip.test.system.steps.TumorRegistryCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.TumorRegistryConfigureStep;
 import gov.nci.nih.cagrid.tests.core.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
@@ -38,6 +39,7 @@ public class TumorRegistryTest
 	private GlobusHelper globus;
 	private File serviceDir;
 	private int port;
+	private TumorRegistryCleanupStep cleanupStep;
 	
 	public TumorRegistryTest()
 	{
@@ -57,6 +59,9 @@ public class TumorRegistryTest
 			globus.stopGlobus(port);
 			globus.cleanupTempGlobus();
 		}
+		if (cleanupStep != null) {
+			cleanupStep.runStep();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -67,10 +72,11 @@ public class TumorRegistryTest
 		serviceDir = new File(System.getProperty("tumorregistry.dir",
 			".." + File.separator + "TumorRegistryDataService"
 		));
+		TumorRegistryConfigureStep configStep = new TumorRegistryConfigureStep(serviceDir);
 		
 		Vector steps = new Vector();
 		steps.add(new GlobusCreateStep(globus));
-		steps.add(new TumorRegistryConfigureStep(serviceDir));
+		steps.add(configStep);
 		steps.add(new GlobusDeployServiceStep(globus, serviceDir));
 		steps.add(new GlobusStartStep(globus, port));
 		try {
@@ -80,6 +86,7 @@ public class TumorRegistryTest
 		}
 		steps.add(new GlobusStopStep(globus, port));
 		steps.add(new GlobusCleanupStep(globus));
+		steps.add(cleanupStep = new TumorRegistryCleanupStep(configStep));
 		return steps;
 	}
 

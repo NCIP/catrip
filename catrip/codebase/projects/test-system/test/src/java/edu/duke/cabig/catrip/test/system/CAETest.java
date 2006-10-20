@@ -3,6 +3,7 @@
  */
 package edu.duke.cabig.catrip.test.system;
 
+import edu.duke.cabig.catrip.test.system.steps.CAECleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CAEConfigureStep;
 import gov.nci.nih.cagrid.tests.core.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
@@ -10,7 +11,6 @@ import gov.nci.nih.cagrid.tests.core.steps.GlobusCreateStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusDeployServiceStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusStartStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusStopStep;
-import gov.nci.nih.cagrid.tests.core.steps.SleepStep;
 import gov.nci.nih.cagrid.tests.core.util.ServiceHelper;
 
 import java.io.File;
@@ -39,6 +39,7 @@ public class CAETest
 	private GlobusHelper globus;
 	private File serviceDir;
 	private int port;
+	private CAECleanupStep cleanupStep;
 	
 	public CAETest()
 	{
@@ -58,6 +59,9 @@ public class CAETest
 			globus.stopGlobus(port);
 			globus.cleanupTempGlobus();
 		}
+		if (cleanupStep != null) {
+			cleanupStep.runStep();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -68,10 +72,11 @@ public class CAETest
 		serviceDir = new File(System.getProperty("cae.dir",
 			".." + File.separator + "CAEDataServiceV2"
 		));
+		CAEConfigureStep configStep = new CAEConfigureStep(serviceDir);
 		
 		Vector steps = new Vector();
 		steps.add(new GlobusCreateStep(globus));
-		steps.add(new CAEConfigureStep(serviceDir));
+		steps.add(configStep);
 		steps.add(new GlobusDeployServiceStep(globus, serviceDir));
 		steps.add(new GlobusStartStep(globus, port));
 		try {
@@ -81,6 +86,7 @@ public class CAETest
 		}
 		steps.add(new GlobusStopStep(globus, port));
 		steps.add(new GlobusCleanupStep(globus));
+		steps.add(cleanupStep = new CAECleanupStep(configStep));
 		return steps;
 	}
 

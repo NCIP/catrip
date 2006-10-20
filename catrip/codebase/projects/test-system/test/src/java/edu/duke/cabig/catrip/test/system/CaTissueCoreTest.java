@@ -3,6 +3,7 @@
  */
 package edu.duke.cabig.catrip.test.system;
 
+import edu.duke.cabig.catrip.test.system.steps.CaTissueCoreCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CaTissueCoreConfigureStep;
 import gov.nci.nih.cagrid.tests.core.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
@@ -10,7 +11,6 @@ import gov.nci.nih.cagrid.tests.core.steps.GlobusCreateStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusDeployServiceStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusStartStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusStopStep;
-import gov.nci.nih.cagrid.tests.core.steps.SleepStep;
 import gov.nci.nih.cagrid.tests.core.util.ServiceHelper;
 
 import java.io.File;
@@ -39,6 +39,7 @@ public class CaTissueCoreTest
 	private GlobusHelper globus;
 	private File serviceDir;
 	private int port;
+	private CaTissueCoreCleanupStep cleanupStep;
 	
 	public CaTissueCoreTest()
 	{
@@ -58,6 +59,9 @@ public class CaTissueCoreTest
 			globus.stopGlobus(port);
 			globus.cleanupTempGlobus();
 		}
+		if (cleanupStep != null) {
+			cleanupStep.runStep();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -68,10 +72,11 @@ public class CaTissueCoreTest
 		serviceDir = new File(System.getProperty("catissuecore.dir",
 			".." + File.separator + "CaTissueCoreDataServiceV2"
 		));
+		CaTissueCoreConfigureStep configStep = new CaTissueCoreConfigureStep(serviceDir);
 		
 		Vector steps = new Vector();
 		steps.add(new GlobusCreateStep(globus));
-		steps.add(new CaTissueCoreConfigureStep(serviceDir));
+		steps.add(configStep);
 		steps.add(new GlobusDeployServiceStep(globus, serviceDir));
 		steps.add(new GlobusStartStep(globus, port));
 		try {
@@ -81,6 +86,7 @@ public class CaTissueCoreTest
 		}
 		steps.add(new GlobusStopStep(globus, port));
 		steps.add(new GlobusCleanupStep(globus));
+		steps.add(cleanupStep = new CaTissueCoreCleanupStep(configStep));
 		return steps;
 	}
 

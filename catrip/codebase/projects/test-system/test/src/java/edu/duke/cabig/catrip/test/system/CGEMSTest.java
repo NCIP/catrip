@@ -3,6 +3,7 @@
  */
 package edu.duke.cabig.catrip.test.system;
 
+import edu.duke.cabig.catrip.test.system.steps.CGEMSCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CGEMSConfigureStep;
 import gov.nci.nih.cagrid.tests.core.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
@@ -38,6 +39,7 @@ public class CGEMSTest
 	private GlobusHelper globus;
 	private File serviceDir;
 	private int port;
+	private CGEMSCleanupStep cleanupStep;
 	
 	public CGEMSTest()
 	{
@@ -57,6 +59,9 @@ public class CGEMSTest
 			globus.stopGlobus(port);
 			globus.cleanupTempGlobus();
 		}
+		if (cleanupStep != null) {
+			cleanupStep.runStep();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -67,10 +72,11 @@ public class CGEMSTest
 		serviceDir = new File(System.getProperty("cgems.dir",
 			".." + File.separator + "CGEMSDataServiceV2"
 		));
+		CGEMSConfigureStep configStep = new CGEMSConfigureStep(serviceDir);
 		
 		Vector steps = new Vector();
 		steps.add(new GlobusCreateStep(globus));
-		steps.add(new CGEMSConfigureStep(serviceDir));
+		steps.add(configStep);
 		steps.add(new GlobusDeployServiceStep(globus, serviceDir));
 		steps.add(new GlobusStartStep(globus, port));
 		try {
@@ -80,6 +86,7 @@ public class CGEMSTest
 		}
 		steps.add(new GlobusStopStep(globus, port));
 		steps.add(new GlobusCleanupStep(globus));
+		steps.add(cleanupStep = new CGEMSCleanupStep(configStep));
 		return steps;
 	}
 
