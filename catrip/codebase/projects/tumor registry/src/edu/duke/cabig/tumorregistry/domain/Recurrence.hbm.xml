@@ -29,7 +29,7 @@
 			length="50"
 		/>
 
-		<set name="distantSiteCollection"  lazy="false"  inverse="true" cascade="all">
+		<set name="distantSiteCollection"  lazy="false"  inverse="false" cascade="all">
 			<key column="RECURRENCE_ID"/>
 			<one-to-many class="DistantSite"/>
 		</set>
