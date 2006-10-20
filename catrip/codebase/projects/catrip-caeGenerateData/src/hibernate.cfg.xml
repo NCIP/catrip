@@ -11,14 +11,16 @@
  
    
     <!--  <property name="connection.url">jdbc:oracle:thin:@localhost:1521:caesid</property> -->
-      <property name="connection.url">jdbc:oracle:thin:@pparker.duhs.duke.edu:1521:trip</property>
+      
 
  <!-- PRODUCTION DB, WHICH IS COMMENTED OUT
+ 	<property name="connection.url">jdbc:oracle:thin:@pparker.duhs.duke.edu:1521:trip</property>
       <property name="connection.username">caedba</property>
       <property name="connection.password">cae</property>
  -->      
  
  <!-- TEST DB -->
+ 	<property name="connection.url">jdbc:oracle:thin:@pparker.duhs.duke.edu:1521:trip</property>
        <property name="connection.username">testtrip</property>
       <property name="connection.password">testcae</property>
       
