@@ -13,8 +13,8 @@
       <property name="connection.url">jdbc:oracle:thin:@pparker:1521:trip</property>
      
    
-      <property name="connection.username">caedba</property>
-      <property name="connection.password">cae</property>
+      <property name="connection.username">testtrip</property>
+      <property name="connection.password">testcae</property>
              
       <!-- Use the C3P0 connection pool.  -->
       <property name="c3p0.min_size">3</property>
@@ -30,17 +30,7 @@
       <mapping resource="edu/pitt/cabig/cae/domain/general/AnnotatableEntity.hbm.xml"/>
       <mapping resource="edu/pitt/cabig/cae/domain/general/EventParameters.hbm.xml"/>
       <mapping resource="edu/duke/catrip/cae/domain/general/ParticipantMedicalIdentifier.hbm.xml"/>
-      <!--
-      <mapping resource="edu/duke/catrip/cae/domain/general/ParticipantMedicalIdentifier.hbm.xml"/>
-      <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/ThreeDimensionalSize.hbm.xml"/> 
-      <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/HistopathologicGrade.hbm.xml"/> 
-      <mapping resource="edu/pitt/cabig/cae/domain/general/mappings/AdditionalFindings.hbm.xml"/> 
-      
-      <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/InvasiveBreastCarcinomaNeoplasmHistologicType.hbm.xml"/> 
-      <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/BreastSurgicalPathologySpecimen.hbm.xml"/> 
-      <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/InvasiveBreastCarcinoma.hbm.xml"/> 
-      <mapping resource="edu/pitt/cabig/cae/domain/breast/mappings/BreastCancerTNMFinding.hbm.xml"/> 
-      -->
+
     </session-factory>
 </hibernate-configuration>
 
