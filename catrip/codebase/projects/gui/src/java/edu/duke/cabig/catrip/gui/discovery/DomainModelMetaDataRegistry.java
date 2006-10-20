@@ -11,7 +11,9 @@ import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 import gov.nih.nci.cagrid.metadata.dataservice.UMLAssociation;
 import gov.nih.nci.cagrid.metadata.dataservice.UMLGeneralization;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Hashtable;
 
 /**
  * This class acts as Registry for the Domain Model Metadata.
@@ -89,11 +91,30 @@ public class DomainModelMetaDataRegistry {
             
             SemanticMetadata[] semanticMetadata = umlClasses[i].getSemanticMetadata(); //umlClasses[i].getSemanticMetadataCollection().getSemanticMetadata();
             String classCDEName = "";
+//            if ((semanticMetadata != null)  &&  (semanticMetadata.length >= 1)){
+//                for (int k = 0; k < semanticMetadata.length; k++) {
+//                    classCDEName = classCDEName + " "+ semanticMetadata[k].getConceptName() ;
+//                }
+//            }
+            
+            /**   get the CDE name or Display Name by concatenation of the concept names in reverse order. */
+            Hashtable ht = new Hashtable();
+            ArrayList v = new ArrayList();
+            
             if ((semanticMetadata != null)  &&  (semanticMetadata.length >= 1)){
-                for (int k = 0; k < semanticMetadata.length; k++) {
-                    classCDEName = classCDEName + " "+ semanticMetadata[k].getConceptName() ;
+                int numConcepts = semanticMetadata.length;
+                for (int k = 0; k < numConcepts; k++) {
+                    Integer order = semanticMetadata[k].getOrder();
+                    ht.put(order, semanticMetadata[k].getConceptName());
+                    v.add(order);
                 }
             }
+            Collections.sort(v);
+            for (int j = v.size()-1 ; j >= 0; j--) {
+                Integer order = (Integer)v.get(j);
+                classCDEName = classCDEName + " "+ht.get(order);
+            }
+            
             classBean.setCDEName(classCDEName);
             
             
@@ -108,11 +129,26 @@ public class DomainModelMetaDataRegistry {
                     attributeBean.setAttributeName(umlAttributes[j].getName());
                     /**   get the CDE name or Display Name by concatenation of the concept names in reverse order. */
                     String cdeName = "";
-                    SemanticMetadata[]  attributeMetadata =  umlAttributes[j].getSemanticMetadata(); //umlAttributes[j].getSemanticMetadataCollection().getSemanticMetadata();
+                    Hashtable htt = new Hashtable();
+                    ArrayList vv = new ArrayList();
                     
-                    for (int k = 0; k < attributeMetadata.length; k++) {
-                        cdeName = cdeName + " "+ attributeMetadata[k].getConceptName() ;
+                    SemanticMetadata[]  attributeMetadata =  umlAttributes[j].getSemanticMetadata(); //umlAttributes[j].getSemanticMetadataCollection().getSemanticMetadata();
+//                    for (int k = 0; k < attributeMetadata.length; k++) {
+//                        cdeName = cdeName + " "+ attributeMetadata[k].getConceptName() ;
+//                    }
+                    
+                    int numConcepts = attributeMetadata.length;
+                    for (int k = 0; k < numConcepts; k++) {
+                        Integer order = attributeMetadata[k].getOrder();
+                        htt.put(order, attributeMetadata[k].getConceptName());
+                        vv.add(order);
                     }
+                    Collections.sort(v);
+                    for (int jj = numConcepts-1 ; jj >= 0; jj--) {
+                        Integer order = (Integer)vv.get(jj);
+                        cdeName = cdeName + " "+htt.get(order);
+                    }
+                    
                     attributeBean.setDisplayName(cdeName);
                     attributeBean.setCDEName(cdeName);
 //                    System.out.println( classBean.getClassName()+ ":" + cdeName );
@@ -319,7 +355,7 @@ public class DomainModelMetaDataRegistry {
     
     
     
-     
+    
     public static ArrayList<String> getAllSubClassFromHierarchy(ClassBean cBean){
         ArrayList<String> subClasses = new ArrayList<String>(100);
         ArrayList<String> subclassRefs = cBean.getSubClassIds();
