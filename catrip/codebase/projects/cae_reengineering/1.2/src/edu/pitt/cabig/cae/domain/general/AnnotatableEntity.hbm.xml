@@ -32,7 +32,7 @@
     			</set>
        			<property name="lastName" column="last_Name" type="string"/>
        			<property name="firstName" column="first_Name" type="string"/>
-       			<property name="birthDate" column="birth_Date" type="string"/>
+       			<property name="birthDate" column="birth_Date" type="date"/>
        			<property name="uniquePatientIdentifier" column="Patient_Identifier" type="string"/>
        			
        			<property name="gender" column="gender" type="string"/>
