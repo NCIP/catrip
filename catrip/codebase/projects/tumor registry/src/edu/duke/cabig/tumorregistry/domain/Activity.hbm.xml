@@ -68,7 +68,7 @@
 				not-null="false"
 				length="7"
 			/>
-			<subclass name="HormoneTherapy" discriminator-value="hormone"/>
+			<subclass name="HormoneTherapy" discriminator-value="Hormone"/>
 			<subclass name="Immunotherapy" discriminator-value="Immunotherapy"/>
 			<subclass name="OtherTherapy" discriminator-value="OtherTherapy" lazy="false"/>
 			<subclass name="Chemotherapy" discriminator-value="Chemotherapy"/>
@@ -85,7 +85,7 @@
 			<subclass name="OtherProcedure" discriminator-value="otherprocedure"/>
 			<subclass name="HemTransplantEndocrineProcedure" discriminator-value="HemTransplantEndocrineProcedure"/>
 			<subclass name="Radiation" discriminator-value="Radiation"/>
-			<subclass name="FirstCourseRadiation" discriminator-value="firstCourseRadiation">
+			<subclass name="FirstCourseRadiation" discriminator-value="FirstCourseRadiation">
 			
 				<property
 					name="StopDate"
