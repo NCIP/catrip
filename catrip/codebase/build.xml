@@ -49,13 +49,13 @@
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
 	<property name="projects.list" value="deid, localsdkquery, data, ctom, gui, queryengine, cae_reengineering, security-password, security-dukeidp, test-report, test-system," />
 	<!-- The name should be the path relative from projects.dir.  -->
-	<property name="services.list" value="CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService " />
+	<property name="services.list" value="xmi2model, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService " />
 
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="testable.projects.list" value="gui, queryengine, security-password, test-report, security-dukeidp" />
+	<property name="testable.projects.list" value="xmi2model, gui, queryengine, security-password, test-report, security-dukeidp" />
 
 	<!-- ======================================================================================= -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT SYSTEM TESTING                    -->
@@ -67,7 +67,7 @@
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
 	<!-- ================================================================================ -->
 	<!-- This should be a subset of the projects above -->
-	<property name="reportable.projects.list" value="ctom, gui, queryengine, caTissueCAEDataService, caTissueCoreDataService, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
+	<property name="reportable.projects.list" value="xmi2model, ctom, gui, queryengine, caTissueCAEDataService, caTissueCoreDataService, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
 
 
 	<!-- =============================================================== -->
@@ -104,6 +104,20 @@
 				<pathelement location="${share.dir}/ant-contrib/ant-contrib.jar" />
 			</classpath>
 		</taskdef>
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- XMI2MODEL                                                       -->
+	<!-- =============================================================== -->
+
+	<target name="build-xmi2model" depends="prepare" description="Builds the xmi2model project">
+		<resolveDependencies extdir="${projects.dir}/xmi2model/ext">
+			<artifact refid="common.test.jars" />
+			
+			<artifact refid="cagrid.data.jars" />
+			<artifact refid="cagrid.metadata.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/xmi2model" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 	<!-- =============================================================== -->
