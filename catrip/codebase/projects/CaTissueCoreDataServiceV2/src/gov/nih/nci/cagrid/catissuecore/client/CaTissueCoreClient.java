@@ -89,7 +89,7 @@ public class CaTissueCoreClient extends ServiceSecurityClient implements CaTissu
         System.out.println("Running the Grid Service Client");
         try{
 
-            CaTissueCoreClient client = new CaTissueCoreClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CaTissueCore");
+            CaTissueCoreClient client = new CaTissueCoreClient("http://152.16.96.114/wsrf/services/cagrid/CaTissueCore");
 
     		CQLQuery cqlQuery = new CQLQuery();
 
