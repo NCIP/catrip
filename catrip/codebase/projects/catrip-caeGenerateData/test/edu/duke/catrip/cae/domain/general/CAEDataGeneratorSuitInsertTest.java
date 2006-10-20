@@ -8,9 +8,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import edu.duke.catrip.cae.domain.breast.BreastCancerTNMInsertTest;
-import edu.duke.catrip.cae.domain.breast.BreastNegativeSurgicalMarginInsertTest;
-import edu.duke.catrip.cae.domain.breast.BreastPositiveSurgicalMarginInsertTest;
-import edu.duke.catrip.cae.domain.breast.BreastSurgicalPathologySpecimenInsertTest;
 import edu.duke.catrip.cae.domain.breast.InvasiveBreastCarcinomaInsertTest;
 import edu.duke.catrip.cae.domain.breast.InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest;
 import edu.duke.catrip.cae.domain.breast.NottinghamHistopathologicGradeInsertTest;
@@ -87,7 +84,7 @@ public class CAEDataGeneratorSuitInsertTest extends TestCase {
 
 		if (DEBUG) System.out.println("Inside test_ThreeDimensionalSizeInsertTest()...");
 		
-		ThreeDimensionalSizeInsertTest test = new ThreeDimensionalSizeInsertTest("ThreeDimensionalSizeInsertTest");
+		ThreeDimensionalTumorSizeInsertTest test = new ThreeDimensionalTumorSizeInsertTest("ThreeDimensionalSizeInsertTest");
 
 		test.testRead_Insert();
 		
@@ -110,20 +107,7 @@ public class CAEDataGeneratorSuitInsertTest extends TestCase {
 		
 	}
 	
-	//Tests inserting into table(s): BREAST_SUR_PATHO_SPECIMANS, BREAST_SURGICAL_PROCEDURES
-	public void test_BreastSurgicalPathologySpecimenInsertTest() throws Exception {
 
-		final boolean DEBUG = true;
-
-		if (DEBUG) System.out.println("Inside test_BreastSurgicalPathologySpecimenInsertTest()...");
-		
-		BreastSurgicalPathologySpecimenInsertTest test = new BreastSurgicalPathologySpecimenInsertTest("BreastSurgicalPathologySpecimenInsertTest");
-
-		test.testRead_Insert();
-		
-		if (DEBUG) System.out.println("\tEnd Of test_BreastSurgicalPathologySpecimenInsertTest()...");
-		
-	}
 	
 	//Tests inserting into table(s): BREAST_OTHER_HISTOPATH_GRADES
 	public void test_OtherBreastCancerHistopathologicGradeInsertTest() throws Exception {
@@ -155,35 +139,9 @@ public class CAEDataGeneratorSuitInsertTest extends TestCase {
 		
 	}	
 	
-	//Tests inserting into table(s): BREAST_SURGICAL_MARGINS, BREAST_NEG_SURGICAL_MARGINS
-	public void test_BreastNegativeSurgicalMarginInsertTest() throws Exception {
 
-		final boolean DEBUG = true;
-
-		if (DEBUG) System.out.println("Inside test_BreastNegativeSurgicalMarginInsertTest()...");
-		
-		BreastNegativeSurgicalMarginInsertTest test = new BreastNegativeSurgicalMarginInsertTest("BreastNegativeSurgicalMarginInsertTest");
-
-		test.testRead_Insert();
-		
-		if (DEBUG) System.out.println("\tEnd Of test_BreastNegativeSurgicalMarginInsertTest()...");
-		
-	}
 	
-	//Tests inserting into table(s): BREAST_SURGICAL_MARGINS, BREAST_POS_SURGICAL_MARGINS
-	public void test_BreastPositiveSurgicalMarginInsertTest() throws Exception {
 
-		final boolean DEBUG = true;
-
-		if (DEBUG) System.out.println("Inside test_BreastPositiveSurgicalMarginInsertTest()...");
-		
-		BreastPositiveSurgicalMarginInsertTest test = new BreastPositiveSurgicalMarginInsertTest("BreastPositiveSurgicalMarginInsertTest");
-
-		test.testRead_Insert();
-		
-		if (DEBUG) System.out.println("\tEnd Of test_BreastPositiveSurgicalMarginInsertTest()...");
-		
-	}
 	
 	//Tests inserting into table(s): BREAST_NEO_HSTOPTHLGC_TYPES
 	public void test_InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest() throws Exception {

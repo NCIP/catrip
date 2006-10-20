@@ -1,0 +1,103 @@
+<HTML><BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff" LANG="0">pmccon012<!-- (10:19:14 AM)--></B></FONT><FONT COLOR="#0000ff" BACK="#ffffff">:</FONT><FONT COLOR="#000000"> hi mark</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:19:16 AM)--></B>:</FONT><FONT COLOR="#000000"> how are things going?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:19:21 AM)--></B>:</FONT><FONT COLOR="#000000"> ok</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:20:16 AM)--></B>:</FONT><FONT COLOR="#000000"> i noticed that in the jars in the build path you 
+have referenced jars with the full path</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:20:32 AM)--></B>:</FONT><FONT COLOR="#000000"> they need to be added with a local path</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:20:46 AM)--></B>:</FONT><FONT COLOR="#000000"> yeah, was having probs with that...</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:20:46 AM)--></B>:</FONT><FONT COLOR="#000000"> so instead of doing add external jars</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:20:52 AM)--></B>:</FONT><FONT COLOR="#000000"> you should just do add jars</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:21:02 AM)--></B>:</FONT><FONT COLOR="#000000"> ok</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:21:41 AM)--></B>:</FONT><FONT COLOR="#000000"> how is the ant file coming along?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:22:11 AM)--></B>:</FONT><FONT COLOR="#000000"> sorry, been focused on catissuecore</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:22:21 AM)--></B>:</FONT><FONT COLOR="#000000"> no problem</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:22:24 AM)--></B>:</FONT><FONT COLOR="#000000"> how is that coming along?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:23:50 AM)--></B>:</FONT><FONT COLOR="#000000"> has been good until it tried to insert a user 
+rec, that contains a address, dept, institution, researchgroup 
+rec inside it...</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:24:46 AM)--></B>:</FONT><FONT COLOR="#000000"> k - keep me posted</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:25:24 AM)--></B>:</FONT><FONT COLOR="#000000"> getting error: 
+junit.framework.AssertionFailedError<BR>
+	at junit.framework.Assert.fail(Assert.java:47)<BR>
+	at 
+junit.framework.Assert.assertTrue(Assert.java:20)<BR>
+	at 
+junit.framework.Assert.assertTrue(Assert.java:27)</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:25:44 AM)--></B>:</FONT><FONT COLOR="#000000"> where is the assertion at?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:26:05 AM)--></B>:</FONT><FONT COLOR="#000000"> which table?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:26:11 AM)--></B>:</FONT><FONT COLOR="#000000"> i mean wherein the code</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:26:16 AM)--></B>:</FONT><FONT COLOR="#000000"> there is more to the stack trace, right?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:26:25 AM)--></B>:</FONT><FONT COLOR="#000000"> yeah...</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:26:46 AM)--></B>:</FONT><FONT COLOR="#000000"> it's in sb's create class</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:27:23 AM)--></B>:</FONT><FONT COLOR="#000000"> that source is available, right?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:27:29 AM)--></B>:</FONT><FONT COLOR="#000000"> so you can check what it is comparing</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:27:32 AM)--></B>:</FONT><FONT COLOR="#000000"> right</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:27:45 AM)--></B>:</FONT><FONT COLOR="#000000"> however, i am surprised to see junit code in 
+code that you are calling</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:28:03 AM)--></B>:</FONT><FONT COLOR="#000000"> i figured you'd be using the hibarnate built jars</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:28:14 AM)--></B>:</FONT><FONT COLOR="#000000"> i am...</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:28:26 AM)--></B>:</FONT><FONT COLOR="#000000"> i'm just testing thru junit</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:28:45 AM)--></B>:</FONT><FONT COLOR="#000000"> per bill m.'s suggestion</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:29:10 AM)--></B>:</FONT><FONT COLOR="#000000"> right, so you are invoking their tests?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:29:24 AM)--></B>:</FONT><FONT COLOR="#000000"> no...</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:29:37 AM)--></B>:</FONT><FONT COLOR="#000000"> the assertion is in your code?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:30:13 AM)--></B>:</FONT><FONT COLOR="#000000"> or did they stick a junit assertion in hibernate 
+code?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:30:55 AM)--></B>:</FONT><FONT COLOR="#000000"> i cloned their code, into my proj:</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:30:57 AM)--></B>:</FONT><FONT COLOR="#000000"> 	//insert data object into db<BR>
+	public static void create(Object obj) {<BR>
+		System.out.println(&quot;Inside create()...&quot;);<BR>
+		Transaction tx = null;<BR>
+		System.out.println(&quot;Inside create() - before: 
+HibernateUtil.currentSession...&quot;);<BR>
+		Session session = 
+HibernateUtil.currentSession();<BR>
+		System.out.println(&quot;Inside create() - before 
+try...&quot;);<BR>
+		try {<BR>
+			System.out.println(&quot;Inside create() - 
+session.beginTransaction...&quot;);<BR>
+			tx = session.beginTransaction();<BR>
+			System.out.println(&quot;Inside create() - 
+session.save...&quot;);<BR>
+			session.save(obj); <BR>
+			System.out.println(&quot;Inside create() - 
+tx.commit...&quot;);<BR>
+			tx.commit();<BR>
+			<BR>
+		} catch (HibernateException e) {<BR>
+			e.printStackTrace();<BR>
+			if (tx != null )<BR>
+				tx.rollback();<BR>
+			assertTrue(false);<BR>
+		}<BR>
+	}</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:31:22 AM)--></B>:</FONT><FONT COLOR="#000000"> oh, i see</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:31:34 AM)--></B>:</FONT><FONT COLOR="#000000"> had worked for cae</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:31:39 AM)--></B>:</FONT><FONT COLOR="#000000"> makes sense</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:31:51 AM)--></B>:</FONT><FONT COLOR="#000000"> </FONT><FONT BACK="#ffffff">i guess the root of this issue should be the 
+HibernateException</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:31:52 AM)--></B></FONT><FONT COLOR="#0000ff" BACK="#ffffff">:</FONT><FONT COLOR="#000000"> right?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:32:11 AM)--></B>:</FONT><FONT COLOR="#000000"> yeah - looks like it...<BR>
+</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:32:30 AM)--></B>:</FONT><FONT COLOR="#000000"> k - i'll stop badgering you :-) let me know if 
+you need anything</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:32:39 AM)--></B>:</FONT><FONT COLOR="#000000"> and keep me posted if you run into any 
+roadblocks</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:33:12 AM)--></B>:</FONT><FONT COLOR="#000000"> roadblocks - as in coding?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:33:16 AM)--></B>:</FONT><FONT COLOR="#000000"> ya</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:33:16 AM)--></B>:</FONT><FONT COLOR="#000000"> k</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:33:19 AM)--></B>:</FONT><FONT COLOR="#000000"> or anything</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:33:52 AM)--></B>:</FONT><FONT COLOR="#000000"> u dont need that stuff :-\</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:34:15 AM)--></B>:</FONT><FONT COLOR="#000000"> ?</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:34:31 AM)--></B>:</FONT><FONT COLOR="#000000"> the 'anything' part...</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:34:40 AM)--></B>:</FONT><FONT COLOR="#000000"> ah</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#0000ff">pmccon012<!-- (10:35:07 AM)--></B>:</FONT><FONT COLOR="#000000"> well, what you are working on is pretty 
+critical, so let me know if there are major problems or 
+issues</FONT><BR>
+<BODY BGCOLOR="#ffffff"><B><FONT COLOR="#ff0000">BYTEit2MSP<!-- (10:35:19 AM)--></B>:</FONT><FONT COLOR="#000000"> yep, will do<BR>
+<B></FONT><FONT COLOR="#0000ff">pmccon012 is idle at 12:32:00 PM</B>.</FONT><FONT COLOR="#000000"> <BR>
+<B></FONT><FONT COLOR="#0000ff">pmccon012 is away at 12:37:00 PM</B>.</FONT><FONT COLOR="#000000"> <BR>
+<B></FONT><FONT COLOR="#0000ff">pmccon012 returned at 1:27:16 PM</B>.</FONT><FONT COLOR="#000000"> <BR>
+<B></FONT><FONT COLOR="#0000ff">pmccon012 is idle at 3:32:48 PM</B>.</FONT><FONT COLOR="#000000"> <BR>
+<B></FONT><FONT COLOR="#0000ff">pmccon012 is no longer idle at 3:33:33 PM</B>.</FONT><FONT COLOR="#000000"> </FONT></BODY></HTML>

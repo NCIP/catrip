@@ -10,10 +10,10 @@ import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 public class InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest extends TestCase {
 	
 	  private static int maxrecs = 500;
-	  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\NeoplasmHistologicType.txt";
-	  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\NeoplasmHistologicTypeV2.txt";
-	  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\otherNeoplasmHistologicType.txt";
-	  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\otherNeoplasmHistologicTypeV2.txt";
+	  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NeoplasmHistologicType.txt";
+	  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NeoplasmHistologicTypeV2.txt";
+	  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\otherNeoplasmHistologicType.txt";
+	  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\otherNeoplasmHistologicTypeV2.txt";
 
 	  public String[] dataarr1 = new String[1000];
 	  public String[] dataarr2 = new String[1000];

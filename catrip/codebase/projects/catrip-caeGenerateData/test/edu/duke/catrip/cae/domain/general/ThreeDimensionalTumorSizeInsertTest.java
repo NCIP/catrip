@@ -10,14 +10,14 @@ import junit.framework.TestSuite;
 import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 //import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest;
 
-public class ThreeDimensionalSizeInsertTest extends TestCase {
+public class ThreeDimensionalTumorSizeInsertTest extends TestCase {
   
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\GreatestDim.txt";
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\DimY.txt";
-  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\DimX.txt";
-  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\GreatestDimV2.txt";
-  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\DimYV2.txt";
-  private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\DimXV2.txt";
+  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\GreatestDim.txt";
+  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimY.txt";
+  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimX.txt";
+  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\GreatestDimV2.txt";
+  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimYV2.txt";
+  private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimXV2.txt";
  
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];
@@ -26,7 +26,7 @@ public class ThreeDimensionalSizeInsertTest extends TestCase {
   
   CAEDataGenerator dg = new CAEDataGenerator();
     
-  public ThreeDimensionalSizeInsertTest(String sTestName) {
+  public ThreeDimensionalTumorSizeInsertTest(String sTestName) {
       super(sTestName);
   }
 
@@ -39,7 +39,7 @@ public class ThreeDimensionalSizeInsertTest extends TestCase {
 
 
    public static Test suite() {
-       return new TestSuite(ThreeDimensionalSizeInsertTest.class);
+       return new TestSuite(ThreeDimensionalTumorSizeInsertTest.class);
    }
 
    //test reading data files into an array and insert into db
@@ -88,7 +88,7 @@ public class ThreeDimensionalSizeInsertTest extends TestCase {
 			System.out.println("\t\t\tDIMENSION X: " + dataarr3[row]);
 		}
 		
-		dg.buildThreeDimensionalSize(maxrecs,dataarr1,dataarr2,dataarr3);
+		dg.buildThreeDimensionalTumorSize(maxrecs,dataarr1,dataarr2,dataarr3);
 		
 		if (DEBUG) System.out.println("\tEnd Of testReadFile...");
 		

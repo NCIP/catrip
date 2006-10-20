@@ -11,15 +11,22 @@ import junit.framework.TestSuite;
 
 public class ParticipantInsertTest extends TestCase {
 
-  private static int maxrecs = 5;
+//Variable to determining how many recs to create, per table
+  private static int maxrecs = 250;
+  
+//INPUT FILES FOR POPULATING THE TABLES
+//Participant
   private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\LastNamesV2.txt";
   private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\FirstNamesFemales.txt";
   private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\dob.txt";
   private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\race.txt";
   private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ssns.txt";
   private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ParticipantID.txt";
+//ParticipantIdent
   private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\mrn.txt";
 
+//DATA ARRAYS TO MANAGE THE INPUT DATA
+//Participant
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];
   public String[] dataarr3 = new String[1000];
@@ -28,9 +35,8 @@ public class ParticipantInsertTest extends TestCase {
   public String[] dataarr6 = new String[1000];
   public String[] dataarr7 = new String[1000];
   public String[] dataarr8 = new String[1000];
+//ParticipantIdent
   public String[] dataarr9 = new String[1000];
-  public String[] dataarr10 = new String[1000];
-  public String[][] dataarr2d = new String[1000][2];
   
   CATissueCoreDataGenerator dg = new CATissueCoreDataGenerator();
     
@@ -60,6 +66,7 @@ public class ParticipantInsertTest extends TestCase {
 		
 		if (DEBUG) System.out.println("Inside testReadFile()...");
 
+	//Participant
 		//LastNames
 		dataarr1=dg.ReadFile(maxrecs,inFile1);
 
@@ -139,6 +146,8 @@ public class ParticipantInsertTest extends TestCase {
        	    	System.out.println("\t\t\tuniquePatientIdentifier: " + dataarr8[row]);
 	       	}
 		}
+		
+	//ParticipantIdent
 		//mrn
 		dataarr9=dg.ReadFile(maxrecs,inFile7);
 
@@ -148,6 +157,7 @@ public class ParticipantInsertTest extends TestCase {
 	       	}
 		}
 		
+		//Call the buildParticipant method to actually insert the data contained in the arrays
 		dg.buildParticipant(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9);
 		
 		if (DEBUG) System.out.println("\tEnd Of testReadFile...");

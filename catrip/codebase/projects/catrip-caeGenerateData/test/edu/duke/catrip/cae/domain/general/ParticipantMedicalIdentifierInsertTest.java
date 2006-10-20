@@ -14,7 +14,7 @@ public class ParticipantMedicalIdentifierInsertTest extends TestCase {
 	
   private static int maxrecs = 500;
 	
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\mrn.txt";
+  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\mrn.txt";
  
   public String[] dataarr1 = new String[1000];
      

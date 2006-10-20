@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DAOConfiguration>
+  <domainObjects name="edu.wustl.catissuecore.domainobject.impl.AddressImpl,edu.wustl.catissuecore.domainobject.impl.CollectionEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.StorageContainerDetailsImpl,edu.wustl.catissuecore.domainobject.impl.SpecimenProtocolImpl,edu.wustl.catissuecore.domainobject.impl.FluidSpecimenReviewEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.ProcedureEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.CellSpecimenReviewParametersImpl,edu.wustl.catissuecore.domainobject.impl.StorageTypeImpl,edu.wustl.catissuecore.domainobject.impl.InstitutionImpl,edu.wustl.catissuecore.domainobject.impl.ReviewEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.ExternalIdentifierImpl,edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl,edu.wustl.catissuecore.domainobject.impl.EventParametersImpl,edu.wustl.catissuecore.domainobject.impl.AuditEventDetailsImpl,edu.wustl.catissuecore.domainobject.impl.StorageContainerCapacityImpl,edu.wustl.catissuecore.domainobject.impl.CancerResearchGroupImpl,edu.wustl.catissuecore.domainobject.impl.SpunEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.FluidSpecimenRequirementImpl,edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl,edu.wustl.catissuecore.domainobject.impl.TissueSpecimenReviewEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.SiteImpl,edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl,edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenReviewParametersImpl,edu.wustl.catissuecore.domainobject.impl.BiohazardImpl,edu.wustl.catissuecore.domainobject.impl.CheckInCheckOutEventParameterImpl,edu.wustl.catissuecore.domainobject.impl.DistributionProtocolImpl,edu.wustl.catissuecore.domainobject.impl.SpecimenEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.CollectionProtocolRegistrationImpl,edu.wustl.catissuecore.domainobject.impl.DistributedItemImpl,edu.wustl.catissuecore.domainobject.impl.CollectionProtocolEventImpl,edu.wustl.catissuecore.domainobject.impl.SpecimenImpl,edu.wustl.catissuecore.domainobject.impl.FluidSpecimenImpl,edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl,edu.wustl.catissuecore.domainobject.impl.UserImpl,edu.wustl.catissuecore.domainobject.impl.FixedEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.DepartmentImpl,edu.wustl.catissuecore.domainobject.impl.TransferEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.CollectionProtocolImpl,edu.wustl.catissuecore.domainobject.impl.AuditEventLogImpl,edu.wustl.catissuecore.domainobject.impl.AuditEventImpl,edu.wustl.catissuecore.domainobject.impl.DisposalEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl,edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenRequirementImpl,edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl,edu.wustl.catissuecore.domainobject.impl.CellSpecimenRequirementImpl,edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl,edu.wustl.catissuecore.domainobject.impl.ParticipantImpl,edu.wustl.catissuecore.domainobject.impl.ReceivedEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.DistributionImpl,edu.wustl.catissuecore.domainobject.impl.StorageContainerImpl,edu.wustl.catissuecore.domainobject.impl.ThawEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.TissueSpecimenRequirementImpl,edu.wustl.catissuecore.domainobject.impl.EmbeddedEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.FrozenEventParametersImpl,edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenImpl">
+    <DataSource>ORM1</DataSource>
+    <tool>hibernate</tool>
+    <database>mysql</database>
+  </domainObjects>
+  <domainObjects name="gov.nih.nci.XYZ">
+    <DataSource>EXTERNALSERVER</DataSource>
+    <server />
+  </domainObjects>
+  <domainObjects name="gov.nih.nci.evs.query.EVSQueryImpl">
+    <DataSource>EVS</DataSource>
+    <dtsrpcServer>ncievs-test.nci.nih.gov</dtsrpcServer>
+    <port>6500</port>
+    <metaphraseServer>ncievs-bk1.nci.nih.gov</metaphraseServer>
+    <database>NCI</database>
+    <username>Guest</username>
+    <password>NCI-EVS</password>
+  </domainObjects>
+</DAOConfiguration>
+

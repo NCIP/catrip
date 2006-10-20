@@ -7,9 +7,20 @@
 		<!-- Settings for a remote Oracle9/10g database.  -->
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/catissuecore</property>
+		
+ <!-- PRODUCTION DB, WHICH IS COMMENTED OUT
+ 		<property name="connection.url">jdbc:mysql://catrip1.duhs.duke.edu:3306/catissuecore</property>
 		<property name="connection.username">catissue_core</property>
 		<property name="connection.password">catissue_core</property>
+ -->  
+ 
+<!-- TEST DB -->
+		<!-- <property name="connection.url">jdbc:mysql://localhost:3306/catissuecore</property> -->
+		<property name="connection.url">jdbc:mysql://catrip1.duhs.duke.edu:3306/catissuecore_test</property>
+		<property name="connection.username">catissuecore</property>
+		<property name="connection.password">catissuecore</property>
+
+
 		<!-- Use the C3P0 connection pool.  -->
 		<property name="c3p0.min_size">3</property>
 		<property name="c3p0.max_size">5</property>

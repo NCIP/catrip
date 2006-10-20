@@ -4,37 +4,34 @@
 
 package edu.duke.catrip.catissuecore.general;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import edu.duke.catrip.catissuecore.general.CATissueCoreDataGenerator;
 //import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest;
 
 public class SpecimenInsertTest extends TestCase {
   
-//	Specimen Chars
-	
+//Variable to determining how many recs to create, per table
+	private static int maxrecs = 250;
+	  
+//INPUT FILES FOR POPULATING THE TABLES
+//Specimen
 	private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenType.txt";
 	private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantity.txt";
 	private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantityAvail.txt";
 	private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenCmmt.txt";
-	private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenBarcode.txt";
+	private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenBarcode2.txt";
 	private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PosDimOne.txt";
 	private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PosDimTwo.txt";
 	private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenTypeV2.txt";
 	private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantityV2.txt";
 	private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantityAvailV2.txt";
 	private static String newFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenCmmtV2.txt";
-	private static String newFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PosDimOneV2.txt";
-	private static String newFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PosDimTwoV2.txt";
-
+	
 //Specimen Chars
 	private static String inFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TissueSite.txt";
 	private static String inFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TissueSide.txt";
@@ -64,17 +61,9 @@ public class SpecimenInsertTest extends TestCase {
 	private static String newFile19 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecProtTitlV2.txt";
 	private static String inFile20 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\mrn.txt";
 
-////Site
-//	  private static String inFile21 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSite.txt";	
-//	  private static String newFile21 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteV2.txt";
-//	  private static String inFile22 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteType.txt";
-//	  private static String newFile22 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteTypeV2.txt";
-//	  private static String inFile23 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\EmailAddress.txt";
-
 //Storage Container
-	  private static String inFile24 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\barcodes.txt";
+	  private static String inFile24 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\barcodes2.txt";
 	  private static String inFile25 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorgeContTemp.txt";	
-	  private static String newFile25 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorgeContTempV2.txt";
 	  private static String inFile26 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorageContNum.txt";
 	  
 //Storage Container Capacity
@@ -90,7 +79,9 @@ public class SpecimenInsertTest extends TestCase {
 	  private static String newFile34 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TwoDimLabV2.txt";
 	  private static String newFile35 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\DefaultTempV2.txt";
 
-	public String[] dataarr = new String[500];
+//DATA ARRAYS TO MANAGE THE INPUT DATA
+//Specimen
+	  public String[] dataarr = new String[500];
 	  public String[] dataarr1 = new String[500];
 	  public String[] dataarr2 = new String[500];
 	  public String[] dataarr3 = new String[500];
@@ -98,13 +89,17 @@ public class SpecimenInsertTest extends TestCase {
 	  public String[] dataarr5 = new String[500];
 	  public String[] dataarr6 = new String[500];
 	  public String[] dataarr7 = new String[500];
+//SpecimenChars
 	  public String[] dataarr8 = new String[500];
 	  public String[] dataarr9 = new String[500];
 	  public String[] dataarr10 = new String[500];
+//SpecimenCollectionGroup
 	  public String[] dataarr11 = new String[500];
 	  public String[] dataarr12 = new String[500];
+//CollectionProtocolEvent
 	  public String[] dataarr13 = new String[500];
 	  public String[] dataarr14 = new String[500];
+//CollectionProtocol
 	  public String[] dataarr15 = new String[500];
 	  public String[] dataarr16 = new String[500];
 	  public String[] dataarr17 = new String[500];
@@ -112,25 +107,23 @@ public class SpecimenInsertTest extends TestCase {
 	  public String[] dataarr19 = new String[500];
 	  public String[] dataarr20 = new String[500];
 	  public String[] dataarr21 = new String[500];
+//CollectionProtocolRegistration
 	  public String[] dataarr22 = new String[500];
 	  public String[] dataarr23 = new String[500];
-//SITE
-//	  public String[] dataarr24 = new String[500];
-//	  public String[] dataarr25 = new String[500];
-//	  public String[] dataarr26 = new String[500];
+//StorageContainer
 	  public String[] dataarr27 = new String[500];
 	  public String[] dataarr28 = new String[500];
 	  public String[] dataarr29 = new String[500];
 	  public String[] dataarr30 = new String[500];
 	  public String[] dataarr31 = new String[500];
+//StorageContainerCapacity
 	  public String[] dataarr32 = new String[500];
 	  public String[] dataarr33 = new String[500];
+//StorageType
 	  public String[] dataarr34 = new String[500];
 	  public String[] dataarr35 = new String[500];
 	  public String[] dataarr36 = new String[500];
 	  public String[] dataarr37 = new String[500];
-  private static int maxrecs = 5;
-  
     
   public SpecimenInsertTest(String sTestName) {
       super(sTestName);
@@ -151,7 +144,7 @@ public class SpecimenInsertTest extends TestCase {
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
 
-		final boolean DEBUG = true;
+		final boolean DEBUG = false;
 
 		CATissueCoreDataGenerator dg = new CATissueCoreDataGenerator();
 		
@@ -270,8 +263,7 @@ public class SpecimenInsertTest extends TestCase {
 			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tClinicalStatus: " + dataarr12[row]);
 	       	}
-		}
-		
+		}	
 		
 	//CollectionProtocolEvent
 		//Clinical Status
@@ -294,7 +286,7 @@ public class SpecimenInsertTest extends TestCase {
 	       	}
 		}
 		
-	//CollectionProtocol (extends SpecimenProtocol)
+	//CollectionProtocol
 		//DescriptionURL
 		dataarr15=dg.randomReadFile(maxrecs,inFile14);
 		if (DEBUG) {
@@ -369,7 +361,6 @@ public class SpecimenInsertTest extends TestCase {
        	    	System.out.println("\t\t\tTitle: " + dataarr21[row]);
 	       	}
 		}
-		
 
 	//CollectionProtocolRegistration
 		//ProtocolParticipantIdentifier
@@ -390,32 +381,6 @@ public class SpecimenInsertTest extends TestCase {
        	    	System.out.println("\t\t\tRegistrationDate: " + dataarr23[row]);
 	       	}
 		}
-		
-
-//	//Site
-//		dg.buildTwoDataFiles(maxrecs,inFile21,newFile21,inFile22,newFile22);
-//		//SITE
-//		dataarr24=dg.ReadFile(maxrecs,newFile21);
-//		if (DEBUG) {
-//			for (int row=0; row<maxrecs; row++) {
-//       	    	System.out.println("\t\t\tSITE: " + dataarr24[row]);
-//	       	}
-//		}
-//		//SITE TYPE
-//		dataarr25=dg.ReadFile(maxrecs,newFile22);
-//		if (DEBUG) {
-//			for (int row=0; row<maxrecs; row++) {
-//       	    	System.out.println("\t\t\tSITE TYPE: " + dataarr25[row]);
-//	       	}
-//		}
-//		
-//		//EMAIL
-//		dataarr26=dg.ReadFile(maxrecs,inFile23);
-//		if (DEBUG) {
-//			for (int row=0; row<maxrecs; row++) {
-//       	    	System.out.println("\t\t\tEMAIL: " + dataarr26[row]);
-//	       	}
-//		}
 
 	//StorageContainer
 		//BARCODES
@@ -427,7 +392,7 @@ public class SpecimenInsertTest extends TestCase {
 		}
 		
 		//Number
-		dataarr28=dg.randomReadFile(maxrecs,inFile26);
+		dataarr28=dg.ReadFile(maxrecs,inFile26);
 		if (DEBUG) {
 			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tStorageContainer#: " + dataarr28[row]);
@@ -478,10 +443,11 @@ public class SpecimenInsertTest extends TestCase {
 	//StorageType  
 		
 		//keep type and temp files in sync
-		dg.buildTwoDataFiles(maxrecs,inFile32,newFile32,inFile35,newFile35);
+//		dg.buildTwoDataFiles(maxrecs,inFile32,newFile32,inFile35,newFile35);
 		
 		//DefaultTempratureInCentigrade 
-		dataarr34=dg.ReadFile(maxrecs,newFile35);
+//		dataarr34=dg.ReadFile(maxrecs,newFile35);
+		dataarr34=dg.ReadFile(maxrecs,inFile35);
 		if (DEBUG) {
 			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tDefaultTempratureInCentigrade: " + dataarr34[row]);
@@ -508,7 +474,8 @@ public class SpecimenInsertTest extends TestCase {
 		}
 		
 		//Type 
-		dataarr37=dg.ReadFile(maxrecs,newFile32);
+//		dataarr37=dg.ReadFile(maxrecs,newFile32);
+		dataarr37=dg.ReadFile(maxrecs,inFile32);
 		if (DEBUG) {
 			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tStorage Type: " + dataarr37[row]);
@@ -518,7 +485,7 @@ public class SpecimenInsertTest extends TestCase {
 		
 		if (DEBUG) System.out.println("\tBack Inside testReadFile()");
 		
-//		dg.buildSpecimen(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9,dataarr10,dataarr11,dataarr12,dataarr13,dataarr14,dataarr15,dataarr16,dataarr17,dataarr18,dataarr19,dataarr20,dataarr21,dataarr22,dataarr23,dataarr24,dataarr25,dataarr26,dataarr27,dataarr28,dataarr29,dataarr30,dataarr31,dataarr32,dataarr33,dataarr34,dataarr35,dataarr36,dataarr37);
+		//Call the buildSpecimen method to actually insert the data contained in the arrays
 		dg.buildSpecimen(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9,dataarr10,dataarr11,dataarr12,dataarr13,dataarr14,dataarr15,dataarr16,dataarr17,dataarr18,dataarr19,dataarr20,dataarr21,dataarr22,dataarr23,dataarr27,dataarr28,dataarr29,dataarr30,dataarr31,dataarr32,dataarr33,dataarr34,dataarr35,dataarr36,dataarr37);
 		
 		if (DEBUG) System.out.println("\tEnd Of testReadFile...");

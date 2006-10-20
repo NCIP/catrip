@@ -13,9 +13,9 @@ public class NottinghamHistopathologicGradeInsertTest extends TestCase {
 
   private static int maxrecs = 500;
 	  
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\TubuleForm.txt";
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\NuclearPleo.txt";
-  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\MitosisCnt.txt";
+  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\TubuleForm.txt";
+  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NuclearPleo.txt";
+  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\MitosisCnt.txt";
  
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];

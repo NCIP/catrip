@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.BiohazardImpl"
+        table="CATISSUE_BIOHAZARD"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <property
+            name="name"
+            type="string"
+            update="true"
+            insert="true"
+            column="NAME"
+            length="50"
+            not-null="true"
+            unique="true"
+        />
+
+        <property
+            name="comments"
+            type="string"
+            update="true"
+            insert="true"
+            column="COMMENTS"
+            length="500"
+        />
+
+        <property
+            name="type"
+            type="string"
+            update="true"
+            insert="true"
+            column="TYPE"
+            length="50"
+        />
+
+        <set
+            name="specimenCollection"
+            table="CATISSUE_SPECIMEN_BIOHZ_REL"
+            lazy="false"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="BIOHAZARD_ID"
+              />
+
+              <many-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl"
+                  column="SPECIMEN_ID"
+                  outer-join="auto"
+              />
+
+        </set>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Biohazard.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

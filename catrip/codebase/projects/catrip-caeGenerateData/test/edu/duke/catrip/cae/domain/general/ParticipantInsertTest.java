@@ -12,15 +12,15 @@ import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 public class ParticipantInsertTest extends TestCase {
 
   private static int maxrecs = 500;
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\LastNamesV2.txt";
+  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\LastNamesV2.txt";
 
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\FirstNamesFemales.txt";
-  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\dob.txt";
-  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\race.txt";
-  private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\dates.txt";
-  private static String inFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\dx.txt";
-  private static String inFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\surgicalpath#.txt";
-  private static String inFile10 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\ParticipantID.txt";
+  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\FirstNamesFemales.txt";
+  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\dob.txt";
+  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\race.txt";
+  private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\dates.txt";
+  private static String inFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\dx.txt";
+  private static String inFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\surgicalpath#.txt";
+  private static String inFile10 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\ParticipantID.txt";
 
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];

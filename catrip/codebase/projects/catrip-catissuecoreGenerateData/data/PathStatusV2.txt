@@ -1,1000 +1,1000 @@
-Metastatic
-Malignant
-Malignant, Invasive
-Metastatic
-Not Specified
-Non-Malignant
-Non-Malignant
-Non-Malignant
-Metastatic
-Malignant, Invasive
-Malignant, Invasive
 Non-Malignant, Diseased
 Non-Malignant, Diseased
-Not Specified
-Not Specified
-Malignant, Pre-Invasive
 Non-Malignant
 Malignant
 Malignant
 Metastatic
 Metastatic
 Not Specified
-Non-Malignant, Diseased
-Malignant
+Non-Malignant
+Not Specified
 Malignant
 Metastatic
+Metastatic
 Malignant, Invasive
+Not Specified
 Non-Malignant, Diseased
-Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
 Metastatic
+Non-Malignant
 Metastatic
-Malignant
-Non-Malignant, Diseased
-Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
 Malignant
-Non-Malignant
-Non-Malignant, Diseased
 Malignant, Invasive
+Malignant, Invasive
 Non-Malignant
-Malignant, Pre-Invasive
+Malignant, Invasive
 Non-Malignant
 Non-Malignant
-Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Not Specified
+Not Specified
+Malignant, Pre-Invasive
 Non-Malignant
-Malignant
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
 Non-Malignant
 Malignant
 Non-Malignant, Diseased
-Malignant, Invasive
 Malignant, Pre-Invasive
-Metastatic
-Non-Malignant
 Metastatic
-Non-Malignant
 Malignant
+Malignant, Pre-Invasive
 Non-Malignant
-Malignant
-Malignant, Invasive
 Non-Malignant
 Malignant, Invasive
 Not Specified
-Metastatic
-Malignant, Invasive
-Malignant
 Malignant, Pre-Invasive
-Non-Malignant
-Malignant, Pre-Invasive
-Metastatic
-Non-Malignant
-Malignant
-Non-Malignant
+Not Specified
 Non-Malignant
-Malignant, Invasive
 Not Specified
-Malignant, Invasive
-Non-Malignant, Diseased
 Non-Malignant
 Metastatic
-Non-Malignant
-Malignant, Pre-Invasive
 Malignant, Invasive
-Malignant
+Malignant, Invasive
 Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Malignant
-Malignant, Pre-Invasive
-Not Specified
-Malignant, Pre-Invasive
-Not Specified
+Metastatic
 Malignant, Invasive
 Metastatic
+Metastatic
+Malignant
 Malignant, Invasive
 Malignant
-Malignant, Pre-Invasive
-Malignant, Pre-Invasive
-Malignant, Pre-Invasive
+Malignant
 Non-Malignant
 Malignant, Pre-Invasive
-Malignant, Invasive
-Malignant
 Metastatic
-Non-Malignant
 Malignant, Pre-Invasive
+Metastatic
 Non-Malignant
-Malignant
+Metastatic
+Malignant, Invasive
 Non-Malignant, Diseased
-Non-Malignant
 Malignant, Invasive
 Not Specified
-Malignant, Invasive
+Malignant, Pre-Invasive
 Metastatic
-Non-Malignant
 Non-Malignant
-Non-Malignant
 Malignant, Invasive
-Non-Malignant, Diseased
-Malignant
 Non-Malignant, Diseased
-Non-Malignant
-Metastatic
-Non-Malignant
+Malignant, Invasive
+Malignant, Invasive
 Malignant
-Not Specified
-Non-Malignant
 Malignant, Invasive
-Non-Malignant
-Malignant, Pre-Invasive
-Malignant, Pre-Invasive
 Malignant
 Malignant, Pre-Invasive
-Not Specified
-Non-Malignant
-Not Specified
-Not Specified
-Malignant, Invasive
-Not Specified
-Metastatic
-Non-Malignant, Diseased
 Malignant
-Non-Malignant, Diseased
-Not Specified
+Malignant
 Metastatic
-Non-Malignant, Diseased
-Not Specified
-Malignant, Pre-Invasive
-Not Specified
-Non-Malignant
-Non-Malignant, Diseased
 Not Specified
+Metastatic
 Malignant, Invasive
-Non-Malignant
-Malignant
-Non-Malignant, Diseased
-Not Specified
-Non-Malignant, Diseased
-Not Specified
 Metastatic
+Malignant, Invasive
 Non-Malignant, Diseased
 Non-Malignant, Diseased
-Metastatic
-Not Specified
-Non-Malignant
 Malignant, Invasive
 Non-Malignant
-Malignant, Pre-Invasive
-Metastatic
-Malignant, Pre-Invasive
-Metastatic
-Not Specified
-Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Not Specified
 Non-Malignant
 Not Specified
-Not Specified
-Malignant, Invasive
 Non-Malignant
-Malignant
-Non-Malignant, Diseased
-Not Specified
 Malignant, Invasive
 Non-Malignant, Diseased
-Malignant, Pre-Invasive
-Non-Malignant, Diseased
-Malignant, Pre-Invasive
 Metastatic
-Malignant, Pre-Invasive
-Malignant, Pre-Invasive
-Malignant, Invasive
+Metastatic
 Non-Malignant
 Metastatic
+Non-Malignant
+Metastatic
 Non-Malignant, Diseased
-Malignant, Invasive
-Malignant, Invasive
-Malignant, Pre-Invasive
 Metastatic
-Malignant
+Metastatic
 Malignant, Pre-Invasive
+Malignant
 Not Specified
-Malignant, Pre-Invasive
-Malignant, Invasive
 Malignant
 Metastatic
-Non-Malignant
-Malignant
 Non-Malignant
 Metastatic
+Not Specified
 Non-Malignant
+Non-Malignant
 Non-Malignant, Diseased
 Metastatic
 Metastatic
+Malignant, Pre-Invasive
 Metastatic
 Non-Malignant
+Malignant, Pre-Invasive
+Malignant, Invasive
 Malignant
-Non-Malignant
+Malignant, Invasive
+Malignant
+Malignant, Pre-Invasive
 Malignant
+Malignant
+Not Specified
+Malignant
+Non-Malignant, Diseased
+Malignant, Invasive
 Metastatic
-Non-Malignant
 Malignant, Invasive
+Malignant, Pre-Invasive
 Not Specified
+Metastatic
+Malignant, Invasive
+Non-Malignant
 Malignant
 Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Non-Malignant
+Malignant, Invasive
 Not Specified
 Not Specified
+Non-Malignant, Diseased
 Non-Malignant
-Malignant
+Malignant, Pre-Invasive
 Malignant, Invasive
 Malignant
 Malignant, Pre-Invasive
 Malignant
 Malignant, Pre-Invasive
 Not Specified
-Malignant, Pre-Invasive
+Not Specified
 Metastatic
-Malignant
-Malignant
 Non-Malignant
 Malignant
-Non-Malignant, Diseased
 Non-Malignant
-Malignant, Invasive
-Not Specified
+Malignant
 Metastatic
-Malignant, Invasive
-Not Specified
-Malignant, Pre-Invasive
-Not Specified
-Non-Malignant
 Not Specified
-Malignant, Invasive
-Malignant
 Malignant, Invasive
+Non-Malignant, Diseased
 Malignant
-Metastatic
 Non-Malignant, Diseased
-Metastatic
-Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
 Metastatic
+Non-Malignant
 Metastatic
 Non-Malignant
 Malignant
-Non-Malignant
-Not Specified
-Metastatic
 Non-Malignant
-Malignant, Invasive
-Metastatic
 Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Not Specified
-Malignant, Pre-Invasive
+Malignant
+Non-Malignant, Diseased
 Not Specified
+Metastatic
+Not Specified
 Non-Malignant
+Not Specified
+Malignant
 Not Specified
 Non-Malignant
-Malignant, Pre-Invasive
+Malignant, Invasive
 Non-Malignant
 Malignant
-Non-Malignant, Diseased
 Not Specified
+Malignant
 Non-Malignant, Diseased
-Metastatic
 Non-Malignant
+Malignant, Pre-Invasive
 Metastatic
 Non-Malignant
-Malignant
-Not Specified
+Metastatic
 Non-Malignant
+Malignant, Pre-Invasive
 Malignant, Invasive
-Non-Malignant
-Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
 Not Specified
-Malignant, Invasive
+Non-Malignant
 Non-Malignant, Diseased
+Malignant
 Malignant, Pre-Invasive
-Not Specified
 Non-Malignant
-Malignant, Invasive
+Non-Malignant
+Non-Malignant
 Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Not Specified
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Metastatic
-Not Specified
 Metastatic
+Non-Malignant
 Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant
 Metastatic
-Malignant, Invasive
-Malignant
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
 Malignant
 Non-Malignant
 Malignant
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
 Metastatic
+Metastatic
+Non-Malignant, Diseased
 Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
 Metastatic
 Malignant, Pre-Invasive
-Metastatic
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
+Non-Malignant, Diseased
+Not Specified
+Non-Malignant, Diseased
 Non-Malignant
-Metastatic
+Malignant
 Non-Malignant
-Malignant, Pre-Invasive
-Malignant, Invasive
 Malignant
+Malignant, Invasive
+Non-Malignant
+Malignant, Pre-Invasive
 Metastatic
-Malignant
 Malignant, Pre-Invasive
-Non-Malignant, Diseased
+Metastatic
 Non-Malignant
-Non-Malignant, Diseased
 Malignant, Invasive
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
+Malignant
+Non-Malignant
+Malignant
 Malignant, Invasive
 Not Specified
 Metastatic
-Not Specified
+Malignant, Invasive
 Metastatic
 Malignant, Invasive
-Malignant
-Malignant, Pre-Invasive
 Not Specified
-Malignant
 Malignant, Pre-Invasive
-Malignant, Invasive
-Metastatic
-Metastatic
-Non-Malignant
-Metastatic
+Not Specified
 Non-Malignant
+Not Specified
 Malignant
+Malignant
 Non-Malignant
+Malignant
+Metastatic
 Non-Malignant
 Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
+Non-Malignant, Diseased
+Not Specified
 Non-Malignant, Diseased
 Malignant, Invasive
-Metastatic
+Malignant
+Malignant, Pre-Invasive
 Non-Malignant
+Malignant, Pre-Invasive
 Metastatic
-Non-Malignant
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant, Diseased
 Non-Malignant
+Non-Malignant, Diseased
 Not Specified
-Non-Malignant
 Malignant, Invasive
 Not Specified
-Malignant, Invasive
+Non-Malignant
+Not Specified
+Non-Malignant
 Malignant, Invasive
-Malignant
-Non-Malignant, Diseased
 Not Specified
+Metastatic
 Non-Malignant, Diseased
-Not Specified
 Metastatic
 Malignant, Invasive
-Non-Malignant
 Malignant
-Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Not Specified
 Non-Malignant
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Invasive
 Non-Malignant, Diseased
+Malignant
 Malignant, Pre-Invasive
-Non-Malignant, Diseased
 Not Specified
-Malignant, Invasive
+Malignant, Pre-Invasive
 Not Specified
-Metastatic
+Non-Malignant, Diseased
 Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Non-Malignant
-Not Specified
 Metastatic
 Not Specified
 Metastatic
-Malignant, Invasive
+Malignant, Pre-Invasive
 Malignant
-Non-Malignant, Diseased
+Malignant, Pre-Invasive
 Non-Malignant, Diseased
 Malignant, Invasive
 Non-Malignant, Diseased
-Metastatic
+Not Specified
+Non-Malignant
+Non-Malignant
+Malignant
 Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
 Non-Malignant
 Malignant
+Non-Malignant, Diseased
 Not Specified
-Non-Malignant
-Malignant, Invasive
 Non-Malignant, Diseased
-Malignant, Invasive
 Non-Malignant, Diseased
+Metastatic
+Non-Malignant, Diseased
 Non-Malignant
-Not Specified
+Malignant, Invasive
 Non-Malignant
 Malignant, Invasive
+Metastatic
+Malignant, Pre-Invasive
+Malignant
+Not Specified
+Malignant, Pre-Invasive
 Not Specified
+Non-Malignant
 Metastatic
 Malignant, Invasive
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
 Metastatic
+Metastatic
 Malignant, Invasive
 Malignant
-Metastatic
-Non-Malignant
-Not Specified
 Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant
+Non-Malignant, Diseased
 Not Specified
-Malignant, Pre-Invasive
-Metastatic
 Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Metastatic
+Malignant, Invasive
 Non-Malignant
 Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Metastatic
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant, Diseased
+Non-Malignant
 Malignant, Invasive
+Non-Malignant
 Malignant
+Non-Malignant, Diseased
+Not Specified
+Not Specified
+Non-Malignant, Diseased
 Malignant, Invasive
 Malignant
-Malignant, Pre-Invasive
 Metastatic
 Malignant
+Metastatic
 Malignant
-Not Specified
-Non-Malignant
 Malignant, Invasive
 Not Specified
 Malignant, Invasive
 Malignant, Invasive
 Metastatic
-Malignant, Invasive
-Malignant
+Non-Malignant
+Not Specified
 Malignant, Pre-Invasive
+Malignant
 Non-Malignant
 Malignant, Pre-Invasive
 Metastatic
 Malignant, Pre-Invasive
 Metastatic
+Non-Malignant, Diseased
 Non-Malignant
-Metastatic
-Malignant, Invasive
+Non-Malignant, Diseased
 Not Specified
 Non-Malignant, Diseased
 Non-Malignant
-Malignant
-Not Specified
+Malignant, Pre-Invasive
 Non-Malignant
+Malignant
 Malignant, Invasive
-Non-Malignant
+Not Specified
 Malignant, Invasive
-Non-Malignant, Diseased
-Malignant
 Malignant, Pre-Invasive
-Not Specified
-Not Specified
-Not Specified
 Non-Malignant
 Metastatic
-Not Specified
-Metastatic
+Non-Malignant
+Malignant
 Malignant, Invasive
-Metastatic
+Malignant, Pre-Invasive
 Metastatic
 Malignant
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
 Metastatic
 Non-Malignant
-Malignant
-Malignant, Invasive
 Non-Malignant, Diseased
 Metastatic
+Non-Malignant
 Malignant
 Malignant
 Non-Malignant
+Malignant
 Non-Malignant, Diseased
-Metastatic
+Malignant
 Non-Malignant, Diseased
-Metastatic
 Malignant, Invasive
-Non-Malignant
 Metastatic
 Malignant, Invasive
-Malignant, Pre-Invasive
-Metastatic
+Not Specified
 Non-Malignant, Diseased
-Malignant
+Not Specified
 Metastatic
+Not Specified
 Malignant, Pre-Invasive
+Malignant
 Non-Malignant
-Non-Malignant, Diseased
 Malignant
 Non-Malignant, Diseased
 Not Specified
 Non-Malignant, Diseased
-Not Specified
-Non-Malignant
-Non-Malignant, Diseased
-Non-Malignant
-Malignant, Invasive
-Non-Malignant
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Pre-Invasive
 Non-Malignant
+Malignant
 Not Specified
 Non-Malignant
 Malignant, Invasive
-Not Specified
+Non-Malignant
+Metastatic
 Malignant, Invasive
-Non-Malignant, Diseased
+Metastatic
 Malignant, Invasive
+Malignant
 Malignant, Invasive
+Malignant
+Malignant
+Non-Malignant
 Not Specified
+Malignant, Pre-Invasive
 Non-Malignant, Diseased
-Not Specified
-Metastatic
-Not Specified
-Metastatic
-Metastatic
 Malignant, Pre-Invasive
 Metastatic
-Non-Malignant
+Malignant, Pre-Invasive
 Malignant
-Not Specified
 Non-Malignant, Diseased
-Malignant, Pre-Invasive
+Not Specified
 Non-Malignant, Diseased
-Malignant
-Malignant, Pre-Invasive
+Non-Malignant
 Malignant
+Non-Malignant
 Malignant, Pre-Invasive
-Not Specified
-Not Specified
 Metastatic
+Not Specified
 Metastatic
-Malignant, Pre-Invasive
+Malignant, Invasive
 Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Non-Malignant, Diseased
 Malignant
 Metastatic
-Non-Malignant, Diseased
+Non-Malignant
+Malignant
+Non-Malignant
 Metastatic
+Malignant, Invasive
+Non-Malignant
+Malignant
 Non-Malignant, Diseased
-Malignant, Pre-Invasive
-Metastatic
 Not Specified
+Non-Malignant, Diseased
 Not Specified
-Metastatic
-Malignant, Invasive
 Metastatic
-Malignant, Invasive
+Not Specified
 Malignant
 Malignant, Invasive
 Malignant
-Malignant, Pre-Invasive
-Not Specified
-Metastatic
 Malignant, Invasive
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Metastatic
-Non-Malignant
 Metastatic
 Non-Malignant
+Malignant, Pre-Invasive
+Malignant
 Non-Malignant, Diseased
+Not Specified
 Malignant, Invasive
 Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Metastatic
-Malignant, Pre-Invasive
 Malignant, Invasive
+Non-Malignant, Diseased
 Malignant, Invasive
-Metastatic
+Non-Malignant, Diseased
+Malignant
 Malignant, Invasive
+Malignant
+Malignant
+Malignant
 Malignant, Pre-Invasive
+Malignant, Invasive
+Not Specified
+Malignant, Invasive
 Malignant, Invasive
 Metastatic
-Non-Malignant
-Malignant
+Malignant, Invasive
+Not Specified
 Non-Malignant, Diseased
 Not Specified
 Metastatic
 Malignant, Invasive
-Metastatic
-Metastatic
 Non-Malignant
-Malignant, Invasive
+Malignant
 Non-Malignant, Diseased
-Malignant, Pre-Invasive
-Metastatic
 Malignant
-Malignant, Pre-Invasive
-Not Specified
-Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Not Specified
+Metastatic
+Non-Malignant, Diseased
 Non-Malignant
 Not Specified
 Non-Malignant
 Malignant, Invasive
 Non-Malignant
-Malignant
+Metastatic
+Non-Malignant, Diseased
 Metastatic
+Malignant, Invasive
 Malignant
 Malignant, Pre-Invasive
-Not Specified
-Non-Malignant
-Not Specified
+Metastatic
 Malignant
 Malignant, Pre-Invasive
-Malignant
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Metastatic
-Not Specified
 Metastatic
-Malignant, Invasive
-Metastatic
-Malignant, Invasive
-Not Specified
+Malignant, Pre-Invasive
+Malignant
+Non-Malignant, Diseased
+Malignant
 Non-Malignant, Diseased
 Not Specified
-Metastatic
+Not Specified
+Non-Malignant
+Malignant
+Non-Malignant
+Malignant
 Non-Malignant, Diseased
+Non-Malignant
 Non-Malignant, Diseased
+Metastatic
 Malignant, Pre-Invasive
-Non-Malignant, Diseased
+Metastatic
 Non-Malignant
+Non-Malignant
+Not Specified
+Malignant
 Malignant, Invasive
 Non-Malignant
 Malignant, Invasive
 Non-Malignant, Diseased
-Metastatic
-Malignant, Invasive
-Malignant
-Malignant, Pre-Invasive
 Malignant
+Non-Malignant, Diseased
 Not Specified
-Malignant, Invasive
+Non-Malignant, Diseased
 Not Specified
-Metastatic
+Malignant
 Malignant, Invasive
-Metastatic
-Metastatic
+Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant
 Malignant
+Non-Malignant, Diseased
+Not Specified
 Metastatic
 Non-Malignant
 Malignant
-Non-Malignant
 Malignant, Pre-Invasive
 Metastatic
-Malignant
-Malignant, Pre-Invasive
-Not Specified
 Non-Malignant
 Malignant, Invasive
 Non-Malignant, Diseased
-Malignant
 Malignant, Invasive
-Malignant
 Malignant, Pre-Invasive
-Malignant
-Malignant
-Non-Malignant, Diseased
-Malignant
+Not Specified
+Malignant, Pre-Invasive
+Non-Malignant
+Non-Malignant
 Non-Malignant, Diseased
+Not Specified
+Non-Malignant
 Not Specified
+Non-Malignant
+Malignant, Invasive
 Non-Malignant, Diseased
+Malignant, Invasive
 Non-Malignant, Diseased
 Non-Malignant
-Not Specified
 Malignant, Invasive
-Not Specified
-Malignant
 Not Specified
 Non-Malignant
+Not Specified
+Not Specified
 Metastatic
-Non-Malignant
-Malignant
 Non-Malignant
-Metastatic
 Malignant, Invasive
-Non-Malignant
 Malignant, Invasive
+Malignant
 Non-Malignant, Diseased
-Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Not Specified
 Metastatic
-Non-Malignant
+Malignant, Pre-Invasive
 Malignant
+Malignant, Pre-Invasive
 Not Specified
+Malignant, Pre-Invasive
+Metastatic
+Malignant
+Metastatic
 Non-Malignant
-Malignant, Invasive
+Malignant
+Malignant, Pre-Invasive
 Non-Malignant
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Invasive
-Not Specified
+Malignant
 Not Specified
+Malignant
+Malignant, Pre-Invasive
+Malignant
+Malignant, Pre-Invasive
 Not Specified
-Non-Malignant
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
 Malignant, Invasive
 Non-Malignant
 Malignant, Invasive
+Not Specified
+Non-Malignant, Diseased
+Malignant, Invasive
+Malignant
 Malignant, Invasive
+Malignant
+Metastatic
+Not Specified
 Metastatic
 Malignant, Pre-Invasive
+Non-Malignant
+Malignant
+Non-Malignant, Diseased
 Not Specified
+Non-Malignant, Diseased
 Non-Malignant
-Malignant, Invasive
-Not Specified
 Malignant
+Non-Malignant
+Malignant
 Non-Malignant, Diseased
-Not Specified
+Non-Malignant
+Malignant, Invasive
 Non-Malignant, Diseased
-Not Specified
-Metastatic
 Malignant, Invasive
 Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Non-Malignant, Diseased
+Malignant, Invasive
+Malignant
 Malignant, Pre-Invasive
 Malignant
 Not Specified
+Metastatic
 Non-Malignant
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Pre-Invasive
+Malignant
+Non-Malignant
+Malignant
 Non-Malignant, Diseased
 Not Specified
-Metastatic
 Non-Malignant, Diseased
-Metastatic
-Malignant, Invasive
-Metastatic
-Metastatic
 Non-Malignant
-Metastatic
 Non-Malignant
-Malignant
+Not Specified
 Non-Malignant
+Non-Malignant, Diseased
 Non-Malignant
 Malignant, Invasive
 Metastatic
-Malignant
 Malignant, Pre-Invasive
-Not Specified
+Metastatic
+Non-Malignant
 Malignant
 Non-Malignant, Diseased
 Not Specified
+Metastatic
+Non-Malignant
+Non-Malignant
+Non-Malignant
+Non-Malignant
 Non-Malignant, Diseased
 Not Specified
 Malignant, Pre-Invasive
-Not Specified
+Metastatic
 Non-Malignant
-Malignant, Invasive
-Not Specified
-Malignant, Invasive
-Malignant, Invasive
 Metastatic
-Malignant, Invasive
-Malignant
+Non-Malignant
 Malignant, Pre-Invasive
+Malignant, Invasive
 Malignant, Pre-Invasive
 Metastatic
 Malignant, Pre-Invasive
-Malignant
-Non-Malignant, Diseased
-Malignant
+Non-Malignant
+Malignant, Invasive
+Non-Malignant
 Malignant, Invasive
 Non-Malignant, Diseased
+Malignant, Invasive
 Malignant, Invasive
+Malignant
+Metastatic
 Non-Malignant, Diseased
-Malignant, Pre-Invasive
 Not Specified
+Non-Malignant, Diseased
 Non-Malignant
-Malignant, Invasive
+Malignant
 Non-Malignant
-Malignant, Invasive
-Malignant, Pre-Invasive
 Malignant
-Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Not Specified
+Metastatic
+Malignant, Invasive
+Malignant
+Non-Malignant, Diseased
 Non-Malignant
-Not Specified
-Not Specified
 Malignant, Invasive
 Not Specified
+Metastatic
 Malignant
-Non-Malignant, Diseased
+Non-Malignant
 Malignant
-Non-Malignant, Diseased
-Not Specified
 Non-Malignant, Diseased
-Not Specified
+Metastatic
+Malignant, Invasive
 Malignant
 Malignant, Invasive
 Malignant
 Malignant
-Non-Malignant
 Malignant
-Non-Malignant, Diseased
 Not Specified
-Non-Malignant, Diseased
-Not Specified
+Metastatic
 Malignant, Invasive
-Malignant, Pre-Invasive
-Non-Malignant
-Non-Malignant
-Not Specified
-Non-Malignant
+Metastatic
 Malignant, Invasive
-Non-Malignant
-Malignant, Pre-Invasive
-Not Specified
 Malignant
-Not Specified
-Not Specified
 Non-Malignant, Diseased
-Not Specified
-Metastatic
-Not Specified
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
 Metastatic
 Metastatic
 Non-Malignant
 Malignant
 Non-Malignant, Diseased
-Not Specified
+Malignant
 Non-Malignant, Diseased
 Non-Malignant
-Malignant
-Not Specified
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Pre-Invasive
+Metastatic
 Non-Malignant
-Malignant, Invasive
+Metastatic
 Non-Malignant
+Malignant
 Malignant, Invasive
+Non-Malignant, Diseased
 Metastatic
-Malignant
+Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Not Specified
-Malignant
-Not Specified
+Malignant, Invasive
 Non-Malignant
-Non-Malignant, Diseased
-Non-Malignant, Diseased
-Metastatic
 Metastatic
+Non-Malignant, Diseased
+Malignant, Invasive
+Malignant, Invasive
+Malignant, Pre-Invasive
 Malignant, Pre-Invasive
+Not Specified
+Non-Malignant
 Malignant, Invasive
+Not Specified
+Malignant
 Malignant, Invasive
+Non-Malignant
 Malignant, Invasive
 Non-Malignant, Diseased
-Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Malignant, Pre-Invasive
 Malignant
 Malignant, Pre-Invasive
 Not Specified
 Not Specified
 Metastatic
-Not Specified
-Metastatic
 Malignant, Invasive
 Metastatic
 Malignant, Invasive
 Malignant
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Pre-Invasive
 Metastatic
 Malignant
-Malignant, Pre-Invasive
-Not Specified
+Malignant
 Malignant, Pre-Invasive
-Not Specified
-Non-Malignant
-Not Specified
+Malignant, Invasive
 Non-Malignant
-Malignant
 Malignant, Invasive
-Malignant
+Non-Malignant, Diseased
+Metastatic
+Malignant, Invasive
 Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Not Specified
+Metastatic
+Malignant, Invasive
+Metastatic
+Malignant, Invasive
 Malignant
 Malignant
 Non-Malignant, Diseased
 Not Specified
 Non-Malignant, Diseased
 Non-Malignant
-Malignant
+Metastatic
 Non-Malignant
 Non-Malignant
 Malignant, Invasive
-Not Specified
+Malignant, Pre-Invasive
 Malignant, Invasive
 Non-Malignant, Diseased
 Malignant, Invasive
 Non-Malignant, Diseased
 Malignant, Pre-Invasive
-Non-Malignant, Diseased
+Metastatic
+Malignant, Pre-Invasive
 Non-Malignant
-Malignant
 Malignant, Invasive
 Malignant
-Metastatic
-Not Specified
-Metastatic
 Malignant, Invasive
-Malignant, Pre-Invasive
-Metastatic
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
 Non-Malignant
-Malignant
+Not Specified
 Non-Malignant
+Malignant, Pre-Invasive
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Metastatic
+Malignant, Invasive
 Malignant
+Malignant, Invasive
+Not Specified
+Malignant, Invasive
+Non-Malignant, Diseased
+Non-Malignant, Diseased
+Not Specified
 Non-Malignant, Diseased
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant, Pre-Invasive
+Not Specified
+Non-Malignant
+Malignant, Invasive
 Non-Malignant, Diseased
 Malignant, Pre-Invasive
 Metastatic
 Malignant, Pre-Invasive
 Metastatic
 Non-Malignant
-Malignant, Invasive
-Malignant, Invasive
-Malignant, Pre-Invasive
+Non-Malignant
 Malignant, Invasive
 Malignant
 Malignant, Pre-Invasive
 Malignant
 Malignant, Pre-Invasive
+Malignant, Invasive
+Non-Malignant
+Malignant, Invasive
+Non-Malignant, Diseased
+Malignant
 Not Specified
 Not Specified
-Metastatic
-Malignant, Invasive
+Non-Malignant, Diseased
+Not Specified
 Malignant
 Malignant, Invasive
-Malignant
 Malignant, Pre-Invasive
+Malignant, Invasive
 Non-Malignant
-Malignant
-Non-Malignant, Diseased
+Metastatic
 Malignant, Invasive
-Not Specified
+Malignant, Invasive
 Non-Malignant, Diseased
-Metastatic
-Malignant
+Non-Malignant
+Non-Malignant
 Not Specified
+Non-Malignant
 Malignant, Invasive
-Metastatic
-Malignant
+Non-Malignant
 Malignant, Invasive
-Not Specified
-Metastatic
 Not Specified
-Non-Malignant, Diseased
-Malignant
-Malignant, Invasive
-Malignant
 Malignant
 Non-Malignant
 Not Specified
-Metastatic
 Malignant, Invasive
-Metastatic
 Malignant, Invasive
-Malignant
 Metastatic
-Non-Malignant
-Malignant
+Malignant, Invasive
+Not Specified
 Non-Malignant, Diseased
-Malignant, Pre-Invasive
+Not Specified
 Metastatic
-Malignant, Pre-Invasive
 Metastatic
 Non-Malignant
-Malignant, Pre-Invasive
-Malignant, Invasive
-Non-Malignant, Diseased
-Malignant, Invasive
-Malignant, Invasive
-Malignant, Pre-Invasive
 Malignant, Pre-Invasive
+Non-Malignant
 Malignant
-Malignant, Pre-Invasive
-Not Specified
 Metastatic
-Malignant, Invasive
-Malignant
+Malignant, Pre-Invasive
 Metastatic
 Malignant
 Malignant
+Non-Malignant
 Not Specified
-Malignant
+Non-Malignant, Diseased

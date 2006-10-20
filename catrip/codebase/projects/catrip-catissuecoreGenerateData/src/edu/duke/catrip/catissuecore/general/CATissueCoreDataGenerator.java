@@ -8,10 +8,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.mapping.Collection;
 
 import edu.duke.catrip.catissuecore.util.HibernateUtil;
 import edu.duke.catrip.datagenerator.DataGeneratorToolKit;
@@ -26,6 +29,7 @@ import edu.wustl.catissuecore.domainobject.Participant;
 import edu.wustl.catissuecore.domainobject.ParticipantMedicalIdentifier;
 import edu.wustl.catissuecore.domainobject.SpecimenCharacteristics;
 import edu.wustl.catissuecore.domainobject.SpecimenCollectionGroup;
+import edu.wustl.catissuecore.domainobject.SpecimenRequirement;
 import edu.wustl.catissuecore.domainobject.StorageContainer;
 import edu.wustl.catissuecore.domainobject.StorageContainerCapacity;
 import edu.wustl.catissuecore.domainobject.StorageType;
@@ -43,6 +47,7 @@ import edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl
 import edu.wustl.catissuecore.domainobject.impl.SiteImpl;
 import edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl;
 import edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl;
+import edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl;
 import edu.wustl.catissuecore.domainobject.impl.StorageContainerCapacityImpl;
 import edu.wustl.catissuecore.domainobject.impl.StorageContainerImpl;
 import edu.wustl.catissuecore.domainobject.impl.StorageTypeImpl;
@@ -65,11 +70,11 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 	{
 	super();
 	
-	if (DEBUG) System.out.println("\tInside Constructor: DataGenerator()");
+	if (DEBUG) System.out.println("\tInside Constructor: CATissueCoreDataGenerator()");
 
 	}
 
-//Builds the Address, Institution, Department, CancerResearchGroup, User object recs in db
+//Builds the Address, Institution, Department, CancerResearchGroup, User, Site object recs in db
 	public void buildUser(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9,String[] col10,String[] col11,String[] col12,String[] col13,String[] col14,String[] col15,String[] col16,String[] col17,String[] col18,String[] col19) throws ParseException
 	{
 			if (DEBUG) System.out.println("\tInside buildUser()");
@@ -78,75 +83,157 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 			
 			Object[] objsArr = new Object[5];
 			
-			String[] nodupInst = new String[maxrecs];
-			int dupcnt=0;
-			String[] nodupSite = new String[maxrecs];
-			int dupcntSite=0;
 			int insrow=0;
+			int statecnt=0;
+			
+			Session session = HibernateUtil.currentSession();
+	        Transaction tx = session.beginTransaction();
+	        List result = new ArrayList();
 
 			//load the array
 			for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
 
 				//USER STUFF
 					//UserComments
-					dataInsertTable[insrow][0]=rmvTrailingBlanks(col1[rowcnt]);
+					if(col1[rowcnt] == null){
+						dataInsertTable[insrow][0]="n/a";
+					}else{
+						dataInsertTable[insrow][0]=rmvTrailingBlanks(col1[rowcnt]);
+					}
 					//EmailAddress
-					dataInsertTable[insrow][1]=col2[rowcnt];
+					if(col2[rowcnt] == null){
+						dataInsertTable[insrow][1]="n/a";
+					}else{
+						dataInsertTable[insrow][1]=col2[rowcnt];
+					}
 					//FirstNamesFemales
-					dataInsertTable[insrow][2]=col3[rowcnt];
+					if(col3[rowcnt] == null){
+						dataInsertTable[insrow][2]="n/a";
+					}else{
+						dataInsertTable[insrow][2]=col3[rowcnt];
+					}
 					//LastNames
-					dataInsertTable[insrow][3]=col4[rowcnt];
+					if(col4[rowcnt] == null){
+						dataInsertTable[insrow][3]="n/a";
+					}else{
+						dataInsertTable[insrow][3]=col4[rowcnt];
+					}
 					//Logins
-					dataInsertTable[insrow][4]=col5[rowcnt];
+					if(col5[rowcnt] == null){
+						dataInsertTable[insrow][4]="n/a";
+					}else{
+						dataInsertTable[insrow][4]=col5[rowcnt];
+					}
 					//Passwords
-					dataInsertTable[insrow][5]=col6[rowcnt];
+					if(col6[rowcnt] == null){
+						dataInsertTable[insrow][5]="n/a";
+					}else{
+						dataInsertTable[insrow][5]=col6[rowcnt];
+					}
 					//Dates
-					dataInsertTable[insrow][6]=col7[rowcnt];
+					if(col7[rowcnt] == null){
+						dataInsertTable[insrow][6]="n/a";
+					}else{
+						dataInsertTable[insrow][6]=col7[rowcnt];
+					}
 				//INST AND DEPT STUFF
 					//institutions
-					dataInsertTable[insrow][7]=col8[rowcnt];
+					if(col8[rowcnt] == null){
+						dataInsertTable[insrow][7]="n/a";
+					}else{
+						dataInsertTable[insrow][7]=col8[rowcnt];
+					}
 					//departments
-					dataInsertTable[insrow][8]=col9[rowcnt];
+					if(col9[rowcnt] == null){
+						dataInsertTable[insrow][8]="n/a";
+					}else{
+						dataInsertTable[insrow][8]=col9[rowcnt];
+					}
 				//ADDRESS STUFF
 					//streets
-					dataInsertTable[insrow][9]=col10[rowcnt];
+					if(col10[rowcnt] == null){
+						dataInsertTable[insrow][9]="n/a";
+					}else{
+						dataInsertTable[insrow][9]=col10[rowcnt];
+					}
 					//cities
-					dataInsertTable[insrow][10]=col11[rowcnt];
+					if(col11[rowcnt] == null){
+						dataInsertTable[insrow][10]="n/a";
+					}else{
+						dataInsertTable[insrow][10]=col11[rowcnt];
+					}
 					//states
-					dataInsertTable[insrow][11]=col12[rowcnt];
+					if(col12[rowcnt] == null){
+						dataInsertTable[insrow][11]="n/a";
+					}else{
+						dataInsertTable[insrow][11]=col12[rowcnt];
+					}
 					//zip
-					dataInsertTable[insrow][12]=col13[rowcnt];
+					if(col13[rowcnt] == null){
+						dataInsertTable[insrow][12]="n/a";
+					}else{
+						dataInsertTable[insrow][12]=col13[rowcnt];
+					}
 					//phone
-					dataInsertTable[insrow][13]=col14[rowcnt];
+					if(col14[rowcnt] == null){
+						dataInsertTable[insrow][13]="n/a";
+					}else{
+						dataInsertTable[insrow][13]=col14[rowcnt];
+					}
 					//fax
-					dataInsertTable[insrow][14]=col15[rowcnt];
+					if(col15[rowcnt] == null){
+						dataInsertTable[insrow][14]="n/a";
+					}else{
+						dataInsertTable[insrow][14]=col15[rowcnt];
+					}
 				//CANCER GROUP STUFF
 					//ResearchGroup
-					dataInsertTable[insrow][15]=col16[rowcnt];
+					if(col16[rowcnt] == null){
+						dataInsertTable[insrow][15]="n/a";
+					}else{
+						dataInsertTable[insrow][15]=col16[rowcnt];
+					}
+					System.out.println("SITE = "+dataInsertTable[insrow][15]);
 					
 				//Site
 					//SITE
 					if(col17.length > rowcnt){
-						dataInsertTable[insrow][16]=col17[rowcnt];
-						System.out.println("SITE = "+dataInsertTable[insrow][16]);
+						if(col17[rowcnt] == null){
+							dataInsertTable[insrow][16]="n/a";
+						}else{
+							dataInsertTable[insrow][16]=col17[rowcnt];
+						}
 						//SITE TYPE
-						dataInsertTable[insrow][17]=col18[rowcnt];
+						if(col18[rowcnt] == null){
+							dataInsertTable[insrow][17]="n/a";
+						}else{
+							dataInsertTable[insrow][17]=col18[rowcnt];
+						}
 						//EMAIL
-						dataInsertTable[insrow][18]=col19[rowcnt];
+						if(col19[rowcnt] == null){
+							dataInsertTable[insrow][18]="n/a";
+						}else{
+							dataInsertTable[insrow][18]=col19[rowcnt];
+						}
 					}
 					
 					insrow++;
 			}
 
 			int objcnt=0;
+			int fndcnt=-1;
 			for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
-							
 				objcnt=-1;
+				
 			//ADDRESS STUFF
 				Address a = new AddressImpl();
 				a.setStreet(dataInsertTable[rowcnt][9]);
 				a.setCity(dataInsertTable[rowcnt][10]);
-				a.setState(dataInsertTable[rowcnt][11]);
+				//chk to see if more data in array - if not, reset counter
+				if(dataInsertTable[statecnt][11] == "n/a") statecnt=0;
+				a.setState(dataInsertTable[statecnt][11]);
+				++statecnt;
+				
 				a.setZipCode(dataInsertTable[rowcnt][12]);
 				a.setCountry("United States");
 				a.setPhoneNumber(dataInsertTable[rowcnt][13]);
@@ -156,48 +243,69 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				objsArr[objcnt]=a;
 
 			//INSTITUTION STUFF
-				Institution i = new InstitutionImpl();
-				
-				//check for dups
-				for (int j=0;j<maxrecs;j++){
-					if(rowcnt>0 && rowcnt<maxrecs){				
-						for (int cnt = 0; cnt < rowcnt; cnt++) {
-							if(dataInsertTable[rowcnt][7].equals(nodupInst[cnt])){
-								++rowcnt;
-							}
-						}
-					}else{
-						break;
-					}
+				Institution i = null;
+				if(dataInsertTable[rowcnt][7] == null || dataInsertTable[rowcnt][7] == "n/a"){
+					//no more institution from input, so, need to get a one from db
+					result = session.createQuery("from InstitutionImpl").list();
+				    tx.commit();
+					    
+				    int reccnt=result.size();
+				    ++fndcnt;
+				    if(fndcnt>reccnt-1) fndcnt=0;
+				    i = (InstitutionImpl) result.get(fndcnt);
+				}else{
+					i = new InstitutionImpl();
+					if(dataInsertTable[rowcnt][7].length()>50)
+						i.setName(dataInsertTable[rowcnt][7].substring(0,49));
+					else
+						i.setName(dataInsertTable[rowcnt][7]);
+					System.out.println("\t\t\t\tAdding Institution object to objsArr, that contains: "+i.getName());
+					++objcnt;
+					objsArr[objcnt]=i;
 				}
-				
-				//add selected institution into nodupInst array
-				nodupInst[dupcnt++]=dataInsertTable[rowcnt][7];
-				
-				if(dataInsertTable[rowcnt][7].length()>50)
-					i.setName(dataInsertTable[rowcnt][7].substring(0,49));
-				else
-					i.setName(dataInsertTable[rowcnt][7]);
-				System.out.println("\t\t\t\tAdding Institution object to objsArr, that contains: "+i.getName());
-				++objcnt;
-				objsArr[objcnt]=i;
 
 			//DEPARTMENT STUFF
-				Department d = new DepartmentImpl();	
-				if(dataInsertTable[rowcnt][8].length()>50)
-					d.setName(dataInsertTable[rowcnt][8].substring(0,49));
-				else
-					d.setName(dataInsertTable[rowcnt][8]);
-				System.out.println("\t\t\t\tAdding Department object to objsArr, that contains: "+d.getName());
-				++objcnt;
-				objsArr[objcnt]=d;
+				Department d = null;
+					
+				if(dataInsertTable[rowcnt][8] == null || dataInsertTable[rowcnt][8] == "n/a"){
+					//no more Department from input, so, need to get a one from db
+					result = session.createQuery("from DepartmentImpl").list();
+				    tx.commit();
+					    
+				    int reccnt=result.size();
+				    ++fndcnt;
+				    if(fndcnt>reccnt-1) fndcnt=0;
+				    d = (DepartmentImpl) result.get(fndcnt);
+				}else{
+					d = new DepartmentImpl();
+					if(dataInsertTable[rowcnt][8].length()>50)
+						d.setName(dataInsertTable[rowcnt][8].substring(0,49));
+					else
+						d.setName(dataInsertTable[rowcnt][8]);
+					System.out.println("\t\t\t\tAdding Department object to objsArr, that contains: "+d.getName());
+					++objcnt;
+					objsArr[objcnt]=d;
+				}
 				
 			//CANCER GROUP STUFF
-				CancerResearchGroup crg = new CancerResearchGroupImpl();
-				crg.setName(dataInsertTable[rowcnt][15]);
-				System.out.println("\t\t\t\tAdding CancerGroup object to objsArr, that contains: "+crg.getName());			
-				++objcnt;
-				objsArr[objcnt]=crg;
+				CancerResearchGroup crg = null;
+				
+				if(dataInsertTable[rowcnt][15] == null || dataInsertTable[rowcnt][15] == "n/a"){
+					//no more CancerResearchGroup from input, so, need to get a one from db
+					result = session.createQuery("from CancerResearchGroupImpl").list();
+				    tx.commit();
+					    
+				    int reccnt=result.size();
+				    ++fndcnt;
+				    if(fndcnt>reccnt-1) fndcnt=0;
+				    crg = (CancerResearchGroupImpl) result.get(fndcnt);
+				}else{
+					crg = new CancerResearchGroupImpl();
+					crg.setName(dataInsertTable[rowcnt][15]);
+					System.out.println("\t\t\t\tAdding CancerGroup object to objsArr, that contains: "+crg.getName());			
+					++objcnt;
+					objsArr[objcnt]=crg;
+				}
 						
 			//USER STUFF
 				User u = new UserImpl();
@@ -229,39 +337,25 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				
 			//Site STUFF
 				
-				//check for dup sites
-				boolean nodups=true;
-				for (int cnt = 0; cnt < dupcntSite; cnt++) {
-					if(dataInsertTable[rowcnt][16].equals(nodupInst[cnt])){
-						nodups=false;
-					}
-				}
-				
-				if(nodups){
-					//then, add the site
-					nodupSite[dupcntSite++]=dataInsertTable[rowcnt][16];
-				
+				if(dataInsertTable[rowcnt][16] == null || dataInsertTable[rowcnt][16] == "n/a"){
+					System.out.println("\t\t\t\tNO MORE Sites to add...");
+				}else{
 					SiteImpl s = new SiteImpl();
 					s.setActivityStatus("Active");
 					s.setName(dataInsertTable[rowcnt][16]);
 					s.setType(dataInsertTable[rowcnt][17]);
 					s.setEmailAddress(dataInsertTable[rowcnt][18]);
-					
 					//Objects attached to Site
 						//Address STUFF
-			    		s.setAddress(a);
-
-			    		//Coordinator STUFF
-			    		s.setCoordinator(u);
-		
-			    		System.out.println("\t\t\t\tAdding Site object to objsArr, that contains: "+s.getName());
-			    		
-						System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to save/commit all associated objects, in the array of objects...");
-						
-						create(s);
+		    			s.setAddress(a);
+		    			//Coordinator STUFF
+		    			s.setCoordinator(u);
+		    		System.out.println("\t\t\t\tAdding Site object to objsArr, that contains: "+s.getName());
+					System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to save/commit all associated objects, in the array of objects...");
+					
+					create(s);
 				}
 				
-
 		     }
 		    
 			System.out.println("\n\n\t\t\t\tCreated ("+maxrecs+") Records, Times ("+objcnt+") objects...\n");
@@ -290,19 +384,15 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 			
 			//Participant
 				//lname
-				//dataInsertTable[insrow][0]=removeChar(col1[randomInRange(0,maxrecs-1)],' ');
 				dataInsertTable[insrow][0]=removeChar(col1[rowcnt],' ');
 
 				//fname
-				//dataInsertTable[insrow][1]=removeChar(col2[randomInRange(0,maxrecs-1)],' ');
 				dataInsertTable[insrow][1]=removeChar(col2[rowcnt],' ');
 
 				//mname
 				dataInsertTable[insrow][2]=removeChar(col2[randomInRange(0,maxrecs-1)],' ');
 
-				//System.out.println("\t\t\t\tgender= "+dataInsertTable[insrow][2]);
 				//dob
-				//dataInsertTable[insrow][3]=col4[randomInRange(0,maxrecs-1)];
 				dataInsertTable[insrow][3]=col4[rowcnt];
 
 				//race
@@ -311,7 +401,6 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				//ethnicity
 				dataInsertTable[insrow][5]=removeChar(col6[randomInRange(0,maxrecs-1)],' ');
 				//ssn
-				//dataInsertTable[insrow][6]=col7[randomInRange(0,maxrecs-1)];
 				dataInsertTable[insrow][6]=col7[rowcnt];
 				//participant id
 				curID=removeChars(col8[randomInRange(0,maxrecs-1)],"  ");
@@ -340,8 +429,8 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				System.out.println("\t\t\t\tSurgicalPathologyNumber = "+dataInsertTable[insrow][10]);
 				insrow++;
 		}
-			//TODO: WRITE CODE TO insert current tables' recs into db
-		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
+
+		int fndcnt = -1;
 		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
 			objcnt=-1;
 			Participant p = new ParticipantImpl();
@@ -376,15 +465,13 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		    
 		    HibernateUtil.closeSession();
 		    if(result.size()>0){
-			    for (int i = 0; i<maxrecs; i++) {
-			    	SiteImpl obj = (SiteImpl) result.get(i);
+			    int reccnt=result.size();
+			    ++fndcnt;
+			    if(fndcnt>reccnt-1) fndcnt=0;
+			    SiteImpl obj = (SiteImpl) result.get(fndcnt);
 
-			    	if(i==rowcnt){
-			    		pmi.setSite(obj);
-			    		System.out.println("\t\t\t\tFound Site Name: "+obj.getName());
-			    		break;
-			    	}
-			    }
+			    pmi.setSite(obj);
+			   	System.out.println("\t\t\t\tFound Site Name: "+obj.getName());
 		    }
 			
     		System.out.println("\t\t\t\tAdding ParticipantIdent object to objsArr, that contains: "+pmi.getMedicalRecordNumber());
@@ -416,7 +503,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		
 		String[][] dataInsertTable = new String[maxrecs][37];
 
-		Object[] objsArr = new Object[8];
+		Object[] objsArr = new Object[9];
 		
 		int insrow=0;
 
@@ -429,7 +516,6 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
         Date sdate = null;
         
 		//load the arrays
-		//for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
 		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
 			//Specimen
 				//SpecimenType
@@ -491,7 +577,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 	
 			//StorageContainer
 				//Barcode
-				dataInsertTable[insrow][26]=col27[rowcnt];
+				dataInsertTable[insrow][26]=col27[rowcnt]+rowcnt;
 				//Number
 				//dataInsertTable[insrow][27]=col28[rowcnt];
 				dataInsertTable[insrow][27]=removeChars(col28[rowcnt],"  ");
@@ -517,13 +603,18 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				//TwoDimensionLabel 
 				dataInsertTable[insrow][35]=col36[rowcnt];
 				//Type 
-				dataInsertTable[insrow][36]=col37[rowcnt];
+				if(col37[rowcnt] == null){
+					dataInsertTable[insrow][36]="n/a";
+				}else{
+					dataInsertTable[insrow][36]=col37[rowcnt];
+				}
 
 				insrow++;
 		}
-			//TODO: WRITE CODE TO insert current tables' recs into db
-		//for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
+
 		int fndcnt=0;
+		int stccnt=0;
+		int regdatecnt=0;
 		int objcnt=0;
 		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
 			objcnt=-1;
@@ -531,16 +622,31 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		//TissueSpecimen STUFF
 			TissueSpecimen ts = new TissueSpecimenImpl();
 			
-			ts.setType(dataInsertTable[rowcnt][0]);
+			int loc = dataInsertTable[rowcnt][0].indexOf("Tissue");      
+			if(loc > -1){
+				ts.setType(dataInsertTable[rowcnt][0]);
+			}else{
+				//loop until find a 'tissue' type
+				for (int i = maxrecs-1; i > 0; i--) {
+					loc = dataInsertTable[i][0].indexOf("Tissue");      
+					if(loc > -1){
+						ts.setType(dataInsertTable[i][0]);
+						break;
+					}
+				}
+			}
+			//ts.setType(dataInsertTable[rowcnt][0]);
 			ts.setQuantityInGram(Double.valueOf(dataInsertTable[rowcnt][1]));
 			ts.setAvailableQuantityInGram(Double.valueOf(Float.parseFloat(dataInsertTable[rowcnt][2])-.5));
 			//ts.setAvailableQuantityInGram(Double.valueOf(dataInsertTable[rowcnt][2]));
 			ts.setComments(dataInsertTable[rowcnt][3]);
+			System.out.println("\n barcode: "+dataInsertTable[rowcnt][4]);
 			ts.setBarcode(dataInsertTable[rowcnt][4]);
 			ts.setPositionDimensionOne(Integer.valueOf(dataInsertTable[rowcnt][5]));
 			ts.setPositionDimensionTwo(Integer.valueOf(dataInsertTable[rowcnt][6]));
 			ts.setActivityStatus("Active");
 			ts.setAvailable(Boolean.TRUE);
+
 			
 			//objects attached, that need to be populated
 			//SpecimenCharacteristics STUFF
@@ -562,94 +668,11 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				scg.setClinicalStatus(dataInsertTable[rowcnt][11]);
 			
 				//Objects attached to SpecimenCollectionGroup, that need to be populated
-				//CollectionProtocolEvent STUFF
-					CollectionProtocolEvent cpe = new CollectionProtocolEventImpl();
-					cpe.setClinicalStatus(dataInsertTable[rowcnt][12]);
-					cpe.setStudyCalendarEventPoint(Double.valueOf(dataInsertTable[rowcnt][13]));
-					//Objects attached to CollectionProtocolEvent
+
+	//				COMMENTED OUT FOR TESTING WITHOUT CP
+	/*				CollectionProtocol cp = new CollectionProtocolImpl();
 					//CollectionProtocol STUFF (extends SpecimenProtocol)
-					
-					
-//MOVED CODE OUTSIDE OF CPE
-//					CollectionProtocol cp = new CollectionProtocolImpl();
-//					
-//					cp.setActivityStatus("Active");
-//					cp.setDescriptionURL(dataInsertTable[rowcnt][14]);
-//				
-//					sdate = sdf.parse( dataInsertTable[rowcnt][15]);
-//					cp.setEndDate(sdate);	
-//					cp.setEnrollment(Integer.valueOf(dataInsertTable[rowcnt][16]));
-//					cp.setIrbIdentifier(dataInsertTable[rowcnt][17]);
-//					cp.setShortTitle(dataInsertTable[rowcnt][18]);
-//					sdate = sdf.parse( dataInsertTable[rowcnt][19]);
-//					cp.setStartDate(sdate);
-//					if(dataInsertTable[rowcnt][20].length()>50)
-//						cp.setTitle(dataInsertTable[rowcnt][20].substring(0,49));
-//					else
-//						cp.setTitle(dataInsertTable[rowcnt][20]);
-//					//Objects attached to CollectionProtocol
-//						List collProtEvt = new ArrayList();
-//						result = session.createQuery("from  CollectionProtocolEventImpl").list();
-//						if(result.size()>0){
-//			        		for (int i = 0; i<maxrecs; i++) {
-//			        			CollectionProtocolEvent cpeObj = (CollectionProtocolEventImpl) result.get(i);
-//			        			//if(i==rcnt){
-//			        			if(i==fndcnt){
-//			        				collProtEvt.add(cpeObj);
-//						    		break;
-//			        			}
-//			        		}
-//			        	}
-//						cp.setCollectionProtocolEventCollection(collProtEvt);
-//					
-////						List collDistProt = new ArrayList();
-////						collDistProt.add("Active");
-////						cp.setDistributionProtocolCollection(collDistProt);
-//
-//						List collUsr = new ArrayList();
-//				        result = session.createQuery("from UserImpl").list();
-//				        tx.commit();
-//				        
-//				        
-//				        //HibernateUtil.closeSession();
-//				        //for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
-//				        	if(result.size()>0){
-//				        		for (int i = 0; i<maxrecs; i++) {
-//				        			UserImpl obj = (UserImpl) result.get(i);
-//				        			//if(i==rcnt){
-//				        			if(i==fndcnt){
-//				        				collUsr.add(obj);
-//							    		System.out.println("\t\t\t\tFound PI: "+obj.getFirstName()+", "+obj.getLastName());
-//							    		break;
-//				        			}
-//				        		}
-//				        	}
-//				        //}
-//				        					        
-//						cp.setUserCollection(collUsr);
-//							System.out.println("\t\t\t\tAdding CollectionProtocol object to objsArr, that contains: "+cp.getStartDate()+", "+cp.getEndDate());
-//						++objcnt;
-//						objsArr[objcnt]=cp;
 						
-//TODO - SET THE ASSOCIATION OF CP TO CPE AFTER CREATING THEM BOTH
-//					cpe.setCollectionProtocol(cp);
-	
-					
-//					List collSpecReq = new ArrayList();
-//					collSpecReq.add("Tissue");
-//					cpe.setSpecimenRequirementCollection(collSpecReq);
-					
-					System.out.println("\t\t\t\tAdding CollectionProtocolEvent object to objsArr, that contains: "+cpe.getClinicalStatus());
-						
-					++objcnt;
-					objsArr[objcnt]=cpe;
-					
-				scg.setCollectionProtocolEvent(cpe);
-				
-//COMMENTED OUT FOR TESTING WITHOUT CP
-				//CollectionProtocol STUFF (extends SpecimenProtocol)
-/*					CollectionProtocol cp = new CollectionProtocolImpl();
-					
 					cp.setActivityStatus("Active");
 					cp.setDescriptionURL(dataInsertTable[rowcnt][14]);
 				
@@ -679,6 +702,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 	//		        		}
 	//		        	}
 	//					cp.setCollectionProtocolEventCollection(collProtEvt);
+	
 					
 	//					List collDistProt = new ArrayList();
 	//					collDistProt.add("Active");
@@ -707,14 +731,55 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 					cp.setUserCollection(collUsr);
 					System.out.println("\t\t\t\tAdding CollectionProtocol object to objsArr, that contains: "+cp.getStartDate()+", "+cp.getEndDate());
 					++objcnt;
-					objsArr[objcnt]=cp;*/
+					objsArr[objcnt]=cp;*/		
+				//SpecimenRequirement
+					SpecimenRequirement sr = new SpecimenRequirementImpl();
+					sr.setSpecimenType(dataInsertTable[rowcnt][0]);
+					sr.setTissueSite(dataInsertTable[rowcnt][7]);
+					sr.setPathologyStatus(dataInsertTable[rowcnt][9]);
+					System.out.println("\t\t\t\tAdding SpecimenRequirement object to objsArr, that contains: "+sr.getSpecimenType());
 
+					++objcnt;
+					objsArr[objcnt]=sr;
+
+				//CollectionProtocolEvent STUFF
+					CollectionProtocolEvent cpe = new CollectionProtocolEventImpl();
+					cpe.setClinicalStatus(dataInsertTable[rowcnt][12]);
+					cpe.setStudyCalendarEventPoint(Double.valueOf(dataInsertTable[rowcnt][13]));
+					//Objects attached to CollectionProtocolEvent
+//
+//					List collSpecReq = new ArrayList();
+//					int loc = dataInsertTable[rowcnt][0].indexOf("Tissue");      
+//					if(loc > -1){
+//						collSpecReq.add("Tissue");
+//					}else{
+//						collSpecReq.add("Fluid");
+//					}
+//					
+//					System.out.println("\n\t\t\t\tTissue Type: "+dataInsertTable[rowcnt][0]);
+//					System.out.println("\n\t\t\t\tTissue Class: "+collSpecReq);
+//					//cpe.setSpecimenRequirementCollection(collSpecReq);
+//					cpe.setSpecimenRequirementCollection(collSpecReq);
+					
+					System.out.println("\t\t\t\tAdding CollectionProtocolEvent object to objsArr, that contains: "+cpe.getClinicalStatus());
+						
+//					TODO - SET THE ASSOCIATION OF CP TO CPE AFTER CREATING CP
+//					cpe.setCollectionProtocol(cp);
+					
+					++objcnt;
+					objsArr[objcnt]=cpe;
+					
+				scg.setCollectionProtocolEvent(cpe);
+				
 					//CollectionProtocolRegistration STUFF
 						CollectionProtocolRegistration cpr = new CollectionProtocolRegistrationImpl();
 						cpr.setActivityStatus("Active");
 						cpr.setProtocolParticipantIdentifier(dataInsertTable[rowcnt][21]);
-						sdate = sdf.parse( dataInsertTable[rowcnt][22]);
+						//chk to see if more data in array - if not, reset counter
+						if(dataInsertTable[regdatecnt][22] == null) regdatecnt=0;
+						sdate = sdf.parse( dataInsertTable[regdatecnt][22]);
 						cpr.setRegistrationDate(sdate);
+						++regdatecnt;
 						//Objects attached
 							cpr.setCollectionProtocol(null);
 							
@@ -726,7 +791,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 					        //HibernateUtil.closeSession();
 					        //for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
 					        	if(result.size()>0){
-					        		for (int i = 0; i<maxrecs; i++) {
+					        		for (int i = 0; i<result.size(); i++) {
 					        			ParticipantImpl obj = (ParticipantImpl) result.get(i);
 
 					        			//if(i==rcnt){
@@ -749,7 +814,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		        tx.commit();
 
 	        	if(result.size()>0){
-	        		for (int i = 0; i<maxrecs; i++) {
+	        		for (int i = 0; i<result.size(); i++) {
 	        			SiteImpl s = (SiteImpl) result.get(i);
 
 	        			//if(i==rcnt){
@@ -780,7 +845,11 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				stc.setNumber(Integer.valueOf(dataInsertTable[rowcnt][27]));
 				stc.setPositionDimensionOne(Integer.valueOf(dataInsertTable[rowcnt][28]));
 				stc.setPositionDimensionTwo(Integer.valueOf(dataInsertTable[rowcnt][29]));
-				stc.setTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][30]));
+				//chk to see if more data in array - if not, reset counter
+				if(dataInsertTable[stccnt][30] == null) stccnt=0;
+				stc.setTempratureInCentigrade(Double.valueOf(dataInsertTable[stccnt][30]));
+				++stccnt;
+				
 				//Objects attached
 				//Site STUFF
 	        		result = session.createQuery("from SiteImpl").list();
@@ -790,7 +859,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 	        		//boolean fnd=false;
 	        		//for (int rcnt = 0; rcnt < maxrecs; rcnt++) {
 		        		if(result.size()>0){
-		        			for (int i = 0; i<maxrecs; i++) {
+		        			for (int i = 0; i<result.size(); i++) {
 		        				SiteImpl obj = (SiteImpl) result.get(i);
 	
 		        				//if(i==rcnt){
@@ -817,18 +886,31 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 				stc.setStorageContainerCapacity(scc);
 				
 				//StorageType STUFF
-					StorageType st = new StorageTypeImpl();
-					st.setDefaultTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][33]));
-					st.setOneDimensionLabel(dataInsertTable[rowcnt][34]);
-					st.setTwoDimensionLabel(dataInsertTable[rowcnt][35]);
-					st.setType(dataInsertTable[rowcnt][36]);
-					//Objects attached
-					//DefaultStorageCapacity STUFF
-					st.setDefaultStorageCapacity(scc);
-					
-					System.out.println("\t\t\t\tAdding StorageType object to objsArr, that contains: "+st.getType());
-					++objcnt;
-					objsArr[objcnt]=st;
+					StorageType st = null;
+				
+					if(dataInsertTable[rowcnt][8] == null || dataInsertTable[rowcnt][8] == "n/a"){
+						//no more StorageType from input, so, need to get a one from db
+						result = session.createQuery("from StorageTypeImpl").list();
+					    tx.commit();
+						    
+					    int reccnt=result.size();
+					    ++fndcnt;
+					    if(fndcnt>reccnt-1) fndcnt=0;
+					    st = (StorageTypeImpl) result.get(fndcnt);
+					}else{
+						st = new StorageTypeImpl();
+						st.setDefaultTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][33]));
+						st.setOneDimensionLabel(dataInsertTable[rowcnt][34]);
+						st.setTwoDimensionLabel(dataInsertTable[rowcnt][35]);
+						st.setType(dataInsertTable[rowcnt][36]);
+						//Objects attached
+						//DefaultStorageCapacity STUFF
+						st.setDefaultStorageCapacity(scc);
+						
+						System.out.println("\t\t\t\tAdding StorageType object to objsArr, that contains: "+st.getType());
+						++objcnt;
+						objsArr[objcnt]=st;
+					}
 					
 				stc.setStorageType(st);
 				
@@ -841,7 +923,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 			System.out.println("\t\t\t\tAdding TissueSpecimen object to objsArr, that contains: "+ts.getType());
 			++objcnt;
 			objsArr[objcnt]=ts;
-			
+						
 			System.out.println("\t\t\t\t("+rowcnt+") Calling create(objsArr) to create all the objects...\n");
 
 			for(int i=0;i<objsArr.length;i++){

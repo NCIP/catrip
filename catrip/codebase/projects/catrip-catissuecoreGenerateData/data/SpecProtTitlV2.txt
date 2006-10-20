@@ -1,1000 +1,1000 @@
-BrCa18782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-Breast Cancer, Adj: 10+ Nodes: CAF> CCB/BR                                 
-BC19364: Effect of bereavement on recurr/death in Breast Cancer ca         
-BGLAC 9243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
-BrCa18642: BrCa, stage IV: Single agent induction + CAF or CAF     
-Modeling Risk For Breast Cancer                                        
-Bone pain-stage IV Breast Cancer cancer: RE 186 etidronate (open label).      
-Breast: S. N. dissection                                               
-Brst.ZOO1Of/u:ax diss vs no sx BrCa: S. Node vs Ax. Node Dissection  
-Breast, colon or lung:  Virtual Reality for CT Symptoms               
-Breast, stage IV: Lapatinib/Trastuzumab/Monotherapy                   
-BrCa dx, post RT for Hodgkin's.                                     
-Mammography Screen among Blacks with family hx of Breast Cancer ca            
-BrCa And Bowel Prevention                                            
-BRCA28741 Breast:Dose response trial of megace.                       
-BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
-Chemotherapy Associated Lung Toxicity in Breast Cancer Cancer Patients        
-Breast Cancer cells/fluid Bank                                                
-BrCa CT: Virtual reality intervention                                
-BGLAC 9141: Adj. Breast, + LN: HiD CA + GCSF                          
-BrCa 9243: BrCa: Amonafide(dose assigned by acetylator phenotyping) 
-BrCa:  Econ Eval BrCa 9343                                          
-BGLAC 8742 Breast, stage IV: TriMTX.                                  
-Breast cells/fluid Bank                                                
-Breast Surgery: PV Block vs Gen Anesthesia                             ,
-BrCa and Prostate Cancer Data Quality Study                         
-BrCa 8864 BrCa, stage IV: Megace quality-of-life.                  
-BRCA28862 Breast: Pharmacodynamic study of amonafide.                 
-BrCa: QOL                                                            
-BC19242: Breast Cancer: Topotecan                                          
-Breast Cancer And Bowel Prevention                                            
-Breast Cancer: Genetic tissue analysis as prediction model                    
-Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
-BRCA18662:Breast, stage IV: 15-3 radioimmunoassay.                   
-Prostate/BrCa: Promoting Health.                                     
-BGLAC 9193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa ca, early stage:  STRENGTH                                     
-Breast tissue acquisition                                              
-Breast Cancer: Tumor Bank/Database                                            
-Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
-BrCa Ca Markers                                                      
-Breast Ca Markers                                                      
-BRCA19193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa, early stage:  Couple-based intervention                       
-Breast Cancer Prevention                                                      
-BrCa ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
-Breast Cancer Ca Prevention: Tamoxifen/Raloxifene                             
-Bone mets, BrCa or MM : Zoledronate vs Aredia
-Breast, colon or lung:  Virtual Reality for CT Symptoms               
-Breast Cancer, colon or lung:  Virtual Reality for CT Symptoms               
-Modeling Risk For Breast Cancer                                        
-In Vitro Gen CTL Using DCs/ BrCa                                     
-BrCa:  Thrombosis 
-Breast Cancer Ultrasound                                                      
-BrCa ca bone loss: Early Zometa vs Late Zometa                       
-BRCA29243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
-Hot flashes w/ breast ca: Vitamin B6                                   
-BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
-Breast Ca Prevention: Tamoxifen/Raloxifene                             
-BGLAC 9193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-Endometrial sampling in BrCa ca pts on tamoxifen.                    
-BrCa Prevention                                                      
-Breast ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-Breast, Barriers to Participation.                                    
-Written Emotional Expression post RT/CT in BrCa Cancer               
-Breast Cancer ca: Pathophysiologic impact of DOX/RT on heart                  
-Breast Cancer Tissue Repository                                        
 Blanket Protocol for BR in Breast Cancer & Ovarian Cancer                   
-BC18782 Adj Breast Cancer, l0+ nodes: CAF> CCB/ABMT.                      
-BrCa29193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BRCA19140: Breast: CAF or CAF/leuc                                    
-BGLAC 8662:Breast, stage IV: 15-3 radioimmunoassay.                   
-BGLAC 9371: Breast Cancer: Weight Loss Program                                
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast CA   ,
-BGLAC 9371: Breast Cancer: Weight Loss Program                                
-Endometrial sampling in breast ca pts on tamoxifen.                    
-Breast Cancer ca/ BRCA                                                        
-BRCA19193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BC18541: Breast Cancer,adj, node+: CAF dose/sched comparison              
-Nausea prevention,BrCa, AC CT: Ginger vs Placebo (blinded)          
-Breast Cancer, stage IV: Continuous infusion 5-FU                            
-BrCa29243: BrCa: Amonafide(dose assigned by acetylator phenotyping) 
-Breast Cancer dx, post RT for Hodgkin's.                                     
-BrCa, Barriers to Participation.                                    
-BRCA18862 Breast: Pharmacodynamic study of amonafide.                 
-BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast, Stage IV: CI 5FU post BR                                    
-Well-Being Following Breast Cancer.                                    
-Breast Cancer, newly dx: Data collection/questionnaire                       ,
-Breast Cancer, Stage IV: HiD CCB/BR                                        
-BrCa19192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast:  Econ Eval BGLAC 9343                                          
-Breast Cancer: Effect of GCSF on Docetaxel Assoc, Neutropenia                
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast Cancer CA   
-PC B-19 Adj breast, node-,ER-: M-F or CMF.                         ,
-Breast Cancer: Genetic tissue analysis as prediction model                    
-Detection of malignancy in pts w/ BrCa abnormalities using plasma.   
-BGLAC 9140: Breast Cancer: CAF or CAF/leuc                                    
-BC18662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-Breast Cancer Ca Imaging with SPECT                                           
-BrCa Prevention                                                      
-Breast Ca Specimen Collection                                          
-Breast Cancer, stages I/II: Couple-based psychosocial intervention           
-Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-BC18742 Breast Cancer, stage IV: TriMTX.                                  
-BrCa19371: BrCa: Weight Loss Program                                
-Breast Ca Specimen Collection                                          
-BrCa cell/fluid bank                                                 ,
-Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
-Breast Cancer: Tumor Bank/Database                                            
-Role of TGF-Beta in Tam Mediated BrCa Cancer                         
-Breast Cancer, stage IV: Continuous infusion 5-FU                            
-BC29193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCaB-17 BrCa Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT 
-BrCa, stage IV: Lapatinib/Trastuzumab/Monotherapy                   
-Breast Test 1                                                          
-BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-Breast: S. N. dissection                                               
-PC B-20 Adj Breast Cancer, node-, ER+: TAM or M-F/TAM or CMF/TAM.         ,
-Cog-behav tx insomnia in lung & breast ca.                             
-Breast Cancer Test 1                                                          
-Tx-related fatigue, Breast Cancer, >65: Exercise vs usual care               ,
-Brst.ZOO1Of/u:ax diss vs no sx Breast: S. Node vs Ax. Node Dissection  
 Breast Cancer, stage IV, refrcty: CI FU; CT-response assay.                  
-BrCa, stage IV, ER- or low: beta INF + Tamoxifen                    
-BGLAC 8862 Breast: Pharmacodynamic study of amonafide.                 
-BrCa18741 BrCa:Dose response trial of megace.                       
-BRCA18741 Breast:Dose response trial of megace.                       
-BC18662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-Hi Risk BrCa Ca, Stage II/III/IV, PK Companion to MGDF 961006       ,
-Endometrial sampling in BrCa ca pts on tamoxifen.                    
-BGLAC 8944: Breast: Neoadj ADR + surgery + CMF + RT.                   
-BrCa Ca Specimen Collection                                          
-Advd Breast: CA +/- IL-6                                               
-Diagnostic Accuracy of Needle Biopsy for Occult BrCa Lesions         
-Breast Ca: Early Detect by LN Map & RT-PCR                             
-BrCa and Prostate Cancer Data Quality Study                         
-BRCA19364: Effect of bereavement on recurr/death in breast ca         
-Analysis of the p53 Gene in Breast Cancer Cancer                              ,
-Breast Cancer & prostate, early stage: Health promotion                      
-Written Emotional Expression post RT/CT in Breast Cancer Cancer               
-BrCa, newly dx: Data collection/questionnaire                       
-Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
-Breast Cancer, early stage:  Couple-based intervention                       
-Breast Cancer, Stages IIIB or IV: CAF +/- IL-6                               
-BC18864 Breast Cancer, stage IV: Megace quality-of-life.                  
-BrCa 9193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-Contrast-enhanced MRI of the Breast: Pathologic correlation            
-BrCa29141: Adj. BrCa, + LN: HiD CA + GCSF                          
-Breast Cancer Ca Prevention: Tamoxifen/Raloxifene                             
-Breast Ca: Improving Health & QOL                                      
-Breast (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
-Contrast-enhanced MRI of the Breast Cancer: Pathologic correlation            ,
-Breast, Adj: 10+ Nodes: CAF> CCB/BR                                 
-BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-Breast, stage IV, ER- or low: beta INF + Tamoxifen                    
-Breast Cancer, Stage IV: CI 5FU post BR                                    
-Social Support, Stress and Mammography Pain for BrCa Cancer Survivor
-Breast Cancer: Effect of GCSF on Docetaxel Assoc, Neutropenia                
-BrCa:  Econ Eval BrCa 9343                                          
-Breast Prevention                                                      
-BrCa29140: BrCa: CAF or CAF/leuc                                    
-BRCA28642: Breast, stage IV: Single agent induction + CAF or CAF     
-BC18897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-BrCa: QOL                                                            
-Prevention of Hereditary Breast Cancer and Ovarian Cancer                     ,
-Carolina Breast Cancer Study                                           
-BrCa, stage IV: Continuous infusion 5-FU                            
-Prevention of Hereditary Breast Cancer and Ovarian Cancer                     ,
-Breast, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
-BRCA18741 Breast:Dose response trial of megace.                       
-Social Support, Stress and Mammography Pain for Breast Cancer Cancer Survivor
-Atypical Hyperplasia and Breast Cancer Cancer Risk                            
-BrCa 9371: BrCa: Weight Loss Program                                
-BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
-Breast Cancer tissue bank                                                     
-BrCa Ca Specimen Collection                                          
-PC B-25 Breast, adj node+: ADR+CTX", 1200x4; 2400x2; or 2400x4.      
-Insomnia in Breast Cancer Cancer: Daily Process Analysis                      ,
-Analysis of the p53 Gene in BrCa Cancer                              ,
-Breast Cancer tissue bank                                                     
-BrCa:  Thrombosis                                                    
-Breast Ca Detection:  Expression Based Markers                         
-Prevention of Hereditary Breast Cancer and Ovarian Cancer                     ,
-Consequences of CT-Induced Emesis in Breast CA                         
-Breast Cancer tissue bank                                                     
-BGLAC 8862 Breast: Pharmacodynamic study of amonafide.                 
-Prostate/Breast Cancer: Promoting Health.                                     
-BrCa28742 BrCa, stage IV: TriMTX.                                  
-BRCA28742 Breast, stage IV: TriMTX.                                  
-BrCa:  Thrombosis 
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast CA   ,
-BrCa: Healing skills                                                 
-Breast Cancer ca/ BRCA                                                        
-BrCa, stage IV: CAF +/- ADR-529 as a cardioprotectant.              
-Breast ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-BrCa ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-BrCa29242: BrCa: Topotecan                                          
-Breast Cancer: Tumor Bank/Database                                            
-Breast Cancer Ca Prevention:  Tamoxifen Decision                              
-Staging BrCa Cancer with Positron Emission Tomography                
-Early breast ca: Endometrial ca prevention:TAM/Megace vs OBS           
-BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-BrCa28782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-BRCA19371: Breast: Weight Loss Program                                
-Bone pain-stage IV breast cancer: RE 186 etidronate (open label).      ,
-Advd, HER2+ Breast Cancer ca, NED post rx: Phase I DC immunorx               
-A Survey of Women w/ Breast Cancer CA Who Have Had Breast Cancer Reconstruction      
-Breast Cancer: Adjuvant Treatment in Older Women                       
-BrCa: Follow-up Study after Participating in AMGEN 951017-02         
-Well-Being Following Breast Cancer.                                    
-Breast Cancer Ca Specimen Collection                                          
-BC29364: Effect of bereavement on recurr/death in Breast Cancer ca         
-BRCA19192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast Ca Prevention:  Tamoxifen Decision                              
-Breast Cancer, stage IV: AFM: CR's: HiD CTX/DDP/BCNU upfront or at relapse   
-BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
-Breast Cancer Ca Detection:  Expression Based Markers                         
-BC28741 Breast Cancer:Dose response trial of megace.                       
-Menopause symptoms, hi risk BrCa ca: Yoga classes vs Control        
-BrCa ca prevention: Tamoxifen info displays                          
-Breast Cancer Ca, stage II, node +: Lab studies                              
-Brst.ZOO1Of/u:ax diss vs no sx Breast: S. Node vs Ax. Node Dissection  
-Breast Cancer: GMCSF mouthwash for mucositis.                                 
-BGLAC 8662:Breast, stage IV: 15-3 radioimmunoassay.                   
-BM 21.0955 for Metastatic Bone Disease in Breast Cancer Cancer                
-Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
+Breast Cancer CT: Virtual reality intervention                                
+BrCa19371: BrCa: Weight Loss Program                                
+Insomnia in Breast Cancer: Daily Process Analysis                      
 BrCa ca bone loss: Early Zometa vs Late Zometa                       
-Advd, HER2+ breast ca, NED post rx: Phase I DC immunorx               
-Breast Cancer Ca Imaging with SPECT                                           
-Breast, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
-Improved Ultrasonic Breast Cancer Imaging with New Transducers                
-BrCa: Tumor Bank/Database                                            
-BC19364: Effect of bereavement on recurr/death in Breast Cancer ca         
-BrCa29194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-Written Emotional Expression post RT/CT in Breast Cancer               
-Tx-related fatigue, BrCa, >65: Exercise vs usual care               ,
-BGLAC 9371: Breast: Weight Loss Program                                
-A Survey of Women w/ Breast CA Who Have Had Breast Reconstruction      
-BGLAC 9242: Breast: Topotecan                                          
-Breast Cancer, adj: 15-3 radioimmunoassay.                                   
-BC29141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
-BrCa28897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-Breast Cancer Ultrasound                                                      
-BrCa, stage IV: Continuous infusion 5-FU                            
-BGLAC 9192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-BrCa 9364: Effect of bereavement on recurr/death in BrCa ca         
-CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
-Breast Cancer, Advd: Theratope STn-KLH Vaccine in Detox B                    
-BC18944: Breast Cancer: Neoadj ADR + surgery + CMF + RT.                   
-BrCa19193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-Improving Adherence in Women at Risk for Breast Cancer                 
-Diagnostic Accuracy of Needle Biopsy for Occult Breast Cancer Lesions         ,
-Breast dx, post RT for Hodgkin's.                                     
-GCSF & GMCSF in Pts on AFM BR Breast Trial                           
-Breast Cancer Cancer Screening Consortium                                     
-Breast Cancer, adj: 15-3 radioimmunoassay.                                   
-Breast Cancer: GMCSF mouthwash for mucositis.                                 
-BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
-BGLAC 8642: Breast, stage IV: Single agent induction + CAF or CAF     
-BGLAC 9193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa, stage IV: AFM: CR's: HiD CTX/DDP/BrCaNU upfront or at relapse   
-Brst.ZOO1Of/u:ax diss vs no sx Breast: S. Node vs Ax. Node Dissection  
-Breast Ca Prevention:  Tamoxifen Decision                              
-CA 15-3 Radioimmunoassay to Detect Progression in Breast Cancer Ca Pts on Ct  
-BrCa Ca Specimen Collection                                          
-BrCaB-20 Adj BrCa, node-, ER+: TAM or M-F/TAM or CMF/TAM.         
-BrCa Surgery: PV Block vs Gen Anesthesia                             ,
-BRCA18864 Breast, stage IV: Megace quality-of-life.                  
-Breast Cancer:  Econ Eval BGLAC 9343                                          
-Detection of malignancy in pts w/ BrCa abnormalities using plasma.   
-BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
-Breast Cancer, early stage:  Couple-based intervention                       
-Breast Cancer, stage IV: All-trans-retinoic acid.                            
-BrCa Cancer: Adjuvant Treatment in Older Women                       ,
-Double-Blind Alendronate: Palliation of Bone Pain, Stage IV BrCa    
-Breast Cancer:  Econ Eval BGLAC 9343                                          
-Breast Cancer,colon,lung: Virtual Reality, phase II                          
-PC B-25 Breast, adj node+: ADR+CTX", 1200x4; 2400x2; or 2400x4.      
-Breast, stages I/II: Couple-based psychosocial intervention           
-Breast (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
-CA 15-3 Radioimmunoassay to Detect Progression in BrCa Ca Pts on Ct  
-Breast Cancer Ca Specimen Collection                                          
-Brst.ZOO1Of/u:ax diss vs no sx BrCa: S. Node vs Ax. Node Dissection  
-BrCa ultrasound velocity profiles.                                   
-Breast, stage IV: All-trans-retinoic acid.                            
-BGLAC 8742 Breast Cancer, stage IV: TriMTX.                                  
-BrCa,colon,lung: Virtual Reality, phase II                          
-BrCa:  Thrombosis 
-BRCA18662:Breast, stage IV: 15-3 radioimmunoassay.                   
-Breast Cancer Ca Specimen Collection                                          
-BC19193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa28864 BrCa, stage IV: Megace quality-of-life.                  
-Breast Ca Specimen Collection                                          
-Breast ca bone loss: Early Zometa vs Late Zometa                       
-Breast Cancer, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-BGLAC 8642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-BrCa dx, post RT for Hodgkin's.                                     
-Breast, Stage IV: CI 5FU post BR                                    
-BrCa19242: BrCa: Topotecan                                          
-BRCA28864 Breast, stage IV: Megace quality-of-life.                  
-Breast Cancer:  Thrombosis 
-BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
-BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
-Breast, newly dx: Data collection/questionnaire                       
-Multimodality Tx +/- hyperthermia for locally advanced Breast Cancer CA       
-Adv. BrCa w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
-Breast Cancer, stage IV, >/= 60yrs old: IV Navelbine                         
-Breast Cancer, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-Tx-related fatigue, BrCa, >65: Exercise vs usual care               ,
-Breast: Anthracycline-refractory: Navelbine vs Alkeran.                
-Breast, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-BrCa, any stage, PBBrCatransplant: Ft3_+ GM or G for mobilization.   
-BrCa, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-BrCa And Bowel Prevention                                            
-BGLAC 9243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
-BrCa tissue acquisition                                              
-PC B-25 Breast, adj node+: ADR+CTX", 1200x4; 2400x2; or 2400x4.      
-Breast Cancer, Stage IV: CI 5FU post BR                                    
-Breast Cancer tissue acquisition                                              
-BC19194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-BrCaB-24:BrCa,DCIS: Lumpx/RT/ +/- TAM                             
-Modeling Risk For Breast Cancer                                        
-BGLAC 8782 Adj Breast Cancer, l0+ nodes: CAF> CCB/BR.                      
-BrCa Ca Specimen Collection                                          
-BRCA28662:Breast, stage IV: 15-3 radioimmunoassay.                   
-Breast: HER2 open-label ext. to H0648g                                 
-Breast Cancer, Stage IV: CI 5FU post BR                                    
-Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
-Early onset BrCa, ovarian, colon, prostate ca: Recruiting Blacks    ,
-CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
-GCSF & GMCSF in Pts on AFM BR Breast Cancer Trial                           
-Breast, stage IV, >/= 60yrs old: IV Navelbine                         
-BGLAC 8541: Breast,adj, node+: CAF dose/sched comparison              
-BGLAC 8741 Breast Cancer:Dose response trial of megace.                       
-BGLAC 8864 Breast Cancer, stage IV: Megace quality-of-life.                  
-BrCa28541: BrCa,adj, node+: CAF dose/sched comparison              
-BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
-Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
-BrCa 8944: BrCa: Neoadj ADR + surgery + CMF + RT.                   
-Breast, stage IV: CBDCA + con infusion FU.                            
-Breast Cancer: Follow-up Study after Participating in AMGEN 951017-02         
-Modeling Risk For Breast Cancer                                        
-In Vitro Gen CTL Using DCs/ Breast                                     
-Breast Cancer, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-Contrast-enhanced MRI of the BrCa: Pathologic correlation            
-Breast: Effect of GCSF on Docetaxel Assoc, Neutropenia                
-PC B-20 Adj Breast Cancer, node-, ER+: TAM or M-F/TAM or CMF/TAM.         ,
-Breast Cancer,Stage I & II, Costs for Treatment.                             
-Breast Ultrasound                                                      
-Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
-BRCA19193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
-Breast Cancer, Barriers to Participation.                                    
-Multimodality Tx +/- hyperthermia for locally advanced Breast Cancer CA       
-CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
-Advd, HER2+ breast ca, NED post rx: Phase I DC immunorx               
-Exploring trhe Molecular Epidemiology of Breast Cancer Cancer & Body Size     
-BrCa, stage IV: CBDCA + con infusion FU.                            
-BGLAC 8662:Breast, stage IV: 15-3 radioimmunoassay.                   
-Breast Cancer Ca: Improving Health & QOL                                      
-Eval of Coag Factor ELISA's in pts w/ BrCa Ca w/ HiD Chemo/BrCa     
-BC28862 Breast Cancer: Pharmacodynamic study of amonafide.                 
-BrCa ca bone loss: Early Zometa vs Late Zometa                       
-BrCa, stage IV, women>65: PO Navelbine.                             ,
-Breast tissue acquisition                                              
-Breast Cancer Test 1                                                          
-BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
-Diagnostic Accuracy of Needle Biopsy for Occult BrCa Lesions         
-Social Support, Stress and Mammography Pain for Breast Cancer Survivor
-Social Support, Stress and Mammography Pain for Breast Cancer Survivor
-BrCa Ca Markers                                                      
-BrCa 9193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
-BrCa18541: BrCa,adj, node+: CAF dose/sched comparison              
-BrCa Ca Specimen Collection                                          
-Breast Ca Prevention: Tamoxifen/Raloxifene                             
-BGLAC 9364: Effect of bereavement on recurr/death in Breast Cancer ca         
-BrCa Cancer Tissue Repository                                        
-BrCa 8897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-BGLAC 9193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BRCA18782 Adj breast, l0+ nodes: CAF> CCB/ABMT.                      
-BrCa: S. N. dissection                                               
-BrCa28782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-BrCa29193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-Breast Cancer, Stage IV: CI 5FU post BR                                    
-Brst.ZOO1Of/u:ax diss vs no sx Breast Cancer: S. Node vs Ax. Node Dissection  
-BrCa 8864 BrCa, stage IV: Megace quality-of-life.                  
-BGLAC 8541: Breast,adj, node+: CAF dose/sched comparison              
-In Vitro Gen CTL Using DCs/ Breast                                     
-Modeling Risk For Breast Cancer                                        
-Prevention of Hereditary BrCa and Ovarian Cancer                     ,
-Bone pain-stage IV BrCa cancer: RE 186 etidronate (open label).      ,
-BrCa19242: BrCa: Topotecan                                          
-Early onset breast, ovarian, colon, prostate ca: Recruiting Blacks    
-BR Breast:PBSC mobilization: G +/- daniplestim preleukapheresis      
-Breast:  Thrombosis                                                    
-Breast Cancer: QOL                                                            
-Understanding Breast Cancer Health Care Practices among Lesbians              
-Breast, Advd: Theratope STn-KLH Vaccine in Detox B                    
-Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-Adv. Breast Cancer, refrcty:Taxotere (DOCETAXEL)                             
-Breast, stage IV: CBDCA + con infusion FU.                            
-Taxol neuropathy, BrCa/lung ca: Gabapentin vs Glutamine             
-BrCa, Advd: Theratope STn-KLH Vaccine in Detox B                    
-Breast, stage IV, ER- or low: beta INF + Tamoxifen                    
-Breast tissue acquisition                                              
-Breast Cancer ca/ BRCA                                                        
-BrCa 8862 BrCa: Pharmacodynamic study of amonafide.                 
-BGLAC 9194: Breast adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-Staging Breast Cancer with Positron Emission Tomography                
-Breast Ca Specimen Collection                                          
-Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
-Cog-behav tx insomnia in lung & BrCa ca.                             
-Breast tissue bank                                                     
-BrCaB-19 Adj BrCa, node-,ER-: M-F or CMF.                         
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast CA   ,
-Breast Cancer, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-Breast Cancer Surgery: PV Block vs Gen Anesthesia                             
-Chemotherapy Associated Lung Toxicity in BrCa Cancer Patients        
-BGLAC 8944: Breast: Neoadj ADR + surgery + CMF + RT.                   
-Prostate/Breast Cancer: Promoting Health.                                     
-Breast: Toremifene vs. Tamoxifen in post-menopausal pts.               
-Consequences of CT-Induced Emesis in Breast Cancer CA                         
-Breast Cancer ca prevention: Tamoxifen info displays                          
-BGLAC 8642: Breast, stage IV: Single agent induction + CAF or CAF     
-Breast Cancer: Follow-up Study after Participating in AMGEN 951017-02         
-Breast Cancer dx, post RT for Hodgkin's.                                     
-Written Emotional Expression post RT/CT in BrCa Cancer               
-BrCa, adj: 15-3 radioimmunoassay.                                   
-BRCA19243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
-Breast Cancer, adj: 15-3 radioimmunoassay.                                   
-Breast Cancer:  Thrombosis 
-BrCa, stage IV: Continuous infusion 5-FU                            
-BrCa (stages IIIB/IV): HiD CCB (split dose BrCaNU) + PBPCs             
-BrCa, stage IV, >/= 60yrs old: IV Navelbine                         
-Breast, newly dx: Data collection/questionnaire                       
-Breast Cancer Ca, stage II, node +: Lab studies                              
-Early onset Breast Cancer, ovarian, colon, prostate ca: Recruiting Blacks    
-Breast:  Econ Eval BGLAC 9343                                          
-Tx-related fatigue, breast, >65: Exercise vs usual care               ,
-Cog-behav tx insomnia in lung & Breast Cancer ca.                             
-BrCa 8741 BrCa:Dose response trial of megace.                       
-BC29140: Breast Cancer: CAF or CAF/leuc                                    
-Breast Cancer: QOL                                                            
-BrCa29242: BrCa: Topotecan                                          
-Breast CT: Virtual reality intervention                                
-Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-BrCa ca bone loss: Early Zometa vs Late Zometa                       
-Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
-BrCa28742 BrCa, stage IV: TriMTX.                                  
-Breast Cancer, stage IV: Lapatinib/Trastuzumab/Monotherapy                   
-Consequences of CT-Induced Emesis in Breast Cancer CA                         
-Breast Cancer and Prostate Cancer Data Quality Study                         
-BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
-Breast Cancer Ca: Improving Health & QOL                                      
-Breast And Bowel Prevention                                            
-Exploring trhe Molecular Epidemiology of Breast Cancer & Body Size     
-BrCa CT: Virtual reality intervention                                
-BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
-Breast: Genetic tissue analysis as prediction model                    
-BrCa, stages I/II: Couple-based psychosocial intervention           
-BrCa, Barriers to Participation.                                    
-PC B-19 Adj breast, node-,ER-: M-F or CMF.                         ,
-BGLAC 9140: Breast Cancer: CAF or CAF/leuc                                    
-BrCa, stages I/II: Couple-based psychosocial intervention           
-BrCa 9194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-BrCa29194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-BrCa28782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-Breast Ca: Improving Health & QOL                                      
-BrCa Cancer Tissue Repository                                        
-Multimodality Tx +/- hyperthermia for locally advanced BrCa CA       
-BrCa 8864 BrCa, stage IV: Megace quality-of-life.                  
-Breast ca/ BRCA                                                        
-BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-BrCa29371: BrCa: Weight Loss Program                                
-BrCa Ca, stage II, node +: Lab studies                              
-BrCa29243: BrCa: Amonafide(dose assigned by acetylator phenotyping) 
-BRCA29192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast: Toremifene vs. Tamoxifen in post-menopausal pts.               
-Identification Mets Assoc. Breast Cancer CA Genes                             
-BR Breast Cancer/Lymphoma: SC-68420 post-PBSC infusion                      
-Social Support, Stress and Mammography Pain for BrCa Cancer Survivor
-BrCa29140: BrCa: CAF or CAF/leuc                                    
-Breast, stage IV, women>65: PO Navelbine.                             ,
-Breast Cancer, Stage IV: HiD CCB/BR                                        
-BrCa18862 BrCa: Pharmacodynamic study of amonafide.                 
-BrCa28897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-Breast tissue bank                                                     
-BGLAC 9192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast Surgery: PV Block vs Gen Anesthesia                             ,
-Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
-BGLAC 8742 Breast Cancer, stage IV: TriMTX.                                  
-Breast tissue bank                                                     
-Breast Ca, stage II, node +: Lab studies                              
-PC B-17 Breast Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT ,
-Cog-behav tx insomnia in lung & Breast Cancer ca.                             
-BGLAC 9243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
-Breast Prevention                                                      
-Nausea prevention,breast, AC CT: Ginger vs Placebo (blinded)          
-Breast, Barriers to Participation.                                    
-BrCa, early stage:  Couple-based intervention                       
-Hi Risk BrCa Ca, Stage II/III/IV, PK Companion to MGDF 961006       ,
-BrCa: Toremifene vs. Tamoxifen in post-menopausal pts.               
-PC B-24:Breast Cancer,DCIS: Lumpx/RT/ +/- TAM                             ,
-Breast Cancer ca prevention: Tamoxifen info displays                          
-BC18662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-BrCa Test 1                                                          
-BrCa, stage IV: Lapatinib/Trastuzumab/Monotherapy                   
-Advd, HER2+ BrCa ca, NED post rx: Phase I DC immunorx               
-Breast:  Thrombosis                                                    
-Breast Cancer: Anthracycline-refractory: Navelbine vs Alkeran.                ,
-BrCa ca bone loss: Early Zometa vs Late Zometa                       
-Nausea prevention,BrCa, AC CT: Ginger vs Placebo (blinded)          
-BGLAC 9371: Breast: Weight Loss Program                                
-Breast,colon,lung: Virtual Reality, phase II                          
-BGLAC 8742 Breast, stage IV: TriMTX.                                  
-BC28862 Breast Cancer: Pharmacodynamic study of amonafide.                 
-BrCa19193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BRCA18782 Adj breast, l0+ nodes: CAF> CCB/ABMT.                      
-Carolina Breast Cancer Cancer Study                                           
-Atypical Hyperplasia and Breast Cancer Cancer Risk                            
-Breast Cancer, stage IV: All-trans-retinoic acid.                            
-Breast Cancer, Barriers to Participation.                                    
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast CA   ,
-Understanding Breast Cancer Health Care Practices among Lesbians              
-Breast Cancer: GMCSF mouthwash for mucositis.                                 
-BrCa: GMCSF mouthwash for mucositis.                                 
-Breast cell/fluid bank                                                 
-Effects of Tamoxifen on the Endometrium of breast ca pts.              
-Breast, stages I/II: Couple-based psychosocial intervention           
-Blanket Protocol for BR in Breast Cancer & Ovarian Cancer                   
-Breast Cancer Ca, stage II, node +: Lab studies                              
-Breast, stage IV: CI 5FU preharvest: then HiD ICAM                    
-Eval of Coag Factor ELISA's in pts w/ BrCa Ca w/ HiD Chemo/BrCa     
-Role of TGF-Beta in Tam Mediated BrCa Cancer                         
-BrCa18662:BrCa, stage IV: 15-3 radioimmunoassay.                   
-Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
-Well-Being Following Breast Cancer Cancer.                                    
-BrCa, stage IV: All-trans-retinoic acid.                            
-TRC 9202; Taxol for refractory breast cancer                           
-Breast Cancer tissue acquisition                                              
-BrCa18864 BrCa, stage IV: Megace quality-of-life.                  
-Breast, stage IV: CAF +/- ADR-529 as a cardioprotectant.              
-BrCa28864 BrCa, stage IV: Megace quality-of-life.                  
-BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
-Breast,colon,lung: Virtual Reality, phase II                          
-Breast Cancer:  Econ Eval BGLAC 9343                                          
-Early Breast Cancer ca: Endometrial ca prevention:TAM/Megace vs OBS           
-BC28862 Breast Cancer: Pharmacodynamic study of amonafide.                 
-Double-Blind Alendronate: Palliation of Bone Pain, Stage IV BrCa    
-Breast ca bone loss: Early Zometa vs Late Zometa                       
-Breast ca bone loss: Early Zometa vs Late Zometa                       
-BrCaB-24:BrCa,DCIS: Lumpx/RT/ +/- TAM                             
-Bone pain-stage IV BrCa cancer: RE 186 etidronate (open label).      ,
-Breast Ultrasound                                                      
-BC29193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa, stage IV, ER- or low: beta INF + Tamoxifen                    
-Breast, stage IV, ER- or low: beta INF + Tamoxifen                    
-BRCA29192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast Cancer Ca: Improving Health & QOL                                      
-BrCa, stage IV: CBDCA + con infusion FU.                            
-BrCa Ca Specimen Collection                                          
-Breast Cancer Tissue Repository                                        
-BrCa28741 BrCa:Dose response trial of megace.                       
-Hot flashes w/ breast ca: Vitamin B6                                   
-Menopause symptoms, hi risk breast ca: Yoga classes vs Control        
-Breast: RT Pneumonitis                                                 
-BrCa cell/fluid bank                                                 ,
-Detection of malignancy in pts w/ BrCa abnormalities using plasma.   
-BGLAC 9192: Breast Cancer,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Atypical Hyperplasia and Breast Cancer Cancer Risk                            
-Diagnostic Accuracy of Needle Biopsy for Occult Breast Cancer Lesions         ,
-BGLAC 8642: Breast, stage IV: Single agent induction + CAF or CAF     
-Breast, high risk pts: Tamoxifen vs. placebo                          ,
-QOL & Breast Ca                                                        ,
-Breast Cancer, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-BGLAC 8642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-BrCa, Adj: 10+ Nodes: CAF> CCB/BrCa                                
-Breast Ca Markers                                                      
-BrCa & prostate, early stage: Health promotion                      ,
-BrCa19141: Adj. BrCa, + LN: HiD CA + GCSF                          
-BRCA19243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
-Breast Cancer,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
-Breast Cancer,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
-Breast Cancer Ca Specimen Collection                                          
-Double-Blind Alendronate: Palliation of Bone Pain, Stage IV Breast    
-Breast, stage IV: AFM: CR's: HiD CTX/DDP/BCNU upfront or at relapse   
-BC18782 Adj Breast Cancer, l0+ nodes: CAF> CCB/ABMT.                      
-Bone mets, Breast Cancer or MM : Zoledronate vs Aredia
-BC28742 Breast Cancer, stage IV: TriMTX.                                  
-Analysis of the p53 Gene in BrCa Cancer                              ,
-Breast CT: Virtual reality intervention                                
-Breast Cancer Ca, stage II, node +: Lab studies                              
-Adv. Breast Cancer, refrcty:Taxotere (DOCETAXEL)                             
-BrCa: RT Pneumonitis                                                 
-Atypical Hyperplasia and Breast Cancer Risk                            
-Diagnostic Accuracy of Needle Biopsy for Occult Breast Cancer Lesions         ,
-Breast Cancer, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-BC19364: Effect of bereavement on recurr/death in Breast Cancer ca         
-Early onset BrCa, ovarian, colon, prostate ca: Recruiting Blacks    ,
-BrCa:  Thrombosis 
-Breast,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
-Diagnostic Accuracy of Needle Biopsy for Occult Breast Cancer Lesions         ,
-Breast Cancer, stage IV, women>65: PO Navelbine.                             ,
-BrCa, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
-Multimodality Tx +/- hyperthermia for locally advanced Breast CA       
-Breast Cancer Ca Markers                                                      
-BC18862 Breast Cancer: Pharmacodynamic study of amonafide.                 
-BrCa 8741 BrCa:Dose response trial of megace.                       
-BRCA19243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
-BrCa, stage IV: CI 5FU preharvest: then HiD ICAM                    
-BrCa Ca Markers                                                      
-BrCa Ca: Early Detect by LN Map & RT-PCR                             
-Role of TGF-Beta in Tam Mediated BrCa Cancer                         
-Tx-related fatigue, BrCa, >65: Exercise vs usual care               ,
-Breast Ca Prevention: Tamoxifen/Raloxifene                             
-Breast, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-Endometrial sampling in Breast Cancer ca pts on tamoxifen.                    
-BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-BrCa, early stage:  Couple-based intervention                       
-Breast: Genetic tissue analysis as prediction model                    
-Breast Cancer: Healing skills                                                 
-BrCa,Stage I & II, Costs for Treatment.                             
-BrCa29192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast: Healing skills                                                 
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage BrCa CA   ,
-Breast & prostate: Readiness for smoking cesssation/exercise/diet      
-Breast Cancer Ca Detection:  Expression Based Markers                         
-Breast Cancer, early stage:  Couple-based intervention                       
-Bone mets, breast or MM : Zoledronate vs Aredia
-BrCa ca, early stage:  STRENGTH                                     
-BrCa28782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-BRCA18862 Breast: Pharmacodynamic study of amonafide.                 
-Breast, Barriers to Participation.                                    
-BrCa, stage IV: AFM: CR's: HiD CTX/DDP/BrCaNU upfront or at relapse   
-Adv. Breast w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
-BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
-Breast: Genetic tissue analysis as prediction model                    
-Breast Cancer, adj: 15-3 radioimmunoassay.                                   
-Breast Cancer Ca Imaging with SPECT                                           
-CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
-Advd, HER2+ breast ca, NED post rx: Phase I DC immunorx               
-Advd Breast: CA +/- IL-6                                               
-Breast Cancer: QOL                                                            
-Breast Cancer Cancer Screening Consortium                                     
-BrCa Ca Markers                                                      
-BrCa19364: Effect of bereavement on recurr/death in BrCa ca         
-Staging Breast Cancer with Positron Emission Tomography                
-BRCA28642: Breast, stage IV: Single agent induction + CAF or CAF     
-BRCA18741 Breast:Dose response trial of megace.                       
-Early onset BrCa, ovarian, colon, prostate ca: Recruiting Blacks    ,
-Taxol neuropathy, BrCa/lung ca: Gabapentin vs Glutamine             
-BrCa29141: Adj. BrCa, + LN: HiD CA + GCSF                          
-BRCA19193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-PC B-17 Breast Cancer Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT ,
-Breast Cancer, stages I/II: Couple-based psychosocial intervention           
-BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Analysis of the p53 Gene in BrCa Cancer                              ,
-Breast, Barriers to Participation.                                    
-Detection of malignancy in pts w/ Breast Cancer abnormalities using plasma.   
-Consequences of CT-Induced Emesis in Breast Cancer CA                         
-Breast Ca, stage II, node +: Lab studies                              
-BrCa, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-BGLAC 8862 Breast: Pharmacodynamic study of amonafide.                 
-BRCA28862 Breast: Pharmacodynamic study of amonafide.                 
-BC18642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-Mammography Screen among Blacks with family hx of Breast Cancer ca            
-Identification Mets Assoc. Breast Cancer CA Genes                             
-Breast, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-BRCA19192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast Cancer Ca Prevention: Tamoxifen/Raloxifene                             
-BC18662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-BrCa 8742 BrCa, stage IV: TriMTX.                                  
-Breast: QOL                                                            
-BGLAC 8864 Breast, stage IV: Megace quality-of-life.                  
-Bone pain-stage IV breast cancer: RE 186 etidronate (open label).      ,
-Breast Cancer, high risk pts: Tamoxifen vs. placebo                          ,
-BrCa: Effect of GCSF on Docetaxel Assoc, Neutropenia                
-Modeling Risk For BrCa Cancer                                        
-Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
-Breast Surgery: PV Block vs Gen Anesthesia                             ,
-In Vitro Gen CTL Using DCs/ Breast Cancer                                     
-BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-BrCa: QOL                                                            
-Breast: Toremifene vs. Tamoxifen in post-menopausal pts.               
-BGLAC 8741 Breast:Dose response trial of megace.                       
-Double-Blind Alendronate: Palliation of Bone Pain, Stage IV BrCa    
-BrCa28897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-Mammography Screen among Blacks with family hx of breast ca            
-BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
-BRCA18944: Breast: Neoadj ADR + surgery + CMF + RT.                   
-BC18864 Breast Cancer, stage IV: Megace quality-of-life.                  
-BC29364: Effect of bereavement on recurr/death in Breast Cancer ca         
-BrCaBrCa:PBSC mobilization: G +/- daniplestim preleukapheresis      
-BRCA18741 Breast:Dose response trial of megace.                       
-BC18741 Breast Cancer:Dose response trial of megace.                       
-Written Emotional Expression post RT/CT in Breast Cancer Cancer               
 Cog-behav tx insomnia in lung & breast ca.                             
-BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-BRCA28782 Adj breast, l0+ nodes: CAF> CCB/ABMT.                      
-Early Breast Cancer ca: Endometrial ca prevention:TAM/Megace vs OBS           
-Identification Mets Assoc. BrCa CA Genes                             
-BrCa, stage IV: CI 5FU preharvest: then HiD ICAM                    
-BrCa Ca Detection:  Expression Based Markers                         
-BGLAC 8864 Breast Cancer, stage IV: Megace quality-of-life.                  
-BGLAC 8782 Adj Breast Cancer, l0+ nodes: CAF> CCB/BR.                      
-BrCa Test 1                                                          
-BrCa29242: BrCa: Topotecan                                          
-Advd BrCa: CA +/- IL-6                                               
-BrCa Ca, stage II, node +: Lab studies                              
+Breast Cancer:  Thrombosis 
+TRC 9202; Taxol for refractory Breast Cancer cancer                           
+Breast, Barriers to Participation.                                    
+BrCa Ca Prevention: Tamoxifen/Raloxifene                             
+BGLAC 8541: Breast,adj, node+: CAF dose/sched comparison              
+Exploring trhe Molecular Epidemiology of Breast Cancer & Body Size     
 Analysis of the p53 Gene in Breast Cancer Cancer                              ,
-Mammography Screen among Blacks with family hx of Breast Cancer ca            
-BGLAC 8897: Breast,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-Breast Ca Prevention:  Tamoxifen Decision                              
-Multimodality Tx +/- hyperthermia for locally advanced Breast Cancer CA       
-Detection of malignancy in pts w/ BrCa abnormalities using plasma.   
-Contrast-enhanced MRI of the BrCa: Pathologic correlation            
-Hot flashes w/ BrCa ca: Vitamin B6                                   
-Breast Cancer: Adjuvant Treatment in Older Women                       
-Breast cells/fluid Bank                                                
-Breast, stage IV: CI 5FU preharvest: then HiD ICAM                    
-BC19243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
-Staging Breast Cancer with Positron Emission Tomography                
-Breast, Stage IV: HiD CCB/BR                                        
-BGLAC 8782 Adj Breast Cancer, l0+ nodes: CAF> CCB/BR.                      
-BrCa19194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-Hi Risk BrCa Ca, Stage II/III/IV, PK Companion to MGDF 961006       ,
-BrCa: Effect of GCSF on Docetaxel Assoc, Neutropenia                
-BGLAC 9364: Effect of bereavement on recurr/death in Breast Cancer ca         
-BR Breast Cancer:PBSC mobilization: G +/- daniplestim preleukapheresis      
-Breast, adj: 15-3 radioimmunoassay.                                   
-BrCa: Effect of GCSF on Docetaxel Assoc, Neutropenia                
-Breast dx, post RT for Hodgkin's.                                     
-BGLAC 8862 Breast: Pharmacodynamic study of amonafide.                 
-Breast Cancer Ca Detection:  Expression Based Markers                         
-BrCa: S. N. dissection                                               
-Breast Cancer, high risk pts: Tamoxifen vs. placebo                          ,
-BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
-BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
-Breast Cancer, early stage:  Couple-based intervention                       
-BrCa, stages I/II: Couple-based psychosocial intervention           
-BrCa: GMCSF mouthwash for mucositis.                                 
-Breast Cancer: QOL                                                            
-BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
-BRCA18741 Breast:Dose response trial of megace.                       
-Breast Cancer: Anthracycline-refractory: Navelbine vs Alkeran.                ,
-Multimodality Tx +/- hyperthermia for locally advanced BrCa CA       
-Understanding BrCa Health Care Practices among Lesbians              
-Breast, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
-Modeling Risk For Breast Cancer Cancer                                        ,
-Atypical Hyperplasia and BrCa Cancer Risk                            
-Diagnostic Accuracy of Needle Biopsy for Occult BrCa Lesions         
-BrCa19194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-BC18541: Breast Cancer,adj, node+: CAF dose/sched comparison              
-Effects of Tamoxifen on the Endometrium of Breast Cancer ca pts.              
-Breast Cancer, stage IV: CBDCA + con infusion FU.                            
-Breast (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
-Breast Cancer Ca, stage II, node +: Lab studies                              
-Breast:  Thrombosis 
-BrCa: HER2 open-label ext. to H0648g                                 
-BrCa:  Thrombosis 
-Breast Cancer Test 1                                                          
-BRCA29364: Effect of bereavement on recurr/death in breast ca         
-Endometrial sampling in Breast Cancer ca pts on tamoxifen.                    
-BrCa 8642: BrCa, stage IV: Single agent induction + CAF or CAF     
-BrCa, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-BrCa ca prevention: Tamoxifen info displays                          
-TRC 9202; Taxol for refractory breast cancer                           
-Chemotherapy Associated Lung Toxicity in Breast Cancer Patients        
-Breast Ca Imaging with SPECT                                           
-Breast Cancer:  Thrombosis                                                    
-Analysis of the p53 Gene in Breast Cancer Cancer                              ,
-Breast tissue blocks:  Prognostic value of tumor hypoxia.              
-Breast Cancer Ca Markers                                                      
-Breast Cancer, stage IV, ER- or low: beta INF + Tamoxifen                    
-Carolina BrCa Cancer Study                                           
-Breast, stage IV: CAF +/- ADR-529 as a cardioprotectant.              
-BrCa (stages IIIB/IV): HiD CCB (split dose BrCaNU) + PBPCs             
-Breast Cancer, early stage:  Couple-based intervention                       
-BrCaB-24:BrCa,DCIS: Lumpx/RT/ +/- TAM                             
-BC29364: Effect of bereavement on recurr/death in Breast Cancer ca         
-Analysis of the p53 Gene in BrCa Cancer                              ,
-BrCa18541: BrCa,adj, node+: CAF dose/sched comparison              
-BM 21.0955 for Metastatic Bone Disease in Breast Cancer                
-BrCa, Stage IV: CI 5FU post BrCa                                   
-BC29192: Breast Cancer,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast cells/fluid Bank                                                
-Breast: QOL                                                            
-BC18862 Breast Cancer: Pharmacodynamic study of amonafide.                 
-Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage BrCa CA   ,
-TRC 9202; Taxol for refractory BrCa cancer                           
-BrCa, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
+BC29141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
+BGLAC 8741 Breast Cancer:Dose response trial of megace.                       
+BRCA18782 Adj breast, l0+ nodes: CAF> CCB/ABMT.                      
+BrCa, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+BrCa 8944: BrCa: Neoadj ADR + surgery + CMF + RT.                   
 BRCA19364: Effect of bereavement on recurr/death in breast ca         
-Breast, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-Breast Cancer, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-BrCa Ca Markers                                                      
-Breast Ultrasound                                                      
-Breast Cancer Tissue Repository                                        
-Breast Cancer, Barriers to Participation.                                    
-BrCa dx, post RT for Hodgkin's.                                     
-Breast Cancer Ca Prevention: Tamoxifen/Raloxifene                             
-BrCa18782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-BrCa, stages I/II: Couple-based psychosocial intervention           
-BC29243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
-Breast Ca, stage II, node +: Lab studies                              
-Adv. Breast, refrcty:Taxotere (DOCETAXEL)                             
-Endometrial sampling in BrCa ca pts on tamoxifen.                    
-Consequences of CT-Induced Emesis in BrCa CA                         
-Breast dx, post RT for Hodgkin's.                                     
-BRCA28897: Breast,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-QOL & Breast Ca                                                        ,
-TRC 9202; Taxol for refractory breast cancer                           
-Breast Cancer, newly dx: Data collection/questionnaire                       ,
-BrCa: GMCSF mouthwash for mucositis.                                 
+BrCa29193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+BC18741 Breast Cancer:Dose response trial of megace.                       
 Adv. Breast Cancer, refrcty:Taxotere (DOCETAXEL)                             
+Breast, stage IV: Continuous infusion 5-FU                            
+BrCa tissue acquisition                                              
+Effects of Tamoxifen on the Endometrium of Breast Cancer ca pts.              
+Breast, any stage, PBPC transplant: Ft3_+ GM or G for mobilization.   
+Breast Cancer, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
+BrCa ca bone loss: Early Zometa vs Late Zometa                       
+BrCa ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+Breast (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
+Breast Cancer Ca Imaging with SPECT                                           
+Breast ca prevention: Tamoxifen info displays                          
+Breast Cancer & prostate: Readiness for smoking cesssation/exercise/diet      
+Breast, stage IV: CI 5FU preharvest: then HiD ICAM                    
+BC19193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+BrCa18541: BrCa,adj, node+: CAF dose/sched comparison              
+BRCA18862 Breast: Pharmacodynamic study of amonafide.                 
+PC B-19 Adj breast, node-,ER-: M-F or CMF.                         ,
+Breast Cancer and Prostate Cancer Data Quality Study                         
+Breast Cancer Surgery: PV Block vs Gen Anesthesia                             
 Advd, HER2+ BrCa ca, NED post rx: Phase I DC immunorx               
+Breast Cancer Test 1                                                          
+Breast Prevention                                                      
+Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+BC28864 Breast Cancer, stage IV: Megace quality-of-life.                  
+BRCA19242: Breast: Topotecan                                          
+BGLAC 9243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
+A Survey of Women w/ Breast Cancer CA Who Have Had Breast Cancer Reconstruction      
+Tx-related fatigue, breast, >65: Exercise vs usual care               ,
+BrCa Cancer: Adjuvant Treatment in Older Women                       ,
+Breast,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
+BGLAC 9242: Breast: Topotecan                                          
+Breast Cancer Ca Specimen Collection                                          
+Identification Mets Assoc. Breast Cancer CA Genes                             
+BC18944: Breast Cancer: Neoadj ADR + surgery + CMF + RT.                   
+BC19242: Breast Cancer: Topotecan                                          
+BRCA29140: Breast: CAF or CAF/leuc                                    
+BrCa, stage IV: CAF +/- ADR-529 as a cardioprotectant.              
+BrCa28742 BrCa, stage IV: TriMTX.                                  
+BRCA29364: Effect of bereavement on recurr/death in breast ca         
+BC28944: Breast Cancer: Neoadj ADR + surgery + CMF + RT.                   
+Breast Cancer Cancer Tissue Repository                                        
+Improved Ultrasonic BrCa Imaging with New Transducers                
+BrCa Ca Specimen Collection                                          
+BrCa ca: Pathophysiologic impact of DOX/RT on heart                  
+Breast Ca, stage II, node +: Lab studies                              
+BrCa, stage IV, refrcty: CI FU; CT-response assay.                  
+BrCa Ca Specimen Collection                                          
+Breast Cancer ca, early stage:  STRENGTH                                     
+PC B-19 Adj breast, node-,ER-: M-F or CMF.                         ,
+BC29371: Breast Cancer: Weight Loss Program                                
+BrCa18642: BrCa, stage IV: Single agent induction + CAF or CAF     
+Breast Cancer Ca Markers                                                      
+BC18897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+BrCa ca prevention: Tamoxifen info displays                          
+BC18864 Breast Cancer, stage IV: Megace quality-of-life.                  
+BGLAC 9242: Breast: Topotecan                                          
+Breast Cancer, Advd: Theratope STn-KLH Vaccine in Detox B                    
+BrCa 8741 BrCa:Dose response trial of megace.                       
+BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+BrCa cell/fluid bank                                                 ,
+BrCa, stage IV: CAF +/- ADR-529 as a cardioprotectant.              
+Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast Cancer CA   
+BrCa, stage IV, women>65: PO Navelbine.                             ,
+Breast Cancer Ca Specimen Collection                                          
+Breast Cancer, Adj: 10+ Nodes: CAF> CCB/BR                                 
+Breast Cancer, Stages IIIB or IV: CAF +/- IL-6                               
+BrCa28864 BrCa, stage IV: Megace quality-of-life.                  
+BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+Breast CT: Virtual reality intervention                                
+BR Breast/Lymphoma: SC-68420 post-PBSC infusion                      
+BrCa, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
+BRCA29193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Breast CT: Virtual reality intervention                                
+Breast Cancer CT: Virtual reality intervention                                
+Understanding BrCa Health Care Practices among Lesbians              
+BGLAC 9194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Role of TGF-Beta in Tam Mediated Breast Cancer Cancer                         
+Breast, stage IV, >/= 60yrs old: IV Navelbine                         
+BrCa: S. N. dissection                                               
+Breast Cancer Screening Consortium                                     
+BRCA29192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+BC29140: Breast Cancer: CAF or CAF/leuc                                    
+Early onset breast, ovarian, colon, prostate ca: Recruiting Blacks    
+Early onset Breast Cancer, ovarian, colon, prostate ca: Recruiting Blacks    
+Identification Mets Assoc. Breast CA Genes                             
+BrCa, stage IV, women>65: PO Navelbine.                             ,
+Nausea prevention,breast, AC CT: Ginger vs Placebo (blinded)          
+Modeling Risk For Breast Cancer Cancer                                        ,
+BrCa Cancer Tissue Repository                                        
+BrCa, high risk pts: Tamoxifen vs. placebo                          ,
+BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
+Breast, Stage IV: HiD CCB/BR                                        
+Breast Cancer Cancer Tissue Repository                                        
+Breast,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
+Breast Cancer:  Thrombosis 
+BrCaB-17 BrCa Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT 
+Breast Cancer: HER2 open-label ext. to H0648g                                 
+BrCa 9194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+GCSF & GMCSF in Pts on AFM BrCaBrCa Trial                           
+BrCa & prostate: Readiness for smoking cesssation/exercise/diet      ,
+Breast, Stage IV: CI 5FU post BR                                    
+Breast Ca Specimen Collection                                          
+BrCaBrCa:PBSC mobilization: G +/- daniplestim preleukapheresis      
+Menopause symptoms, hi risk Breast Cancer ca: Yoga classes vs Control        
+Breast, stages I/II: Couple-based psychosocial intervention           
+BrCa, Stages IIIB or IV: CAF +/- IL-6                               
+BrCa18662:BrCa, stage IV: 15-3 radioimmunoassay.                   
+Breast Cancer, Stage IV: HiD CCB/BR                                        
+Adv. Breast w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
+BRCA28742 Breast, stage IV: TriMTX.                                  
+Breast Cancer: QOL                                                            
+BrCa: QOL                                                            
+BrCa, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+Exploring trhe Molecular Epidemiology of Breast Cancer Cancer & Body Size     
+Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
+BR Breast/Lymphoma: SC-68420 post-PBSC infusion                      
+BrCa dx, post RT for Hodgkin's.                                     
+Advd, HER2+ BrCa ca, NED post rx: Phase I DC immunorx               
+FDG-PEM breast imaging                                                 
+BrCa 9371: BrCa: Weight Loss Program                                
+Breast Cancer, stage IV: AFM: CR's: HiD CTX/DDP/BCNU upfront or at relapse   
+BC18862 Breast Cancer: Pharmacodynamic study of amonafide.                 
+Breast ca bone loss: Early Zometa vs Late Zometa                       
+BRCA29141: Adj. Breast, + LN: HiD CA + GCSF                          
+Breast Cancer: Adjuvant Treatment in Older Women                       
+Breast Cancer:  Econ Eval BGLAC 9343                                          
+Breast Cancer CT: Virtual reality intervention                                
+Breast and Prostate Cancer Data Quality Study                         
+Breast, Barriers to Participation.                                    
+Breast Cancer Ca Markers                                                      
+BRCA19242: Breast: Topotecan                                          
+Endometrial sampling in Breast Cancer ca pts on tamoxifen.                    
+BGLAC 9193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+A Survey of Women w/ Breast Cancer CA Who Have Had Breast Cancer Reconstruction      
+Breast, stage IV, >/= 60yrs old: IV Navelbine                         
+Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
+Bone pain-stage IV BrCa cancer: RE 186 etidronate (open label).      ,
+Breast, early stage:  Couple-based intervention                       
+BrCa 9242: BrCa: Topotecan                                          
+Eval of Coag Factor ELISA's in pts w/ Breast Cancer Ca w/ HiD Chemo/BR      
+Breast Cancer tissue bank                                                     
+BrCa28662:BrCa, stage IV: 15-3 radioimmunoassay.                   
+Breast Cancer, any stage, PBPC transplant: Ft3_+ GM or G for mobilization.   
+Breast: Tumor Bank/Database                                            
+Breast,colon,lung: Virtual Reality, phase II                          
+Advd, HER2+ breast ca, NED post rx: Phase I DC immunorx               
+Insomnia in Breast Cancer: Daily Process Analysis                      
+BrCa:  Thrombosis 
+Breast Cancer, Stage IV: CI 5FU post BR                                    
+Well-Being Following Breast Cancer Cancer.                                    
+Exploring trhe Molecular Epidemiology of BrCa Cancer & Body Size     
+BC18742 Breast Cancer, stage IV: TriMTX.                                  
+Eval of Coag Factor ELISA's in pts w/ BrCa Ca w/ HiD Chemo/BrCa     
+BR Breast/Lymphoma: SC-68420 post-PBSC infusion                      
+BrCa: RT Pneumonitis                                                 
+BR Breast Cancer/Lymphoma: SC-68420 post-PBSC infusion                      
+Prostate/BrCa: Promoting Health.                                     
+CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
+Double-Blind Alendronate: Palliation of Bone Pain, Stage IV Breast Cancer    
+BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
+BRCA28741 Breast:Dose response trial of megace.                       
+BrCaBrCa/Lymphoma: SC-68420 post-PBSC infusion                      
+Breast Cancer: Follow-up Study after Participating in AMGEN 951017-02         
+Breast: S. N. dissection                                               
+Breast Cancer Ca, stage II, node +: Lab studies                              
+BrCa: Healing skills                                                 
+BGLAC 8862 Breast Cancer: Pharmacodynamic study of amonafide.                 
+Serum markers in patients with BrCa cancer.                          
+Breast Cancer, Barriers to Participation.                                    
+BrCaBrCa:PBSC mobilization: G +/- daniplestim preleukapheresis      
+BrCa, Barriers to Participation.                                    
+BRCA18741 Breast:Dose response trial of megace.                       
+Menopause symptoms, hi risk Breast Cancer ca: Yoga classes vs Control        
+Adv. Breast Cancer, refrcty:Taxotere (DOCETAXEL)                             
+BC29140: Breast Cancer: CAF or CAF/leuc                                    
+Breast Cancer, Barriers to Participation.                                    
+BrCa: Effect of GCSF on Docetaxel Assoc, Neutropenia                
+BrCa Ca, stage II, node +: Lab studies                              
+BC19194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Understanding Breast Health Care Practices among Lesbians              
+BGLAC 9140: Breast Cancer: CAF or CAF/leuc                                    
+BrCa:  Thrombosis 
+Breast, stage IV: CBDCA + con infusion FU.                            
+Brst.ZOO1Of/u:ax diss vs no sx Breast: S. Node vs Ax. Node Dissection  
+Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+Breast Cancer Ca, stage II, node +: Lab studies                              
+BrCa Ca, stage II, node +: Lab studies                              
+Breast Cancer, adj: 15-3 radioimmunoassay.                                   
+Double-Blind Alendronate: Palliation of Bone Pain, Stage IV Breast    
+Breast Cancer, Stage IV: CI 5FU post BR                                    
+BC18662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+BrCa 8864 BrCa, stage IV: Megace quality-of-life.                  
+BrCa, early stage:  Couple-based intervention                       
+Consequences of CT-Induced Emesis in Breast CA                         
+Breast Cancer Ca Detection:  Expression Based Markers                         
+BrCa,Stage I & II, Costs for Treatment.                             
+Breast Cancer tissue bank                                                     
+BC19371: Breast Cancer: Weight Loss Program                                
+Detection of malignancy in pts w/ Breast Cancer abnormalities using plasma.   
+A Survey of Women w/ BrCa CA Who Have Had BrCa Reconstruction      
+Carolina Breast Cancer Cancer Study                                           
+Understanding BrCa Health Care Practices among Lesbians              
+BRCA18944: Breast: Neoadj ADR + surgery + CMF + RT.                   
+Breast Cancer ultrasound velocity profiles.                                   
+Breast, Adj: 10+ Nodes: CAF> CCB/BR                                 
+BC29242: Breast Cancer: Topotecan                                          
+Carolina BrCa Cancer Study                                           
+BrCa 8782 Adj BrCa, l0+ nodes: CAF> CCB/BR.                      
+BRCA18742 Breast, stage IV: TriMTX.                                  
+BrCa29141: Adj. BrCa, + LN: HiD CA + GCSF                          
+Improved Ultrasonic Breast Cancer Imaging with New Transducers                
+Modeling Risk For Breast Cancer                                        
+Breast Cancer, any stage, PBPC transplant: Ft3_+ GM or G for mobilization.   
+Breast: Follow-up Study after Participating in AMGEN 951017-02         
+BR Breast Cancer/Lymphoma: SC-68420 post-PBSC infusion                      
+PC B-20 Adj breast, node-, ER+: TAM or M-F/TAM or CMF/TAM.         ,
+BrCa 8944: BrCa: Neoadj ADR + surgery + CMF + RT.                   
+BrCa:  Econ Eval BrCa 9343                                          
+Breast Ca, stage II, node +: Lab studies                              
+BrCa: Toremifene vs. Tamoxifen in post-menopausal pts.               
+BrCa tissue acquisition                                              
+BrCa: GMCSF mouthwash for mucositis.                                 
+BR Breast Cancer:PBSC mobilization: G +/- daniplestim preleukapheresis      
+Breast Ca Specimen Collection                                          
+Atypical Hyperplasia and BrCa Cancer Risk                            
+Written Emotional Expression post RT/CT in Breast Cancer               
+BM 21.0955 for Metastatic Bone Disease in Breast Cancer Cancer                
+Hi Risk BrCa Ca, Stage II/III/IV, PK Companion to MGDF 961006       ,
+Breast Cancer: Follow-up Study after Participating in AMGEN 951017-02         
+Prostate/BrCa: Promoting Health.                                     
+Breast Cancer Ca: Improving Health & QOL                                      
+BGLAC 9371: Breast Cancer: Weight Loss Program                                
+BrCa19194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Breast ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+BrCa: QOL                                                            
+Breast Cancer (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
+Multimodality Tx +/- hyperthermia for locally advanced BrCa CA       
+Prostate/BrCa: Promoting Health.                                     
+Breast Cancer Ca, stage II, node +: Lab studies                              
+BGLAC 8541: Breast Cancer,adj, node+: CAF dose/sched comparison              
+Hot flashes w/ breast ca: Vitamin B6                                   
+Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
+Breast Ca, stage II, node +: Lab studies                              
+BrCa: Tumor Bank/Database                                            
+BrCa: GMCSF mouthwash for mucositis.                                 
+BrCa:  Econ Eval BrCa 9343                                          
+Serum markers in patients with Breast Cancer cancer.                          
+Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
+BGLAC 9243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
+BrCa dx, post RT for Hodgkin's.                                     
+Breast Ultrasound                                                      
+BRCA29243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
+BC19141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
+BrCa18864 BrCa, stage IV: Megace quality-of-life.                  
+Hot flashes w/ BrCa ca: Vitamin B6                                   
+Menopause symptoms, hi risk breast ca: Yoga classes vs Control        
+BRCA19242: Breast: Topotecan                                          
+Hot flashes w/ Breast Cancer ca: Vitamin B6                                   
+BRCA18742 Breast, stage IV: TriMTX.                                  
+Breast Cancer, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+Breast,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
+BrCa28897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+BrCa & prostate: Readiness for smoking cesssation/exercise/diet      ,
+Consequences of CT-Induced Emesis in Breast Cancer CA                         
+Breast Cancer Ca Imaging with SPECT                                           
+Tx-related fatigue, BrCa, >65: Exercise vs usual care               ,
+BGLAC 9194: Breast adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Bone pain-stage IV breast cancer: RE 186 etidronate (open label).      ,
+BGLAC 9371: Breast Cancer: Weight Loss Program                                
+QOL & Breast Cancer Ca                                                        
+Prostate/BrCa: Promoting Health.                                     
+In Vitro Gen CTL Using DCs/ BrCa                                     
+BR Breast Cancer:PBSC mobilization: G +/- daniplestim preleukapheresis      
+BrCa 8862 BrCa: Pharmacodynamic study of amonafide.                 
+BrCa: Follow-up Study after Participating in AMGEN 951017-02         
+BrCa and Prostate Cancer Data Quality Study                         
+Breast:  Thrombosis                                                    
+Breast ca bone loss: Early Zometa vs Late Zometa                       
+BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
+BrCa cell/fluid bank                                                 ,
+BrCa, stages I/II: Couple-based psychosocial intervention           
+Breast, stage IV: AFM: CR's: HiD CTX/DDP/BCNU upfront or at relapse   
+Breast CT: Virtual reality intervention                                
+Endometrial sampling in BrCa ca pts on tamoxifen.                    
+In Vitro Gen CTL Using DCs/ Breast                                     
+BR Breast:PBSC mobilization: G +/- daniplestim preleukapheresis      
+Breast (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
+BC28662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+BrCa Test 1                                                          
+Breast: S. N. dissection                                               
+BrCa28897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast Cancer Prevention                                                      
+BrCa29242: BrCa: Topotecan                                          
+Breast ca prevention: Tamoxifen info displays                          
+Breast Cancer ca, early stage:  STRENGTH                                     
+Staging BrCa Cancer with Positron Emission Tomography                
+Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
+BC29193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Breast, stage IV: All-trans-retinoic acid.                            
+BRCA18541: Breast,adj, node+: CAF dose/sched comparison              
+BrCaB-25 BrCa, adj node+: ADR+CTX", 1200x4; 2400x2; or 2400x4.      
+BrCa, stage IV, women>65: PO Navelbine.                             ,
+BrCa tissue acquisition                                              
+Breast Cancer, newly dx: Data collection/questionnaire                       ,
+Breast Cancer: Follow-up Study after Participating in AMGEN 951017-02         
+BRCA18897: Breast,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+BrCa19242: BrCa: Topotecan                                          
+BrCa18944: BrCa: Neoadj ADR + surgery + CMF + RT.                   
+Breast, stage IV: All-trans-retinoic acid.                            
+Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
+Breast Cancer: QOL                                                            
+BGLAC 8864 Breast Cancer, stage IV: Megace quality-of-life.                  
+Improved Ultrasonic BrCa Imaging with New Transducers                
+BrCa:  Thrombosis 
+Breast tissue blocks:  Prognostic value of tumor hypoxia.              
+Breast Cancer Cancer Tissue Repository                                        
+Role of TGF-Beta in Tam Mediated Breast Cancer Cancer                         
+Menopause symptoms, hi risk BrCa ca: Yoga classes vs Control        
+Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
+Hot flashes w/ breast ca: Vitamin B6                                   
+BRCA28662:Breast, stage IV: 15-3 radioimmunoassay.                   
+BrCa, newly dx: Data collection/questionnaire                       
+Insomnia in BrCa Cancer: Daily Process Analysis                      
+Breast, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+BrCa cells/fluid Bank                                                
+Advd, HER2+ BrCa ca, NED post rx: Phase I DC immunorx               
+BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
+Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
+BrCa tissue acquisition                                              
+BRCA19141: Adj. Breast, + LN: HiD CA + GCSF                          
+Prevention of Hereditary Breast Cancer and Ovarian Cancer                     ,
+BrCa Ca, stage II, node +: Lab studies                              
+Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
+Breast Cancer & prostate: Readiness for smoking cesssation/exercise/diet      
+In Vitro Gen CTL Using DCs/ BrCa                                     
+Serum markers in patients with breast cancer.                          
+BrCa Ca Imaging with SPECT                                           
+BrCa19140: BrCa: CAF or CAF/leuc                                    
+PC B-17 Breast Cancer Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT ,
+Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
+Improved Ultrasonic BrCa Imaging with New Transducers                
+BM 21.0955 for Metastatic Bone Disease in Breast Cancer Cancer                
+BRCA29242: Breast: Topotecan                                          
+BC29140: Breast Cancer: CAF or CAF/leuc                                    
+BR Breast/Lymphoma: SC-68420 post-PBSC infusion                      
+Chemotherapy Associated Lung Toxicity in Breast Cancer Cancer Patients        
+BrCa, stage IV: CBDCA + con infusion FU.                            
+BRCA29141: Adj. Breast, + LN: HiD CA + GCSF                          
+Advd Breast Cancer: CA +/- IL-6                                               
+Consequences of CT-Induced Emesis in Breast Cancer CA                         
+BRCA28741 Breast:Dose response trial of megace.                       
+Atypical Hyperplasia and Breast Cancer Cancer Risk                            
+Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
+Breast Cancer CT: Virtual reality intervention                                
+Breast Ca Specimen Collection                                          
+Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
+Breast Cancer & prostate: Readiness for smoking cesssation/exercise/diet      
+BrCa, any stage, PBBrCatransplant: Ft3_+ GM or G for mobilization.   
+BGLAC 9141: Adj. Breast, + LN: HiD CA + GCSF                          
+Breast Cancer, Barriers to Participation.                                    
+BrCa And Bowel Prevention                                            
+Breast, Adj: 10+ Nodes: CAF> CCB/BR                                 
+Breast Cancer: QOL                                                            
+BC18862 Breast Cancer: Pharmacodynamic study of amonafide.                 
+Breast: HER2 open-label ext. to H0648g                                 
+Breast Cancer, adj: 15-3 radioimmunoassay.                                   
+Breast Cancer: QOL                                                            
+BrCa ca prevention: Tamoxifen info displays                          
+BrCa tissue bank                                                     
+BC28864 Breast Cancer, stage IV: Megace quality-of-life.                  
+Breast, Barriers to Participation.                                    
+BGLAC 9242: Breast Cancer: Topotecan                                          
+Breast & prostate, early stage: Health promotion                      ,
+BrCa, Stages IIIB or IV: CAF +/- IL-6                               
+Carolina Breast Cancer Cancer Study                                           
+Mammography Screen among Blacks with family hx of breast ca            
+Breast Cancer, stage IV, ER- or low: beta INF + Tamoxifen                    
+Nausea prevention,breast, AC CT: Ginger vs Placebo (blinded)          
+Breast Cancer: GMCSF mouthwash for mucositis.                                 
+BrCa28642: BrCa, stage IV: Single agent induction + CAF or CAF     
+BRCA28742 Breast, stage IV: TriMTX.                                  
+BRCA18742 Breast, stage IV: TriMTX.                                  
+Breast Ca Specimen Collection                                          
+BC28782 Adj Breast Cancer, l0+ nodes: CAF> CCB/ABMT.                      
+BrCa Ca, stage II, node +: Lab studies                              
+Role of TGF-Beta in Tam Mediated Breast Cancer Cancer                         
+BrCa, any stage, PBBrCatransplant: Ft3_+ GM or G for mobilization.   
+Atypical Hyperplasia and BrCa Cancer Risk                            
+Effects of Tamoxifen on the Endometrium of BrCa ca pts.              
+Breast & prostate, early stage: Health promotion                      ,
+Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
+Mammography Screen among Blacks with family hx of Breast Cancer ca            
+BrCa 9194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+BRCA29243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
+Breast: Genetic tissue analysis as prediction model                    
+Written Emotional Expression post RT/CT in Breast Cancer               
+Consequences of CT-Induced Emesis in BrCa CA                         
+A Survey of Women w/ BrCa CA Who Have Had BrCa Reconstruction      
+Breast ca, early stage:  STRENGTH                                     
+BrCa, Stages IIIB or IV: CAF +/- IL-6                               
+Breast Cancer ultrasound velocity profiles.                                   
+BrCaB-24:BrCa,DCIS: Lumpx/RT/ +/- TAM                             
+Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
+BC18782 Adj Breast Cancer, l0+ nodes: CAF> CCB/ABMT.                      
+Breast Cancer, colon or lung:  Virtual Reality for CT Symptoms               
+BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
+BrCa Test 1                                                          
+BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
+Menopause symptoms, hi risk BrCa ca: Yoga classes vs Control        
+Breast Cancer: GMCSF mouthwash for mucositis.                                 
+Cog-behav tx insomnia in lung & Breast Cancer ca.                             
+Breast, Stage IV: HiD CCB/BR                                        
+BrCa Cancer: Adjuvant Treatment in Older Women                       ,
+Social Support, Stress and Mammography Pain for BrCa Cancer Survivor
+Breast Cancer Ca: Early Detect by LN Map & RT-PCR                             
+Breast Cancer Ca Specimen Collection                                          
+BrCa, early stage:  Couple-based intervention                       
+Breast, Stages IIIB or IV: CAF +/- IL-6                               
+Breast: QOL                                                            
+PC B-25 Breast, adj node+: ADR+CTX", 1200x4; 2400x2; or 2400x4.      
+BrCa, stage IV: AFM: CR's: HiD CTX/DDP/BrCaNU upfront or at relapse   
+BrCa Ca Specimen Collection                                          
+In Vitro Gen CTL Using DCs/ Breast                                     
+Breast ca: Pathophysiologic impact of DOX/RT on heart                  
+Breast Cancer Test 1                                                          
+BrCa18662:BrCa, stage IV: 15-3 radioimmunoassay.                   
+Written Emotional Expression post RT/CT in BrCa Cancer               
+Breast dx, post RT for Hodgkin's.                                     
+Breast,colon,lung: Virtual Reality, phase II                          
+Prostate/Breast Cancer: Promoting Health.                                     
+Breast, Adj: 10+ Nodes: CAF> CCB/BR                                 
+BrCa, high risk pts: Tamoxifen vs. placebo                          ,
+Role of TGF-Beta in Tam Mediated Breast Cancer                         
+Breast Cancer tissue bank                                                     
+Double-Blind Alendronate: Palliation of Bone Pain, Stage IV BrCa    
+GCSF & GMCSF in Pts on AFM BR Breast Trial                           
+Breast Ca, stage II, node +: Lab studies                              
+Breast Cancer Ultrasound                                                      
+Eval of Coag Factor ELISA's in pts w/ Breast Cancer Ca w/ HiD Chemo/BR      
+Cog-behav tx insomnia in lung & BrCa ca.                             
+BGLAC 8897: Breast,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Well-Being Following Breast Cancer.                                    
+Breast Cancer, stage IV, refrcty: CI FU; CT-response assay.                  
+BC28862 Breast Cancer: Pharmacodynamic study of amonafide.                 
+Breast Cancer, adj: 15-3 radioimmunoassay.                                   
+Breast: HER2 open-label ext. to H0648g                                 
+Adv. Breast w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
+Breast: QOL                                                            
+Breast ca, early stage:  STRENGTH                                     
+BrCa: Genetic tissue analysis as prediction model                    
+Detection of malignancy in pts w/ BrCa abnormalities using plasma.   
+Breast Cancer: Healing skills                                                 
+Hot flashes w/ breast ca: Vitamin B6                                   
+BRCA19371: Breast: Weight Loss Program                                
+Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
+BrCa, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
+Breast tissue bank                                                     
+BGLAC 8741 Breast Cancer:Dose response trial of megace.                       
+Breast Cancer: S. N. dissection                                               
+BC29193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Advd, HER2+ breast ca, NED post rx: Phase I DC immunorx               
+Breast Cancer, stage IV, women>65: PO Navelbine.                             ,
+Breast,colon,lung: Virtual Reality, phase II                          
+Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
+BrCa, stage IV: All-trans-retinoic acid.                            
+Breast, stages I/II: Couple-based psychosocial intervention           
+Breast, adj: 15-3 radioimmunoassay.                                   
+Breast Cancer, adj: 15-3 radioimmunoassay.                                   
+BrCa Ca Imaging with SPECT                                           
+Breast And Bowel Prevention                                            
+Breast, adj: 15-3 radioimmunoassay.                                   
+Carolina Breast Cancer Study                                           
+Modeling Risk For Breast Cancer Cancer                                        ,
+Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
+BRCA18864 Breast, stage IV: Megace quality-of-life.                  
+Breast Cancer ultrasound velocity profiles.                                   
+Breast Cancer, Advd: Theratope STn-KLH Vaccine in Detox B                    
+Bone mets, Breast Cancer or MM : Zoledronate vs Aredia
+BrCa ca bone loss: Early Zometa vs Late Zometa                       
+Bone mets, breast or MM : Zoledronate vs Aredia
+Carolina Breast Cancer Cancer Study                                           
+Consequences of CT-Induced Emesis in BrCa CA                         
+Breast, stages I/II: Couple-based psychosocial intervention           
+Breast Cancer Test 1                                                          
+Breast: Toremifene vs. Tamoxifen in post-menopausal pts.               
+Breast, Barriers to Participation.                                    
+BrCa, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+Understanding Breast Health Care Practices among Lesbians              
+BGLAC 9242: Breast: Topotecan                                          
+Brst.ZOO1Of/u:ax diss vs no sx BrCa: S. Node vs Ax. Node Dissection  
+BrCa: QOL                                                            
+BrCa: Tumor Bank/Database                                            
+Social Support, Stress and Mammography Pain for BrCa Cancer Survivor
+BRCA18642: Breast, stage IV: Single agent induction + CAF or CAF     
+Breast ca, early stage:  STRENGTH                                     
+Breast ca bone loss: Early Zometa vs Late Zometa                       
+Breast Cancer Test 1                                                          
+BrCa Cancer Screening Consortium                                     
+BrCa19140: BrCa: CAF or CAF/leuc                                    
+Breast ca bone loss: Early Zometa vs Late Zometa                       
+BRCA19194: Breast adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+BrCa tissue acquisition                                              
+BrCa 9242: BrCa: Topotecan                                          
+BrCa: Effect of GCSF on Docetaxel Assoc, Neutropenia                
+Blanket Protocol for BR in Breast Cancer & Ovarian Cancer                   
+BC19364: Effect of bereavement on recurr/death in Breast Cancer ca         
+A Survey of Women w/ Breast CA Who Have Had Breast Reconstruction      
+BrCa tissue acquisition                                              
+BrCa tissue acquisition                                              
+BRCA18741 Breast:Dose response trial of megace.                       
+Adv. Breast Cancer, refrcty:Taxotere (DOCETAXEL)                             
+BrCa: Effect of GCSF on Docetaxel Assoc, Neutropenia                
+Nausea prevention,breast, AC CT: Ginger vs Placebo (blinded)          
+Breast, Barriers to Participation.                                    
+BRCA18944: Breast: Neoadj ADR + surgery + CMF + RT.                   
+Hi Risk Breast Cancer Ca, Stage II/III/IV, PK Companion to MGDF 961006       
+BGLAC 8897: Breast,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Improved Ultrasonic Breast Imaging with New Transducers                
+Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
+Breast Cancer, stage IV, women>65: PO Navelbine.                             ,
+BC18662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+BrCa: Toremifene vs. Tamoxifen in post-menopausal pts.               
+Breast tissue bank                                                     
+BGLAC 9192: Breast Cancer,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+Advd Breast: CA +/- IL-6                                               
+Exploring trhe Molecular Epidemiology of BrCa Cancer & Body Size     
+BrCa ca: Pathophysiologic impact of DOX/RT on heart                  
+Atypical Hyperplasia and Breast Cancer Risk                            
+Double-Blind Alendronate: Palliation of Bone Pain, Stage IV Breast Cancer    
+BC18897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast Cancer, adj: 15-3 radioimmunoassay.                                   
+BrCa28864 BrCa, stage IV: Megace quality-of-life.                  
+Breast: QOL                                                            
+BC18541: Breast Cancer,adj, node+: CAF dose/sched comparison              
+Breast Cancer ultrasound velocity profiles.                                   
+Hot flashes w/ BrCa ca: Vitamin B6                                   
+Breast Prevention                                                      
+BRCA18541: Breast,adj, node+: CAF dose/sched comparison              
+BrCa Ca Specimen Collection                                          
+Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
+A Survey of Women w/ Breast CA Who Have Had Breast Reconstruction      
+Early breast ca: Endometrial ca prevention:TAM/Megace vs OBS           
+PC B-24:Breast Cancer,DCIS: Lumpx/RT/ +/- TAM                             ,
+BrCa 8741 BrCa:Dose response trial of megace.                       
+BRCA28782 Adj breast, l0+ nodes: CAF> CCB/ABMT.                      
+BGLAC 8944: Breast: Neoadj ADR + surgery + CMF + RT.                   
+Breast Cancer ca/ BRCA                                                        
+CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
+BrCa19242: BrCa: Topotecan                                          
+BrCa CT: Virtual reality intervention                                
+BrCa tissue bank                                                     
+BrCa, stage IV: AFM: CR's: HiD CTX/DDP/BrCaNU upfront or at relapse   
+BrCa, stage IV: CAF +/- ADR-529 as a cardioprotectant.              
+Breast Cancer ca prevention: Tamoxifen info displays                          
+Prostate/BrCa: Promoting Health.                                     
+BrCa, high risk pts: Tamoxifen vs. placebo                          ,
+Breast: Tumor Bank/Database                                            
+Breast Cancer Surgery: PV Block vs Gen Anesthesia                             
+BGLAC 9140: Breast: CAF or CAF/leuc                                    
+BGLAC 8741 Breast:Dose response trial of megace.                       
+Effects of Tamoxifen on the Endometrium of BrCa ca pts.              
+Breast Cancer Cancer Tissue Repository                                        
+BrCa, stage IV, refrcty: CI FU; CT-response assay.                  
+BrCa Ca Prevention: Tamoxifen/Raloxifene                             
+BRCA18864 Breast, stage IV: Megace quality-of-life.                  
+Breast Ca Specimen Collection                                          
+BRCA29193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Early Breast Cancer ca: Endometrial ca prevention:TAM/Megace vs OBS           
+Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage BrCa CA   ,
+Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
+Breast: QOL                                                            
+Breast Cancer, colon or lung:  Virtual Reality for CT Symptoms               
+BrCa 8662:BrCa, stage IV: 15-3 radioimmunoassay.                   
+Breast Prevention                                                      
+Breast Cancer Prevention                                                      
+Breast Cancer Ca Detection:  Expression Based Markers                         
+Cog-behav tx insomnia in lung & BrCa ca.                             
+Diagnostic Accuracy of Needle Biopsy for Occult BrCa Lesions         
+BRCA29364: Effect of bereavement on recurr/death in breast ca         
+BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
+BrCa (stages IIIB/IV): HiD CCB (split dose BrCaNU) + PBPCs             
+Improving Adherence in Women at Risk for BrCa Cancer                 
+Cog-behav tx insomnia in lung & breast ca.                             
+BGLAC 8741 Breast Cancer:Dose response trial of megace.                       
+BrCa, colon or lung:  Virtual Reality for CT Symptoms               
+BrCa 8541: BrCa,adj, node+: CAF dose/sched comparison              
+BGLAC 8944: Breast: Neoadj ADR + surgery + CMF + RT.                   
+Breast Cancer, Adj: 10+ Nodes: CAF> CCB/BR                                 
+Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
+BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
+BrCa, adj: 15-3 radioimmunoassay.                                   
+Breast ca bone loss: Early Zometa vs Late Zometa                       
+Hi Risk BrCa Ca, Stage II/III/IV, PK Companion to MGDF 961006       ,
+BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+BrCa, Stage IV: HiD CCB/BrCa                                       
+Breast Cancer: GMCSF mouthwash for mucositis.                                 
+BrCa19140: BrCa: CAF or CAF/leuc                                    
+Breast Cancer, Stage IV: HiD CCB/BR                                        
+Breast Cancer Ca, stage II, node +: Lab studies                              
+BrCa28541: BrCa,adj, node+: CAF dose/sched comparison              
+Endometrial sampling in BrCa ca pts on tamoxifen.                    
+Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
+BGLAC 9371: Breast Cancer: Weight Loss Program                                
+BrCa ca, early stage:  STRENGTH                                     
+A Survey of Women w/ BrCa CA Who Have Had BrCa Reconstruction      
+BrCa18944: BrCa: Neoadj ADR + surgery + CMF + RT.                   
+BRCA19140: Breast: CAF or CAF/leuc                                    
+Breast Cancer: Healing skills                                                 
+BC29141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
+Blanket Protocol for BR in Breast & Ovarian Cancer                   
+Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage BrCa CA   ,
+Breast Ca Specimen Collection                                          
+Breast Cancer Ca Specimen Collection                                          
+BrCa: QOL                                                            
+BrCa and Prostate Cancer Data Quality Study                         
+BrCa29193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Breast Cancer Ca Detection:  Expression Based Markers                         
 BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+Serum markers in patients with BrCa cancer.                          
+BrCa Ca Prevention: Tamoxifen/Raloxifene                             
+Hi Risk BrCa Ca, Stage II/III/IV, PK Companion to MGDF 961006       ,
+Understanding Breast Health Care Practices among Lesbians              
+BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+BC28662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+Prevention of Hereditary Breast Cancer and Ovarian Cancer                     ,
+BM 21.0955 for Metastatic Bone Disease in Breast Cancer                
+Breast & prostate: Readiness for smoking cesssation/exercise/diet      
+Nausea prevention,Breast Cancer, AC CT: Ginger vs Placebo (blinded)          
+Breast, adj: 15-3 radioimmunoassay.                                   
+BrCa: HER2 open-label ext. to H0648g                                 
+Understanding Breast Health Care Practices among Lesbians              
+Multimodality Tx +/- hyperthermia for locally advanced Breast Cancer CA       
+BrCa18741 BrCa:Dose response trial of megace.                       
+BrCa, Stages IIIB or IV: CAF +/- IL-6                               
+Breast, stage IV: AFM: CR's: HiD CTX/DDP/BCNU upfront or at relapse   
+BRCA28862 Breast: Pharmacodynamic study of amonafide.                 
+TRC 9202; Taxol for refractory Breast Cancer cancer                           
+BM 21.0955 for Metastatic Bone Disease in Breast Cancer                
+Breast Prevention                                                      
+BrCa Ca Prevention: Tamoxifen/Raloxifene                             
+Breast Cancer Ca Detection:  Expression Based Markers                         
 Breast Cancer, adj: 15-3 radioimmunoassay.                                   
 BrCa: Follow-up Study after Participating in AMGEN 951017-02         
-BC29194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-BrCa, Adj: 10+ Nodes: CAF> CCB/BrCa                                
-Taxol neuropathy, BrCa/lung ca: Gabapentin vs Glutamine             
-BRCA18864 Breast, stage IV: Megace quality-of-life.                  
-BRCA29141: Adj. Breast, + LN: HiD CA + GCSF                          
-Improving Adherence in Women at Risk for BrCa Cancer                 
-BrCa18782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-Adv. Breast w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
-BC29192: Breast Cancer,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Serum markers in patients with BrCa cancer.                          
-BrCa28782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
-Breast: Follow-up Study after Participating in AMGEN 951017-02         
-Breast ca prevention: Tamoxifen info displays                          
-Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
-Staging BrCa Cancer with Positron Emission Tomography                
-Breast, Advd: Theratope STn-KLH Vaccine in Detox B                    
-BrCa 8944: BrCa: Neoadj ADR + surgery + CMF + RT.                   
-Prostate/BrCa: Promoting Health.                                     
+BGLAC 8741 Breast Cancer:Dose response trial of megace.                       
+Blanket Protocol for BR in Breast Cancer & Ovarian Cancer                   
+BC28742 Breast Cancer, stage IV: TriMTX.                                  
+BrCa tissue blocks:  Prognostic value of tumor hypoxia.              
 Breast,colon,lung: Virtual Reality, phase II                          
-BRCA18944: Breast: Neoadj ADR + surgery + CMF + RT.                   
-BC19371: Breast Cancer: Weight Loss Program                                
-BrCa,colon,lung: Virtual Reality, phase II                          
-BrCa29192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast: Toremifene vs. Tamoxifen in post-menopausal pts.               
-BRCA19194: Breast adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-Breast Cancer:  Thrombosis 
-BrCa ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
-Breast Cancer, stage IV: CBDCA + con infusion FU.                            
-BrCa 8742 BrCa, stage IV: TriMTX.                                  
-Exploring trhe Molecular Epidemiology of Breast Cancer & Body Size     
-Breast Cancer, stage IV, ER- or low: beta INF + Tamoxifen                    
-Serum markers in patients with BrCa cancer.                          
-BrCa29141: Adj. BrCa, + LN: HiD CA + GCSF                          
-BrCa28741 BrCa:Dose response trial of megace.                       
-BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
-PC B-19 Adj breast, node-,ER-: M-F or CMF.                         ,
-Breast tissue blocks:  Prognostic value of tumor hypoxia.              
-Breast Cancer:  Thrombosis                                                    
-Breast Cancer Ca Specimen Collection                                          
-Serum markers in patients with breast cancer.                          
-Breast Ca, stage II, node +: Lab studies                              
-BRCA29242: Breast: Topotecan                                          
-BrCa 8642: BrCa, stage IV: Single agent induction + CAF or CAF     
-Adv. Breast w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
-Consequences of CT-Induced Emesis in Breast CA                         
-BrCa18897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
-Understanding Breast Health Care Practices among Lesbians              
-Breast Cancer:  Econ Eval BGLAC 9343                                          
-Early Breast Cancer ca: Endometrial ca prevention:TAM/Megace vs OBS           
-CA 15-3 Radioimmunoassay to Detect Progression in Breast Ca Pts on Ct  
-BC19371: Breast Cancer: Weight Loss Program                                
-Menopause symptoms, hi risk Breast Cancer ca: Yoga classes vs Control        
-Improved Ultrasonic BrCa Imaging with New Transducers                
-BrCa, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
-BrCa Ca Imaging with SPECT                                           
-BrCa: Toremifene vs. Tamoxifen in post-menopausal pts.               
-Breast Ca Prevention: Tamoxifen/Raloxifene                             
-Advd Breast Cancer: CA +/- IL-6                                               
-BrCa, Barriers to Participation.                                    
-BrCa 9194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-Breast Ca Specimen Collection                                          
-Contrast-enhanced MRI of the Breast: Pathologic correlation            
-Insomnia in Breast Cancer Cancer: Daily Process Analysis                      ,
-BrCa, adj: 15-3 radioimmunoassay.                                   
-Breast Ca Detection:  Expression Based Markers                         
-BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
-BC28541: Breast Cancer,adj, node+: CAF dose/sched comparison              
-Breast Cancer, stage IV, women>65: PO Navelbine.                             ,
-Early onset Breast Cancer, ovarian, colon, prostate ca: Recruiting Blacks    
-Nausea prevention,BrCa, AC CT: Ginger vs Placebo (blinded)          
-BrCa, newly dx: Data collection/questionnaire                       
-BGLAC 9242: Breast Cancer: Topotecan                                          
-BrCa Surgery: PV Block vs Gen Anesthesia                             ,
-A Survey of Women w/ Breast Cancer CA Who Have Had Breast Cancer Reconstruction      
-BC28741 Breast Cancer:Dose response trial of megace.                       
-BrCa 8662:BrCa, stage IV: 15-3 radioimmunoassay.                   
-BrCa: QOL                                                            
-Breast Cancer Cancer Tissue Repository                                        
-BrCa Cancer Tissue Repository                                        
-BrCa Ca Imaging with SPECT                                           
-Breast: RT Pneumonitis                                                 
-Modeling Risk For Breast Cancer                                        
-Breast Cancer Surgery: PV Block vs Gen Anesthesia                             
-Identification Mets Assoc. Breast CA Genes                             
-BGLAC 9192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-BRCA28642: Breast, stage IV: Single agent induction + CAF or CAF     
-Breast, Barriers to Participation.                                    
-Exploring trhe Molecular Epidemiology of Breast Cancer Cancer & Body Size     
-Improving Adherence in Women at Risk for Breast Cancer Cancer                 
-Double-Blind Alendronate: Palliation of Bone Pain, Stage IV BrCa    
-BrCa29371: BrCa: Weight Loss Program                                
-BRCA18662:Breast, stage IV: 15-3 radioimmunoassay.                   
+Breast Cancer tissue acquisition                                              
+BGLAC 9371: Breast: Weight Loss Program                                
+BGLAC 9193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Well-Being Following BrCa Cancer.                                    
+Breast Cancer: HER2 open-label ext. to H0648g                                 
 BrCa cells/fluid Bank                                                
-A Survey of Women w/ BrCa CA Who Have Had BrCa Reconstruction      
-Nausea prevention,breast, AC CT: Ginger vs Placebo (blinded)          
-Breast Ca, stage II, node +: Lab studies                              
-Breast Cancer,Stage I & II, Costs for Treatment.                             
-BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast, adj: 15-3 radioimmunoassay.                                   
-BRCA18741 Breast:Dose response trial of megace.                       
-BRCA19193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-Bone mets, Breast Cancer or MM : Zoledronate vs Aredia
-BrCa19194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-BRCA19242: Breast: Topotecan                                          
-Effects of Tamoxifen on the Endometrium of Breast Cancer ca pts.              
-Breast Cancer, high risk pts: Tamoxifen vs. placebo                          ,
-BC29242: Breast Cancer: Topotecan                                          
-Breast Ca, stage II, node +: Lab studies                              
-Breast CT: Virtual reality intervention                                
-Contrast-enhanced MRI of the Breast: Pathologic correlation            
-Breast Cancer and Prostate Cancer Data Quality Study                         
-BrCa: Tumor Bank/Database                                            
-Breast Cancer ca bone loss: Early Zometa vs Late Zometa                       
-Atypical Hyperplasia and Breast Cancer Risk                            
-BGLAC 9242: Breast Cancer: Topotecan                                          
-BrCa 8742 BrCa, stage IV: TriMTX.                                  
-BrCa: Healing skills                                                 
-BrCa, Stage IV: HiD CCB/BrCa                                       
-BrCa28662:BrCa, stage IV: 15-3 radioimmunoassay.                   
-Breast Cancer, adj: 15-3 radioimmunoassay.                                   
-BGLAC 8642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
-BrCa29193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-BrCa Ca Prevention: Tamoxifen/Raloxifene                             
-BRCA19243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
-BC28541: Breast Cancer,adj, node+: CAF dose/sched comparison              
-Improving Adherence in Women at Risk for Breast Cancer Cancer                 
-BrCa29140: BrCa: CAF or CAF/leuc                                    
-BRCA19192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
-Breast Cancer, early stage:  Couple-based intervention                       
-Adv. BrCa w/ BM/BS: Purging/BR/AFM Induction + HiD CCB             
+Written Emotional Expression post RT/CT in BrCa Cancer               
+Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
+Breast: S. N. dissection                                               
+Breast Ca Prevention: Tamoxifen/Raloxifene                             
+BrCa, stage IV: Continuous infusion 5-FU                            
+BrCa 9243: BrCa: Amonafide(dose assigned by acetylator phenotyping) 
+BRCA18662:Breast, stage IV: 15-3 radioimmunoassay.                   
+BGLAC 9193: Breast, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Breast Cancer:  Econ Eval BGLAC 9343                                          
+BrCa18662:BrCa, stage IV: 15-3 radioimmunoassay.                   
+BrCa29141: Adj. BrCa, + LN: HiD CA + GCSF                          
+BrCa ca bone loss: Early Zometa vs Late Zometa                       
+Well-Being Following BrCa Cancer.                                    
+Adv. Breast Cancer, refrcty:Taxotere (DOCETAXEL)                             
+BrCa ca: Pathophysiologic impact of DOX/RT on heart                  
+BrCa Cancer Screening Consortium                                     
+BrCa Cancer: Adjuvant Treatment in Older Women                       ,
+Adv. Breast, refrcty:Taxotere (DOCETAXEL)                             
+Bone pain-stage IV Breast Cancer cancer: RE 186 etidronate (open label).      
+BrCa, stages I/II: Couple-based psychosocial intervention           
+BGLAC 9140: Breast: CAF or CAF/leuc                                    
+Social Support, Stress and Mammography Pain for BrCa Cancer Survivor
+Breast Cancer, stage IV: CBDCA + con infusion FU.                            
+BrCa Cancer Tissue Repository                                        
+BC29194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Advd, HER2+ breast ca, NED post rx: Phase I DC immunorx               
+BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+BrCa ca prevention: Tamoxifen info displays                          
 BrCa, adj: 15-3 radioimmunoassay.                                   
-Breast cells/fluid Bank                                                
-BrCa CT: Virtual reality intervention                                
+Breast And Bowel Prevention                                            
+Breast Cancer: RT Pneumonitis                                                 
+Modeling Risk For BrCa Cancer                                        
+Exploring trhe Molecular Epidemiology of Breast Cancer Cancer & Body Size     
+Carolina Breast Cancer Cancer Study                                           
+Understanding BrCa Health Care Practices among Lesbians              
+BGLAC 8662:Breast Cancer, stage IV: 15-3 radioimmunoassay.                   
+Breast, stage IV, refrcty: CI FU; CT-response assay.                  
+BRCA29364: Effect of bereavement on recurr/death in breast ca         
+Improving Adherence in Women at Risk for BrCa Cancer                 
+Nausea prevention,breast, AC CT: Ginger vs Placebo (blinded)          
+BrCa Ca, stage II, node +: Lab studies                              
+Role of TGF-Beta in Tam Mediated Breast Cancer                         
+BrCa 8897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast, stage IV: CI 5FU preharvest: then HiD ICAM                    
+Bone pain-stage IV BrCa cancer: RE 186 etidronate (open label).      ,
+BGLAC 9193: Breast Cancer, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+BGLAC 8742 Breast Cancer, stage IV: TriMTX.                                  
+BrCa 8862 BrCa: Pharmacodynamic study of amonafide.                 
+Breast (stages IIIB/IV): HiD CCB (split dose BCNU) + PBPCs             
+Breast ca prevention: Tamoxifen info displays                          
+BrCa Ca: Improving Health & QOL                                      
+BRCA18741 Breast:Dose response trial of megace.                       
+Breast: QOL                                                            
+BGLAC 9194: Breast adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+BrCa and Prostate Cancer Data Quality Study                         
+Breast Cancer:  Thrombosis 
+Breast tissue bank                                                     
+Breast Cancer: Toremifene vs. Tamoxifen in post-menopausal pts.               
+Social Support, Stress and Mammography Pain for Breast Cancer Cancer Survivor
+Breast Cancer Ca, stage II, node +: Lab studies                              
+BGLAC 9141: Adj. Breast, + LN: HiD CA + GCSF                          
+Breast, adj: 15-3 radioimmunoassay.                                   
+Breast Cancer, Barriers to Participation.                                    
+BrCa19242: BrCa: Topotecan                                          
+BrCa19193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Effects of Tamoxifen on the Endometrium of Breast Cancer ca pts.              
+Breast Cancer, stage IV: Continuous infusion 5-FU                            
+Breast Cancer Cancer Tissue Repository                                        
+Analysis of the p53 Gene in BrCa Cancer                              ,
+PC B-25 Breast, adj node+: ADR+CTX", 1200x4; 2400x2; or 2400x4.      
+BGLAC 8782 Adj Breast Cancer, l0+ nodes: CAF> CCB/BR.                      
+BrCa and Prostate Cancer Data Quality Study                         
+BrCa: Tumor Bank/Database                                            
+BrCa18864 BrCa, stage IV: Megace quality-of-life.                  
+Breast:  Thrombosis                                                    
+Chemotherapy Associated Lung Toxicity in Breast Cancer Cancer Patients        
+BrCa: Follow-up Study after Participating in AMGEN 951017-02         
+BrCa, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+Prevention of Hereditary BrCa and Ovarian Cancer                     ,
+Breast, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
+BrCa, stage IV: CI 5FU preharvest: then HiD ICAM                    
+BrCa: S. N. dissection                                               
+Role of TGF-Beta in Tam Mediated Breast Cancer                         
+Breast, Barriers to Participation.                                    
+Breast & prostate, early stage: Health promotion                      ,
+GCSF & GMCSF in Pts on AFM BR Breast Cancer Trial                           
+BRCA28742 Breast, stage IV: TriMTX.                                  
+Breast Cancer: RT Pneumonitis                                                 
+Serum markers in patients with Breast Cancer cancer.                          
+BrCa, stage IV: CI 5FU preharvest: then HiD ICAM                    
+BrCa 8742 BrCa, stage IV: TriMTX.                                  
+BrCa 9140: BrCa: CAF or CAF/leuc                                    
+BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast Cancer, stage IV, ER- or low: beta INF + Tamoxifen                    
+BrCa & prostate: Readiness for smoking cesssation/exercise/diet      ,
+BRCA18897: Breast,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+BGLAC 9192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+Breast Cancer, Adj: 10+ Nodes: CAF> CCB/BR                                 
+BRCA28662:Breast, stage IV: 15-3 radioimmunoassay.                   
+Breast CT: Virtual reality intervention                                
+Carolina Breast Cancer Cancer Study                                           
+Chemotherapy Associated Lung Toxicity in BrCa Cancer Patients        
+BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast Cancer Ca Prevention:  Tamoxifen Decision                              
+Blanket Protocol for BR in Breast Cancer & Ovarian Cancer                   
+BC19141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
+BGLAC 8862 Breast Cancer: Pharmacodynamic study of amonafide.                 
+Breast Ca Specimen Collection                                          
+Menopause symptoms, hi risk BrCa ca: Yoga classes vs Control        
+Breast ca, early stage:  STRENGTH                                     
+Cog-behav tx insomnia in lung & BrCa ca.                             
+BrCa,Stage I & II, Costs for Treatment.                             
+Atypical Hyperplasia and BrCa Cancer Risk                            
+BrCa, newly dx: Data collection/questionnaire                       
+QOL & Breast Ca                                                        ,
+Breast cell/fluid bank                                                 
+BrCa dx, post RT for Hodgkin's.                                     
+Breast: Anthracycline-refractory: Navelbine vs Alkeran.                
+Multimodality Tx +/- hyperthermia for locally advanced Breast Cancer CA       
+BrCa 9141: Adj. BrCa, + LN: HiD CA + GCSF                          
+Breast, Stage IV: CI 5FU post BR                                    
+BrCa18541: BrCa,adj, node+: CAF dose/sched comparison              
+Breast, stage IV, post-meno, ER+, TAM failures: R83,842 or Megace     
+BGLAC 9140: Breast Cancer: CAF or CAF/leuc                                    
+BrCa28742 BrCa, stage IV: TriMTX.                                  
+Analysis of the p53 Gene in Breast Cancer                              ,
+Breast, Adj: 10+ Nodes: CAF> CCB/BR                                 
+BGLAC 8741 Breast:Dose response trial of megace.                       
+BC19242: Breast Cancer: Topotecan                                          
+BrCa ca prevention: Tamoxifen info displays                          
+Breast: Anthracycline-refractory: Navelbine vs Alkeran.                
+BGLAC 8897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast Cancer, stage IV, refrcty: CI FU; CT-response assay.                  
+Breast Cancer Ultrasound                                                      
+Well-Being Following BrCa Cancer.                                    
+Breast Ca Prevention: Tamoxifen/Raloxifene                             
+BRCA29242: Breast: Topotecan                                          
+BC29371: Breast Cancer: Weight Loss Program                                
+Breast Cancer Ca, stage II, node +: Lab studies                              
+Breast ca bone loss: Early Zometa vs Late Zometa                       
+BC28642: Breast Cancer, stage IV: Single agent induction + CAF or CAF     
+Prostate/Breast Cancer: Promoting Health.                                     
+BrCa ca: Pathophysiologic impact of DOX/RT on heart                  
+BrCa19194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Breast Ca, stage II, node +: Lab studies                              
+Advd, HER2+ BrCa ca, NED post rx: Phase I DC immunorx               
+BrCa, colon or lung:  Virtual Reality for CT Symptoms               
+BrCa, stage IV, ER- or low: beta INF + Tamoxifen                    
+Breast, stage IV: Lapatinib/Trastuzumab/Monotherapy                   
+Breast Cancer Ca Specimen Collection                                          
+BrCa: GMCSF mouthwash for mucositis.                                 
+BGLAC 8864 Breast, stage IV: Megace quality-of-life.                  
+BrCa Ca, stage II, node +: Lab studies                              
+BrCa18541: BrCa,adj, node+: CAF dose/sched comparison              
+QOL & Breast Cancer Ca                                                        
+Understanding Breast Cancer Health Care Practices among Lesbians              
+Breast Ultrasound                                                      
+Breast, early stage:  Couple-based intervention                       
+Breast Ca: Improving Health & QOL                                      
+A Survey of Women w/ Breast Cancer CA Who Have Had Breast Cancer Reconstruction      
+Serum markers in patients with Breast Cancer cancer.                          
+Breast Ca, stage II, node +: Lab studies                              
+Breast ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+Breast & prostate: Readiness for smoking cesssation/exercise/diet      
+Written Emotional Expression post RT/CT in Breast Cancer               
+Breast Cancer, stage IV or loc adv: MDX-1307 (hCG beta vaccline)             
+BGLAC 8642: Breast, stage IV: Single agent induction + CAF or CAF     
+Breast Cancer And Bowel Prevention                                            
+BGLAC 9364: Effect of bereavement on recurr/death in breast ca         
+Breast Cancer:  Thrombosis                                                    
+BrCa, adj: 15-3 radioimmunoassay.                                   
+Breast,colon,lung: Virtual Reality, phase II                          
+BGLAC 9243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
+Effects of Tamoxifen on the Endometrium of breast ca pts.              
+BR Breast Cancer/Lymphoma: SC-68420 post-PBSC infusion                      
+Breast Ultrasound                                                      
+BGLAC 8944: Breast Cancer: Neoadj ADR + surgery + CMF + RT.                   
+Blanket Protocol for BR in Breast Cancer & Ovarian Cancer                   
+BGLAC 9194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Early BrCa ca: Endometrial ca prevention:TAM/Megace vs OBS           
+BrCa29141: Adj. BrCa, + LN: HiD CA + GCSF                          
+BGLAC 9192: Breast Cancer,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+Endometrial sampling in BrCa ca pts on tamoxifen.                    
+BC28742 Breast Cancer, stage IV: TriMTX.                                  
+Breast Ca Prevention:  Tamoxifen Decision                              
+Breast Cancer ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+BrCa ca/ BRCA                                                        
+BrCa 8864 BrCa, stage IV: Megace quality-of-life.                  
+BrCa18782 Adj BrCa, l0+ nodes: CAF> CCB/ABMT.                      
+Breast CT: Virtual reality intervention                                
+Diagnostic Accuracy of Needle Biopsy for Occult Breast Cancer Lesions         ,
+BrCa 9192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+Breast ca/ BRCA                                                        
+Prostate/Breast: Promoting Health.                                     
+Mammography Screen among Blacks with family hx of Breast Cancer ca            
+BGLAC 8782 Adj Breast Cancer, l0+ nodes: CAF> CCB/BR.                      
+Blanket Protocol for BR in Breast & Ovarian Cancer                   
+Breast, Stage IV: HiD CCB/BR                                        
+BGLAC 9192: Breast,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+BRCA28864 Breast, stage IV: Megace quality-of-life.                  
+Menopause symptoms, hi risk Breast Cancer ca: Yoga classes vs Control        
+BGLAC 9140: Breast: CAF or CAF/leuc                                    
+Breast Cancer: S. N. dissection                                               
+PC B-17 Breast Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT ,
+BrCa, stage IV, refrcty: CI FU; CT-response assay.                  
+BC29242: Breast Cancer: Topotecan                                          
+Breast Cancer Surgery: PV Block vs Gen Anesthesia                             
+Serum markers in patients with BrCa cancer.                          
+BRCA28782 Adj breast, l0+ nodes: CAF> CCB/ABMT.                      
+BC19141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
+BC19242: Breast Cancer: Topotecan                                          
+Hot flashes w/ BrCa ca: Vitamin B6                                   
+GCSF & GMCSF in Pts on AFM BrCaBrCa Trial                           
+BrCa:  Thrombosis 
+BRCA28642: Breast, stage IV: Single agent induction + CAF or CAF     
+Breast Ca Imaging with SPECT                                           
+Breast & prostate, early stage: Health promotion                      ,
+BC29364: Effect of bereavement on recurr/death in Breast Cancer ca         
+Breast Cancer, Barriers to Participation.                                    
+BrCa Cancer Tissue Repository                                        
+Breast ca or hi risk, w/ hot flashes: Breathing technique/skin monitor
+BrCa29364: Effect of bereavement on recurr/death in BrCa ca         
+Breast Cancer & prostate: Readiness for smoking cesssation/exercise/diet      
+BrCa: Anthracycline-refractory: Navelbine vs Alkeran.                
+BGLAC 8864 Breast, stage IV: Megace quality-of-life.                  
 Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
 Breast Cancer & prostate: Readiness for smoking cesssation/exercise/diet      
-BrCa, stages I/II: Couple-based psychosocial intervention           
-BrCa, renal or melanoma:  Post MINIallo DLEs/ matched sibs          
-Breast Cancer, stage IV: CI 5FU preharvest: then HiD ICAM                    
-BC19141: Adj. Breast Cancer, + LN: HiD CA + GCSF                          
-BrCa: QOL                                                            
-BrCa18742 BrCa, stage IV: TriMTX.                                  
-Breast Ca, stage II, node +: Lab studies                              
-BrCa tissue acquisition                                              
-Breast cell/fluid bank                                                 
-Breast tissue blocks:  Prognostic value of tumor hypoxia.              
-Breast Cancer: QOL                                                            
-BC28862 Breast Cancer: Pharmacodynamic study of amonafide.                 
-BrCa29194: BrCa adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
-Breast Cancer Tissue Repository                                        
-BR Breast:PBSC mobilization: G +/- daniplestim preleukapheresis      
+BR Breast Cancer:PBSC mobilization: G +/- daniplestim preleukapheresis      
+BrCa, Advd: Theratope STn-KLH Vaccine in Detox B                    
+BGLAC 8741 Breast:Dose response trial of megace.                       
+Taxol neuropathy, breast/lung ca: Gabapentin vs Glutamine             
+Breast Cancer, Stage IV: CI 5FU post BR                                    
+BrCa: Anthracycline-refractory: Navelbine vs Alkeran.                
+BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
+FDG-PEM breast imaging                                                 
+BGLAC 8742 Breast Cancer, stage IV: TriMTX.                                  
+BrCa28862 BrCa: Pharmacodynamic study of amonafide.                 
+Breast: RT Pneumonitis                                                 
+BrCa29243: BrCa: Amonafide(dose assigned by acetylator phenotyping) 
+Breast Ca Prevention: Tamoxifen/Raloxifene                             
+Well-Being Following Breast Cancer Cancer.                                    
+BrCa: Genetic tissue analysis as prediction model                    
+BRCA29242: Breast: Topotecan                                          
+BrCa:  Thrombosis 
+BrCa ca bone loss: Early Zometa vs Late Zometa                       
+Breast Cancer: Follow-up Study after Participating in AMGEN 951017-02         
+Breast Cancer, colon or lung:  Virtual Reality for CT Symptoms               
+BRCA19364: Effect of bereavement on recurr/death in breast ca         
+Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
+Quality of Life 2-5yrs after comp. of Adj. Tx: Early Stage Breast CA   ,
+Atypical Hyperplasia and Breast Cancer Risk                            
 BrCa Prevention                                                      
-BrCa 8862 BrCa: Pharmacodynamic study of amonafide.                 
-BrCa 9140: BrCa: CAF or CAF/leuc                                    
-Breast Cancer dx, post RT for Hodgkin's.                                     
-BM 21.0955 for Metastatic Bone Disease in Breast Cancer Cancer                
-BC28741 Breast Cancer:Dose response trial of megace.                       
-Breast Cancer:  Thrombosis 
-In Vitro Gen CTL Using DCs/ BrCa                                     
-Breast,(BR), stages II (>4+LN), IIIB or IV: IL-11                   
+BrCa 8742 BrCa, stage IV: TriMTX.                                  
+Breast Cancer Ca, stage II, node +: Lab studies                              
 BGLAC 9242: Breast: Topotecan                                          
-Breast Ultrasound                                                      
-Breast Cancer Test 1                                                          
-BC29242: Breast Cancer: Topotecan                                          
-A Survey of Women w/ BrCa CA Who Have Had BrCa Reconstruction      
-BrCa19193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
-Breast ca/ BRCA                                                        
-Endometrial sampling in Breast Cancer ca pts on tamoxifen.                    
-Blanket Protocol for BrCain BrCa & Ovarian Cancer                   
-Breast tissue bank                                                     
-BRCA19140: Breast: CAF or CAF/leuc                                    
-Breast Cancer, Advd: Theratope STn-KLH Vaccine in Detox B                    
-Nausea prevention,Breast Cancer, AC CT: Ginger vs Placebo (blinded)          
-BrCa 9243: BrCa: Amonafide(dose assigned by acetylator phenotyping) 
-Detection of malignancy in pts w/ breast abnormalities using plasma.   
-Bone pain-stage IV breast cancer: RE 186 etidronate (open label).      ,
+Identification Mets Assoc. Breast Cancer CA Genes                             
+Breast Cancer, newly dx: Data collection/questionnaire                       ,
+Early Breast Cancer ca: Endometrial ca prevention:TAM/Megace vs OBS           
+Taxol neuropathy, Breast Cancer/lung ca: Gabapentin vs Glutamine             
+Understanding Breast Health Care Practices among Lesbians              
+Consequences of CT-Induced Emesis in Breast Cancer CA                         
 Understanding Breast Cancer Health Care Practices among Lesbians              
-BRCA28862 Breast: Pharmacodynamic study of amonafide.                 
+BGLAC 8782 Adj breast, l0+ nodes: CAF> CCB/BR.                      
+BGLAC 8742 Breast, stage IV: TriMTX.                                  
+Breast, high risk pts: Tamoxifen vs. placebo                          ,
+TRC 9202; Taxol for refractory breast cancer                           
+PC B-24:Breast Cancer,DCIS: Lumpx/RT/ +/- TAM                             ,
+Detection of malignancy in pts w/ BrCa abnormalities using plasma.   
+Breast ca/ BRCA                                                        
+Well-Being Following Breast Cancer.                                    
+Analysis of the p53 Gene in Breast Cancer Cancer                              ,
+BrCa28742 BrCa, stage IV: TriMTX.                                  
+BRCA18642: Breast, stage IV: Single agent induction + CAF or CAF     
+Well-Being Following Breast Cancer.                                    
+PC B-24:Breast Cancer,DCIS: Lumpx/RT/ +/- TAM                             ,
+BrCa19364: Effect of bereavement on recurr/death in BrCa ca         
+Serum markers in patients with BrCa cancer.                          
+Menopause symptoms, hi risk BrCa ca: Yoga classes vs Control        
+BRCA18862 Breast: Pharmacodynamic study of amonafide.                 
+Analysis of the p53 Gene in Breast Cancer Cancer                              ,
+Atypical Hyperplasia and BrCa Cancer Risk                            
+Modeling Risk For Breast Cancer                                        
+BrCa ca/ BRCA                                                        
+BC19243: Breast Cancer: Amonafide(dose assigned by acetylator phenotyping) 
+Menopause symptoms, hi risk Breast Cancer ca: Yoga classes vs Control        
+Breast Surgery: PV Block vs Gen Anesthesia                             ,
+PC B-20 Adj breast, node-, ER+: TAM or M-F/TAM or CMF/TAM.         ,
+Breast Cancer, colon or lung:  Virtual Reality for CT Symptoms               
+BrCa: Healing skills                                                 
+BrCa Ca: Early Detect by LN Map & RT-PCR                             
+Breast Ca: Early Detect by LN Map & RT-PCR                             
+BR Breast Cancer:PBSC mobilization: G +/- daniplestim preleukapheresis      
+PC B-17 Breast Adj:Noninvasive, intrdctl adenoca:Lumpectomy +/- RT ,
+Breast Surgery: PV Block vs Gen Anesthesia                             ,
+BrCa: Anthracycline-refractory: Navelbine vs Alkeran.                
+BrCa19192: BrCa,adj,premen,+nodes:CAF or CAF/Zoladex or CAF/ZDX/TAM
+BrCa ultrasound velocity profiles.                                   
+BrCa:  Thrombosis 
+Breast, stage IV: Continuous infusion 5-FU                            
+Breast ca/ BRCA                                                        
+BrCa 8782 Adj BrCa, l0+ nodes: CAF> CCB/BR.                      
+BrCa ca bone loss: Early Zometa vs Late Zometa                       
+BrCa29193: BrCa, adj, node +, pre/post men: CAF vs CAVMF (16 wk)   
+Menopause symptoms, hi risk Breast Cancer ca: Yoga classes vs Control        
+BC19194: Breast Cancer adj +node,ER+,postmen: TAMorCAF+TAMorCAF+TAM concur
+Brst.ZOO1Of/u:ax diss vs no sx Breast Cancer: S. Node vs Ax. Node Dissection  
+Diagnostic Accuracy of Needle Biopsy for Occult BrCa Lesions         
+Nausea prevention,BrCa, AC CT: Ginger vs Placebo (blinded)          
+Diagnostic Accuracy of Needle Biopsy for Occult Breast Lesions         
+Diagnostic Accuracy of Needle Biopsy for Occult Breast Cancer Lesions         ,
+Breast Cancer:  Econ Eval BGLAC 9343                                          
+Breast, Adj: 10+ Nodes: CAF> CCB/BR                                 
+Adv. BrCa, refrcty:Taxotere (DOCETAXEL)                             
+Hot flashes w/ BrCa ca: Vitamin B6                                   
+Consequences of CT-Induced Emesis in BrCa CA                         
+Breast Cancer, adj: 15-3 radioimmunoassay.                                   
+BC18897: Breast Cancer,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Breast tissue acquisition                                              
+Breast Ca, stage II, node +: Lab studies                              
+BRCA19243: Breast: Amonafide(dose assigned by acetylator phenotyping) 
+BrCa ca bone loss: Early Zometa vs Late Zometa                       
+BrCa28897: BrCa,adj,node -: Low risk=no adj CT; high=adj CMF or CAF
+Advd Breast Cancer: CA +/- IL-6                                               

@@ -10,12 +10,12 @@ import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 public class InvasiveBreastCarcinomaInsertTest extends TestCase {
 	
 	  private static int maxrecs = 500;
-	  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\InvasiveBreastCarcinoma.txt";
-	  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\InvasiveBreastCarcinomaV2.txt";
-	  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\mclocations.txt";
-	  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\mclocationsV2.txt";
-	  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\locations.txt";
-	  private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\locationsV2.txt";
+	  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\InvasiveBreastCarcinoma.txt";
+	  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\InvasiveBreastCarcinomaV2.txt";
+	  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\mclocations.txt";
+	  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\mclocationsV2.txt";
+	  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\locations.txt";
+	  private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\locationsV2.txt";
 	  public String[] dataarr1 = new String[1000];
 	  public String[] dataarr2 = new String[1000];
 	  public String[] dataarr3 = new String[1000];

@@ -17,10 +17,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import edu.duke.catrip.cae.util.HibernateUtil;
+import edu.pitt.cabig.cae.domain.breast.BreastCancerAccessionCharacteristics;
+import edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers;
 import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFinding;
-import edu.pitt.cabig.cae.domain.breast.BreastNegativeSurgicalMargin;
-import edu.pitt.cabig.cae.domain.breast.BreastPositiveSurgicalMargin;
-import edu.pitt.cabig.cae.domain.breast.BreastSurgicalPathologySpecimen;
+import edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics;
 import edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinoma;
 import edu.pitt.cabig.cae.domain.breast.InvasiveBreastCarcinomaNeoplasmHistologicType;
 import edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade;
@@ -29,7 +29,7 @@ import edu.pitt.cabig.cae.domain.general.AnnotatableEntity;
 import edu.pitt.cabig.cae.domain.general.AnnotationEventParameters;
 import edu.pitt.cabig.cae.domain.general.AnnotationSet;
 import edu.pitt.cabig.cae.domain.general.EventParameters;
-import edu.pitt.cabig.cae.domain.general.ThreeDimensionalSize;
+import edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize;
 
 public class CAEDataGenerator extends DataGeneratorToolKit
 {
@@ -83,7 +83,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 	}
 
 
-	//builds participant recs in db
+//Builds the Participant, Accession and Specimen object recs in db
 	public void buildParticipant(int maxrecs, String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6,String[] col7,String[] col8,String[] col9, String[] col10) throws ParseException
 
 	{
@@ -230,7 +230,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 	}
 	
 	
-	//builds maxrecs recs in db
+//Builds the NottinghamHistopathologicGrade object recs in db
 	public void buildBreaseNottHistopathGrades(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
 //	public void buildBreaseNottHistopathGrades(int maxrecs, int globalId) throws ParseException
 
@@ -271,8 +271,8 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 			//}
 	     }
 	}
-
-//		builds maxrecs recs in db
+	
+//Builds the ParticipantMedicalIdentifier object recs in db
 	public void buildParticipantIdent(int maxrecs,String[] col1) throws ParseException
 	{
 			
@@ -320,8 +320,8 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 		    System.out.println("\t\t\t\tExiting buildParticipantIdent()");
 	}
 	
-	//builds maxrecs recs in db
-	public void buildThreeDimensionalSize(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
+//Builds the ThreeDimensionalTumorSize object recs in db
+	public void buildThreeDimensionalTumorSize(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
 
 	{
 		
@@ -344,21 +344,19 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 
 			//TODO: WRITE CODE TO insert current tables' recs into db
 		for (int rowcnt = 0; rowcnt < dataInsertTable.length; rowcnt++) {
-			ThreeDimensionalSize tredsiz = new ThreeDimensionalSize();
+			ThreeDimensionalTumorSize tredsiz = new ThreeDimensionalTumorSize();
 			//tredsiz.setId(Long.valueOf(globalId));
 			tredsiz.setGreatestDimension(Integer.valueOf(dataInsertTable[rowcnt][0]));
 			tredsiz.setAdditionalDimensionY(Integer.valueOf(dataInsertTable[rowcnt][1]));
 			tredsiz.setAdditionalDimensionZ(Integer.valueOf(dataInsertTable[rowcnt][2]));
 			tredsiz.setMVR("NO MVR");
 			
-			if(rowcnt < 50) {
-				System.out.println("\t\t\t\tCalling create(tredsiz) to insert: "+tredsiz.getGreatestDimension()+", "+tredsiz.getAdditionalDimensionY()+", "+tredsiz.getAdditionalDimensionZ()+", "+tredsiz.getMVR());
-				create(tredsiz);
-			}
+			System.out.println("\t\t\t\tCalling create(tredsiz) to insert: "+tredsiz.getGreatestDimension()+", "+tredsiz.getAdditionalDimensionY()+", "+tredsiz.getAdditionalDimensionZ()+", "+tredsiz.getMVR());
+			create(tredsiz);
 	     }
 	}
 	
-	//builds maxrecs recs in db
+//Builds the BreastCancerTNMFinding object recs in db
 	public void buildBreastCancerTNM(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5,String[] col6) throws ParseException
 
 	{
@@ -434,7 +432,8 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 	}
 	
 	
-	//builds maxrecs recs in db
+//THIS CLASS / TABLE WAS REMOVED IN CAE 1.2
+/*	//builds maxrecs recs in db
 	public void buildBreastSurgicalPathologySpecimen(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4) throws ParseException
 
 	{
@@ -490,10 +489,9 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 				create(bsps);
 			//}
 	     }
-	}
+	}*/
 	
-	//OtherBreastCancerHistopathologicGradeInsertTest
-	//builds maxrecs recs in db
+//Builds the OtherBreastCancerHistopathologicGrade object recs in db
 	public void buildOtherBreastCancerHistopathologicGrade(int maxrecs,String[] col1,String[] col2) throws ParseException
 
 	{
@@ -538,8 +536,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 		}
 	}
 	
-	//InvasiveBreastCarcinomaInsertTest
-	//builds maxrecs recs in db
+//Builds the InvasiveBreastCarcinoma object recs in db
 	public void buildInvasiveBreastCarcinoma(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
 
 	{
@@ -594,7 +591,8 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 		}
 	}
 	
-	//BreastNegativeSurgicalMarginInsertTest
+//	THIS CLASS / TABLE WAS REMOVED IN CAE 1.2
+/*	//BreastNegativeSurgicalMarginInsertTest
 	//builds maxrecs recs in db
 	public void buildBreastNegativeSurgicalMargin(int maxrecs,String[] col1,String[] col2,String[] col3) throws ParseException
 
@@ -633,9 +631,10 @@ public class CAEDataGenerator extends DataGeneratorToolKit
             create(bnsm);
 
 		}
-	}
+	}*/
 	
-	//BreastPositiveSurgicalMarginInsertTest
+//	THIS CLASS / TABLE WAS REMOVED IN CAE 1.2
+/*	//BreastPositiveSurgicalMarginInsertTest
 	//builds maxrecs recs in db
 	public void buildBreastPositiveSurgicalMargin(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4) throws ParseException
 
@@ -679,10 +678,9 @@ public class CAEDataGenerator extends DataGeneratorToolKit
             create(bpsm);
 
 		}
-	}
+	}*/
 	
-	//InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest
-	//builds maxrecs recs in db
+//Builds the BREAST_NEO_HSTOPTHLGC_TYPES object recs in db
 	public void buildInvasiveBreastCarcinomaNeoplasmHistologicType(int maxrecs,String[] col1,String[] col2) throws ParseException
 
 	{
@@ -710,14 +708,15 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 			ibcnht.setOtherName(dataInsertTable[rowcnt][1]);
 
 			System.out.println("\t\t\t\tCalling create(ibcnht) to insert: "+ibcnht.getName()+", "+ibcnht.getNameMVR()+", "+ibcnht.getOtherName());
-ibcnht.setAnnotationEventParameters(null);
-ibcnht.setId(null);
+			ibcnht.setAnnotationEventParameters(null);
+			ibcnht.setId(null);
 
             create(ibcnht);
 
 		}
 	}
 	
+//Builds the EVENT_PARAMETERS object recs in db
 	public void buildEventParameters() throws ParseException
 	{
 			
@@ -752,6 +751,8 @@ ibcnht.setId(null);
 		    System.out.println("\t\t\t\tExiting buildEventParameters()");
 	}
 
+	
+//Builds the ANNOTATION_EVENT_PARAMETER object recs in db
 	public void buildAnnotationEventParameters() throws ParseException
 	{
 			
@@ -786,6 +787,7 @@ ibcnht.setId(null);
 		    System.out.println("\t\t\t\tExiting buildAnnotationEventParameters()");
 	}
 	
+//Builds the ANNOTATION_EVENT_PARAMETER object recs in db
 	public void buildAnnotationSet() throws ParseException
 	{
 			
@@ -816,6 +818,155 @@ ibcnht.setId(null);
 		    }
 		    
 		    System.out.println("\t\t\t\tExiting buildAnnotationEventParameters()");
+	}
+	
+	
+//Builds the ANNOTATION_SET object recs in db
+	public void buildBreastCancerAccessionCharacteristics(int maxrecs,String[] col1,String[] col2) throws ParseException
+
+	{
+		
+		if (DEBUG) System.out.println("\tInside buildBreastCancerAccessionCharacteristics()");
+		
+		String[][] dataInsertTable = new String[maxrecs][2];
+		int insrow=0;
+		System.out.println("\t\t\t\tArray size is: "+col1.length);
+		//load the arrays
+		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			
+			//
+			if(col1[rowcnt] == null){
+				dataInsertTable[insrow][0]="n/a";
+			}else{
+				dataInsertTable[insrow][0]=col1[rowcnt];
+			}
+			if(col2[rowcnt] == null){
+				dataInsertTable[insrow][1]="n/a";
+			}else{
+				dataInsertTable[insrow][1]=col2[rowcnt];
+			}
+			
+			//System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]);
+			insrow++;
+		}
+
+			//TODO: WRITE CODE TO insert current tables' recs into db
+		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			if(dataInsertTable[rowcnt][0] == "n/a") break;
+			BreastCancerAccessionCharacteristics bcac = new BreastCancerAccessionCharacteristics();
+			bcac.setOtherSurgicalProcedure(dataInsertTable[rowcnt][0]);
+			System.out.println("\t\t\t\tOtherSurgicalProcedure = "+dataInsertTable[rowcnt][0]);
+			Set <String> surgicalSet = new HashSet();
+			for (int i = 0; i < maxrecs; i++) {
+				if(dataInsertTable[i][1] == "n/a") break;
+				//System.out.println("\t\t\t\t\tChking dataInsertTable[i][1] = "+dataInsertTable[i][1]+"...");
+				int loc = dataInsertTable[i][1].toLowerCase().indexOf(dataInsertTable[rowcnt][0].toLowerCase());      
+				//System.out.println("\t\t\t\t\tloc = "+loc);
+				if(loc > -1){
+					surgicalSet.add(dataInsertTable[i][1]);
+					System.out.println("\t\t\t\t\t\tsurgicalSet = "+dataInsertTable[i][1]);
+				}
+			}
+			bcac.setSurgicalProcedure(surgicalSet);
+			create(bcac);
+
+	     }
+	}
+	
+//Builds the BREAST_SPECMN_CHARACTERSTIC object recs in db
+	public void buildBreastSpecimenCharacteristics(int maxrecs,String[] col1,String[] col2) throws ParseException
+
+	{
+		
+		if (DEBUG) System.out.println("\tInside buildBreastSpecimenCharacteristics()");
+		
+		String[][] dataInsertTable = new String[maxrecs][2];
+		int insrow=0;
+		System.out.println("\t\t\t\tArray size is: "+col1.length);
+		//load the arrays
+		for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
+			
+			//LymphNodeSamplingProcedure
+			if(col1[rowcnt] == null){
+				dataInsertTable[insrow][0]="n/a";
+			}else{
+				dataInsertTable[insrow][0]=col1[rowcnt];
+			}
+			
+			//Laterality
+			if(col2[rowcnt] == null){
+				dataInsertTable[insrow][1]="n/a";
+			}else{
+				dataInsertTable[insrow][1]=col2[rowcnt];
+			}
+								
+			System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]);
+			insrow++;
+		}
+
+		int fndcnt = 0;
+	    
+		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			if(dataInsertTable[rowcnt][0] == "n/a") break;
+			BreastSpecimenCharacteristics bsc = new BreastSpecimenCharacteristics();
+			bsc.setLymphNodeSamplingProcedure(dataInsertTable[rowcnt][0]);
+			//for (int i = 0; i < maxrecs; i++) {
+				if(dataInsertTable[fndcnt][1] == "n/a") fndcnt=0;
+				bsc.setLaterality(dataInsertTable[fndcnt][1]);
+				System.out.println("\t\t\t\tfndcnt: "+fndcnt);
+				System.out.println("\t\t\t\tdataInsertTable[fndcnt][1] "+dataInsertTable[fndcnt][1]);
+			    ++fndcnt;
+			//}
+			bsc.setLateralityMVR("NO MVR");
+			System.out.println("\t\t\t\tbsc has: "+bsc.getLymphNodeSamplingProcedure()+", "+bsc.getLaterality());
+			create(bsc);
+
+	     }
+	}
+	
+	//builds maxrecs recs in db
+	public void buildBreastCancerBiomarkers(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5) throws ParseException
+
+	{
+		
+		if (DEBUG) System.out.println("\tInside buildBreastCancerBiomarkers()");
+		
+		String[][] dataInsertTable = new String[maxrecs][5];
+		int insrow=0;
+		System.out.println("\t\t\t\tArray size is: "+col1.length);
+		//load the arrays
+		for (int rowcnt = 0; rowcnt < col1.length; rowcnt++) {
+				//EstrogenReceptor
+				dataInsertTable[insrow][0]=col1[rowcnt];
+				
+				//ProgesteroneReceptor
+				dataInsertTable[insrow][1]=col2[rowcnt];
+				
+				//HER2Status"
+				dataInsertTable[insrow][2]=col3[rowcnt];
+				
+				//HER2TestType
+				dataInsertTable[insrow][3]=col4[rowcnt];
+				
+				//EGFRStatus
+				dataInsertTable[insrow][4]=col5[rowcnt];
+
+				System.out.println("\t\t\t\tLoading Data Array["+insrow+"] with: "+dataInsertTable[insrow][0]+", "+dataInsertTable[insrow][1]+", "+dataInsertTable[insrow][2]+", "+dataInsertTable[insrow][3]+", "+dataInsertTable[insrow][4]);
+				insrow++;
+		}
+
+			//TODO: WRITE CODE TO insert current tables' recs into db
+		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
+			BreastCancerBiomarkers bcb = new BreastCancerBiomarkers();
+			bcb.setEstrogenReceptor(dataInsertTable[rowcnt][0]);
+			bcb.setProgesteroneReceptor(dataInsertTable[rowcnt][1]);
+			bcb.setHER2Status(dataInsertTable[rowcnt][2]);
+			bcb.setHER2TestType(dataInsertTable[rowcnt][3]);
+			bcb.setEGFRStatus(dataInsertTable[rowcnt][4]);
+			System.out.println("\t\t\t\tCreating object: "+bcb.getEstrogenReceptor()+", "+bcb.getProgesteroneReceptor()+", "+bcb.getHER2Status()+", "+bcb.getHER2TestType()+", "+bcb.getEGFRStatus());
+			create(bcb);
+
+	     }
 	}
 	
 }

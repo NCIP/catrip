@@ -12,13 +12,13 @@ import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 
 public class BreastCancerTNMInsertTest extends TestCase {
   private static int maxrecs = 500;
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\T_Tumor.txt";
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\N_Nodes.txt";
-  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\M_Metastasis.txt";
-  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\NodesExamined.txt";
-  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\NodesInvolved.txt";
-  private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\sites.txt";
-  private static String newFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\sitesV2.txt";
+  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\T_Tumor.txt";
+  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\N_Nodes.txt";
+  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\M_Metastasis.txt";
+  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NodesExamined.txt";
+  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NodesInvolved.txt";
+  private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\sites.txt";
+  private static String newFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\sitesV2.txt";
   
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];

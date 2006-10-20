@@ -11,7 +11,7 @@ import junit.framework.TestSuite;
 
 public class UserInsertTest extends TestCase {
 	
-  private static int maxrecs = 5;
+  private static int maxrecs = 250;
 	
 //user files
   private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\UserComments.txt";
@@ -38,13 +38,10 @@ public class UserInsertTest extends TestCase {
 
 //Site
   private static String inFile16 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSite.txt";	
-  private static String newFile16 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteV2.txt";
   private static String inFile17 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteType.txt";
-  private static String newFile17 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteTypeV2.txt";
   private static String inFile18 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteEmail.txt";
-  private static String newFile18 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteEmailV2.txt";
-
-  public String[][] dataarr = new String[500][2];
+  
+//USER
   public String[] dataarr1 = new String[500];
   public String[] dataarr2 = new String[500];
   public String[] dataarr3 = new String[500];
@@ -52,15 +49,20 @@ public class UserInsertTest extends TestCase {
   public String[] dataarr5 = new String[500];
   public String[] dataarr6 = new String[500];
   public String[] dataarr7 = new String[500];
+//INST AND DEPT
+  public String[][] dataarr = new String[500][2];
   public String[] dataarr8 = new String[500];
   public String[] dataarr9 = new String[500];
+//ADDRESS
   public String[] dataarr10 = new String[500];
   public String[] dataarr11 = new String[500];
   public String[] dataarr12 = new String[500];
   public String[] dataarr13 = new String[500];
   public String[] dataarr14 = new String[500];
   public String[] dataarr15 = new String[500];
+//CANCER GROUP
   public String[] dataarr16 = new String[500];
+//SITE
   public String[] dataarr17 = new String[500];
   public String[] dataarr18 = new String[500];
   public String[] dataarr19 = new String[500];
@@ -84,7 +86,7 @@ public class UserInsertTest extends TestCase {
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
 
-		final boolean DEBUG = true;
+		final boolean DEBUG = false;
 
 		CATissueCoreDataGenerator dg = new CATissueCoreDataGenerator();
 		
@@ -150,15 +152,11 @@ public class UserInsertTest extends TestCase {
        	    	System.out.println("\t\t\tDATES: " + dataarr7[row]);
 	       	}
 		}
-		
+
 //INST AND DEPT STUFF
-		dataarr=dg.randomReadFile(maxrecs,inFile8,inFile9);
-        for (int row=0; row<maxrecs; row++) {
-        	//INSTITUTIONS
-   	    	dataarr8[row]=dataarr[row][0];
-   	    	//DEPARTMENTS
-   	    	dataarr9[row]=dataarr[row][1];
-       	}
+		//dataarr=dg.randomReadFile(maxrecs,inFile8,inFile9);
+		dataarr8=dg.ReadFile(maxrecs,inFile8);
+		dataarr9=dg.ReadFile(maxrecs,inFile9);
 
 		if (DEBUG) {
 			//print fields
@@ -167,7 +165,7 @@ public class UserInsertTest extends TestCase {
        	    	System.out.println("\t\t\tDEPT: " + dataarr9[row]);
 	       	}
 		}
-		
+
 //ADDRESS STUFF
 		//STREETS
 		dataarr10=dg.randomReadFile(maxrecs,inFile10);
@@ -186,7 +184,7 @@ public class UserInsertTest extends TestCase {
        	    	System.out.println("\t\t\tCITY: " + dataarr11[row]);
 	       	}
 		}
-		
+
 		//STATES
 		dataarr12=dg.randomReadFile(maxrecs,inFile12);
 
@@ -204,7 +202,7 @@ public class UserInsertTest extends TestCase {
        	    	System.out.println("\t\t\tZIP: " + dataarr13[row]);
 	       	}
 		}
-		
+
 		//PHONES
 		dataarr14=dg.randomReadFile(maxrecs,inFile14);
 		//FAXS
@@ -218,16 +216,16 @@ public class UserInsertTest extends TestCase {
 		}
 		
 //CANCER GROUP STUFF
-		dataarr16=dg.randomReadFile(maxrecs,inFile15);
+		//dataarr16=dg.randomReadFile(maxrecs,inFile15);
+		dataarr16=dg.ReadFile(maxrecs,inFile15);
 
 		if (DEBUG) {
 			for (int row=0; row<maxrecs; row++) {
        	    	System.out.println("\t\t\tGROUP: " + dataarr16[row]);
 	       	}
 		}
-		
+
 //Site
-		//dg.buildThreeDataFiles(maxrecs,inFile16,newFile16,inFile17,newFile17,inFile18,newFile18);
 		//SITE
 		dataarr17=dg.ReadFile(maxrecs,inFile16);
 		if (DEBUG) {
@@ -242,7 +240,7 @@ public class UserInsertTest extends TestCase {
        	    	System.out.println("\t\t\tSITE TYPE: " + dataarr18[row]);
 	       	}
 		}
-		
+
 		//EMAIL
 		dataarr19=dg.ReadFile(maxrecs,inFile18);
 		if (DEBUG) {
@@ -252,7 +250,8 @@ public class UserInsertTest extends TestCase {
 		}
 		
 		if (DEBUG) System.out.println("\tBack Inside testReadFile()");
-
+;
+		//Call the buildParticipant method to actually insert the data contained in the arrays
 		dg.buildUser(maxrecs,dataarr1,dataarr2,dataarr3,dataarr4,dataarr5,dataarr6,dataarr7,dataarr8,dataarr9,dataarr10,dataarr11,dataarr12,dataarr13,dataarr14,dataarr15,dataarr16,dataarr17,dataarr18,dataarr19);
 		
 		if (DEBUG) System.out.println("\tEnd Of testReadFile...");

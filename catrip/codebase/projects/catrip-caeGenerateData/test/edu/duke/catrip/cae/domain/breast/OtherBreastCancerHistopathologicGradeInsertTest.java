@@ -8,9 +8,9 @@ import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 public class OtherBreastCancerHistopathologicGradeInsertTest extends TestCase {
 	
 	  private static int maxrecs = 500;
-	  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\OthHisPathGradeSystemNam.txt";
-	  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\OthHisPathGradeSystemNamV2.txt";
-	  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-GenerateData\\data\\OthHisPathGradeMitoticCnt.txt";
+	  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\OthHisPathGradeSystemNam.txt";
+	  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\OthHisPathGradeSystemNamV2.txt";
+	  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\OthHisPathGradeMitoticCnt.txt";
 
 	  public String[] dataarr1 = new String[1000];
 	  public String[] dataarr2 = new String[1000];
