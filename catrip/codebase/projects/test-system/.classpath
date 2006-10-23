@@ -65,6 +65,11 @@
 	<classpathentry kind="lib" path="ext/lib/acme.jar"/>
 	<classpathentry kind="lib" path="ext/lib/ant-contrib.jar"/>
 	<classpathentry kind="lib" path="ext/lib/argouml-layout.jar"/>
+	<classpathentry kind="lib" path="ext/lib/cae_domain.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CAE-client.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CAE-common.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CAE-service.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CAE-stubs.jar"/>
 	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-authentication-service-client.jar"/>
 	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-authentication-service-common.jar"/>
 	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-authentication-service-stubs.jar"/>
@@ -119,7 +124,21 @@
 	<classpathentry kind="lib" path="ext/lib/cagrid-1.0-tests-cqlprocessors-1.0.jar"/>
 	<classpathentry kind="lib" path="ext/lib/caGrid-core-1.0.jar"/>
 	<classpathentry kind="lib" path="ext/lib/castor-0.9.9.jar"/>
+	<classpathentry kind="lib" path="ext/lib/catissuecore_domain.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTissueCore-client.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTissueCore-common.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTissueCore-service.jar"/>
+	<classpathentry sourcepath="/catrip-1.0-caTissueCore-service/build/stubs-CaTissueCore/src" kind="lib" path="ext/lib/CaTissueCore-stubs.jar"/>
 	<classpathentry kind="lib" path="ext/lib/catrip-queryengine-1.0.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-client.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-common.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-service.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-stubs.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CGEMS-client.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CGEMS-common.jar"/>
+	<classpathentry kind="lib" path="ext/lib/cgems-domain.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CGEMS-service.jar"/>
+	<classpathentry kind="lib" path="ext/lib/CGEMS-stubs.jar"/>
 	<classpathentry kind="lib" path="ext/lib/cglib-full-2.0.2.jar"/>
 	<classpathentry kind="lib" path="ext/lib/cglib-nodep-2.1_3.jar"/>
 	<classpathentry kind="lib" path="ext/lib/client.jar"/>
@@ -175,6 +194,7 @@
 	<classpathentry kind="lib" path="ext/lib/subject-0.2.1.jar"/>
 	<classpathentry kind="lib" path="ext/lib/swidgets-0.1.1.jar"/>
 	<classpathentry kind="lib" path="ext/lib/toolbar-1.1.1.jar"/>
+	<classpathentry kind="lib" path="ext/lib/tumor_registry_domain.jar"/>
 	<classpathentry kind="lib" path="ext/lib/xbean_xpath.jar"/>
 	<classpathentry kind="lib" path="ext/lib/xbean.jar"/>
 	<classpathentry kind="lib" path="ext/lib/xmlpublic.jar"/>
@@ -185,68 +205,5 @@
 	<classpathentry kind="lib" path="test/lib/gnu-regexp-110.jar"/>
 	<classpathentry kind="lib" path="test/lib/shaste-1.0.jar"/>
 	<classpathentry kind="lib" path="test/lib/uispec4j-0.15.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ant-1.6.5.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ant-antlr-1.6.5.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ant-junit-1.6.5.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ant-launcher-1.6.5.jar"/>
-	<classpathentry kind="lib" path="ext/lib/antlr-2.7.6rc1.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ant-swing-1.6.5.jar"/>
-	<classpathentry kind="lib" path="ext/lib/asm.jar"/>
-	<classpathentry kind="lib" path="ext/lib/asm-attrs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/c3p0-0.9.0.jar"/>
-	<classpathentry kind="lib" path="ext/lib/cae_domain.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CAE-client.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CAE-common.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CAE-service.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CAE-stubs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-gridca-1.0.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-gridgrouper-1.0-client.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-gridgrouper-1.0-common.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-1.0-gridgrouper-1.0-stubs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/caGrid-caTrip-sdkQuery-1.0.jar"/>
-	<classpathentry kind="lib" path="ext/lib/catissuecore_domain.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTissueCore-client.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTissueCore-common.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTissueCore-service.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTissueCore-stubs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-client.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-common.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-service.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-stubs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CGEMS-client.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CGEMS-common.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CGEMS-service.jar"/>
-	<classpathentry kind="lib" path="ext/lib/CGEMS-stubs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/cglib-2.1.3.jar"/>
-	<classpathentry kind="lib" path="ext/lib/cleanimports.jar"/>
-	<classpathentry kind="lib" path="ext/lib/commons-collections-2.1.1.jar"/>
-	<classpathentry kind="lib" path="ext/lib/commons-logging-1.0.4.jar"/>
-	<classpathentry kind="lib" path="ext/lib/concurrent-1.3.2.jar"/>
-	<classpathentry kind="lib" path="ext/lib/connector.jar"/>
-	<classpathentry kind="lib" path="ext/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ehcache-1.1.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jaas.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jacc-1_0-fr.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jaxen-1.1-beta-7.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jboss-cache.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jboss-common.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jboss-jmx.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jboss-system.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jdbc2_0-stdext.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jgroups-2.2.8.jar"/>
-	<classpathentry kind="lib" path="ext/lib/jta.jar"/>
-	<classpathentry kind="lib" path="ext/lib/log4j-1.2.11.jar"/>
-	<classpathentry kind="lib" path="ext/lib/mysql-connector-30.jar"/>
-	<classpathentry kind="lib" path="ext/lib/mysql-connector-java-3.0.8-stable-bin.jar"/>
-	<classpathentry kind="lib" path="ext/lib/oscache-2.1.jar"/>
-	<classpathentry kind="lib" path="ext/lib/proxool-0.8.3.jar"/>
-	<classpathentry kind="lib" path="ext/lib/swarmcache-1.0rc2.jar"/>
-	<classpathentry kind="lib" path="ext/lib/syndiag2.jar"/>
-	<classpathentry kind="lib" path="ext/lib/tumor_registry_domain.jar"/>
-	<classpathentry kind="lib" path="ext/lib/versioncheck.jar"/>
-	<classpathentry kind="lib" path="ext/lib/xerces-2.6.2.jar"/>
-	<classpathentry kind="lib" path="ext/lib/xml-apis.jar"/>
-	<classpathentry kind="lib" path="ext/lib/cgems-domain.jar"/>
-	<classpathentry kind="lib" path="ext/lib/ojdbc14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
