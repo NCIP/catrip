@@ -5,12 +5,12 @@ package edu.duke.cabig.catrip.test.system;
 
 import edu.duke.cabig.catrip.test.system.steps.CaTissueCoreCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CaTissueCoreConfigureStep;
-import gov.nci.nih.cagrid.tests.core.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCreateStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusDeployServiceStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusStartStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusStopStep;
+import gov.nci.nih.cagrid.tests.core.util.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.util.ServiceHelper;
 
 import java.io.File;
@@ -23,14 +23,12 @@ import junit.textui.TestRunner;
 import com.atomicobject.haste.framework.Story;
 
 /**
- * This is an integration test that tests the functionality of the caDSR grid service. 
- * It deploys the service and then compares a number of domain models against their
- * cached XML extracts.
+ * This is an integration test that tests the functionality of the caTissue CORE grid service. 
+ * It deploys the service and then invokes a number of queries.
  * @testType integration
- * @steps ServiceCreateStep, 
- * @steps GlobusCreateStep, GlobusDeployServiceStep, CaDSRServiceConfigStep, GlobusStartStep
- * @steps CaDSRCheckServiceStep
- * @steps GlobusStopStep, GlobusCleanupStep
+ * @steps GlobusCreateStep, CaTissueCoreConfigureStep, GlobusDeployServiceStep, GlobusStartStep
+ * @steps ServiceInvokeStep
+ * @steps GlobusStopStep, GlobusCleanupStep, CaTissueCoreCleanupStep
  * @author Patrick McConnell
  */
 public class CaTissueCoreTest

@@ -9,6 +9,10 @@ import com.atomicobject.haste.framework.Step;
 
 import gov.nci.nih.cagrid.tests.core.util.FileUtils;
 
+/**
+ * Cleans up configuration files for a CGEMS service deployment.
+ * @author Patrick McConnell
+ */
 public class CGEMSCleanupStep
 	extends Step
 {

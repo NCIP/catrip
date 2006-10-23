@@ -9,6 +9,10 @@ import com.atomicobject.haste.framework.Step;
 
 import gov.nci.nih.cagrid.tests.core.util.FileUtils;
 
+/**
+ * Cleans up configuration files for a Tumor Registry service deployment.
+ * @author Patrick McConnell
+ */
 public class TumorRegistryCleanupStep
 	extends Step
 {

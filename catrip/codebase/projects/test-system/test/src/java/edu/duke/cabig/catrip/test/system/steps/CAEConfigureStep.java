@@ -10,6 +10,10 @@ import java.io.IOException;
 
 import com.atomicobject.haste.framework.Step;
 
+/**
+ * Sets hibernate configuration properties in the CAE grid service. 
+ * @author Patrick McConnell
+ */
 public class CAEConfigureStep
 	extends Step
 {

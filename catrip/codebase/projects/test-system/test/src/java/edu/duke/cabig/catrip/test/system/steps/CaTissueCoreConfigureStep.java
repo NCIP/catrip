@@ -10,6 +10,10 @@ import java.io.IOException;
 
 import com.atomicobject.haste.framework.Step;
 
+/**
+ * Sets hibernate configuration properties in the caTissue CORE grid service. 
+ * @author Patrick McConnell
+ */
 public class CaTissueCoreConfigureStep
 	extends Step
 {

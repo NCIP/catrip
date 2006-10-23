@@ -12,6 +12,10 @@ import com.atomicobject.haste.framework.Step;
 import edu.duke.cabig.catrip.test.system.util.HibernatePropertiesUtil;
 import gov.nci.nih.cagrid.tests.core.util.FileUtils;
 
+/**
+ * Sets hibernate configuration properties in the Tumor Registry grid service. 
+ * @author Patrick McConnell
+ */
 public class TumorRegistryConfigureStep
 	extends Step
 {

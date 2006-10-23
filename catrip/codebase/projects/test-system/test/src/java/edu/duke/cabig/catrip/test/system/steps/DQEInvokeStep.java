@@ -17,6 +17,10 @@ import javax.xml.namespace.QName;
 
 import com.atomicobject.haste.framework.Step;
 
+/**
+ * Invokes a distributed query and validates the results.
+ * @author Patrick McConnell
+ */
 public class DQEInvokeStep
 	extends Step
 {

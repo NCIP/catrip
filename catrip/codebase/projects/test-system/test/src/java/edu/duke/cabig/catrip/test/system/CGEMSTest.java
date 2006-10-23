@@ -5,7 +5,7 @@ package edu.duke.cabig.catrip.test.system;
 
 import edu.duke.cabig.catrip.test.system.steps.CGEMSCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CGEMSConfigureStep;
-import gov.nci.nih.cagrid.tests.core.GlobusHelper;
+import gov.nci.nih.cagrid.tests.core.util.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCreateStep;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusDeployServiceStep;
@@ -23,14 +23,12 @@ import junit.textui.TestRunner;
 import com.atomicobject.haste.framework.Story;
 
 /**
- * This is an integration test that tests the functionality of the caDSR grid service. 
- * It deploys the service and then compares a number of domain models against their
- * cached XML extracts.
+ * This is an integration test that tests the functionality of the CGEMS grid service. 
+ * It deploys the service and then invokes a number of queries.
  * @testType integration
- * @steps ServiceCreateStep, 
- * @steps GlobusCreateStep, GlobusDeployServiceStep, CaDSRServiceConfigStep, GlobusStartStep
- * @steps CaDSRCheckServiceStep
- * @steps GlobusStopStep, GlobusCleanupStep
+ * @steps GlobusCreateStep, CGEMSConfigureStep, GlobusDeployServiceStep, GlobusStartStep
+ * @steps ServiceInvokeStep
+ * @steps GlobusStopStep, GlobusCleanupStep, CGEMSCleanupStep
  * @author Patrick McConnell
  */
 public class CGEMSTest

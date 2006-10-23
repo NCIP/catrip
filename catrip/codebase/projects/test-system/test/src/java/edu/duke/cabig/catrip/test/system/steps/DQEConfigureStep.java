@@ -10,6 +10,10 @@ import java.io.IOException;
 
 import com.atomicobject.haste.framework.Step;
 
+/**
+ * Sets properties for the DQE in the .caTRIP and gui directories.
+ * @author Patrick McConnell
+ */
 public class DQEConfigureStep
 	extends Step
 {
