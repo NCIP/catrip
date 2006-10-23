@@ -91,12 +91,17 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
 
 		System.out.println("Running the Grid Service Client");
 		try{
-            CGEMSClient client = new CGEMSClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CGEMS");
+            //CGEMSClient client = new CGEMSClient("http://localhost:8181/wsrf/services/cagrid/CGEMS");
+            CGEMSClient client = new CGEMSClient("http://152.16.96.114/wsrf/services/cagrid/CGEMS");
 
             CQLQuery cqlQuery = new CQLQuery();
 
             Object target = new Object();
+            target.setName("gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay");
+            target.setAttribute(new Attribute("id",Predicate.LESS_THAN,"30"));
 
+
+/*
             target.setName("gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant");
 
 			Association a = new Association();
@@ -113,17 +118,20 @@ public class CGEMSClient extends ServiceSecurityClient implements CGEMSI {
 
 			a.setAssociation(b);
         	target.setAssociation(a);
-
+*/
             cqlQuery.setTarget(target);
             CQLQueryResults results = client.query(cqlQuery);
+			System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
 
-            CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/cgems/client/client-config.wsdd")));
 
+         //   CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/cgems/client/client-config.wsdd")));
+/*
             while (iter.hasNext()) {
-                gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant de = (gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant) iter.next();
-
-               System.out.println(de.getStudySubjectIdentifier());
+              //  gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant de = (gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant) iter.next();
+			gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay de = (gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAssay) iter.next();
+               System.out.println(de.getDesignSequence());
             }
+*/
         System.out.println("done ");
 
 		} catch (Exception e) {

@@ -99,7 +99,7 @@ public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements 
         System.out.println("Running the Grid Service Client");
         try{
 
-                    CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CaTRIPTumorRegistry");
+                    CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient("http://152.16.96.114/wsrf/services/cagrid/CaTRIPTumorRegistry");
                     // place client calls here if you want to use this main as a
                     // test....
 
@@ -113,7 +113,7 @@ public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements 
                     target.setName(Patient.class.getName());//WashU_sanju_baba
 
 
-                    target.setAttribute(new Attribute("id", Predicate.GREATER_THAN, "1"));
+                    target.setAttribute(new Attribute("id", Predicate.LESS_THAN, "100"));
 
                     cqlQuery.setTarget(target);
                     CQLQueryResults results = client.query(cqlQuery);
@@ -121,8 +121,7 @@ public class CaTRIPTumorRegistryClient extends ServiceSecurityClient implements 
                     CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("client-config.wsdd")));
                     while (iter.hasNext()) {
                         Patient de = (Patient) iter.next();
-                        System.out.println("Xxxxx  "+de.getClass().getName());
-                        System.out.println("Xxxxx  Dep name is:"+de.getFirstName() + ", id: " +de.getId()+"  " + de.getLastName() +"\n" );
+                        System.out.println("Xxxxx  eth group is:"+de.getEthnicGroup() + ", id: " +de.getId()+"  " + de.getDateOfBirth() +"\n" );
                     }
 
         } catch (Exception e) {

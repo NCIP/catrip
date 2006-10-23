@@ -91,13 +91,14 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
 
 		System.out.println("Running the Grid Service Client");
 		try{
-            CAEClient client = new CAEClient("http://cagrid2.duhs.duke.edu/wsrf/services/cagrid/CAE");
+            CAEClient client = new CAEClient("http://152.16.96.114/wsrf/services/cagrid/CAE");
 
             CQLQuery cqlQuery = new CQLQuery();
 
             Object target = new Object();
 
             target.setName("edu.duke.catrip.cae.domain.general.Participant");//WashU_sanju_baba
+        /*
         Association a = new Association();
         a.setName("edu.pitt.cabig.cae.domain.general.AnnotationEventParameters");
         a.setRoleName("annotationEventParametersCollection");
@@ -109,6 +110,7 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
 
         a.setAssociation(b1);
         target.setAssociation(a);
+        */
 			/*
 			Association a = new Association();
 
