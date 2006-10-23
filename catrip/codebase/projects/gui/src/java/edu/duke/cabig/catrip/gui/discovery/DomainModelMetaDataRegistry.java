@@ -115,7 +115,7 @@ public class DomainModelMetaDataRegistry {
                 classCDEName = classCDEName + " "+ht.get(order);
             }
             
-            classBean.setCDEName(classCDEName);
+            classBean.setCDEName(classCDEName.trim());
             
             
             // now set the attributes..

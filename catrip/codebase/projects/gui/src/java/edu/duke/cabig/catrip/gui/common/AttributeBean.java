@@ -92,6 +92,14 @@ public class AttributeBean {
         this.predicate = predicate;
     }
     
+    /**
+     * A CQL Query predicate.
+     */
+    public void setDefaultPredicate() {
+        this.predicate = "LIKE";
+    }
+    
+    
     public boolean isNull(){
         if (getAttributeValue() == null  || getAttributeValue().equalsIgnoreCase("")){
             boolean nullNotNull = getPredicate().equalsIgnoreCase("IS_NULL") || getPredicate().equalsIgnoreCase("IS_NOT_NULL") ;

@@ -36,6 +36,7 @@ public class CDEComboboxBean {
 
     public String toString() {
         return cBean.getCDEName() + "  " +aBean.getCDEName();
+//        return cBean.getServiceName()+" -- "+cBean.getCDEName() + "  " +aBean.getCDEName();
     }
 
     public GraphObject getGraphObject() {
@@ -47,5 +48,9 @@ public class CDEComboboxBean {
         setClassBean(graphBean.getClassBean());  
     } 
     
+    public void remove(){
+        getAttributeBean().setAttributeValue("");
+        getAttributeBean().setDefaultPredicate();
+    }
     
 }

@@ -35,6 +35,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JComboBox" name="cdeCombo">
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cdeComboItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="cdeCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();"/>
       </AuxValues>

@@ -1,5 +1,5 @@
 
- 
+
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
@@ -8,6 +8,7 @@ import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
@@ -18,7 +19,10 @@ import javax.swing.JTextField;
  */
 public class FilterRowPanel extends javax.swing.JPanel {
     
+    private CDEComboboxBean currentFilter = null;
     
+    // for grouping similar Target objects... String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
+    private Hashtable uniqueFilterMap = new Hashtable();  
     
     /** Creates new form FilterRowPanel */
     public FilterRowPanel() {
@@ -60,6 +64,12 @@ public class FilterRowPanel extends javax.swing.JPanel {
         valueTextBox = new javax.swing.JTextField();
         predicateCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
 
+        cdeCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cdeComboItemStateChanged(evt);
+            }
+        });
+
         valueTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 valueTextBoxKeyReleased(evt);
@@ -96,10 +106,21 @@ public class FilterRowPanel extends javax.swing.JPanel {
 
     }// </editor-fold>//GEN-END:initComponents
     
+    private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
+// clean filter from previous CDEComboboxBean and reset predicate and value fields..
+//        if (currentFilter != null){ // that means a filter was already set on this row...
+//            currentFilter.remove();  
+//            getPredicateCombo().setSelectedIndex(0);
+//            getValueBox().setText("");
+//        }
+        
+    }//GEN-LAST:event_cdeComboItemStateChanged
+    
     private void valueTextBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valueTextBoxKeyReleased
 //        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
         CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
         cdeBean.getAttributeBean().setAttributeValue(valueTextBox.getText().trim());
+        currentFilter = cdeBean;
 //        }
     }//GEN-LAST:event_valueTextBoxKeyReleased
     
@@ -155,29 +176,30 @@ public class FilterRowPanel extends javax.swing.JPanel {
                     cdeBean.setAttributeBean(aBean);
                     getCdeCombo().addItem(cdeBean);
                 }
-            } 
-            
-            
-        } 
-    }
-    
-    public void fillCdeCombo(List<ClassBean> objs) {
-        
-        for (int i=0;i<objs.size();i++) {
-            ClassBean cBean = objs.get(i);
-            ArrayList attributes = cBean.getAttributes();
-            for (int j = 0; j < attributes.size(); j++) {
-                AttributeBean aBean = (AttributeBean)attributes.get(j);
-                CDEComboboxBean cdeBean = new CDEComboboxBean();
-                cdeBean.setClassBean(cBean);cdeBean.setAttributeBean(aBean);
-                getCdeCombo().addItem(cdeBean);
             }
+            
             
         }
     }
     
     
     
+    // not in use...
+//    public void fillCdeCombo(List<ClassBean> objs) {
+//        for (int i=0;i<objs.size();i++) {
+//            ClassBean cBean = objs.get(i);
+//            ArrayList attributes = cBean.getAttributes();
+//            for (int j = 0; j < attributes.size(); j++) {
+//                AttributeBean aBean = (AttributeBean)attributes.get(j);
+//                CDEComboboxBean cdeBean = new CDEComboboxBean();
+//                cdeBean.setClassBean(cBean);cdeBean.setAttributeBean(aBean);
+//                getCdeCombo().addItem(cdeBean);
+//            }
+//        }
+//    }
+    
+    
+    // String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
     
     
     
@@ -195,14 +217,6 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
 }
 
-// ----- custom combobox model ---------------//
-class ObjectComboBoxModel extends DefaultComboBoxModel{
-    private ClassBean cBean = null;
-    
-    
-    
-    
-}
 
 
 

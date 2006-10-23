@@ -9,8 +9,7 @@ import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -26,10 +25,13 @@ public class SimpleSearchPanel extends CPanel {
     
     private ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
+    // for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
+    private Hashtable targetObjectServiceMap = new Hashtable(); 
+    
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
-       
-         // TODO - comment these (except initComponents();) if you want to change the gui...
+        
+        // TODO - comment these (except initComponents();) if you want to change the gui...
         
         if (GUIConstants.simpleGui){
             initBefore();
@@ -225,12 +227,76 @@ public class SimpleSearchPanel extends CPanel {
         getTargetServiceCombo().removeAllItems();
         
         GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-        Service serv = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());
-        getTargetServiceCombo().addItem(serv);
+        String name = selectedTargetObject.toString().trim();
+         
+        // when the combos are showing.. than
+            Enumeration e = getTargetObjectServiceMap().keys(); 
+            while (e.hasMoreElements()){
+                String mixedKey = (String)e.nextElement();
+//                System.out.println("### name:"+name+": key:"+mixedKey);
+                if (mixedKey.startsWith(name)){
+//                    System.out.println("### key:"+mixedKey);
+                    // add the services to the service combo..
+                    GraphObject obj = (GraphObject)getTargetObjectServiceMap().get(mixedKey);
+                    getTargetServiceCombo().addItem(SimpleGuiRegistry.getServiceFromMap(obj.getServiceName().trim()));
+                }
+            }
         
+        
+        
+//        GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+//        Service serv = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());
+//        getTargetServiceCombo().addItem(serv);
+        
+        //------------------------
+        if(getTargetServiceCombo().isShowing() ){
+            
+            clearFilterBtnActionPerformed(null);
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem(); 
+            
+            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+            
+            for (int i = 0; i < forObjs.size(); i++) {
+                objs.add(forObjs.get(i));
+            }
+            objs.add(selectedTargetObject);
+            targetSetChanged = false;
+            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        }
+        //-------------------------
+        
+       
     }//GEN-LAST:event_targetObjComboActionPerformed
     
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
+        
+        boolean itIsSelf = getTargetServiceCombo().isPopupVisible();
+        
+        if(getTargetServiceCombo().isShowing() && itIsSelf){
+            
+            clearFilterBtnActionPerformed(null);
+            
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem(); 
+            String key = ((GraphObject)getTargetObjCombo().getSelectedItem()).toString()+"_"+selectedService.getServiceName(); 
+            
+            GraphObject selectedTargetObject = (GraphObject)getTargetObjectServiceMap().get(key);//(GraphObject)getTargetObjCombo().getSelectedItem();
+            
+            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+            
+            for (int i = 0; i < forObjs.size(); i++) {
+                objs.add(forObjs.get(i));
+            }
+            objs.add(selectedTargetObject);
+            targetSetChanged = false;
+            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        }
+        
+        
+        
         
 //        cleanClean();
 //        targetSetChanged = false;
@@ -363,11 +429,58 @@ public class SimpleSearchPanel extends CPanel {
     
     private void initTargetObjectCombo(){
         targetSetChanged = true;
-        List<GraphObject> objs = processor.getTargetObjects();
+        List<GraphObject> objss = processor.getTargetObjects();
+        ArrayList tmpList = new ArrayList();
+        ArrayList tmpListObj = new ArrayList();
         
-        for (int i=0;i<objs.size();i++) {
-            getTargetObjCombo().addItem(objs.get(i));
+        for (int i=0;i<objss.size();i++) {
+            String name = objss.get(i).toString();
+            String serviceName = objss.get(i).getServiceName();
+            getTargetObjectServiceMap().put(name+"_"+serviceName, objss.get(i));
+            if (!tmpList.contains(name)){
+                tmpList.add(name);
+                tmpListObj.add(objss.get(i));
+//                System.out.println("XXX Target Object Name: "+name);
+            }
         }
+        
+        for (int i = 0; i < tmpListObj.size(); i++) {
+         getTargetObjCombo().addItem(tmpListObj.get(i));
+        }
+        
+        
+        
+        
+//        for (int i=0;i<objss.size();i++) {
+//            getTargetObjCombo().addItem(objss.get(i));
+////            System.out.println("XXX Target Object Name: "+objss.get(i).getClassName());
+//        }
+        
+        
+        
+        
+        //------------- The default selected Target Object is there in DCQL -------------
+        
+            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+            Service selectedService = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());//(Service)getTargetServiceCombo().getSelectedItem();
+            
+            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+            
+            for (int i = 0; i < forObjs.size(); i++) {
+                objs.add(forObjs.get(i));
+            }
+            objs.add(selectedTargetObject);
+            targetSetChanged = false;
+            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        //---------------------------
+        
+        
+        
+        
+        
+        
     }
     
     private void cleanClean(){
@@ -379,7 +492,16 @@ public class SimpleSearchPanel extends CPanel {
 //        getTargetObjCombo().setEnabled(false);
 //
 //    }
-    
+
+    public Hashtable getTargetObjectServiceMap() {
+        return targetObjectServiceMap;
+    }
+    public void setTargetObjectServiceMap(Hashtable targetObjectServiceMap) {
+        this.targetObjectServiceMap = targetObjectServiceMap;
+    }
+    public void addToTargetObjectServiceMap(String targetObject_Service, GraphObject targetObject) {
+        this.targetObjectServiceMap.put(targetObject_Service, targetObject);
+    }
     
     
     
