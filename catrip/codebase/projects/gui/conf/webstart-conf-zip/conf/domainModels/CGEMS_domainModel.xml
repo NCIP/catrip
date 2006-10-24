@@ -1447,8 +1447,10 @@
 					</ns15:ValueDomain>
 				</ns15:UMLAttribute>
 			</ns15:umlAttributeCollection>
-			<ns15:SemanticMetadata conceptCode="C29867" conceptDefinition="Someone who takes part in an activity." conceptName="Participant" order="0" xsi:type="ns15:SemanticMetadata"/>
+			<ns15:SemanticMetadata conceptCode="C29867" conceptDefinition="Someone who takes part in an activity. original conceptName is Participant" conceptName="Participant" order="0" xsi:type="ns15:SemanticMetadata"/>
+<!-- 
 			<ns15:SemanticMetadata conceptCode="C15206" conceptDefinition="A type of research study that tests how well new medical treatments or other interventions work in people.  Such studies test new methods of screening, prevention, diagnosis, or treatment of a disease.  The study may be carried out in a clinic or other medical facility.  Also called a clinical trial." conceptName="Study" order="1" xsi:type="ns15:SemanticMetadata"/>
+ -->
 		</ns15:UMLClass>
 		<ns16:UMLClass className="TimeCourse" description="An ordered list of times at which events and activities are planned to occur during a clinical trial." id="1F77B8F9-E54E-02D4-E044-0003BA4529A9" packageName="gov.nih.nci.caintegrator.domain.study.bean" projectName="caIntegrator" projectVersion="2" xsi:type="ns16:UMLClass" xmlns:ns16="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
 			<ns16:umlAttributeCollection>
