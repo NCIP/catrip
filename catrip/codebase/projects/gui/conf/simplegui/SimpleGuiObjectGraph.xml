@@ -210,6 +210,7 @@
 		<targets>
 			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" displaybleAttributes="race,sex,ethnicGroup" display="true">
 				<associatedObjectTree>
+				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier" roleName="patientIdentifier" display="false"/>
 					<Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" displaybleAttributes="ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite"  roleName="diagnosisCollection" display="true">
 						<Association className="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" displaybleAttributes="bestSEERSummaryStage,clinicalMetStage,clinicalNodeStage,clinicalTumorStage,pathologicMetStage,pathologicNodeStage,pathologicTumorStage,regionalNodesPositive,regionalNodesExamined,tumorSize,tumorMarker1,tumorMarker2,tumorMarker3" roleName="diseaseExtentCollection" display="true">
 								<Association className="edu.duke.cabig.tumorregistry.domain.DistantSite" displaybleAttributes="name" roleName="distantSiteCollection" display="true"/>
