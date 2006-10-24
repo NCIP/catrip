@@ -1,5 +1,5 @@
 <?xml version="1.0"  encoding="windows-1252"?>
-<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2006-10-19 13:48:56">
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2006-10-24 14:17:41">
 	<XMI.header>
 		<XMI.documentation>
 			<XMI.exporter>Enterprise Architect</XMI.exporter>
@@ -1469,11 +1469,9 @@
 																						<UML:TaggedValue tag="ea_ntype" value="0"/>
 																						<UML:TaggedValue tag="package" value="EAPK_65186224_4F94_456f_82B7_A9AAD1702712"/>
 																						<UML:TaggedValue tag="date_created" value="2006-10-13 08:22:30"/>
-																						<UML:TaggedValue tag="date_modified" value="2006-10-19 13:42:31"/>
+																						<UML:TaggedValue tag="date_modified" value="2006-10-13 11:21:30"/>
 																						<UML:TaggedValue tag="tagged" value="0"/>
 																						<UML:TaggedValue tag="package_name" value="general"/>
-																						<UML:TaggedValue tag="complexity" value="1"/>
-																						<UML:TaggedValue tag="status" value="Proposed"/>
 																						<UML:TaggedValue tag="style" value="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=0;HSwimLanes=0;BorderStyle=0;"/>
 																					</UML:ModelElement.taggedValue>
 																					<UML:Classifier.feature>
@@ -2481,7 +2479,7 @@
 																						<UML:TaggedValue tag="ea_ntype" value="0"/>
 																						<UML:TaggedValue tag="package" value="EAPK_3D268707_4EAF_4b4c_8E73_257FB95D65E2"/>
 																						<UML:TaggedValue tag="date_created" value="2006-10-13 08:22:31"/>
-																						<UML:TaggedValue tag="date_modified" value="2006-10-19 13:48:40"/>
+																						<UML:TaggedValue tag="date_modified" value="2006-10-13 11:55:44"/>
 																						<UML:TaggedValue tag="tagged" value="0"/>
 																						<UML:TaggedValue tag="package_name" value="breast"/>
 																						<UML:TaggedValue tag="complexity" value="1"/>
@@ -2514,6 +2512,7 @@
 																								<UML:TaggedValue tag="lowerBound" value="1"/>
 																								<UML:TaggedValue tag="upperBound" value="1"/>
 																								<UML:TaggedValue tag="ea_guid" value="{64EE3BB3-C5CC-4310-8851-711C1C956FC2}"/>
+																								<UML:TaggedValue tag="CADSR Local Value Domain" value="BreastCancerBiomarkersResultVD" xmi.id="EAID_1CE5A302_7784_416f_87EA_FE1087244733"/>
 																								<UML:TaggedValue tag="containment" value="Not Specified" xmi.id="EAID_4906029C_2D62_42b2_B31B_2DE55151D5F2"/>
 																								<UML:TaggedValue tag="position" value="0" xmi.id="EAID_4F7C942E_6E90_4396_8D4F_24D897F90844"/>
 																								<UML:TaggedValue tag="type" value="string" xmi.id="EAID_4FBFC852_971C_474d_B66C_1034C24E3311"/>
@@ -2572,6 +2571,7 @@
 																								<UML:TaggedValue tag="ea_guid" value="{48399639-5075-4b49-A030-5B91D5E51507}" xmi.id="EAID_949C36A0_1EEB_4fc5_976E_2200351E5945"/>
 																								<UML:TaggedValue tag="ordered" value="0" xmi.id="EAID_C443D51F_8A55_434d_87DE_8E270E5C20FE"/>
 																								<UML:TaggedValue tag="PropertyConceptPreferredName" value="Progesterone Receptor" xmi.id="EAID_C4824CB9_C194_4a3f_B77D_09CFFC04BDD3"/>
+																								<UML:TaggedValue tag="CADSR Local Value Domain" value="BreastCancerBiomarkersResultVD" xmi.id="EAID_DB34DB40_BD15_48bb_A891_79A51D63D9B7"/>
 																								<UML:TaggedValue tag="type" value="string" xmi.id="EAID_E3B64C49_DB30_4d3b_A5AC_A5D85E67261F"/>
 																								<UML:TaggedValue tag="collection" value="false" xmi.id="EAID_E68342F3_56A7_41c8_9D7B_1D7F8CCF1BC4"/>
 																								<UML:TaggedValue tag="styleex" value="volatile=0;" xmi.id="EAID_ECAAFF0A_7619_4ffe_867A_223D29DCCDDD"/>
@@ -2607,6 +2607,7 @@
 																								<UML:TaggedValue tag="type" value="string" xmi.id="EAID_1CFFAE23_9C2B_4338_B34B_E7690AB37B9E"/>
 																								<UML:TaggedValue tag="PropertyConceptDefinition" value="The presence or absence of Her2/Neu on a tissue sample." xmi.id="EAID_1E332C80_5EAA_424e_906A_E092F3D78449"/>
 																								<UML:TaggedValue tag="PropertyConceptCode" value="C16152" xmi.id="EAID_29A25364_248E_4c8f_BAD7_D78BA098840F"/>
+																								<UML:TaggedValue tag="CADSR Local Value Domain" value="BreastCancerBiomarkersResultVD" xmi.id="EAID_380279B1_FE24_4a01_865D_2BD36BEAE075"/>
 																								<UML:TaggedValue tag="upperBound" value="1" xmi.id="EAID_3E8D088C_6472_42c4_B161_5967CC38192E"/>
 																								<UML:TaggedValue tag="ordered" value="0" xmi.id="EAID_5D18C770_697E_46b9_B86B_D44BA693BA97"/>
 																								<UML:TaggedValue tag="lowerBound" value="1" xmi.id="EAID_62DB7A29_5E30_4793_81DB_5461EF3461F5"/>
@@ -2646,6 +2647,7 @@
 																								<UML:TaggedValue tag="lowerBound" value="1"/>
 																								<UML:TaggedValue tag="upperBound" value="1"/>
 																								<UML:TaggedValue tag="ea_guid" value="{C380A0C7-33D3-459a-A032-94E55ABE13B0}"/>
+																								<UML:TaggedValue tag="CADSR Local Value Domain" value="BreastCancerBiomarkersHER2TestTypeVD" xmi.id="EAID_04D04210_BF03_4e64_8FF9_8DA620731BB6"/>
 																								<UML:TaggedValue tag="HUMAN_REVIEWED" value="0" xmi.id="EAID_2AA9FFF2_38FE_498d_9844_EC13C63EF23A"/>
 																								<UML:TaggedValue tag="PropertyConceptDefinition" value="A procedure for critical evaluation; a means of determining the presence, quality, or truth of something." xmi.id="EAID_2DBD91B7_6804_45ff_9E57_6856020A35F3"/>
 																								<UML:TaggedValue tag="position" value="1000" xmi.id="EAID_35ABBFF0_CCE6_44f3_B65F_76478CB5539A"/>
@@ -2707,7 +2709,7 @@
 																								<UML:TaggedValue tag="PropertyConceptDefinitionSource" value="NCI" xmi.id="EAID_8F62C2A2_D606_4eb8_9DE8_39A0B3A75CEF"/>
 																								<UML:TaggedValue tag="PropertyConceptDefinition" value="A condition or state at a particular time." xmi.id="EAID_908FEBE2_3EE5_4992_8711_758CE0FAE820"/>
 																								<UML:TaggedValue tag="duplicates" value="0" xmi.id="EAID_91E8B9F7_4A53_469f_A826_9F85AD85D261"/>
-																								<UML:TaggedValue tag="description" value="Pathologist's interpretation of the result of the EGFR test " xmi.id="EAID_B4D35B71_CDB9_473b_8C9B_C7884F85BC6E"/>
+																								<UML:TaggedValue tag="definition" value="Pathologist's interpretation of the result of the EGFR test " xmi.id="EAID_B4D35B71_CDB9_473b_8C9B_C7884F85BC6E"/>
 																								<UML:TaggedValue tag="derived" value="0" xmi.id="EAID_B69259CC_D2AE_4eb5_B4E0_F34405479D63"/>
 																								<UML:TaggedValue tag="upperBound" value="1" xmi.id="EAID_C51BC8B9_8E7D_490e_BD31_A78CE50AD928"/>
 																								<UML:TaggedValue tag="lowerBound" value="1" xmi.id="EAID_D80784A6_A348_46c5_BDA3_97798E28A18B"/>
@@ -4047,7 +4049,7 @@
 																						<UML:TaggedValue tag="ea_ntype" value="0"/>
 																						<UML:TaggedValue tag="package" value="EAPK_24EED2AE_87FE_414c_AAB5_40D243950E09"/>
 																						<UML:TaggedValue tag="date_created" value="2006-10-13 08:22:30"/>
-																						<UML:TaggedValue tag="date_modified" value="2006-10-19 13:43:56"/>
+																						<UML:TaggedValue tag="date_modified" value="2006-10-13 11:05:49"/>
 																						<UML:TaggedValue tag="tagged" value="0"/>
 																						<UML:TaggedValue tag="package_name" value="general"/>
 																						<UML:TaggedValue tag="complexity" value="1"/>
