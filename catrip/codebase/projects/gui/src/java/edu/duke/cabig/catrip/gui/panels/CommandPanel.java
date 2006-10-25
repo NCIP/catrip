@@ -106,9 +106,14 @@ public class CommandPanel extends CPanel {
 //            FileWriter fop = new FileWriter(new File("dcql.xml"), false);
 //            fop.write(DCQLGenerator.getDCQLText());
 //            fop.close();
-            
+            long startTime = System.currentTimeMillis();
+                    
             FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
             DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
+            
+            long dcqlGenerationTime = System.currentTimeMillis();
+            
+            System.out.println("Total time taken in Generating the DCQL: "+  (dcqlGenerationTime-startTime) +" Milli Seconds" );
             
             // print the formatted DCQL on console or to a log file.
 //            XmlOptions xmlOptions = new XmlOptions();
@@ -124,6 +129,9 @@ public class CommandPanel extends CPanel {
             
             CQLQueryResults results = fqe.execute(dcqlQueryDocument);
             
+            long queryExecutionTime = System.currentTimeMillis();
+            System.out.println("Total time taken in Query Execution: "+  (queryExecutionTime-dcqlGenerationTime) +" Milli Seconds" );
+            
             if ( (results == null) || (results.getObjectResult() == null) || (results.getObjectResult().length == 0) ){
                 JOptionPane.showMessageDialog(getMainFrame(), "No results found. Please check your query.");
                 resultCountLbl.setText("   ");
@@ -131,6 +139,9 @@ public class CommandPanel extends CPanel {
                 
                 // TODO - put the client config files of the individual service also in the caTRIP-config.xml or the services-mapping file some how.
                 CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"client-config.wsdd")));
+                
+                long resultIteratorTime = System.currentTimeMillis();
+                System.out.println("Total time taken in getting the Result Iterator: "+  (resultIteratorTime-queryExecutionTime) +" Milli Seconds" );
                 
                 ArrayList classBeanList = new ArrayList();
                 
@@ -160,8 +171,14 @@ public class CommandPanel extends CPanel {
                     classBeanList.add(classBeanTmp);
                 }
                 
+                long serializationTime = System.currentTimeMillis();
+                System.out.println("Total time taken in Serialization and Reflection: "+  (serializationTime-resultIteratorTime) +" Milli Seconds" );
+                
                 resultCountLbl.setText("   Total Row Count : "+classBeanList.size());
                 getMainFrame().getOutputPanel().setResults(classBeanList);
+                
+                long resultDisplayTime = System.currentTimeMillis();
+                System.out.println("Total time taken in Result Display: "+  (resultDisplayTime-serializationTime) +" Milli Seconds" );
                 
                 // set that results are available for export..
                 GUIConstants.resultAvailable = true;

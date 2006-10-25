@@ -41,7 +41,7 @@ public class SimpleGuiRegistry {
     
     private static HashMap serviceMap = new HashMap(10);
             
-    private static boolean simpleGuiChanged = false;
+    private static boolean simpleGuiChanged = false; // this is to tell that something is changed so calculate the DCQL again.
     
     /** Creates a new instance of SimpleGuiRegistry */
     public SimpleGuiRegistry() {
@@ -203,6 +203,9 @@ public class SimpleGuiRegistry {
     
     
     public static void prepareForDcql(){
+        // clean the old stuff I believe.. and create fresh things.. based on the Filters list..
+        
+        
         // fill the hash map with filled objects only...
         ArrayList<FilterRowPanel> list = getFilterList();
         for (int i = 0; i < list.size(); i++) {

@@ -5,12 +5,13 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
 /**
@@ -22,7 +23,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private CDEComboboxBean currentFilter = null;
     
     // for grouping similar Target objects... String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
-    private Hashtable uniqueFilterMap = new Hashtable();  
+    private Hashtable uniqueFilterMap = new Hashtable();
     
     /** Creates new form FilterRowPanel */
     public FilterRowPanel() {
@@ -108,11 +109,21 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
 // clean filter from previous CDEComboboxBean and reset predicate and value fields..
-//        if (currentFilter != null){ // that means a filter was already set on this row...
-//            currentFilter.remove();  
-//            getPredicateCombo().setSelectedIndex(0);
-//            getValueBox().setText("");
-//        }
+        if (currentFilter != null){ // that means a filter was already set on this row...
+            currentFilter.remove();
+            getPredicateCombo().setSelectedIndex(0);
+            getValueBox().setText("");
+            
+            SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
+//            HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
+//            
+//            Iterator itt = (allBeans.values()).iterator(); 
+//            while(itt.hasNext()) {
+//                ClassBean cBean = (ClassBean) itt.next();
+//                cBean.removeAllUniqueAssociations();
+//            }
+//            SimpleGuiRegistry.setSimpleGuiChanged(true);
+        }
         
     }//GEN-LAST:event_cdeComboItemStateChanged
     
@@ -168,6 +179,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
             if (gObj.isDisplayable()){
                 ClassBean cBean = gObj.getClassBean();
                 ArrayList attributes = cBean.getAttributes();
+                
                 for (int j = 0; j < attributes.size(); j++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(j);
                     CDEComboboxBean cdeBean = new CDEComboboxBean();
@@ -177,9 +189,11 @@ public class FilterRowPanel extends javax.swing.JPanel {
                     getCdeCombo().addItem(cdeBean);
                 }
             }
-            
-            
         }
+        
+        // add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
+//        Collections.sort(attributes); 
+        
     }
     
     

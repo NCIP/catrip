@@ -377,7 +377,12 @@ public class ClassBean{
         }
     }
     
-    
+    public void removeAllUniqueAssociations(){
+        hasAssociations = false;
+        associations = new ArrayList(20);
+        foreignAssociations = new ArrayList(10);
+        hasForeignAssociations = false;
+    }
     
     
     
@@ -478,15 +483,15 @@ public class ClassBean{
             this.superClassAssociatedClassList.add(superClassAssociatedClass);
         }
     }
-
+    
     public String getSuperClassName() {
         return superClassName;
     }
-
+    
     public void setSuperClassName(String superClassName) {
         this.superClassName = superClassName;
     }
-
+    
     public ArrayList<String> getSubClassIds() {
         return subClassIds;
     }
