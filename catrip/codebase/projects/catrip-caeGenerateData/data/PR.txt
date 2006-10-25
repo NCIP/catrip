@@ -1,8 +1,2 @@
-PR-negative
-PR-pos
-progesterone receptor-negative
-PR+
-PR-neg
-progesterone receptor-positive
-PR-
-PR-positive
+negative
+positive

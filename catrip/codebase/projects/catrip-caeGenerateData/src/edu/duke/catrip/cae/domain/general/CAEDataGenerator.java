@@ -14,9 +14,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
-import edu.duke.catrip.cae.util.HibernateUtil;
+//import edu.duke.catrip.cae.util.HibernateUtil;
+import edu.duke.catrip.datagenerator.HibernateUtil;
 import edu.pitt.cabig.cae.domain.breast.BreastCancerAccessionCharacteristics;
 import edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers;
 import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFinding;
@@ -769,6 +772,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 		    if(result.size()>0){
 			    //for (int i = 0; i<result.size(); i++) {
 			    for (int i = 0; i<result.size(); i++) {
+			    	//if(i > 6) break;
 			    	AnnotatableEntity aeObj = (AnnotatableEntity) result.get(i);
 	
 			       	aep = new AnnotationEventParameters();
@@ -787,7 +791,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 		    System.out.println("\t\t\t\tExiting buildAnnotationEventParameters()");
 	}
 	
-//Builds the ANNOTATION_EVENT_PARAMETER object recs in db
+//Builds the ANNOTATION_SET object recs in db
 	public void buildAnnotationSet() throws ParseException
 	{
 			

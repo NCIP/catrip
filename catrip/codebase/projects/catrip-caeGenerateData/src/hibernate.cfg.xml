@@ -13,17 +13,18 @@
     <!--  <property name="connection.url">jdbc:oracle:thin:@localhost:1521:caesid</property> -->
       
 
- <!-- PRODUCTION DB, WHICH IS COMMENTED OUT
+ <!-- PRODUCTION DB -->
  	<property name="connection.url">jdbc:oracle:thin:@pparker.duhs.duke.edu:1521:trip</property>
       <property name="connection.username">caedba</property>
       <property name="connection.password">cae</property>
- -->      
+
  
- <!-- TEST DB -->
+ <!-- TEST DB 
  	<property name="connection.url">jdbc:oracle:thin:@pparker.duhs.duke.edu:1521:trip</property>
        <property name="connection.username">testtrip</property>
       <property name="connection.password">testcae</property>
-      
+-->
+  
       <!-- Use the C3P0 connection pool.  -->
       <property name="c3p0.min_size">3</property>
       <property name="c3p0.max_size">5</property>

@@ -43,7 +43,7 @@
 	<classpathentry kind="lib" path="lib/xerces-2.6.2.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
 	<classpathentry kind="lib" path="lib/client-old.jar"/>
-	<classpathentry kind="lib" path="lib/cae_domain_reengg.jar"/>
 	<classpathentry kind="lib" path="lib/data-generator-utilities.jar"/>
+	<classpathentry kind="lib" path="lib/cae_reengineering_12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
