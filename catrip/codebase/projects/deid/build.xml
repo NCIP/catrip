@@ -195,7 +195,7 @@
 	</target>
 
 	<!-- ============================================================== -->
-	<!-- Creates the test jar files                                     -->
+	<!-- Initializes the DB                                             -->
 	<!-- ============================================================== -->
 	<target name="create-db" depends="jar" description="Creates the DeId database">
 		<java classpathref="run.classpath" classname="edu.duke.cabig.catrip.deid.DeIdInit">
