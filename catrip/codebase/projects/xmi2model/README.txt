@@ -1,6 +1,9 @@
 xmi2model
 
-This project will generate a caDSR metadata extract from a semantically annotated XMI file.
+This project will generate a caDSR metadata extract from a semantically annotated XMI file.  
+This removes the need for a model to be registered in the caDSR before using portions of the extract.  
+Such a generated model can be used to build a data grid service.  
+The CDE identifiers will of course not correspond to real CDEs.  Enumerated values domains are not mapped.
 
 You can run the converter using ant via the xmi2model target:
 
