@@ -10,7 +10,6 @@ import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
-import edu.duke.cabig.catrip.gui.util.HTMLResultExporter;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
@@ -19,6 +18,8 @@ import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
 import java.awt.Cursor;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -139,9 +140,11 @@ public class CommandPanel extends CPanel {
                 
                 // TODO - put the client config files of the individual service also in the caTRIP-config.xml or the services-mapping file some how.
                 CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"client-config.wsdd")));
+                 
                 
                 long resultIteratorTime = System.currentTimeMillis();
                 System.out.println("Total time taken in getting the Result Iterator: "+  (resultIteratorTime-queryExecutionTime) +" Milli Seconds" );
+
                 
                 ArrayList classBeanList = new ArrayList();
                 
@@ -149,6 +152,7 @@ public class CommandPanel extends CPanel {
                 
                 while (iterator.hasNext()) {
                     Object obj = iterator.next();
+
                     ClassBean classBeanTmp = tmpObject.clone();
                     
                     ArrayList attributeList = classBeanTmp.getAttributes();
@@ -169,6 +173,7 @@ public class CommandPanel extends CPanel {
                         aBean.setAttributeValue(value);
                     }
                     classBeanList.add(classBeanTmp);
+                     
                 }
                 
                 long serializationTime = System.currentTimeMillis();
