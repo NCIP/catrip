@@ -150,7 +150,7 @@
 			length="50"
 		/>
 
-		<many-to-one
+		<many-to-one fetch="join" 
 			name="Diagnosis"
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
@@ -160,7 +160,7 @@
 		</many-to-one>
 	
 
-		<set name="distantSiteCollection" lazy="false"  inverse="false" cascade="all">
+		<set name="distantSiteCollection" inverse="false" cascade="all" fetch="join">
 			<key column="disease_extent_id" not-null="false"/>
 			<one-to-many class="DistantSite"/>
 		</set>

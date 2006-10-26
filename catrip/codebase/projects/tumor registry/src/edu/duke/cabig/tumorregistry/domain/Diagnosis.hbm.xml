@@ -108,26 +108,26 @@
 			not-null="false"
 		/>
 	
-		<set name="followUpCollection"  lazy="false"  inverse="false" cascade="all">
+		<set name="followUpCollection" inverse="false" cascade="all" >
 			<key column="DIAGNOSIS_ID"/>
 			<one-to-many class="Followup"/>
 		</set>
 
-		<set name="diseaseExtentCollection" lazy="false"  inverse="false" cascade="all">
+		<set name="diseaseExtentCollection" inverse="false" cascade="all" >
 			<key column="DIAGNOSIS_ID"/>
 			<one-to-many class="DiseaseExtent"/>
 		</set>
 
-		<set name="activityCollection"  lazy="false"  inverse="false" cascade="all">
+		<set name="activityCollection" inverse="false" cascade="all" >
 			<key column="DIAGNOSIS_ID"/>
 			<one-to-many class="Activity"/>
 		</set>
 
-		<one-to-one name="collaborativeStaging" outer-join="false" class="CollaborativeStaging" cascade="all"/>
-		<one-to-one name="firstTreatment" outer-join="false" class="FirstCourseTreatmentSummary" cascade="all"/>
-		<many-to-one name="address" class="Address" column="ADDRESS_ID" not-null="false" unique="true" lazy="false" cascade="all"/>
-		<one-to-one name="activitySummary" class="ActivitySummary" cascade="all" outer-join="false" />
-		<many-to-one name="patient" class="Patient" column="patient_id" not-null="false" lazy="false" cascade="all"/> 
+		<one-to-one name="collaborativeStaging" class="CollaborativeStaging" lazy="proxy" constrained="true"/>
+		<one-to-one name="firstTreatment" class="FirstCourseTreatmentSummary" lazy="proxy" constrained="true"/>
+		<one-to-one name="activitySummary" class="ActivitySummary" lazy="proxy" constrained="true"/>
+		<many-to-one name="address" class="Address" column="ADDRESS_ID" not-null="false" unique="true" cascade="all"/>
+		<many-to-one name="patient" class="Patient" column="patient_id" not-null="false"  cascade="all"/> 
 		
 	</class>	
 </hibernate-mapping>

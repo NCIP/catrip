@@ -53,11 +53,11 @@
 			length="50"
 		/>
 		<many-to-one
-			name="diagnosis"
+			name="diagnosis" 
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
 			not-null="false"
-			cascade="all" lazy="false"
+			cascade="all"
 		>
 		</many-to-one>
 		<subclass name="SubstanceAdministration" discriminator-value="SubstanceAdministration">
@@ -70,7 +70,7 @@
 			/>
 			<subclass name="HormoneTherapy" discriminator-value="Hormone"/>
 			<subclass name="Immunotherapy" discriminator-value="Immunotherapy"/>
-			<subclass name="OtherTherapy" discriminator-value="OtherTherapy" lazy="false"/>
+			<subclass name="OtherTherapy" discriminator-value="OtherTherapy"/>
 			<subclass name="Chemotherapy" discriminator-value="Chemotherapy"/>
 		</subclass>
 		<subclass name="Surgery" discriminator-value="Surgery">

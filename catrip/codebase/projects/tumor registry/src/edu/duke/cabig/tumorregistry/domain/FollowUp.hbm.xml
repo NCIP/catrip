@@ -37,12 +37,12 @@
 			not-null="false"
 			length="7"
 		/>
-		<one-to-one  name="recurrence" outer-join="false" class="Recurrence" cascade="all" lazy="false"/>
+		<one-to-one  name="recurrence" class="Recurrence" lazy="proxy" constrained="true"/>
 		<many-to-one
-			name="diagnosis"
+			name="diagnosis" 
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
-			not-null="false" lazy="false"
+			not-null="false"
 			cascade="all"
 		>
 		</many-to-one>
