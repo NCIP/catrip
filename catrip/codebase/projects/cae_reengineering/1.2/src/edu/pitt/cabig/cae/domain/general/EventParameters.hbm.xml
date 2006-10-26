@@ -17,7 +17,7 @@
        		<key column="event_parameters_id"/>
         	<property name="source" type="string" column="source"/>
         	<property name="sourceDate" type="date" column="source_date"/>
-    		<set name="annotationSetCollection" lazy="false"  inverse="false" cascade="all">
+    		<set name="annotationSetCollection"   inverse="false" cascade="all">
       			<key column="annotation_event_parm_id" not-null="false"/>
       			<one-to-many class="edu.pitt.cabig.cae.domain.general.AnnotationSet" />
     		</set>

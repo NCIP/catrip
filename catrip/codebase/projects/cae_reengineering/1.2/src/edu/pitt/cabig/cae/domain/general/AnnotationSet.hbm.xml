@@ -246,7 +246,7 @@
         <bag
             name="location"
             table="BREAST_LOCATIONS"
-            lazy="false"
+            
             cascade="none"
         >
 
@@ -283,7 +283,7 @@
         <bag
             name="microcalcificationLocation"
             table="BREAST_MC_LOCATIONS"
-            lazy="false"
+            
             cascade="none"
         >
 
@@ -326,7 +326,7 @@
        <set
             name="surgicalProcedure"
             table="BREAST_SURGICAL_PROCEDURES"
-            lazy="false"
+            
             cascade="none">
 
             <key column="ID"></key>
@@ -404,7 +404,7 @@
         <bag
             name="metastasisAnatomicSite"
             table="BREAST_MET_ANATOMIC_SITES"
-            lazy="false"
+            
             cascade="none"
         >
 
