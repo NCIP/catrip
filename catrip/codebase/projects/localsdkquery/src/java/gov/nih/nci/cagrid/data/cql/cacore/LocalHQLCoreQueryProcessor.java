@@ -31,6 +31,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 
 /**
  *  HQLCoreQueryProcessor
@@ -39,7 +40,7 @@ import org.hibernate.Session;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.2 2006-10-09 17:40:21 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.3 2006-10-26 19:32:39 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
@@ -122,30 +123,34 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	private List queryCoreService(CQLQuery query) 
 		throws MalformedQueryException, QueryProcessingException {
 
-		 String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
-                //String hibernateCfgFile ="hibernate.cfg.xml";
-            
-            
+		String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
+		//String hibernateCfgFile ="hibernate.cfg.xml";
+                 
+                Configuration configuration = new Configuration().configure(hibernateCfgFile);                
+                String dialect = configuration.getProperties().getProperty("dialect");
+                
 		// see if the target has subclasses
 		boolean subclassesDetected = LocalSubclassCheckCache.hasClassProperty(query.getTarget().getName(),hibernateCfgFile);
 		//boolean subclassesDetected = false;
 		
                 // generate the HQL to perform the query
 		String hql = null;
+                LocalCQL2HQL cql2hql = new LocalCQL2HQL(dialect);
+                
 		if (subclassesDetected) {
 			// simplify the query by removing modifiers
 			CQLQuery simpleQuery = new CQLQuery();
 			simpleQuery.setTarget(query.getTarget());
-			hql = CQL2HQL.translate(simpleQuery,true);
+			hql = cql2hql.translate(simpleQuery,true);
 		} else {
-			hql = CQL2HQL.translate(query, false);
+			hql = cql2hql.translate(query, false);
 		}
 		System.out.println("Executing HQL...: " + hql);
 		LOG.debug("Executing HQL:" + hql);
 		
 		// process the query
 		HQLCriteria hqlCriteria = new HQLCriteria(hql);
-                
+	    
                 Session session = HibernateUtil.currentSession(hibernateCfgFile);
 		List targetObjects = null;
 		try {
