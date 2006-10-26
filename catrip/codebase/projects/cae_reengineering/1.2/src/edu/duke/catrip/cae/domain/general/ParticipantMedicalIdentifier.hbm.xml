@@ -3,12 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping auto-import="false">
-    <class  name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" lazy="false" table="PARTICIPANT_IDENTIFIERS">
+    <class  name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" table="PARTICIPANT_IDENTIFIERS">
         <id name="id" column="ID" type="long">
             <generator class="assigned"/>
         </id>
         <property name="medicalRecordNumber" column="MEDICAL_RECORD_NUMBER" type="string"/>
-        <many-to-one name="participant" column="PARTICIPANT_ID" lazy="false" />
+        <many-to-one name="participant" 
+        	     class="edu.duke.catrip.cae.domain.general.Participant" 
+        	     column="PARTICIPANT_ID"  
+        	     not-null="false" unique="true" cascade="all"/>
+        	     <!--
+       	<many-to-one name="address" class="Address" column="address_id" not-null="false" unique="true" cascade="all"/> 
+-->
     	
    </class>
 </hibernate-mapping>
