@@ -2,7 +2,7 @@
 <project name="catissuecore_beans" default="compile" basedir=".">
 
   <property file="build.properties"/>
-  <property name="project.name" value="catissuecore_beans" />
+  <property name="project.name" value="catissuecore_domain" />
   <property name="src.dir" value="./src" />
   <property name="class.dir" value="./classes" /> 
   <property name="lib.dir" value="./lib" />
@@ -66,6 +66,7 @@
    <copy todir="${class.dir}">
     <fileset dir="${src.dir}">
       <include name="**/*.hbm.xml"/>
+      <include name="**/*xml-mapping.xml"/>
     </fileset>
   </copy>   
 
