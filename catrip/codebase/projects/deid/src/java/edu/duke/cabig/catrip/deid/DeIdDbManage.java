@@ -82,7 +82,7 @@ public class DeIdDbManage
 			Statement stmt = con.createStatement();
 			String val = null;
 			
-			ResultSet rs = stmt.executeQuery("SELECT COUNT(id) FROM deid.users WHERE userName='" + user + "'");
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(id) FROM deid.users WHERE userName='" + user + "' and tableName='" + table + "'");
 			rs.next();
 			if (rs.getInt(1) > 0) {
 				if (! isQuiet()) System.out.println("User " + user + " already exists in table deid." + table);
