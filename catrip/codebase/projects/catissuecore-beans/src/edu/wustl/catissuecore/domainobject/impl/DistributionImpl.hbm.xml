@@ -47,7 +47,6 @@
         <set
             name="distributedItemCollection"
             table="CATISSUE_DISTRIBUTED_ITEM"
-            lazy="false"
             inverse="true"
             cascade="save-update"
             sort="unsorted"

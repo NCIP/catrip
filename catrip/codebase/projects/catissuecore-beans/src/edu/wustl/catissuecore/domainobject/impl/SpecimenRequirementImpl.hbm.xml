@@ -58,7 +58,6 @@
         <set
             name="distributionProtocolCollection"
             table="CATISSUE_DISTRIBUTION_SPE_REQ"
-            lazy="false"
             inverse="true"
             cascade="save-update"
             sort="unsorted"
@@ -79,7 +78,6 @@
         <set
             name="collectionProtocolEventCollection"
             table="CATISSUE_COLL_SPECIMEN_REQ"
-            lazy="false"
             inverse="true"
             cascade="save-update"
             sort="unsorted"

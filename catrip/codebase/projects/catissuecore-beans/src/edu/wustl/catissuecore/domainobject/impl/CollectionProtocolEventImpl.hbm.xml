@@ -44,7 +44,6 @@
         <set
             name="specimenRequirementCollection"
             table="CATISSUE_COLL_SPECIMEN_REQ"
-            lazy="false"
             inverse="false"
             cascade="save-update"
             sort="unsorted"

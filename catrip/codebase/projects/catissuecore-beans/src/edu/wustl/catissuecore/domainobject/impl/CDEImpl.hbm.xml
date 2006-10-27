@@ -53,7 +53,6 @@
         <set
             name="permissibleValues"
             table="CATISSUE_PERMISSIBLE_VALUE"
-            lazy="false"
             inverse="false"
             cascade="none"
             sort="unsorted"

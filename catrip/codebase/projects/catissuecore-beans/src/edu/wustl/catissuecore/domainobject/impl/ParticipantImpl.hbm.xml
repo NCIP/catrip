@@ -116,7 +116,6 @@
         <set
             name="participantMedicalIdentifierCollection"
             table="CATISSUE_PART_MEDICAL_ID"
-            lazy="false"
             inverse="true"
             cascade="save-update"
             sort="unsorted"
@@ -134,7 +133,6 @@
         <set
             name="collectionProtocolRegistrationCollection"
             table="CATISSUE_COLL_PROT_REG"
-            lazy="false"
             inverse="false"
             cascade="none"
             sort="unsorted"

@@ -101,7 +101,6 @@
         <set
             name="storageContainerDetailsCollection"
             table="CATISSUE_STORAGE_CONT_DETAILS"
-            lazy="false"
             inverse="true"
             cascade="save-update"
             sort="unsorted"
@@ -129,7 +128,6 @@
         <set
             name="childrenContainerCollection"
             table="CATISSUE_STORAGE_CONTAINER"
-            lazy="false"
             inverse="false"
             cascade="save-update"
             sort="unsorted"
