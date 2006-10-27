@@ -280,6 +280,7 @@
 		<mkdir dir="${deploy.dir}"/>
 		
 		<unjar src="${project.aarfile}" dest="${deploy.dir}"/>
+		<delete file="${project.aarfile}"/>
 	</target>
 	
 	<!-- ============================================================== -->
@@ -292,6 +293,7 @@
 		<mkdir dir="${deploy.dir}"/>
 
 		<unjar src="${project.aarfile}" dest="${deploy.dir}"/>
+		<delete file="${project.aarfile}"/>
 	</target>
 
 	<!-- ============================================================== -->
