@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- =========================================================================================================== -->
+<!-- BUILDS "caGenerateData" PROJECT AND INSERTS DATA INTO DB (according to where hibernate.cfg.xml is pointing) -->
+<!-- created: 10/27/2006                                                                                         -->
+<!-- by:      mark s peedin                                                                                      -->
+<!-- =========================================================================================================== -->
+<project name="caGenerateData" default="compile" basedir=".">
+
+  <property file="build.properties"/>
+  <property name="project.name" value="catrip-caGenerateData" />
+  <property name="src.dir" value="./src" />
+  <property name="classes.dir" value="./classes" /> 
+  <property name="test.src.dir" value="./test" />
+  <property name="test.classes.dir" value="./test/classes" /> 
+  <property name="lib.dir" value="./lib" />
+  <property name="build.dir" value="./build" />
+  <property name="docs.dir" value="./docs" />
+  <property name="config.dir" value="properties" />
+  <property name="test.report.dir" value="./test/reports" />
+  <property name="jar.dir" value="${build.dir}/jars" />
+  <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
+  
+  <path id="compile.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+   <path id="test.compile.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="**/*.jar"/>
+    </fileset>
+    <pathelement location="${test.classes.dir}"/>
+    <pathelement location="${classes.dir}"/>
+  </path> 
+
+	<!-- =============================================================== -->
+	<!-- The Run Classpath                                               -->
+	<!-- =============================================================== -->
+	<path id="run.classpath">
+		<fileset dir="${jar.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+<!--
+		<fileset dir="${jar.dir}">
+			<include name="**/*.jar" />
+			<exclude name="**/*test*.jar" />
+		</fileset>
+
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+-->
+	</path>
+
+  <target name="setup" description="Builds the entire application" depends="clean,init,compilesrc,compiletestsrc,jarup" />
+  <target name="insert" description="Builds the entire application" depends="ThreeDimensionalTumorSizeInsertTest" />
+
+  <target name="clean"> 
+    <delete dir="${classes.dir}" failonerror="true" />
+    <delete dir="${build.dir}" failonerror="true" />
+ </target>
+
+ <target name="init">
+    <mkdir dir="${classes.dir}"/> 
+    <mkdir dir="${build.dir}"/> 
+ </target>
+ 
+
+	<!-- ============================================================== -->
+	<!-- Compiles the src files                                         -->
+	<!-- ============================================================== -->
+  	<target name="compilesrc">
+    		<javac
+      		destdir="${classes.dir}"
+      		debug="on"
+      		srcdir="${src.dir}"
+      		deprecation="true"
+      		>
+      		<classpath refid="compile.classpath"/>
+    		</javac>
+    		<copy todir="${classes.dir}">
+          		<fileset dir="${src.dir}">
+				<include name="*.xml"/>
+          		</fileset>
+    		</copy>
+  	</target>
+
+	<!-- ============================================================== -->
+	<!-- Compiles the test src files                                    -->
+	<!-- ============================================================== -->
+  	<target name="compiletestsrc">
+    		<javac
+      		destdir="${classes.dir}"
+      		debug="on"
+      		srcdir="${test.src.dir}"
+      		deprecation="true"
+      		>
+      		<classpath refid="compile.classpath"/>
+    		</javac>
+  	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates a jar file of src classes                              -->
+	<!-- ============================================================== -->
+	<target name="jarup" depends="" description="Builds the Jar Files">
+		<mkdir dir="${jar.dir}" />
+		<copy todir="${classes.dir}">
+			<fileset dir="${lib.dir}">
+            	<include name="**/*.jar"/>
+        	</fileset>
+		</copy>
+		<copy todir="${classes.dir}">
+			<fileset dir="${lib.dir}">
+            	<include name="**/*.jar"/>
+        	</fileset>
+		</copy>
+		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="${main.class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the Participant recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="ThreeDimensionalTumorSizeInsertTest" depends="" description="Creates the Participant recs in the database">
+		<java classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ThreeDimensionalTumorSizeInsertTest">
+		</java>
+	</target>
+
+
+</project>
