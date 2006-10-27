@@ -14,9 +14,7 @@
   <property name="test.classes.dir" value="./test/classes" /> 
   <property name="lib.dir" value="./lib" />
   <property name="build.dir" value="./build" />
-  <property name="docs.dir" value="./docs" />
-  <property name="config.dir" value="properties" />
-  <property name="test.report.dir" value="./test/reports" />
+  <property name="data.dir" value="./data" />
   <property name="jar.dir" value="${build.dir}/jars" />
   <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
   
@@ -43,6 +41,9 @@
 		</fileset>
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${data.dir}">
+			<include name="**/*.txt" />
 		</fileset>
 	</path>
 
