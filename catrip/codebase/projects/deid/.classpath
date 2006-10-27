@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="test/src/java"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-3.1.13-bin.jar"/>
-	<classpathentry kind="src" path="build/java/src"/>
 	<classpathentry kind="var" path="AXIS2_HOME/lib/annogen-0.1.0.jar"/>
 	<classpathentry kind="var" path="AXIS2_HOME/lib/axiom-api-1.0.jar"/>
 	<classpathentry kind="var" path="AXIS2_HOME/lib/axiom-dom-1.0.jar"/>
@@ -38,5 +37,6 @@
 	<classpathentry kind="var" path="AXIS2_HOME/lib/xbean-2.1.0.jar"/>
 	<classpathentry kind="var" path="AXIS2_HOME/lib/XmlSchema-1.0.2.jar"/>
 	<classpathentry kind="lib" path="ext/test/lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

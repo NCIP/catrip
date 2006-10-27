@@ -18,7 +18,7 @@ public class DeIdPropertiesTest
 		super(name);
 	}
 	
-	public void testProperties() throws IOException
+	public void testProperties() throws IOException, ClassNotFoundException
 	{
 		DeIdServiceImpl service = new DeIdServiceImpl();
 		assertEquals("jdbc:mysql://localhost/mysql", service.dbUrl);

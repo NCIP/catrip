@@ -23,7 +23,7 @@ public abstract class DeIdServiceTest
 	public void performDeIdTest(DeIdService service) throws Exception
 	{
 		// generate phi
-		String[] phi = new String[500];
+		String[] phi = new String[20];
 		for (int i = 0; i < phi.length; i++) {
 			phi[i] = RandomUtils.generateRandomValue(rand, 25);
 		}

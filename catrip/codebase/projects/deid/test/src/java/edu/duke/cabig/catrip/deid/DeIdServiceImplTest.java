@@ -12,7 +12,8 @@ public class DeIdServiceImplTest
 {
 	private DeIdService service;
 	
-	public DeIdServiceImplTest(String name)
+	public DeIdServiceImplTest(String name) 
+		throws ClassNotFoundException
 	{
 		super(name);
 		

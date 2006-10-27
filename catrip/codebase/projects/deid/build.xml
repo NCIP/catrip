@@ -134,13 +134,13 @@
 	<!-- =============================================================== -->
 	<!-- Compiles the source code                                        -->
 	<!-- =============================================================== -->
-	<target name="compile" depends="prepare,codegen" description="compiles.">
+	<target name="compile" depends="prepare" description="compiles.">
 		<mkdir dir="${classes.dir}" />
 		<mkdir dir="${ext.lib.dir}" />
 		<javac destdir="${classes.dir}" debug="${debug}" deprecation="off" optimize="off">
 			<classpath refid="build.classpath" />
 			<src path="${src.dir}"/>
-			<src path="${build.src.dir}"/>
+			<!-- <src path="${build.src.dir}"/> -->
 		</javac>
 	</target>
 
@@ -195,10 +195,42 @@
 	</target>
 
 	<!-- ============================================================== -->
+	<!-- Sets properties for db commands                                -->
+	<!-- ============================================================== -->
+	<target name="db-prepare" depends="" description="Sets properties for db commands">
+		<property name="dburl" value="jdbc:mysql://localhost/mysql"/>
+		<property name="user" value="root"/>
+		<property name="password" value=""/>
+	</target>
+
+	<!-- ============================================================== -->
 	<!-- Initializes the DB                                             -->
 	<!-- ============================================================== -->
-	<target name="create-db" depends="jar" description="Creates the DeId database">
-		<java classpathref="run.classpath" classname="edu.duke.cabig.catrip.deid.DeIdInit">
+	<target name="db-init" depends="jar, db-prepare" description="Creates the DeId database">
+		<java classpathref="run.classpath" classname="edu.duke.cabig.catrip.deid.DeIdDbManage">
+			<arg line="-cmd init -dburl ${dburl} -user ${user} -password '${password}'"/>
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Adds a table to the DB                                         -->
+	<!-- ============================================================== -->
+	<target name="db-newtable" depends="jar, db-prepare" description="Adds a table to the DeId database">
+		<input message="Name of new table: " addProperty="table"/>
+		<java classpathref="run.classpath" classname="edu.duke.cabig.catrip.deid.DeIdDbManage">
+			<arg line="-cmd newtable -dburl ${dburl} -user ${user} -password '${password}' -table ${table}"/>
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Adds a user to the DB                                          -->
+	<!-- ============================================================== -->
+	<target name="db-newuser" depends="jar, db-prepare" description="Adds a user to the DeId database">
+		<input message="Name of user: " addProperty="newuser"/>
+		<input message="Name of password (only set if you want to grant privs): " addProperty="newpassword"/>
+		<input message="Name of table to assign user: " addProperty="table"/>
+		<java classpathref="run.classpath" classname="edu.duke.cabig.catrip.deid.DeIdDbManage">
+			<arg line="-cmd newuser -dburl ${dburl} -user ${user} -password '${password}' -table ${table} -newuser ${newuser} -newpassword '${newpassword}'"/>
 		</java>
 	</target>
 

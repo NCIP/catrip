@@ -3,7 +3,6 @@
  */
 package edu.duke.cabig.catrip.deid;
 
-import edu.duke.cabig.catrip.deid.client.DeIdServiceClient;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
@@ -19,7 +18,9 @@ public class DeIdServiceClientTest
 		super(name);
 		
 		service = new DeIdServiceClient(
-			System.getProperty("serviceUrl", "http://localhost:8080/axis2/services/DeIdService")
+			System.getProperty("serviceUrl", "http://localhost:8080/axis2/services/DeIdService"),
+			System.getProperty("user", "root"),
+			System.getProperty("password", "")
 		);
 	}
 

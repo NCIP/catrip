@@ -11,22 +11,33 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.Random;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axiom.soap.SOAPHeaderBlock;
+import org.apache.axis2.AxisFault;
+import org.apache.axis2.context.MessageContext;
+import org.apache.axis2.context.OperationContext;
+import org.apache.axis2.wsdl.WSDLConstants;
 
 import edu.duke.cabig.catrip.deid.util.RandomUtils;
 
 public class DeIdServiceImpl
 	implements DeIdService
 {
+	private MessageContext ctx;
 	protected Random rand = new Random();
 	protected String dbUrl;
 	protected String user;
 	protected String password;
 	
 	public DeIdServiceImpl() 
-		throws IOException
+		throws IOException, ClassNotFoundException
 	{
 		super();
 
@@ -34,6 +45,32 @@ public class DeIdServiceImpl
 		this.dbUrl = props.getProperty("dbUrl");
 		this.user = props.getProperty("user");
 		this.password = props.getProperty("password");
+		
+		init();
+	}
+	
+	public DeIdServiceImpl(String dbUrl, String user, String password) 
+		throws ClassNotFoundException
+	{
+		super();
+		
+		this.dbUrl = dbUrl;
+		this.user = user;
+		this.password = password;
+		
+		init();
+	}
+	
+	protected void init() 
+		throws ClassNotFoundException
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+	}
+	
+	public void setOperationContext(OperationContext opCtx)
+		throws AxisFault 
+	{
+		this.ctx = opCtx.getMessageContext(WSDLConstants.MESSAGE_LABEL_IN_VALUE);
 	}
 	
 	protected Properties loadProperties()
@@ -80,25 +117,28 @@ public class DeIdServiceImpl
 		return props;
 	}
 	
-	public DeIdServiceImpl(String dbUrl, String user, String password)
-	{
-		super();
-		
-		this.dbUrl = dbUrl;
-		this.user = user;
-		this.password = password;
-	}
-	
 	public synchronized String deid(String phi) throws Exception
 	{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection(dbUrl, user, password);
+		String user = this.user;
+		String password = this.password;
+		if (ctx != null) {
+			Iterator iter = ctx.getEnvelope().getHeader().examineAllHeaderBlocks();
+			while (iter.hasNext()) {
+				SOAPHeaderBlock block = (SOAPHeaderBlock) iter.next();
+				if (! block.getLocalName().equals("security")) continue;
+				
+				user = block.getAttributeValue(new QName("user"));
+				password = block.getAttributeValue(new QName("password"));
+			}
+		}
+		String table = getTable(user, password);
 		
+		Connection con = DriverManager.getConnection(dbUrl, user, password);
 		try {
 			Statement stmt = con.createStatement();
 			String val = null;
 			
-			ResultSet rs = stmt.executeQuery("select val from deid.deid where phi='" + phi + "'");
+			ResultSet rs = stmt.executeQuery("select val from deid." + table + " where phi='" + phi + "'");
 			if (rs.next()) {
 				val = rs.getString("val");
 				rs.close();
@@ -124,5 +164,31 @@ public class DeIdServiceImpl
 		} finally {
 			try { con.close(); } catch (Exception e) { }
 		}
+	}
+	
+	private String getTable(String user, String password) 
+		throws SQLException
+	{
+		Connection con = DriverManager.getConnection(dbUrl, user, password);
+		
+		try {
+			String tableName = null;
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select tableName from deid.users where userName='" + user + "'");
+			if (rs.next()) {
+				tableName = rs.getString("tableName");
+			}
+			rs.close();
+			stmt.close();
+			
+			if (tableName == null) {
+				throw new SQLException("user " + user + " not mapped to a table");
+			}
+			return tableName;
+		} finally {
+			try { con.close(); } catch (Exception e) { }
+		}
+		
 	}
 }
