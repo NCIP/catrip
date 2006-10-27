@@ -4,9 +4,10 @@
 
 package edu.duke.catrip.cae.domain.general;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 //import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest;
 
@@ -14,25 +15,13 @@ public class ParticipantMedicalIdentifierInsertTest extends TestCase {
 	
   private static int maxrecs = 500;
 	
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\mrn.txt";
+  private static String inFile1 = "data\\mrn.txt";
  
   public String[] dataarr1 = new String[1000];
      
   public ParticipantMedicalIdentifierInsertTest(String sTestName) {
       super(sTestName);
   }
-
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(ParticipantMedicalIdentifierInsertTest.class);
-   }
 
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
@@ -62,7 +51,13 @@ public class ParticipantMedicalIdentifierInsertTest extends TestCase {
 		
 	}
 
-	
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(ParticipantMedicalIdentifierInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 }
 
 

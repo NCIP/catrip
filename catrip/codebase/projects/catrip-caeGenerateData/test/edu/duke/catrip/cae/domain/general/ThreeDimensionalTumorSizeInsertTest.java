@@ -4,21 +4,22 @@
 
 package edu.duke.catrip.cae.domain.general;
 
-import junit.framework.Test;
+//import junit.awtui.TestRunner;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
-import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
+import junit.textui.TestRunner;
 //import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest;
 
 public class ThreeDimensionalTumorSizeInsertTest extends TestCase {
   
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\GreatestDim.txt";
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimY.txt";
-  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimX.txt";
-  private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\GreatestDimV2.txt";
-  private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimYV2.txt";
-  private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\DimXV2.txt";
- 
+	  private static String inFile1 = "data\\GreatestDim.txt";
+	  private static String inFile2 = "data\\DimY.txt";
+	  private static String inFile3 = "data\\DimX.txt";
+	  private static String newFile1 = "data\\GreatestDimV2.txt";
+	  private static String newFile2 = "data\\DimYV2.txt";
+	  private static String newFile3 = "data\\DimXV2.txt";
+	 
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];
   public String[] dataarr3 = new String[1000];
@@ -30,22 +31,10 @@ public class ThreeDimensionalTumorSizeInsertTest extends TestCase {
       super(sTestName);
   }
 
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(ThreeDimensionalTumorSizeInsertTest.class);
-   }
-
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
 
-		final boolean DEBUG = true;
+		final boolean DEBUG = false;
 
 		//DataGenerator dg = new DataGenerator();
 		
@@ -94,7 +83,13 @@ public class ThreeDimensionalTumorSizeInsertTest extends TestCase {
 		
 	}
 
-	
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(ThreeDimensionalTumorSizeInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 }
 
 

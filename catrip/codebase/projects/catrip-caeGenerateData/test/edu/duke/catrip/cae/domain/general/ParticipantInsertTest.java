@@ -4,23 +4,23 @@
 
 package edu.duke.catrip.cae.domain.general;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
-import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
+import junit.textui.TestRunner;
 
 public class ParticipantInsertTest extends TestCase {
 
   private static int maxrecs = 500;
   private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\LastNamesV2.txt";
 
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\FirstNamesFemales.txt";
-  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\dob.txt";
-  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\race.txt";
-  private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\dates.txt";
-  private static String inFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\dx.txt";
-  private static String inFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\surgicalpath#.txt";
-  private static String inFile10 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\ParticipantID.txt";
+  private static String inFile2 = "data\\FirstNamesFemales.txt";
+  private static String inFile4 = "data\\dob.txt";
+  private static String inFile5 = "data\\race.txt";
+  private static String inFile7 = "data\\dates.txt";
+  private static String inFile8 = "data\\dx.txt";
+  private static String inFile9 = "data\\surgicalpath#.txt";
+  private static String inFile10 = "data\\ParticipantID.txt";
 
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];
@@ -39,18 +39,6 @@ public class ParticipantInsertTest extends TestCase {
   public ParticipantInsertTest(String sTestName) {
       super(sTestName);
   }
-
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(ParticipantInsertTest.class);
-   }
 
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
@@ -174,7 +162,13 @@ public class ParticipantInsertTest extends TestCase {
 		
 	}
 
-	
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(ParticipantInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 }
 
 

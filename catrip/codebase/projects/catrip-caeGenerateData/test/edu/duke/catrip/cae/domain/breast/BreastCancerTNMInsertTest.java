@@ -4,21 +4,22 @@
 
 package edu.duke.catrip.cae.domain.breast;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
 //import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest;
 
 public class BreastCancerTNMInsertTest extends TestCase {
   private static int maxrecs = 500;
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\T_Tumor.txt";
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\N_Nodes.txt";
-  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\M_Metastasis.txt";
-  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NodesExamined.txt";
-  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\NodesInvolved.txt";
-  private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\sites.txt";
-  private static String newFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\sitesV2.txt";
+  private static String inFile1 = "data\\T_Tumor.txt";
+  private static String inFile2 = "data\\N_Nodes.txt";
+  private static String inFile3 = "data\\M_Metastasis.txt";
+  private static String inFile4 = "data\\NodesExamined.txt";
+  private static String inFile5 = "data\\NodesInvolved.txt";
+  private static String inFile6 = "data\\sites.txt";
+  private static String newFile6 = "data\\sitesV2.txt";
   
   public String[] dataarr1 = new String[1000];
   public String[] dataarr2 = new String[1000];
@@ -32,18 +33,6 @@ public class BreastCancerTNMInsertTest extends TestCase {
   public BreastCancerTNMInsertTest(String sTestName) {
       super(sTestName);
   }
-
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(BreastCancerTNMInsertTest.class);
-   }
 
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
@@ -130,7 +119,13 @@ public class BreastCancerTNMInsertTest extends TestCase {
 		
 	}
 
-	
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(BreastCancerTNMInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 }
 
 

@@ -4,8 +4,8 @@
 <!-- created: 10/27/2006                                                                                         -->
 <!-- by:      mark s peedin                                                                                      -->
 <!-- =========================================================================================================== -->
-<project name="caGenerateData" default="jarup" basedir=".">
-
+  
+  <project name="caGenerateData" default="jarup" basedir=".">
   <property file="build.properties"/>
   <property name="project.name" value="catrip-caGenerateData" />
   <property name="src.dir" value="./src" />
@@ -18,22 +18,28 @@
   <property name="jar.dir" value="${build.dir}/jars" />
   <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
   
-  <path id="compile.classpath">
-    <fileset dir="${lib.dir}">
-      <include name="**/*.jar"/>
-    </fileset>
-  </path>
-
-   <path id="test.compile.classpath">
-    <fileset dir="${lib.dir}">
-      <include name="**/*.jar"/>
-    </fileset>
-    <pathelement location="${test.classes.dir}"/>
-    <pathelement location="${classes.dir}"/>
-  </path> 
+	<!-- =============================================================== -->
+	<!-- The compile Classpath                                           -->
+	<!-- =============================================================== -->
+  	<path id="compile.classpath">
+    		<fileset dir="${lib.dir}">
+      		<include name="**/*.jar"/>
+    		</fileset>
+  	</path>
 
 	<!-- =============================================================== -->
-	<!-- The Run Classpath                                               -->
+	<!-- The test.compile Classpath                                      -->
+	<!-- =============================================================== -->
+   	<path id="test.compile.classpath">
+    		<fileset dir="${lib.dir}">
+      		<include name="**/*.jar"/>
+    		</fileset>
+    		<pathelement location="${test.classes.dir}"/>
+    		<pathelement location="${classes.dir}"/>
+  	</path> 
+
+	<!-- =============================================================== -->
+	<!-- The run Classpath                                               -->
 	<!-- =============================================================== -->
 	<path id="run.classpath">
 		<fileset dir="${jar.dir}">
@@ -42,24 +48,24 @@
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
 		</fileset>
-		<fileset dir="${data.dir}">
-			<include name="**/*.txt" />
-		</fileset>
 	</path>
 
-  <target name="setup" description="Builds the entire application" depends="clean,init,compilesrc,compiletestsrc,jarup" />
-  <target name="insert" description="Builds the entire application" depends="ThreeDimensionalTumorSizeInsertTest" />
+	<!-- ============================================================== -->
+	<!-- Cleans the classes and build dirs                              -->
+	<!-- ============================================================== -->
+  	<target name="clean"> 
+    		<delete dir="${classes.dir}" failonerror="true" />
+    		<delete dir="${build.dir}" failonerror="true" />
+ 	</target>
 
-  <target name="clean"> 
-    <delete dir="${classes.dir}" failonerror="true" />
-    <delete dir="${build.dir}" failonerror="true" />
- </target>
+	<!-- ============================================================== -->
+	<!-- Creates the classes and build dirs                             -->
+	<!-- ============================================================== -->
+ 	<target name="init">
+    		<mkdir dir="${classes.dir}"/> 
+    		<mkdir dir="${build.dir}"/> 
+ 	</target>
 
- <target name="init">
-    <mkdir dir="${classes.dir}"/> 
-    <mkdir dir="${build.dir}"/> 
- </target>
- 
 
 	<!-- ============================================================== -->
 	<!-- Compiles the src files                                         -->
@@ -124,9 +130,12 @@
 	<!-- Creates the Participant recs in the database                   -->
 	<!-- ============================================================== -->
 	<target name="ThreeDimensionalTumorSizeInsertTest" depends="jarup" description="Creates the Participant recs in the database">
-		<java classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ThreeDimensionalTumorSizeInsertTest">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ThreeDimensionalTumorSizeInsertTest">
 		</java>
 	</target>
+
+  <target name="setup" description="Builds the entire application" depends="clean,init,compilesrc,compiletestsrc,jarup" />
+  <target name="insert" description="Builds the entire application" depends="ThreeDimensionalTumorSizeInsertTest" />
 
 
 </project>

@@ -4,10 +4,10 @@
 
 package edu.duke.catrip.cae.domain.general;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
-import edu.duke.catrip.cae.domain.general.CAEDataGenerator;
+import junit.textui.TestRunner;
 
 public class AnnotationSetInsertTest extends TestCase {
   CAEDataGenerator dg = new CAEDataGenerator();
@@ -15,18 +15,6 @@ public class AnnotationSetInsertTest extends TestCase {
   public AnnotationSetInsertTest(String sTestName) {
       super(sTestName);
   }
-
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(AnnotationSetInsertTest.class);
-   }
 
    //test reading data from ANNOTATION_EVENT_PARAMETER table and insert into ANNOTATION_SET table
 	public void testRead_Insert() throws Exception {
@@ -41,7 +29,13 @@ public class AnnotationSetInsertTest extends TestCase {
 		
 	}
 
-	
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(AnnotationSetInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 }
 
 
