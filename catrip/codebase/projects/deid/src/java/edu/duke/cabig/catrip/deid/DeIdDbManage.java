@@ -92,10 +92,10 @@ public class DeIdDbManage
 			}
 			
 			if (password != null && ! password.equals("")) {
-				stmt.executeUpdate("GRANT SELECT ON deid.users TO '" + user + "'@'%' IDENTIFIED BY '" + password + "'");				
+				stmt.executeUpdate("GRANT SELECT ON deid.users TO '" + user + "'@'localhost' IDENTIFIED BY '" + password + "'");				
 				if (! isQuiet()) System.out.println("Granted privs for user " + user + " to table deid.users");
 
-				stmt.executeUpdate("GRANT ALL PRIVILEGES ON deid." + table + " TO '" + user + "'@'%' IDENTIFIED BY '" + password + "'");				
+				stmt.executeUpdate("GRANT ALL PRIVILEGES ON deid." + table + " TO '" + user + "'@'localhost' IDENTIFIED BY '" + password + "'");				
 				if (! isQuiet()) System.out.println("Granted privs for user " + user + " to table deid." + table);
 			}
 		} finally {
