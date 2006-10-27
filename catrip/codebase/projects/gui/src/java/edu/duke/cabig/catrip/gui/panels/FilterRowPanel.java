@@ -9,8 +9,9 @@ import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JTextField;
 
@@ -115,14 +116,14 @@ public class FilterRowPanel extends javax.swing.JPanel {
             getValueBox().setText("");
             
             SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
-//            HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
-//            
-//            Iterator itt = (allBeans.values()).iterator(); 
-//            while(itt.hasNext()) {
-//                ClassBean cBean = (ClassBean) itt.next();
-//                cBean.removeAllUniqueAssociations();
-//            }
-//            SimpleGuiRegistry.setSimpleGuiChanged(true);
+            HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap(); 
+            
+            Iterator itt = (allBeans.values()).iterator();  
+            while(itt.hasNext()) {
+                ClassBean cBean = (ClassBean) itt.next();
+                cBean.removeAllUniqueAssociations();
+            }
+            SimpleGuiRegistry.setSimpleGuiChanged(true);
         }
         
     }//GEN-LAST:event_cdeComboItemStateChanged

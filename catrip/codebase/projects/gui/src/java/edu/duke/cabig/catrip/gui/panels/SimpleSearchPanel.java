@@ -372,19 +372,19 @@ public class SimpleSearchPanel extends CPanel {
         
     }//GEN-LAST:event_addFilterBtnActionPerformed
     
-    
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CJFrame jf = new CJFrame();
-                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                jf.setBounds(10,10,800,400);
-                jf.center();
-                jf.getContentPane().add(new SimpleSearchPanel());
-                jf.setVisible(true);
-            }
-        });
-    }
+//    
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                CJFrame jf = new CJFrame();
+//                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                jf.setBounds(10,10,800,400);
+//                jf.center();
+//                jf.getContentPane().add(new SimpleSearchPanel());
+//                jf.setVisible(true);
+//            }
+//        });
+//    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -502,12 +502,6 @@ public class SimpleSearchPanel extends CPanel {
     public void addToTargetObjectServiceMap(String targetObject_Service, GraphObject targetObject) {
         this.targetObjectServiceMap.put(targetObject_Service, targetObject);
     }
-    
-    
-    
-    
-    
-    
     
     
     

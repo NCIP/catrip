@@ -111,6 +111,8 @@ public class CommandPanel extends CPanel {
                     
             FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
             DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
+            // if the dcqlQueryDocument is null throw the error Dialog. 
+            // if it is not null that only fire the query with FQE to avoid Null pointer Exception.
             
             long dcqlGenerationTime = System.currentTimeMillis();
             
@@ -190,6 +192,7 @@ public class CommandPanel extends CPanel {
 //                HTMLResultExporter.exportToHtml( getMainFrame().getOutputPanel().getOutputTable());
                 
             }
+            
         } catch (Exception ex) {
             resultCountLbl.setText(" ");
             ex.printStackTrace();

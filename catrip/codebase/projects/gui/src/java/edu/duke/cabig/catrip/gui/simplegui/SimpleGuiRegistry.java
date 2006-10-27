@@ -71,6 +71,7 @@ public class SimpleGuiRegistry {
             sBean.setIcon(SwingUtils.getTextAsRandomColorImage(service.getServiceName().trim()));
             sBean.needImpl(service.needImpls());
             
+            
 //            // TODO - remove later... get this prop from properties file... same as complex gui...
 //            if (service.getServiceName().equalsIgnoreCase("caTissueCore")){
 //                sBean.needImpl(true);
@@ -277,6 +278,8 @@ public class SimpleGuiRegistry {
                 
                 assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
+                // check here if the class is available in the GraphObject tree of the Target object or not. 
+                // otherwise locate that class from the metaData registry instead of the list.
                 ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
                 tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
                 tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
