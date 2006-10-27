@@ -4,7 +4,7 @@
 <!-- created: 10/27/2006                                                                                         -->
 <!-- by:      mark s peedin                                                                                      -->
 <!-- =========================================================================================================== -->
-<project name="caGenerateData" default="compile" basedir=".">
+<project name="caGenerateData" default="jarup" basedir=".">
 
   <property file="build.properties"/>
   <property name="project.name" value="catrip-caGenerateData" />
@@ -41,16 +41,9 @@
 		<fileset dir="${jar.dir}">
 			<include name="**/*.jar" />
 		</fileset>
-<!--
-		<fileset dir="${jar.dir}">
-			<include name="**/*.jar" />
-			<exclude name="**/*test*.jar" />
-		</fileset>
-
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
 		</fileset>
--->
 	</path>
 
   <target name="setup" description="Builds the entire application" depends="clean,init,compilesrc,compiletestsrc,jarup" />
@@ -71,6 +64,7 @@
 	<!-- Compiles the src files                                         -->
 	<!-- ============================================================== -->
   	<target name="compilesrc">
+  			<mkdir dir="${classes.dir}"/>
     		<javac
       		destdir="${classes.dir}"
       		debug="on"
@@ -103,8 +97,9 @@
 	<!-- ============================================================== -->
 	<!-- Creates a jar file of src classes                              -->
 	<!-- ============================================================== -->
-	<target name="jarup" depends="" description="Builds the Jar Files">
+	<target name="jarup" depends="compilesrc,compiletestsrc" description="Builds the Jar Files">
 		<mkdir dir="${jar.dir}" />
+		<!--
 		<copy todir="${classes.dir}">
 			<fileset dir="${lib.dir}">
             	<include name="**/*.jar"/>
@@ -115,6 +110,7 @@
             	<include name="**/*.jar"/>
         	</fileset>
 		</copy>
+		-->
 		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
@@ -126,7 +122,7 @@
 	<!-- ============================================================== -->
 	<!-- Creates the Participant recs in the database                   -->
 	<!-- ============================================================== -->
-	<target name="ThreeDimensionalTumorSizeInsertTest" depends="" description="Creates the Participant recs in the database">
+	<target name="ThreeDimensionalTumorSizeInsertTest" depends="jarup" description="Creates the Participant recs in the database">
 		<java classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ThreeDimensionalTumorSizeInsertTest">
 		</java>
 	</target>
