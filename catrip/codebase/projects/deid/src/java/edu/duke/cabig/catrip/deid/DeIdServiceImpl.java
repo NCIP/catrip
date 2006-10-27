@@ -121,20 +121,27 @@ public class DeIdServiceImpl
 	{
 		String user = this.user;
 		String password = this.password;
-		if (ctx != null) {
-			Iterator iter = ctx.getEnvelope().getHeader().examineAllHeaderBlocks();
-			while (iter.hasNext()) {
-				SOAPHeaderBlock block = (SOAPHeaderBlock) iter.next();
-				if (! block.getLocalName().equals("security")) continue;
-				
-				user = block.getAttributeValue(new QName("user"));
-				password = block.getAttributeValue(new QName("password"));
-			}
-		}
-		String table = getTable(user, password);
-		
-		Connection con = DriverManager.getConnection(dbUrl, user, password);
+		String table = null;
 		try {
+			if (ctx != null) {
+				Iterator iter = ctx.getEnvelope().getHeader().examineAllHeaderBlocks();
+				while (iter.hasNext()) {
+					SOAPHeaderBlock block = (SOAPHeaderBlock) iter.next();
+					if (! block.getLocalName().equals("security")) continue;
+					
+					user = block.getAttributeValue(new QName("user"));
+					password = block.getAttributeValue(new QName("password"));
+				}
+			}
+			table = getTable(user, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(dbUrl, user, password);
 			Statement stmt = con.createStatement();
 			String val = null;
 			
@@ -151,18 +158,21 @@ public class DeIdServiceImpl
 			do {
 				if (--checkCount == 0) throw new Exception("unable to find a random value for your phi");
 				val = RandomUtils.generateRandomValue(rand);
-				rs = stmt.executeQuery("select count(id) from deid.deid where val='" + val + "'");
+				rs = stmt.executeQuery("select count(id) from deid." + table + " where val='" + val + "'");
 				rs.next();
 				int count = rs.getInt(1);
 				rs.close();
 				if (count == 0) break;
 			} while (true);
-			stmt.executeUpdate("insert into deid.deid(phi,val) values ('" + phi + "','" + val + "')");
+			stmt.executeUpdate("insert into deid." + table + "(phi,val) values ('" + phi + "','" + val + "')");
 			stmt.close();
 			
 			return val;
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
 		} finally {
-			try { con.close(); } catch (Exception e) { }
+			try { if (con != null) con.close(); } catch (Exception e) { }
 		}
 	}
 	
