@@ -8,7 +8,10 @@ import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
 import gov.nih.nci.cagrid.cqlquery.Object;
 import gov.nih.nci.cagrid.cqlquery.Predicate;
 import gov.nih.nci.cagrid.cqlquery.QueryModifier;
+import gov.nih.nci.cagrid.data.MalformedQueryException;
 import gov.nih.nci.cagrid.data.QueryProcessingException;
+
+import java.lang.reflect.Field;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +23,7 @@ import java.util.Map;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  * 
  * @created Jul 19, 2006 
- * @version $Id: LocalCQL2HQL.java,v 1.1 2006-10-26 19:33:15 srakkala Exp $ 
+ * @version $Id: LocalCQL2HQL.java,v 1.2 2006-10-28 20:57:11 srakkala Exp $ 
  */
 public class LocalCQL2HQL {
 	public static final String TARGET_ALIAS = "xxTargetAliasxx";
@@ -180,7 +183,7 @@ public class LocalCQL2HQL {
 			} else {
 				hql.append(" where ");
 			}
-			processAttribute(hql, target.getAttribute(), true);
+			processAttribute(hql, target.getAttribute(), true, objName);
 		}
 		if (target.getAssociation() != null) {
 			if (eliminateSubclasses) {
@@ -215,7 +218,7 @@ public class LocalCQL2HQL {
 		hql.append("select id From ").append(objName);
 		if (obj.getAttribute() != null) {
 			hql.append(" where ");
-			processAttribute(hql, obj.getAttribute(), false);
+			processAttribute(hql, obj.getAttribute(), false, objName);
 		}
 		if (obj.getAssociation() != null) {
 			hql.append(" where ");
@@ -227,7 +230,47 @@ public class LocalCQL2HQL {
 		}
 	}
 	
-	
+    /**
+    * Checks if the field name(propety) exists in the list of declared fields of given object (objectType)
+    * Added by Srini Akkala , SemanticBits srini.akkala@semanticbits.com
+    * @param property
+    * @param objectType
+    * @return
+    */
+    private boolean checkFiled(String property, Class objectType){
+        Field[] declaredFields = objectType.getDeclaredFields();
+        Field field = null;
+        boolean found = false;
+        for (int i=0; i<declaredFields.length; i++) {
+            field = (Field)declaredFields[i];
+            if (property.equals(field.getName())) {
+                found = true;
+                break;
+            }
+            
+        }
+        return found;
+    }	
+    
+       private Class getClassToCheck(String property , Class cls) {
+           boolean found = checkFiled(property,cls); 
+           
+           if(!found){
+               Class superClass  = cls.getSuperclass();
+               while (superClass != null) {
+                   found = checkFiled(property,superClass);  
+                   
+                   if (found) {
+                       cls = superClass;
+                       break;
+                   } else {
+                       superClass = superClass.getSuperclass();
+                   }
+               }
+           }  
+           
+           return cls;
+       }
 	/**
 	 * Proceses an Attribute of a CQL Query.
 	 * 
@@ -237,13 +280,34 @@ public class LocalCQL2HQL {
 	 * 		The attribute to process into HQL
 	 * @throws QueryProcessingException
 	 */
-	private void processAttribute(StringBuilder hql, Attribute attrib, boolean useAlias) throws QueryProcessingException {
-		//if (useAlias) {
-		//	hql.append(TARGET_ALIAS).append(".");
-		//}
+	private void processAttribute(StringBuilder hql, Attribute attrib, boolean useAlias, String objName) throws QueryProcessingException {
+                Class cls = null;
+                Field field = null;
+                String property = attrib.getName();
+                Predicate predicate = attrib.getPredicate();
+                String predValue = convertPredicate(predicate);
                 
-		//hql.append(attrib.getName());
-		Predicate predicate = attrib.getPredicate();
+                boolean isFieldBoolean = false;
+                
+                try {
+                    cls = Class.forName(objName);
+                } catch (Exception e) {
+                    throw new QueryProcessingException(e);
+                }
+                cls = getClassToCheck(property,cls);
+                
+                try {
+                    field = cls.getDeclaredField(property);
+                } catch (NoSuchFieldException ex) {
+                    throw new QueryProcessingException("No property " + property + " was found on type " + cls.getName());
+                } 
+            
+                Class propertyType = field.getType();
+                if (propertyType == Boolean.class) {
+                        isFieldBoolean=true;
+                }
+                
+		
                 boolean oracle = false;
                 if (dialect.indexOf("Oracle") > 0){
                     oracle = true;
@@ -257,42 +321,49 @@ public class LocalCQL2HQL {
                                 if (useAlias) {
                                         hql.append(TARGET_ALIAS).append(".");
                                 }        
-                            hql.append(attrib.getName());
+                            hql.append(property);
                             hql.append(")");                    
                     } else {
                         if (useAlias) {
                                 hql.append(TARGET_ALIAS).append(".");
                         } 
-                        hql.append(attrib.getName()); 
+                        hql.append(property); 
                     }
                 } else {
                     hql.append(attrib.getName()); 
                 }
-      
                 
 		// unary predicates
 		if (predicate.equals(Predicate.IS_NULL)) {
 			hql.append(" is null");
 		} else if (predicate.equals(Predicate.IS_NOT_NULL)) {
 			hql.append(" is not null");
-
-		} else if (oracle) {
+		} else if (isFieldBoolean) {      
+                    hql = buildQryWithOutQuotes(predValue,attrib.getValue().replace("%",""),hql); 
+                } else if (oracle) {
                     if (predicate.equals(Predicate.EQUAL_TO) || 
                         predicate.equals(Predicate.LIKE) || 
                         predicate.equals(Predicate.NOT_EQUAL_TO)) {
-                            String predValue = convertPredicate(predicate);
-                            hql.append(" ").append(predValue).append(" lower('").append(attrib.getValue()).append("')");
+                            hql = buildQryWithLower(predValue,attrib.getValue(),hql);
                    } else {
-                        String predValue = convertPredicate(predicate);
-                        hql.append(" ").append(predValue).append(" '").append(attrib.getValue()).append("'");                       
+                        hql = buildQryWithQuotes(predValue,attrib.getValue(),hql);                      
                     }                    
                 } else {
-                    String predValue = convertPredicate(predicate);
-                    hql.append(" ").append(predValue).append(" '").append(attrib.getValue()).append("'");                     
+                    hql = buildQryWithQuotes(predValue,attrib.getValue(),hql);                     
                 }
-	}
-	
-	
+        }
+        
+        private StringBuilder buildQryWithLower(String predValue,String attrValue, StringBuilder hql){
+            return  hql.append(" ").append(predValue).append(" lower('").append(attrValue).append("')");
+        }
+
+        private StringBuilder buildQryWithQuotes(String predValue,String attrValue, StringBuilder hql){
+            return hql.append(" ").append(predValue).append(" '").append(attrValue).append("'");  
+        }
+        
+        private StringBuilder buildQryWithOutQuotes(String predValue,String attrValue, StringBuilder hql){
+            return hql.append(" ").append(predValue).append(" ").append(attrValue);  
+        }    
 	/**
 	 * Processes an Association of a CQL Query.
 	 * 
@@ -343,7 +414,7 @@ public class LocalCQL2HQL {
 		if (group.getAttribute() != null) {
 			for (int i = 0; i < group.getAttribute().length; i++) {
 				logicClauseNeeded = true;
-				processAttribute(hql, group.getAttribute(i), useAlias);
+				processAttribute(hql, group.getAttribute(i), useAlias,parentName);
 				if (i + 1 < group.getAttribute().length) {
 					hql.append(" ").append(logic).append(" ");
 				}
