@@ -12,8 +12,7 @@ import junit.textui.TestRunner;
 public class ParticipantInsertTest extends TestCase {
 
   private static int maxrecs = 500;
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-caeGenerateData\\data\\LastNamesV2.txt";
-
+  private static String inFile1 = "data\\LastNamesV2.txt";
   private static String inFile2 = "data\\FirstNamesFemales.txt";
   private static String inFile4 = "data\\dob.txt";
   private static String inFile5 = "data\\race.txt";

@@ -826,7 +826,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 	}
 	
 	
-//Builds the ANNOTATION_SET object recs in db
+//Builds the Accession_Characteristics object recs in db
 	public void buildBreastCancerAccessionCharacteristics(int maxrecs,String[] col1,String[] col2) throws ParseException
 
 	{
@@ -929,7 +929,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 	     }
 	}
 	
-	//builds maxrecs recs in db
+	//builds the Breast_Cancer_Biomarkers  object recs in db
 	public void buildBreastCancerBiomarkers(int maxrecs,String[] col1,String[] col2,String[] col3,String[] col4,String[] col5) throws ParseException
 
 	{
