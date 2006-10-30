@@ -124,6 +124,9 @@ public class DeIdServiceImpl
 		String table = null;
 		try {
 			if (ctx != null) {
+				System.out.println(ctx.getEnvelope());
+			}
+			if (ctx != null && ctx.getEnvelope().getHeader() != null) {
 				Iterator iter = ctx.getEnvelope().getHeader().examineAllHeaderBlocks();
 				while (iter.hasNext()) {
 					SOAPHeaderBlock block = (SOAPHeaderBlock) iter.next();
