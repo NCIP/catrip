@@ -1187,6 +1187,12 @@
 						<ns24:enumerationCollection/>
 					</ns24:ValueDomain>
 				</ns24:UMLAttribute>
+				<ns24:UMLAttribute dataTypeName="java.lang.String" description="description." name="EGFRStatus" publicID="12345" version="1.0" xsi:type="ns24:UMLAttribute">
+					<ns24:SemanticMetadata conceptCode="C12345" conceptDefinition="description." conceptName="EGFR Status" order="0" xsi:type="ns24:SemanticMetadata"/>
+					<ns24:ValueDomain longName="java.lang.String" xsi:type="ns24:ValueDomain">
+						<ns24:enumerationCollection/>
+					</ns24:ValueDomain>
+				</ns24:UMLAttribute>
 			</ns24:umlAttributeCollection>
 			<ns24:SemanticMetadata conceptCode="C12345" conceptDefinition="Definition.." conceptName="Breast Carcinoma Tumor Marker" order="0" xsi:type="ns24:SemanticMetadata"/>
 		</ns24:UMLClass>
