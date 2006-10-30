@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://deid.catrip.cabig.duke.edu/xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://ws.apache.org/axis2" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ws.apache.org/axis2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema xmlns:ns="http://deid.catrip.cabig.duke.edu/xsd" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://deid.catrip.cabig.duke.edu/xsd">
+      <s:element name="deid">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="phi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="security">
+        <s:complexType>
+          <s:attribute name="user" type="s:string" />
+          <s:attribute name="password" type="s:string" />
+        </s:complexType>
+      </s:element>
+      <s:element name="deidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="return" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="deidMessage">
+    <wsdl:part name="part1_header" element="s0:security" />
+    <wsdl:part name="part1" element="s0:deid" />
+  </wsdl:message>
+  <wsdl:message name="deidResponse">
+    <wsdl:part name="part1" element="s0:deidResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DeIdServicePortType">
+    <wsdl:operation name="deid">
+      <wsdl:input message="tns:deidMessage" />
+      <wsdl:output message="tns:deidResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DeIdServiceSOAP11Binding" type="tns:DeIdServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="deid">
+      <soap:operation soapAction="urn:deid" style="document" />
+      <wsdl:input>
+        <soap:header message="tns:deidMessage" part="part1_header" use="literal" />
+        <soap:body use="literal" namespace="http://ws.apache.org/axis2" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="http://ws.apache.org/axis2" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeIdServiceSOAP12Binding" type="tns:DeIdServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    <wsdl:operation name="deid">
+      <soap12:operation style="document" soapAction="urn:deid" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <wsdl:input>
+        <soap12:header message="axis2:deidMessage" part="part1_header" use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+        <soap12:body namespace="http://ws.apache.org/axis2" use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body namespace="http://ws.apache.org/axis2" use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeIdServiceHttpBinding" type="tns:DeIdServicePortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="deid">
+      <http:operation location="deid" />
+      <wsdl:input>
+        <mime:content type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DeIdService">
+    <wsdl:port name="DeIdServiceSOAP11port0" binding="tns:DeIdServiceSOAP11Binding">
+      <soap:address location="https://catrip1.duhs.duke.edu:8443/axis2/services/DeIdService" />
+    </wsdl:port>
+    <wsdl:port name="DeIdServiceSOAP11port1" binding="tns:DeIdServiceSOAP11Binding">
+      <soap:address location="http://catrip1.duhs.duke.edu:8080/axis2/services/DeIdService" />
+    </wsdl:port>
+    <wsdl:port name="DeIdServiceSOAP12port0" binding="tns:DeIdServiceSOAP12Binding">
+      <soap12:address location="https://catrip1.duhs.duke.edu:8443/axis2/services/DeIdService" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    </wsdl:port>
+    <wsdl:port name="DeIdServiceSOAP12port1" binding="tns:DeIdServiceSOAP12Binding">
+      <soap12:address location="http://catrip1.duhs.duke.edu:8080/axis2/services/DeIdService" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    </wsdl:port>
+    <wsdl:port name="DeIdServiceHttpport0" binding="tns:DeIdServiceHttpBinding">
+      <http:address location="https://catrip1.duhs.duke.edu:8443/axis2/rest/DeIdService" />
+    </wsdl:port>
+    <wsdl:port name="DeIdServiceHttpport1" binding="tns:DeIdServiceHttpBinding">
+      <http:address location="http://catrip1.duhs.duke.edu:8080/axis2/rest/DeIdService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
