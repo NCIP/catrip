@@ -3,12 +3,14 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -174,6 +176,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     
     public void fillCdeCombo2(List<GraphObject> objs) {
+        ArrayList<CDEComboboxBean> attributeList = new ArrayList<CDEComboboxBean>(100); // for sorting.
         
         for (int i=0;i<objs.size();i++) {
             GraphObject gObj = objs.get(i);
@@ -187,13 +190,20 @@ public class FilterRowPanel extends javax.swing.JPanel {
                     cdeBean.setGraphObject(gObj);
 //                    cdeBean.setClassBean(cBean);
                     cdeBean.setAttributeBean(aBean);
-                    getCdeCombo().addItem(cdeBean);
+                    attributeList.add(cdeBean);
+//                    getCdeCombo().addItem(cdeBean); 
                 }
             }
         }
         
         // add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
-//        Collections.sort(attributes); 
+        Collections.sort(attributeList, new CDEComboboxBeanComparator());
+        for (int i = 0; i < attributeList.size(); i++) {
+            getCdeCombo().addItem(attributeList.get(i)); 
+        }
+        
+        
+        
         
     }
     
