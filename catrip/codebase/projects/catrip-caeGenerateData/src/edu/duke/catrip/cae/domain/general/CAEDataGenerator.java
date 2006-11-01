@@ -862,7 +862,10 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 			bcac.setOtherSurgicalProcedure(dataInsertTable[rowcnt][0]);
 			System.out.println("\t\t\t\tOtherSurgicalProcedure = "+dataInsertTable[rowcnt][0]);
 			Set <String> surgicalSet = new HashSet();
+			//Set surgicalSet = new HashSet();
+			
 			for (int i = 0; i < maxrecs; i++) {
+				
 				if(dataInsertTable[i][1] == "n/a") break;
 				//System.out.println("\t\t\t\t\tChking dataInsertTable[i][1] = "+dataInsertTable[i][1]+"...");
 				int loc = dataInsertTable[i][1].toLowerCase().indexOf(dataInsertTable[rowcnt][0].toLowerCase());      
@@ -872,6 +875,7 @@ public class CAEDataGenerator extends DataGeneratorToolKit
 					System.out.println("\t\t\t\t\t\tsurgicalSet = "+dataInsertTable[i][1]);
 				}
 			}
+
 			bcac.setSurgicalProcedure(surgicalSet);
 			create(bcac);
 
