@@ -36,7 +36,7 @@ public class CaTissueCoreConfigureStep
 		FileUtils.copy(configFile, origFile);
 		
 		String connectionUrl = System.getProperty("catissuecore.connectionurl", 
-			"jdbc:mysql://catrip1.duhs.duke.edu:3306/catissuecore"
+			"jdbc:mysql://catrip1.duhs.duke.edu:3306/catissuecore_test"
 		); 
 		String user = System.getProperty("catissuecore.username", 
 			"catissue_core"
@@ -47,7 +47,7 @@ public class CaTissueCoreConfigureStep
 		
 		FileUtils.replace(
 			configFile,
-			"<property name=\"connection.url\">jdbc:mysql://catrip1:3306/catissuecore</property>",
+			"<property name=\"connection.url\">jdbc:mysql://localhost:3306/catissuecore_test</property>",
 			"<property name=\"connection.url\">" + connectionUrl + "</property>"			
 		);
 		FileUtils.replace(
