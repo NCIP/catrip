@@ -1,0 +1,4 @@
+FILE="R:\Projects\caTRIP\cgems\cgems_user.DMP"
+LOG="R:\Projects\caTRIP\cgems\exp_cgems_user.log"
+OWNER=('CGEMS')
+FEEDBACK=1000

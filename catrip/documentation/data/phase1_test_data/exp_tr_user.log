@@ -1,0 +1,60 @@
+
+Connected to: Oracle Database 10g Enterprise Edition Release 10.2.0.2.0 - Production
+With the Partitioning, OLAP and Data Mining options
+Export done in WE8MSWIN1252 character set and AL16UTF16 NCHAR character set
+
+About to export specified users ...
+. exporting pre-schema procedural objects and actions
+. exporting foreign function library names for user TR 
+. exporting PUBLIC type synonyms
+. exporting private type synonyms
+. exporting object type definitions for user TR 
+About to export TR's objects ...
+. exporting database links
+. exporting sequence numbers
+. exporting cluster definitions
+. about to export TR's tables via Conventional Path ...
+. . exporting table                       ACTIVITY
+..
+                                                         2593 rows exported
+. . exporting table               ACTIVITY_SUMMARY
+                                                            0 rows exported
+. . exporting table                        ADDRESS
+.
+                                                         1002 rows exported
+. . exporting table          COLLABORATIVE_STAGING
+                                                            6 rows exported
+. . exporting table                      DIAGNOSIS
+                                                          503 rows exported
+. . exporting table                 DISEASE_EXTENT
+                                                          286 rows exported
+. . exporting table                   DISTANT_SITE
+                                                          156 rows exported
+. . exporting table      FIRST_COURSE_TRMT_SUMMARY
+                                                          502 rows exported
+. . exporting table                      FOLLOW_UP
+..
+                                                         2700 rows exported
+. . exporting table                        PATIENT
+                                                          500 rows exported
+. . exporting table             PATIENT_IDENTIFIER
+                                                          500 rows exported
+. . exporting table                     RECURRENCE
+                                                          115 rows exported
+. exporting synonyms
+. exporting views
+. exporting stored procedures
+. exporting operators
+. exporting referential integrity constraints
+. exporting triggers
+. exporting indextypes
+. exporting bitmap, functional and extensible indexes
+. exporting posttables actions
+. exporting materialized views
+. exporting snapshot logs
+. exporting job queues
+. exporting refresh groups and children
+. exporting dimensions
+. exporting post-schema procedural objects and actions
+. exporting statistics
+Export terminated successfully without warnings.

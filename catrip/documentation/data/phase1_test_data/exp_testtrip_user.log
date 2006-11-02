@@ -1,0 +1,121 @@
+
+Connected to: Oracle Database 10g Enterprise Edition Release 10.2.0.2.0 - Production
+With the Partitioning, OLAP and Data Mining options
+Export done in WE8MSWIN1252 character set and AL16UTF16 NCHAR character set
+
+About to export specified users ...
+. exporting pre-schema procedural objects and actions
+. exporting foreign function library names for user TESTTRIP 
+. exporting PUBLIC type synonyms
+. exporting private type synonyms
+. exporting object type definitions for user TESTTRIP 
+About to export TESTTRIP's objects ...
+. exporting database links
+. exporting sequence numbers
+. exporting cluster definitions
+. about to export TESTTRIP's tables via Conventional Path ...
+. . exporting table                      ACCESSION
+.
+                                                         1000 rows exported
+. . exporting table      ACCESSION_CHARACTERISTICS
+                                                            8 rows exported
+. . exporting table            ADDITIONAL_FINDINGS
+                                                            0 rows exported
+. . exporting table                            AEP
+....
+                                                         4701 rows exported
+. . exporting table             ANNOTATABLE_ENTITY
+.......
+                                                         7000 rows exported
+. . exporting table                    ANNOTATIONS
+                                                            0 rows exported
+. . exporting table          ANNOTATIONS_DATE_DATA
+                                                            0 rows exported
+. . exporting table        ANNOTATIONS_DOUBLE_DATA
+                                                            0 rows exported
+. . exporting table          ANNOTATIONS_LONG_DATA
+                                                            0 rows exported
+. . exporting table      ANNOTATIONS_SET_RELATIONS
+                                                           73 rows exported
+. . exporting table ANNOTATIONS_SET_RELATIONS_VIEW
+                                                           73 rows exported
+. . exporting table        ANNOTATIONS_STRING_DATA
+                                                            0 rows exported
+. . exporting table               ANNOTATION_CODES
+                                                            7 rows exported
+. . exporting table     ANNOTATION_EVENT_PARAMETER
+....
+                                                         4701 rows exported
+. . exporting table                 ANNOTATION_SET
+........
+                                                         8140 rows exported
+. . exporting table               ANNOTATION_VALUE
+                                                            0 rows exported
+. . exporting table                      AUDIT_LOG
+                                                            0 rows exported
+. . exporting table       BREAST_CANCER_BIOMARKERS
+                                                          500 rows exported
+. . exporting table    BREAST_CANCER_TNMF_FINDINGS
+                                                          500 rows exported
+. . exporting table               BREAST_LOCATIONS
+.
+                                                         1000 rows exported
+. . exporting table            BREAST_MC_LOCATIONS
+.
+                                                         1000 rows exported
+. . exporting table      BREAST_MET_ANATOMIC_SITES
+.
+                                                         1000 rows exported
+. . exporting table    BREAST_NEO_HSTOPTHLGC_TYPES
+                                                          500 rows exported
+. . exporting table   BREAST_NOTT_HISTOPATH_GRADES
+                                                          500 rows exported
+. . exporting table  BREAST_OTHER_HISTOPATH_GRADES
+                                                          500 rows exported
+. . exporting table    BREAST_SPECMN_CHARACTERSTIC
+                                                            8 rows exported
+. . exporting table     BREAST_SURGICAL_PROCEDURES
+                                                           26 rows exported
+. . exporting table                 CAE_STAGED_XML
+                                                            0 rows exported
+. . exporting table                 CASE_LIST_ITEM
+                                                            0 rows exported
+. . exporting table                    DATA_SOURCE
+                                                            3 rows exported
+. . exporting table DELETED_ANNOTATION_EVENT_PARAM
+                                                            0 rows exported
+. . exporting table               EVENT_PARAMETERS
+....
+                                                         4701 rows exported
+. . exporting table      INVASIVE_BREAST_CARCINOMA
+                                                          500 rows exported
+. . exporting table                     LEVEL_CODE
+                                                            4 rows exported
+. . exporting table                  MISSING_PARTS
+                                                          328 rows exported
+. . exporting table                    PARTICIPANT
+                                                          500 rows exported
+. . exporting table        PARTICIPANT_IDENTIFIERS
+                                                          500 rows exported
+. . exporting table                       SPECIMEN
+..
+                                                         2000 rows exported
+. . exporting table   THREE_DIMENSIONAL_TUMOR_SIZE
+                                                          500 rows exported
+. exporting synonyms
+. exporting views
+. exporting stored procedures
+. exporting operators
+. exporting referential integrity constraints
+. exporting triggers
+. exporting indextypes
+. exporting bitmap, functional and extensible indexes
+. exporting posttables actions
+. exporting materialized views
+. exporting snapshot logs
+. exporting job queues
+. exporting refresh groups and children
+. exporting dimensions
+. exporting post-schema procedural objects and actions
+. exporting statistics
+Export terminated successfully without warnings.
