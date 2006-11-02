@@ -9,6 +9,7 @@
 
 	<!-- call the test target for each project and aggregates the log resutls  -->
 	<target name="test" description="Runs the tests">
+		<property name="test" value="*Test"/>
 		<property name="cobertura.home" location="../../share/cobertura-1.8"/>
 		<property name="testcoverage.datafile" location="${test.logs.dir}/queryengine.ser"/>
 		
@@ -30,8 +31,11 @@
 
 			<batchtest fork="yes" todir="${junit.results.dir}">
 				<fileset dir="${test.src.dir}">
+					<!--
 					<include name="**/*TestCase.java"/>
 					<include name="**/*Test.java"/>
+					-->
+					<include name="**/${test}.java" />
 				</fileset>
 			</batchtest>
 		</junit>
