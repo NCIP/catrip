@@ -3,11 +3,15 @@
  */
 package edu.duke.cabig.catrip.test.system;
 
+import edu.duke.cabig.catrip.test.system.steps.CAECleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CAEConfigureStep;
+import edu.duke.cabig.catrip.test.system.steps.CGEMSCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CGEMSConfigureStep;
+import edu.duke.cabig.catrip.test.system.steps.CaTissueCoreCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.CaTissueCoreConfigureStep;
 import edu.duke.cabig.catrip.test.system.steps.DQEConfigureStep;
 import edu.duke.cabig.catrip.test.system.steps.DQEInvokeStep;
+import edu.duke.cabig.catrip.test.system.steps.TumorRegistryCleanupStep;
 import edu.duke.cabig.catrip.test.system.steps.TumorRegistryConfigureStep;
 import gov.nci.nih.cagrid.tests.core.util.GlobusHelper;
 import gov.nci.nih.cagrid.tests.core.steps.GlobusCleanupStep;
@@ -47,7 +51,12 @@ public class DQETest
 	private File caeServiceDir;
 	private File cgemsServiceDir;
 	private File tumorRegistryServiceDir;
-	
+
+	private CAECleanupStep caeCleanupStep;
+	private CaTissueCoreCleanupStep caTissueCoreCleanupStep;
+	private TumorRegistryCleanupStep tumorRegistryCleanupStep;
+	private CGEMSCleanupStep cgemsCleanupStep;
+
 	public DQETest()
 	{
 		super();
@@ -65,6 +74,18 @@ public class DQETest
 		if (globus != null) {
 			globus.stopGlobus(port);
 			globus.cleanupTempGlobus();
+		}
+		if (caeCleanupStep != null) {
+			caeCleanupStep.runStep();
+		}
+		if (caTissueCoreCleanupStep != null) {
+			caTissueCoreCleanupStep.runStep();
+		}
+		if (tumorRegistryCleanupStep != null) {
+			tumorRegistryCleanupStep.runStep();
+		}
+		if (cgemsCleanupStep != null) {
+			cgemsCleanupStep.runStep();
 		}
 	}
 	
@@ -95,10 +116,15 @@ public class DQETest
 		Vector steps = new Vector();
 		steps.add(new GlobusCreateStep(globus));
 		
-		steps.add(new CaTissueCoreConfigureStep(caTissueCoreServiceDir));
-		steps.add(new CAEConfigureStep(caeServiceDir));
-		steps.add(new CGEMSConfigureStep(cgemsServiceDir));
-		steps.add(new TumorRegistryConfigureStep(tumorRegistryServiceDir));
+		CaTissueCoreConfigureStep caTissueCoreConfigStep = new CaTissueCoreConfigureStep(caTissueCoreServiceDir); 
+		CAEConfigureStep caeConfigStep = new CAEConfigureStep(caeServiceDir); 
+		CGEMSConfigureStep cgemsConfigStep = new CGEMSConfigureStep(cgemsServiceDir); 
+		TumorRegistryConfigureStep tumorRegistryConfigStep = new TumorRegistryConfigureStep(tumorRegistryServiceDir); 
+		
+		steps.add(caTissueCoreConfigStep);
+		steps.add(caeConfigStep);
+		steps.add(cgemsConfigStep);
+		steps.add(tumorRegistryConfigStep);
 		
 		steps.add(new DQEConfigureStep(dqeConfigFile, port));
 		
@@ -117,6 +143,10 @@ public class DQETest
 		}
 		steps.add(new GlobusStopStep(globus, port));
 		steps.add(new GlobusCleanupStep(globus));
+		steps.add(caeCleanupStep = new CAECleanupStep(caeConfigStep));
+		steps.add(caTissueCoreCleanupStep = new CaTissueCoreCleanupStep(caTissueCoreConfigStep));
+		steps.add(cgemsCleanupStep = new CGEMSCleanupStep(cgemsConfigStep));
+		steps.add(tumorRegistryCleanupStep = new TumorRegistryCleanupStep(tumorRegistryConfigStep));
 		return steps;
 	}
 
