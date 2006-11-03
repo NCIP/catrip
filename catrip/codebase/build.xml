@@ -321,6 +321,7 @@
 			<artifact refid="caTissueCoreDataService.jars" />
 			<artifact refid="CGEMSDataService.jars" />
 			<artifact refid="TumorRegistryDataService.jars" />
+			<artifact refid="xml.mapping.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/test-system" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
