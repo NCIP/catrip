@@ -228,7 +228,6 @@
 		</artifact>
 
 		<artifact track="main" type="jars" id="xml.mapping.jars">
-			<antcall target="build-test-report" />
 			<fileset dir="${projects.dir}/gui/lib">
 				<include name="_xml-mapping.jar" />
 			</fileset>
