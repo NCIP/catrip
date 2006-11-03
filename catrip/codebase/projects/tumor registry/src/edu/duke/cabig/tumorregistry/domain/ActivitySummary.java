@@ -21,6 +21,8 @@ public class ActivitySummary {
 	private java.util.Set summaryActivityCollection;
 	private Diagnosis diagnosis;
 
+	// data load
+	private String type;
 	public ActivitySummary(){
 
 	}
@@ -91,6 +93,14 @@ public class ActivitySummary {
 
 	public void setDiagnosis(Diagnosis diagnosis) {
 		this.diagnosis = diagnosis;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

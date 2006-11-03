@@ -4,6 +4,8 @@ import java.lang.Integer;
 import java.lang.Boolean;
 import java.util.Date;
 
+import edu.duke.cabig.tumorregistry.dataload.Lookup;
+
 
 
 
@@ -21,12 +23,15 @@ public abstract class Activity {
 	private String characterization;
 	private String performedIndicator;
 	private Diagnosis diagnosis;
+	protected String characterizationCode;
 	private ActivitySummary localActivity;
 	private ActivitySummary summaryActivity;
 	
 	// for data load
 	private Long sequenceNumber;
 	private Long accountNumber;
+	private String classType;
+	private String txCodeGroup;
 	
 	public String getPerformedIndicator() {
 		return performedIndicator;
@@ -122,6 +127,31 @@ public abstract class Activity {
 
 	public void setAccountNumber(Long accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+
+	public String getCharacterizationCode() {
+		return characterizationCode;
+	}
+
+	public void setCharacterizationCode(String characterizationCode) {
+		this.characterizationCode = characterizationCode;
+		setCharacterization(Lookup.getInstance().getNonSurgeryData(characterizationCode, "BIOPSY"));
+	}
+
+	public String getClassType() {
+		return classType;
+	}
+
+	public void setClassType(String classType) {
+		this.classType = classType;
+	}
+
+	public String getTxCodeGroup() {
+		return txCodeGroup;
+	}
+
+	public void setTxCodeGroup(String txCodeGroup) {
+		this.txCodeGroup = txCodeGroup;
 	}
 
 }

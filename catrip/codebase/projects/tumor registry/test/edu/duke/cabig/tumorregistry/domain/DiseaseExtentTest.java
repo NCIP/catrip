@@ -52,6 +52,31 @@ public class DiseaseExtentTest extends TestCase {
 			assertTrue(false);
 		}
 	}
+	
+	public void testRecurranceToDistantSite() throws Exception {
+		Recurrence recurrence = new Recurrence();
+		recurrence.setId(Long.valueOf(105));
+		recurrence.setDate(new java.util.Date(0));
+		recurrence.setType("test");
+				
+		DistantSite distantSite = new DistantSite();
+		distantSite.setId(Long.valueOf(105));
+		distantSite.setName("test");
+		Set<DistantSite> distantSiteCollection = new HashSet<DistantSite>();
+		distantSiteCollection.add(distantSite);
+		
+		try{
+			//distantSite.setRecurrence(recurrence);
+			//HibernateUtil.create(distantSite);
+
+			recurrence.setDistantSiteCollection(distantSiteCollection);
+			HibernateUtil.create(recurrence);
+		} 
+		catch (HibernateException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
+	}
 
 	public void testFollowupToDiagnosis() throws Exception {
 		Diagnosis diagnosis = new Diagnosis();
@@ -77,17 +102,21 @@ public class DiseaseExtentTest extends TestCase {
 
 	public void testDistantSiteToRecurrence() throws Exception {
 		Recurrence recurrence = new Recurrence();
-		recurrence.setId(Long.valueOf((100)));
+		recurrence.setId(Long.valueOf((1000)));
 		recurrence.setType("type");
 		recurrence.setDate(new java.sql.Date(0));
 		
 		DistantSite distantSite = new DistantSite();
 		distantSite.setId(getNextDistantSiteId());
 		distantSite.setName("name0");
-		
-		distantSite.setRecurrence(recurrence);
+		Set<DistantSite> distantSiteCollection = new HashSet<DistantSite>();
+		distantSiteCollection.add(distantSite);
 		try{
-			HibernateUtil.create(distantSite);
+			recurrence.setDistantSiteCollection(distantSiteCollection);
+			HibernateUtil.create(recurrence);
+
+			//distantSite.setRecurrence(recurrence);
+			//HibernateUtil.create(distantSite);
 		} 
 		catch (HibernateException e) {
 			e.printStackTrace();
@@ -154,7 +183,7 @@ public class DiseaseExtentTest extends TestCase {
 		diseaseExtent.setPathologicMetStage("pathologicMetStage");
 		diseaseExtent.setPathologicNodeStage("pathologicNodeStage");
 		diseaseExtent.setPathologicTumorStage("pathologicTumorStage");
-		//diseaseExtent.setRegionalNodesExamined(Integer.valueOf("23"));
+		diseaseExtent.setRegionalNodesExamined(Integer.valueOf("23"));
 		//diseaseExtent.setRegionalNodesPositive(Integer.valueOf("23"));
 		diseaseExtent.setTnmEdition("tnmEdition");
 		diseaseExtent.setTumorMarker1("tumorMarker1");

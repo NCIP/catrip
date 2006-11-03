@@ -12,7 +12,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -68,7 +67,7 @@ public class PatientTest extends TestCase {
 	}
 	public void testDiagnosisToAddress(){
 		try{
-			Long patientId = getNextPatientId();
+			//Long patientId = getNextPatientId();
 			Diagnosis diagnosis = new Diagnosis();
 			diagnosis.setId(Long.valueOf(102));
 			diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
@@ -95,22 +94,55 @@ public class PatientTest extends TestCase {
 		try{
 		Long patientId = getNextPatientId();
 		Diagnosis diagnosis = new Diagnosis();
-		diagnosis.setId(getNextPatientId());
+		diagnosis.setId(patientId);
 		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
 		diagnosis.setCauseOfDeath("infection");
 		Patient patient = new Patient();
 		patient.setId(patientId);
 		patient.setDateOfBirth(new Date(0));
 		patient.setDateOfDeath(new Date(0));
-		diagnosis.setPatient(patient);
-			HibernateUtil.create(diagnosis);
+		Set<Diagnosis> diagnosisCollection = new HashSet<Diagnosis>();
+		diagnosisCollection.add(diagnosis);
+		patient.setDiagnosisCollection(diagnosisCollection);
+		HibernateUtil.create(patient);
+
+		
+		//diagnosis.setPatient(patient);
+		//	HibernateUtil.create(diagnosis);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}		
 	}
-	
+
+	public void testDiagnosisToDiseaseExtent(){
+		try{
+		Long patientId = getNextPatientId();
+		Diagnosis diagnosis = new Diagnosis();
+		diagnosis.setId(patientId);
+		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
+		diagnosis.setCauseOfDeath("infection");
+		
+		DiseaseExtent diseaseExtent = new DiseaseExtent();
+		diseaseExtent.setId(patientId);
+		//patient.setDateOfBirth(new Date(0));
+		//patient.setDateOfDeath(new Date(0));
+		Set<DiseaseExtent> diseaseExtentCollection = new HashSet<DiseaseExtent>();
+		diseaseExtentCollection.add(diseaseExtent);
+		diagnosis.setDiseaseExtentCollection(diseaseExtentCollection);
+		HibernateUtil.create(diagnosis);
+
+		
+		//diseaseExtent.setDiagnosis(diagnosis);
+		//	HibernateUtil.create(diseaseExtent);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}		
+	}
+
 	public void testPatientIdentifierToPatientAssociation(){
 		try{
 			Long patientId = getNextPatientId();
@@ -210,13 +242,13 @@ public class PatientTest extends TestCase {
 			diagnosisCollection.add(diagnosis);
 			patient.setDiagnosisCollection(diagnosisCollection);
 		}
-		try{
-			HibernateUtil.create(patient);
-		} 
-		catch (HibernateException e) {
-			e.printStackTrace();
-			assertTrue(false);
-		}
+//		try{
+//			HibernateUtil.create(patient);
+//		} 
+//		catch (HibernateException e) {
+//			e.printStackTrace();
+//			assertTrue(false);
+//		}
 	}
 
 	public void testSelect() throws Exception {
@@ -225,10 +257,9 @@ public class PatientTest extends TestCase {
 		Transaction tx = session.beginTransaction();
 
 		List result = new ArrayList();
-		result = session.createQuery("from Patient").list();
+		result = session.createQuery("from Patient where lastName='x'").list();
 
 		tx.commit();
-		HibernateUtil.closeSession();
 
 		for (int i = 0; i < result.size(); i++) {
 			Patient obj = (Patient) result.get(i);
@@ -261,25 +292,26 @@ public class PatientTest extends TestCase {
 				System.out.println("patient has no diagnosises");
 			}
 		}
+		HibernateUtil.closeSession();
 
 	}
-	// TBD - not working!!
-	public void testSelectFollowupToRecurrance() throws Exception {
+	public void testSelectRecurrenceToFollowup() throws Exception {
 
 		Session session = HibernateUtil.currentSession();
 		Transaction tx = session.beginTransaction();
 
 		List result = new ArrayList();
-		result = session.createQuery("from Followup").list();
+		result = session.createQuery("from Recurrence").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();
 
 		for (int i = 0; i < result.size(); i++) {
-			Followup obj = (Followup) result.get(i);
+			Recurrence obj = (Recurrence) result.get(i);
 			System.out.println("id = " + obj.getId());
-			Recurrence d = obj.getRecurrence();
-			//System.out.println(d.getId());
+			Followup d = obj.getFollowup();
+			//Diagnosis d = obj.getDiagnosis();
+			System.out.println(d.getId());
 		}
 
 	}

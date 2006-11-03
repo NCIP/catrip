@@ -31,7 +31,7 @@ public class ProcedureTest extends TestCase {
 	public static Test suite() {
 		return new TestSuite(ProcedureTest.class);
 	}
-	
+
 	public void testHemTransplantEndocrineInsert() throws Exception {
 		HemTransplantEndocrineProcedure endocrine = new HemTransplantEndocrineProcedure();
 		endocrine.setId(getNextId());
@@ -63,7 +63,7 @@ public class ProcedureTest extends TestCase {
 			assertTrue(false);
 		}
 	}
-	
+
 	public void testRadiationInsert() throws Exception {
 		Radiation obj = new Radiation();
 		obj.setId(getNextId());
@@ -103,7 +103,7 @@ public class ProcedureTest extends TestCase {
 			assertTrue(false);
 		}
 	}
-	
+
 	public void testHemTransplantEndocrineSelect() throws Exception {
 
 		Session session = HibernateUtil.currentSession();
@@ -124,7 +124,7 @@ public class ProcedureTest extends TestCase {
 			System.out.println("course is " + obj.getCourse());
 		}
 	}
-	
+
 	public void testOtherProcedureSelect() throws Exception {
 
 		Session session = HibernateUtil.currentSession();
@@ -145,7 +145,7 @@ public class ProcedureTest extends TestCase {
 			System.out.println("course is " + obj.getCourse());
 		}
 	}
-	
+
 	public void testRadiationSelect() throws Exception {
 
 		Session session = HibernateUtil.currentSession();
@@ -193,7 +193,7 @@ public class ProcedureTest extends TestCase {
 			System.out.println("Regioinal Dose is " + obj.getRegionalDose());
 			System.out.println("Regional Modality is " + obj.getRegionalModality());
 			System.out.println("Volume is " + obj.getVolume());		
-			}
+		}
 
 	}
 
@@ -204,7 +204,7 @@ public class ProcedureTest extends TestCase {
 
 		List result = new ArrayList();
 		result = session.createQuery(
-				"from Activity where id = (select max(id) from Activity)").list();
+		"from Activity where id = (select max(id) from Activity)").list();
 
 		tx.commit();
 		HibernateUtil.closeSession();

@@ -36,20 +36,25 @@ public class ActivitySummaryTest extends TestCase {
 
 	public void testActivitySummaryToDiagnosis() throws Exception {
 		ActivitySummary summary = new ActivitySummary();
-		summary.setId(Long.valueOf(44));
+		summary.setId(Long.valueOf(66));
 		summary.setLocalDate(new Date(0));
 		summary.setSummaryCharacterization("summaryCharacterization");
 		summary.setSummaryDate(new Date(0));
 		
 		Diagnosis diagnosis = new Diagnosis();
-		diagnosis.setId(Long.valueOf(6));
+		diagnosis.setId(Long.valueOf(66));
 		diagnosis.setAgeAtDiagnosis(Integer.valueOf(34));
 		diagnosis.setCauseOfDeath("infection");
 		
-		summary.setDiagnosis(diagnosis);
-		//diagnosis.setActivitySummary(summary);
+		
 		try{
-			HibernateUtil.create(summary);
+			// does not work
+			diagnosis.setActivitySummary(summary);
+			HibernateUtil.create(diagnosis);
+			
+			// works
+			//summary.setDiagnosis(diagnosis);
+			//HibernateUtil.create(summary);
 		} 
 		catch (HibernateException e) {
 			e.printStackTrace();

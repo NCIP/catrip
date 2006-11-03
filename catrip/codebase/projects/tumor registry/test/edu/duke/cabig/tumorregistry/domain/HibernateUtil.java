@@ -43,6 +43,7 @@ public class HibernateUtil {
 			tx = session.beginTransaction();
 			session.save(obj);
 			tx.commit();
+			session.flush();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			if (tx != null)

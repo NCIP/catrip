@@ -43,7 +43,8 @@ public class PatientToActivityTest extends TestCase {
 		
 		// ******************
 		Patient patient = new Patient();
-		patient.setId(getNextPatientId());
+		Long patientId = getNextPatientId();
+		patient.setId(patientId);
 		patient.setDateOfBirth(new Date(0));
 		patient.setAutopsy("autopsy");
 		patient.setFirstName("Joe");
@@ -63,7 +64,7 @@ public class PatientToActivityTest extends TestCase {
 
 		PatientIdentifier patientIdentifier = new PatientIdentifier();
 		patientIdentifier.setMedicalRecordNumber("mrn300");
-		patientIdentifier.setId(getNextPatientIdentifierId());
+		patientIdentifier.setId(patientId);
 		// patientIdentifier.setPatient(patient);
 		patient.setPatientIdentifier(patientIdentifier);
 
@@ -108,7 +109,7 @@ public class PatientToActivityTest extends TestCase {
 		ActivitySummary activitySummary = new ActivitySummary();
 		activitySummary.setId(getNextActivitySummaryId());
 		activitySummary.setLocalDate(new Date(0));
-		activitySummary.setSummaryCharacterization("summaryCharacterization");
+		activitySummary.setSummaryCharacterization("summaryxxCharacterization");
 		activitySummary.setSummaryDate(new Date(0));
 		diagnosis.setActivitySummary(activitySummary);
 
@@ -161,7 +162,7 @@ public class PatientToActivityTest extends TestCase {
 			followup.setRecurrence(recurrence);
 
 			distantSiteCollection = new HashSet<DistantSite>();
-			for (int d = 0; d < 10; d++) {
+			for (int d = 0; d < 2; d++) {
 				DistantSite distantSite = new DistantSite();
 				System.out.println("other id = " + otherId);
 				distantSite.setId(Long.valueOf((otherId++)));
