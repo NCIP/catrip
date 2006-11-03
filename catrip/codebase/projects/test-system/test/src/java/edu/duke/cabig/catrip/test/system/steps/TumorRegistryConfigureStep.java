@@ -3,14 +3,12 @@
  */
 package edu.duke.cabig.catrip.test.system.steps;
 
+import gov.nci.nih.cagrid.tests.core.util.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Properties;
 
 import com.atomicobject.haste.framework.Step;
-
-import edu.duke.cabig.catrip.test.system.util.HibernatePropertiesUtil;
-import gov.nci.nih.cagrid.tests.core.util.FileUtils;
 
 /**
  * Sets hibernate configuration properties in the Tumor Registry grid service. 
@@ -33,24 +31,51 @@ public class TumorRegistryConfigureStep
 	public void runStep() 
 		throws IOException
 	{
-		origFile = File.createTempFile("TumorRegistryConfigureStep", ".properties");
-		configFile = new File(serviceDir, "hibernate.properties");
+		origFile = File.createTempFile("TumorRegistryConfigureStep", ".cfg.xml");
+//		configFile = new File(serviceDir, "hibernate.properties");
+		configFile = new File(serviceDir, "tumor_hibernate.cfg.xml");
 		FileUtils.copy(configFile, origFile);
 
-		Properties props = new Properties();
-		props.setProperty(
-			"hibernate.connection.url", 
-			System.getProperty("tumorregistry.connectionurl", "jdbc:oracle:thin:@pparker:1521:TRIP")
+		String connectionUrl = System.getProperty("tumorregistry.connectionurl", 
+			"jdbc:oracle:thin:@pparker:1521:trip"
+		); 
+		String user = System.getProperty("tumorregistry.username", 
+			"tr"
+		); 
+		String password = System.getProperty("tumorregistry.password", 
+			"tr"
+		); 
+
+		FileUtils.replace(
+			configFile,
+			"<property name=\"connection.url\">jdbc:oracle:thin:@pparker:1521:trip</property>",
+			"<property name=\"connection.url\">" + connectionUrl + "</property>"			
 		);
-		props.setProperty(
-			"hibernate.connection.username", 
-			System.getProperty("tumorregistry.user", "tr")
+		FileUtils.replace(
+			configFile,
+			"<property name=\"connection.username\">tr</property>",
+			"<property name=\"connection.username\">" + user + "</property>"			
 		);
-		props.setProperty(
-			"hibernate.connection.password", 
-			System.getProperty("tumorregistry.password", "tr")
+		FileUtils.replace(
+			configFile,
+			"<property name=\"connection.password\">tr</property>",
+			"<property name=\"connection.password\">" + password + "</property>"			
 		);
-		HibernatePropertiesUtil.configure(configFile, props);
+
+//		Properties props = new Properties();
+//		props.setProperty(
+//			"hibernate.connection.url", 
+//			System.getProperty("tumorregistry.connectionurl", "jdbc:oracle:thin:@pparker:1521:TRIP")
+//		);
+//		props.setProperty(
+//			"hibernate.connection.username", 
+//			System.getProperty("tumorregistry.user", "tr")
+//		);
+//		props.setProperty(
+//			"hibernate.connection.password", 
+//			System.getProperty("tumorregistry.password", "tr")
+//		);
+//		HibernatePropertiesUtil.configure(configFile, props);
 	}
 
 	public File getConfigFile()
