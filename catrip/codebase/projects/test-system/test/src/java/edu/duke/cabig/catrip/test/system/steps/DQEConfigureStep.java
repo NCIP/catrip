@@ -35,6 +35,7 @@ public class DQEConfigureStep
 		File configDir = new File(System.getProperty("user.home"), ".caTRIP");
 		configDir.mkdir();
 		File dqeConfigFile = new File(configDir, "query_engine_services_config.xml");
+		//File dqeConfigFile = new File(configDir, "services-config.xml");
 		FileUtils.copy(this.dqeConfigFile, dqeConfigFile);
 		
 		// configure port

@@ -22,7 +22,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
                                 <Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
                                     <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
                                         <Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection">
-                                            <Attribute name="totalScore" predicate="GREATER_THAN" value="1"/>
+                                            <Attribute name="totalScore" predicate="GREATER_THAN" value="0"/>
                                         </Association>
                                     </Association>
                                 </Association>

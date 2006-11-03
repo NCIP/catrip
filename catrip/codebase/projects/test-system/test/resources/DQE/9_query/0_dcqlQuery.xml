@@ -23,7 +23,7 @@
                                 <Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
                                     <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
                                         <Association name="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" roleName="annotationSetCollection">
-                                            <Attribute name="estrogenReceptor" predicate="LIKE" value="positive%"/>
+                                            <Attribute name="estrogenReceptor" predicate="LIKE" value="POSITIVE%"/>
                                         </Association>
                                     </Association>
                                 </Association>

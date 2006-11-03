@@ -92,6 +92,8 @@ public class DQETest
 	@SuppressWarnings("unchecked")
 	protected Vector steps()		
 	{
+		boolean performDeploy = "true".equals(System.getProperty("dqetest.deploy", "true"));
+		
 		globus = new GlobusHelper();
 		port = Integer.parseInt(System.getProperty("test.globus.port", "8080"));
 		caTissueCoreServiceDir = new File(System.getProperty("catissuecore.dir",
@@ -114,26 +116,36 @@ public class DQETest
 		)); 
 		
 		Vector steps = new Vector();
-		steps.add(new GlobusCreateStep(globus));
 		
-		CaTissueCoreConfigureStep caTissueCoreConfigStep = new CaTissueCoreConfigureStep(caTissueCoreServiceDir); 
-		CAEConfigureStep caeConfigStep = new CAEConfigureStep(caeServiceDir); 
-		CGEMSConfigureStep cgemsConfigStep = new CGEMSConfigureStep(cgemsServiceDir); 
-		TumorRegistryConfigureStep tumorRegistryConfigStep = new TumorRegistryConfigureStep(tumorRegistryServiceDir); 
-		
-		steps.add(caTissueCoreConfigStep);
-		steps.add(caeConfigStep);
-		steps.add(cgemsConfigStep);
-		steps.add(tumorRegistryConfigStep);
+		CaTissueCoreConfigureStep caTissueCoreConfigStep = null;
+		CAEConfigureStep caeConfigStep = null;
+		CGEMSConfigureStep cgemsConfigStep = null;
+		TumorRegistryConfigureStep tumorRegistryConfigStep = null;
+		if (performDeploy) {
+			steps.add(new GlobusCreateStep(globus));
+			
+			caTissueCoreConfigStep = new CaTissueCoreConfigureStep(caTissueCoreServiceDir); 
+			caeConfigStep = new CAEConfigureStep(caeServiceDir); 
+			cgemsConfigStep = new CGEMSConfigureStep(cgemsServiceDir); 
+			tumorRegistryConfigStep = new TumorRegistryConfigureStep(tumorRegistryServiceDir); 
+			
+			steps.add(caTissueCoreConfigStep);
+			steps.add(caeConfigStep);
+			steps.add(cgemsConfigStep);
+			steps.add(tumorRegistryConfigStep);
+		}
 		
 		steps.add(new DQEConfigureStep(dqeConfigFile, port));
+	
+		if (performDeploy) {
+			steps.add(new GlobusDeployServiceStep(globus, caTissueCoreServiceDir));
+			steps.add(new GlobusDeployServiceStep(globus, caeServiceDir));
+			steps.add(new GlobusDeployServiceStep(globus, cgemsServiceDir));
+			steps.add(new GlobusDeployServiceStep(globus, tumorRegistryServiceDir));
+			
+			steps.add(new GlobusStartStep(globus, port));
+		}
 		
-		steps.add(new GlobusDeployServiceStep(globus, caTissueCoreServiceDir));
-		steps.add(new GlobusDeployServiceStep(globus, caeServiceDir));
-		steps.add(new GlobusDeployServiceStep(globus, cgemsServiceDir));
-		steps.add(new GlobusDeployServiceStep(globus, tumorRegistryServiceDir));
-		
-		steps.add(new GlobusStartStep(globus, port));
 		try {
 			for (File dir : ServiceHelper.getInvokeDirs(queryDir)) {
 				steps.add(new DQEInvokeStep(dir));
@@ -141,12 +153,15 @@ public class DQETest
 		} catch (Exception e) {
 			throw new RuntimeException("unable to add invoke steps", e);
 		}
-		steps.add(new GlobusStopStep(globus, port));
-		steps.add(new GlobusCleanupStep(globus));
-		steps.add(caeCleanupStep = new CAECleanupStep(caeConfigStep));
-		steps.add(caTissueCoreCleanupStep = new CaTissueCoreCleanupStep(caTissueCoreConfigStep));
-		steps.add(cgemsCleanupStep = new CGEMSCleanupStep(cgemsConfigStep));
-		steps.add(tumorRegistryCleanupStep = new TumorRegistryCleanupStep(tumorRegistryConfigStep));
+		
+		if (performDeploy) {
+			steps.add(new GlobusStopStep(globus, port));
+			steps.add(new GlobusCleanupStep(globus));
+			steps.add(caeCleanupStep = new CAECleanupStep(caeConfigStep));
+			steps.add(caTissueCoreCleanupStep = new CaTissueCoreCleanupStep(caTissueCoreConfigStep));
+			steps.add(cgemsCleanupStep = new CGEMSCleanupStep(cgemsConfigStep));
+			steps.add(tumorRegistryCleanupStep = new TumorRegistryCleanupStep(tumorRegistryConfigStep));
+		}
 		return steps;
 	}
 

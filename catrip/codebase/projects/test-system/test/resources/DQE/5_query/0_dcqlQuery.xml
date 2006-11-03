@@ -8,7 +8,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
             <Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
                 <Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier">
                     <Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantImpl" roleName="participant">
-                        <Attribute name="activityStatus" predicate="EQUAL_TO" value="Inactive"/>
+                        <Attribute name="activityStatus" predicate="LIKE" value="active"/>
                     </Association>
                 </Association>
             </Association>

@@ -4,5 +4,5 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql .\schema\Distributed_CQL_schema.xsd">
 	
 	 <TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" serviceURL="http://localhost:8080/wsrf/services/cagrid/CaTissueCore"/>
-	 
+
 </DCQLQuery>

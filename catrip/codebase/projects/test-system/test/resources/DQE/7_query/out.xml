@@ -1,0 +1,371 @@
+<queryResults targetClassname="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl">
+ <ns1:ObjectResult xmlns:ns1="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns2:TissueSpecimen id="397" type="Fixed Tissue Block" available="true" positionDimensionOne="20" positionDimensionTwo="22" barcode="ISBN-10 AB00-0013XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="0.7" availableQuantityInGram="0.199999988079071" xmlns:ns2="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns1:ObjectResult>
+ <ns2:ObjectResult xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns3:TissueSpecimen id="406" type="Fixed Tissue Block" available="true" positionDimensionOne="19" positionDimensionTwo="14" barcode="ISBN-10 AB00-0043XY" comments="STRONG FAMILY HISTORY FOR BRCA MUTATIONS" activityStatus="Active" quantityInGram="6.75" availableQuantityInGram="6.25" xmlns:ns3="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns2:ObjectResult>
+ <ns3:ObjectResult xmlns:ns3="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns4:TissueSpecimen id="411" type="Fixed Tissue Block" available="true" positionDimensionOne="21" positionDimensionTwo="7" barcode="ISBN-10 AB00-0063XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="42.75" availableQuantityInGram="42.25" xmlns:ns4="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns3:ObjectResult>
+ <ns4:ObjectResult xmlns:ns4="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns5:TissueSpecimen id="413" type="Fresh Tissue" available="true" positionDimensionOne="1" positionDimensionTwo="15" barcode="ISBN-10 AB00-0065XY" comments="LARGE CHUNKS" activityStatus="Active" quantityInGram="0.57" availableQuantityInGram="0.0699999928474426" xmlns:ns5="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns4:ObjectResult>
+ <ns5:ObjectResult xmlns:ns5="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns6:TissueSpecimen id="415" type="Fixed Tissue Block" available="true" positionDimensionOne="11" positionDimensionTwo="23" barcode="ISBN-10 AB00-0070XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="7.5" availableQuantityInGram="7.0" xmlns:ns6="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns5:ObjectResult>
+ <ns6:ObjectResult xmlns:ns6="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns7:TissueSpecimen id="416" type="Fixed Tissue Slide" available="true" positionDimensionOne="18" positionDimensionTwo="16" barcode="ISBN-10 AB00-0079XY" comments="SPECIMEN IN SALINE OVERNIGHT" activityStatus="Active" quantityInGram="9.5" availableQuantityInGram="9.0" xmlns:ns7="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns6:ObjectResult>
+ <ns7:ObjectResult xmlns:ns7="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns8:TissueSpecimen id="417" type="Fixed Tissue Block" available="true" positionDimensionOne="6" positionDimensionTwo="7" barcode="ISBN-10 AB00-0082XY" comments="UNKNOWN" activityStatus="Active" quantityInGram="16.0" availableQuantityInGram="15.5" xmlns:ns8="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns7:ObjectResult>
+ <ns8:ObjectResult xmlns:ns8="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns9:TissueSpecimen id="418" type="Fixed Tissue Block" available="true" positionDimensionOne="3" positionDimensionTwo="24" barcode="ISBN-10 AB00-0085XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="42.75" availableQuantityInGram="42.25" xmlns:ns9="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns8:ObjectResult>
+ <ns9:ObjectResult xmlns:ns9="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns10:TissueSpecimen id="419" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="23" barcode="ISBN-10 AB00-0093XY" comments="FROZEN ON DRY ICE" activityStatus="Active" quantityInGram="0.6" availableQuantityInGram="0.100000023841858" xmlns:ns10="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns9:ObjectResult>
+ <ns10:ObjectResult xmlns:ns10="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns11:TissueSpecimen id="421" type="Fixed Tissue Block" available="true" positionDimensionOne="19" positionDimensionTwo="8" barcode="ISBN-10 AB00-0099XY" comments="PATIENT IS PREGNANT" activityStatus="Active" quantityInGram="1.4" availableQuantityInGram="0.899999976158142" xmlns:ns11="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns10:ObjectResult>
+ <ns11:ObjectResult xmlns:ns11="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns12:TissueSpecimen id="424" type="Fixed Tissue Block" available="true" positionDimensionOne="17" positionDimensionTwo="16" barcode="ISBN-10 AB86-0815XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="41.5" availableQuantityInGram="41.0" xmlns:ns12="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns11:ObjectResult>
+ <ns12:ObjectResult xmlns:ns12="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns13:TissueSpecimen id="425" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="20" barcode="ISBN-10 AB86-0825XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="19.5" availableQuantityInGram="19.0" xmlns:ns13="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns12:ObjectResult>
+ <ns13:ObjectResult xmlns:ns13="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns14:TissueSpecimen id="426" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="16" barcode="ISBN-10 AB87-0067XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="28.0" availableQuantityInGram="27.5" xmlns:ns14="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns13:ObjectResult>
+ <ns14:ObjectResult xmlns:ns14="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns15:TissueSpecimen id="427" type="Fixed Tissue Block" available="true" positionDimensionOne="6" positionDimensionTwo="10" barcode="ISBN-10 AB87-0083XY" comments="PATIENT HAS HISTORY OF CANCER" activityStatus="Active" quantityInGram="50.0" availableQuantityInGram="49.5" xmlns:ns15="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns14:ObjectResult>
+ <ns15:ObjectResult xmlns:ns15="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns16:TissueSpecimen id="429" type="Fixed Tissue Block" available="true" positionDimensionOne="18" positionDimensionTwo="19" barcode="ISBN-10 AB87-0089XY" comments="FROM SKIN" activityStatus="Active" quantityInGram="50.0" availableQuantityInGram="49.5" xmlns:ns16="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns15:ObjectResult>
+ <ns16:ObjectResult xmlns:ns16="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns17:TissueSpecimen id="430" type="Frozen Tissue Block" available="true" positionDimensionOne="19" positionDimensionTwo="15" barcode="ISBN-10 AB87-0094XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="10.25" availableQuantityInGram="9.75" xmlns:ns17="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns16:ObjectResult>
+ <ns17:ObjectResult xmlns:ns17="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns18:TissueSpecimen id="432" type="Fixed Tissue" available="true" positionDimensionOne="4" positionDimensionTwo="1" barcode="ISBN-10 AB87-0101XY" comments="POST CHEMO" activityStatus="Active" quantityInGram="11.5" availableQuantityInGram="11.0" xmlns:ns18="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns17:ObjectResult>
+ <ns18:ObjectResult xmlns:ns18="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns19:TissueSpecimen id="434" type="Frozen Tissue Block" available="true" positionDimensionOne="15" positionDimensionTwo="11" barcode="ISBN-10 AB87-0110XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="23.0" availableQuantityInGram="22.5" xmlns:ns19="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns18:ObjectResult>
+ <ns19:ObjectResult xmlns:ns19="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns20:TissueSpecimen id="436" type="Fixed Tissue Block" available="true" positionDimensionOne="4" positionDimensionTwo="16" barcode="ISBN-10 AB87-0149XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="34.0" availableQuantityInGram="33.5" xmlns:ns20="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns19:ObjectResult>
+ <ns20:ObjectResult xmlns:ns20="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns21:TissueSpecimen id="437" type="Frozen Tissue Slide" available="true" positionDimensionOne="5" positionDimensionTwo="4" barcode="ISBN-10 AB87-0160XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="0.25" availableQuantityInGram="-0.25" xmlns:ns21="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns20:ObjectResult>
+ <ns21:ObjectResult xmlns:ns21="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns22:TissueSpecimen id="441" type="Fixed Tissue Block" available="true" positionDimensionOne="21" positionDimensionTwo="23" barcode="ISBN-10 AB87-0241XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="1.2" availableQuantityInGram="0.700000047683716" xmlns:ns22="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns21:ObjectResult>
+ <ns22:ObjectResult xmlns:ns22="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns23:TissueSpecimen id="442" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="3" barcode="ISBN-10 AB87-0242XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="10.25" availableQuantityInGram="9.75" xmlns:ns23="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns22:ObjectResult>
+ <ns23:ObjectResult xmlns:ns23="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns24:TissueSpecimen id="443" type="Frozen Tissue Slide" available="true" positionDimensionOne="14" positionDimensionTwo="13" barcode="ISBN-10 AB87-0243XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="40.0" availableQuantityInGram="39.5" xmlns:ns24="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns23:ObjectResult>
+ <ns24:ObjectResult xmlns:ns24="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns25:TissueSpecimen id="446" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="24" barcode="ISBN-10 AB87-0280XY" comments="STRONG FAMILY HISTORY FOR BRCA MUTATIONS" activityStatus="Active" quantityInGram="6.0" availableQuantityInGram="5.5" xmlns:ns25="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns24:ObjectResult>
+ <ns25:ObjectResult xmlns:ns25="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns26:TissueSpecimen id="449" type="Fixed Tissue Block" available="true" positionDimensionOne="8" positionDimensionTwo="14" barcode="ISBN-10 AB87-0311XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="15.15" availableQuantityInGram="14.6499996185303" xmlns:ns26="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns25:ObjectResult>
+ <ns26:ObjectResult xmlns:ns26="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns27:TissueSpecimen id="450" type="Frozen Tissue Block" available="true" positionDimensionOne="6" positionDimensionTwo="12" barcode="ISBN-10 AB87-0320XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="132.75" availableQuantityInGram="132.25" xmlns:ns27="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns26:ObjectResult>
+ <ns27:ObjectResult xmlns:ns27="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns28:TissueSpecimen id="451" type="Fixed Tissue Block" available="true" positionDimensionOne="6" positionDimensionTwo="19" barcode="ISBN-10 AB87-0325XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="23.0" availableQuantityInGram="22.5" xmlns:ns28="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns27:ObjectResult>
+ <ns28:ObjectResult xmlns:ns28="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns29:TissueSpecimen id="453" type="Fixed Tissue Block" available="true" positionDimensionOne="16" positionDimensionTwo="6" barcode="ISBN-10 AB87-0338XY" comments="FROM SPLEEN" activityStatus="Active" quantityInGram="1.0" availableQuantityInGram="0.5" xmlns:ns29="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns28:ObjectResult>
+ <ns29:ObjectResult xmlns:ns29="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns30:TissueSpecimen id="454" type="Fixed Tissue Block" available="true" positionDimensionOne="20" positionDimensionTwo="9" barcode="ISBN-10 AB87-0340XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="7.5" availableQuantityInGram="7.0" xmlns:ns30="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns29:ObjectResult>
+ <ns30:ObjectResult xmlns:ns30="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns31:TissueSpecimen id="461" type="Fixed Tissue Block" available="true" positionDimensionOne="22" positionDimensionTwo="7" barcode="ISBN-10 AB87-0363XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="0.5" availableQuantityInGram="0.0" xmlns:ns31="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns30:ObjectResult>
+ <ns31:ObjectResult xmlns:ns31="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns32:TissueSpecimen id="463" type="Fixed Tissue Block" available="true" positionDimensionOne="24" positionDimensionTwo="21" barcode="ISBN-10 AB87-0394XY" comments="ASCITES FLUID" activityStatus="Active" quantityInGram="13.0" availableQuantityInGram="12.5" xmlns:ns32="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns31:ObjectResult>
+ <ns32:ObjectResult xmlns:ns32="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns33:TissueSpecimen id="464" type="Frozen Tissue Block" available="true" positionDimensionOne="21" positionDimensionTwo="19" barcode="ISBN-10 AB87-0425XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="1.2" availableQuantityInGram="0.700000047683716" xmlns:ns33="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns32:ObjectResult>
+ <ns33:ObjectResult xmlns:ns33="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns34:TissueSpecimen id="466" type="Fixed Tissue Block" available="true" positionDimensionOne="17" positionDimensionTwo="7" barcode="ISBN-10 AB87-0433XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="40.0" availableQuantityInGram="39.5" xmlns:ns34="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns33:ObjectResult>
+ <ns34:ObjectResult xmlns:ns34="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns35:TissueSpecimen id="469" type="Fixed Tissue Block" available="true" positionDimensionOne="4" positionDimensionTwo="1" barcode="ISBN-10 AB87-0450XY" comments="N/A" activityStatus="Active" quantityInGram="6.0" availableQuantityInGram="5.5" xmlns:ns35="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns34:ObjectResult>
+ <ns35:ObjectResult xmlns:ns35="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns36:TissueSpecimen id="477" type="Fixed Tissue Block" available="true" positionDimensionOne="12" positionDimensionTwo="18" barcode="ISBN-10 AB87-0528XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="40.5" availableQuantityInGram="40.0" xmlns:ns36="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns35:ObjectResult>
+ <ns36:ObjectResult xmlns:ns36="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns37:TissueSpecimen id="478" type="Fixed Tissue Block" available="true" positionDimensionOne="24" positionDimensionTwo="11" barcode="ISBN-10 AB87-0529XY" comments="FROZEN AT -20" activityStatus="Active" quantityInGram="12.0" availableQuantityInGram="11.5" xmlns:ns37="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns36:ObjectResult>
+ <ns37:ObjectResult xmlns:ns37="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns38:TissueSpecimen id="479" type="Fixed Tissue Block" available="true" positionDimensionOne="16" positionDimensionTwo="7" barcode="ISBN-10 AB87-0537XY" comments="ASCITES FLUID" activityStatus="Active" quantityInGram="50.5" availableQuantityInGram="50.0" xmlns:ns38="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns37:ObjectResult>
+ <ns38:ObjectResult xmlns:ns38="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns39:TissueSpecimen id="480" type="Fixed Tissue Block" available="true" positionDimensionOne="16" positionDimensionTwo="18" barcode="ISBN-10 AB87-0544XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="9.5" xmlns:ns39="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns38:ObjectResult>
+ <ns39:ObjectResult xmlns:ns39="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns40:TissueSpecimen id="482" type="Fixed Tissue Block" available="true" positionDimensionOne="13" positionDimensionTwo="3" barcode="ISBN-10 AB87-0564XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="1.4" availableQuantityInGram="0.899999976158142" xmlns:ns40="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns39:ObjectResult>
+ <ns40:ObjectResult xmlns:ns40="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns41:TissueSpecimen id="483" type="Fixed Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="23" barcode="ISBN-10 AB87-0617XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="23.0" availableQuantityInGram="22.5" xmlns:ns41="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns40:ObjectResult>
+ <ns41:ObjectResult xmlns:ns41="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns42:TissueSpecimen id="485" type="Fresh Tissue" available="true" positionDimensionOne="24" positionDimensionTwo="9" barcode="ISBN-10 AB87-0627XY" comments="LARGE CHUNKS" activityStatus="Active" quantityInGram="132.75" availableQuantityInGram="132.25" xmlns:ns42="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns41:ObjectResult>
+ <ns42:ObjectResult xmlns:ns42="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns43:TissueSpecimen id="487" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="23" barcode="ISBN-10 AB87-0634XY" comments="PATIENT HAS HISTORY OF CANCER" activityStatus="Active" quantityInGram="4.25" availableQuantityInGram="3.75" xmlns:ns43="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns42:ObjectResult>
+ <ns43:ObjectResult xmlns:ns43="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns44:TissueSpecimen id="488" type="Fixed Tissue" available="true" positionDimensionOne="17" positionDimensionTwo="3" barcode="ISBN-10 AB87-0638XY" comments="POST CHEMO" activityStatus="Active" quantityInGram="133.0" availableQuantityInGram="132.5" xmlns:ns44="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns43:ObjectResult>
+ <ns44:ObjectResult xmlns:ns44="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns45:TissueSpecimen id="489" type="Frozen Tissue Slide" available="true" positionDimensionOne="3" positionDimensionTwo="7" barcode="ISBN-10 AB87-0668XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="9.5" xmlns:ns45="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns44:ObjectResult>
+ <ns45:ObjectResult xmlns:ns45="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns46:TissueSpecimen id="491" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="17" barcode="ISBN-10 AB87-0673XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="24.25" availableQuantityInGram="23.75" xmlns:ns46="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns45:ObjectResult>
+ <ns46:ObjectResult xmlns:ns46="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns47:TissueSpecimen id="495" type="Fixed Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="24" barcode="ISBN-10 AB87-0691XY" comments="PATIENT IS PREGNANT" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.399999976158142" xmlns:ns47="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns46:ObjectResult>
+ <ns47:ObjectResult xmlns:ns47="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns48:TissueSpecimen id="496" type="Fixed Tissue Slide" available="true" positionDimensionOne="2" positionDimensionTwo="20" barcode="ISBN-10 AB87-0696XY" comments="SPECIMEN IN SALINE OVERNIGHT" activityStatus="Active" quantityInGram="8.0" availableQuantityInGram="7.5" xmlns:ns48="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns47:ObjectResult>
+ <ns48:ObjectResult xmlns:ns48="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns49:TissueSpecimen id="497" type="Fixed Tissue Block" available="true" positionDimensionOne="19" positionDimensionTwo="8" barcode="ISBN-10 AB87-0707XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="14.25" availableQuantityInGram="13.75" xmlns:ns49="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns48:ObjectResult>
+ <ns49:ObjectResult xmlns:ns49="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns50:TissueSpecimen id="498" type="Fixed Tissue Block" available="true" positionDimensionOne="6" positionDimensionTwo="12" barcode="ISBN-10 AB87-0732XY" comments="FROZEN AT -20" activityStatus="Active" quantityInGram="0.68" availableQuantityInGram="0.180000007152557" xmlns:ns50="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns49:ObjectResult>
+ <ns50:ObjectResult xmlns:ns50="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns51:TissueSpecimen id="502" type="Fixed Tissue Block" available="true" positionDimensionOne="4" positionDimensionTwo="9" barcode="ISBN-10 AB87-0766XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="20.0" availableQuantityInGram="19.5" xmlns:ns51="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns50:ObjectResult>
+ <ns51:ObjectResult xmlns:ns51="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns52:TissueSpecimen id="503" type="Fixed Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="9" barcode="ISBN-10 AB87-0768XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="45.0" availableQuantityInGram="44.5" xmlns:ns52="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns51:ObjectResult>
+ <ns52:ObjectResult xmlns:ns52="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns53:TissueSpecimen id="507" type="Fixed Tissue Block" available="true" positionDimensionOne="13" positionDimensionTwo="20" barcode="ISBN-10 AB87-0799XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="18.0" availableQuantityInGram="17.5" xmlns:ns53="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns52:ObjectResult>
+ <ns53:ObjectResult xmlns:ns53="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns54:TissueSpecimen id="509" type="Frozen Tissue Slide" available="true" positionDimensionOne="6" positionDimensionTwo="5" barcode="ISBN-10 AB88-0045XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="40.5" availableQuantityInGram="40.0" xmlns:ns54="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns53:ObjectResult>
+ <ns54:ObjectResult xmlns:ns54="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns55:TissueSpecimen id="513" type="Fixed Tissue Block" available="true" positionDimensionOne="8" positionDimensionTwo="16" barcode="ISBN-10 AB88-0109XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="23.0" availableQuantityInGram="22.5" xmlns:ns55="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns54:ObjectResult>
+ <ns55:ObjectResult xmlns:ns55="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns56:TissueSpecimen id="516" type="Fixed Tissue Block" available="true" positionDimensionOne="7" positionDimensionTwo="3" barcode="ISBN-10 AB88-0139XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="67.0" availableQuantityInGram="66.5" xmlns:ns56="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns55:ObjectResult>
+ <ns56:ObjectResult xmlns:ns56="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns57:TissueSpecimen id="517" type="Fixed Tissue Block" available="true" positionDimensionOne="12" positionDimensionTwo="9" barcode="ISBN-10 AB88-0162XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="1.4" availableQuantityInGram="0.899999976158142" xmlns:ns57="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns56:ObjectResult>
+ <ns57:ObjectResult xmlns:ns57="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns58:TissueSpecimen id="519" type="Fixed Tissue Block" available="true" positionDimensionOne="23" positionDimensionTwo="1" barcode="ISBN-10 AB88-0168XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="50.5" availableQuantityInGram="50.0" xmlns:ns58="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns57:ObjectResult>
+ <ns58:ObjectResult xmlns:ns58="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns59:TissueSpecimen id="526" type="Fixed Tissue Block" available="true" positionDimensionOne="12" positionDimensionTwo="18" barcode="ISBN-10 AB88-0215XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="41.5" availableQuantityInGram="41.0" xmlns:ns59="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns58:ObjectResult>
+ <ns59:ObjectResult xmlns:ns59="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns60:TissueSpecimen id="529" type="Fixed Tissue Block" available="true" positionDimensionOne="21" positionDimensionTwo="22" barcode="ISBN-10 AB88-0256XY" comments="UNKNOWN" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.399999976158142" xmlns:ns60="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns59:ObjectResult>
+ <ns60:ObjectResult xmlns:ns60="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns61:TissueSpecimen id="530" type="Fixed Tissue Block" available="true" positionDimensionOne="15" positionDimensionTwo="23" barcode="ISBN-10 AB88-0265XY" comments="N/A" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.399999976158142" xmlns:ns61="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns60:ObjectResult>
+ <ns61:ObjectResult xmlns:ns61="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns62:TissueSpecimen id="531" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="2" barcode="ISBN-10 AB88-0291XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="42.75" availableQuantityInGram="42.25" xmlns:ns62="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns61:ObjectResult>
+ <ns62:ObjectResult xmlns:ns62="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns63:TissueSpecimen id="534" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="2" barcode="ISBN-10 AB88-0331XY" comments="FROZEN AT -20" activityStatus="Active" quantityInGram="50.5" availableQuantityInGram="50.0" xmlns:ns63="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns62:ObjectResult>
+ <ns63:ObjectResult xmlns:ns63="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns64:TissueSpecimen id="536" type="Fixed Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="17" barcode="ISBN-10 AB88-0339XY" comments="N/A" activityStatus="Active" quantityInGram="4.25" availableQuantityInGram="3.75" xmlns:ns64="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns63:ObjectResult>
+ <ns64:ObjectResult xmlns:ns64="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns65:TissueSpecimen id="537" type="Fixed Tissue Block" available="true" positionDimensionOne="23" positionDimensionTwo="20" barcode="ISBN-10 AB88-0341XY" comments="ASCITES FLUID" activityStatus="Active" quantityInGram="6.0" availableQuantityInGram="5.5" xmlns:ns65="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns64:ObjectResult>
+ <ns65:ObjectResult xmlns:ns65="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns66:TissueSpecimen id="538" type="Fixed Tissue Block" available="true" positionDimensionOne="22" positionDimensionTwo="22" barcode="ISBN-10 AB88-0349XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="29.5" availableQuantityInGram="29.0" xmlns:ns66="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns65:ObjectResult>
+ <ns66:ObjectResult xmlns:ns66="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns67:TissueSpecimen id="539" type="Fixed Tissue Block" available="true" positionDimensionOne="17" positionDimensionTwo="11" barcode="ISBN-10 AB88-0367XY" comments="FROM SPLEEN" activityStatus="Active" quantityInGram="19.5" availableQuantityInGram="19.0" xmlns:ns67="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns66:ObjectResult>
+ <ns67:ObjectResult xmlns:ns67="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns68:TissueSpecimen id="540" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="8" barcode="ISBN-10 AB88-0371XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="6.75" availableQuantityInGram="6.25" xmlns:ns68="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns67:ObjectResult>
+ <ns68:ObjectResult xmlns:ns68="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns69:TissueSpecimen id="542" type="Fixed Tissue Block" available="true" positionDimensionOne="3" positionDimensionTwo="17" barcode="ISBN-10 AB88-0391XY" comments="N/A" activityStatus="Active" quantityInGram="4.25" availableQuantityInGram="3.75" xmlns:ns69="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns68:ObjectResult>
+ <ns69:ObjectResult xmlns:ns69="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns70:TissueSpecimen id="545" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="19" barcode="ISBN-10 AB88-0418XY" comments="FROM SPLEEN" activityStatus="Active" quantityInGram="1.1" availableQuantityInGram="0.600000023841858" xmlns:ns70="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns69:ObjectResult>
+ <ns70:ObjectResult xmlns:ns70="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns71:TissueSpecimen id="547" type="Fixed Tissue Block" available="true" positionDimensionOne="12" positionDimensionTwo="19" barcode="ISBN-10 AB88-0429XY" comments="FROZEN AT -20" activityStatus="Active" quantityInGram="40.5" availableQuantityInGram="40.0" xmlns:ns71="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns70:ObjectResult>
+ <ns71:ObjectResult xmlns:ns71="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns72:TissueSpecimen id="548" type="Fresh Tissue" available="true" positionDimensionOne="3" positionDimensionTwo="5" barcode="ISBN-10 AB88-0431XY" comments="LARGE CHUNKS" activityStatus="Active" quantityInGram="26.0" availableQuantityInGram="25.5" xmlns:ns72="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns71:ObjectResult>
+ <ns72:ObjectResult xmlns:ns72="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns73:TissueSpecimen id="551" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="24" barcode="ISBN-10 AB88-0447XY" comments="FROM SKIN" activityStatus="Active" quantityInGram="22.75" availableQuantityInGram="22.25" xmlns:ns73="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns72:ObjectResult>
+ <ns73:ObjectResult xmlns:ns73="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns74:TissueSpecimen id="553" type="Fixed Tissue Block" available="true" positionDimensionOne="15" positionDimensionTwo="19" barcode="ISBN-10 AB88-0467XY" comments="UNKNOWN" activityStatus="Active" quantityInGram="12.75" availableQuantityInGram="12.25" xmlns:ns74="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns73:ObjectResult>
+ <ns74:ObjectResult xmlns:ns74="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns75:TissueSpecimen id="557" type="Fixed Tissue Block" available="true" positionDimensionOne="17" positionDimensionTwo="13" barcode="ISBN-10 AB88-0523XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="50.5" availableQuantityInGram="50.0" xmlns:ns75="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns74:ObjectResult>
+ <ns75:ObjectResult xmlns:ns75="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns76:TissueSpecimen id="558" type="Fixed Tissue Block" available="true" positionDimensionOne="10" positionDimensionTwo="8" barcode="ISBN-10 AB88-0534XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="10.25" availableQuantityInGram="9.75" xmlns:ns76="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns75:ObjectResult>
+ <ns76:ObjectResult xmlns:ns76="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns77:TissueSpecimen id="559" type="Frozen Tissue Slide" available="true" positionDimensionOne="13" positionDimensionTwo="5" barcode="ISBN-10 AB88-0535XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="4.45" availableQuantityInGram="3.94999980926514" xmlns:ns77="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns76:ObjectResult>
+ <ns77:ObjectResult xmlns:ns77="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns78:TissueSpecimen id="560" type="Frozen Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="1" barcode="ISBN-10 AB88-0546XY" comments="FROZEN ON DRY ICE" activityStatus="Active" quantityInGram="25.15" availableQuantityInGram="24.6499996185303" xmlns:ns78="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns77:ObjectResult>
+ <ns78:ObjectResult xmlns:ns78="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns79:TissueSpecimen id="561" type="Frozen Tissue" available="true" positionDimensionOne="3" positionDimensionTwo="6" barcode="ISBN-10 AB88-0547XY" comments="FROZEN ON DRY ICE" activityStatus="Active" quantityInGram="0.75" availableQuantityInGram="0.25" xmlns:ns79="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns78:ObjectResult>
+ <ns79:ObjectResult xmlns:ns79="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns80:TissueSpecimen id="564" type="Fixed Tissue Block" available="true" positionDimensionOne="4" positionDimensionTwo="1" barcode="ISBN-10 AB88-0622XY" comments="N/A" activityStatus="Active" quantityInGram="12.75" availableQuantityInGram="12.25" xmlns:ns80="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns79:ObjectResult>
+ <ns80:ObjectResult xmlns:ns80="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns81:TissueSpecimen id="566" type="Fresh Tissue" available="true" positionDimensionOne="17" positionDimensionTwo="11" barcode="ISBN-10 AB88-0629XY" comments="LARGE CHUNKS" activityStatus="Active" quantityInGram="0.1" availableQuantityInGram="-0.399999998509884" xmlns:ns81="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns80:ObjectResult>
+ <ns81:ObjectResult xmlns:ns81="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns82:TissueSpecimen id="567" type="Fixed Tissue Slide" available="true" positionDimensionOne="22" positionDimensionTwo="8" barcode="ISBN-10 AB88-0647XY" comments="SPECIMEN IN SALINE OVERNIGHT" activityStatus="Active" quantityInGram="30.5" availableQuantityInGram="30.0" xmlns:ns82="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns81:ObjectResult>
+ <ns82:ObjectResult xmlns:ns82="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns83:TissueSpecimen id="568" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="23" barcode="ISBN-10 AB88-0677XY" comments="FROZEN AT -20" activityStatus="Active" quantityInGram="3.0" availableQuantityInGram="2.5" xmlns:ns83="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns82:ObjectResult>
+ <ns83:ObjectResult xmlns:ns83="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns84:TissueSpecimen id="570" type="Fixed Tissue Block" available="true" positionDimensionOne="11" positionDimensionTwo="3" barcode="ISBN-10 AB88-0685XY" comments="N/A" activityStatus="Active" quantityInGram="133.0" availableQuantityInGram="132.5" xmlns:ns84="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns83:ObjectResult>
+ <ns84:ObjectResult xmlns:ns84="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns85:TissueSpecimen id="572" type="Fixed Tissue Block" available="true" positionDimensionOne="16" positionDimensionTwo="7" barcode="ISBN-10 AB88-0702XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.399999976158142" xmlns:ns85="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns84:ObjectResult>
+ <ns85:ObjectResult xmlns:ns85="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns86:TissueSpecimen id="575" type="Frozen Tissue" available="true" positionDimensionOne="13" positionDimensionTwo="19" barcode="ISBN-10 AB89-0000XY" comments="FROZEN ON DRY ICE" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="9.5" xmlns:ns86="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns85:ObjectResult>
+ <ns86:ObjectResult xmlns:ns86="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns87:TissueSpecimen id="576" type="Fixed Tissue Block" available="true" positionDimensionOne="24" positionDimensionTwo="16" barcode="ISBN-10 AB89-0002XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="132.75" availableQuantityInGram="132.25" xmlns:ns87="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns86:ObjectResult>
+ <ns87:ObjectResult xmlns:ns87="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns88:TissueSpecimen id="578" type="Fixed Tissue Block" available="true" positionDimensionOne="11" positionDimensionTwo="18" barcode="ISBN-10 AB89-0009XY" comments="FROM SPLEEN" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="199.5" xmlns:ns88="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns87:ObjectResult>
+ <ns88:ObjectResult xmlns:ns88="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns89:TissueSpecimen id="579" type="Fixed Tissue Block" available="true" positionDimensionOne="10" positionDimensionTwo="1" barcode="ISBN-10 AB89-0011XY" comments="PATIENT HAS HISTORY OF CANCER" activityStatus="Active" quantityInGram="0.75" availableQuantityInGram="0.25" xmlns:ns89="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns88:ObjectResult>
+ <ns89:ObjectResult xmlns:ns89="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns90:TissueSpecimen id="580" type="Fixed Tissue Block" available="true" positionDimensionOne="4" positionDimensionTwo="16" barcode="ISBN-10 AB89-0022XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="19.5" availableQuantityInGram="19.0" xmlns:ns90="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns89:ObjectResult>
+ <ns90:ObjectResult xmlns:ns90="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns91:TissueSpecimen id="583" type="Frozen Tissue" available="true" positionDimensionOne="12" positionDimensionTwo="12" barcode="ISBN-10 AB89-0025XY" comments="FROZEN ON DRY ICE" activityStatus="Active" quantityInGram="3.0" availableQuantityInGram="2.5" xmlns:ns91="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns90:ObjectResult>
+ <ns91:ObjectResult xmlns:ns91="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns92:TissueSpecimen id="586" type="Fixed Tissue Block" available="true" positionDimensionOne="20" positionDimensionTwo="7" barcode="ISBN-10 AB89-0032XY" comments="NO MORE WHOLE BLOOD" activityStatus="Active" quantityInGram="14.25" availableQuantityInGram="13.75" xmlns:ns92="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns91:ObjectResult>
+ <ns92:ObjectResult xmlns:ns92="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns93:TissueSpecimen id="588" type="Fixed Tissue Block" available="true" positionDimensionOne="15" positionDimensionTwo="10" barcode="ISBN-10 AB89-0035XY" comments="STRONG FAMILY HISTORY FOR BRCA MUTATIONS" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.399999976158142" xmlns:ns93="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns92:ObjectResult>
+ <ns93:ObjectResult xmlns:ns93="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns94:TissueSpecimen id="591" type="Fixed Tissue Block" available="true" positionDimensionOne="24" positionDimensionTwo="2" barcode="ISBN-10 AB89-0049XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="1.1" availableQuantityInGram="0.600000023841858" xmlns:ns94="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns93:ObjectResult>
+ <ns94:ObjectResult xmlns:ns94="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns95:TissueSpecimen id="594" type="Fixed Tissue Slide" available="true" positionDimensionOne="15" positionDimensionTwo="21" barcode="ISBN-10 AB89-0060XY" comments="SPECIMEN IN SALINE OVERNIGHT" activityStatus="Active" quantityInGram="0.6" availableQuantityInGram="0.100000023841858" xmlns:ns95="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns94:ObjectResult>
+ <ns95:ObjectResult xmlns:ns95="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns96:TissueSpecimen id="595" type="Fixed Tissue Block" available="true" positionDimensionOne="24" positionDimensionTwo="4" barcode="ISBN-10 AB89-0069XY" comments="FROM SKIN" activityStatus="Active" quantityInGram="19.5" availableQuantityInGram="19.0" xmlns:ns96="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns95:ObjectResult>
+ <ns96:ObjectResult xmlns:ns96="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns97:TissueSpecimen id="599" type="Fixed Tissue Block" available="true" positionDimensionOne="6" positionDimensionTwo="13" barcode="ISBN-10 AB89-0101XY" comments="TISSUE IN FORMALIN 30" activityStatus="Active" quantityInGram="100.0" availableQuantityInGram="99.5" xmlns:ns97="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns96:ObjectResult>
+ <ns97:ObjectResult xmlns:ns97="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns98:TissueSpecimen id="601" type="Frozen Tissue Slide" available="true" positionDimensionOne="17" positionDimensionTwo="15" barcode="ISBN-10 AB89-0113XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="26.0" availableQuantityInGram="25.5" xmlns:ns98="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns97:ObjectResult>
+ <ns98:ObjectResult xmlns:ns98="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns99:TissueSpecimen id="602" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="24" barcode="ISBN-10 AB89-0121XY" comments="PATIENT HAS HISTORY OF CANCER" activityStatus="Active" quantityInGram="50.5" availableQuantityInGram="50.0" xmlns:ns99="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns98:ObjectResult>
+ <ns99:ObjectResult xmlns:ns99="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns100:TissueSpecimen id="603" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="23" barcode="ISBN-10 AB89-0124XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="0.7" availableQuantityInGram="0.199999988079071" xmlns:ns100="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns99:ObjectResult>
+ <ns100:ObjectResult xmlns:ns100="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns101:TissueSpecimen id="604" type="Fixed Tissue Block" available="true" positionDimensionOne="24" positionDimensionTwo="5" barcode="ISBN-10 AB89-0134XY" comments="UNKNOWN" activityStatus="Active" quantityInGram="5.0" availableQuantityInGram="4.5" xmlns:ns101="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns100:ObjectResult>
+ <ns101:ObjectResult xmlns:ns101="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns102:TissueSpecimen id="605" type="Fixed Tissue Block" available="true" positionDimensionOne="16" positionDimensionTwo="20" barcode="ISBN-10 AB89-0157XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="12.0" availableQuantityInGram="11.5" xmlns:ns102="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns101:ObjectResult>
+ <ns102:ObjectResult xmlns:ns102="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns103:TissueSpecimen id="606" type="Fixed Tissue" available="true" positionDimensionOne="18" positionDimensionTwo="9" barcode="ISBN-10 AB89-0166XY" comments="POST CHEMO" activityStatus="Active" quantityInGram="0.68" availableQuantityInGram="0.180000007152557" xmlns:ns103="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns102:ObjectResult>
+ <ns103:ObjectResult xmlns:ns103="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns104:TissueSpecimen id="607" type="Frozen Tissue" available="true" positionDimensionOne="16" positionDimensionTwo="23" barcode="ISBN-10 AB89-0173XY" comments="FROZEN ON DRY ICE" activityStatus="Active" quantityInGram="10.0" availableQuantityInGram="9.5" xmlns:ns104="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns103:ObjectResult>
+ <ns104:ObjectResult xmlns:ns104="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns105:TissueSpecimen id="610" type="Fixed Tissue Block" available="true" positionDimensionOne="15" positionDimensionTwo="2" barcode="ISBN-10 AB89-0180XY" comments="UNKNOWN" activityStatus="Active" quantityInGram="15.15" availableQuantityInGram="14.6499996185303" xmlns:ns105="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns104:ObjectResult>
+ <ns105:ObjectResult xmlns:ns105="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns106:TissueSpecimen id="615" type="Fixed Tissue Block" available="true" positionDimensionOne="14" positionDimensionTwo="17" barcode="ISBN-10 AB89-0231XY" comments="ASCITES FLUID" activityStatus="Active" quantityInGram="30.0" availableQuantityInGram="29.5" xmlns:ns106="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns105:ObjectResult>
+ <ns106:ObjectResult xmlns:ns106="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns107:TissueSpecimen id="616" type="Fixed Tissue Block" available="true" positionDimensionOne="2" positionDimensionTwo="4" barcode="ISBN-10 AB89-0245XY" comments="N/A" activityStatus="Active" quantityInGram="0.57" availableQuantityInGram="0.0699999928474426" xmlns:ns107="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns106:ObjectResult>
+ <ns107:ObjectResult xmlns:ns107="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns108:TissueSpecimen id="617" type="Frozen Tissue Block" available="true" positionDimensionOne="20" positionDimensionTwo="3" barcode="ISBN-10 AB89-0247XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="23.0" availableQuantityInGram="22.5" xmlns:ns108="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns107:ObjectResult>
+ <ns108:ObjectResult xmlns:ns108="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns109:TissueSpecimen id="619" type="Fixed Tissue Block" available="true" positionDimensionOne="20" positionDimensionTwo="24" barcode="ISBN-10 AB89-0250XY" comments="TREATED WITH CHEMO" activityStatus="Active" quantityInGram="1.2" availableQuantityInGram="0.700000047683716" xmlns:ns109="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns108:ObjectResult>
+ <ns109:ObjectResult xmlns:ns109="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns110:TissueSpecimen id="620" type="Frozen Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="15" barcode="ISBN-10 AB89-0262XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="2.0" availableQuantityInGram="1.5" xmlns:ns110="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns109:ObjectResult>
+ <ns110:ObjectResult xmlns:ns110="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns111:TissueSpecimen id="621" type="Fresh Tissue" available="true" positionDimensionOne="2" positionDimensionTwo="2" barcode="ISBN-10 AB89-0264XY" comments="LARGE CHUNKS" activityStatus="Active" quantityInGram="14.25" availableQuantityInGram="13.75" xmlns:ns111="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns110:ObjectResult>
+ <ns111:ObjectResult xmlns:ns111="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns112:TissueSpecimen id="623" type="Fixed Tissue Block" available="true" positionDimensionOne="3" positionDimensionTwo="23" barcode="ISBN-10 AB89-0272XY" comments="PATIENT HAS HISTORY OF CANCER" activityStatus="Active" quantityInGram="5.1" availableQuantityInGram="4.59999990463257" xmlns:ns112="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns111:ObjectResult>
+ <ns112:ObjectResult xmlns:ns112="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns113:TissueSpecimen id="632" type="Fixed Tissue Slide" available="true" positionDimensionOne="15" positionDimensionTwo="9" barcode="ISBN-10 AB89-0416XY" comments="SPECIMEN IN SALINE OVERNIGHT" activityStatus="Active" quantityInGram="50.5" availableQuantityInGram="50.0" xmlns:ns113="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns112:ObjectResult>
+ <ns113:ObjectResult xmlns:ns113="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns114:TissueSpecimen id="633" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="12" barcode="ISBN-10 AB89-0417XY" comments="ASCITES FLUID" activityStatus="Active" quantityInGram="10.25" availableQuantityInGram="9.75" xmlns:ns114="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns113:ObjectResult>
+ <ns114:ObjectResult xmlns:ns114="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns115:TissueSpecimen id="634" type="Fixed Tissue Block" available="true" positionDimensionOne="9" positionDimensionTwo="6" barcode="ISBN-10 AB89-0418XY" comments="PATIENT WAS ON CHEMO" activityStatus="Active" quantityInGram="19.5" availableQuantityInGram="19.0" xmlns:ns115="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns114:ObjectResult>
+ <ns115:ObjectResult xmlns:ns115="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns116:TissueSpecimen id="635" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="20" barcode="ISBN-10 AB89-0426XY" comments="LEFT BREAST" activityStatus="Active" quantityInGram="100.0" availableQuantityInGram="99.5" xmlns:ns116="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns115:ObjectResult>
+ <ns116:ObjectResult xmlns:ns116="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns117:TissueSpecimen id="636" type="Frozen Tissue Block" available="true" positionDimensionOne="21" positionDimensionTwo="8" barcode="ISBN-10 AB89-0428XY" comments="1/2 HOUR WAIT BEFORE FREEZING" activityStatus="Active" quantityInGram="1.1" availableQuantityInGram="0.600000023841858" xmlns:ns117="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns116:ObjectResult>
+ <ns117:ObjectResult xmlns:ns117="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns118:TissueSpecimen id="637" type="Frozen Tissue Slide" available="true" positionDimensionOne="9" positionDimensionTwo="24" barcode="ISBN-10 AB89-0451XY" comments="AT 4 DEGREES FOR 2 DAYS" activityStatus="Active" quantityInGram="20.0" availableQuantityInGram="19.5" xmlns:ns118="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns117:ObjectResult>
+ <ns118:ObjectResult xmlns:ns118="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns119:TissueSpecimen id="638" type="Fresh Tissue" available="true" positionDimensionOne="4" positionDimensionTwo="4" barcode="ISBN-10 AB89-0453XY" comments="LARGE CHUNKS" activityStatus="Active" quantityInGram="25.15" availableQuantityInGram="24.6499996185303" xmlns:ns119="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns118:ObjectResult>
+ <ns119:ObjectResult xmlns:ns119="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns120:TissueSpecimen id="639" type="Fixed Tissue Block" available="true" positionDimensionOne="5" positionDimensionTwo="2" barcode="ISBN-10 AB89-0454XY" comments="N/A" activityStatus="Active" quantityInGram="3.0" availableQuantityInGram="2.5" xmlns:ns120="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns119:ObjectResult>
+ <ns120:ObjectResult xmlns:ns120="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns121:TissueSpecimen id="642" type="Fixed Tissue Block" available="true" positionDimensionOne="3" positionDimensionTwo="22" barcode="ISBN-10 AB89-0506XY" comments="UNKNOWN" activityStatus="Active" quantityInGram="20.0" availableQuantityInGram="19.5" xmlns:ns121="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns120:ObjectResult>
+ <ns121:ObjectResult xmlns:ns121="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns122:TissueSpecimen id="644" type="Fixed Tissue Block" available="true" positionDimensionOne="18" positionDimensionTwo="19" barcode="ISBN-10 AB89-0538XY" comments="FROZEN AT -20" activityStatus="Active" quantityInGram="132.75" availableQuantityInGram="132.25" xmlns:ns122="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns121:ObjectResult>
+ <ns122:ObjectResult xmlns:ns122="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns123:TissueSpecimen id="645" type="Fixed Tissue Block" available="true" positionDimensionOne="19" positionDimensionTwo="8" barcode="ISBN-10 AB89-0546XY" comments="ROOM TEMP FOR 2 DAYS" activityStatus="Active" quantityInGram="0.9" availableQuantityInGram="0.399999976158142" xmlns:ns123="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns122:ObjectResult>
+ <ns123:ObjectResult xmlns:ns123="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet">
+  <ns124:TissueSpecimen id="646" type="Fixed Tissue Block" available="true" positionDimensionOne="17" positionDimensionTwo="23" barcode="ISBN-10 AB89-0572XY" comments="ASCITES FLUID" activityStatus="Active" quantityInGram="200.0" availableQuantityInGram="199.5" xmlns:ns124="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject"/>
+ </ns123:ObjectResult>
+</queryResults>
