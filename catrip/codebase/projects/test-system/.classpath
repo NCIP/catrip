@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="lib" path="ext/lib/_xml-mapping.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="test/src/java"/>
@@ -65,7 +66,7 @@
 	<classpathentry kind="lib" path="ext/lib/acme.jar"/>
 	<classpathentry kind="lib" path="ext/lib/ant-contrib.jar"/>
 	<classpathentry kind="lib" path="ext/lib/argouml-layout.jar"/>
-	<classpathentry kind="lib" path="ext/lib/cae_domain.jar"/>
+	<classpathentry sourcepath="/catrip-1.0-cae-reengineering/1.2/src" kind="lib" path="ext/lib/cae_domain.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CAE-client.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CAE-common.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CAE-service.jar"/>
@@ -129,7 +130,7 @@
 	<classpathentry kind="lib" path="ext/lib/CaTissueCore-common.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CaTissueCore-service.jar"/>
 	<classpathentry sourcepath="/catrip-1.0-caTissueCore-service/build/stubs-CaTissueCore/src" kind="lib" path="ext/lib/CaTissueCore-stubs.jar"/>
-	<classpathentry kind="lib" path="ext/lib/catrip-queryengine-1.0.jar"/>
+	<classpathentry sourcepath="/catrip-1.0-queryengine/src/java" kind="lib" path="ext/lib/catrip-queryengine-1.0.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-client.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-common.jar"/>
 	<classpathentry kind="lib" path="ext/lib/CaTRIPTumorRegistry-service.jar"/>
