@@ -14,12 +14,12 @@ public class ClassBean{
     private String id;
     private String version;
     private ArrayList<AttributeBean> attributes = new ArrayList(50);
-    private ArrayList<String> associatedClasses= new ArrayList(20); // this is from the domain model..
+    private ArrayList<String> associatedClasses= new ArrayList(20); // from the domain model..
     private String packageName;
     private String className;
     private String description;
     
-    // set the icon based on the service name.. have a pre selected icons.. and a default icon too
+    // set the icon based on the service name.
     private Image icon;// = "edu/duke/cabig/catrip/gui/dnd/resources/caCore.png";
     private String serviceName;
     private String serviceUrl;
@@ -447,18 +447,11 @@ public class ClassBean{
     }
     
     
-    // thought it will be required in the simple gui for comparing two ClassBean objects.
-    
-//    public boolean equals(Object obj) {
-//        ClassBean cBean = (ClassBean)obj;
-//        return getFullyQualifiedName().equalsIgnoreCase(cBean.getFullyQualifiedName());
-//    }
     
     
     
     
-    
-    
+    /** Methods used in generalization section of the domain model xml. */
     
     public String getSuperClassRefId() {
         return superClassRefId;

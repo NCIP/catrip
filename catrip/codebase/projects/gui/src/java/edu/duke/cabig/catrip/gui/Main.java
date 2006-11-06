@@ -26,7 +26,7 @@ public class Main {
         // caTRIP_config.xml for Index service and Dorian Urls.
         
         
-        // check if the application is launched via the webstart context.
+        // sanjeev: check if the application is launched via the webstart context.
         String webstartStr = System.getProperty("deployment.user.cachedir");
         if(webstartStr != null){
             System.out.println("This is a webstart version of caTRIP");

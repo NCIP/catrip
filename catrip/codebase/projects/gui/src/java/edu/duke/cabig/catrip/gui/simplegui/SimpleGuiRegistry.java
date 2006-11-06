@@ -28,20 +28,21 @@ import java.util.List;
  * @author Sanjeev Agarwal
  */
 public class SimpleGuiRegistry {
-    // array of the filterpanel..
+    
     private static ObjectGraphProcessor processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
     private static List<GraphObject> currentXMLObjectList = new ArrayList(50);
     private static ArrayList<ClassBean> currentClassBeanList = new ArrayList(50);
     private static GraphObject targetGraphObject = null; // will hold the ref to target object ClassBean object..
     
+    // array of the filterpanel..
     private static ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
-    private static HashMap beanMap = new HashMap(20); // holds unique classBean instaces which are used in filters..
-    private static HashMap currentClassBeanMap = new HashMap(100); // holds unique classBean instances for all the classes used in query..
+    private static HashMap beanMap = new HashMap(20); // sanjeev: holds unique classBean instaces which are used in filters..
+    private static HashMap currentClassBeanMap = new HashMap(100); // sanjeev: holds unique classBean instances for all the classes used in query..
     
     private static HashMap serviceMap = new HashMap(10);
             
-    private static boolean simpleGuiChanged = false; // this is to tell that something is changed so calculate the DCQL again.
+    private static boolean simpleGuiChanged = false; // sanjeev: this is to tell that something is changed so calculate the DCQL again.
     
     /** Creates a new instance of SimpleGuiRegistry */
     public SimpleGuiRegistry() {
@@ -59,7 +60,7 @@ public class SimpleGuiRegistry {
         Service service;
         for (int i=0;i<services.size();i++) {
             service =  services.get(i);
-            // bind service to a searchable index by name.
+            // sanjeev: bind service to a searchable index by name.
             getServiceMap().put(service.getServiceName(), service);
             
             String domainModelFile = guiConfiguration.getDomainModelMetadataLocation()+File.separator+service.getMetadataXml().trim();
@@ -204,10 +205,8 @@ public class SimpleGuiRegistry {
     
     
     public static void prepareForDcql(){
-        // clean the old stuff I believe.. and create fresh things.. based on the Filters list..
         
-        
-        // fill the hash map with filled objects only...
+        // sanjeev: fill the hash map with filled objects only...
         ArrayList<FilterRowPanel> list = getFilterList();
         for (int i = 0; i < list.size(); i++) {
             FilterRowPanel pnl = list.get(i);
@@ -215,7 +214,7 @@ public class SimpleGuiRegistry {
             ClassBean cBean = cdeBean.getClassBean();
             addToBeanMap(cBean);
         }
-        // pick filters one by one and keep setting the associations in each item...
+        // sanjeev: pick filters one by one and keep setting the associations in each item...
         
         for (int i = 0; i < list.size(); i++) {
             FilterRowPanel pnl = list.get(i);
@@ -239,7 +238,7 @@ public class SimpleGuiRegistry {
         GraphObject targetObject =  getTargetGraphObject();
         
         if (filterObject.isLocal()){
-            // get the association path.. get their beans and then create classBean for each and then add association recursively..
+            // sanjeev: get the association path.. get their beans and then create classBean for each and then add association recursively..
             GraphAssociation assoc;
             List<GraphAssociation> assos = filterObject.getAssociationPathWRTTargetObject();
             
@@ -265,7 +264,7 @@ public class SimpleGuiRegistry {
             
 //                filterObject.getClassBean().printAttributes();
         }else {
-            // traverse till the outermost object.. and set foreign association there..
+            // sanjeev: traverse till the outermost object.. and set foreign association there..
             
             String leftProperty = targetObject.getForeignAssociationOutboundCDE();
             String rightProperty = filterObject.getForeignAssociationInboundCDE();
@@ -278,23 +277,23 @@ public class SimpleGuiRegistry {
                 
                 assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
-                // check here if the class is available in the GraphObject tree of the Target object or not. 
-                // otherwise locate that class from the metaData registry instead of the list.
+                // sanjeev: check here if the class is available in the GraphObject tree of the Target object or not. 
+                // sanjeev: otherwise locate that class from the metaData registry instead of the list.
                 ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
                 tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
                 tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
                 tmpBeanLeft.setHasAssociations(true);
                 tmpBeanLeft = tmpBeanRight;
             }
-            //at the end the "tmpBeanLeft" is the outer most object of that service for the foreign association..
-            // So use that object as leftObj..
+            // sanjeev: at the end the "tmpBeanLeft" is the outer most object of that service for the foreign association..
+            // sanjeev: So use that object as leftObj..
             ClassBean leftClassBeanObject = tmpBeanLeft;
             ClassBean rightClassBeanObject;
             
-            // now get the inbound path for filter object.. and use the first object as right join.
+            // sanjeev: now get the inbound path for filter object.. and use the first object as right join.
             assos = filterObject.getForeignAssociationInboundPath();
             
-            // just add the foreign association to the outermost object of target service....
+            // sanjeev: just add the foreign association to the outermost object of target service....
             assoc = assos.get(0);
             rightClassBeanObject = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
             if (rightClassBeanObject == null){
@@ -313,8 +312,8 @@ public class SimpleGuiRegistry {
             leftClassBeanObject.addUniqueForeignAssociation(foreignAssociationBean);
             leftClassBeanObject.setHasForeignAssociations(true);
             
-            // now set the local associations for the inbound path for the filter object in foreign service..
-            // now the index will start from 1.
+            // sanjeev: now set the local associations for the inbound path for the filter object in foreign service..
+            // sanjeev: now the index will start from 1.
             tmpBeanLeft = rightClassBeanObject;
             for (int k=1;k<assos.size();k++) {
                 assoc = assos.get(k);

@@ -29,7 +29,7 @@ public class HTMLResultExporter {
     
     public static void export(JTable table){
         try {
-            // right now dump it into a file in user.home/.caTRIP/ results.html later on pop up a file chooser.
+            // sanjeev: right now dump it into a file in user.home/.caTRIP/ results.html later on pop up a file chooser.
             String file = GUIConstants.CATRIP_HOME+File.separator+"caTRIP_Query_Results.html";
             
             TableModel model = table.getModel();
@@ -46,7 +46,7 @@ public class HTMLResultExporter {
             int columns = model.getColumnCount();
             
             out.write("<TABLE  border=\"1\" cellpadding=\"3\">");  out.write("\n");
-            // write column names..
+            // sanjeev: write column names..
             out.write("<TR>");  out.write("\n");
             for(int i=0; i<columns;i++) {
                 out.write("<TD style=\"background-color: rgb(204, 204, 255);\" >");
@@ -56,7 +56,7 @@ public class HTMLResultExporter {
             out.write("</TR>");  out.write("\n\n");
             
             
-            boolean even = false; // paint alternate row in differnt color.
+            boolean even = false; // sanjeev: paint alternate row in differnt color.
             //
             for(int i=0; i< model.getRowCount();i++){
                 out.write("<TR>");

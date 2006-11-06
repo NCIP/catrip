@@ -111,14 +111,14 @@ public class CommandPanel extends CPanel {
                     
             FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
             DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
-            // if the dcqlQueryDocument is null throw the error Dialog. 
-            // if it is not null that only fire the query with FQE to avoid Null pointer Exception.
+            // sanjeev: if the dcqlQueryDocument is null throw the error Dialog. 
+            // sanjeev: if it is not null that only fire the query with FQE to avoid Null pointer Exception.
             
             long dcqlGenerationTime = System.currentTimeMillis();
             
             System.out.println("Total time taken in Generating the DCQL: "+  (dcqlGenerationTime-startTime) +" Milli Seconds" );
             
-            // print the formatted DCQL on console or to a log file.
+            // sanjeev: print the formatted DCQL on console or to a log file.
 //            XmlOptions xmlOptions = new XmlOptions();
 //            xmlOptions.setSavePrettyPrint();
 //            xmlOptions.setSavePrettyPrintIndent(4);
@@ -127,7 +127,7 @@ public class CommandPanel extends CPanel {
 //            System.out.println(DCQLGenerator.getDCQLText(xmlOptions));
 //            System.out.println("\n\n ==============================================\n\n\n\n\n");
             
-            // clean the result table before you even try the new query...
+            // sanjeev: clean the result table before you even try the new query...
             getMainFrame().getOutputPanel().cleanResults();
             
             CQLQueryResults results = fqe.execute(dcqlQueryDocument);
@@ -187,7 +187,7 @@ public class CommandPanel extends CPanel {
                 long resultDisplayTime = System.currentTimeMillis();
                 System.out.println("Total time taken in Result Display: "+  (resultDisplayTime-serializationTime) +" Milli Seconds" );
                 
-                // set that results are available for export..
+                // sanjeev: set that results are available for export..
                 GUIConstants.resultAvailable = true;
 //                HTMLResultExporter.exportToHtml( getMainFrame().getOutputPanel().getOutputTable());
                 

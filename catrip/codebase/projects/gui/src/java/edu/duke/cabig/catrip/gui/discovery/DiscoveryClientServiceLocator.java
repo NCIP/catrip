@@ -96,9 +96,8 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                         
                         
                         
-                        // impl stuff..
-//
-                        // TODO - remove this later.  only for the demo..
+                        // sanjeev: impl stuff..
+//                      // TODO - remove this later.  only for the demo..
                         try {
                             PropertyResourceBundle bundle = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
                             String needImpl = bundle.getString(serviceMetaDataBean.getServiceName());
@@ -114,8 +113,7 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                         } catch (Exception e){
 //                            e.printStackTrace();
                         }
-                        // only for the demo..
-                        // impl stuff..
+                        // sanjeev: impl stuff..
                         
                         
                         

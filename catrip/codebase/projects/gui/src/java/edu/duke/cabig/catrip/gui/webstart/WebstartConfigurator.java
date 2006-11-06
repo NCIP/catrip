@@ -42,7 +42,7 @@ public class WebstartConfigurator {
     public static void configureForWebstart(){
         try {
             
-            // locate the zip file containing the configuration files.
+            // sanjeev: locate the zip file containing the configuration files.
             String inFilename = "conf.zip";
             String dir  = System.getProperty("user.home")+File.separator+".caTRIP";
             File confDir = new File(dir);confDir.mkdir();
@@ -63,7 +63,7 @@ public class WebstartConfigurator {
             
             
             
-            // replace the conf dir location.
+            // sanjeev: replace the conf dir location.
             CatripConfigurationDocument conf = null;
             String configXMLFile = CATRIP_CONFIG_FILE_LOCATION;
             try {
@@ -76,7 +76,7 @@ public class WebstartConfigurator {
             conf.save(new File(CATRIP_CONFIG_FILE_LOCATION));
             
             
-            // replace the conf dir location.
+            // sanjeev: replace the conf dir location.
             String fqeFile = CATRIP_HOME + File.separator + "query_engine_services_config.xml";
             Properties properties = new Properties(); 
             try {

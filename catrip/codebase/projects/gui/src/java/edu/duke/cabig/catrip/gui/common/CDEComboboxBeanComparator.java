@@ -15,7 +15,7 @@ public class CDEComboboxBeanComparator  implements Comparator {
     public CDEComboboxBeanComparator() {
     }
     
-    
+    /** String based comparison. String value is : Class_CDE+Attribute_CDE */
     public int compare(Object cBean1, Object cBean2) {
         return ((CDEComboboxBean)cBean1).toString().compareTo( ((CDEComboboxBean)cBean2).toString() );
     }

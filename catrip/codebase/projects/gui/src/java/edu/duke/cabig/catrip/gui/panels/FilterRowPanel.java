@@ -25,7 +25,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     private CDEComboboxBean currentFilter = null;
     
-    // for grouping similar Target objects... String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
+    // sanjeev: for grouping similar Target objects... String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
     private Hashtable uniqueFilterMap = new Hashtable();
     
     /** Creates new form FilterRowPanel */
@@ -111,8 +111,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
-// clean filter from previous CDEComboboxBean and reset predicate and value fields..
-        if (currentFilter != null){ // that means a filter was already set on this row...
+// sanjeev: clean filter from previous CDEComboboxBean and reset predicate and value fields..
+        if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
             currentFilter.remove();
             getPredicateCombo().setSelectedIndex(0);
             getValueBox().setText("");
@@ -196,7 +196,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
             }
         }
         
-        // add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
+        // sanjeev: add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
         Collections.sort(attributeList, new CDEComboboxBeanComparator());
         for (int i = 0; i < attributeList.size(); i++) {
             getCdeCombo().addItem(attributeList.get(i)); 

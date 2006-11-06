@@ -249,7 +249,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             Vector tableRow = new Vector();
             ServiceMetaDataBean serviceMetaDataBean = (ServiceMetaDataBean)serviceList.get(i);
             
-            // don't forget to populate the ServiceMetaDataRegistry too..
+            // sanjeev: don't forget to populate the ServiceMetaDataRegistry too..
             ServiceMetaDataRegistry.addService(serviceMetaDataBean);
             
             tableRow.add(new Boolean(false));
@@ -268,7 +268,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
      * Get the list of selected Services and populate the domain domainModel for those and bind into the registry for later use.
      */
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
-        // Here get the list of the Services and then populate the ServiceMetaDataRegistry
+        // sanjeev: Here get the list of the Services and then populate the ServiceMetaDataRegistry
         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         int numSelectedRows = getResultTable().getRowCount();//getSelectedRows();
@@ -289,7 +289,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             }
         }
         
-        // to handle the window.. call parent action..
+        // sanjeev: to handle the window.. call parent action..
         parentFrame.fwdAction();
         
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); 
@@ -329,7 +329,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             // implemented methods..
             
             public boolean isCellEditable(int row, int col) {
-                if (col > 0) // only first column is editable with CheckBox Editor.
+                if (col > 0) // sanjeev: only first column is editable with CheckBox Editor.
                     return false;
                 
                 return true;

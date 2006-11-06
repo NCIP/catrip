@@ -186,7 +186,6 @@ public class ObjectGraphProcessor {
 //                        System.out.println(" #####  :"+e.getAttribute("className")+"\n" );
                         associatedObjects.add(buildGraphObject(e,serviceName,remoteService));
 //                        associationEle = associationEle.getChild("Association");
-                          // this line creates problem when there are more than 2 association element exist at same level. Moving it down works.
                     }
                     associationEle = associationEle.getChild("Association");
                 }

@@ -99,7 +99,7 @@ public class ListServicesPanel extends CPanel {
                     associationsNode.add(associationLeafNode);
                 }
                 
-                // add the super class information..
+                // sanjeev: add the super class information..
                 String superClassName = classBean.getSuperClassName();
                 if (superClassName == null){
                     superClassName = "No Super Class";

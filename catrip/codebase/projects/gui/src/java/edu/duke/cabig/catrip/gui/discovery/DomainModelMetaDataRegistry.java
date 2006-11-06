@@ -72,8 +72,8 @@ public class DomainModelMetaDataRegistry {
     /** Populate the data from Domain Model extract into ClassBean instances and bind them into registry.  */
     
     public static void populateDomainModelMetaData(DomainModel domainModel, ServiceMetaDataBean sBean){
-//        System.out.println("XXXXX---   Service name :"+sBean.getServiceName());
-        ArrayList<ClassBean> serviceClassList = new ArrayList(100); // The collection of classes that belongs to only this DomainModel.
+
+        ArrayList<ClassBean> serviceClassList = new ArrayList(100); // sanjeev: The collection of classes that belongs to only this DomainModel.
         
         UMLClass[] umlClasses = domainModel.getExposedUMLClassCollection().getUMLClass();
         for (int i = 0; i < umlClasses.length; i++) {
@@ -118,9 +118,9 @@ public class DomainModelMetaDataRegistry {
             classBean.setCDEName(classCDEName.trim());
             
             
-            // now set the attributes..
+            // sanjeev: now set the attributes..
             ArrayList<AttributeBean> attributeList = new ArrayList(100);
-            ArrayList<String> attributeListUnique = new ArrayList(100); // just to check for the duplictate entries..
+            ArrayList<String> attributeListUnique = new ArrayList(100); // sanjeev: just to check for the duplictate entries..
             
             UMLAttribute[] umlAttributes = umlClasses[i].getUmlAttributeCollection().getUMLAttribute();
             if ((umlAttributes != null)  &&  (umlAttributes.length > 1)){
@@ -152,7 +152,7 @@ public class DomainModelMetaDataRegistry {
                     attributeBean.setDisplayName(cdeName);
                     attributeBean.setCDEName(cdeName);
 //                    System.out.println( classBean.getClassName()+ ":" + cdeName );
-                    // check for duplicate entries..
+                    // sanjeev: check for duplicate entries..
                     if (!attributeListUnique.contains(attributeBean.getAttributeName())){
                         attributeList.add(attributeBean);
                         attributeListUnique.add(attributeBean.getAttributeName());
@@ -161,14 +161,14 @@ public class DomainModelMetaDataRegistry {
             }
             classBean.setAttributes(attributeList);
             
-            // now bind the class Obj with the Registry.
+            // sanjeev: now bind the class Obj with the Registry.
             bindClassByRefId(classBean);
             serviceClassList.add(classBean);
         }
-        // bind the class list to the service name.
+        // sanjeev: bind the class list to the service name.
         bindClassListByServiceName(sBean.getServiceName(), serviceClassList); //
         
-        // now set the umlAssociations with the classes in registry :
+        // sanjeev: now set the umlAssociations with the classes in registry :
         UMLAssociation[] umlAssociations = domainModel.getExposedUMLAssociationCollection().getUMLAssociation();
         
         for (int i = 0; i < umlAssociations.length; i++) {
@@ -192,7 +192,7 @@ public class DomainModelMetaDataRegistry {
             if (sourceClassBean != null){
                 sourceClassBean.addAssociatedClass(targetRef);
                 sourceClassBean.addAssociationRoleName(targetRef, targetRole);
-            } // put the cross references for the source into target class...
+            } // sanjeev: put the cross references for the source into target class...
             if ( (targetClassBean != null ) && biDirectional ) {
                 targetClassBean.addAssociatedClass(sourceRef);
                 String sourceRole = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
@@ -203,19 +203,19 @@ public class DomainModelMetaDataRegistry {
         
         
         
-        // load association data from the umlGeneralizationCollection also..
+        // sanjeev: load association data from the umlGeneralizationCollection also..
         UMLGeneralization[] umlUMLGeneralization = domainModel.getUmlGeneralizationCollection().getUMLGeneralization();
         for (int i = 0; i < umlUMLGeneralization.length; i++) {
-            //  get  superRefId subRefId
+            //  sanjeev: get  superRefId subRefId
             String superRefId = umlUMLGeneralization[i].getSuperClassReference().getRefid();
             String subRefId = umlUMLGeneralization[i].getSubClassReference().getRefid();
             
-            // add to the umlUMLGeneralization map.. used for recursive action..
+            // sanjeev: add to the umlUMLGeneralization map.. used for recursive action..
             getClassGeneralizationMap().put(subRefId, superRefId);
 //            setSuperClassAssociations(subRefId, superRefId, domainModel);
         }
         
-        // now as the ClassGeneralizationMap is ready.. set the associations from super class to sub class recursively..
+        // sanjeev: now as the ClassGeneralizationMap is ready.. set the associations from super class to sub class recursively..
         HashMap subSuperclassMap = getClassGeneralizationMap();
         Object[] subrefs = subSuperclassMap.keySet().toArray();
         for (int i = 0; i < subrefs.length; i++) {
@@ -226,7 +226,7 @@ public class DomainModelMetaDataRegistry {
         
         
         
-        // by now the subclasses are added to all super classes. so add the subclasses also with same role.
+        // sanjeev: by now the subclasses are added to all super classes. so add the subclasses also with same role.
         addSubClassesAsSameRole(domainModel);
         
         
@@ -248,13 +248,13 @@ public class DomainModelMetaDataRegistry {
     public static void setSuperClassAssociations(String subRefId, String superRefId, DomainModel domainModel) {
         
         if (getClassGeneralizationMap().get(superRefId) != null){
-            // it's super Class also there..
+            // sanjeev: it has super Class also there..
             String superSuperClassrefId = (String) getClassGeneralizationMap().get(superRefId);
             setSuperClassAssociations(superRefId, superSuperClassrefId, domainModel);
         }
         
         
-        // locate the subclass and super class..
+        // sanjeev: locate the subclass and super class..
         ClassBean subClass = null;
         ClassBean superClass = null;
         
@@ -269,7 +269,7 @@ public class DomainModelMetaDataRegistry {
 //            String subName = subClass.getClassName();
 //            System.out.println("XXXXX   Class:  "+subName+"  --extends->   "+superName);
         
-        // set the super Class RefId to the Sub Class..
+        // sanjeev: set the super Class RefId to the Sub Class..
         try {
             subClass.setSuperClassRefId(superRefId);
             subClass.setSuperClassName(superClass.getClassName());
@@ -278,7 +278,7 @@ public class DomainModelMetaDataRegistry {
             e.printStackTrace();
         }
         
-        // set the subclass Id to the super class..
+        // sanjeev: set the subclass Id to the super class..
         try {
             superClass.addSubClassId(subRefId);
         } catch (Exception e) {
@@ -286,7 +286,7 @@ public class DomainModelMetaDataRegistry {
         }
         
         
-        // attach all the association of super class to sub class.. one by one..
+        // sanjeev: attach all the association of super class to sub class.. one by one..
         ArrayList<String>  assClassList = superClass.getAssociatedClasses();
         for (int k = 0; k < assClassList.size(); k++) {
             String refID = assClassList.get(k);
@@ -294,7 +294,7 @@ public class DomainModelMetaDataRegistry {
             subClass.addAssociatedClass(refID);
             subClass.addAssociationRoleName(refID, roleName);
 //                System.out.println("XXXXX   Class:  "+subName+"  --extends->   "+superName +"  : ClassID:"+refID+ ": RoleName :"+roleName);
-            // add it to a seperate list also..
+            // sanjeev: add it to a seperate list also..
             subClass.addSuperClassAssociatedClassList(refID);
         }
         
@@ -331,7 +331,7 @@ public class DomainModelMetaDataRegistry {
                 }
                 
                 
-            } // put the cross references for the source into target class...
+            } // sanjeev: put the cross references for the source into target class...
             if ( (sourceClassBean != null) && (targetClassBean != null ) && biDirectional ) {
                 
                 ArrayList<String> subClasses =  getAllSubClassFromHierarchy( sourceClassBean );

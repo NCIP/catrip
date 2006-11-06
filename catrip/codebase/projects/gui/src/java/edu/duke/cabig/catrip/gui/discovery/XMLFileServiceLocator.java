@@ -69,7 +69,7 @@ public class XMLFileServiceLocator extends ServiceLocator{
     
     
     private void addNode(String file, String domainModelFile, ArrayList serviceBeanlist, String serviceUrl) throws Exception{
-        // read the file for which you have to add impl or not..
+        
         GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
         
         PropertyResourceBundle bundle = new PropertyResourceBundle(new FileInputStream(guiConfiguration.getConfigRootLocation() + File.separator +"metadataMappings.properties"));
@@ -94,14 +94,14 @@ public class XMLFileServiceLocator extends ServiceLocator{
         ResearchCenter researchCenter = commonMetadata.getHostingResearchCenter().getResearchCenter();
         serviceMetaDataBean.setHostingResearchCenter(researchCenter.getDisplayName() + "("+researchCenter.getShortName()+")"+":"+serviceMetaDataBean.getPointOfContact());
         
-        // TODO - remove this later.  only for the demo..
+        // TODO - remove this later.  only for the old caCORE generated system..
         try {
         String needImpl = bundle.getString(serviceName);
         if ((needImpl != null) && (Boolean.valueOf(needImpl))){
             serviceMetaDataBean.needImpl(true);
         }
         } catch (Exception e){}
-        // only for the demo..
+        // only for the old caCORE generated system..
         
         serviceBeanlist.add(serviceMetaDataBean);
         

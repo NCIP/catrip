@@ -25,7 +25,7 @@ public class SimpleSearchPanel extends CPanel {
     
     private ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
-    // for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
+    // sanjeev: for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
     private Hashtable targetObjectServiceMap = new Hashtable(); 
     
     /** Creates new form SimpleSearchPanel */
@@ -229,14 +229,14 @@ public class SimpleSearchPanel extends CPanel {
         GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
         String name = selectedTargetObject.toString().trim();
          
-        // when the combos are showing.. than
+        // sanjeev: when the combos are showing.. than
             Enumeration e = getTargetObjectServiceMap().keys(); 
             while (e.hasMoreElements()){
                 String mixedKey = (String)e.nextElement();
 //                System.out.println("### name:"+name+": key:"+mixedKey);
                 if (mixedKey.startsWith(name)){
 //                    System.out.println("### key:"+mixedKey);
-                    // add the services to the service combo..
+                    // sanjeev: add the services to the service combo..
                     GraphObject obj = (GraphObject)getTargetObjectServiceMap().get(mixedKey);
                     getTargetServiceCombo().addItem(SimpleGuiRegistry.getServiceFromMap(obj.getServiceName().trim()));
                 }
@@ -361,13 +361,13 @@ public class SimpleSearchPanel extends CPanel {
             filterPanel.add(jp);
         }
         
-        SimpleGuiRegistry.addFilterToList(jp);  // create a list of filters being added currently..
+        SimpleGuiRegistry.addFilterToList(jp);  // sanjeev: create a list of filters being added currently..
         
         filterPanel.revalidate();
         filterPanel.repaint();
         
         SimpleGuiRegistry.setSimpleGuiChanged(true);
-        // after adding each filter.. prepare registry for DCQL..
+        // sanjeev: after adding each filter.. prepare registry for DCQL..
 //        SimpleGuiRegistry.prepareForDcql();
         
     }//GEN-LAST:event_addFilterBtnActionPerformed
@@ -459,7 +459,7 @@ public class SimpleSearchPanel extends CPanel {
         
         
         
-        //------------- The default selected Target Object is there in DCQL -------------
+        // sanjeev: ------------- The default selected Target Object is there in DCQL -------------
         
             GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
             Service selectedService = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());//(Service)getTargetServiceCombo().getSelectedItem();

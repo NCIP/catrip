@@ -97,7 +97,7 @@ public class DCQLGenerator {
             // <editor-fold>   // only attributes are there
             
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
-            // if more than one attribute.. create an internal group...
+            // sanjeev: if more than one attribute.. create an internal group...
             if (targetObjectAttributeList.size() > 1){
                 // has multiple attcibutes..
                 dcqlGroup = dcqlOuterObject.addNewGroup();
@@ -106,7 +106,7 @@ public class DCQLGenerator {
                 createAttributesGroup(dcqlGroup, targetObjectAttributeList);
                 
             }else {
-                // has only 1 attribute
+                // sanjeev: has only 1 attribute
                 Attribute dcqlAttribute = dcqlOuterObject.addNewAttribute();
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
                 dcqlAttribute.setName(aBean.getAttributeName());
@@ -130,7 +130,7 @@ public class DCQLGenerator {
             dcqlGroup.setLogicRelation(LogicalOperator.AND);
             if (targetObjectAttributeList.size() > 1){
                 
-                // has multiple attributes.. create an internal group...
+                // sanjeev: has multiple attributes.. create an internal group...
                 Group gp2 = dcqlGroup.addNewGroup();
                 gp2.setLogicRelation(LogicalOperator.AND);
                 
@@ -139,7 +139,7 @@ public class DCQLGenerator {
                 createAssociations(dcqlGroup, outerObjectBean);
                 
             }else {
-                // has only 1 attribute
+                // sanjeev: has only 1 attribute
                 Attribute dcqlAttribute = dcqlGroup.addNewAttribute();
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
                 dcqlAttribute.setName(aBean.getAttributeName());
@@ -160,7 +160,7 @@ public class DCQLGenerator {
             
             
         }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // check if the associations are more than 1 than create a AND Group and than add these to the Group.
+            // sanjeev: check if the associations are more than 1 than create a AND Group and than add these to the Group.
             int numOfForeignAssociations = outerObjectBean.getForeignAssociations().size();
             int numOfAssociations = outerObjectBean.getAssociations().size();
             int numTotalAssociations = numOfForeignAssociations+numOfAssociations;
@@ -205,7 +205,7 @@ public class DCQLGenerator {
         Group outerDcqlGroup = outerObject;
         
         if(targetObjectHasAssociations){
-            //- iterate the local associations... recursively.. and create the DCQL.
+            //- sanjeev: iterate the local associations... recursively.. and create the DCQL.
             ArrayList associationList = outerObjectBean.getAssociations();
             for (int i = 0;i<associationList.size() ;i++){
                 
@@ -220,7 +220,7 @@ public class DCQLGenerator {
         }
         
         if(targetObjectHasForeignAssociations){
-            //- iterate the foreign associations... recursively.. and create the DCQL.
+            //- sanjeev: iterate the foreign associations... recursively.. and create the DCQL.
             ArrayList foreignAssociationList = outerObjectBean.getForeignAssociations();
             for (int i = 0;i<foreignAssociationList.size() ;i++){
                 
@@ -262,7 +262,7 @@ public class DCQLGenerator {
         gov.nih.nci.catrip.dcql.Object outerDcqlObject = outerObject;
         
         if(targetObjectHasAssociations){
-            //- iterate the local associations... recursively.. and create the DCQL.
+            //- sanjeev: iterate the local associations... recursively.. and create the DCQL.
             ArrayList associationList = outerObjectBean.getAssociations();
             for (int i = 0;i<associationList.size() ;i++){
                 
@@ -278,7 +278,7 @@ public class DCQLGenerator {
         }
         
         if(targetObjectHasForeignAssociations){
-            //- iterate the foreign associations... recursively.. and create the DCQL.
+            //- sanjeev: iterate the foreign associations... recursively.. and create the DCQL.
             ArrayList foreignAssociationList = outerObjectBean.getForeignAssociations();
             for (int i = 0;i<foreignAssociationList.size() ;i++){
                 
