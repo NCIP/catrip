@@ -2,10 +2,9 @@
 package edu.duke.cabig.catrip.gui.wizard;
 
 
-import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
-import edu.duke.cabig.catrip.gui.panels.*;
 import edu.duke.cabig.catrip.gui.util.HTMLResultExporter;
+import javax.swing.JOptionPane;
 
 /**
  * Main Window containing all the different Panels.
@@ -251,46 +250,46 @@ public class MainFrame extends CJFrame {
     }//GEN-LAST:event_exportResultHtmlActionPerformed
     
     private void addSearchEngineURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSearchEngineURLActionPerformed
-        
-        QueryEngineServiceAddURLPanel ws= new QueryEngineServiceAddURLPanel();
-        CJDialog jd = new CJDialog(this, "Add Search Engine Service URL");
-        jd.add(ws);
-        jd.setBounds(10,10,650,220);
-        jd.center();jd.setModal(true);
-        jd.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Not Implemented yet.");
+//        QueryEngineServiceAddURLPanel ws= new QueryEngineServiceAddURLPanel();
+//        CJDialog jd = new CJDialog(this, "Add Search Engine Service URL");
+//        jd.add(ws);
+//        jd.setBounds(10,10,650,220);
+//        jd.center();jd.setModal(true);
+//        jd.setVisible(true);
         
         
     }//GEN-LAST:event_addSearchEngineURLActionPerformed
     
     private void selectSearchEngineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectSearchEngineActionPerformed
-        
-        QueryEngineServiceSelectPanel ws= new QueryEngineServiceSelectPanel();
-        CJDialog jd = new CJDialog(this, "Search Services");
-        jd.add(ws);
-        jd.setBounds(10,10,650,142);
-        jd.center();jd.setModal(true);
-        jd.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Not Implemented yet.");
+//        QueryEngineServiceSelectPanel ws= new QueryEngineServiceSelectPanel();
+//        CJDialog jd = new CJDialog(this, "Search Services");
+//        jd.add(ws);
+//        jd.setBounds(10,10,650,142);
+//        jd.center();jd.setModal(true);
+//        jd.setVisible(true);
     }//GEN-LAST:event_selectSearchEngineActionPerformed
     
     private void addSearchEngineServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSearchEngineServicesActionPerformed
-        
-        QueryEngineServiceSearchPanel ws= new QueryEngineServiceSearchPanel();
-        CJDialog jd = new CJDialog(this, "Search Services");
-        jd.add(ws);
-        jd.setBounds(10,10,850,450);
-        jd.center();jd.setModal(true);
-        jd.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Not Implemented yet.");
+//        QueryEngineServiceSearchPanel ws= new QueryEngineServiceSearchPanel();
+//        CJDialog jd = new CJDialog(this, "Search Services");
+//        jd.add(ws);
+//        jd.setBounds(10,10,850,450);
+//        jd.center();jd.setModal(true);
+//        jd.setVisible(true);
     }//GEN-LAST:event_addSearchEngineServicesActionPerformed
     
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // here open this panel into a new Dialog instead of a JFrame... and set the panel parent type to Dialog.
-        
-        CJDialog jd = new CJDialog(this, "Search Services");
-        ServicesSearchPanel ws= new ServicesSearchPanel(jd);
-        jd.add(ws);
-        jd.setBounds(10,10,850,450);
-        jd.center();jd.setModal(true);
-        jd.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Not Implemented yet.");
+//        CJDialog jd = new CJDialog(this, "Search Services");
+//        ServicesSearchPanel ws= new ServicesSearchPanel(jd);
+//        jd.add(ws);
+//        jd.setBounds(10,10,850,450);
+//        jd.center();jd.setModal(true);
+//        jd.setVisible(true);
         
     }//GEN-LAST:event_addActionPerformed
     
