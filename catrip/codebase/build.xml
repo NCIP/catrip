@@ -248,6 +248,7 @@
 
 	<target name="build-queryengine" depends="prepare" description="Builds the queryengine project">
 		<resolveDependencies extdir="${projects.dir}/queryengine/ext">
+			<artifact refid="services.config"/>
 			<artifact refid="common.test.jars" />
 			<artifact refid="xmlbeans.jars" />
 			<artifact refid="data.jars" />
@@ -310,6 +311,7 @@
 
 	<target name="build-test-system" depends="prepare" description="Builds the test-system project">
 		<resolveDependencies extdir="${projects.dir}/test-system/ext">
+			<artifact refid="services.config"/>
 			<artifact refid="common.test.jars" />
 			<artifact refid="cagrid.coretests.jars" />
             		<artifact refid="data.jars" />
