@@ -7,39 +7,41 @@ package edu.duke.catrip.catissuecore.general;
 import edu.duke.catrip.catissuecore.general.CATissueCoreDataGenerator;
 import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class UserInsertTest extends TestCase {
 	
-  private static int maxrecs = 250;
+  private static int maxrecs = 500;
 	
 //user files
-  private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\UserComments.txt";
-  private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\EmailAddress.txt";
-  private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\FirstNamesFemales.txt";
-  private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\LastNamesV2.txt";
-  private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\Logins.txt";
-  private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\Passwords.txt";
-  private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\Dates.txt";
+  private static String inFile1 = "data\\UserComments.txt";
+  private static String inFile2 = "data\\EmailAddress.txt";
+  private static String inFile3 = "data\\FirstNamesFemales.txt";
+  private static String inFile4 = "data\\LastNamesV2.txt";
+  private static String inFile5 = "data\\Logins.txt";
+  private static String inFile6 = "data\\Passwords.txt";
+  private static String inFile7 = "data\\Dates.txt";
 
 //inst and dept files
-  private static String inFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CancerInstitutes.txt";							
-  private static String inFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CancerDepts.txt";
+  private static String inFile8 = "data\\CancerInstitutes.txt";							
+  private static String inFile9 = "data\\CancerDepts.txt";
 
 //address files
-  private static String inFile10 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StreetNames.txt";
-  private static String inFile11 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CityNames.txt";
-  private static String inFile12 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StateNames.txt";
-  private static String inFile13 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ZipCodes.txt";
-  private static String inFile14 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PhoneNums.txt";
+  private static String inFile10 = "data\\StreetNames.txt";
+  private static String inFile11 = "data\\CityNames.txt";
+  private static String inFile12 = "data\\StateNames.txt";
+  private static String inFile13 = "data\\ZipCodes.txt";
+  private static String inFile14 = "data\\PhoneNums.txt";
 
 //cancer group file
-  private static String inFile15 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ResearchGroup.txt";	
+  private static String inFile15 = "data\\ResearchGroup.txt";	
 
 //Site
-  private static String inFile16 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSite.txt";	
-  private static String inFile17 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteType.txt";
-  private static String inFile18 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\CollectionSiteEmail.txt";
+  private static String inFile16 = "data\\CollectionSite.txt";	
+  private static String inFile17 = "data\\CollectionSiteType.txt";
+  private static String inFile18 = "data\\CollectionSiteEmail.txt";
   
 //USER
   public String[] dataarr1 = new String[500];
@@ -70,18 +72,6 @@ public class UserInsertTest extends TestCase {
   public UserInsertTest(String sTestName) {
       super(sTestName);
   }
-
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(UserInsertTest.class);
-   }
 
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
@@ -258,6 +248,13 @@ public class UserInsertTest extends TestCase {
 		
 	}
 
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(UserInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 	
 }
 

@@ -10,74 +10,76 @@ import java.util.GregorianCalendar;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 //import edu.pitt.cabig.cae.domain.breast.BreastCancerTNMFindingTest;
 
 public class SpecimenInsertTest extends TestCase {
   
 //Variable to determining how many recs to create, per table
-	private static int maxrecs = 250;
+	private static int maxrecs = 500;
 	  
 //INPUT FILES FOR POPULATING THE TABLES
 //Specimen
-	private static String inFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenType.txt";
-	private static String inFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantity.txt";
-	private static String inFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantityAvail.txt";
-	private static String inFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenCmmt.txt";
-	private static String inFile5 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenBarcode2.txt";
-	private static String inFile6 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PosDimOne.txt";
-	private static String inFile7 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PosDimTwo.txt";
-	private static String newFile1 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenTypeV2.txt";
-	private static String newFile2 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantityV2.txt";
-	private static String newFile3 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenQuantityAvailV2.txt";
-	private static String newFile4 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecimenCmmtV2.txt";
+	private static String inFile1 = "data\\SpecimenType.txt";
+	private static String inFile2 = "data\\SpecimenQuantity.txt";
+	private static String inFile3 = "data\\SpecimenQuantityAvail.txt";
+	private static String inFile4 = "data\\SpecimenCmmt.txt";
+	private static String inFile5 = "data\\SpecimenBarcode2.txt";
+	private static String inFile6 = "data\\PosDimOne.txt";
+	private static String inFile7 = "data\\PosDimTwo.txt";
+	private static String newFile1 = "data\\SpecimenTypeV2.txt";
+	private static String newFile2 = "data\\SpecimenQuantityV2.txt";
+	private static String newFile3 = "data\\SpecimenQuantityAvailV2.txt";
+	private static String newFile4 = "data\\SpecimenCmmtV2.txt";
 	
 //Specimen Chars
-	private static String inFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TissueSite.txt";
-	private static String inFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TissueSide.txt";
-	private static String inFile10 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PathStatus.txt";
-	private static String newFile8 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TissueSiteV2.txt";
-	private static String newFile9 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TissueSideV2.txt";
-	private static String newFile10 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\PathStatusV2.txt";
+	private static String inFile8 = "data\\TissueSite.txt";
+	private static String inFile9 = "data\\TissueSide.txt";
+	private static String inFile10 = "data\\PathStatus.txt";
+	private static String newFile8 = "data\\TissueSiteV2.txt";
+	private static String newFile9 = "data\\TissueSideV2.txt";
+	private static String newFile10 = "data\\PathStatusV2.txt";
 
 //SpecimenCollectionGroup
-	private static String inFile11 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ClinicalDiagnosis.txt";
-	private static String inFile12 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ClinicalStatus.txt";
-	private static String newFile11 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ClinicalDiagnosisV2.txt";
-	private static String newFile12 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\ClinicalStatusV2.txt";
+	private static String inFile11 = "data\\ClinicalDiagnosis.txt";
+	private static String inFile12 = "data\\ClinicalStatus.txt";
+	private static String newFile11 = "data\\ClinicalDiagnosisV2.txt";
+	private static String newFile12 = "data\\ClinicalStatusV2.txt";
 
 	
 //CollectionProtocolEvent
-	private static String inFile13 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StudyCalEvtPt.txt";
+	private static String inFile13 = "data\\StudyCalEvtPt.txt";
 
 //CollectionProtocol
-	private static String inFile14 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecDescriptURL.txt";
-	private static String inFile15 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\dates.txt";
-	private static String inFile16 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecProtEnrollment.txt";
-	private static String inFile17 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\IRBs.txt";
-	private static String inFile18 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecProtSTitle.txt";
-	private static String inFile19 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecProtTitle.txt";
-	private static String newFile18 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecProtSTitleV2.txt";
-	private static String newFile19 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\SpecProtTitlV2.txt";
-	private static String inFile20 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\mrn.txt";
+	private static String inFile14 = "data\\SpecDescriptURL.txt";
+	private static String inFile15 = "data\\dates.txt";
+	private static String inFile16 = "data\\SpecProtEnrollment.txt";
+	private static String inFile17 = "data\\IRBs.txt";
+	private static String inFile18 = "data\\SpecProtSTitle.txt";
+	private static String inFile19 = "data\\SpecProtTitle.txt";
+	private static String newFile18 = "data\\SpecProtSTitleV2.txt";
+	private static String newFile19 = "data\\SpecProtTitlV2.txt";
+	private static String inFile20 = "data\\mrn.txt";
 
 //Storage Container
-	  private static String inFile24 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\barcodes2.txt";
-	  private static String inFile25 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorgeContTemp.txt";	
-	  private static String inFile26 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorageContNum.txt";
+	  private static String inFile24 = "data\\barcodes2.txt";
+	  private static String inFile25 = "data\\StorgeContTemp.txt";	
+	  private static String inFile26 = "data\\StorageContNum.txt";
 	  
 //Storage Container Capacity
-	  private static String inFile27 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorageDim.txt";
+	  private static String inFile27 = "data\\StorageDim.txt";
 
 //Storage Type
-	  private static String inFile32 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorageType.txt";
-	  private static String inFile33 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\OneDimLab.txt";
-	  private static String inFile34 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TwoDimLab.txt";
-	  private static String inFile35 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\DefaultTemp.txt";
-	  private static String newFile32 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\StorageTypeV2.txt";
-	  private static String newFile33 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\OneDimLabV2.txt";
-	  private static String newFile34 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\TwoDimLabV2.txt";
-	  private static String newFile35 = "C:\\caTRIP\\catrip\\codebase\\projects\\catrip-catissuecoreGenerateData\\data\\DefaultTempV2.txt";
+	  private static String inFile32 = "data\\StorageType.txt";
+	  private static String inFile33 = "data\\OneDimLab.txt";
+	  private static String inFile34 = "data\\TwoDimLab.txt";
+	  private static String inFile35 = "data\\DefaultTemp.txt";
+	  private static String newFile32 = "data\\StorageTypeV2.txt";
+	  private static String newFile33 = "data\\OneDimLabV2.txt";
+	  private static String newFile34 = "data\\TwoDimLabV2.txt";
+	  private static String newFile35 = "data\\DefaultTempV2.txt";
 
 //DATA ARRAYS TO MANAGE THE INPUT DATA
 //Specimen
@@ -128,18 +130,6 @@ public class SpecimenInsertTest extends TestCase {
   public SpecimenInsertTest(String sTestName) {
       super(sTestName);
   }
-
-   public void setUp() {
-
-   }
-
-   public void tearDown() {
-   }
-
-
-   public static Test suite() {
-       return new TestSuite(SpecimenInsertTest.class);
-   }
 
    //test reading data files into an array and insert into db
 	public void testRead_Insert() throws Exception {
@@ -492,6 +482,13 @@ public class SpecimenInsertTest extends TestCase {
 		
 	}
 
+	public static void main(String[] args) throws Exception
+	{
+		System.out.println("\tInside main...");
+		TestRunner runner = new TestRunner();
+		TestResult result = runner.doRun(new TestSuite(SpecimenInsertTest.class));
+		System.exit(result.errorCount() + result.failureCount());
+	}
 	
 }
 

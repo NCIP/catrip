@@ -8,16 +8,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.mapping.Collection;
 
-import edu.duke.catrip.catissuecore.util.HibernateUtil;
 import edu.duke.catrip.datagenerator.DataGeneratorToolKit;
+import edu.duke.catrip.datagenerator.HibernateUtil;
 import edu.wustl.catissuecore.domainobject.Address;
 import edu.wustl.catissuecore.domainobject.CancerResearchGroup;
 import edu.wustl.catissuecore.domainobject.ClinicalReport;
@@ -615,6 +612,7 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 		int fndcnt=0;
 		int stccnt=0;
 		int regdatecnt=0;
+		int defdegcnt=0;
 		int objcnt=0;
 		for (int rowcnt = 0; rowcnt < maxrecs; rowcnt++) {
 			objcnt=-1;
@@ -899,7 +897,9 @@ public class CATissueCoreDataGenerator extends DataGeneratorToolKit
 					    st = (StorageTypeImpl) result.get(fndcnt);
 					}else{
 						st = new StorageTypeImpl();
-						st.setDefaultTempratureInCentigrade(Double.valueOf(dataInsertTable[rowcnt][33]));
+						if(dataInsertTable[defdegcnt][33] == null) defdegcnt=0;
+						st.setDefaultTempratureInCentigrade(Double.valueOf(dataInsertTable[defdegcnt][33]));
+						++defdegcnt;
 						st.setOneDimensionLabel(dataInsertTable[rowcnt][34]);
 						st.setTwoDimensionLabel(dataInsertTable[rowcnt][35]);
 						st.setType(dataInsertTable[rowcnt][36]);

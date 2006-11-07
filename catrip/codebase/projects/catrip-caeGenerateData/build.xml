@@ -126,16 +126,150 @@
 		</jar>
 	</target>
 
+
+
 	<!-- ============================================================== -->
 	<!-- Creates the Participant recs in the database                   -->
 	<!-- ============================================================== -->
-	<target name="ThreeDimensionalTumorSizeInsertTest" depends="jarup" description="Creates the Participant recs in the database">
-		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ThreeDimensionalTumorSizeInsertTest">
+	<target name="ParticipantInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ParticipantInsertTest">
 		</java>
 	</target>
 
-  <target name="setup" description="Builds the entire application" depends="clean,init,compilesrc,compiletestsrc,jarup" />
-  <target name="insert" description="Builds the entire application" depends="ThreeDimensionalTumorSizeInsertTest" />
+	<!-- ============================================================== -->
+	<!-- Creates the NottinghamHistopathologicGrade recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="NottinghamHistopathologicGradeInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.NottinghamHistopathologicGradeInsertTest">
+		</java>
 
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the ParticipantMedicalIdentifier recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="ParticipantMedicalIdentifierInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifierInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the ThreeDimensionalTumorSize recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="ThreeDimensionalTumorSizeInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.ThreeDimensionalTumorSizeInsertTest">
+			<arg value="10"/> 
+		</java> 
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the BreastCancerTNM recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="BreastCancerTNMInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.BreastCancerTNMInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the OtherBreastCancerHistopathologicGrade recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="OtherBreastCancerHistopathologicGradeInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.OtherBreastCancerHistopathologicGradeInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the InvasiveBreastCarcinomaNeoplasmHistologicType recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the EventParameters recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="EventParametersInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.EventParametersInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the AnnotationEventParameters recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="AnnotationEventParametersInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.AnnotationEventParametersInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the BreastCancerAccessionCharacteristics recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="BreastCancerAccessionCharacteristicsInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.BreastCancerAccessionCharacteristicsInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the BreastSpecimenCharacteristics recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="BreastSpecimenCharacteristicsInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.BreastSpecimenCharacteristicsInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the BreastCancerBiomarker recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="BreastCancerBiomarkerInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.BreastCancerBiomarkerInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the AnnotationSet recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="AnnotationSetInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.general.AnnotationSetInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the InvasiveBreastCarcinoma recs in the database                   -->
+	<!-- ============================================================== -->
+	<target name="InvasiveBreastCarcinomaInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.cae.domain.breast.InvasiveBreastCarcinomaInsertTest">
+		</java>
+	</target>
+
+  <target name="setup" description="Preps the db build" depends="clean,init,compilesrc,compiletestsrc,jarup" />
+
+  <target name="insert1" description="Builds recs in a db table" depends="setup,ParticipantInsertTest" />
+
+  <target name="insert2" description="Builds recs in a db table" depends="setup,NottinghamHistopathologicGradeInsertTest" />
+
+  <target name="insert3" description="Builds recs in a db table" depends="setup,ParticipantMedicalIdentifierInsertTest" />
+
+  <target name="insert4" description="Builds recs in a db table" depends="setup,ThreeDimensionalTumorSizeInsertTest" />
+
+  <target name="insert5" description="Builds recs in a db table" depends="setup,BreastCancerTNMInsertTest" />
+
+  <target name="insert6" description="Builds recs in a db table" depends="setup,OtherBreastCancerHistopathologicGradeInsertTest" />
+
+  <target name="insert7" description="Builds recs in a db table" depends="setup,InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest" />
+
+  <target name="insert8" description="Builds recs in a db table" depends="setup,EventParametersInsertTest" />
+
+  <target name="insert9" description="Builds recs in a db table" depends="setup,AnnotationEventParametersInsertTest" />
+
+  <target name="insert10" description="Builds recs in a db table" depends="setup,BreastCancerAccessionCharacteristicsInsertTest" />
+
+  <target name="insert11" description="Builds recs in a db table" depends="setup,BreastSpecimenCharacteristicsInsertTest" />
+
+  <target name="insert12" description="Builds recs in a db table" depends="setup,BreastCancerBiomarkerInsertTest" />
+
+  <target name="insert14" description="Builds recs in a db table" depends="setup,InvasiveBreastCarcinomaInsertTest" />
+
+  <target name="all" description="Builds the entire db tables" depends="setup,ParticipantInsertTest,NottinghamHistopathologicGradeInsertTest,ParticipantMedicalIdentifierInsertTest,ThreeDimensionalTumorSizeInsertTest,BreastCancerTNMInsertTest,OtherBreastCancerHistopathologicGradeInsertTest,InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest,EventParametersInsertTest,AnnotationEventParametersInsertTest,BreastCancerAccessionCharacteristicsInsertTest,BreastSpecimenCharacteristicsInsertTest,BreastCancerBiomarkerInsertTest,InvasiveBreastCarcinomaInsertTest" />
 
 </project>
