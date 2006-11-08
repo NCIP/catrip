@@ -105,7 +105,7 @@ public class PatientIdentifierDataLoad {
 				o.setId(DataLoadUtils.formatLong(value));
 		}
 
-		if (column.equalsIgnoreCase("FakeMRNFromChris")){
+		if (column.equalsIgnoreCase("MedicalRecordNumber")){
 			o.setMedicalRecordNumber(DataLoadUtils.format(value));
 		}
 		//if (column.equalsIgnoreCase("FakeMRNFromWilma")){

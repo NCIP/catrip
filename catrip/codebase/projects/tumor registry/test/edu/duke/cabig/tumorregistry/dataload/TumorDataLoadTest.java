@@ -12,7 +12,7 @@ import edu.duke.cabig.tumorregistry.domain.*;
 import junit.framework.TestCase;
 
 public class TumorDataLoadTest extends TestCase {
-	public final static int  PATIENT_LIMIT = 1000;
+	public final static int  PATIENT_LIMIT = 4;
 	protected void setUp() throws Exception {
 		super.setUp();
 	}
@@ -28,6 +28,7 @@ public class TumorDataLoadTest extends TestCase {
 		Set diagnosises = diagnosisData.getDiagnosises();
 
 		try{
+			//System.out.println(p.size());
 			int i = 1;
 			for (Iterator iter = p.iterator(); iter.hasNext();) {
 				Patient patient = (Patient) iter.next();

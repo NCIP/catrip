@@ -22,7 +22,7 @@ public class AddressDataLoad {
 	private Set<Address> diagnosisAddresses = new HashSet<Address>();
 	private static AddressDataLoad instance = null;
 	// used to make the diagnosis address ids unique.
-	private final int MULTIPLIER = 195;
+	private final int MULTIPLIER = 1121;
 
 	static AddressDataLoad getInstance(){
 		if (instance == null)
@@ -101,8 +101,9 @@ public class AddressDataLoad {
 					if (j==0){
 						addresses.add(aAddress);
 					}
-					else
+					else{
 						diagnosisAddresses.add(aAddress);
+					}
 			}
 
 		} catch ( IOException ex ) {

@@ -103,19 +103,19 @@ public class FirstCouseTreatmentDataLoad {
 				o.setSequenceNumber(DataLoadUtils.formatLong(value));
 		}
 		if (column.equalsIgnoreCase("FirstSurgeryDate")){
-			if (!value.toString().equalsIgnoreCase("00/00/0000"))
+			if (!value.toString().equalsIgnoreCase("0000/00/00"))
 				o.setFirstSurgeryDate((java.util.Date)value);
 		}
 		if (column.equalsIgnoreCase("FirstSystemicTreatme")){
-			if (!value.toString().equalsIgnoreCase("00/00/0000"))
+			if (!value.toString().equalsIgnoreCase("0000/00/00"))
 				o.setFirstSystemicTreatmentDate((java.util.Date)value);
 		}
 		if (column.equalsIgnoreCase("FirstTreatmentDate")){
-			if (!value.toString().equalsIgnoreCase("00/00/0000"))
+			if (!value.toString().equalsIgnoreCase("0000/00/00"))
 				o.setFirstTreatmentDate((java.util.Date)value);
 		}
 		if (column.equalsIgnoreCase("MostDefinitiveSurger")){
-			if (!value.toString().equalsIgnoreCase("00/00/0000"))
+			if (!value.toString().equalsIgnoreCase("0000/00/00"))
 				o.setMostDefinitiveSurgeryDate((java.util.Date)value);
 		}
 	}

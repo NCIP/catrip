@@ -102,11 +102,11 @@ public class PatientDataLoad {
 				o.setAutopsy(lookup.getValue(DataLoadUtils.format(value), "Autopsy"));
 		}
 		if (column.equalsIgnoreCase("DateOfBirth")){
-			if (!value.toString().equalsIgnoreCase("00/00/0000"))
+			if (!value.toString().equalsIgnoreCase("0000/00/00"))
 				o.setDateOfBirth((java.util.Date)value);
 		}
 		if (column.equalsIgnoreCase("DateOfDeath")){
-			if (!value.toString().equalsIgnoreCase("00/00/0000")){
+			if (!value.toString().equalsIgnoreCase("0000/00/00")){
 				o.setDateOfDeath((java.util.Date)value);
 			}
 		}
