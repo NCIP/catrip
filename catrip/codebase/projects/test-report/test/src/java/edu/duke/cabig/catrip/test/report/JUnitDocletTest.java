@@ -82,9 +82,9 @@ public class JUnitDocletTest
 		assertEquals(0, suite.tests);
 		assertEquals(0, suite.testCases.size());
 		assertEquals(3, suite.testSteps.size());
-		assertEquals("CreateJUnitDocReportAntFile", suite.testSteps.get(0).name);
-		assertEquals("RunJUnitDocReportStep", suite.testSteps.get(1).name);
-		assertEquals("CheckJUnitDocReportStep", suite.testSteps.get(2).name);
+		assertEquals("JUnitDocReportCreateAntFileStep", suite.testSteps.get(0).name);
+		assertEquals("JUnitDocReportRunStep", suite.testSteps.get(1).name);
+		assertEquals("JUnitDocReportCheckStep", suite.testSteps.get(2).name);
 	}
 	
 	/**
