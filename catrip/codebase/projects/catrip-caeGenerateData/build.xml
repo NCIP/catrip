@@ -242,7 +242,7 @@
 		</java>
 	</target>
 
-  <target name="setup" description="Preps the db build" depends="clean,init,compilesrc,compiletestsrc,jarup" />
+  <target name="all" description="Preps the db build" depends="clean,init,compilesrc,compiletestsrc,jarup" />
 
   <target name="insert1" description="Builds recs in a db table" depends="setup,ParticipantInsertTest" />
 
@@ -270,6 +270,6 @@
 
   <target name="insert14" description="Builds recs in a db table" depends="setup,InvasiveBreastCarcinomaInsertTest" />
 
-  <target name="all" description="Builds the entire db tables" depends="setup,ParticipantInsertTest,NottinghamHistopathologicGradeInsertTest,ParticipantMedicalIdentifierInsertTest,ThreeDimensionalTumorSizeInsertTest,BreastCancerTNMInsertTest,OtherBreastCancerHistopathologicGradeInsertTest,InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest,EventParametersInsertTest,AnnotationEventParametersInsertTest,BreastCancerAccessionCharacteristicsInsertTest,BreastSpecimenCharacteristicsInsertTest,BreastCancerBiomarkerInsertTest,InvasiveBreastCarcinomaInsertTest" />
-
+ <!-- <target name="all" description="Builds the entire db tables" depends="setup,ParticipantInsertTest,NottinghamHistopathologicGradeInsertTest,ParticipantMedicalIdentifierInsertTest,ThreeDimensionalTumorSizeInsertTest,BreastCancerTNMInsertTest,OtherBreastCancerHistopathologicGradeInsertTest,InvasiveBreastCarcinomaNeoplasmHistologicTypeInsertTest,EventParametersInsertTest,AnnotationEventParametersInsertTest,BreastCancerAccessionCharacteristicsInsertTest,BreastSpecimenCharacteristicsInsertTest,BreastCancerBiomarkerInsertTest,InvasiveBreastCarcinomaInsertTest" />
+-->
 </project>
