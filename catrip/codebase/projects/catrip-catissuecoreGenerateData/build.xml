@@ -154,7 +154,7 @@
 	</target>
 
   <target name="all" description="Sets up for the db builds" depends="clean,init,compilesrc,compiletestsrc,jarup" />
-
+	<target name="setup" description="Sets up for the db builds"/>
   <target name="insert1" description="Builds recs in a db table" depends="setup,UserInsertTest" />
 
   <target name="insert2" description="Builds recs in a db table" depends="setup,ParticipantInsertTest" />

@@ -4,7 +4,7 @@ import java.lang.Integer;
 import java.lang.Boolean;
 import java.util.Date;
 
-import edu.duke.cabig.tumorregistry.dataload.Lookup;
+//import edu.duke.cabig.tumorregistry.dataload.Lookup;
 
 
 
@@ -135,7 +135,7 @@ public abstract class Activity {
 
 	public void setCharacterizationCode(String characterizationCode) {
 		this.characterizationCode = characterizationCode;
-		setCharacterization(Lookup.getInstance().getNonSurgeryData(characterizationCode, "BIOPSY"));
+		//setCharacterization(Lookup.getInstance().getNonSurgeryData(characterizationCode, "BIOPSY"));
 	}
 
 	public String getClassType() {

@@ -243,7 +243,7 @@
 	</target>
 
   <target name="all" description="Preps the db build" depends="clean,init,compilesrc,compiletestsrc,jarup" />
-
+<target name="setup" description="Preps the db build"/>
   <target name="insert1" description="Builds recs in a db table" depends="setup,ParticipantInsertTest" />
 
   <target name="insert2" description="Builds recs in a db table" depends="setup,NottinghamHistopathologicGradeInsertTest" />
