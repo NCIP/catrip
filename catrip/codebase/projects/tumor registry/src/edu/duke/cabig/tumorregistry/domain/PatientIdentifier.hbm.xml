@@ -16,7 +16,8 @@
 			length="50"
 		/>
 
-		<one-to-one name="patient" outer-join="false" class="Patient" cascade="all" fetch="join"/>
+
+		<one-to-one name="patient" class="Patient" lazy="proxy" constrained="true"/>
 
 	</class>	
 </hibernate-mapping>
