@@ -36,8 +36,8 @@ namespace catrip_1._0_deid_csharp
 			DeIdService service = new DeIdService();
 			
 			security security = new security();
-			security.user = "someuser";
-			security.password = "somepassword";
+			security.user = "chris.hubbard";
+			security.password = "C4r1sHu66ard";
 			service.securityValue = security;
 
 			deid input = new deid();
