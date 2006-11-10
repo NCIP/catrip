@@ -1,5 +1,8 @@
 package edu.duke.cabig.tumorregistry.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.*;
 import org.hibernate.cfg.*;
 
@@ -51,6 +54,31 @@ public class HibernateUtil {
 			throw e;
 		}
 	}
+	
+	public static List selectPatientIds() throws HibernateException{
+		Transaction tx = null;
+		List<Patient> result = new ArrayList<Patient>();
+		List<Long> ids = new ArrayList<Long>();
+		Session session = HibernateUtil.currentSession();
+		Patient aPatient = null;
+		try {
+			//tx = session.beginTransaction();
+			result = session.createQuery("from Patient").list();
+			//tx.commit();
+			HibernateUtil.closeSession();
+			
+			for (int i = 0; i < result.size(); i++) {
+				ids.add(result.get(i).getId());
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		}
+		return ids;
+	}
+
 	public static void delete(Object obj) {
 		Transaction tx = null;
 		Session session = HibernateUtil.currentSession();

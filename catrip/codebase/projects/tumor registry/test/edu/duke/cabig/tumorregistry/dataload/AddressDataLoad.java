@@ -22,7 +22,7 @@ public class AddressDataLoad {
 	private Set<Address> diagnosisAddresses = new HashSet<Address>();
 	private static AddressDataLoad instance = null;
 	// used to make the diagnosis address ids unique.
-	private final int MULTIPLIER = 1121;
+	private final int MULTIPLIER = 11210;
 
 	static AddressDataLoad getInstance(){
 		if (instance == null)

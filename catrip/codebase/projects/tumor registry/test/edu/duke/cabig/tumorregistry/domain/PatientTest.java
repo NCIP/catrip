@@ -257,41 +257,41 @@ public class PatientTest extends TestCase {
 		Transaction tx = session.beginTransaction();
 
 		List result = new ArrayList();
-		result = session.createQuery("from Patient where lastName='x'").list();
+		result = session.createQuery("FROM Patient a, Diagnosis b, Activity c WHERE a.getId() = b.PATIENT_ID AND b.getId() = c.DIAGNOSIS_ID AND c.getPerformedIndicator() IS NOT NULL").list();
 
 		tx.commit();
-
-		for (int i = 0; i < result.size(); i++) {
-			Patient obj = (Patient) result.get(i);
-			System.out.println("ID is " + obj.getId());
-			PatientIdentifier patientId = obj.getPatientIdentifier();
-			if (patientId != null) {
-				System.out.println("patitent Identifier ID : "
-						+ patientId.getId());
-				System.out.println("MRN : "
-						+ patientId.getMedicalRecordNumber());
-			} else {
-				System.out.println("patient has no MRN");
-			}
-			Address address = obj.getAddress();
-			if (address != null) {
-				System.out.println("Address ID : " + address.getId());
-				System.out.println("Address 1 : " + address.getAddress1());
-			} else {
-				System.out.println("patient has no Address");
-			}
-			Set diagnosisCollection = obj.getDiagnosisCollection();
-			if (diagnosisCollection != null) {
-				Iterator itr = diagnosisCollection.iterator();
-				while (itr.hasNext()) {
-					Diagnosis diagnosis = (Diagnosis) itr.next();
-					System.out.println("diagnosis ID : " + diagnosis.getId());
-					// System.out.println("Address 1 : " +
-				}
-			} else {
-				System.out.println("patient has no diagnosises");
-			}
-		}
+System.out.println("size = " + result.size());
+//		for (int i = 0; i < result.size(); i++) {
+//			Patient obj = (Patient) result.get(i);
+//			System.out.println("ID is " + obj.getId());
+//			PatientIdentifier patientId = obj.getPatientIdentifier();
+//			if (patientId != null) {
+//				System.out.println("patitent Identifier ID : "
+//						+ patientId.getId());
+//				System.out.println("MRN : "
+//						+ patientId.getMedicalRecordNumber());
+//			} else {
+//				System.out.println("patient has no MRN");
+//			}
+//			Address address = obj.getAddress();
+//			if (address != null) {
+//				System.out.println("Address ID : " + address.getId());
+//				System.out.println("Address 1 : " + address.getAddress1());
+//			} else {
+//				System.out.println("patient has no Address");
+//			}
+//			Set diagnosisCollection = obj.getDiagnosisCollection();
+//			if (diagnosisCollection != null) {
+//				Iterator itr = diagnosisCollection.iterator();
+//				while (itr.hasNext()) {
+//					Diagnosis diagnosis = (Diagnosis) itr.next();
+//					System.out.println("diagnosis ID : " + diagnosis.getId());
+//					// System.out.println("Address 1 : " +
+//				}
+//			} else {
+//				System.out.println("patient has no diagnosises");
+//			}
+//		}
 		HibernateUtil.closeSession();
 
 	}
