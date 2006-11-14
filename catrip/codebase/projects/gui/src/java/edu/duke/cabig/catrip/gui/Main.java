@@ -1,6 +1,7 @@
 
 package edu.duke.cabig.catrip.gui;
 
+import edu.duke.cabig.catrip.gui.util.ExceptionThreadGroup;
 import edu.duke.cabig.catrip.gui.webstart.WebstartConfigurator;
 import edu.duke.cabig.catrip.gui.wizard.WelcomeScreen;
 
@@ -37,7 +38,9 @@ public class Main {
         
 
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        ThreadGroup exceptionThreadGroup = new ExceptionThreadGroup(); 
+        
+        java.awt.EventQueue.invokeLater(new Thread(exceptionThreadGroup, "Init thread") {
             public void run() {
                 WelcomeScreen ws= new WelcomeScreen();
                 //ws.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +50,8 @@ public class Main {
                 
             }
         });
+        
+        
         
         
     }

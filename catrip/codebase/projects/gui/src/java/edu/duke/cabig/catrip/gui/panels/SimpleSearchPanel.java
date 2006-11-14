@@ -26,7 +26,7 @@ public class SimpleSearchPanel extends CPanel {
     private ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
     // sanjeev: for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
-    private Hashtable targetObjectServiceMap = new Hashtable(); 
+    private Hashtable targetObjectServiceMap = new Hashtable();
     
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
@@ -228,19 +228,19 @@ public class SimpleSearchPanel extends CPanel {
         
         GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
         String name = selectedTargetObject.toString().trim();
-         
+        
         // sanjeev: when the combos are showing.. than
-            Enumeration e = getTargetObjectServiceMap().keys(); 
-            while (e.hasMoreElements()){
-                String mixedKey = (String)e.nextElement();
+        Enumeration e = getTargetObjectServiceMap().keys();
+        while (e.hasMoreElements()){
+            String mixedKey = (String)e.nextElement();
 //                System.out.println("### name:"+name+": key:"+mixedKey);
-                if (mixedKey.startsWith(name)){
+            if (mixedKey.startsWith(name)){
 //                    System.out.println("### key:"+mixedKey);
-                    // sanjeev: add the services to the service combo..
-                    GraphObject obj = (GraphObject)getTargetObjectServiceMap().get(mixedKey);
-                    getTargetServiceCombo().addItem(SimpleGuiRegistry.getServiceFromMap(obj.getServiceName().trim()));
-                }
+                // sanjeev: add the services to the service combo..
+                GraphObject obj = (GraphObject)getTargetObjectServiceMap().get(mixedKey);
+                getTargetServiceCombo().addItem(SimpleGuiRegistry.getServiceFromMap(obj.getServiceName().trim()));
             }
+        }
         
         
         
@@ -251,8 +251,8 @@ public class SimpleSearchPanel extends CPanel {
         //------------------------
         if(getTargetServiceCombo().isShowing() ){
             
-            clearFilterBtnActionPerformed(null);
-            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem(); 
+            cleanPanel();//clearFilterBtnActionPerformed(null);
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
             
             List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
             List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
@@ -267,7 +267,7 @@ public class SimpleSearchPanel extends CPanel {
         }
         //-------------------------
         
-       
+        
     }//GEN-LAST:event_targetObjComboActionPerformed
     
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
@@ -276,10 +276,10 @@ public class SimpleSearchPanel extends CPanel {
         
         if(getTargetServiceCombo().isShowing() && itIsSelf){
             
-            clearFilterBtnActionPerformed(null);
+            cleanPanel();//clearFilterBtnActionPerformed(null);
             
-            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem(); 
-            String key = ((GraphObject)getTargetObjCombo().getSelectedItem()).toString()+"_"+selectedService.getServiceName(); 
+            Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+            String key = ((GraphObject)getTargetObjCombo().getSelectedItem()).toString()+"_"+selectedService.getServiceName();
             
             GraphObject selectedTargetObject = (GraphObject)getTargetObjectServiceMap().get(key);//(GraphObject)getTargetObjCombo().getSelectedItem();
             
@@ -313,6 +313,27 @@ public class SimpleSearchPanel extends CPanel {
     }//GEN-LAST:event_targetServiceComboActionPerformed
     
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
+        
+        cleanPanel();
+        
+        Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
+        String key = ((GraphObject)getTargetObjCombo().getSelectedItem()).toString()+"_"+selectedService.getServiceName();
+        
+        GraphObject selectedTargetObject = (GraphObject)getTargetObjectServiceMap().get(key);//(GraphObject)getTargetObjCombo().getSelectedItem();
+        
+        List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+        List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+        
+        for (int i = 0; i < forObjs.size(); i++) {
+            objs.add(forObjs.get(i));
+        }
+        objs.add(selectedTargetObject);
+        targetSetChanged = false;
+        SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+        SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+    }//GEN-LAST:event_clearFilterBtnActionPerformed
+    
+    private void cleanPanel(){
         SimpleGuiRegistry.cleanRegistry();
         targetSetChanged = true;
         
@@ -320,8 +341,7 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.revalidate();
         filterPanel.repaint();
         initFilters();
-        
-    }//GEN-LAST:event_clearFilterBtnActionPerformed
+    }
     
     private void addFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterBtnActionPerformed
         
@@ -372,7 +392,7 @@ public class SimpleSearchPanel extends CPanel {
         
     }//GEN-LAST:event_addFilterBtnActionPerformed
     
-//    
+//
 //    public static void main(String args[]) {
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
@@ -445,7 +465,7 @@ public class SimpleSearchPanel extends CPanel {
         }
         
         for (int i = 0; i < tmpListObj.size(); i++) {
-         getTargetObjCombo().addItem(tmpListObj.get(i));
+            getTargetObjCombo().addItem(tmpListObj.get(i));
         }
         
         
@@ -461,19 +481,19 @@ public class SimpleSearchPanel extends CPanel {
         
         // sanjeev: ------------- The default selected Target Object is there in DCQL -------------
         
-            GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-            Service selectedService = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());//(Service)getTargetServiceCombo().getSelectedItem();
-            
-            List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
-            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
-            
-            for (int i = 0; i < forObjs.size(); i++) {
-                objs.add(forObjs.get(i));
-            }
-            objs.add(selectedTargetObject);
-            targetSetChanged = false;
-            SimpleGuiRegistry.setCurrentXMLObjectList(objs);
-            SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
+        Service selectedService = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());//(Service)getTargetServiceCombo().getSelectedItem();
+        
+        List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
+        List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
+        
+        for (int i = 0; i < forObjs.size(); i++) {
+            objs.add(forObjs.get(i));
+        }
+        objs.add(selectedTargetObject);
+        targetSetChanged = false;
+        SimpleGuiRegistry.setCurrentXMLObjectList(objs);
+        SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
         //---------------------------
         
         
@@ -492,7 +512,7 @@ public class SimpleSearchPanel extends CPanel {
 //        getTargetObjCombo().setEnabled(false);
 //
 //    }
-
+    
     public Hashtable getTargetObjectServiceMap() {
         return targetObjectServiceMap;
     }

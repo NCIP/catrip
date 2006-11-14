@@ -1,12 +1,12 @@
 
 package edu.duke.cabig.catrip.gui.discovery;
 
+import edu.duke.cabig.catrip.gui.util.DisplayExceptions;
 import gov.nih.nci.cagrid.metadata.MetadataConstants; 
 import gov.nih.nci.cagrid.metadata.ResourcePropertyHelper;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 import javax.xml.namespace.QName;
 import org.apache.axis.message.addressing.EndpointReferenceType;
-import org.apache.axis.utils.XMLUtils;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.w3c.dom.Element;
 
@@ -45,7 +45,8 @@ public class DiscoveryClientDomainModelRetrievalStrategy extends DomainModelRetr
             System.out.println("Loading the Domain Model for Project: "+model.getProjectLongName());
         } catch (Exception e){
             System.out.println("Couldn't load the Domain Model for End Point Address:"+endPontRef.getAddress());
-            e.printStackTrace();
+            DisplayExceptions.display("Error.", "Error loading the Domain Model for service: "+endPontRef.getAddress(), e);
+//            e.printStackTrace();
         }
         return model;
     }

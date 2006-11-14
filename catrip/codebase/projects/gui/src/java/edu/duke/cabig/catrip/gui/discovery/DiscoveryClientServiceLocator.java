@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.discovery;
 import edu.duke.cabig.catrip.gui.common.ServiceMetaDataBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationBean;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
+import edu.duke.cabig.catrip.gui.util.DisplayExceptions;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.SwingUtils;
 import gov.nih.nci.cagrid.metadata.MetadataUtils;
@@ -56,7 +57,8 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
             allServices = client.getAllServices(true);
         } catch (Exception e1) {
             System.out.println("Exception in looking up the services in Index Service.");
-            e1.printStackTrace();
+            DisplayExceptions.display("Error.", "Error in looking up the services in Index Service.", e1);
+//            e1.printStackTrace();
         }
         
         if (allServices != null) {
@@ -123,11 +125,12 @@ public class DiscoveryClientServiceLocator extends ServiceLocator{
                     }
                     
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    DisplayExceptions.display("Error.", "Error getting the Service Metadata for services.", e);
+//                    e.printStackTrace();
                 }
             }
         } else {
-            System.out.println("No services found.");
+            System.out.println("No compatible services found.");
         }
         
         return serviceList;

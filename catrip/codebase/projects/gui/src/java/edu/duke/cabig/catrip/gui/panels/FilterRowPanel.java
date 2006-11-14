@@ -199,6 +199,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
         // sanjeev: add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
         Collections.sort(attributeList, new CDEComboboxBeanComparator());
         for (int i = 0; i < attributeList.size(); i++) {
+//            CDEComboboxBean cdeBean = (CDEComboboxBean)attributeList.get(i);
+//            System.out.println(cdeBean.getClassBean().getServiceName()+": Class name"+cdeBean.getClassBean().getFullyQualifiedName()+":\n \t CDE name in Displayed Combobox:"+cdeBean.toString());
+//            System.out.println("\t Attribute name:"+cdeBean.getAttributeBean().getAttributeName()+": Actual Attribute CDE name:"+cdeBean.getAttributeBean().getCDEName()+"\n");
             getCdeCombo().addItem(attributeList.get(i)); 
         }
         
