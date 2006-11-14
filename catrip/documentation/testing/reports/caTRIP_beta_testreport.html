@@ -1,0 +1,646 @@
+<html><head><title>JUnitHtmlReport</title><head>
+     <style type='text/css'>
+
+    body { background-color:white; }
+
+    p,td,div,span                      {font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+
+    p.title                   { font-size: 14pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+    p.header,div.header       { font-size: 14pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+    td.nav                    { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+
+    
+      a:link                         { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: underline;}
+      a:link:hover                   { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a:link:active                  { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: underline;}
+      a:link:visited                 { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800080; text-decoration: underline;}
+      a:link:visited:hover           { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+    
+      a.nav:link                     { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: none;}
+      a.nav:link:hover               { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a.nav:link:active              { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: none;}
+      a.nav:link:visited             { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: none;}
+      a.nav:link:visited:hover       { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+    td.navActive              { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+
+    
+      a.navActive:link          { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+      a.navActive:link:hover         { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a.navActive:link:active        { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: none;}
+      a.navActive:link:visited       { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+      a.navActive:link:visited:hover { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+
+   </style>
+
+<body>
+<p><center><h1>JUnitHtmlReport</h1></center></p>
+<p><h2>Summary</h2>
+<table border="1">
+<tr><td valign="top"><b>Test Suite</b></td><td valign="top"><b>Tests</b></td><td valign="top"><b>Failures</b></td><td valign="top"><b>Errors</b></td><td valign="top"><b>Time (sec)</b></td></tr>
+<tr>
+<td valign="top"><b>1. <a href="#1">unit tests</b></a></td>
+<td valign="top">12</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">21</td>
+</tr>
+<tr>
+<td valign="top">1.1. <a href="#1.1">edu.duke.cabig.catrip.security.dukeidp.NTAuthenticationTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">7.5</td>
+</tr>
+<tr>
+<td valign="top">1.2. <a href="#1.2">edu.duke.cabig.catrip.security.password.SecurePasswordTest</a></td>
+<td valign="top">3</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">3.656</td>
+</tr>
+<tr>
+<td valign="top">1.3. <a href="#1.3">edu.duke.cabig.catrip.test.report.JUnitDocletTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.828</td>
+</tr>
+<tr>
+<td valign="top">1.4. <a href="#1.4">edu.duke.cabig.catrip.test.report.JUnitXmlParserTest</a></td>
+<td valign="top">2</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">0.25</td>
+</tr>
+<tr>
+<td valign="top">1.5. <a href="#1.5">edu.duke.cabig.catrip.test.report.report.JUnitHtmlReportTest</a></td>
+<td valign="top">3</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">7.813</td>
+</tr>
+<tr>
+<td valign="top"><b>2. <a href="#2">integration tests</b></a></td>
+<td valign="top">6</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">457</td>
+</tr>
+<tr>
+<td valign="top">2.1. <a href="#2.1">edu.duke.cabig.catrip.test.system.CAETest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">68.969</td>
+</tr>
+<tr>
+<td valign="top">2.2. <a href="#2.2">edu.duke.cabig.catrip.test.system.CGEMSTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">70.516</td>
+</tr>
+<tr>
+<td valign="top">2.3. <a href="#2.3">edu.duke.cabig.catrip.test.system.CaTissueCoreTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">63.406</td>
+</tr>
+<tr>
+<td valign="top">2.4. <a href="#2.4">edu.duke.cabig.catrip.test.system.DQETest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">178.953</td>
+</tr>
+<tr>
+<td valign="top">2.5. <a href="#2.5">edu.duke.cabig.catrip.test.system.JUnitDocReportTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.86</td>
+</tr>
+<tr>
+<td valign="top">2.6. <a href="#2.6">edu.duke.cabig.catrip.test.system.TumorRegistryTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">74.281</td>
+</tr>
+<tr><td valign="top"><b>Total:</b></td><td valign="top">18</td><td valign="top">0</td><td valign="top">0</td><td valign="top">478 (sec)</td></tr>
+</table>
+</p>
+<p><a name="1"><h2>1. unit tests</h2></a></p>
+<p><a name="1.1"><h3>1.1. edu.duke.cabig.catrip.security.dukeidp.NTAuthenticationTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This unit test tests the backend hook to the Duke IdP for authentication.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>7.5</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.1.1"><h4>1.1.1. testInvalidCredentials</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests to ensure that a user with invalid credentials is not authenticated.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>6.328</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.1.2"><h4>1.1.2. testValidCredentials</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests to ensure that a user with valid credentials is authenticated.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.875</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2"><h3>1.2. edu.duke.cabig.catrip.security.password.SecurePasswordTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test to test that passwords can be secured on test clients.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>3.656</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2.1"><h4>1.2.1. testGenerateTempKeys</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that public/private keys can be generated</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.531</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2.2"><h4>1.2.2. testSecurePasswordGenerated</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that a secure password can be encrypted using a public key</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.891</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2.3"><h4>1.2.3. testSecurePassword</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that an existing encrypted password can be decrypted using a private key</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.046</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3"><h3>1.3. edu.duke.cabig.catrip.test.report.JUnitDocletTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test for testing the JUnitDoclet class, which is used do attach JavaDoc comments
+ to JUnit test results.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.828</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.1"><h4>1.3.1. testDoclet</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case tests the doclet functionality of adding class docs and method docs to test results.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>2.75</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.2"><h4>1.3.2. testHaste</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case tests the doclet functionality of adding class docs and method docs to test results from a Haste-based test.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.859</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4"><h3>1.4. edu.duke.cabig.catrip.test.report.JUnitXmlParserTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test to test the functionality of the JUnitXmlParser.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>2</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.25</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4.1"><h4>1.4.1. testJUnit</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that a junit output xml file can be properly parsed.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.063</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.4.2"><h4>1.4.2. testJUnitReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This tests that a junitreport output xml file can be properly parsed.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.015</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5"><h3>1.5. edu.duke.cabig.catrip.test.report.report.JUnitHtmlReportTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test that tests the html report generation functionality of the JUnitHtmlReport.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>7.813</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5.1"><h4>1.5.1. testUntypedHtmlReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests that an html report can be generated wihtout using the testType tag</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>2.485</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5.2"><h4>1.5.2. testTypedHtmlReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests that an html report can be generated using the testType tag</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.75</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.5.3"><h4>1.5.3. testHasteHtmlReport</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests that an html report can be generated with using the testType tag on a Haste test</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>3.406</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2"><h2>2. integration tests</h2></a></p>
+<p><a name="2.1"><h3>2.1. edu.duke.cabig.catrip.test.system.CAETest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is an integration test that tests the functionality of the CAE grid service. 
+ It deploys the service and then invokes a number of queries.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>7</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>68.969</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.2"><h4>2.1.2. GlobusCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.3"><h4>2.1.3. GlobusStartStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.4"><h4>2.1.4. CAECleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a CAE service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.5"><h4>2.1.5. GlobusStopStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.6"><h4>2.1.6. CAEConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the CAE grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.7"><h4>2.1.7. GlobusDeployServiceStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.8"><h4>2.1.8. GlobusCreateStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2"><h3>2.2. edu.duke.cabig.catrip.test.system.CGEMSTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is an integration test that tests the functionality of the CGEMS grid service. 
+ It deploys the service and then invokes a number of queries.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>7</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>70.516</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.2"><h4>2.2.2. GlobusCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.3"><h4>2.2.3. GlobusStartStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.4"><h4>2.2.4. GlobusStopStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.5"><h4>2.2.5. GlobusDeployServiceStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.6"><h4>2.2.6. GlobusCreateStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.7"><h4>2.2.7. CGEMSCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a CGEMS service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.8"><h4>2.2.8. CGEMSConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the CGEMS grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3"><h3>2.3. edu.duke.cabig.catrip.test.system.CaTissueCoreTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is an integration test that tests the functionality of the caTissue CORE grid service. 
+ It deploys the service and then invokes a number of queries.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>7</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>63.406</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.2"><h4>2.3.2. GlobusCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.3"><h4>2.3.3. GlobusStartStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.4"><h4>2.3.4. CaTissueCoreConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the caTissue CORE grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.5"><h4>2.3.5. CaTissueCoreCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a caTissue CORE service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.6"><h4>2.3.6. GlobusStopStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.7"><h4>2.3.7. GlobusDeployServiceStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.8"><h4>2.3.8. GlobusCreateStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4"><h3>2.4. edu.duke.cabig.catrip.test.system.DQETest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is an integration test that tests the functionality of the Distribute Query Engine (DQE). 
+ It deploys all four caTRIP domain services (CAE, caTissue CORE, CGEMS, and Tumor Registry), 
+ configures them, and then invokes a number of distributed queries on them.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>15</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>178.953</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.2"><h4>2.4.2. TumorRegistryCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a Tumor Registry service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.3"><h4>2.4.3. CGEMSConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the CGEMS grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.4"><h4>2.4.4. GlobusStartStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.5"><h4>2.4.5. GlobusCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.6"><h4>2.4.6. GlobusCreateStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.7"><h4>2.4.7. CaTissueCoreConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the caTissue CORE grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.8"><h4>2.4.8. CaTissueCoreCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a caTissue CORE service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.9"><h4>2.4.9. DQEInvokeStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Invokes a distributed query and validates the results.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.10"><h4>2.4.10. DQEConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets properties for the DQE in the .caTRIP and gui directories.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.11"><h4>2.4.11. GlobusStopStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.12"><h4>2.4.12. GlobusDeployServiceStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.13"><h4>2.4.13. CGEMSCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a CGEMS service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.14"><h4>2.4.14. CAEConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the CAE grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.15"><h4>2.4.15. TumorRegistryConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the Tumor Registry grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.16"><h4>2.4.16. CAECleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a CAE service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.5"><h3>2.5. edu.duke.cabig.catrip.test.system.JUnitDocReportTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a integration test that tests the user's ability to run the JUnitDocReport ant task.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>3</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.86</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.5.2"><h4>2.5.2. JUnitDocReportCreateAntFileStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case creates an ant file that will generate a JUnitDocReport.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.5.3"><h4>2.5.3. JUnitDocReportRunStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case runs a JUnitDocReport ant file to generate results.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.5.4"><h4>2.5.4. JUnitDocReportCheckStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This test case ensures that a JUnitDocReport result file has been generated.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6"><h3>2.6. edu.duke.cabig.catrip.test.system.TumorRegistryTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is an integration test that tests the functionality of the Tumor Registry grid service. 
+ It deploys the service and then invokes a number of queries.</td>
+<tr><td valign="top"><b>Steps:</b></td><td>7</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>74.281</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.2"><h4>2.6.2. GlobusCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.3"><h4>2.6.3. GlobusStartStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.4"><h4>2.6.4. TumorRegistryConfigureStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Sets hibernate configuration properties in the Tumor Registry grid service.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.5"><h4>2.6.5. GlobusStopStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.6"><h4>2.6.6. TumorRegistryCleanupStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Cleans up configuration files for a Tumor Registry service deployment.</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.7"><h4>2.6.7. GlobusDeployServiceStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.6.8"><h4>2.6.8. GlobusCreateStep</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+</table>
+</dt></dl></dl>
+</body></html>
