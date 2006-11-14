@@ -39,6 +39,7 @@ public class DQEInvokeStep
 		// parse dcql
 		File dcqlFile = new File(queryDir, "0_dcqlQuery.xml");
 		DCQLQueryDocument query = DCQLQueryDocument.Factory.parse(dcqlFile);
+		System.out.println("Running query on: " + queryDir);
 		
 		// run query
 		FederatedQueryEngineImpl dqe = new FederatedQueryEngineImpl();
