@@ -1,11 +1,80 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+	<title>caTRIP: Cancer Translational Research Informatics Platform</title>
 </head>
 <body>
-<div style="text-align: center;">Welcome to caTRIP.<br>
-Please <a href="catrip.jnlp">click here</a> to launch Webstart version
-of caTRIP Application.<br>
-</div>
+
+<p><center><h1>caTRIP: Cancer Translational Research Informatics Platform</h1></center></p>
+
+<hr/>
+
+<table border="1">
+<tr>
+
+<td width="50%" valign="top">
+<table border="0">
+<tr>
+<td valign="top"><img src="catrip_logo.jpg"/></td>
+<td>The Cancer Translational Research Informatics Platform (caTRIP) aims to solve the difficult 
+translational research problem of outcomes analysis.  When a patient enters the clinic, the 
+oncologist should be able to look across a cohort of patients with similar characteristics 
+to help inform treatment.  We solve this problem by leveraging caGrid to perform distributed 
+queries across caTissue CORE, CAE, the Duke Tumor Registry, and the caIntegrator SNP database.  
+The user interface is metadata driven, providing a flexible way to build queries and mine results.
+</td>
+</tr>
+</table>
+</td>
+
+<td width="50%" valign="top">
+<table border="0">
+<tr>
+<td valign="top"><big><b>Test instance</b></big> (<a href="catrip.jnlp">launch</a>)*:
+	<ul>
+		<li><b>Benefit</b>: more services (caTissue CORE, Tumor Registry, CAE, caIntegrator SNP)</li>
+		<li><b>Drawback:</b> realistic test data</li>
+	</ul>
+</td>
+</tr>
+<tr>
+<td valign="top"><big><b>Production instance</b></big> (<a href="catrip_production.jnlp">launch</a>)*:
+	<ul>
+		<li><b>Drawback:</b> fewer services (caTissue CORE, Tumor Registry)</li>
+		<li><b>Benefit:</b> real deidentified data (Duke Breast SPORE)</li>
+	</ul>
+</td>
+</tr>
+</table>
+</td>
+
+</tr>
+
+<tr>
+<td colspan="2">
+<small>*<i>Note:</i> in order to switch to a different instance (e.g. run the production and then afterwards the test instance) 
+you will have to delete the ".caTRIP" folder in your home directory 
+(e.g. C:\Documents and Settings\MCCON012\.caTRIP where MCCON012 is your login name).
+</small>
+</td>
+</tr>
+
+</table>
+
+<p>
+<big><b>Resources:</b></big>
+	<ul>
+		<li><a href="http://gforge.nci.nih.gov/plugins/scmcvs/cvsweb.php/catrip/documentation/training/caTRIP_End_User_Manual.doc?cvsroot=catrip">
+			Draft user guide
+		</a></li>
+		<li><a href="http://gforge.nci.nih.gov/plugins/scmcvs/cvsweb.php/catrip/documentation/data/caTRIP%20valid%20values.xls?cvsroot=catrip">
+			Valid values for input
+		</a></li>
+		<li><a href="http://gforge.nci.nih.gov/plugins/scmcvs/cvsweb.php/catrip/documentation/testing/caTRIP_QA_Questionnaire.doc?cvsroot=catrip">
+			End user feedback form
+		</a></li>
+	</ul>
+</p>
+
 </body>
 </html>
