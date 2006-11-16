@@ -9,17 +9,15 @@ import gov.nih.nci.cagrid.data.QueryProcessingException;
 import gov.nih.nci.cagrid.data.cql.LazyCQLQueryProcessor;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsUtil;
 import gov.nih.nci.common.util.HQLCriteria;
-import gov.nih.nci.system.applicationservice.ApplicationException;
-import gov.nih.nci.system.applicationservice.ApplicationService;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,7 +29,13 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
+
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+import org.jdom.xpath.XPath;
+
 
 /**
  *  HQLCoreQueryProcessor
@@ -40,24 +44,24 @@ import org.hibernate.cfg.Configuration;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.3 2006-10-26 19:32:39 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.4 2006-11-16 20:49:38 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
 	public static final String APPLICATION_SERVICE_URL = "appserviceUrl";
         public static final String HIBERNATE_CONFIG_FILE = "hibernateConfigFile";
-	
+
 	private static Logger LOG = Logger.getLogger(LocalHQLCoreQueryProcessor.class);
         private static Map cache = null;
-	
+
 	//private ApplicationService coreService;
-	private StringBuffer wsddContents; 
-	
+	private StringBuffer wsddContents;
+
 	public LocalHQLCoreQueryProcessor() {
 		super();
 	}
-	
-	
+
+
 	private InputStream getWsdd() throws Exception {
 		if (getConfiguredWsddStream() != null) {
 			if (wsddContents == null) {
@@ -68,9 +72,9 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 			return null;
 		}
 	}
-	
 
-	public CQLQueryResults processQuery(CQLQuery cqlQuery) 
+
+	public CQLQueryResults processQuery(CQLQuery cqlQuery)
 		throws MalformedQueryException, QueryProcessingException {
 		InputStream configStream = null;
 		try {
@@ -82,8 +86,8 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		CQLQueryResults results = null;
 		// decide on type of results
 		boolean objectResults = cqlQuery.getQueryModifier() == null ||
-			(!cqlQuery.getQueryModifier().isCountOnly() 
-				&& cqlQuery.getQueryModifier().getAttributeNames() == null 
+			(!cqlQuery.getQueryModifier().isCountOnly()
+				&& cqlQuery.getQueryModifier().getAttributeNames() == null
 				&& cqlQuery.getQueryModifier().getDistinctAttribute() == null);
 		if (objectResults) {
 			results = CQLQueryResultsUtil.createQueryResults(
@@ -110,33 +114,71 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		}
 		return results;
 	}
-	
-	
-	public Iterator processQueryLazy(CQLQuery cqlQuery) 
+
+
+	public Iterator processQueryLazy(CQLQuery cqlQuery)
 		throws MalformedQueryException, QueryProcessingException {
 		List coreResultsList = queryCoreService(cqlQuery);
 		return coreResultsList.iterator();
 	}
-	
 
-    
-	private List queryCoreService(CQLQuery query) 
+    private Document loadDocument(String filename){
+        Document doc = null;
+        try {
+            SAXBuilder builder = new SAXBuilder();
+            //InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
+            InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
+            doc = builder.build(stream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return doc;
+    }
+
+	private List queryCoreService(CQLQuery query)
 		throws MalformedQueryException, QueryProcessingException {
 
 		String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
 		//String hibernateCfgFile ="hibernate.cfg.xml";
-                 
-                Configuration configuration = new Configuration().configure(hibernateCfgFile);                
-                String dialect = configuration.getProperties().getProperty("dialect");
-                
+                String xpathStr = "/hibernate-configuration/session-factory/property";
+                String dialect = "";
+                String dataBaseURL="";
+                String schemaOrUser="";
+                try {
+                    XPath xpath = XPath.newInstance(xpathStr);
+                     List GraphObjectsNodes = xpath.selectNodes(loadDocument(hibernateCfgFile));
+                    for (int i=0;i<GraphObjectsNodes.size();i++){
+                        Element objectElement = (Element)GraphObjectsNodes.get(i);
+                        String attrValue = objectElement.getAttributeValue("name");
+                        if (attrValue.equals("dialect")) {
+                            dialect = objectElement.getText();
+                        } else if (attrValue.equals("connection.url")) {
+                            dataBaseURL = objectElement.getText();
+                        } else if (attrValue.equals("connection.username")) {
+                            schemaOrUser = objectElement.getText();
+                        }
+                    }
+
+                    System.out.println(dialect);
+                    System.out.println(dataBaseURL);
+                    System.out.println(schemaOrUser);
+
+                } catch (JDOMException e) {
+                     e.printStackTrace();
+                     throw new QueryProcessingException("Error parsing  : " + hibernateCfgFile + e.getMessage(), e);
+                }
+
+                //Configuration configuration = new Configuration().configure(hibernateCfgFile);
+                //String dialect = configuration.getProperties().getProperty("dialect");
+
 		// see if the target has subclasses
-		boolean subclassesDetected = LocalSubclassCheckCache.hasClassProperty(query.getTarget().getName(),hibernateCfgFile);
+		boolean subclassesDetected = LocalSubclassCheckCache.hasClassProperty(query.getTarget().getName(),hibernateCfgFile,dataBaseURL,schemaOrUser);
 		//boolean subclassesDetected = false;
-		
+
                 // generate the HQL to perform the query
 		String hql = null;
                 LocalCQL2HQL cql2hql = new LocalCQL2HQL(dialect);
-                
+
 		if (subclassesDetected) {
 			// simplify the query by removing modifiers
 			CQLQuery simpleQuery = new CQLQuery();
@@ -147,11 +189,11 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		}
 		System.out.println("Executing HQL...: " + hql);
 		LOG.debug("Executing HQL:" + hql);
-		
+
 		// process the query
 		HQLCriteria hqlCriteria = new HQLCriteria(hql);
-	    
-                Session session = HibernateUtil.currentSession(hibernateCfgFile);
+
+                Session session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
 		List targetObjects = null;
 		try {
 		    targetObjects = session.createQuery(hqlCriteria.getHqlString()).list();
@@ -171,8 +213,8 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		}
 		return targetObjects;
 	}
-	
-	
+
+
 	private List applyQueryModifiers(List rawObjects, QueryModifier mods) throws Exception {
 		List processed = new LinkedList();
 		Iterator rawIter = rawObjects.iterator();
@@ -201,7 +243,7 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		} else {
 			processed = rawObjects;
 		}
-		
+
 		if (mods.isCountOnly()) {
 			List countList = new ArrayList(1);
 			countList.add(new Integer(processed.size()));
@@ -209,8 +251,8 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		}
 		return processed;
 	}
-	
-	
+
+
 	private Object accessNamedProperty(Object o, String name) throws Exception {
 		Field[] fields = o.getClass().getFields();
 		for (int i = 0; i < fields.length; i++) {
@@ -229,18 +271,18 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 				if (fieldName.length() == 1) {
 					fieldName = String.valueOf(Character.toLowerCase(fieldName.charAt(0)));
 				} else {
-					fieldName = String.valueOf(Character.toLowerCase(fieldName.charAt(0))) 
+					fieldName = String.valueOf(Character.toLowerCase(fieldName.charAt(0)))
 						+ fieldName.substring(1);
 				}
 				if (fieldName.equals(name)) {
 					return methods[i].invoke(o, new Object[] {});
 				}
-			}			
+			}
 		}
 		throw new NoSuchFieldException("No field " + name + " found on " + o.getClass().getName());
 	}
-	
-	
+
+
     public Properties getRequiredParameters() {
             Properties params = new Properties();
             params.setProperty(APPLICATION_SERVICE_URL, DEFAULT_LOCALHOST_CACORE_URL);

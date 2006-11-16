@@ -1,5 +1,7 @@
 package gov.nih.nci.cagrid.data.cql.cacore;
 
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,23 +15,25 @@ public class HibernateUtil {
 
     public static final ThreadLocal session = new ThreadLocal();
     public static Map sessionFactoryMap = new HashMap();
+
     
-    public static SessionFactory getSessionFactory(String hibernateConfig) {
+    public static SessionFactory getSessionFactory(String hibernateConfig,String dataBaseURL, String schemaOrUser) {
         SessionFactory sessionFactory;
         try {
             
-            Configuration configuration = new Configuration().configure(hibernateConfig);
+            //Configuration configuration = new Configuration().configure(hibernateConfig);
             
-            String dataBaseURL = configuration.getProperty("hibernate.connection.url");
-            String schema = configuration.getProperty("hibernate.connection.username");
-            String sessionFactoryId = dataBaseURL+"_"+schema;
+            //String dataBaseURL = configuration.getProperty("hibernate.connection.url");
+            //String schema = configuration.getProperty("hibernate.connection.username");
+            String sessionFactoryId = dataBaseURL+"_"+schemaOrUser;
+            
             
             if (sessionFactoryMap.get(sessionFactoryId) == null ){
-                System.out.println("Building  SessionFactory ..." + sessionFactoryId);
-                sessionFactory = configuration.buildSessionFactory();
+                System.out.println("Building  New SessionFactory ..." + sessionFactoryId);
+                sessionFactory = new Configuration().configure(hibernateConfig).buildSessionFactory();
                 sessionFactoryMap.put(sessionFactoryId,sessionFactory);
             } else {
-                System.out.println("Getting  SessionFactory ..." + sessionFactoryId);
+                System.out.println("Getting  Existing SessionFactory ..." + sessionFactoryId);
                 sessionFactory = (SessionFactory)sessionFactoryMap.get(sessionFactoryId);
             }
             
@@ -41,11 +45,11 @@ public class HibernateUtil {
         return sessionFactory;
     }
     
-    public static Session currentSession(String hibernateConfig) throws HibernateException {
+    public static Session currentSession(String hibernateConfig,String dataBaseURL, String schemaOrUser) throws HibernateException {
         Session s = (Session) session.get();
         // Open a new Session, if this Thread has none yet
         if (s == null) {
-            s = getSessionFactory(hibernateConfig).openSession();
+            s = getSessionFactory(hibernateConfig,dataBaseURL,schemaOrUser).openSession();
             session.set(s);
         }
         return s;
@@ -54,7 +58,9 @@ public class HibernateUtil {
     public static void closeSession() throws HibernateException {
         Session s = (Session) session.get();
         session.set(null);
-        if (s != null)
+        if (s != null) {
             s.close();
+            System.out.println("Closing session");
+        }
     }
 }

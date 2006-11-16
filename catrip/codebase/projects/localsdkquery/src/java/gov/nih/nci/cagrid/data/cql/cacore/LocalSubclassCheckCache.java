@@ -2,6 +2,8 @@ package gov.nih.nci.cagrid.data.cql.cacore;
 
 import gov.nih.nci.cagrid.data.QueryProcessingException;
 
+
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +21,7 @@ import org.hibernate.Session;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created Sep 19, 2006
- * @version $Id: LocalSubclassCheckCache.java,v 1.1 2006-10-09 17:40:21 srakkala Exp $
+ * @version $Id: LocalSubclassCheckCache.java,v 1.2 2006-11-16 20:49:38 srakkala Exp $
  */
 public class LocalSubclassCheckCache {
 
@@ -44,7 +46,7 @@ public class LocalSubclassCheckCache {
 	 * 		True if the class discriminator is present, false otherwise
 	 * @throws QueryProcessingException
 	 */
-	 public static boolean hasClassProperty(String className,String hibernateCfgFile) throws QueryProcessingException {
+	 public static boolean hasClassProperty(String className,String hibernateCfgFile,String dataBaseURL, String schemaOrUser) throws QueryProcessingException {
 	     
 
 	         if (cache == null) {
@@ -55,7 +57,7 @@ public class LocalSubclassCheckCache {
 	                 String testHql = "From " + className + " as c where c.class = " + className + ")";
 	                 // try the query and catch application exceptions
 	                 try {
-	                     Session session = HibernateUtil.currentSession(hibernateCfgFile);
+	                     Session session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
 	                         //queryService.query(new HQLCriteria(testHql), className);
 	                         session.createQuery(testHql).list();
 	                         flag = Boolean.TRUE;

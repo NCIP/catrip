@@ -14,6 +14,8 @@ import gov.nih.nci.cagrid.data.InitializationException;
 
 import gov.nih.nci.cagrid.data.cql.cacore.experimental.CQL2DetachedCriteria;
 
+
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
@@ -38,7 +40,7 @@ import org.hibernate.criterion.DetachedCriteria;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalCoreQueryProcessor.java,v 1.1 2006-10-06 14:19:12 srakkala Exp $
+ * @version $Id: LocalCoreQueryProcessor.java,v 1.2 2006-11-16 20:49:38 srakkala Exp $
  */
 public class LocalCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
@@ -119,23 +121,24 @@ public class LocalCoreQueryProcessor extends LazyCQLQueryProcessor {
 	
 	private List queryCoreService(CQLQuery query) 
 		throws MalformedQueryException, QueryProcessingException {
-                
+                /*
                 Properties p = getConfiguredParameters();
                 Enumeration e = p.keys();
 	    
                 while (e.hasMoreElements()){
                     System.out.println(e.nextElement().toString());
                 }
+                */
+                //String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
                 
-                String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
-                
-                //String hibernateCfgFile = "hibernate.cfg.xml";
+                String hibernateCfgFile = "hibernate.cfg.xml";
                 System.out.println("hibernateCfgFile : " + hibernateCfgFile);
 		
                 DetachedCriteria objectCriteria = CQL2DetachedCriteria.translate(query);
                 
                 //HQLCriteria hqlCriteria = new HQLCriteria(CQL2HQL.translate(query));
-                Session session = HibernateUtil.currentSession(hibernateCfgFile);
+               // Session session = HibernateUtil.currentSession(hibernateCfgFile);
+                Session session = null;
                 Criteria hqlCriteria = objectCriteria.getExecutableCriteria(session);
                 
             
