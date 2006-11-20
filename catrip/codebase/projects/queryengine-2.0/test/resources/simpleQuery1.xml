@@ -4,7 +4,10 @@
 		<Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
 			<Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
 				<Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier">
+					<!-- ForeignAssociation serviceURL ai moved from Foreign Object to ForeignAssociation -->
 					<ForeignAssociation targetServiceURL="http://localhost:8181/wsrf/services/cagrid/CAE">
+						
+						<!-- left join and right join in Join condition are changed to local and foreign attribute names-->
 						<JoinCondition predicate="EQUAL_TO" localAttributeName="medicalRecordNumber" foreignAttributeName="medicalRecordNumber"/>
 
 						<ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" >
@@ -21,5 +24,7 @@
 			</Association>
 		</Association>
 	</TargetObject>
+	<!-- servive URL of target object is moved , these urls can be multiple -->
 	 <targetServiceURL>http://localhost:8181/wsrf/services/cagrid/CaTissueCore</targetServiceURL>
+	 
 </DCQLQuery>
