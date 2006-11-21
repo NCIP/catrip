@@ -2,6 +2,7 @@
 
 package edu.duke.cabig.catrip.gui.webstart;
 
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.UnZip;
 import edu.duke.catrip.config.CatripConfigurationDocument;
 import edu.duke.catrip.config.GuiConfiguration;
@@ -20,7 +21,7 @@ import java.util.Properties;
 public class WebstartConfigurator {
     
     
-    public static final String CATRIP_HOME = System.getProperty("user.home") + File.separator + ".caTRIP";
+    public static final String CATRIP_HOME = GUIConstants.CATRIP_HOME;//System.getProperty("user.home") + File.separator + ".caTRIP";
     public static final String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_CONF_HOME = CATRIP_HOME + File.separator + "conf";
     
@@ -30,8 +31,7 @@ public class WebstartConfigurator {
     }
     
     public static void configure(){
-        String dir  = System.getProperty("user.home")+File.separator+".caTRIP";
-        File confDir = new File(dir);
+        File confDir = new File(CATRIP_HOME);
         if (!confDir.exists()){
             configureForWebstart();
         }
@@ -44,10 +44,10 @@ public class WebstartConfigurator {
             
             // sanjeev: locate the zip file containing the configuration files.
             String inFilename = "conf.zip";
-            String dir  = System.getProperty("user.home")+File.separator+".caTRIP";
-            File confDir = new File(dir);confDir.mkdir();
+            //String dir  = System.getProperty("user.home")+File.separator+".caTRIP";
+            File confDir = new File(CATRIP_HOME);confDir.mkdir();
             InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(inFilename);;//ClassLoader.getSystemClassLoader().getResourceAsStream(inFilename);
-            String outFilename = dir+File.separator+"conf.zip";
+            String outFilename = CATRIP_HOME+File.separator+"conf.zip";
             OutputStream out = new FileOutputStream(outFilename);
             
             byte[] buf = new byte[1024];
@@ -58,7 +58,7 @@ public class WebstartConfigurator {
             out.close();
             in.close();
             
-            UnZip.unzip(outFilename,dir);  
+            UnZip.unzip(outFilename,CATRIP_HOME);  
             new File(outFilename).delete();
             
             
@@ -84,7 +84,7 @@ public class WebstartConfigurator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String wsddFile = dir+File.separator+"conf"+File.separator+"client-config.wsdd";
+            String wsddFile = CATRIP_HOME+File.separator+"conf"+File.separator+"client-config.wsdd";
             properties.setProperty("clientConfigWsdd",wsddFile);
             OutputStream os = new FileOutputStream(fqeFile);
             properties.storeToXML(os,"Modified via webstart.");

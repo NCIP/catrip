@@ -26,7 +26,8 @@ public class GUIConstants {
     
     public static final String DEFAULT_INDEX_SERVICE_URL = "http://localhost:8080/wsrf/services/DefaultIndexService";
     
-    public static final String CATRIP_HOME = System.getProperty("user.home") + File.separator + ".caTRIP";
+   // caTrip home is not final so that It can be changed if catrip.home.dir argument is passed.
+    public static String CATRIP_HOME = System.getProperty("user.home") + File.separator + ".caTRIP"; // default home.
     public static final String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_SERVICES_CONFIG_FILE_NAME = "services-config.xml";
     

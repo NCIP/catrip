@@ -2,8 +2,10 @@
 package edu.duke.cabig.catrip.gui;
 
 import edu.duke.cabig.catrip.gui.util.ExceptionThreadGroup;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.webstart.WebstartConfigurator;
 import edu.duke.cabig.catrip.gui.wizard.WelcomeScreen;
+import java.io.File;
 
 /**
  * Main class of the GUI project. Entry point for the GUI.
@@ -26,6 +28,12 @@ public class Main {
         // Check:
         // caTRIP_config.xml for Index service and Dorian Urls.
         
+        // Process all arguments here.
+        String caTripHomeDir = System.getProperty("catrip.home.dir");
+        if (caTripHomeDir != null){
+            GUIConstants.CATRIP_HOME = System.getProperty("user.home") + File.separator + caTripHomeDir.trim();  
+            System.out.println("CaTRIP configuration Directory location is changed to: "+GUIConstants.CATRIP_HOME);
+        }
         
         // sanjeev: check if the application is launched via the webstart context.
         String webstartStr = System.getProperty("deployment.user.cachedir");
