@@ -31,7 +31,7 @@
 <jar download="eager" href="lib/_xml-mapping.jar"/>
 <jar download="eager" href="lib/_conf_files.jar"/>
 
-
+<property name="catrip.home.dir" value=".caTRIP" />
 
 <jar download="eager" href="lib/addressing-1.0.jar"/>
 <jar download="eager" href="lib/ant-contrib.jar"/>
