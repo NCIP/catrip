@@ -45,6 +45,12 @@ public class WebstartConfigurator {
                 verFile.createNewFile();
             }
             
+            if (!confDir.exists()){
+                configureForWebstart();
+                File verFile = new File(versionFile);
+                verFile.createNewFile();
+            }
+            
             
             
         } catch (IOException ex) {
