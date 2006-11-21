@@ -1,7 +1,0 @@
-Operative
-Pre-Therapy
-New Diagnosis
-Post-Operative
-Post-Therapy
-Not Specified
-Relapse, Distant Site

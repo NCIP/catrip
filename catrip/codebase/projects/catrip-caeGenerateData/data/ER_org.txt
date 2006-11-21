@@ -1,8 +1,0 @@
-ER+
-estrogen receptor-negative
-ER-neg
-ER-positive
-estrogen receptor-positive
-ER-pos
-ER-negative
-ER-
