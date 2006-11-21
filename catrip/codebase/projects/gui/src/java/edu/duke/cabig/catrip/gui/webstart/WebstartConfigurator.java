@@ -37,8 +37,8 @@ public class WebstartConfigurator {
             File confDir = new File(CATRIP_HOME);
             
             if (confDir.exists() && isOldVersion()){ 
-                confDir.renameTo(new File(CATRIP_HOME+"_backup")); 
-//                deleteDir(confDir); 
+//                confDir.renameTo(new File(CATRIP_HOME+"_backup_"+GUIConstants.caTRIPVersion)); 
+                deleteDir(confDir); 
 //                confDir.mkdir();
                 configureForWebstart();
                 File verFile = new File(versionFile);
