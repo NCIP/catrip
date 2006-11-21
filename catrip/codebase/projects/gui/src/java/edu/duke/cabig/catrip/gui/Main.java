@@ -32,6 +32,7 @@ public class Main {
         String caTripHomeDir = System.getProperty("catrip.home.dir");
         if (caTripHomeDir != null){
             GUIConstants.CATRIP_HOME = System.getProperty("user.home") + File.separator + caTripHomeDir.trim();  
+            GUIConstants.CATRIP_CONFIG_FILE_LOCATION = GUIConstants.CATRIP_HOME + File.separator + "catrip-config.xml";
             System.out.println("CaTRIP configuration Directory location is changed to: "+GUIConstants.CATRIP_HOME);
         }
         
