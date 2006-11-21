@@ -38,6 +38,17 @@ public class Main {
             System.out.println("CaTRIP configuration Directory location is changed to: "+GUIConstants.CATRIP_HOME);
         }
         
+        String caTRIP_Version = System.getProperty("catrip.config.version");
+        if (caTRIP_Version != null){
+            GUIConstants.caTRIPVersion = caTRIP_Version.trim();
+        }
+        
+        
+        
+        
+        
+       
+        
         // sanjeev: check if the application is launched via the webstart context.
         String webstartStr = System.getProperty("deployment.user.cachedir");
         if(webstartStr != null){

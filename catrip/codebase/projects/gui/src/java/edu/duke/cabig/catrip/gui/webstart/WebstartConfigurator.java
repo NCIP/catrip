@@ -31,9 +31,24 @@ public class WebstartConfigurator {
     }
     
     public static void configure(){
-        File confDir = new File(CATRIP_HOME);
-        if (!confDir.exists()){
-            configureForWebstart();
+        try{
+            
+            String versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
+            File confDir = new File(CATRIP_HOME);
+            
+            if (confDir.exists() && isOldVersion()){ 
+                confDir.renameTo(new File(CATRIP_HOME+"_backup")); 
+//                deleteDir(confDir); 
+//                confDir.mkdir();
+                configureForWebstart();
+                File verFile = new File(versionFile);
+                verFile.createNewFile();
+            }
+            
+            
+            
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     
@@ -58,7 +73,7 @@ public class WebstartConfigurator {
             out.close();
             in.close();
             
-            UnZip.unzip(outFilename,CATRIP_HOME);  
+            UnZip.unzip(outFilename,CATRIP_HOME);
             new File(outFilename).delete();
             
             
@@ -78,7 +93,7 @@ public class WebstartConfigurator {
             
             // sanjeev: replace the conf dir location.
             String fqeFile = CATRIP_HOME + File.separator + "query_engine_services_config.xml";
-            Properties properties = new Properties(); 
+            Properties properties = new Properties();
             try {
                 properties.loadFromXML(new FileInputStream(new File(fqeFile )));
             } catch (IOException e) {
@@ -98,11 +113,45 @@ public class WebstartConfigurator {
     
     
     
+    // code to check the config file version..
+    
+    private static boolean isOldVersion(){
+        boolean olderVersion = false;
+        String virsionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
+        File confDir = new File(virsionFile);
+        if (!confDir.exists()){
+            olderVersion = true;
+        }
+        return olderVersion;
+    }
     
     
     
     
     
+    
+    
+    
+    
+    
+    
+    // Deletes all files and subdirectories under dir.
+    // Returns true if all deletions were successful.
+    // If a deletion fails, the method stops attempting to delete and returns false.
+    public static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i=0; i<children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+    
+        // The directory is now empty so delete it
+        return dir.delete();
+    }
     
     
     
