@@ -1,4 +1,4 @@
-
+// after beta...
 package edu.duke.cabig.catrip.gui;
 
 import edu.duke.cabig.catrip.gui.util.ExceptionThreadGroup;
