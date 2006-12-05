@@ -11,17 +11,21 @@ import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.DisplayExceptions;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
-import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
-import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngine;
-import gov.nih.nci.catrip.fqe.engine.FederatedQueryEngineImpl;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
+import gov.nih.nci.cagrid.fqp.processor.FederatedQueryEngine;
 import java.awt.Cursor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
+import org.apache.axis.message.MessageElement;
+import org.apache.axis.message.PrefixedQName;
 
 /**
  * Panel which contains the Execute button. More commands can be added here.
@@ -107,29 +111,44 @@ public class CommandPanel extends CPanel {
 //            fop.write(DCQLGenerator.getDCQLText());
 //            fop.close();
             long startTime = System.currentTimeMillis();
-                    
-            FederatedQueryEngine fqe = new FederatedQueryEngineImpl();
-            DCQLQueryDocument dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
-            // sanjeev: if the dcqlQueryDocument is null throw the error Dialog. 
+            
+            FederatedQueryEngine fqe = new FederatedQueryEngine();
+            DCQLQuery dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
+            // sanjeev: if the dcqlQueryDocument is null throw the error Dialog.
             // sanjeev: if it is not null that only fire the query with FQE to avoid Null pointer Exception.
             
             long dcqlGenerationTime = System.currentTimeMillis();
             
             System.out.println("Total time taken in Generating the DCQL: "+  (dcqlGenerationTime-startTime) +" Milli Seconds" );
             
-            // sanjeev: print the formatted DCQL on console or to a log file.
-//            XmlOptions xmlOptions = new XmlOptions();
-//            xmlOptions.setSavePrettyPrint();
-//            xmlOptions.setSavePrettyPrintIndent(4);
-//            xmlOptions.setUseDefaultNamespace();
-//            System.out.println("\n\n ========= Executing this DCQL ================\n");
-//            System.out.println(DCQLGenerator.getDCQLText(xmlOptions));
-//            System.out.println("\n\n ==============================================\n\n\n\n\n");
             
             // sanjeev: clean the result table before you even try the new query...
             getMainFrame().getOutputPanel().cleanResults();
             
-            CQLQueryResults results = fqe.execute(dcqlQueryDocument);
+            CQLQueryResults results = fqe.executeAndAggregateResults(dcqlQueryDocument);
+            
+            
+            
+            /*
+            CQLObjectResult[] objectResult = results.getObjectResult();
+            System.out.println(objectResult.length);
+            for (int i = 0; i < objectResult.length; i++) {
+                CQLObjectResult objResult = objectResult[i];
+                MessageElement msgsElement = (MessageElement)objResult.get_any()[0];
+                Iterator itt = msgsElement.getAllAttributes();
+                while (itt.hasNext()){
+//                        System.out.println(itt.next().getClass().getName());
+                    PrefixedQName key = (PrefixedQName)itt.next();
+                    String value = msgsElement.getAttributeValue(key);
+//                        System.out.println("Key = "+key.getLocalName()+" Value = "+value);
+                }
+             
+//                    System.out.println(objResult.get_any()[0]);
+             
+            }
+             */
+            
+            
             
             long queryExecutionTime = System.currentTimeMillis();
             System.out.println("Total time taken in Query Execution: "+  (queryExecutionTime-dcqlGenerationTime) +" Milli Seconds" );
@@ -140,45 +159,68 @@ public class CommandPanel extends CPanel {
             } else {
                 
                 // TODO - put the client config files of the individual service also in the caTRIP-config.xml or the services-mapping file some how.
-                CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"client-config.wsdd")));
-                 
+//                CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new File(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation() + File.separator +"client-config.wsdd")));
+                
+                
                 
                 long resultIteratorTime = System.currentTimeMillis();
-                System.out.println("Total time taken in getting the Result Iterator: "+  (resultIteratorTime-queryExecutionTime) +" Milli Seconds" );
-
+//                System.out.println("Total time taken in getting the Result Iterator: "+  (resultIteratorTime-queryExecutionTime) +" Milli Seconds" );
+                
+                CQLObjectResult[] objectResult = results.getObjectResult();
                 
                 ArrayList classBeanList = new ArrayList();
                 
                 ClassBean tmpObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
                 
-                while (iterator.hasNext()) {
-                    Object obj = iterator.next();
-
+//                while (iterator.hasNext()) {
+//                    Object obj = iterator.next();
+                 
+                for (int ii = 0; ii < 5 ; ii++) {//objectResult.length
+                    
+                    HashMap tmpKeyValueMap = new HashMap(); 
+                     
+                    CQLObjectResult objResult = objectResult[ii]; 
+                    MessageElement msgsElement = (MessageElement)objResult.get_any()[0];
+                    Iterator itt = msgsElement.getAllAttributes();
+                    while (itt.hasNext()){
+//                        System.out.println(itt.next().getClass().getName());
+                        PrefixedQName key = (PrefixedQName)itt.next();
+                        String value = msgsElement.getAttributeValue(key);
+                        tmpKeyValueMap.put(key.getLocalName().toString().trim(), value.trim() );
+//                        System.out.println("Key = "+key.getLocalName()+" Value = "+value);
+                    }
+                    
+                    
                     ClassBean classBeanTmp = tmpObject.clone();
                     
                     ArrayList attributeList = classBeanTmp.getAttributes();
                     
                     for (int i = 0; i < attributeList.size(); i++) {
                         AttributeBean aBean = (AttributeBean) attributeList.get(i);
-                        String attributeName = aBean.getAttributeName();
-                        String methodName ="get"+attributeName.substring(0,1).toUpperCase() + attributeName.substring(1);
+//                        String attributeName = aBean.getAttributeName();
+//                        String methodName ="get"+attributeName.substring(0,1).toUpperCase() + attributeName.substring(1);
                         String value = " ";
                         try{
-                            Object attributeValue = ((Method)obj.getClass().getMethod(methodName)).invoke(obj);
-                            if (attributeValue != null){
-                                value = attributeValue.toString();
-                            }
+//                            Object attributeValue = ((Method)obj.getClass().getMethod(methodName)).invoke(obj);
+                            value = tmpKeyValueMap.get(aBean.getAttributeName().trim()).toString(); 
+//                            if (attributeValue != null){
+//                                value = attributeValue.toString();
+//                            }
                         } catch (Exception eex) {
-                            eex.printStackTrace();
+                            System.out.println("No/Null value of attribute : "+aBean.getAttributeName().trim());
+//                            eex.printStackTrace();
                         }
-                        aBean.setAttributeValue(value);
+                        aBean.setAttributeValue(value); 
                     }
+                    
+                    
                     classBeanList.add(classBeanTmp);
-                     
+                    
                 }
                 
                 long serializationTime = System.currentTimeMillis();
-                System.out.println("Total time taken in Serialization and Reflection: "+  (serializationTime-resultIteratorTime) +" Milli Seconds" );
+//                System.out.println("Total time taken in Serialization and Reflection: "+  (serializationTime-resultIteratorTime) +" Milli Seconds" );
+                System.out.println("Total time taken in xml parsing : "+  (serializationTime-resultIteratorTime) +" Milli Seconds" );
                 
                 resultCountLbl.setText("   Total Row Count : "+classBeanList.size());
                 getMainFrame().getOutputPanel().setResults(classBeanList);
@@ -194,7 +236,7 @@ public class CommandPanel extends CPanel {
             
         } catch (Exception ex) {
             resultCountLbl.setText(" ");
-            DisplayExceptions.display("Error.", "Error executing the Query.", ex); 
+            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
 //            ex.printStackTrace();
         }
     }

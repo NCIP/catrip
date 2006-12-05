@@ -5,22 +5,23 @@ import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.dnd.ClassNode;
+import gov.nih.nci.cagrid.cqlquery.Attribute;
+import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
+import gov.nih.nci.cagrid.cqlquery.Predicate;
+import gov.nih.nci.cagrid.dcql.Association;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
+import gov.nih.nci.cagrid.dcql.ForeignAssociation;
+import gov.nih.nci.cagrid.dcql.ForeignPredicate;
+import gov.nih.nci.cagrid.dcql.Group;
+import gov.nih.nci.cagrid.dcql.JoinCondition;
 import java.util.ArrayList;
+import gov.nih.nci.cagrid.dcql.Object;
+import javax.xml.XMLConstants;
 
-
-// DCQL XML imports..
-import gov.nih.nci.catrip.cqlquery.Attribute;
-import gov.nih.nci.catrip.cqlquery.LogicalOperator;
-import gov.nih.nci.catrip.dcql.Association;
-import gov.nih.nci.catrip.dcql.DCQLQueryDocument;
-import gov.nih.nci.catrip.dcql.DCQLQueryDocument.DCQLQuery;
-import gov.nih.nci.catrip.dcql.ForeignAssociation;
-import gov.nih.nci.catrip.dcql.Group;
-import gov.nih.nci.catrip.dcql.Join;
-import gov.nih.nci.catrip.dcql.JoinCondition;
-import gov.nih.nci.catrip.dcql.TargetObject;
 import org.apache.xmlbeans.XmlOptions;
-// DCQL XML imports..
+import org.globus.wsrf.encoding.ObjectSerializer;
+import javax.xml.namespace.QName;
+
 
 
 /**
@@ -35,8 +36,10 @@ public class DCQLGenerator {
     }
     
     /** Creates a DCQLDocument object. */
-    public static DCQLQueryDocument getDCQLDocument(){
-        DCQLQueryDocument dcqlDocument = null;
+    public static DCQLQuery getDCQLDocument(){
+        
+        DCQLQuery dcqlQuery = null;
+        
         try{
             
             ClassNode targetNode = DCQLRegistry.getTargetNode();
@@ -44,31 +47,32 @@ public class DCQLGenerator {
                 return null;
             }
             ClassBean targetObjectBean= targetNode.getAssociatedClassObject();
+
+            dcqlQuery = new DCQLQuery();
             
-            dcqlDocument = DCQLQueryDocument.Factory.newInstance();
-            DCQLQuery dcqlQuery = DCQLQuery.Factory.newInstance();
-            TargetObject dcqlTargetObject = TargetObject.Factory.newInstance();
+            Object dcqlTargetObject = new Object(); 
             dcqlTargetObject.setName(targetObjectBean.getFullyQualifiedName());
-            dcqlTargetObject.setServiceURL(targetObjectBean.getServiceUrl());
-            
-            buildAssociationGroup(dcqlTargetObject, targetObjectBean);
-            
+
+            dcqlQuery.setTargetServiceURL(new String[]{targetObjectBean.getServiceUrl()});
+                    
+            buildAssociationGroup(dcqlTargetObject, targetObjectBean); 
             dcqlQuery.setTargetObject(dcqlTargetObject);
-            dcqlDocument.setDCQLQuery(dcqlQuery);
+
             
         } catch (Exception e){
             e.printStackTrace();
         }
-        return dcqlDocument;
+        return dcqlQuery;
     }
     
     /** get the DCQL as XML text. */
     public static String getDCQLText(){
         String txt = "";
-        try{
-            txt = getDCQLDocument().xmlText();
+        try{ 
+            txt = ObjectSerializer.toString(getDCQLDocument(),new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI));//xmlText();
         } catch (Exception e){
-            txt = "Please create a query first.";
+            txt = "Please create a query first.";//     // 
+            e.printStackTrace();
         }
         return txt;
     }
@@ -77,16 +81,17 @@ public class DCQLGenerator {
     public static String getDCQLText(XmlOptions xmlOptions){
         String txt = "";
         try{
-            txt = getDCQLDocument().xmlText(xmlOptions);
+            txt = ObjectSerializer.toString(getDCQLDocument(),new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI));//xmlText(xmlOptions);
         } catch (Exception e){
             txt = "Please create a query first.";
+            e.printStackTrace();
         }
         return txt;
     }
     
     
     
-    private static void buildAssociationGroup(gov.nih.nci.catrip.dcql.Object dcqlOuterObject, ClassBean outerObjectBean){//Association
+    private static void buildAssociationGroup(Object dcqlOuterObject, ClassBean outerObjectBean){//Association
         
         boolean targetObjectHasAttributes = outerObjectBean.hasNotNullAttributes();
         boolean targetObjectHasAssociations = outerObjectBean.hasAssociations();
@@ -100,17 +105,24 @@ public class DCQLGenerator {
             // sanjeev: if more than one attribute.. create an internal group...
             if (targetObjectAttributeList.size() > 1){
                 // has multiple attcibutes..
-                dcqlGroup = dcqlOuterObject.addNewGroup();
+                dcqlGroup = new Group();
+//                dcqlGroup = dcqlOuterObject.addNewGroup();
+                dcqlOuterObject.setGroup(dcqlGroup);
+                        
                 dcqlGroup.setLogicRelation(LogicalOperator.AND);
                 
                 createAttributesGroup(dcqlGroup, targetObjectAttributeList);
                 
             }else {
                 // sanjeev: has only 1 attribute
-                Attribute dcqlAttribute = dcqlOuterObject.addNewAttribute();
+                Attribute dcqlAttribute = new Attribute(); //   Attribute dcqlAttribute = dcqlOuterObject.setAttribute();
+                dcqlOuterObject.setAttribute(dcqlAttribute);
+                
+                
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
                 dcqlAttribute.setName(aBean.getAttributeName());
-                dcqlAttribute.setPredicate(gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
+                
+                dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
                 boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
                 String attributeValue = aBean.getAttributeValue();
                 boolean hasChar = attributeValue.endsWith("%");
@@ -126,13 +138,16 @@ public class DCQLGenerator {
             // <editor-fold>   // attriibutes and associations both are there
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
             
-            dcqlGroup = dcqlOuterObject.addNewGroup();
+            dcqlGroup = new Group();//dcqlOuterObject.addNewGroup();
+            dcqlOuterObject.setGroup(dcqlGroup);
+            
             dcqlGroup.setLogicRelation(LogicalOperator.AND);
             if (targetObjectAttributeList.size() > 1){
                 
                 // sanjeev: has multiple attributes.. create an internal group...
-                Group gp2 = dcqlGroup.addNewGroup();
-                gp2.setLogicRelation(LogicalOperator.AND);
+                Group gp2 = new Group();// dcqlGroup.addNewGroup();
+                dcqlGroup.setGroup(new Group[]{gp2});
+                gp2.setLogicRelation(LogicalOperator.AND); 
                 
                 createAttributesGroup(gp2, targetObjectAttributeList);
                 
@@ -140,10 +155,12 @@ public class DCQLGenerator {
                 
             }else {
                 // sanjeev: has only 1 attribute
-                Attribute dcqlAttribute = dcqlGroup.addNewAttribute();
+                
+                Attribute dcqlAttribute = new Attribute();//dcqlGroup.addNewAttribute();
+                dcqlGroup.setAttribute(new Attribute[]{dcqlAttribute});
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
                 dcqlAttribute.setName(aBean.getAttributeName());
-                dcqlAttribute.setPredicate(gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
+                dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
                 boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
                 String attributeValue = aBean.getAttributeValue();
                 boolean hasChar = attributeValue.endsWith("%");
@@ -165,11 +182,12 @@ public class DCQLGenerator {
             int numOfAssociations = outerObjectBean.getAssociations().size();
             int numTotalAssociations = numOfForeignAssociations+numOfAssociations;
             if (numTotalAssociations>1){
-                dcqlGroup = dcqlOuterObject.addNewGroup();
+                dcqlGroup = new Group();//dcqlOuterObject.addNewGroup();
+                dcqlOuterObject.setGroup(dcqlGroup);
                 dcqlGroup.setLogicRelation(LogicalOperator.AND);
                 createAssociations(dcqlGroup, outerObjectBean);
             }else{
-                createAssociations(dcqlOuterObject,outerObjectBean );
+                createAssociations(dcqlOuterObject, outerObjectBean); 
             }
         }
         
@@ -180,9 +198,9 @@ public class DCQLGenerator {
         Attribute[] dcqlAttributes = new Attribute[targetObjectAttributeList.size()];
         for (int i = 0; i < targetObjectAttributeList.size(); i++) {
             AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(i);
-            dcqlAttributes[i] = Attribute.Factory.newInstance();
+            dcqlAttributes[i] = new Attribute();//Attribute.Factory.newInstance();
             dcqlAttributes[i].setName(aBean.getAttributeName());
-            dcqlAttributes[i].setPredicate(gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
+            dcqlAttributes[i].setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
             boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
             String attributeValue = aBean.getAttributeValue();
             boolean hasChar = attributeValue.endsWith("%");
@@ -193,7 +211,7 @@ public class DCQLGenerator {
             }
             
         }
-        outerDcqlGroup.setAttributeArray(dcqlAttributes);
+        outerDcqlGroup.setAttribute(dcqlAttributes);//setAttributeArray(dcqlAttributes);
     }
     
     
@@ -209,7 +227,8 @@ public class DCQLGenerator {
             ArrayList associationList = outerObjectBean.getAssociations();
             for (int i = 0;i<associationList.size() ;i++){
                 
-                Association dcqlAssociation = outerDcqlGroup.addNewAssociation(); // adding a local association..
+                Association dcqlAssociation = new Association();//outerDcqlGroup.addNewAssociation(); // adding a local association..
+                outerDcqlGroup.setAssociation(new Association[]{dcqlAssociation});
                 ClassBean localAssociation = (ClassBean)associationList.get(i);
                 dcqlAssociation.setName(localAssociation.getFullyQualifiedName());
                 dcqlAssociation.setRoleName( outerObjectBean.getAssociationRoleName(localAssociation.getId()) );
@@ -229,20 +248,32 @@ public class DCQLGenerator {
                 String leftProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
                 String rightProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRightProperty();
                 
-                ForeignAssociation dcqlForeignAssociation = outerDcqlGroup.addNewForeignAssociation(); // adding a foreign association..
+                ForeignAssociation dcqlForeignAssociation = new ForeignAssociation();//outerDcqlGroup.addNewForeignAssociation(); // adding a foreign association..
+                outerDcqlGroup.setForeignAssociation(new ForeignAssociation[]{dcqlForeignAssociation});
                 
-                TargetObject dcqlForeignObject = dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
+                Object dcqlForeignObject = new Object() ;//dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
+                dcqlForeignAssociation.setForeignObject(dcqlForeignObject);
+                
                 dcqlForeignObject.setName(foreignAssociationRightBean.getFullyQualifiedName());
-                dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
+                //dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
+                dcqlForeignAssociation.setTargetServiceURL(foreignAssociationRightBean.getServiceUrl());
                 
-                JoinCondition dcqlJoinCondition = JoinCondition.Factory.newInstance();
-                Join leftJoin = Join.Factory.newInstance();
-                leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName());
-                leftJoin.setProperty(leftProperty);
-                Join rightJoin = Join.Factory.newInstance();
-                rightJoin.setObject(foreignAssociationRightBean.getFullyQualifiedName());
-                rightJoin.setProperty(rightProperty);
+                JoinCondition dcqlJoinCondition = new JoinCondition();//JoinCondition.Factory.newInstance();
+                
+                dcqlJoinCondition.setLocalAttributeName(leftProperty);
+                dcqlJoinCondition.setForeignAttributeName(rightProperty);
+                dcqlJoinCondition.setPredicate(ForeignPredicate.EQUAL_TO);
+                
+                
+                /*
+                Join leftJoin = Join.Factory.newInstance(); 
+                leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName()); 
+                leftJoin.setProperty(leftProperty); 
+                Join rightJoin = Join.Factory.newInstance(); 
+                rightJoin.setObject(foreignAssociationRightBean.getFullyQualifiedName()); 
+                rightJoin.setProperty(rightProperty); 
                 dcqlJoinCondition.setLeftJoin(leftJoin);dcqlJoinCondition.setRightJoin(rightJoin);
+                */
                 dcqlForeignAssociation.setJoinCondition(dcqlJoinCondition);
                 
                 buildAssociationGroup(dcqlForeignObject, foreignAssociationRightBean);
@@ -254,19 +285,21 @@ public class DCQLGenerator {
     
     
     
-    private static void createAssociations(gov.nih.nci.catrip.dcql.Object outerObject, ClassBean outerObjectBean){
+    private static void createAssociations(Object outerObject, ClassBean outerObjectBean){
         
         boolean targetObjectHasAssociations = outerObjectBean.hasAssociations();
         boolean targetObjectHasForeignAssociations = outerObjectBean.hasForeignAssociations();
         
-        gov.nih.nci.catrip.dcql.Object outerDcqlObject = outerObject;
+        Object outerDcqlObject = outerObject;
         
         if(targetObjectHasAssociations){
             //- sanjeev: iterate the local associations... recursively.. and create the DCQL.
             ArrayList associationList = outerObjectBean.getAssociations();
             for (int i = 0;i<associationList.size() ;i++){
                 
-                Association dcqlAssociation = outerDcqlObject.addNewAssociation(); // adding a local association..
+                Association dcqlAssociation = new Association();//outerDcqlObject.addNewAssociation(); // adding a local association..
+                outerDcqlObject.setAssociation(dcqlAssociation);
+                
                 ClassBean localAssociation = (ClassBean)associationList.get(i);
                 dcqlAssociation.setName(localAssociation.getFullyQualifiedName());
                 dcqlAssociation.setRoleName( outerObjectBean.getAssociationRoleName(localAssociation.getId()) );
@@ -287,20 +320,31 @@ public class DCQLGenerator {
                 String leftProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
                 String rightProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRightProperty();
                 
-                ForeignAssociation dcqlForeignAssociation = outerDcqlObject.addNewForeignAssociation(); // adding a foreign association..
+                ForeignAssociation dcqlForeignAssociation = new ForeignAssociation();//outerDcqlObject.addNewForeignAssociation(); // adding a foreign association..
+                outerDcqlObject.setForeignAssociation(dcqlForeignAssociation);
                 
-                TargetObject dcqlForeignObject = dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
+                Object dcqlForeignObject = new Object();//dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
+                dcqlForeignAssociation.setForeignObject(dcqlForeignObject);
+                        
                 dcqlForeignObject.setName(foreignAssociationRightBean.getFullyQualifiedName());
-                dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
+                //dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
+                dcqlForeignAssociation.setTargetServiceURL(foreignAssociationRightBean.getServiceUrl());
+                        
+                JoinCondition dcqlJoinCondition = new JoinCondition();//JoinCondition.Factory.newInstance();
                 
-                JoinCondition dcqlJoinCondition = JoinCondition.Factory.newInstance();
-                Join leftJoin = Join.Factory.newInstance();
-                leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName());
-                leftJoin.setProperty(leftProperty);
-                Join rightJoin = Join.Factory.newInstance();
-                rightJoin.setObject(foreignAssociationRightBean.getFullyQualifiedName());
-                rightJoin.setProperty(rightProperty);
-                dcqlJoinCondition.setLeftJoin(leftJoin);dcqlJoinCondition.setRightJoin(rightJoin);
+                dcqlJoinCondition.setLocalAttributeName(leftProperty);
+                dcqlJoinCondition.setForeignAttributeName(rightProperty);
+                dcqlJoinCondition.setPredicate(ForeignPredicate.EQUAL_TO);
+                
+                /*
+                Join leftJoin = Join.Factory.newInstance(); 
+                leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName()); 
+                leftJoin.setProperty(leftProperty); 
+                Join rightJoin = Join.Factory.newInstance(); 
+                rightJoin.setObject(foreignAssociationRightBean.getFullyQualifiedName()); 
+                rightJoin.setProperty(rightProperty); 
+                dcqlJoinCondition.setLeftJoin(leftJoin);dcqlJoinCondition.setRightJoin(rightJoin); 
+                */
                 dcqlForeignAssociation.setJoinCondition(dcqlJoinCondition);
                 
                 buildAssociationGroup(dcqlForeignObject, foreignAssociationRightBean);

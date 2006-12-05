@@ -1,4 +1,3 @@
-// after beta...
 package edu.duke.cabig.catrip.gui;
 
 import edu.duke.cabig.catrip.gui.util.ExceptionThreadGroup;
@@ -34,7 +33,7 @@ public class Main {
             GUIConstants.CATRIP_HOME = System.getProperty("user.home") + File.separator + caTripHomeDir.trim();  
             GUIConstants.CATRIP_CONFIG_FILE_LOCATION = GUIConstants.CATRIP_HOME + File.separator + "catrip-config.xml";
             // change that in fqe class also..
-            gov.nih.nci.catrip.fqe.utils.PropertyReader.CATRIP_HOME = GUIConstants.CATRIP_HOME;
+            //gov.nih.nci.catrip.fqe.utils.PropertyReader.CATRIP_HOME = GUIConstants.CATRIP_HOME;
             System.out.println("CaTRIP configuration Directory location is changed to: "+GUIConstants.CATRIP_HOME);
         }
         
