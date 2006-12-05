@@ -175,7 +175,7 @@ public class CommandPanel extends CPanel {
 //                while (iterator.hasNext()) {
 //                    Object obj = iterator.next();
                  
-                for (int ii = 0; ii < 5 ; ii++) {//objectResult.length
+                for (int ii = 0; ii < objectResult.length ; ii++) {
                     
                     HashMap tmpKeyValueMap = new HashMap(); 
                      
