@@ -187,6 +187,15 @@
 		</artifact>
 
 
+      <artifact track="main" type="jars" id="queryengine2.jars">
+			<!-- antcall target="build-queryengine2" / -->
+			<fileset dir="${projects.dir}/queryengine-2.0/build/lib">
+				<include name="*.jar" />
+				<exclude name="*test*.jar" />
+			</fileset>
+		</artifact>
+
+
 		
 		<artifact track="main" type="jars" id="security-password.jars">
 			<antcall target="build-security-password" />

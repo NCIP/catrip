@@ -241,9 +241,10 @@
 	<target name="build-gui" depends="prepare" description="Builds the gui project">
 		<resolveDependencies extdir="${projects.dir}/gui/ext">
 			<artifact refid="common.test.jars" />
-			<artifact refid="queryengine.jars" />
-			<artifact refid="queryengine.schemas" />
-			<artifact refid="data.jars" />
+			<!-- artifact refid="queryengine.jars" />
+			<artifact refid="queryengine.schemas" / !-->
+			<!-- artifact refid="data.jars" / -->   <!-- The old dcql schema beans..	 -->
+			<artifact refid="queryengine2.jars" />   <!-- The new FQE including the dcql beans..	 -->
 			<!-- artifact refid="caTissueCoreDataService.jars" / -->  <!-- Old jars..	 -->
 			<artifact refid="cagrid.cadsr.jars" />
 			<artifact refid="cagrid.data.jars" />
