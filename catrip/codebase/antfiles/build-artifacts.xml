@@ -92,6 +92,18 @@
 			</fileset>
 		</artifact>
 
+		<artifact track="main" type="jars" id="cagrid.fqe2.jars">
+			<fileset dir="${cagrid.dir}/fqe2">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+		<artifact track="main" type="jars" id="cagrid.fqe2.test.jars">
+			<fileset dir="${cagrid.dir}/fqe2/test">
+				<include name="*.jar" />
+			</fileset>
+		</artifact>
+
+
 
 		<!-- ================= -->
 		<!-- project artifacts -->
