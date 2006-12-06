@@ -1,0 +1,47 @@
+	    
+	    
+from TissueSpecimenImpl xxTargetAliasxx left join fetch xxTargetAliasxx.specimenCharacteristics
+			xxTargetAliasxx left join fetch xxTargetAliasxx.specimenCollectionGroup
+			From edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl as xxTargetAliasxx
+			---
+			
+<ns37:TissueSpecimen id="133" type="Fixed Tissue Block" available="true" positionDimensionOne="1" positionDimensionTwo="8" comments="" 
+	activityStatus="Active" quantityInGram="2.0" availableQuantityInGram="2.0" xmlns:ns37="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject">
+	
+	<ns37:specimenCharacteristics tissueSite="BREAST" tissueSide="Left" pathologicalStatus="Malignant"/>
+	<ns37:specimenCollectionGroup id="21" clinicalDiagnosis="Adenocarcinoma, NOS" clinicalStatus="Pre-Therapy" activityStatus="Active"/>
+
+</ns37:TissueSpecimen>
+
+
+select xxTargetAliasxx.id,xxTargetAliasxx.type,xxTargetAliasxx.externalIdentifierCollection.name 
+From edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl as xxTargetAliasxx 
+	left join xxTargetAliasxx.externalIdentifierCollection 
+	where xxTargetAliasxx.externalIdentifierCollection.id in 
+	(select id From edu.wustl.catissuecore.domainobject.impl.ExternalIdentifierImpl)
+			
+			
+<soapenc:Array xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<item xsi:type="xsd:long" xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</item>
+	<item xsi:type="ns2:QueryExpressionDialect" xmlns="" xmlns:ns2="http://www.globus.org/foobar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Frozen Tissue Block</item>
+</soapenc:Array>
+
+<soapenc:Array xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<item xsi:type="xsd:long" >133</item>
+	<item xsi:type="ns72:QueryExpressionDialect" >Fixed Tissue Block</item>
+	<item xsi:type="ns73:QueryExpressionDialect" >Left</item>
+</soapenc:Array>
+
+<soapenc:Array xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<item xsi:type="xsd:long" xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">144</item>
+	<item xsi:type="ns160:QueryExpressionDialect" xmlns="" xmlns:ns160="http://www.globus.org/foobar" >Not Specified</item>
+	<item xsi:type="ns161:QueryExpressionDialect" xmlns="" xmlns:ns161="http://www.globus.org/foobar">Number of aliquots</item>
+</soapenc:Array>
+
+<soapenc:Array xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+	<item xsi:type="xsd:long" xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">144</item>
+	<item xsi:type="ns158:QueryExpressionDialect" xmlns="" xmlns:ns158="http://www.globus.org/foobar" >Not Specified</item>
+	<item xsi:type="ns159:QueryExpressionDialect" xmlns="" xmlns:ns159="http://www.globus.org/foobar">MR</item>
+</soapenc:Array>
+
+
