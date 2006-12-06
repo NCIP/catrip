@@ -166,7 +166,7 @@
         
         <echo message="---- Copying client jars from Grid Services. -----" />
         
-        <copy overwrite="true" toDir="${ext.lib.dir}">
+        <!-- copy overwrite="true" toDir="${ext.lib.dir}">
             <fileset dir="${basedir}/../CAEDataServiceV2/build/lib">
                 <include name="*.jar" />
             </fileset>
@@ -179,7 +179,7 @@
             <fileset dir="${basedir}/../TumorRegistryDataService/build/lib">
                 <include name="*.jar" />
             </fileset>
-        </copy>
+        </copy -->
 
 
 		<echo message="---- Copying services domain jars from Grid Services. -----" />
