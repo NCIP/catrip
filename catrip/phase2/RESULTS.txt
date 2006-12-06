@@ -2,6 +2,7 @@
 	    
 from TissueSpecimenImpl xxTargetAliasxx left join fetch xxTargetAliasxx.specimenCharacteristics
 			xxTargetAliasxx left join fetch xxTargetAliasxx.specimenCollectionGroup
+			xxTargetAliasxx left join fetch xxTargetAliasxx.specimenCollectionGroup.clinicalReport
 			From edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl as xxTargetAliasxx
 			---
 			
@@ -9,8 +10,9 @@ from TissueSpecimenImpl xxTargetAliasxx left join fetch xxTargetAliasxx.specimen
 	activityStatus="Active" quantityInGram="2.0" availableQuantityInGram="2.0" xmlns:ns37="gme://caCORE.cabig/3.0/edu.wustl.catissuecore.domainobject">
 	
 	<ns37:specimenCharacteristics tissueSite="BREAST" tissueSide="Left" pathologicalStatus="Malignant"/>
-	<ns37:specimenCollectionGroup id="21" clinicalDiagnosis="Adenocarcinoma, NOS" clinicalStatus="Pre-Therapy" activityStatus="Active"/>
-
+	<ns37:specimenCollectionGroup id="21" clinicalDiagnosis="Adenocarcinoma, NOS" clinicalStatus="Pre-Therapy" activityStatus="Active">
+		<ns37:clinicalReport id="1" surgicalPathologyNumber="45454"/>
+	</ns37:specimenCollectionGroup>
 </ns37:TissueSpecimen>
 
 
