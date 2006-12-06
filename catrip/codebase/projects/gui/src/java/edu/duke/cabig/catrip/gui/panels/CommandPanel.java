@@ -5,7 +5,6 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
@@ -13,16 +12,15 @@ import edu.duke.cabig.catrip.gui.util.DisplayExceptions;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
-import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.fqp.processor.FederatedQueryEngine;
 import java.awt.Cursor;
-import java.io.File;
-import java.io.FileInputStream;
-import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import org.apache.axis.message.MessageElement;
 import org.apache.axis.message.PrefixedQName;
@@ -174,19 +172,29 @@ public class CommandPanel extends CPanel {
                 
 //                while (iterator.hasNext()) {
 //                    Object obj = iterator.next();
-                 
+                
                 for (int ii = 0; ii < objectResult.length ; ii++) {
                     
-                    HashMap tmpKeyValueMap = new HashMap(); 
-                     
-                    CQLObjectResult objResult = objectResult[ii]; 
+                    HashMap tmpKeyValueMap = new HashMap();
+                    
+                    CQLObjectResult objResult = objectResult[ii];
                     MessageElement msgsElement = (MessageElement)objResult.get_any()[0];
                     Iterator itt = msgsElement.getAllAttributes();
                     while (itt.hasNext()){
 //                        System.out.println(itt.next().getClass().getName());
                         PrefixedQName key = (PrefixedQName)itt.next();
-                        String value = msgsElement.getAttributeValue(key);
-                        tmpKeyValueMap.put(key.getLocalName().toString().trim(), value.trim() );
+                        String value = msgsElement.getAttributeValue(key).trim();
+                        String stringKey = key.getLocalName().toString().trim();
+                        
+                        String dateFormatExp = "\\d\\d\\d\\d[-]\\d\\d[-]\\d\\d[T]\\d\\d[:]\\d\\d[:]\\d\\d[.]\\d\\d\\d[-]\\d\\d[:]\\d\\d";
+                        boolean b = Pattern.matches(dateFormatExp, value);
+                        if (b){
+                            Date javaDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")).parse(value); 
+                            value = javaDate.toString();
+                        }
+                        
+                        
+                        tmpKeyValueMap.put(stringKey, value.trim() );
 //                        System.out.println("Key = "+key.getLocalName()+" Value = "+value);
                     }
                     
@@ -202,15 +210,15 @@ public class CommandPanel extends CPanel {
                         String value = " ";
                         try{
 //                            Object attributeValue = ((Method)obj.getClass().getMethod(methodName)).invoke(obj);
-                            value = tmpKeyValueMap.get(aBean.getAttributeName().trim()).toString(); 
+                            value = tmpKeyValueMap.get(aBean.getAttributeName().trim()).toString();
 //                            if (attributeValue != null){
 //                                value = attributeValue.toString();
 //                            }
                         } catch (Exception eex) {
-                            System.out.println("No/Null value of attribute : "+aBean.getAttributeName().trim());
+//                            System.out.println("No/Null value of attribute : "+aBean.getAttributeName().trim());
 //                            eex.printStackTrace();
                         }
-                        aBean.setAttributeValue(value); 
+                        aBean.setAttributeValue(value);
                     }
                     
                     
