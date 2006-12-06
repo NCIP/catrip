@@ -14,7 +14,9 @@ from TissueSpecimenImpl xxTargetAliasxx left join fetch xxTargetAliasxx.specimen
 		<ns37:clinicalReport id="1" surgicalPathologyNumber="45454"/>
 	</ns37:specimenCollectionGroup>
 </ns37:TissueSpecimen>
-
+<ns38:TissueSpecimen>......
+<ns39:TissueSpecimen>......
+<ns40:TissueSpecimen>......
 
 select xxTargetAliasxx.id,xxTargetAliasxx.type,xxTargetAliasxx.externalIdentifierCollection.name 
 From edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl as xxTargetAliasxx 
