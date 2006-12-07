@@ -28,11 +28,20 @@ public class FilterRowPanel extends javax.swing.JPanel {
     // sanjeev: for grouping similar Target objects... String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
     private Hashtable uniqueFilterMap = new Hashtable();
     
+    private SimpleSearchPanel containerPanel;
+    
     /** Creates new form FilterRowPanel */
     public FilterRowPanel() {
         initComponents();
         init();
     }
+    
+    public FilterRowPanel(SimpleSearchPanel ssp) {
+        initComponents();
+        init();
+        containerPanel = ssp;
+    }
+    
     
     private void init(){
         
@@ -67,6 +76,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         cdeCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         valueTextBox = new javax.swing.JTextField();
         predicateCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
+        delFilterBtn = new javax.swing.JButton();
 
         cdeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -86,29 +96,63 @@ public class FilterRowPanel extends javax.swing.JPanel {
             }
         });
 
+        delFilterBtn.setFont(new java.awt.Font("Tahoma", 1, 11));
+        delFilterBtn.setForeground(new java.awt.Color(255, 0, 0));
+        delFilterBtn.setText(org.openide.util.NbBundle.getMessage(FilterRowPanel.class, "FilterRowPanel.delFilterBtn.text")); // NOI18N
+        delFilterBtn.setIconTextGap(0);
+        delFilterBtn.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        delFilterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delFilterBtnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(cdeCombo, 0, 379, Short.MAX_VALUE)
+                .add(delFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 385, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
                 .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 142, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
-                .add(valueTextBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .add(valueTextBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                 .add(valueTextBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(delFilterBtn)
+                .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         layout.linkSize(new java.awt.Component[] {cdeCombo, predicateCombo, valueTextBox}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
+        if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
+            currentFilter.remove();
+        }
+        
+        SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
+        HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
+        
+        Iterator itt = (allBeans.values()).iterator();
+        while(itt.hasNext()) {
+            ClassBean cBean = (ClassBean) itt.next();
+            cBean.removeAllUniqueAssociations();
+        }
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
+        
+        this.removeAll();
+//        repaint();
+        containerPanel.removeFilter(this);
+    }//GEN-LAST:event_delFilterBtnActionPerformed
     
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
 // sanjeev: clean filter from previous CDEComboboxBean and reset predicate and value fields..
@@ -118,9 +162,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
             getValueBox().setText("");
             
             SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
-            HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap(); 
+            HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
             
-            Iterator itt = (allBeans.values()).iterator();  
+            Iterator itt = (allBeans.values()).iterator();
             while(itt.hasNext()) {
                 ClassBean cBean = (ClassBean) itt.next();
                 cBean.removeAllUniqueAssociations();
@@ -153,6 +197,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cdeCombo;
+    private javax.swing.JButton delFilterBtn;
     private edu.duke.cabig.catrip.gui.components.SteppedComboBox predicateCombo;
     private javax.swing.JTextField valueTextBox;
     // End of variables declaration//GEN-END:variables
@@ -191,7 +236,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
 //                    cdeBean.setClassBean(cBean);
                     cdeBean.setAttributeBean(aBean);
                     attributeList.add(cdeBean);
-//                    getCdeCombo().addItem(cdeBean); 
+//                    getCdeCombo().addItem(cdeBean);
                 }
             }
         }
@@ -202,7 +247,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
 //            CDEComboboxBean cdeBean = (CDEComboboxBean)attributeList.get(i);
 //            System.out.println(cdeBean.getClassBean().getServiceName()+": Class name"+cdeBean.getClassBean().getFullyQualifiedName()+":\n \t CDE name in Displayed Combobox:"+cdeBean.toString());
 //            System.out.println("\t Attribute name:"+cdeBean.getAttributeBean().getAttributeName()+": Actual Attribute CDE name:"+cdeBean.getAttributeBean().getCDEName()+"\n");
-            getCdeCombo().addItem(attributeList.get(i)); 
+            getCdeCombo().addItem(attributeList.get(i));
         }
         
         
@@ -228,7 +273,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     
     // String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
-    
+
     
     
     

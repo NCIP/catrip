@@ -14,11 +14,13 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="cdeCombo" pref="379" max="32767" attributes="0"/>
+              <Component id="delFilterBtn" min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cdeCombo" min="-2" pref="385" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="predicateCombo" min="-2" pref="142" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="valueTextBox" pref="140" max="32767" attributes="0"/>
+              <Component id="valueTextBox" pref="104" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -27,8 +29,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="103" groupAlignment="3" attributes="0">
               <Component id="valueTextBox" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-              <Component id="cdeCombo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="predicateCombo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="delFilterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="cdeCombo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,6 +58,28 @@
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="predicateComboItemStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="delFilterBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+          <FontInfo relative="false">
+            <Font name="Tahoma" size="11" style="1"/>
+          </FontInfo>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="FilterRowPanel.delFilterBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+        </Property>
+        <Property name="iconTextGap" type="int" value="0"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[1, 1, 1, 1]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delFilterBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

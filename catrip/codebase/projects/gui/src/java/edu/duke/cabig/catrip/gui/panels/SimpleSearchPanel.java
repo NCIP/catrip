@@ -67,6 +67,35 @@ public class SimpleSearchPanel extends CPanel {
         gl.setRows(4);
     }
     
+    public void removeFilter(FilterRowPanel fp){
+        
+//        filterRows--;
+        
+        filterPanel.remove(fp);
+        
+        if (filterRows < 5){
+            filterRows--;
+            JPanel jp =  new JPanel();
+            jp.setPreferredSize(new java.awt.Dimension(200, 40));
+            filterPanel.add(jp);
+        } else {
+            filterRows--;
+            GridLayout gl = (GridLayout)filterPanel.getLayout();
+            gl.setRows(filterRows);
+            
+        }
+        
+        filterPanel.revalidate();
+        filterPanel.repaint();
+        
+        
+        SimpleGuiRegistry.getFilterList().remove(fp);
+        
+        
+    }
+    
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -347,7 +376,7 @@ public class SimpleSearchPanel extends CPanel {
         
         filterRows++;
         
-        FilterRowPanel jp =  new FilterRowPanel();
+        FilterRowPanel jp =  new FilterRowPanel(this);
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
         

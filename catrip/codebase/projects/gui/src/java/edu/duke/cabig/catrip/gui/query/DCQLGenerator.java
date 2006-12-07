@@ -225,22 +225,32 @@ public class DCQLGenerator {
         if(targetObjectHasAssociations){
             //- sanjeev: iterate the local associations... recursively.. and create the DCQL.
             ArrayList associationList = outerObjectBean.getAssociations();
+            
+            Association[]   dcqlAssociationArray = new Association[associationList.size()];
+            
             for (int i = 0;i<associationList.size() ;i++){
                 
                 Association dcqlAssociation = new Association();//outerDcqlGroup.addNewAssociation(); // adding a local association..
-                outerDcqlGroup.setAssociation(new Association[]{dcqlAssociation});
+//                outerDcqlGroup.setAssociation(new Association[]{dcqlAssociation});
+                dcqlAssociationArray[i] = dcqlAssociation;
+                        
                 ClassBean localAssociation = (ClassBean)associationList.get(i);
                 dcqlAssociation.setName(localAssociation.getFullyQualifiedName());
                 dcqlAssociation.setRoleName( outerObjectBean.getAssociationRoleName(localAssociation.getId()) );
                 
                 buildAssociationGroup(dcqlAssociation, localAssociation);
-                
             }
+            
+            outerDcqlGroup.setAssociation(dcqlAssociationArray);
+                    
         }
         
         if(targetObjectHasForeignAssociations){
             //- sanjeev: iterate the foreign associations... recursively.. and create the DCQL.
             ArrayList foreignAssociationList = outerObjectBean.getForeignAssociations();
+            
+            ForeignAssociation[] dcqlForeignAssociationArray = new ForeignAssociation[foreignAssociationList.size()]; 
+            
             for (int i = 0;i<foreignAssociationList.size() ;i++){
                 
                 ClassBean foreignAssociationLeftBean = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftObj();
@@ -249,7 +259,8 @@ public class DCQLGenerator {
                 String rightProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRightProperty();
                 
                 ForeignAssociation dcqlForeignAssociation = new ForeignAssociation();//outerDcqlGroup.addNewForeignAssociation(); // adding a foreign association..
-                outerDcqlGroup.setForeignAssociation(new ForeignAssociation[]{dcqlForeignAssociation});
+//                outerDcqlGroup.setForeignAssociation(new ForeignAssociation[]{dcqlForeignAssociation});
+                dcqlForeignAssociationArray[i] = dcqlForeignAssociation;
                 
                 Object dcqlForeignObject = new Object() ;//dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
                 dcqlForeignAssociation.setForeignObject(dcqlForeignObject);
@@ -279,6 +290,8 @@ public class DCQLGenerator {
                 buildAssociationGroup(dcqlForeignObject, foreignAssociationRightBean);
                 
             }
+            // set all the foreign associations together here...
+            outerDcqlGroup.setForeignAssociation(dcqlForeignAssociationArray);
             
         }
     }
@@ -313,6 +326,9 @@ public class DCQLGenerator {
         if(targetObjectHasForeignAssociations){
             //- sanjeev: iterate the foreign associations... recursively.. and create the DCQL.
             ArrayList foreignAssociationList = outerObjectBean.getForeignAssociations();
+            
+            ForeignAssociation[] dcqlForeignAssociationArray = new ForeignAssociation[foreignAssociationList.size()]; 
+            
             for (int i = 0;i<foreignAssociationList.size() ;i++){
                 
                 ClassBean foreignAssociationLeftBean = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftObj();
@@ -322,6 +338,7 @@ public class DCQLGenerator {
                 
                 ForeignAssociation dcqlForeignAssociation = new ForeignAssociation();//outerDcqlObject.addNewForeignAssociation(); // adding a foreign association..
                 outerDcqlObject.setForeignAssociation(dcqlForeignAssociation);
+                
                 
                 Object dcqlForeignObject = new Object();//dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
                 dcqlForeignAssociation.setForeignObject(dcqlForeignObject);
