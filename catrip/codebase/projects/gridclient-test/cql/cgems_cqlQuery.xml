@@ -1,0 +1,19 @@
+<CQLQuery xmlns="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery
+C:\CVS-CodeBase\catrip\codebase\projects\data\schema\1_gov.nih.nci.cagrid.CQLQuery.xsd">
+
+    <Target name="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" serviceURL="http://152.16.96.114/wsrf/services/cagrid/CGEMS">
+
+        <Association name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection">
+
+            <Association name="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis" roleName="snpAssociationAnalysis">
+
+                <Attribute name="name" predicate="LIKE" value="Single selection sampling%"/>
+
+            </Association>
+
+        </Association>
+
+    </Target>
+
+</CQLQuery>
+
