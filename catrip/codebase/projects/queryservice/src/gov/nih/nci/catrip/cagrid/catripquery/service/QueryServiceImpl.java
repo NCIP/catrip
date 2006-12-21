@@ -30,14 +30,20 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 	public QueryServiceImpl() throws RemoteException {
 		super();
 	}
-	
-	public void save(gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery caTripQuery) throws RemoteException,  FileNotFoundException, SerializationException {
+	//,  FileNotFoundException, SerializationException
+	public void save(gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery caTripQuery) throws RemoteException {
 		//  decompose the DCQL
 		populateObjectFromDCQLObject(caTripQuery.getTargetObject(), new DCQLClass());
 
 		// serialize the dcql to be saved in the database
 		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
-		String txt = ObjectSerializer.toString((gov.nih.nci.cagrid.dcql.Object)caTripQuery.getTargetObject(),qname);
+		String txt = "";
+		try {
+			txt = ObjectSerializer.toString((gov.nih.nci.cagrid.dcql.Object)caTripQuery.getTargetObject(),qname);
+			
+		} catch (Exception e) {
+			throw new RemoteException();
+		}
 		decomposedCatripQuery.setDcqlQuery(txt);
 		decomposedCatripQuery.setId((int) caTripQuery.getId());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
