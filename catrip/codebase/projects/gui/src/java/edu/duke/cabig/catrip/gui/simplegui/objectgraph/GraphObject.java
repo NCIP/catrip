@@ -106,6 +106,7 @@ public class GraphObject {
     
     
      public String toString() {
+         // optimize this.. by cashing the class bean if null than only look in registry... and no need for cloning
          ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(getClassName()).clone();
          
 //        String fullClassName = getClassName();
@@ -134,5 +135,29 @@ public class GraphObject {
     public void setLocalStatus(boolean localObject) {
         this.localObject = localObject;
     }
+    
+    public GraphObject clone(){
+        
+        GraphObject clone = new GraphObject();
+        
+        clone.setAssociationPathWRTTargetObject(getAssociationPathWRTTargetObject());
+        clone.setClassBean(getClassBean().clone());
+        clone.setClassName(getClassName());
+        clone.setDisplayable(isDisplayable());
+        clone.setDisplaybleAttributes(getDisplaybleAttributes());
+        clone.setForeignAssociationInboundCDE(getForeignAssociationInboundCDE());
+        clone.setForeignAssociationInboundPath(getForeignAssociationInboundPath());
+        clone.setForeignAssociationOutboundCDE(getForeignAssociationOutboundCDE());
+        clone.setForeignAssociationOutboundPath(getForeignAssociationOutboundPath());
+        clone.setLocalStatus(isLocal());
+        clone.setRefID(getRefID());
+        clone.setServiceName(getServiceName());
+        
+        return clone;
+    } 
+    
+    
+    
+    
 
 }

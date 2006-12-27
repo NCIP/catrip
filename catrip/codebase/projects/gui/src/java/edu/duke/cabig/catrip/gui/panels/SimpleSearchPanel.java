@@ -1,7 +1,7 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
-import edu.duke.cabig.catrip.gui.components.CJFrame;
+import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
@@ -10,7 +10,6 @@ import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.GridLayout;
 import java.util.*;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -69,8 +68,6 @@ public class SimpleSearchPanel extends CPanel {
     
     public void removeFilter(FilterRowPanel fp){
         
-//        filterRows--;
-        
         filterPanel.remove(fp);
         
         if (filterRows < 5){
@@ -118,6 +115,7 @@ public class SimpleSearchPanel extends CPanel {
         jLabel6 = new javax.swing.JLabel();
         addFilterBtn = new javax.swing.JButton();
         clearFilterBtn = new javax.swing.JButton();
+        addGroupBtn = new javax.swing.JButton();
 
         jLabel1.setText("Select");
 
@@ -219,6 +217,13 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
+        addGroupBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.addGroupBtn.text")); // NOI18N
+        addGroupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addGroupBtnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,7 +236,9 @@ public class SimpleSearchPanel extends CPanel {
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(addFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 208, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(addGroupBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -244,10 +251,23 @@ public class SimpleSearchPanel extends CPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(addFilterBtn)
-                    .add(clearFilterBtn))
+                    .add(clearFilterBtn)
+                    .add(addGroupBtn))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupBtnActionPerformed
+// TODO add your handling code here:
+        FilterGroupPanel fgp = new FilterGroupPanel();
+        
+        CJDialog jd = new CJDialog(getMainFrame(), "Create Group between Filters or Groups");  
+        jd.add(fgp);
+        jd.setBounds(10,10,750, 320);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+        
+    }//GEN-LAST:event_addGroupBtnActionPerformed
     
     private void targetObjComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetObjComboActionPerformed
         
@@ -438,6 +458,7 @@ public class SimpleSearchPanel extends CPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFilterBtn;
+    private javax.swing.JButton addGroupBtn;
     private javax.swing.JButton clearFilterBtn;
     private javax.swing.JPanel filterPanel;
     private javax.swing.JLabel jLabel1;

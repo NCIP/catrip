@@ -114,19 +114,19 @@ public class FilterRowPanel extends javax.swing.JPanel {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(delFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 385, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(cdeCombo, 0, 369, Short.MAX_VALUE)
+                .add(17, 17, 17)
+                .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(14, 14, 14)
-                .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 142, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(14, 14, 14)
-                .add(valueTextBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .add(valueTextBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                 .add(valueTextBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(delFilterBtn)
+                .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -173,6 +173,12 @@ public class FilterRowPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_cdeComboItemStateChanged
+    
+    public String getFilterTextValue (){
+        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        String filterValue = cdeBean.toString()+"  "+cdeBean.getAttributeBean().getPredicate()+"  "+cdeBean.getAttributeBean().getAttributeValue();
+        return filterValue;
+    }
     
     private void valueTextBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valueTextBoxKeyReleased
 //        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
@@ -225,6 +231,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         for (int i=0;i<objs.size();i++) {
             GraphObject gObj = objs.get(i);
+            gObj = gObj.clone(); // used to clone the filters for multiple different values..
+            
             if (gObj.isDisplayable()){
                 ClassBean cBean = gObj.getClassBean();
                 ArrayList attributes = cBean.getAttributes();
@@ -232,8 +240,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
                 for (int j = 0; j < attributes.size(); j++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(j);
                     CDEComboboxBean cdeBean = new CDEComboboxBean();
-                    cdeBean.setGraphObject(gObj);
-//                    cdeBean.setClassBean(cBean);
+                    cdeBean.setGraphObject(gObj); 
+//                    cdeBean.setClassBean(cBean); // set the new cloned ClassBean instead of graph object..
                     cdeBean.setAttributeBean(aBean);
                     attributeList.add(cdeBean);
 //                    getCdeCombo().addItem(cdeBean);

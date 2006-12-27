@@ -13,51 +13,32 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <Component id="delFilterBtn" min="-2" pref="24" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="cdeCombo" pref="369" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Component id="predicateCombo" min="-2" pref="209" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="valueTextBox" pref="131" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="filterValueCombo" pref="667" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="103" groupAlignment="3" attributes="0">
-              <Component id="valueTextBox" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="delFilterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-              <Component id="predicateCombo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-              <Component id="cdeCombo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="filterValueCombo" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="cdeCombo">
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cdeComboItemStateChanged"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="cdeCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="valueTextBox">
-      <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="valueTextBoxKeyReleased"/>
-      </Events>
-    </Component>
-    <Component class="edu.duke.cabig.catrip.gui.components.SteppedComboBox" name="predicateCombo">
+    <Component class="edu.duke.cabig.catrip.gui.components.SteppedComboBox" name="filterValueCombo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="predicateComboItemStateChanged"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filterValueComboItemStateChanged"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="delFilterBtn">
@@ -71,7 +52,7 @@
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="FilterRowPanel.delFilterBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="FilterGroupRowPanel.delFilterBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>
         <Property name="iconTextGap" type="int" value="0"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">

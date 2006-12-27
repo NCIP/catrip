@@ -180,6 +180,19 @@ public class LoginScreen extends CJFrame {
                 GUIConstants.simpleGui = true; 
                 
                 MainFrame mf = new MainFrame();
+                
+                // added added
+                // remove and disable the left hand side split pane..
+                mf.getCentralSplitPane().setDividerLocation(1);
+                mf.getCentralSplitPane().setOneTouchExpandable(false);
+                mf.getCentralSplitPane().setDividerSize(0);
+                mf.getCentralSplitPane().setEnabled(false);
+                
+                // reset the top size of the right hand side split pane.
+                mf.getRightSplitPane().setDividerLocation(400);
+                // added added
+                
+                
                 mf.getVisualPanel().getTabbedPane().setSelectedIndex(2);
                 mf.setVisible(true);
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));

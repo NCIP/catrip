@@ -31,17 +31,20 @@ public class SimpleGuiRegistry {
     
     private static ObjectGraphProcessor processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
     private static List<GraphObject> currentXMLObjectList = new ArrayList(50);
+    
+    // sanjeev: holds unique classBean instances for all the classes that can be used in query.. This contains all the displayble classes..
     private static ArrayList<ClassBean> currentClassBeanList = new ArrayList(50);
+    
     private static GraphObject targetGraphObject = null; // will hold the ref to target object ClassBean object..
     
     // array of the filterpanel..
     private static ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
-    private static HashMap beanMap = new HashMap(20); // sanjeev: holds unique classBean instaces which are used in filters..
-    private static HashMap currentClassBeanMap = new HashMap(100); // sanjeev: holds unique classBean instances for all the classes used in query..
+    private static HashMap beanMap = new HashMap(20); // sanjeev: holds unique classBean instaces which are used in filters.. filled ones..
+    private static HashMap currentClassBeanMap = new HashMap(100); // sanjeev: holds unique classBean instances for all the classes that can be used in query..
     
     private static HashMap serviceMap = new HashMap(10);
-            
+    
     private static boolean simpleGuiChanged = false; // sanjeev: this is to tell that something is changed so calculate the DCQL again.
     
     /** Creates a new instance of SimpleGuiRegistry */
@@ -134,24 +137,24 @@ public class SimpleGuiRegistry {
 //                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
                 ClassBean cBean =null;
                 try {
-                     cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
+                    cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
                 } catch (Exception e) {
                     System.out.println("XXXX cound not find the class in registry: "+obj.getClassName());
-                   e.printStackTrace();
+                    e.printStackTrace();
                 }
-                 
+                
                 cBean.filterAttributes(displaybleAttributes);
                 
                 cBean.setAssociationRoleNameMap(new HashMap(20));
-                currentClassBeanList.add(cBean);
+                currentClassBeanList.add(cBean); // only visible / filterable classes...
                 obj.setClassBean(cBean);
-                addToCurrentClassBeanMap(obj.getClassName(), cBean);
+                addToCurrentClassBeanMap(obj.getClassName(), cBean); // fully classified class name vs ClassBean instance.
             }else {
 //                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(obj.getRefID()).clone();
                 ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
                 cBean.setAssociationRoleNameMap(new HashMap(20));
                 obj.setClassBean(cBean);
-                addToCurrentClassBeanMap(obj.getClassName(), cBean);
+                addToCurrentClassBeanMap(obj.getClassName(), cBean); // fully classified class name vs ClassBean instance.
             }
             
         }
@@ -210,7 +213,7 @@ public class SimpleGuiRegistry {
         ArrayList<FilterRowPanel> list = getFilterList();
         for (int i = 0; i < list.size(); i++) {
             FilterRowPanel pnl = list.get(i);
-            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem();
+            CDEComboboxBean cdeBean = (CDEComboboxBean)pnl.getCdeCombo().getSelectedItem(); // don't call the swing code here.. write a method in panel itself..
             ClassBean cBean = cdeBean.getClassBean();
             addToBeanMap(cBean);
         }
@@ -234,7 +237,7 @@ public class SimpleGuiRegistry {
     
     
     private static void addFilterObjectToDCQL(GraphObject filterObject){
-
+        
         GraphObject targetObject =  getTargetGraphObject();
         
         if (filterObject.isLocal()){
@@ -247,7 +250,17 @@ public class SimpleGuiRegistry {
                 
                 assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
-                ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                ClassBean tmpBeanRight = null;//(ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                
+                // first check for the filters with values..  the first filter is taken..
+                tmpBeanRight = (ClassBean)getBeanMap().get(assoc.getClassName());
+                
+                // check again in the all possible filters..
+                if (tmpBeanRight == null){
+                    tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                }
+                
+                // get the class name from the metadata.. the simple config file was not proper..
                 if (tmpBeanRight == null){
                     // System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
                     tmpBeanRight = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
@@ -257,6 +270,8 @@ public class SimpleGuiRegistry {
                 
                 tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
                 tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
+                // combine above two in one method call.. so as to avoide the setting of roles for duplicates..
+                
                 tmpBeanLeft.setHasAssociations(true);
                 tmpBeanLeft = tmpBeanRight;
             }
@@ -277,9 +292,27 @@ public class SimpleGuiRegistry {
                 
                 assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+"   " + assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
-                // sanjeev: check here if the class is available in the GraphObject tree of the Target object or not. 
+                // sanjeev: check here if the class is available in the GraphObject tree of the Target object or not.
                 // sanjeev: otherwise locate that class from the metaData registry instead of the list.
-                ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                ClassBean tmpBeanRight = null;//(ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                
+                // first check for the filters with values..  the first filter is taken..
+                tmpBeanRight = (ClassBean)getBeanMap().get(assoc.getClassName());
+                
+                // check again in the all possible filters..
+                if (tmpBeanRight == null){
+                    tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                }
+                
+                // get the class name from the metadata.. the simple config file was not proper..
+                if (tmpBeanRight == null){
+                    // System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+targetObject.getServiceName()+": in Simple Gui XML,");
+                    tmpBeanRight = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
+                    tmpBeanRight.setAssociationRoleNameMap(new HashMap(20));
+                    addToCurrentClassBeanMap(assoc.getClassName(), tmpBeanRight);
+                }
+                
+                
                 tmpBeanLeft.addUniqueAssociation(tmpBeanRight);
                 tmpBeanLeft.addAssociationRoleName(tmpBeanRight.getId(), assoc.getRoleName());
                 tmpBeanLeft.setHasAssociations(true);
@@ -295,7 +328,15 @@ public class SimpleGuiRegistry {
             
             // sanjeev: just add the foreign association to the outermost object of target service....
             assoc = assos.get(0);
-            rightClassBeanObject = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+            
+            // first check for the filters with values..  the first filter is taken..
+            rightClassBeanObject = (ClassBean)getBeanMap().get(assoc.getClassName());
+            
+            // check again in the all possible filters..
+            if (rightClassBeanObject == null){
+                rightClassBeanObject = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+            }
+            
             if (rightClassBeanObject == null){
 //                System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
                 rightClassBeanObject = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
@@ -318,7 +359,17 @@ public class SimpleGuiRegistry {
             for (int k=1;k<assos.size();k++) {
                 assoc = assos.get(k);
 //                    System.out.println(filterObject.getClassName()+" :" +k+":  "+ assoc.getClassName() + "   ROLE : " + assoc.getRoleName());
-                ClassBean tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                ClassBean tmpBeanRight = null;//(ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                
+                // first check for the filters with values..  the first filter is taken..
+                tmpBeanRight = (ClassBean)getBeanMap().get(assoc.getClassName());
+                
+                // check again in the all possible filters..
+                if (tmpBeanRight == null){
+                    tmpBeanRight = (ClassBean)getCurrentClassBeanMap().get(assoc.getClassName());
+                }
+                
+                
                 if (tmpBeanRight == null){
 //                    System.out.println("Error : Please add details of class:"+assoc.getClassName()+": in the Association tree of Target Service:"+filterObject.getServiceName()+": in Simple Gui XML,");
                     tmpBeanRight = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(assoc.getClassName()).clone();
@@ -358,7 +409,7 @@ public class SimpleGuiRegistry {
     public static void setSimpleGuiChanged(boolean status) {
         simpleGuiChanged = status;
     }
-
+    
     public static HashMap getServiceMap() {
         return serviceMap;
     }

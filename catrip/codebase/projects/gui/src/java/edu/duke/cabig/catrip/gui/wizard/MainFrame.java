@@ -328,7 +328,14 @@ public class MainFrame extends CJFrame {
     }
     
     
-    
+    // added added
+    public javax.swing.JSplitPane getCentralSplitPane(){
+       return  jSplitPane1; // 1 is main 2 is left and 3 is right..
+    }
+    public javax.swing.JSplitPane getRightSplitPane(){
+       return  jSplitPane3; // 1 is main 2 is left and 3 is right..
+    }
+    // added added
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem add;
