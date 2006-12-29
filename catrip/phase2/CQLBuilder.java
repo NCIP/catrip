@@ -1,8 +1,12 @@
 package gov.nih.nci.cagrid.data.cql.tools;
 
+import gov.nih.nci.cagrid.data.QueryProcessingException;
+
 import java.io.File;
 import java.io.StringWriter;
 import java.io.Writer;
+
+import java.lang.reflect.Field;
 
 import java.util.List;
 
@@ -144,20 +148,102 @@ public class CQLBuilder {
         
         return groupEle;
     }
+
+    private boolean checkFiled(String property, Class objectType){
+        Field[] declaredFields = objectType.getDeclaredFields();
+        Field field = null;
+        boolean found = false;
+        for (int i=0; i<declaredFields.length; i++) {
+            field = (Field)declaredFields[i];
+            if (property.equals(field.getName())) {
+                found = true;
+                break;
+            }
+            
+        }
+        return found;
+    }
+
+    private Class getClassToCheck(String property , Class cls) {
+        boolean found = checkFiled(property,cls); 
+        
+        if(!found){
+            Class superClass  = cls.getSuperclass();
+            while (superClass != null) {
+                found = checkFiled(property,superClass);  
+                
+                if (found) {
+                    cls = superClass;
+                    break;
+                } else {
+                    superClass = superClass.getSuperclass();
+                }
+            }
+        }  
+        
+        return cls;
+    }
     
     private String getRoleName(String sourceObj,String targetObj){
-        //check basic method 
-        String[] classTokens = targetObj.split("\\.");
-        String className = classTokens[classTokens.length-1];
-        // chacke for one 
-        String roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
+        String roleName = "";
+        try {
+           
+            // check this class or super class 
+            Class sourceClass =Class.forName(sourceObj);
+           
+            boolean found = false;
+            Class targetClass = Class.forName(targetObj);
+            String[] classTokens = targetClass.getName().split("\\.");            
+            String className = classTokens[classTokens.length-1];            
+            roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
+            
+            sourceClass = getClassToCheck(roleName,sourceClass);
+            found = checkFiled(roleName,sourceClass);
+            if (!found) {
+                roleName = roleName+"Collection";
+                sourceClass = getClassToCheck(roleName,sourceClass);
+                found = checkFiled(roleName,sourceClass);
+            }
+            
+            if (!found) {
+                Class superClass  = targetClass.getSuperclass();
+                
+                while (superClass != null) {
+                    targetClass = superClass;
+                    classTokens = targetClass.getName().split("\\.");
+                    className = classTokens[classTokens.length-1];
+                    roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
+                    targetClass = getClassToCheck(roleName,sourceClass);
+                    found = checkFiled(roleName,targetClass);
+                    if (!found) {
+                        roleName = roleName+"Collection";
+                        targetClass = getClassToCheck(roleName,sourceClass);
+                        found = checkFiled(roleName,targetClass);
+                    }             
+                    if (found) {
+                        break;
+                    }
+                    superClass = superClass.getSuperclass();
+                    if (superClass.getName().equals("java.lang.Object")) {
+                        break;
+                    }
+                } 
+            }
+            
+            if (!found) {
+                roleName = "UNDEFINED - THROW ERROR ";
+            }
 
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return roleName;
         //return targetObj.split("\\.")[6];
     }
     private String buildCQL(int level) {
         loadDocument("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\demo-cae.xml");
-        Element root = new Element("CQlQuery");
+        Element root = new Element("CQLQuery");
         Element targetEle = new Element("Target");        
 
         String associationPath = "/CQLQuery/Target";
