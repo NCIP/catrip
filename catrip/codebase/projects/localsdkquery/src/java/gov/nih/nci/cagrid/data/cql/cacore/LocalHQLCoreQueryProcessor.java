@@ -9,6 +9,7 @@ import gov.nih.nci.cagrid.data.QueryProcessingException;
 import gov.nih.nci.cagrid.data.cql.LazyCQLQueryProcessor;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsUtil;
 import gov.nih.nci.common.util.HQLCriteria;
+import gov.nih.nci.cagrid.data.cql.tools.ResultObjectAssembler;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -44,7 +45,7 @@ import org.jdom.xpath.XPath;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.4 2006-11-16 20:49:38 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.5 2007-01-02 02:42:21 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
@@ -203,6 +204,17 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
                     HibernateUtil.closeSession();
                 }
                 HibernateUtil.closeSession();
+
+		// Fire multiple Queries 
+		// IF CLIENT ASKS FOR ANT ATTRIBUTES FROM OTHER OBJECTS ...
+                // BUILD NECESSARY CQLS .. 
+                 
+		 ResultObjectAssembler assembler = new ResultObjectAssembler();
+                 targetObjects = assembler.buildResultObjects(targetObjects,query);
+
+
+
+
 		// possibly post-process the query
 		if (subclassesDetected && query.getQueryModifier() != null) {
 			try {
