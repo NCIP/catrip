@@ -12,6 +12,5 @@
     <parameter name="securityMetadata" value="ETC-PATH/QueryService-security-metadata.xml" />
   </service>
   <typeMapping name="AggregatorContent" qname="aggr:AggregatorContent" type="java:org.globus.mds.aggregator.types.AggregatorContent" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" />
-
 </deployment>
 

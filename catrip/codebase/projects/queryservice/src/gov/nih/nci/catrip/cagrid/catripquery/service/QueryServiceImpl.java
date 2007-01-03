@@ -5,8 +5,8 @@ import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.DCQLAttribute;
 import gov.nih.nci.catrip.cagrid.catripquery.DCQLClass;
+//import gov.nih.nci.catrip.cagrid.catripquery.DCQLClass;
 
-import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,25 +14,28 @@ import java.util.Iterator;
 import javax.xml.namespace.QName;
 
 import org.globus.wsrf.encoding.ObjectSerializer;
-import org.globus.wsrf.encoding.SerializationException;
 import org.hibernate.ObjectNotFoundException;
 
 /** 
+ * TODO:I am the service side implementation class.  IMPLEMENT AND DOCUMENT ME
  * 
  * @created by Introduce Toolkit version 1.0
  * 
  */
 public class QueryServiceImpl extends QueryServiceImplBase {
 
-    private CatripQuery decomposedCatripQuery = new CatripQuery();
-    private final boolean DEBUG = true;
-
+    private CatripQuery decomposedCatripQuery;
+    private final boolean DEBUG = false;
+	
 	public QueryServiceImpl() throws RemoteException {
 		super();
 	}
-	//,  FileNotFoundException, SerializationException
+	
 	public void save(gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery caTripQuery) throws RemoteException {
-		//  decompose the DCQL
+		decomposedCatripQuery = new CatripQuery();
+		if (caTripQuery.getId() != 0){
+			decomposedCatripQuery = getDbObject(caTripQuery.getId());
+		}
 		populateObjectFromDCQLObject(caTripQuery.getTargetObject(), new DCQLClass());
 
 		// serialize the dcql to be saved in the database
@@ -40,20 +43,23 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		String txt = "";
 		try {
 			txt = ObjectSerializer.toString((gov.nih.nci.cagrid.dcql.Object)caTripQuery.getTargetObject(),qname);
-			
+
 		} catch (Exception e) {
 			throw new RemoteException();
 		}
+		//decomposedCatripQuery.copy(caTripQuery);
 		decomposedCatripQuery.setDcqlQuery(txt);
 		decomposedCatripQuery.setId((int) caTripQuery.getId());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
 		decomposedCatripQuery.setFirstName(caTripQuery.getFirstName());
 		decomposedCatripQuery.setLastName(caTripQuery.getLastName());
-		//decomposedCatripQuery.setCreationDate(caTripQuery.getCreationDate());
+		if (caTripQuery.getCreationDate() != null)
+			decomposedCatripQuery.setCreationDate(caTripQuery.getCreationDate().getTime());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
 		decomposedCatripQuery.setName(caTripQuery.getName());
 		decomposedCatripQuery.setSource(caTripQuery.getSource());
-		//decomposedCatripQuery.setDateUpdated(caTripQuery.getDateUpdated());
+		if (caTripQuery.getDateUpdated() != null)
+			decomposedCatripQuery.setDateUpdated(caTripQuery.getDateUpdated().getTime());
 		decomposedCatripQuery.setUserName(caTripQuery.getUserName());
 		decomposedCatripQuery.setInstance(caTripQuery.getInstance());
 		decomposedCatripQuery.setVersion(caTripQuery.getVersion());
@@ -62,7 +68,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		DCQLClass classs = new DCQLClass();
 		classs.setName(caTripQuery.getTargetObject().getName());
 		decomposedCatripQuery.addClass(classs);
-		
+
 		if (DEBUG){
 			// DEBUG
 			System.out.println("\n******* attributes  *******");
@@ -86,22 +92,24 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 			System.out.println("******************");
 			//  END DEBUG
 		}
-		
-		// First, remove the object if it exists
-		try {
-			delete(decomposedCatripQuery.getId());
-		} 
-		catch (ObjectNotFoundException e) {
-			// no object with that ID exists so continue with save.
-		}
-		decomposedCatripQuery.setId(0);
+
 		// save the decomposed DCQL data
+		System.out.println("creating object with id " + decomposedCatripQuery.getId());
 		HibernateUtil.create(decomposedCatripQuery);
 	}
 
+	private CatripQuery getDbObject(long id) {
+		CatripQuery dbObject;
+		dbObject = (CatripQuery) HibernateUtil.currentSession().load(CatripQuery.class, Long.valueOf(id).intValue());
+		// remove all the old classes and attributes as they may have changed
+		dbObject.getClassCollection().removeAll(dbObject.getClassCollection());
+
+		return dbObject;
+	}
+
 	public void delete(long _long) throws RemoteException {
-		System.out.println("delete id = >"+ _long +"<");
 		if (_long != 0){
+			System.out.println("delete id = >"+ _long +"<");
 			CatripQuery p = (CatripQuery) HibernateUtil.currentSession().load(CatripQuery.class, Long.valueOf(_long).intValue());
 			HibernateUtil.delete(p);
 		}

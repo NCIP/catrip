@@ -55,8 +55,7 @@ public class ServiceConfiguration {
 	
 	private String dataService_classMappingsFilename;
 	
-		private String cqlQueryProcessorConfig_hibernateConfigFile;
-
+        private String cqlQueryProcessorConfig_hibernateConfigFile;
 	
 	public String getQueryProcessorClass() {
 		return queryProcessorClass;
@@ -126,7 +125,6 @@ public class ServiceConfiguration {
 	public void setDataService_classMappingsFilename(String dataService_classMappingsFilename) {
 		this.dataService_classMappingsFilename = dataService_classMappingsFilename;
 	}
-
 	public String getCqlQueryProcessorConfig_hibernateConfigFile() {
 		return this.cqlQueryProcessorConfig_hibernateConfigFile;
 	}
@@ -134,5 +132,6 @@ public class ServiceConfiguration {
 	public void setCqlQueryProcessorConfig_hibernateConfigFile(String _cqlQueryProcessorConfig_hibernateConfigFile) {
 		this.cqlQueryProcessorConfig_hibernateConfigFile = _cqlQueryProcessorConfig_hibernateConfigFile;
 	}
+
 	
 }

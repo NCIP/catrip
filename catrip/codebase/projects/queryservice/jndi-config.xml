@@ -53,7 +53,7 @@
           <name>dataService_classMappingsFilename</name>
           <value>ETC-PATH/@dataService_classMappingsFilename@</value>
         </parameter>
-        <parameter>
+       <parameter>
           <name>cqlQueryProcessorConfig_hibernateConfigFile</name>
           <value>@cqlQueryProcessorConfig_hibernateConfigFile@</value>
         </parameter>
