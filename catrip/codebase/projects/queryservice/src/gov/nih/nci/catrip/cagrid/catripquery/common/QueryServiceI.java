@@ -12,7 +12,7 @@ import java.rmi.RemoteException;
  */
 public interface QueryServiceI {
 
-    public void save(gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery caTripQuery) throws RemoteException ;
+    public void save(gov.nih.nci.catrip.cagrid.catripquery.CatripQuery catripQuery) throws RemoteException ;
 
     public void delete(long _long) throws RemoteException ;
 

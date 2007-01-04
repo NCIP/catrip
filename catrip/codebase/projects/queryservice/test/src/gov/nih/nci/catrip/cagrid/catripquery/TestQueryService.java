@@ -1,9 +1,12 @@
 package src.gov.nih.nci.catrip.cagrid.catripquery;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.hibernate.Session;
@@ -15,36 +18,53 @@ import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import junit.framework.TestCase;
 
 public class TestQueryService extends TestCase {
+    private Properties properties = new Properties();
 	private QueryServiceClient client;
-    private String qryFile = "C:\\Documents and Settings\\Bill Mason\\workspace\\fqe\\bin\\simpleQuery1.xml";
-	private String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+	private String qryFile;
+	private String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
+	private String serviceURI = "";
 	CaTripQuery caTripQuery;
 	DCQLQuery dcql ;
 	gov.nih.nci.cagrid.dcql.Object to;
+	
 	public TestQueryService() {
 	}
 
 	public TestQueryService(String arg0) {
 		super(arg0);
 	}
-    protected void setUp() throws Exception {
-        super.setUp();
+	
+	protected void setUp() throws Exception {
+		super.setUp();
+		try {
+			properties.load(new FileInputStream(QUERIES_DIR+File.separator+"query_service.properties"));
+			serviceURI = properties.getProperty("service_URI");
+			qryFile = properties.getProperty("SAMPLE_DCQL_FILE");
+		} 
+		catch (IOException e) {
+			properties.load(new FileInputStream("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\query_service.properties"));
+			serviceURI = properties.getProperty("service_URI");
+			qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\simpleQuery1.xml";
+			System.out.println("Not Run from ANT");
+		}
+
 		client = new QueryServiceClient(serviceURI);
 		caTripQuery = new CaTripQuery();
-		 caTripQuery.setFirstName("DEEPI");
-     dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),DCQLQuery.class);
-        to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
+		caTripQuery.setFirstName("DEEPI");
+		dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),DCQLQuery.class);
+		to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
 		caTripQuery.setDescription("desc");
 		caTripQuery.setFirstName("first Name");
 		caTripQuery.setLastName("last");
 		caTripQuery.setInstance("instance");
 		caTripQuery.setSource("source");
 		caTripQuery.setTargetObject (to);
-  }
+	}
 
     protected void tearDown() throws Exception {
         super.tearDown();
     }
+    
 	public void testQuery() throws Exception{
 		
 	}
@@ -61,6 +81,7 @@ public class TestQueryService extends TestCase {
 			e.printStackTrace();
 		}
 	}
+	
 	public void ttestUpdate() throws Exception{
 		System.out.println("update");
 		caTripQuery.setId(1688);
@@ -73,6 +94,7 @@ public class TestQueryService extends TestCase {
 			e.printStackTrace();
 		}
 	}
+	
 	public void ttestDelete() throws Exception{
 		System.out.println("delete");
 		client.delete(1688);

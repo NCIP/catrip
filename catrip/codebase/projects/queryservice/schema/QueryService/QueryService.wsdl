@@ -25,10 +25,10 @@
       <element name="SaveRequest">
         <complexType>
           <sequence>
-            <element name="caTripQuery">
+            <element name="catripQuery">
               <complexType>
                 <sequence>
-                  <element ref="ns0:CaTripQuery" minOccurs="1" maxOccurs="1" />
+                  <element ref="ns0:CatripQuery" minOccurs="1" maxOccurs="1" />
                 </sequence>
               </complexType>
             </element>

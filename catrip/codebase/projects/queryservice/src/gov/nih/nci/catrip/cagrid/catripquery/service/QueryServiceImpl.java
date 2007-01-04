@@ -1,20 +1,25 @@
 package gov.nih.nci.catrip.cagrid.catripquery.service;
 
 import gov.nih.nci.cagrid.dcql.Association;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.DCQLAttribute;
 import gov.nih.nci.catrip.cagrid.catripquery.DCQLClass;
-//import gov.nih.nci.catrip.cagrid.catripquery.DCQLClass;
-
+import gov.nih.nci.catrip.cagrid.catripquery.service.HibernateUtil;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.xml.namespace.QName;
 
+import org.globus.wsrf.encoding.DeserializationException;
+import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.globus.wsrf.encoding.ObjectSerializer;
 import org.hibernate.ObjectNotFoundException;
+import org.xml.sax.InputSource;
 
 /** 
  * TODO:I am the service side implementation class.  IMPLEMENT AND DOCUMENT ME
@@ -31,43 +36,47 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		super();
 	}
 	
-	public void save(gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery caTripQuery) throws RemoteException {
+	public void save(gov.nih.nci.catrip.cagrid.catripquery.CatripQuery caTripQuery) throws RemoteException {
 		decomposedCatripQuery = new CatripQuery();
 		if (caTripQuery.getId() != 0){
 			decomposedCatripQuery = getDbObject(caTripQuery.getId());
 		}
-		populateObjectFromDCQLObject(caTripQuery.getTargetObject(), new DCQLClass());
+		DCQLQuery dcql = new DCQLQuery();
+		try {
+			dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(caTripQuery.getDcqlQuery())),DCQLQuery.class);
+		} catch (DeserializationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		populateObjectFromDCQLObject(dcql.getTargetObject(), new DCQLClass());
 
 		// serialize the dcql to be saved in the database
 		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
-		String txt = "";
-		try {
-			txt = ObjectSerializer.toString((gov.nih.nci.cagrid.dcql.Object)caTripQuery.getTargetObject(),qname);
 
-		} catch (Exception e) {
-			throw new RemoteException();
-		}
-		//decomposedCatripQuery.copy(caTripQuery);
-		decomposedCatripQuery.setDcqlQuery(txt);
+		decomposedCatripQuery.setDcqlQuery(caTripQuery.getDcqlQuery());
 		decomposedCatripQuery.setId((int) caTripQuery.getId());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
 		decomposedCatripQuery.setFirstName(caTripQuery.getFirstName());
 		decomposedCatripQuery.setLastName(caTripQuery.getLastName());
 		if (caTripQuery.getCreationDate() != null)
-			decomposedCatripQuery.setCreationDate(caTripQuery.getCreationDate().getTime());
+			decomposedCatripQuery.setCreationDate(caTripQuery.getCreationDate());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
 		decomposedCatripQuery.setName(caTripQuery.getName());
 		decomposedCatripQuery.setSource(caTripQuery.getSource());
 		if (caTripQuery.getDateUpdated() != null)
-			decomposedCatripQuery.setDateUpdated(caTripQuery.getDateUpdated().getTime());
+			decomposedCatripQuery.setDateUpdated(caTripQuery.getDateUpdated());
 		decomposedCatripQuery.setUserName(caTripQuery.getUserName());
 		decomposedCatripQuery.setInstance(caTripQuery.getInstance());
 		decomposedCatripQuery.setVersion(caTripQuery.getVersion());
 
 		// add the target object to the list of class names
-		DCQLClass classs = new DCQLClass();
-		classs.setName(caTripQuery.getTargetObject().getName());
-		decomposedCatripQuery.addClass(classs);
+		//DCQLClass classs = new DCQLClass();
+		//classs.setName(caTripQuery.getTargetObject().getName());
+		//decomposedCatripQuery.addClass(classs);
 
 		if (DEBUG){
 			// DEBUG
@@ -127,7 +136,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		if (dcqlObject.getForeignAssociation() != null) {
 			if (aDCQLClass != null)
 				decomposedCatripQuery.addClass(aDCQLClass);
-			aClass = new DCQLClass();
+			aClass = new DCQLClass(); 
 			processForeignAssociation(dcqlObject.getForeignAssociation(), aClass);
 		}
 

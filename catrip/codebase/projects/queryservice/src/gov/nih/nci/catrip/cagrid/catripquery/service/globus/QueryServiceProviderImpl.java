@@ -29,7 +29,7 @@ public class QueryServiceProviderImpl{
 	public gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveResponse save(gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequest params) throws RemoteException {
 		QueryServiceAuthorization.authorizeSave();
 		gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveResponse boxedResult = new gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveResponse();
-		impl.save(params.getCaTripQuery().getCaTripQuery());
+		impl.save(params.getCatripQuery().getCatripQuery());
 		return boxedResult;
 	}
 

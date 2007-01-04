@@ -23,7 +23,7 @@ import java.util.Properties;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  * 
  * @created Aug 24, 2006 
- * @version $Id: StubCQLQueryProcessor.java,v 1.2 2007-01-03 19:28:30 bmason Exp $ 
+ * @version $Id: StubCQLQueryProcessor.java,v 1.3 2007-01-04 22:03:35 bmason Exp $ 
  * @deprecated The stub CQL query processor is a placeholder to provide a starting point for
  * implementation of CQL against a backend data source.
  */

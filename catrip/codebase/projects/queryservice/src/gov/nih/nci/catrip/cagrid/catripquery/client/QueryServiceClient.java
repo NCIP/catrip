@@ -1,5 +1,6 @@
 package gov.nih.nci.catrip.cagrid.catripquery.client;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.rmi.RemoteException;
@@ -20,13 +21,15 @@ import org.xml.sax.InputSource;
 import org.globus.gsi.GlobusCredential;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 
-import gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery;
+import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.stubs.QueryServicePortType;
 import gov.nih.nci.catrip.cagrid.catripquery.stubs.service.QueryServiceAddressingLocator;
 import gov.nih.nci.catrip.cagrid.catripquery.common.QueryServiceI;
 import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlquery.Predicate;
+import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.introduce.security.client.ServiceSecurityClient;
 
@@ -99,78 +102,81 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 	
 	public static void main(String [] args){
 		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
-	    System.out.println("Running the Grid Service Client");
-	       String qryFile = "C:\\Documents and Settings\\Bill Mason\\workspace\\fqe\\bin\\simpleQuery1.xml";
-			//String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
-	 		try{
-		if(!(args.length < 2)){
-			if(args[0].equals("-url")){
-			  QueryServiceClient client = new QueryServiceClient(serviceURI);
-			  // place client calls here if you want to use this main as a
-			  // test....
-				CaTripQuery caTripQuery = new CaTripQuery();
-				  caTripQuery.setFirstName("DEEPI");
-		         DCQLQuery dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),DCQLQuery.class);
-		            gov.nih.nci.cagrid.dcql.Object to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
-		            				
-				//gov.nih.nci.cagrid.dcql.Object to = new gov.nih.nci.cagrid.dcql.Object();
-				to.setName("DCQL QRY1");
-				//caTripQuery.setId(0);
-				caTripQuery.setDescription("desc");
-				caTripQuery.setFirstName("first Name");
-				caTripQuery.setLastName("last");
-				caTripQuery.setInstance("instance");
-				caTripQuery.setSource("source");
-				caTripQuery.setTargetObject (to);
-				try {
-					client.save(caTripQuery);
-				} 
-				catch (RemoteException e) {
-					e.printStackTrace();
-				}
-//				try {
-//				  client.delete(698);
-//				}
+		System.out.println("Running the Grid Service Client");
+		String qryFile = "C:\\Documents and Settings\\Bill Mason\\workspace\\fqe\\bin\\simpleQuery1.xml";
+		//String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
+		try{
+			if(!(args.length < 2)){
+				if(args[0].equals("-url")){
+					QueryServiceClient client = new QueryServiceClient(serviceURI);
+					// place client calls here if you want to use this main as a
+					// test....
+					CatripQuery caTripQuery = new CatripQuery();
+					caTripQuery.setFirstName("DEEPI");
+					DCQLQuery dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),DCQLQuery.class);
+					gov.nih.nci.cagrid.dcql.Object to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
+
+					//gov.nih.nci.cagrid.dcql.Object to = new gov.nih.nci.cagrid.dcql.Object();
+					to.setName("DCQL QRY1");
+					//caTripQuery.setId(0);
+					caTripQuery.setDescription("desc");
+					caTripQuery.setFirstName("first Name");
+					caTripQuery.setLastName("last");
+					caTripQuery.setInstance("instance");
+					caTripQuery.setSource("source");
+					caTripQuery.setDcqlQuery("test");
+//					try {
+//						client.save(caTripQuery);
+//					} 
+//					catch (RemoteException e) {
+//						e.printStackTrace();
+//					}
+//					try {
+//					client.delete(698);
+//					}
 //					catch (RemoteException e) {
 //					System.out.println("No object with id " + caTripQuery.getId() + " exists.");
-//					
+
 //					//e.printStackTrace();
-//				}
+//					}
 
-				  
-				  // query
-			      //  CQLQuery cqlQuery = new CQLQuery();
 
-			      //  gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
-			      //  target.setName(CaTripQuery.class.getName());
-			      //  target.setAttribute(new Attribute("id",Predicate.LESS_THAN,"3000"));
-			      //  cqlQuery.setTarget(target);
-			     // CQLQueryResults results = client.query(cqlQuery);
-	              //CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\exampleDb\\src\\gov\\nih\\nci\\cagrid\\catrip\\query\\client\\client-config.wsdd")));
+					// query
+					CQLQuery cqlQuery = new CQLQuery();
 
-					//System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
-				  
+					gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+					target.setName(CatripQuery.class.getName());
+					//target.setAttribute(new Attribute("id",Predicate.LESS_THAN,"3000"));
+					cqlQuery.setTarget(target);
+					System.out.println("target is null? " + (target == null));
+					CQLQueryResults results = client.query(cqlQuery);
+					// CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
+System.out.println("results is null ? " + (results == null));
+System.out.println("results.getObjectResult() is null ? " + (results.getObjectResult() == null));
+if (results != null && results.getObjectResult() != null)
+					System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
+
+				} else {
+					usage();
+					System.exit(1);
+				}
 			} else {
 				usage();
 				System.exit(1);
 			}
-		} else {
-			usage();
-			System.exit(1);
-		}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
 	}
 
-	public void save(gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery caTripQuery) throws RemoteException {
+	public void save(gov.nih.nci.catrip.cagrid.catripquery.CatripQuery catripQuery) throws RemoteException {
       synchronized(portTypeMutex){
         configureStubSecurity((Stub)portType,"save");
         gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequest params = new gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequest();
-        gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequestCaTripQuery caTripQueryContainer = new gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequestCaTripQuery();
-        caTripQueryContainer.setCaTripQuery(caTripQuery);
-        params.setCaTripQuery(caTripQueryContainer);
+        gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequestCatripQuery catripQueryContainer = new gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveRequestCatripQuery();
+        catripQueryContainer.setCatripQuery(catripQuery);
+        params.setCatripQuery(catripQueryContainer);
         gov.nih.nci.catrip.cagrid.catripquery.stubs.SaveResponse boxedResult = portType.save(params);
       }
     }

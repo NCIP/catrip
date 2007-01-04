@@ -1,7 +1,7 @@
 <ns1:ServiceDescription introduceVersion="1.0" xmlns:ns1="gme://gov.nih.nci.cagrid/1/Introduce">
  <ns2:Namespaces xsi:type="ns2:NamespacesType" xmlns:ns2="gme://gov.nih.nci.cagrid.introduce/1/Namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ns2:Namespace location="./caTRIP_Query.xsd" namespace="http://caCORE.cabig/3.0/gov.nih.nci.catrip.cagrid.catripquery" packageName="gov.nih.nci.catrip.cagrid.catripquery" xsi:type="ns2:NamespaceType">
-   <ns2:SchemaElement type="CaTripQuery" xsi:type="ns2:SchemaElementType"/>
+   <ns2:SchemaElement type="CatripQuery" xsi:type="ns2:SchemaElementType"/>
   </ns2:Namespace>
   <ns2:Namespace location="./1_gov.nih.nci.cagrid.CQLQuery.xsd" namespace="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" packageName="gov.nih.nci.cagrid.cqlquery" xsi:type="ns2:NamespaceType">
    <ns2:SchemaElement type="CQLQuery" xsi:type="ns2:SchemaElementType"/>
@@ -112,7 +112,7 @@
     </ns4:Method>
     <ns4:Method isImported="false" isProvided="false" name="save" xsi:type="ns4:MethodType">
      <ns4:Inputs>
-      <ns4:Input qName="ns11:CaTripQuery" isArray="false" name="caTripQuery" xmlns:ns11="http://caCORE.cabig/3.0/gov.nih.nci.catrip.cagrid.catripquery"/>
+      <ns4:Input qName="ns11:CatripQuery" isArray="false" name="catripQuery" xmlns:ns11="http://caCORE.cabig/3.0/gov.nih.nci.catrip.cagrid.catripquery"/>
      </ns4:Inputs>
      <ns4:Output qName="void" isArray="false"/>
      <ns4:Exceptions/>
