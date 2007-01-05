@@ -15,7 +15,7 @@ import junit.framework.TestCase;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
 
-public class TestCGEMS extends TestCase {
+public class TestCGEMSService extends TestCase {
 
     private static String url = "";
     private static String clientConfig = "";
@@ -32,7 +32,7 @@ public class TestCGEMS extends TestCase {
         clientConfig=properties.getProperty("clientConfig");
     }
 
-    public TestCGEMS (String sTestName) {
+    public TestCGEMSService (String sTestName) {
         super(sTestName);
     }
 
@@ -60,7 +60,7 @@ public class TestCGEMS extends TestCase {
 		 System.out.println("Results for "+fileName);
          while (iter.hasNext()) {
             gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant de = (gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant) iter.next();
-            System.out.println(de.getStudySubjectIdentifier() + "     " + de.getInstitutionName());
+            System.out.println(de.getStudySubjectIdentifier());
          }
          System.out.println("---------------------");
     }
