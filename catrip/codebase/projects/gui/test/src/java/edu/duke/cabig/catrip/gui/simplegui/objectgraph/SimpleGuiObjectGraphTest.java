@@ -13,6 +13,12 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+/**
+ * This is a unit test that validates the ability to parse configuration files and walk through
+ * object graphs.
+ * @author Sanjeev Agarwal
+ * @testType unit
+ */
 public class SimpleGuiObjectGraphTest extends TestCase {
     private ObjectGraphProcessor processor;
 
@@ -29,6 +35,9 @@ public class SimpleGuiObjectGraphTest extends TestCase {
         super.tearDown();
     }
 
+    /**
+     * Tests whether services are there
+     */
     public void testGetAllServices() {
         List<Service> services = processor.getServices();
         Service service;
@@ -39,12 +48,18 @@ public class SimpleGuiObjectGraphTest extends TestCase {
         }
     }
 
+    /**
+     * Tests getting the target objects
+     */
     public void testGetAllTargetObjects() {
         List<GraphObject> objs = processor.getTargetObjects();
         System.out.println("AVIALABLE TARGET OBJECTS ... ");
         printObjects(objs);
     }
 
+    /**
+     * Tests getting the target objects for a service
+     */
     public void testGetAllTargetObjectsForAGivenService() {
         List<GraphObject> objs = processor.getTragetObjects("caTissueCore");
         System.out.println("AVIALABLE TARGET OBJECTS for caTissueCore ... ");
@@ -68,6 +83,10 @@ public class SimpleGuiObjectGraphTest extends TestCase {
             }
         }
     }
+    
+    /**
+     * Tests whether there are associations for a target object
+     */
     public void testGetAllAssociatedObjectsForAGivenTragetObject() {
         String targetObject = "edu.wustl.catissuecore.domainobject.TissueSpecimen";
         List<GraphObject> objs = processor.getAssociatedObjects(targetObject,"caTissueCore");
@@ -86,6 +105,9 @@ public class SimpleGuiObjectGraphTest extends TestCase {
         }
     }
 
+    /**
+     * Tests getting the target objects for a remote service
+     */
     public void testGetAvialbleTragetObjectsToAssociateInRemoteServices() {
         List<GraphObject> objs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices("caTissueCore");
         GraphObject obj;
