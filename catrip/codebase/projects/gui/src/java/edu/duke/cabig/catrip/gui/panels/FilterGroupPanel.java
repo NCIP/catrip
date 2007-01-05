@@ -6,9 +6,17 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
+import edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel;
+import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
-import java.awt.GridLayout;
+import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JDialog;
+import javax.swing.JList;
+
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
+
 
 /**
  *
@@ -16,10 +24,30 @@ import java.util.ArrayList;
  */
 public class FilterGroupPanel extends javax.swing.JPanel {
     
+    private SimpleSearchPanel parentFilterPanel;
+    private int numEntities = 0;
+    
     /** Creates new form FilterGroupPanel */
     public FilterGroupPanel() {
         initComponents();
+        init();
     }
+    
+    
+    public FilterGroupPanel(SimpleSearchPanel parent) {
+        initComponents();
+        init();
+        this.parentFilterPanel = parent;
+    }
+    
+    
+    
+    
+    private void init(){
+        PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(filterValuePanel, PreferredHeightMarginBorderBoxLayout.Y_AXIS);
+        filterValuePanel.setLayout(layout);
+    }
+    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -30,7 +58,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        filterPanel = new javax.swing.JPanel();
+        filterValuePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         conditionCombo = new javax.swing.JComboBox();
@@ -41,9 +69,9 @@ public class FilterGroupPanel extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.jPanel1.border.title"))); // NOI18N
         jScrollPane1.setBorder(null);
-        filterPanel.setLayout(new java.awt.GridLayout(4, 1));
+        filterValuePanel.setLayout(new java.awt.GridLayout(4, 1));
 
-        jScrollPane1.setViewportView(filterPanel);
+        jScrollPane1.setViewportView(filterValuePanel);
 
         jLabel1.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.jLabel1.text")); // NOI18N
 
@@ -92,8 +120,18 @@ public class FilterGroupPanel extends javax.swing.JPanel {
         delGroupBtn.setText("Delete Group");
 
         okBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.okBtn.text")); // NOI18N
+        okBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okBtnActionPerformed(evt);
+            }
+        });
 
         cancelBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.cancelBtn.text")); // NOI18N
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -107,7 +145,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
                         .add(addFilterOrGroupBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(21, 21, 21)
                         .add(delGroupBtn)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 199, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 211, Short.MAX_VALUE)
                         .add(okBtn)
                         .add(24, 24, 24)
                         .add(cancelBtn)))
@@ -128,34 +166,81 @@ public class FilterGroupPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        // clear the current changed settings.. in this instance...
+        numEntities = 0;
+        JDialog parent = (JDialog)getRootPane().getParent();
+        parent.dispose();
+    }//GEN-LAST:event_cancelBtnActionPerformed
+    
+    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+        // create group only if there are more than 1 entities...
+        if (numEntities > 1){
+            
+            // create the groups here.. and dispose this..
+            int condition = conditionCombo.getSelectedIndex();
+            FilterGroup fg = null;// = new FilterGroup();
+            
+            if (condition == 0){
+                fg = FilterGroup.createANDGroup();
+//            System.out.println("creating AND group...");
+            }else if (condition == 1){
+                fg = FilterGroup.createORGroup();
+//            System.out.println("creating OR group...");
+            }
+            
+            
+            for (int i = 0; i < numEntities; i++) {
+                FilterGroupRowPanel element = (FilterGroupRowPanel)filterValuePanel.getComponent(i);
+                Object filterPanel = element.getFilterValueCombo().getSelectedItem();
+                fg.add(filterPanel);
+            }
+            SimpleGuiRegistry.addFilterSubGroup(fg);
+            // TODO - sanju AND/OR
+            parentFilterPanel.reArrangeFilters();
+        }
+        JDialog parent = (JDialog)getRootPane().getParent();
+        parent.dispose();
+    }//GEN-LAST:event_okBtnActionPerformed
+    
     private void addFilterOrGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterOrGroupBtnActionPerformed
-        FilterGroupRowPanel frp = new FilterGroupRowPanel();
-        
-        ArrayList<FilterRowPanel> filters = SimpleGuiRegistry.getFilterList(); 
-        
-        for (int i = 0; i < filters.size(); i++) {
-            String filterVal = filters.get(i).getFilterTextValue();
-            frp.getFilterValueCombo().addItem(filterVal);
+        if (numEntities < SimpleGuiRegistry.getNumGroupableEntities()){
+            
+            FilterGroupRowPanel frp = new FilterGroupRowPanel();
+            
+            ArrayList<FilterRowPanel> filters = SimpleGuiRegistry.getNonGroupFilters();
+            for (int i = 0; i < filters.size(); i++) {
+//            String filterVal = filters.get(i).getFilterTextValue();
+                frp.getFilterValueCombo().addItem(filters.get(i));
+//            System.out.println("Filter IDs are :"+filters.get(i).getFilterId());
+            }
+            
+            ArrayList<FilterGroup> filterGroups = SimpleGuiRegistry.getFilterSubGroupList();
+            for (int i = 0; i < filterGroups.size(); i++) {
+                frp.getFilterValueCombo().addItem(filterGroups.get(i));
+            }
+            
+            
+            frp.getFilterValueCombo().setSelectedIndex(numEntities);
+            frp.getFilterValueCombo().setRenderer(new MyComboBoxRenderer());
+            //MyComboBoxRenderer
+            
+            frp.setPreferredSize(new java.awt.Dimension(new Double(filterValuePanel.getBounds().getWidth()).intValue()-50, 40));
+            
+            filterValuePanel.add(frp);
+            
+            filterValuePanel.revalidate();
+            filterValuePanel.repaint();
+            
+//        int count = filterValuePanel.getComponentCount();
+            
+//        if (count > 4){
+//            GridLayout gl = (GridLayout)filterPanel.getLayout();
+//            gl.setRows(count);
+//        }
+            
+            numEntities++;
         }
-        
-        
-        
-        frp.setPreferredSize(new java.awt.Dimension(new Double(filterPanel.getBounds().getWidth()).intValue()-50, 40)); 
-        // Integer.parseInt(""+)
-        filterPanel.add(frp);
-        
-        filterPanel.revalidate(); 
-        filterPanel.repaint();
-        
-        int count = filterPanel.getComponentCount();
-        
-        if (count > 4){
-            GridLayout gl = (GridLayout)filterPanel.getLayout();
-            gl.setRows(count);
-        }
-        
-        
-        
     }//GEN-LAST:event_addFilterOrGroupBtnActionPerformed
     
 //    public static void main(String args[]) {
@@ -176,7 +261,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     private javax.swing.JButton cancelBtn;
     private javax.swing.JComboBox conditionCombo;
     private javax.swing.JButton delGroupBtn;
-    private javax.swing.JPanel filterPanel;
+    private javax.swing.JPanel filterValuePanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -185,3 +270,17 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+ 
+
+class MyComboBoxRenderer extends BasicComboBoxRenderer {  
+    public Component getListCellRendererComponent(JList list, Object value,    
+        int index, boolean isSelected, boolean cellHasFocus) {
+//        System.out.println("#### :"+value.getClass().getName());
+        if (value instanceof FilterGroup){
+        list.setToolTipText(  ((FilterGroup)value).getToolTipText() );
+        } else if (value instanceof FilterRowPanel){
+            list.setToolTipText(  ((FilterRowPanel)value).getToolTipText() );
+        }
+      return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus); 
+    }
+  }

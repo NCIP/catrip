@@ -3,14 +3,21 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
+import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.*;
+import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -48,9 +55,15 @@ public class SimpleSearchPanel extends CPanel {
     }
     
     private void initAfter(){
-        initFilters();
+//        initFilters(); // commented for box layout..
 //        initServiceCombo();
         initTargetObjectCombo();
+        
+        // set the custom Box layout here.
+        // filterPanel
+        PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(filterPanel, PreferredHeightMarginBorderBoxLayout.Y_AXIS);
+        filterPanel.setLayout(layout);
+        
     }
     
     private void initFilters(){
@@ -68,25 +81,30 @@ public class SimpleSearchPanel extends CPanel {
     
     public void removeFilter(FilterRowPanel fp){
         
-        filterPanel.remove(fp);
         
-        if (filterRows < 5){
-            filterRows--;
-            JPanel jp =  new JPanel();
-            jp.setPreferredSize(new java.awt.Dimension(200, 40));
-            filterPanel.add(jp);
+//        if (filterRows < 5){
+//            filterRows--;
+//            JPanel jp =  new JPanel();
+//            jp.setPreferredSize(new java.awt.Dimension(200, 40));
+//            filterPanel.add(jp);
+//        } else {
+//            filterRows--;
+//            GridLayout gl = (GridLayout)filterPanel.getLayout();
+//            gl.setRows(filterRows);
+//        }
+        
+        // check if this filter is in group or not.. if it is in a group.. then reArrange.. otherwise normal old call...
+        if (fp.getParentGroup() == null){
+            filterPanel.remove(fp);
+            filterPanel.revalidate();
+            filterPanel.repaint();
+            SimpleGuiRegistry.getFilterList().remove(fp);
         } else {
-            filterRows--;
-            GridLayout gl = (GridLayout)filterPanel.getLayout();
-            gl.setRows(filterRows);
-            
+            filterPanel.revalidate();
+            filterPanel.repaint();
+            // TODO - sanju AND/OR
+//            removeAndReArrange( fp );
         }
-        
-        filterPanel.revalidate();
-        filterPanel.repaint();
-        
-        
-        SimpleGuiRegistry.getFilterList().remove(fp);
         
         
     }
@@ -108,7 +126,7 @@ public class SimpleSearchPanel extends CPanel {
         targetServiceCombo = new javax.swing.JComboBox();
         targetServiceCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         jpanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        filterPanelScrollPane = new javax.swing.JScrollPane();
         filterPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -161,11 +179,11 @@ public class SimpleSearchPanel extends CPanel {
         );
 
         jpanel.setBorder(javax.swing.BorderFactory.createTitledBorder("List of filters"));
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        filterPanelScrollPane.setBorder(null);
+        filterPanelScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         filterPanel.setLayout(new java.awt.GridLayout(2, 1));
 
-        jScrollPane1.setViewportView(filterPanel);
+        filterPanelScrollPane.setViewportView(filterPanel);
 
         jLabel4.setText("Attribute");
 
@@ -180,7 +198,7 @@ public class SimpleSearchPanel extends CPanel {
             .add(jpanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+                    .add(filterPanelScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
                     .add(jpanelLayout.createSequentialGroup()
                         .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                         .add(84, 84, 84)
@@ -199,7 +217,7 @@ public class SimpleSearchPanel extends CPanel {
                     .add(jLabel5)
                     .add(jLabel6))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .add(filterPanelScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -247,21 +265,21 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap()
                 .add(targetPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jpanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jpanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(addFilterBtn)
                     .add(clearFilterBtn)
                     .add(addGroupBtn))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void addGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupBtnActionPerformed
-// TODO add your handling code here:
-        FilterGroupPanel fgp = new FilterGroupPanel();
         
-        CJDialog jd = new CJDialog(getMainFrame(), "Create Group between Filters or Groups");  
+        FilterGroupPanel fgp = new FilterGroupPanel(this);
+        
+        CJDialog jd = new CJDialog(getMainFrame(), "Create Group between Filters or Groups");
         jd.add(fgp);
         jd.setBounds(10,10,750, 320);
         jd.center();jd.setModal(true);
@@ -389,7 +407,7 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.removeAll();
         filterPanel.revalidate();
         filterPanel.repaint();
-        initFilters();
+        //initFilters(); // and or
     }
     
     private void addFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterBtnActionPerformed
@@ -421,14 +439,23 @@ public class SimpleSearchPanel extends CPanel {
         jp.fillCdeCombo2(SimpleGuiRegistry.getCurrentXMLObjectList());
 //        jp.fillCdeCombo(SimpleGuiRegistry.getCurrentClassBeanList());
         
-        if (filterRows < 5){
-            filterPanel.remove(filterRows-1);
-            filterPanel.add(jp, filterRows-1);
-        } else {
-            GridLayout gl = (GridLayout)filterPanel.getLayout();
-            gl.setRows(filterRows);
-            filterPanel.add(jp);
-        }
+        
+        
+        
+        // and or
+//        if (filterRows < 5){
+//            filterPanel.remove(filterRows-1);
+//            filterPanel.add(jp, filterRows-1);
+//        } else {
+//            GridLayout gl = (GridLayout)filterPanel.getLayout();
+//            gl.setRows(filterRows);
+//            filterPanel.add(jp);
+//        }
+        
+        filterPanel.add(jp);
+        
+        
+        
         
         SimpleGuiRegistry.addFilterToList(jp);  // sanjeev: create a list of filters being added currently..
         
@@ -461,12 +488,12 @@ public class SimpleSearchPanel extends CPanel {
     private javax.swing.JButton addGroupBtn;
     private javax.swing.JButton clearFilterBtn;
     private javax.swing.JPanel filterPanel;
+    private javax.swing.JScrollPane filterPanelScrollPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpanel;
     private javax.swing.JComboBox targetObjCombo;
     private javax.swing.JPanel targetPanel;
@@ -481,6 +508,14 @@ public class SimpleSearchPanel extends CPanel {
     
     public javax.swing.JComboBox getTargetServiceCombo() {
         return targetServiceCombo;
+    }
+    
+    public javax.swing.JScrollPane getFilterPanelScrollPane(){
+        return filterPanelScrollPane;
+    }
+    
+    public javax.swing.JPanel getFilterPanel(){
+        return filterPanel;
     }
     
     
@@ -523,7 +558,7 @@ public class SimpleSearchPanel extends CPanel {
         
 //        for (int i=0;i<objss.size();i++) {
 //            getTargetObjCombo().addItem(objss.get(i));
-////            System.out.println("XXX Target Object Name: "+objss.get(i).getClassName());
+//            System.out.println("XXX Target Object Name: "+objss.get(i).getClassName());
 //        }
         
         
@@ -572,6 +607,171 @@ public class SimpleSearchPanel extends CPanel {
     public void addToTargetObjectServiceMap(String targetObject_Service, GraphObject targetObject) {
         this.targetObjectServiceMap.put(targetObject_Service, targetObject);
     }
+    
+    
+    
+    
+    
+    //------------------------ AND / OR grouping methods.. //------------------------
+    
+    public void reArrangeFilters(){
+        // this will recalculate and redraw the filters and groups in Simple GUI..
+        // I guess by now.. everything was set up properly in registry.. so just take things from registry and draw the things..
+//        System.out.println("### available filters / groups :"+SimpleGuiRegistry.getNumGroupableEntities());
+        
+        filterPanel.removeAll(); // remove current laid out filter/groups...
+        
+        
+        // lay out groups first...
+        ArrayList subGroups = SimpleGuiRegistry.getFilterSubGroupList();
+        for (int i = 0; i < subGroups.size(); i++) {
+            FilterGroup group = (FilterGroup)subGroups.get(i);
+            filterPanel.add(getSubGroupPanel(group ));
+        }
+        
+        // lay out remaining filters now...
+        ArrayList filters = SimpleGuiRegistry.getNonGroupFilters();
+        for (int i = 0; i < filters.size(); i++) {
+            FilterRowPanel filterP = (FilterRowPanel)filters.get(i);
+            filterPanel.add(filterP);
+        }
+        
+        
+        filterPanel.revalidate();
+        filterPanel.repaint();
+        
+    }
+    
+    public JPanel getSubGroupPanel(FilterGroup grp){
+        // draw the groups first and then the filters..
+        JPanel jpp = new JPanel();
+        
+        PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(jpp, PreferredHeightMarginBorderBoxLayout.Y_AXIS);
+        jpp.setLayout(layout);
+        jpp.setBorder(new LineBorder(Color.BLUE, 1));
+        
+        
+        ArrayList subGroups = grp.getGroupList();
+        for (int i = 0; i < subGroups.size(); i++) {
+            FilterGroup group = (FilterGroup)subGroups.get(i);
+//            jpp.add(Box.createVerticalStrut(5));
+            jpp.add(getSubGroupPanel(group));
+            
+            if (i < subGroups.size()-1){
+                jpp.add(Box.createVerticalStrut(10));
+                jpp.add(new JButton(group.getConditionString()));
+                jpp.add(Box.createVerticalStrut(5));
+            }
+        }
+        
+        
+        ArrayList filters = grp.getFilterList();
+        
+        if (subGroups.size() > 0 && filters.size() > 0){ // add a button in between groups and filters..
+            jpp.add(Box.createVerticalStrut(10));
+            jpp.add(new JButton(grp.getConditionString()));
+            jpp.add(Box.createVerticalStrut(5));
+        }
+        for (int j = 0; j < filters.size(); j++) {
+            FilterRowPanel filterP = (FilterRowPanel)filters.get(j);
+            jpp.add(filterP); // add the filter here..
+            if (j < filters.size()-1){
+                jpp.add(Box.createVerticalStrut(5));
+                jpp.add(new JButton(grp.getConditionString()));
+                jpp.add(Box.createVerticalStrut(5));
+            }
+        }
+        // check if subGroups size is 0 then add only 5 pix in the height.. and 5 pix in width
+        int margin = 10;
+        if (subGroups.size() == 0){
+            margin = 5;
+        }
+        jpp.setPreferredSize(new Dimension(jpp.getPreferredSize().width+margin, jpp.getPreferredSize().height+margin));
+        
+        
+        return jpp;
+    }
+    
+    
+    
+    private void removeAndReArrange(FilterRowPanel fp){
+        FilterGroup group = fp.getParentGroup();
+        group.getFilterList().remove(fp); // remove the filter from the group and everything else..
+        SimpleGuiRegistry.getFilterList().remove(fp); // remove from the main list of filterPanels as well..
+        
+        boolean noFilters = group.getFilterList().size() == 0;
+        boolean oneFilter = group.getFilterList().size() == 1;
+        boolean noGroups = group.getGroupList().size() == 0;
+        boolean oneGroup = group.getGroupList().size() == 1;
+        
+        
+        // check if there is no remaining filters but has only group..  transfer it to outside..
+        if (noFilters && oneGroup){
+            // check if this has a parent group..
+            if (group.getParentGroup() != null ){
+                // remove this group from it's parent
+                FilterGroup pGroup = group.getParentGroup();
+                pGroup.getGroupList().remove(group);
+                FilterGroup innerGroup = group.getGroupList().get(0);
+                // transfer inner group to it's parent group...
+                pGroup.getGroupList().add(innerGroup);
+                // set the new parent..
+                innerGroup.setParentGroup(pGroup);
+            } else {
+                // this was a sub group.. return the inner group to the outer one.. by adding it as a sub-group..
+                FilterGroup innerGroup = group.getGroupList().get(0);
+                SimpleGuiRegistry.addFilterSubGroup(innerGroup);
+                // also set it's parent to null for next time calculation..
+                innerGroup.setParentGroup(null);
+                SimpleGuiRegistry.getFilterSubGroupList().remove(group);
+            }
+        }
+        
+        
+        
+        // check if there is no group and no filters.. or one filter..
+        if ((noFilters || oneFilter) && noGroups){
+            
+            if (group.getParentGroup() != null ){
+                FilterGroup pGroup = group.getParentGroup();
+                // remove this group from parent
+                pGroup.getGroupList().remove(group);
+                if (oneFilter){
+                    // return the remaining filter to it's parent group..
+                    FilterRowPanel innerFilter = group.getFilterList().get(0);
+                    pGroup.getFilterList().add(innerFilter);
+                    // set new parentGroup to this filter..
+                    innerFilter.setParentGroup(pGroup);
+                }
+            } else {
+                // as this has no parent... this was a subgroup so delete this group from subGrouplist
+                SimpleGuiRegistry.getFilterSubGroupList().remove(group);
+                if (oneFilter){
+                    //and return the remaining filter to the non-groupable filters..
+                    FilterRowPanel innerFilter = group.getFilterList().get(0);
+                    SimpleGuiRegistry.addNonGroupFilter(innerFilter);
+                    // set null parentGroup to this filter..
+                    innerFilter.setParentGroup(null);
+                }
+            }
+            
+        }
+        
+        
+        // now redraw filters and groups..
+        reArrangeFilters();
+    }
+    
+    
+    //------------------------ AND / OR grouping methods.. //------------------------
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -11,6 +11,8 @@ import javax.swing.*;
  */
 public class CPanel extends javax.swing.JPanel {
     protected  MainFrame mainFrame;
+    private Object customObject;
+    
     /**
      * Creates a new instance of CPanel
      */
@@ -23,6 +25,14 @@ public class CPanel extends javax.swing.JPanel {
 
     public void setMainFrame(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+    }
+
+    public Object getCustomObject() {
+        return customObject;
+    }
+
+    public void setCustomObject(Object customObject) {
+        this.customObject = customObject;
     }
     
 }

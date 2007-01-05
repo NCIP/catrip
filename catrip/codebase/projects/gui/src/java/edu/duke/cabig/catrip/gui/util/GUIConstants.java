@@ -1,6 +1,7 @@
 
 package edu.duke.cabig.catrip.gui.util;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -38,6 +39,8 @@ public class GUIConstants {
     public static boolean simpleGui = true;
     public static boolean resultAvailable = false;
     
+    public static Color[] COLOR_SET = {Color.BLACK, Color.RED, Color.GREEN, Color.BLUE}; 
+    public static String[] HTML_COLOR_SET = {"#000000", "#FF0033", "#006600", "#3333CC"};  // Black, Red, Green, Blue
     
     
     
@@ -51,13 +54,5 @@ public class GUIConstants {
     
     
     
-    /**
-     *
-     *
-     *
-     * Creates a new instance of GUIConstants
-     */
-    public GUIConstants () { 
-    }
     
 }

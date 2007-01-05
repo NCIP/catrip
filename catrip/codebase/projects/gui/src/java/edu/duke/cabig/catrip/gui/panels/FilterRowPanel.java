@@ -6,6 +6,7 @@ import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
+import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.awt.event.ItemEvent;
@@ -30,10 +31,14 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     private SimpleSearchPanel containerPanel;
     
+//    private long filterId; // unique id of the filter instance.. to manage the AND/OR groups..
+    private FilterGroup parentGroup;  // parent group of this filter..  need this when you delete the filter itself..
+    
     /** Creates new form FilterRowPanel */
     public FilterRowPanel() {
         initComponents();
         init();
+        
     }
     
     public FilterRowPanel(SimpleSearchPanel ssp) {
@@ -45,6 +50,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     private void init(){
         
+//        filterId = System.currentTimeMillis();
         fillPredicateCombo();
         
 //        fillCdeCombo1();
@@ -174,10 +180,17 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_cdeComboItemStateChanged
     
-    public String getFilterTextValue (){
+    public String getFilterTextValue(){
         CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
         String filterValue = cdeBean.toString()+"  "+cdeBean.getAttributeBean().getPredicate()+"  "+cdeBean.getAttributeBean().getAttributeValue();
         return filterValue;
+    }
+    
+    public String toString(){
+        return getFilterTextValue();
+    }
+    public String getToolTipText(){
+     return toString();
     }
     
     private void valueTextBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valueTextBoxKeyReleased
@@ -240,7 +253,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
                 for (int j = 0; j < attributes.size(); j++) {
                     AttributeBean aBean = (AttributeBean)attributes.get(j);
                     CDEComboboxBean cdeBean = new CDEComboboxBean();
-                    cdeBean.setGraphObject(gObj); 
+                    cdeBean.setGraphObject(gObj);
 //                    cdeBean.setClassBean(cBean); // set the new cloned ClassBean instead of graph object..
                     cdeBean.setAttributeBean(aBean);
                     attributeList.add(cdeBean);
@@ -281,7 +294,22 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     
     // String key = cBean.getCDEName() + "_" +aBean.getCDEName()+"-"+cBean.getServiceName();
+    
+    
+    
+    
+//    public long getFilterId() {
+//        return filterId;
+//    }
 
+    public FilterGroup getParentGroup() {
+        return parentGroup;
+    }
+
+    public void setParentGroup(FilterGroup parentGroup) {
+        this.parentGroup = parentGroup;
+    }
+    
     
     
     

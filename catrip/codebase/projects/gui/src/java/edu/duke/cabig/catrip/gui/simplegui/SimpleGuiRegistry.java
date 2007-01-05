@@ -37,15 +37,29 @@ public class SimpleGuiRegistry {
     
     private static GraphObject targetGraphObject = null; // will hold the ref to target object ClassBean object..
     
-    // array of the filterpanel..
-    private static ArrayList<FilterRowPanel> filters = new ArrayList(10);
+    // array of the filterpanel.. currently added to the simple gui.. each one represent a unique filter..
+    private static ArrayList<FilterRowPanel> filters = new ArrayList(50);
     
     private static HashMap beanMap = new HashMap(20); // sanjeev: holds unique classBean instaces which are used in filters.. filled ones..
     private static HashMap currentClassBeanMap = new HashMap(100); // sanjeev: holds unique classBean instances for all the classes that can be used in query..
     
-    private static HashMap serviceMap = new HashMap(10);
+    private static HashMap serviceMap = new HashMap(20);
     
     private static boolean simpleGuiChanged = false; // sanjeev: this is to tell that something is changed so calculate the DCQL again.
+    
+    
+    
+    
+    
+    // AND / OR group members..
+    private static ArrayList<FilterGroup> filterSubGroups =  new ArrayList(50);
+    private static FilterGroup rootGroup;
+    private static ArrayList<FilterRowPanel> nonGroupFilters = new ArrayList(50); // this represents the filterPanels that are not used in any of the AND/OR groups at a given time.
+    private static int numGroupableEntities = 0; // number of non-group filterPanels and sub-level groups..
+    
+    // AND / OR group members..
+    
+    
     
     /** Creates a new instance of SimpleGuiRegistry */
     public SimpleGuiRegistry() {
@@ -110,13 +124,21 @@ public class SimpleGuiRegistry {
     public static void cleanRegistry() {
         setCurrentClassBeanList(new ArrayList(50));
         setCurrentXMLObjectList(new ArrayList(50));
-        setFilterList(new ArrayList(10));
+        setFilterList(new ArrayList(50));
         beanMap = new HashMap(20);
         currentClassBeanMap = new HashMap(100);
-        filters = new ArrayList(10);
+        filters = new ArrayList(50);
+        
         
         setTargetGraphObject(null);
         DCQLRegistry.clean();
+        
+        
+         // TODO - sanju AND/OR   : this keeps the old groups filters.. even if you clear all filters...
+        // things from AND/OR grouping
+//        setNonGroupFilters(new ArrayList(50));
+//        setFilterSubGroupList(new ArrayList(50));
+//        setNumGroupableEntities(0);
     }
     
     public static List getCurrentXMLObjectList() {
@@ -184,7 +206,8 @@ public class SimpleGuiRegistry {
     }
     
     public static void addFilterToList(FilterRowPanel filter) {
-        filters.add(filter);
+        getFilterList().add(filter);
+        addNonGroupFilter(filter);   // TODO - these two should not be together..
     }
     
     public static HashMap getBeanMap() {
@@ -417,6 +440,88 @@ public class SimpleGuiRegistry {
     public static Service getServiceFromMap(String serviceName) {
         return (Service)serviceMap.get(serviceName);
     }
+    
+    
+    
+    
+    
+    //---------------------------- AND / OR groups methods...----------------------------
+    public static ArrayList<FilterGroup> getFilterSubGroupList() {
+        return filterSubGroups;
+    }
+    public static void setFilterSubGroupList(ArrayList<FilterGroup> aFilterGroup) {
+        filterSubGroups = aFilterGroup;
+    }
+    public static void addFilterSubGroup(FilterGroup aFilterGroup) {
+        // when you add a new sub group... remove the filterPanels and inner groups from subgroup list..
+        filterSubGroups.add(aFilterGroup);
+        
+        // now remove filters so that it may not be added to new groups..
+        ArrayList filterList = aFilterGroup.getFilterList();
+//        System.out.println("Adding these filters in group..:"+filterList.size());
+        for (int i = 0; i < filterList.size(); i++) {
+            getNonGroupFilters().remove(filterList.get(i));
+            numGroupableEntities--;
+        }
+        
+
+        // now remove groups so that it may not be added to new groups..
+        ArrayList groupList = aFilterGroup.getGroupList();
+        for (int i = 0; i < groupList.size(); i++) {
+            getFilterSubGroupList().remove(groupList.get(i));
+            numGroupableEntities--;
+        }
+
+        
+        numGroupableEntities++;
+    }
+    
+    public static FilterGroup getRootGroup() {
+        return rootGroup;
+    }
+    
+    public static void setRootGroup(FilterGroup aRootGroup) {
+        rootGroup = aRootGroup;
+    }
+    
+    
+    public static ArrayList<FilterRowPanel> getNonGroupFilters() {
+        return nonGroupFilters;
+    }
+    
+    public static void setNonGroupFilters(ArrayList<FilterRowPanel> aNonGroupFilters) {
+        nonGroupFilters = aNonGroupFilters;
+    }
+    public static void addNonGroupFilter(FilterRowPanel aNonGroupFilter) {
+        nonGroupFilters.add(aNonGroupFilter);
+        numGroupableEntities++;
+    }
+    
+    
+    public static int getNumGroupableEntities() {
+        return numGroupableEntities;
+    }
+    
+    public static void setNumGroupableEntities(int _numGroupableEntities) {
+        numGroupableEntities = _numGroupableEntities;
+    }
+    
+    
+    //---------------------------- AND / OR groups methods...----------------------------
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
