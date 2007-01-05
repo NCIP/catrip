@@ -30,9 +30,9 @@
          
       <!--  mapping files. -->
        
-      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/CatripQuery.hbm.xml"/> 
-      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/DCQLClass.hbm.xml"/> 
-      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/DCQLAttribute.hbm.xml"/> 
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/QueryDb.hbm.xml"/> 
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/ClassDb.hbm.xml"/> 
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/AttributeDb.hbm.xml"/> 
     </session-factory>
 </hibernate-configuration>
 

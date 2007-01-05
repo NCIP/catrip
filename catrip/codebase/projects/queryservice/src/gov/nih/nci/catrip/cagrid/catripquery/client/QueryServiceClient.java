@@ -1,9 +1,10 @@
 package gov.nih.nci.catrip.cagrid.catripquery.client;
 
-import java.io.File;
+import java.io.*;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.rmi.RemoteException;
+import java.rmi.RemoteException; 
 
 import javax.xml.namespace.QName;
 
@@ -20,6 +21,7 @@ import org.xml.sax.InputSource;
 
 import org.globus.gsi.GlobusCredential;
 import org.globus.wsrf.encoding.ObjectDeserializer;
+
 
 import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.stubs.QueryServicePortType;
@@ -124,7 +126,8 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 					caTripQuery.setLastName("last");
 					caTripQuery.setInstance("instance");
 					caTripQuery.setSource("source");
-					caTripQuery.setDcqlQuery("test");
+					File t = new File(qryFile);
+					caTripQuery.setDcql(getContents(t));
 //					try {
 //						client.save(caTripQuery);
 //					} 
@@ -151,10 +154,10 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 					System.out.println("target is null? " + (target == null));
 					CQLQueryResults results = client.query(cqlQuery);
 					// CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
-System.out.println("results is null ? " + (results == null));
-System.out.println("results.getObjectResult() is null ? " + (results.getObjectResult() == null));
-if (results != null && results.getObjectResult() != null)
-					System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
+					System.out.println("results is null ? " + (results == null));
+					System.out.println("results.getObjectResult() is null ? " + (results.getObjectResult() == null));
+					if (results != null && results.getObjectResult() != null)
+						System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
 
 				} else {
 					usage();
@@ -169,6 +172,53 @@ if (results != null && results.getObjectResult() != null)
 			System.exit(1);
 		}
 	}
+	/**
+	  * Fetch the entire contents of a text file, and return it in a String.
+	  * This style of implementation does not throw Exceptions to the caller.
+	  *
+	  * @param aFile is a file which already exists and can be read.
+	  */
+	  private static String getContents(File aFile) {
+	    //...checks on aFile are elided
+	    StringBuffer contents = new StringBuffer();
+
+	    //declared here only to make visible to finally clause
+	    BufferedReader input = null;
+	    try {
+	      //use buffering, reading one line at a time
+	      //FileReader always assumes default encoding is OK!
+	      input = new BufferedReader( new FileReader(aFile) );
+	      String line = null; //not declared within while loop
+	      /*
+	      * readLine is a bit quirky :
+	      * it returns the content of a line MINUS the newline.
+	      * it returns null only for the END of the stream.
+	      * it returns an empty String if two newlines appear in a row.
+	      */
+	      while (( line = input.readLine()) != null){
+	        contents.append(line);
+	        contents.append(System.getProperty("line.separator"));
+	      }
+	    }
+	    catch (FileNotFoundException ex) {
+	      ex.printStackTrace();
+	    }
+	    catch (IOException ex){
+	      ex.printStackTrace();
+	    }
+	    finally {
+	      try {
+	        if (input!= null) {
+	          //flush and close both "input" and its underlying FileReader
+	          input.close();
+	        }
+	      }
+	      catch (IOException ex) {
+	        ex.printStackTrace();
+	      }
+	    }
+	    return contents.toString();
+	  }
 
 	public void save(gov.nih.nci.catrip.cagrid.catripquery.CatripQuery catripQuery) throws RemoteException {
       synchronized(portTypeMutex){
