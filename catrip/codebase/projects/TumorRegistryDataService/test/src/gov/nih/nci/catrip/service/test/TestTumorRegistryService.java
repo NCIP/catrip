@@ -1,6 +1,6 @@
 package gov.nih.nci.catrip.service.test;
 
-import gov.nih.nci.cagrid.cgems.client.CGEMSClient;
+import gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
@@ -14,9 +14,10 @@ import java.util.Properties;
 import junit.framework.TestCase;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
+import edu.duke.cabig.tumorregistry.domain.Patient;
 
-public class TestCGEMSService extends TestCase {
-//
+public class TestTumorRegistryService extends TestCase {
+
     private static String url = "";
     private static String clientConfig = "";
     public static String CQL_FILES_DIR = "./cql";
@@ -32,7 +33,7 @@ public class TestCGEMSService extends TestCase {
         clientConfig=properties.getProperty("clientConfig");
     }
 
-    public TestCGEMSService (String sTestName) {
+    public TestTumorRegistryService (String sTestName) {
         super(sTestName);
     }
 
@@ -53,14 +54,15 @@ public class TestCGEMSService extends TestCase {
 
     private void getParticipants(String fileName)  throws Exception {
          //String fileName = "many-to-many.xml";
-         CGEMSClient client = new CGEMSClient(url);
+	System.out.println(url);
+         CaTRIPTumorRegistryClient client = new CaTRIPTumorRegistryClient(url);
          CQLQueryResults results = client.query(getCQLQuery(fileName));
 
          CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(clientConfig)));
 		 System.out.println("Results for "+fileName);
          while (iter.hasNext()) {
-            gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant de = (gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant) iter.next();
-            System.out.println(de.getStudySubjectIdentifier());
+                        Patient de = (Patient) iter.next();
+            System.out.println(de.getId());
          }
          System.out.println("---------------------");
     }
@@ -68,11 +70,4 @@ public class TestCGEMSService extends TestCase {
         getParticipants("Participants.xml");
     }
 
-    public void testGetParticipantWithFilterOnSpecimen() throws Exception {
-        getParticipants("ParticipantWithFilterOnSpecimen.xml");
-    }
-
-    public void testGetParticipantWithFilterOnSNPAnalysisGroup() throws Exception {
-        getParticipants("ParticipantWithFilterOnSNPAnalysisGroup.xml");
-    }
 }
