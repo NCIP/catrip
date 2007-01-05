@@ -40,7 +40,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		decomposedCatripQuery = new QueryDb();
 		if (caTripQuery.getId() != 0){
 			decomposedCatripQuery = getDbObject(caTripQuery.getId());
-		}
+		} 
 		DCQLQuery dcql = new DCQLQuery();
 //		try {
 //			dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(caTripQuery.getDcql())),DCQLQuery.class);

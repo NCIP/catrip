@@ -177,7 +177,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 	  *
 	  * @param aFile is a file which already exists and can be read.
 	  */
-	  private static String getContents(File aFile) {
+	  private static String getContents(File aFile) { 
 	    //...checks on aFile are elided
 	    StringBuffer contents = new StringBuffer();
 
