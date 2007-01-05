@@ -15,6 +15,12 @@ import org.xml.sax.InputSource;
 import gov.nih.nci.cagrid.fqp.processor.FederatedQueryEngine;
 
 
+/**
+ * This is a system test to test the functionality of the FQE, which is performs DCQL queries.  
+ * It is a system test because it requires a number of services to be available and running.
+ * @author Srini Akkala
+ * @testType system
+ */
 public class TestFQE extends TestCase {
 
     public TestFQE(String sTestName) {
@@ -29,7 +35,10 @@ public class TestFQE extends TestCase {
         super.tearDown();
     }
 
-
+    /**
+     * Tests the FQP
+     * @throws Exception
+     */
     public void testFQE()  throws Exception {
         String qryFile = "simpleQuery1.xml";
 		String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
