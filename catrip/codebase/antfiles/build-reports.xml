@@ -266,7 +266,7 @@
 				</fileset>
 			</junitResults>
 			<junitDocs>
-				<fileset dir="${projects.dir}/queryengine">
+				<fileset dir="${projects.dir}/xmi2model">
 					<include name="src/java"/>
 					<include name="test/src/java"/>
 				</fileset>
@@ -286,9 +286,39 @@
 					<include name="src/java"/>
 					<include name="test/src/java"/>
 				</fileset>
+<!--
 				<fileset dir="${projects.dir}/test-system">
 					<include name="src/java"/>
 					<include name="test/src/java"/>
+				</fileset>
+-->
+				<fileset dir="${projects.dir}/queryengine-2.0">
+					<include name="src"/>
+					<include name="test/src"/>
+				</fileset>
+				<fileset dir="${projects.dir}/localsdkquery">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="${projects.dir}/queryservice">
+					<include name="src"/>
+					<include name="test/src"/>
+				</fileset>
+				<fileset dir="${projects.dir}/CGEMSDataServiceV2">
+					<include name="src"/>
+					<include name="test/src"/>
+				</fileset>
+				<fileset dir="${projects.dir}/TumorRegistryDataService">
+					<include name="src"/>
+					<include name="test/src"/>
+				</fileset>
+				<fileset dir="${projects.dir}/CaTissueCoreDataServiceV2">
+					<include name="src"/>
+					<include name="test/src"/>
+				</fileset>
+				<fileset dir="${projects.dir}/CAEDataServiceV2">
+					<include name="src"/>
+					<include name="test/src"/>
 				</fileset>
 			</junitDocs>
 		</junitDocReport>
