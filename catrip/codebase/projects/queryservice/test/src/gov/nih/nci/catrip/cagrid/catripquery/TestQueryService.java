@@ -83,7 +83,7 @@ public class TestQueryService extends TestCase {
 		}
 	}
 	
-	public void ttestUpdate() throws Exception{
+	public void testUpdate() throws Exception{
 		System.out.println("update");
 		caTripQuery.setId(1688);
 		caTripQuery.setName("Updated");
@@ -96,7 +96,7 @@ public class TestQueryService extends TestCase {
 		}
 	}
 	
-	public void ttestDelete() throws Exception{
+	public void testDelete() throws Exception{
 		System.out.println("delete");
 		client.delete(1688);
 	}
