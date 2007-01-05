@@ -16,7 +16,7 @@ import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
 
 public class TestCAEService extends TestCase {
-
+//
     private static String url = "";
     private static String clientConfig = "";
     public static String CQL_FILES_DIR = "./cql";
