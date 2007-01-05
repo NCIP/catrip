@@ -97,6 +97,10 @@ public class JUnitXmlParser
 				testSuites.get(testSuites.size()-1).testCases.add(testCase);
 			} else if (qName.equals("failure") || qName.equals("error")) {
 				TestSuite suite = testSuites.get(testSuites.size()-1);
+				if (suite.testCases.size() == 0) {
+					System.out.println("Error but no test cases for " + suite.name);
+					return;
+				}
 				TestCase test = suite.testCases.get(suite.testCases.size()-1);
 				test.failure = new TestFailure();
 				test.failure.isError = qName.equals("error");
