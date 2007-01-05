@@ -5,10 +5,12 @@ import gov.nih.nci.cagrid.data.cql.tools.CQLBuilder;
 import junit.framework.TestCase;
 
 import org.jdom.Element;
-/**
- * Generate multiple CQLs , to get attributes from other objects 
- */
 
+/**
+ * Generate multiple CQLs to get attributes from other objects
+ * @testType unit
+ * @author Srini Akkala 
+ */
 public class CQLBuilderTest extends TestCase {
     public CQLBuilderTest(String sTestName) {
         super(sTestName);
