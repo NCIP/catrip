@@ -1,4 +1,4 @@
-package src.gov.nih.nci.catrip.cagrid.catripquery;
+package gov.nih.nci.catrip.cagrid.catripquery;
 
 
 import java.util.ArrayList;

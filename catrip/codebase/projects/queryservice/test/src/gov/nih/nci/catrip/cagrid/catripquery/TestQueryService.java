@@ -1,4 +1,4 @@
-package src.gov.nih.nci.catrip.cagrid.catripquery;
+package gov.nih.nci.catrip.cagrid.catripquery;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +13,8 @@ import org.hibernate.Session;
 import org.xml.sax.InputSource;
 
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
-import gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery;
+import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
+
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import junit.framework.TestCase;
 
@@ -23,7 +24,7 @@ public class TestQueryService extends TestCase {
 	private String qryFile;
 	private String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
 	private String serviceURI = "";
-	CaTripQuery caTripQuery;
+	CatripQuery caTripQuery;
 	DCQLQuery dcql ;
 	gov.nih.nci.cagrid.dcql.Object to;
 	
@@ -49,7 +50,7 @@ public class TestQueryService extends TestCase {
 		}
 
 		client = new QueryServiceClient(serviceURI);
-		caTripQuery = new CaTripQuery();
+		caTripQuery = new CatripQuery();
 		caTripQuery.setFirstName("DEEPI");
 		dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),DCQLQuery.class);
 		to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
@@ -58,7 +59,7 @@ public class TestQueryService extends TestCase {
 		caTripQuery.setLastName("last");
 		caTripQuery.setInstance("instance");
 		caTripQuery.setSource("source");
-		caTripQuery.setTargetObject (to);
+		//caTripQuery.setTargetObject (to);
 	}
 
     protected void tearDown() throws Exception {
@@ -110,7 +111,7 @@ public class TestQueryService extends TestCase {
 
 		HibernateUtil.closeSession();
 		if (result.size() != 0) {
-			gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery obj = (gov.nih.nci.catrip.cagrid.catripquery.CaTripQuery) result.get(0);
+			gov.nih.nci.catrip.cagrid.catripquery.CatripQuery obj = (gov.nih.nci.catrip.cagrid.catripquery.CatripQuery) result.get(0);
 			maxId = obj.getId();
 		}
 		return  maxId;
