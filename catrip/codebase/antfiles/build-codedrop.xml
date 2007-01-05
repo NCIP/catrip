@@ -8,7 +8,7 @@
 	<target name="codedrop" depends="prepare">
 		<property name="cvs.rsh" location="c:/putty/ssh_cagrid.bat"/>
 		<property name="temp.dir" location="../temp"/>
-		<property name="app.name" value="c3prv2"/>
+		<property name="app.name" value="catrip"/>
 
 		<tempfile property="temp.dir" suffix="dir"/>
 		<delete file="${temp.dir}"/>
