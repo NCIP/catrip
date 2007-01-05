@@ -27,7 +27,6 @@ import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.stubs.QueryServicePortType;
 import gov.nih.nci.catrip.cagrid.catripquery.stubs.service.QueryServiceAddressingLocator;
 import gov.nih.nci.catrip.cagrid.catripquery.common.QueryServiceI;
-import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlquery.Predicate;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
@@ -148,7 +147,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 					CQLQuery cqlQuery = new CQLQuery();
 
 					gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
-					target.setName(CatripQuery.class.getName());
+					target.setName(gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb.class.getName());
 					//target.setAttribute(new Attribute("id",Predicate.LESS_THAN,"3000"));
 					cqlQuery.setTarget(target);
 					System.out.println("target is null? " + (target == null));
