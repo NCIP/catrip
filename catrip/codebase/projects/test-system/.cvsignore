@@ -1,3 +1,6 @@
 build
 ext
 bin
+grouper_event.log
+grouper_debug.log
+grouper_error.log
