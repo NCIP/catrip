@@ -9,6 +9,12 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+/**
+ * This is a unit test to test the functionality of XMI2Model, which is the main entry point of 
+ * the application.
+ * @author Patrick McConnell
+ * @testType unit
+ */
 public class XMI2ModelTest
 	extends AbstractBaseTest
 {

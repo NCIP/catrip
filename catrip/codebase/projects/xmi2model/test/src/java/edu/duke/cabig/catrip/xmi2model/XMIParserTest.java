@@ -10,6 +10,12 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
 
+/**
+ * This is a unit test to test the functionality of XMIParser, which parses the XMI file into an 
+ * internal object representation.
+ * @author Patrick McConnell
+ * @testType unit
+ */
 public class XMIParserTest
 	extends AbstractBaseTest
 {

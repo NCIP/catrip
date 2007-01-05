@@ -18,6 +18,12 @@ import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import junit.framework.TestCase;
 
+/**
+ * This system test validates an existing Query Sharing service by submitting CQL to it and 
+ * calling the other methods on the service.
+ * @author Patrick McConnell
+ * @testType system
+ */
 public class TestQueryService extends TestCase {
     private Properties properties = new Properties();
 	private QueryServiceClient client;
@@ -66,10 +72,18 @@ public class TestQueryService extends TestCase {
         super.tearDown();
     }
     
+    /**
+     * Tests querying of the service
+     * @throws Exception
+     */
 	public void testQuery() throws Exception{
 		
 	}
 	
+	/**
+	 * Tests inserting a new object
+	 * @throws Exception
+	 */
 	public void testInsert() throws Exception{
 		System.out.println("insert");
           				
@@ -83,6 +97,10 @@ public class TestQueryService extends TestCase {
 		}
 	}
 	
+	/**
+	 * Tests updating an object
+	 * @throws Exception
+	 */
 	public void testUpdate() throws Exception{
 		System.out.println("update");
 		caTripQuery.setId(1688);
@@ -96,6 +114,10 @@ public class TestQueryService extends TestCase {
 		}
 	}
 	
+	/**
+	 * Tests deleting an object
+	 * @throws Exception
+	 */
 	public void testDelete() throws Exception{
 		System.out.println("delete");
 		client.delete(1688);

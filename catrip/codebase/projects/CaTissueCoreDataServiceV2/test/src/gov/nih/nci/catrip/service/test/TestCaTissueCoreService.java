@@ -15,6 +15,11 @@ import junit.framework.TestCase;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
 
+/**
+ * This system test validates an existing caTissue CORE service by submitting CQL to it.
+ * @author Patrick McConnell
+ * @testType system
+ */
 public class TestCaTissueCoreService extends TestCase {
 
     private static String url = "";
@@ -64,6 +69,11 @@ public class TestCaTissueCoreService extends TestCase {
          }
          System.out.println("---------------------");
     }
+    
+    /**
+     * Test getting participants
+     * @throws Exception
+     */
     public void testGetParticipants() throws Exception {
         getParticipants("Participants.xml");
     }

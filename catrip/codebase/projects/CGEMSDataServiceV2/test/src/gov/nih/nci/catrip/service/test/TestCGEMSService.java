@@ -15,6 +15,11 @@ import junit.framework.TestCase;
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
 
+/**
+ * This system test validates an existing CGEMS service by submitting CQL to it.
+ * @author Patrick McConnell
+ * @testType system
+ */
 public class TestCGEMSService extends TestCase {
 //
     private static String url = "";
@@ -64,14 +69,27 @@ public class TestCGEMSService extends TestCase {
          }
          System.out.println("---------------------");
     }
+    
+    /**
+     * Test getting participants
+     * @throws Exception
+     */
     public void testGetParticipants() throws Exception {
         getParticipants("Participants.xml");
     }
 
+    /**
+     * Test getting participants based on a specimen filter
+     * @throws Exception
+     */
     public void testGetParticipantWithFilterOnSpecimen() throws Exception {
         getParticipants("ParticipantWithFilterOnSpecimen.xml");
     }
 
+    /**
+     * Test participant based on a filter on the SNP analysis group
+     * @throws Exception
+     */
     public void testGetParticipantWithFilterOnSNPAnalysisGroup() throws Exception {
         getParticipants("ParticipantWithFilterOnSNPAnalysisGroup.xml");
     }

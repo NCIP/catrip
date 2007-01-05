@@ -16,6 +16,11 @@ import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
 import edu.duke.cabig.tumorregistry.domain.Patient;
 
+/**
+ * This system test validates an existing Tumor Registry service by submitting CQL to it.
+ * @author Patrick McConnell
+ * @testType system
+ */
 public class TestTumorRegistryService extends TestCase {
 
     private static String url = "";
@@ -66,6 +71,11 @@ public class TestTumorRegistryService extends TestCase {
          }
          System.out.println("---------------------");
     }
+    
+    /**
+     * Test getting participants
+     * @throws Exception
+     */
     public void testGetParticipants() throws Exception {
         getParticipants("Participants.xml");
     }
