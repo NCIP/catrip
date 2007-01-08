@@ -139,7 +139,7 @@ public class ResultObjectAssembler {
         }
         HQLCriteria hqlCriteria = new HQLCriteria(hql);
         
-        Session session = HibernateUtil.currentSession();
+        Session session = HibernateUtil.currentSession("","","");
         List resultObjects = session.createQuery(hqlCriteria.getHqlString()).list(); 
         HibernateUtil.closeSession();
         return resultObjects;                
