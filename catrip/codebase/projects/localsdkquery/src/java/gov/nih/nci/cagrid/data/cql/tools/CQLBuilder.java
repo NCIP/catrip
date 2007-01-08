@@ -64,40 +64,7 @@ public class CQLBuilder {
         return groupEle;
     }
 
-    private boolean checkFiled(String property, Class objectType){
-        Field[] declaredFields = objectType.getDeclaredFields();
-        Field field = null;
-        boolean found = false;
-        for (int i=0; i<declaredFields.length; i++) {
-            field = (Field)declaredFields[i];
-            if (property.equals(field.getName())) {
-                found = true;
-                break;
-            }
-            
-        }
-        return found;
-    }
 
-    private Class getClassToCheck(String property , Class cls) {
-        boolean found = checkFiled(property,cls); 
-        
-        if(!found){
-            Class superClass  = cls.getSuperclass();
-            while (superClass != null) {
-                found = checkFiled(property,superClass);  
-                
-                if (found) {
-                    cls = superClass;
-                    break;
-                } else {
-                    superClass = superClass.getSuperclass();
-                }
-            }
-        }  
-        
-        return cls;
-    }
     
     private String getRoleName(String sourceObj,String targetObj){
         String roleName = "";
@@ -112,12 +79,12 @@ public class CQLBuilder {
             String className = classTokens[classTokens.length-1];            
             roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
             
-            sourceClass = getClassToCheck(roleName,sourceClass);
-            found = checkFiled(roleName,sourceClass);
+            sourceClass = ToolUtil.getClassToCheck(roleName,sourceClass);
+            found = ToolUtil.checkFiled(roleName,sourceClass);
             if (!found) {
                 roleName = roleName+"Collection";
-                sourceClass = getClassToCheck(roleName,sourceClass);
-                found = checkFiled(roleName,sourceClass);
+                sourceClass = ToolUtil.getClassToCheck(roleName,sourceClass);
+                found = ToolUtil.checkFiled(roleName,sourceClass);
             }
             
             if (!found) {
@@ -128,12 +95,12 @@ public class CQLBuilder {
                     classTokens = targetClass.getName().split("\\.");
                     className = classTokens[classTokens.length-1];
                     roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
-                    targetClass = getClassToCheck(roleName,sourceClass);
-                    found = checkFiled(roleName,targetClass);
+                    targetClass = ToolUtil.getClassToCheck(roleName,sourceClass);
+                    found = ToolUtil.checkFiled(roleName,targetClass);
                     if (!found) {
                         roleName = roleName+"Collection";
-                        targetClass = getClassToCheck(roleName,sourceClass);
-                        found = checkFiled(roleName,targetClass);
+                        targetClass = ToolUtil.getClassToCheck(roleName,sourceClass);
+                        found = ToolUtil.checkFiled(roleName,targetClass);
                     }             
                     if (found) {
                         break;
@@ -155,7 +122,7 @@ public class CQLBuilder {
         return roleName;
     }
     public String buildCQL(int level) {
-        loadDocument("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\demo-cae.xml");
+        loadDocument("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\test2.xml");
         Element root = new Element("CQLQuery");
         Element targetEle = new Element("Target");        
 
