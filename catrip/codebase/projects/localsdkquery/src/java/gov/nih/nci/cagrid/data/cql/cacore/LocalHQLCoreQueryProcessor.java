@@ -45,7 +45,7 @@ import org.jdom.xpath.XPath;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.5 2007-01-02 02:42:21 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.6 2007-01-08 19:53:26 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
@@ -209,8 +209,8 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		// IF CLIENT ASKS FOR ANT ATTRIBUTES FROM OTHER OBJECTS ...
                 // BUILD NECESSARY CQLS .. 
                  
-		 ResultObjectAssembler assembler = new ResultObjectAssembler();
-                 targetObjects = assembler.buildResultObjects(targetObjects,query);
+		// ResultObjectAssembler assembler = new ResultObjectAssembler();
+                // targetObjects = assembler.buildResultObjects(targetObjects,query);
 
 
 
