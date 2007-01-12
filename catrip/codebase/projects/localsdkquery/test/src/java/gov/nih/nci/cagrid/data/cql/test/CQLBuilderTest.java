@@ -29,7 +29,7 @@ public class CQLBuilderTest extends TestCase {
      */
     public void testCQLGeneration() throws Exception{
         
-       
+       /*
         
         Long t1 = System.currentTimeMillis(); 
         CQLBuilder builder = new CQLBuilder();
@@ -47,7 +47,8 @@ public class CQLBuilderTest extends TestCase {
             c++;
         }
         Long t2 = System.currentTimeMillis(); 
-        System.out.println("Time Taken " + (t2-t1)/1000);        
+        System.out.println("Time Taken " + (t2-t1)/1000);     
+*/   
     }
     
     
