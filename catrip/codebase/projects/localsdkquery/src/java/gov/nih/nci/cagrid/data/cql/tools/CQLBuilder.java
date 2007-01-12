@@ -1,46 +1,43 @@
 package gov.nih.nci.cagrid.data.cql.tools;
 
-import java.io.File;
+import gov.nih.nci.cagrid.cqlquery.Association;
+import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+
+import java.io.CharArrayReader;
+import java.io.FileInputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 
-import java.lang.reflect.Field;
-
 import java.util.List;
+
+import org.globus.wsrf.encoding.ObjectDeserializer;
+import org.globus.wsrf.encoding.ObjectSerializer;
 
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import org.xml.sax.InputSource;
+
 
 public class CQLBuilder {
-    public CQLBuilder() {
-    }
-    private Document doc = null;
+    CQLQuery cqlQuery = null;
+    public CQLBuilder(CQLQuery cqlQuery) {
+            this.cqlQuery = cqlQuery;
 
-    public void loadDocument(String filename){
-        try {
-            SAXBuilder builder = new SAXBuilder();
-            doc = builder.build(new File(filename));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     
-    public void setDocument (Document doc){
-        this.doc=doc;
-    }
-    public Document getDocument (){
-        return doc;
-    }  
+    private static final Namespace nameSpace = Namespace.getNamespace("ns1","http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery");
+  
     private Element buildAssociationAndAttachPKAttribute(String name,String roleName){
-        Element assocEle = new Element("Association");
+        Element assocEle = new Element("Association",nameSpace);
         assocEle.setAttribute("name",name);
         assocEle.setAttribute("roleName",roleName);      
         
-        Element attrEle = new Element("Attribute");
+        Element attrEle = new Element("Attribute",nameSpace);
         attrEle.setAttribute("name","id");
         attrEle.setAttribute("value",name+"_ID");
         attrEle.setAttribute("predicate","EQUAL_TO");  
@@ -50,26 +47,22 @@ public class CQLBuilder {
     }
     
     private Element buildGroup(Element e1, Element e2){
-        Element groupEle = new Element("Group");
-        groupEle.setAttribute("logicRelation","AND");
-        
+        Element groupEle = new Element("Group",nameSpace);
+        groupEle.setAttribute("logicRelation","AND");        
         if (e1 != null) {
             groupEle.addContent(e1.detach());
-        }
-        
+        }        
         if (e2 != null) {
             groupEle.addContent(e2.detach());
-        }
-        
+        }        
         return groupEle;
     }
 
 
     
-    private String getRoleName(String sourceObj,String targetObj){
+    private String getRoleName(String sourceObj,String targetObj) {
         String roleName = "";
-        try {
-           
+        try {           
             // check this class or super class 
             Class sourceClass =Class.forName(sourceObj);
            
@@ -122,37 +115,51 @@ public class CQLBuilder {
         return roleName;
     }
     public String buildCQL(int level) {
-        loadDocument("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\test2.xml");
-        Element root = new Element("CQLQuery");
-        Element targetEle = new Element("Target");        
+        Document doc = buildDocument(cqlQuery);
+        Element root = new Element("CQLQuery",nameSpace);
+        Element targetEle = new Element("Target",nameSpace);        
 
-        //String associationPath = "/CQLQuery/Target";
-        Element te = doc.getRootElement().getChild("Target");
-        
+        Element te = doc.getRootElement().getChild("Target",nameSpace);
         //first Associtaion
          for (int i=1;i<=level;i++){
-             te = te.getChild("Association");
-             //associationPath = associationPath+"/Association";
+             te = te.getChild("Association",nameSpace);
          }
-        //Element te = getNodeForXpath(associationPath);
         
         String targetObjectName = te.getAttributeValue("name");
         targetEle.setAttribute("name",targetObjectName);     
         
+        //check for return Attributes ..
+        Element retAttr = te.getChild("ReturnAttributes",nameSpace);
+        // Build Query modifiers
+         Element qm = new Element("QueryModifier",nameSpace);
+         qm.setAttribute("countOnly","false");
+
+        Element ra = new Element("AttributeNames",nameSpace);
+        ra.setText("id");
+        qm.addContent(ra);
+            
+        if (retAttr != null ) {
+            List retAttrList = retAttr.getChildren("ReturnAttribute",nameSpace);
+            
+            for (int j=0; j < retAttrList.size();j++){
+                Element e = (Element)retAttrList.get(j);
+                ra = new Element("AttributeNames",nameSpace);
+                ra.setText(e.getText());
+                qm.addContent(ra);
+            }  
+            
+        }   
+       
         //get attributes 
-        List attrList = te.getChildren("Attribute");
+        List attrList = te.getChildren("Attribute",nameSpace);
 
         for (int j=0; j < attrList.size();j++){
             Element e = (Element)attrList.get(j);
             targetEle.addContent(e.detach());
         }
         
-        
-        Element e = te.getParentElement();
-        
+        Element e = te.getParentElement();        
         Element e1 = buildAssociationAndAttachPKAttribute(e.getAttributeValue("name"),getRoleName(targetObjectName,e.getAttributeValue("name")));
-        //System.out.println(e1.getAttributeValue("name"));
-        
         // make all the parents as childs  
         // this works only in bi directional scenario 
         Element x = null;
@@ -161,7 +168,6 @@ public class CQLBuilder {
             Element pe = e.getParentElement();
             if (!pe.getName().equals("CQLQuery")) {
                 Element ae = buildAssociationAndAttachPKAttribute(pe.getAttributeValue("name"),getRoleName(e.getAttributeValue("name"),pe.getAttributeValue("name")));
-
                 if (c == 1 ) {
                     x=ae;
                 } else {
@@ -173,9 +179,7 @@ public class CQLBuilder {
         }
         if (x != null) e1.addContent(x);
         
-        Element e2 = te.getChild("Association");
-        //Element group = buildGroup(e1,e2);        
-        //targetEle.addContent(group);
+        Element e2 = te.getChild("Association",nameSpace);
 
         if (e1 != null) {
             targetEle.addContent(e1.detach());
@@ -187,6 +191,7 @@ public class CQLBuilder {
         
        targetEle=renderGroups(targetEle);
        root.addContent(targetEle);
+       root.addContent(qm);
        Document docOut = new Document(root);         
        Writer s = new  StringWriter();  
        
@@ -195,256 +200,103 @@ public class CQLBuilder {
             outputter.output(docOut , s);            
        } catch (Exception ex){
             ex.printStackTrace();
-       } 
-        
+       }         
        return s.toString();        
     }
 
     private Element buildAssociationGroup(Element ele) {
-        List l = ele.getChildren("Association");
+        List l = ele.getChildren("Association",nameSpace);
         Element group = buildGroup((Element)l.get(0),(Element)l.get(1));
         ele.addContent(group);
-        ele.removeChildren("Association");    
-        
+        ele.removeChildren("Association",nameSpace);            
         return ele;
     }
     private Element buildAssociationAttributeGroup(Element ele) {
-        Element group = buildGroup(ele.getChild("Association"),ele.getChild("Attribute"));
+        Element group = buildGroup(ele.getChild("Association",nameSpace),ele.getChild("Attribute",nameSpace));
         ele.addContent(group);
-        ele.removeChild("Association");
-        ele.removeChild("Attribute"); 
-        
+        ele.removeChild("Association",nameSpace);
+        ele.removeChild("Attribute",nameSpace);         
         return ele;
     }    
     
-    private Element renderGroups(Element targetEle){
-        
-        if (targetEle.getChildren("Association").size() >=2 ) {
+    private Element renderGroups(Element targetEle){        
+        if (targetEle.getChildren("Association",nameSpace).size() >=2 ) {
             buildAssociationGroup(targetEle);
         }
 
-        if (targetEle.getChildren("Association").size() > 0 && targetEle.getChildren("Attribute").size() >0 ) {
+        if (targetEle.getChildren("Association",nameSpace).size() > 0 && targetEle.getChildren("Attribute",nameSpace).size() >0 ) {
             buildAssociationAttributeGroup(targetEle);
-        }
-        
+        }        
         // chech for associations 
-        Element assoc = targetEle.getChild("Group").getChild("Association");
+        Element assoc = targetEle.getChild("Group",nameSpace).getChild("Association",nameSpace);
         while (assoc != null) {
-            if (assoc.getChild("Association") != null && assoc.getChild("Attribute") !=null ) {
+            if (assoc.getChild("Association",nameSpace) != null && assoc.getChild("Attribute",nameSpace) !=null ) {
                 assoc = buildAssociationAttributeGroup(assoc);     
-                //targetEle.getChild("Group").setContent(assoc);
             }  
             if (assoc.getChild("Group") != null ) {
-                assoc = assoc.getChild("Group").getChild("Association");
+                assoc = assoc.getChild("Group",nameSpace).getChild("Association",nameSpace);
             } else {
                 assoc = null;
-            }
-            
+            }            
         }
-
         return targetEle;
     }
 
-    private void run(){
-        System.out.println("Executing ....");
-        Long t1 = System.currentTimeMillis(); 
-
-        loadDocument("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\demo-cae.xml");
-     //   Element ell = getNodeForXpath("/CQLQuery/Target");
-        Element ell = doc.getRootElement().getChild("Target");
-
-        int c = 1;
-        
-        Element childAssoc = ell.getChild("Association");
-        while (childAssoc != null ) {
-            childAssoc = childAssoc.getChild("Association");
-            System.out.println(buildCQL(c));
-            c++;
-        }
-        Long t2 = System.currentTimeMillis(); 
-        System.out.println("Time Taken " + (t2-t1)/1000);        
-    }
-    public static void main(String[] args) {
-        CQLBuilder c = new CQLBuilder();
-        c.run();
-
-    }
-    
-    
-    //check for association 
-
-    
-    /*
-    String cql= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + 
-    "<CQLQuery xmlns=\"http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery\n" + 
-    "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\data\\schema\\1_gov.nih.nci.cagrid.CQLQuery.xsd\">\n" + 
-    "       <Target name=\"edu.duke.catrip.cae.domain.general.Participant\">\n" + 
-    "               <Association name=\"edu.pitt.cabig.cae.domain.general.AnnotationEventParameters\" roleName=\"annotationEventParametersCollection\">\n" + 
-    "                       <Association name=\"edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade\" roleName=\"annotationSetCollection\">\n" + 
-    "                               <Attribute name=\"totalScore\" predicate=\"GREATER_THAN\" value=\"5\"/>\n" + 
-    //  "                             <ReturnAttributes>\n" +
-    //  "                                             <ReturnAttribute>totalScore</ReturnAttribute>\n" +
-    //  "                             </ReturnAttributes>\n" +
-    "                       </Association>\n" + 
-    "               </Association>\n" + 
-    "       </Target>\n" + 
-    "</CQLQuery>\n";
-    Document doc = null;
-    try {
-        SAXBuilder builder = new SAXBuilder();
-        doc = builder.build(new File("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\demo-cae.xml"));
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    
-    
-    StringBuffer buf = new StringBuffer(cql);
-
-    char[] chars = new char[buf.length()];
-    buf.getChars(0, chars.length, chars, 0);
-    
-    CharArrayReader car = new CharArrayReader(chars);
-    InputSource source = new InputSource(car);
-     java.lang.Object obj = null ;
-
-    try {
-        obj = ObjectDeserializer.deserialize(source,CQLQuery.class);
-    } catch (DeserializationException e) {
-        e.printStackTrace();
-    }
-    CQLBuilder cQLBuilder = new CQLBuilder();
-    CQLQuery cqlQuery = cQLBuilder.getCQL((CQLQuery)obj,"edu.pitt.cabig.cae.domain.general.AnnotationEventParameters","edu.duke.catrip.cae.domain.general.Participant");
-    print(cqlQuery);
-    cqlQuery = cQLBuilder.getCQL((CQLQuery)obj,"edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade","edu.pitt.cabig.cae.domain.general.AnnotationEventParameters");
-    print(cqlQuery);
-    
-    */         
-         /*
-         Element firstAssoc = targetEle.getChild("Association");
-         
-         if (firstAssoc.getChild("Association") != null && firstAssoc.getChild("Attribute") !=null ) {
-             Element group = buildGroup(firstAssoc.getChild("Association"),firstAssoc.getChild("Attribute"));
-             firstAssoc.addContent(group);
-             firstAssoc.removeChild("Association");
-             firstAssoc.removeChild("Attribute");
-         } else {
-             return targetEle;
-         }
-         targetEle.setContent(firstAssoc);
-         */
-         
-   /* 
-    private static void print(CQLQuery cqlQuery){
-        
-        Writer w = new StringWriter();
-           
-           javax.xml.namespace.QName q= new javax.xml.namespace.QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
-
+    private Document buildDocument(CQLQuery query) {        
+        Writer w = new StringWriter();        
+        Document doc = null;
         try {
-            ObjectSerializer.serialize(w,cqlQuery,q);
-        } catch (SerializationException e) {
+            javax.xml.namespace.QName q= new javax.xml.namespace.QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
+            ObjectSerializer.serialize(w,query,q);
+            SAXBuilder builder = new SAXBuilder();
+            
+            String qry = w.toString();
+            StringBuffer buf = new StringBuffer(qry);
+
+            char[] chars = new char[buf.length()];
+            buf.getChars(0, chars.length, chars, 0);
+            
+            CharArrayReader car = new CharArrayReader(chars);
+            InputSource source = new InputSource(car);            
+            doc = builder.build(source);    
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(w);
+
+        return doc;
     }
-    */
+    public static void main(String[] args) {
+        String queryDir = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\";
+        String qryFile = "demo-cae.xml";
+        java.lang.Object obj = null;
+
+        try {
+            obj = ObjectDeserializer.deserialize(new InputSource(new FileInputStream(queryDir+qryFile)),CQLQuery.class);
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+        CQLBuilder cb = new CQLBuilder((CQLQuery)obj);   
+        System.out.println("Executing ....");
+        Long t1 = System.currentTimeMillis(); 
+        
+        gov.nih.nci.cagrid.cqlquery.Object target = cb.cqlQuery.getTarget();
+        
+        int c = 1;
+        
+        Association childAssoc = target.getAssociation();
+        
+        while (childAssoc != null ) {            
+            System.out.println(cb.buildCQL(c));
+            childAssoc = childAssoc.getAssociation();
+            c++;
+        }
+        
+        Long t2 = System.currentTimeMillis(); 
+        System.out.println("Time Taken " + (t2-t1)/1000);    
+        
+    }
+    
+
 }
-
-
-    /*
-     public CQLQuery getCQL(CQLQuery cqlQryIn,String nextTarget, String currentTarget) {
-         Association immediateAssociation = cqlQryIn.getTarget().getAssociation();        
-         boolean found = false;
-         
-         while (!found) {
-             if (immediateAssociation.getName().equals(nextTarget)) {
-                 found = true;
-             } else {
-                 immediateAssociation = immediateAssociation.getAssociation();
-             }
-         }
-         
-         gov.nih.nci.cagrid.cqlquery.Object targetObject = buildTargetObject(immediateAssociation,currentTarget);
-         
-         CQLQuery cqlQueryOut = new CQLQuery();
-         cqlQueryOut.setTarget(targetObject);
-         
-         return cqlQueryOut;
-         
-     }
-     */
-     /*
-     private gov.nih.nci.cagrid.cqlquery.Object buildTargetObject(Association associationIn,String currentTarget){
-         gov.nih.nci.cagrid.cqlquery.Object targetObject = new gov.nih.nci.cagrid.cqlquery.Object();
-         targetObject.setName(associationIn.getName());
-         
-         targetObject.setAttribute(associationIn.getAttribute());
-         
-         // the target objcet should be the association now 
-         Association currentTargetAsAssociation = new Association();
-         currentTargetAsAssociation.setName(currentTarget);
-         currentTargetAsAssociation.setRoleName("imaginary role");
-         
-         //set id attribute 
-         Attribute idAttr = new Attribute ("ID1",Predicate.EQUAL_TO, "VALUE1");
-         currentTargetAsAssociation.setAttribute(idAttr);
-         
-         // Get associations of the InAssocation (which became target object )
-          Association association = associationIn.getAssociation();
-          
-          //add to group 
-          Group group = new Group();
-          group.setLogicRelation(LogicalOperator.AND);
-          Association[] assocationsToAdd = new Association[2]; 
-          assocationsToAdd[0] = currentTargetAsAssociation;
-          assocationsToAdd[1] = association;
-         
-          group.setAssociation(assocationsToAdd);
-          
-          targetObject.setGroup(group);
-         
-         return targetObject;
-     }
-     */
-     
-      /*
-          public Element getNodeForXpath(String xpathStr){
-              XPath xpath;
-              Object node=null;
-              try {
-                  xpath = XPath.newInstance(xpathStr);
-                  node = xpath.selectSingleNode(doc);
-              } catch (JDOMException e) {
-                  e.printStackTrace();
-              }
-              return (Element)node;
-          }
-
-          private Element getParent(String xpath) {
-              Element e = getNodeForXpath(xpath);
-              return e.getParentElement();
-          }
-
-          private Element getChild(String xpath) {
-              Element e = getNodeForXpath(xpath);
-              return e.getChild("Association");
-          }
-       */ 
-       
-       /*
-           private void printXML(Document doc1){
-               try{
-               XMLOutputter outputter =   new XMLOutputter(Format.getPrettyFormat());
-               
-               Writer s = new  StringWriter();
-               
-               
-               outputter.output(doc1 , s);
-               
-               System.out.println(s.toString());
-               }
-               catch (java.io.IOException e){
-                   e.printStackTrace();
-               }      
-           }
-       */
+    
+    
