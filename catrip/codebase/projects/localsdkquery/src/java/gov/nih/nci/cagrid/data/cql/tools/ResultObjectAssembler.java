@@ -44,9 +44,9 @@ public class ResultObjectAssembler extends AbstractResultObjectAssembler {
          String  roleName = targetObjectEle.getAssociation().getRoleName();
          String assocClassName = targetObjectEle.getAssociation().getName();
             String returnAttrbs[] = null;
-   //-------SRINI UNCOMMENT          if(targetObjectEle.getAssociation().getReturnAttributes() != null ) {
-   //-------SRINI UNCOMMENT               returnAttrbs = targetObjectEle.getAssociation().getReturnAttributes().getReturnAttribute();
-   //-------SRINI UNCOMMENT           }
+           if(targetObjectEle.getAssociation().getReturnAttributes() != null ) {
+               returnAttrbs = targetObjectEle.getAssociation().getReturnAttributes().getReturnAttribute();
+         }
 
             try {
 

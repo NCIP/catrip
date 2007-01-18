@@ -23,7 +23,7 @@ import java.util.Map;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created Jul 19, 2006
- * @version $Id: LocalCQL2HQL.java,v 1.4 2007-01-18 13:42:53 srakkala Exp $
+ * @version $Id: LocalCQL2HQL.java,v 1.5 2007-01-18 15:50:21 srakkala Exp $
  */
 public class LocalCQL2HQL {
 	public static final String TARGET_ALIAS = "xxTargetAliasxx";
@@ -410,11 +410,11 @@ public class LocalCQL2HQL {
 		hql.append(")");
 
                 //
-    //SRINI UNCOMENT            if (!returnAttributes) {
-    //SRINI UNCOMENT                if (assoc.getReturnAttributes() != null ) {
-    //SRINI UNCOMENT                    returnAttributes = true;
-    //SRINI UNCOMENT                }
-     //SRINI UNCOMENT           }
+                if (!returnAttributes) {
+                    if (assoc.getReturnAttributes() != null ) {
+                       returnAttributes = true;
+                   }
+                }
 
 
 	}

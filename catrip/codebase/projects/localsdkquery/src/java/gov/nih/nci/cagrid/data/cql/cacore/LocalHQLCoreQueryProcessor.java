@@ -1,17 +1,23 @@
 package gov.nih.nci.cagrid.data.cql.cacore;
 
+import edu.duke.catrip.cae.domain.general.Participant;
+
 import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlquery.QueryModifier;
+import gov.nih.nci.cagrid.cqlquery.ReturnAttributes;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.MalformedQueryException;
 import gov.nih.nci.cagrid.data.QueryProcessingException;
 import gov.nih.nci.cagrid.data.cql.LazyCQLQueryProcessor;
+import gov.nih.nci.cagrid.data.cql.tools.ResultObjectAssembler;
+import gov.nih.nci.cagrid.data.cql.tools.ResultObjectAssemblerNlevels;
+import gov.nih.nci.cagrid.data.cql.tools.ToolUtil;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsUtil;
 import gov.nih.nci.common.util.HQLCriteria;
-import gov.nih.nci.cagrid.data.cql.tools.ResultObjectAssembler;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
 
 import java.lang.reflect.Field;
@@ -45,7 +51,7 @@ import org.jdom.xpath.XPath;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.6 2007-01-08 19:53:26 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.7 2007-01-18 15:50:21 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
@@ -63,63 +69,73 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	}
 
 
-	private InputStream getWsdd() throws Exception {
-		if (getConfiguredWsddStream() != null) {
-			if (wsddContents == null) {
-				wsddContents = Utils.inputStreamToStringBuffer(getConfiguredWsddStream());
-			}
-			return new ByteArrayInputStream(wsddContents.toString().getBytes());
-		} else {
-			return null;
-		}
-	}
+    private InputStream getWsdd() throws Exception {
+           
+            if (getConfiguredWsddStream() != null) {
+                    if (wsddContents == null) {
+                            wsddContents = Utils.inputStreamToStringBuffer(getConfiguredWsddStream());
+                    }
+                    return new ByteArrayInputStream(wsddContents.toString().getBytes());
+            } else {
+                    return null;
+            }
+            
+       // wsddContents = Utils.inputStreamToStringBuffer(new FileInputStream("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\CAEDataServiceV2\\server-config.wsdd"));
+       // System.out.println(wsddContents.toString());
+       // return new ByteArrayInputStream(wsddContents.toString().getBytes());
+    }
 
-
+        private CQLQueryResults processResults(CQLQuery cqlQuery,List coreResultsList) 
+                    throws MalformedQueryException, QueryProcessingException {
+            InputStream configStream = null;
+            try {
+                    configStream = getWsdd();
+            } catch (Exception ex) {
+                    throw new QueryProcessingException(ex);
+            }
+            CQLQueryResults results = null;
+            // decide on type of results
+            boolean objectResults = cqlQuery.getQueryModifier() == null ||
+                    (!cqlQuery.getQueryModifier().isCountOnly()
+                            && cqlQuery.getQueryModifier().getAttributeNames() == null
+                            && cqlQuery.getQueryModifier().getDistinctAttribute() == null);
+            if (objectResults) {
+                    results = CQLQueryResultsUtil.createQueryResults(
+                            coreResultsList, cqlQuery.getTarget().getName(), configStream);
+            } else {
+                    QueryModifier mod = cqlQuery.getQueryModifier();
+                    if (mod.isCountOnly()) {
+                            // parse the value as a string to long.  This covers returning
+                            // integers, shorts, and longs
+                            Long val = Long.valueOf(coreResultsList.get(0).toString());
+                            results = CQLQueryResultsUtil.createCountQueryResults(
+                                    val.longValue(), cqlQuery.getTarget().getName());
+                    } else {
+                            // attributes distinct or otherwise
+                            String[] names = null;
+                            if (mod.getDistinctAttribute() != null) {
+                                    names = new String[] {mod.getDistinctAttribute()};
+                            } else {
+                                    names = mod.getAttributeNames();
+                            }
+                            results = CQLQueryResultsUtil.createAttributeQueryResults(
+                                    coreResultsList, cqlQuery.getTarget().getName(), names);
+                    }
+            }
+            return results;
+        }
 	public CQLQueryResults processQuery(CQLQuery cqlQuery)
 		throws MalformedQueryException, QueryProcessingException {
-		InputStream configStream = null;
-		try {
-			configStream = getWsdd();
-		} catch (Exception ex) {
-			throw new QueryProcessingException(ex);
-		}
-		List coreResultsList = queryCoreService(cqlQuery);
-		CQLQueryResults results = null;
-		// decide on type of results
-		boolean objectResults = cqlQuery.getQueryModifier() == null ||
-			(!cqlQuery.getQueryModifier().isCountOnly()
-				&& cqlQuery.getQueryModifier().getAttributeNames() == null
-				&& cqlQuery.getQueryModifier().getDistinctAttribute() == null);
-		if (objectResults) {
-			results = CQLQueryResultsUtil.createQueryResults(
-				coreResultsList, cqlQuery.getTarget().getName(), configStream);
-		} else {
-			QueryModifier mod = cqlQuery.getQueryModifier();
-			if (mod.isCountOnly()) {
-				// parse the value as a string to long.  This covers returning
-				// integers, shorts, and longs
-				Long val = Long.valueOf(coreResultsList.get(0).toString());
-				results = CQLQueryResultsUtil.createCountQueryResults(
-					val.longValue(), cqlQuery.getTarget().getName());
-			} else {
-				// attributes distinct or otherwise
-				String[] names = null;
-				if (mod.getDistinctAttribute() != null) {
-					names = new String[] {mod.getDistinctAttribute()};
-				} else {
-					names = mod.getAttributeNames();
-				}
-				results = CQLQueryResultsUtil.createAttributeQueryResults(
-					coreResultsList, cqlQuery.getTarget().getName(), names);
-			}
-		}
+
+		CQLQueryResults results = queryCoreService(cqlQuery);
+	    
 		return results;
 	}
 
 
 	public Iterator processQueryLazy(CQLQuery cqlQuery)
 		throws MalformedQueryException, QueryProcessingException {
-		List coreResultsList = queryCoreService(cqlQuery);
+		List coreResultsList = null;
 		return coreResultsList.iterator();
 	}
 
@@ -136,9 +152,9 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
         return doc;
     }
 
-	private List queryCoreService(CQLQuery query)
+	private CQLQueryResults queryCoreService(CQLQuery query)
 		throws MalformedQueryException, QueryProcessingException {
-
+                CQLQueryResults results = null;
 		String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
 		//String hibernateCfgFile ="hibernate.cfg.xml";
                 String xpathStr = "/hibernate-configuration/session-factory/property";
@@ -160,27 +176,36 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
                         }
                     }
 
-                    System.out.println(dialect);
-                    System.out.println(dataBaseURL);
-                    System.out.println(schemaOrUser);
 
                 } catch (JDOMException e) {
                      e.printStackTrace();
                      throw new QueryProcessingException("Error parsing  : " + hibernateCfgFile + e.getMessage(), e);
                 }
-
-                //Configuration configuration = new Configuration().configure(hibernateCfgFile);
-                //String dialect = configuration.getProperties().getProperty("dialect");
-
-		// see if the target has subclasses
-		boolean subclassesDetected = LocalSubclassCheckCache.hasClassProperty(query.getTarget().getName(),hibernateCfgFile,dataBaseURL,schemaOrUser);
-		//boolean subclassesDetected = false;
-
                 // generate the HQL to perform the query
 		String hql = null;
+          
                 LocalCQL2HQL cql2hql = new LocalCQL2HQL(dialect);
 
-		if (subclassesDetected) {
+                // convert return attributes in QMs
+                 String returnAttrbs[] = null;
+                ReturnAttributes ra = query.getTarget().getReturnAttributes();
+                 if(ra != null ) {
+                     QueryModifier qm = new QueryModifier();
+                     returnAttrbs = ra.getReturnAttribute();
+                     String returnAttrbsWithId[] = new String[returnAttrbs.length+1];
+                     returnAttrbsWithId[0] = "id";
+                     for (int i=0; i<returnAttrbs.length;i++) {
+                         returnAttrbsWithId[i+1] = returnAttrbs[i];
+                     }
+                     qm.setAttributeNames(returnAttrbsWithId);
+                     query.setQueryModifier(qm);
+                 }      
+                 
+	    // see if the target has subclasses
+	    //boolean subclassesDetected = false;
+	    boolean subclassesDetected = LocalSubclassCheckCache.hasClassProperty(query.getTarget().getName(),hibernateCfgFile,dataBaseURL,schemaOrUser);
+
+		if (subclassesDetected && ra == null) {
 			// simplify the query by removing modifiers
 			CQLQuery simpleQuery = new CQLQuery();
 			simpleQuery.setTarget(query.getTarget());
@@ -188,33 +213,57 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 		} else {
 			hql = cql2hql.translate(query, false);
 		}
-		System.out.println("Executing HQL...: " + hql);
-		LOG.debug("Executing HQL:" + hql);
+               
+		//System.out.println( hql);
+		//LOG.debug("Executing HQL:" + hql);
+                List targetObjects = null;
 
 		// process the query
 		HQLCriteria hqlCriteria = new HQLCriteria(hql);
+	    
+                int  qrysFired = 0;
 
-                Session session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
-		List targetObjects = null;
 		try {
-		    targetObjects = session.createQuery(hqlCriteria.getHqlString()).list();
+		    //Session session = HibernateUtil.currentSession();
+		    Session session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
+                    targetObjects = session.createQuery(hqlCriteria.getHqlString()).setCacheable(true).list();
+		    // BUILD OBJECTS 
+		    if (returnAttrbs != null ) {
+                        targetObjects = ToolUtil.buildObjcets(targetObjects,returnAttrbs,query.getTarget().getName());
+                    } else {
+                        Set uniqueTargetObjects = new HashSet(targetObjects);
+                        targetObjects = new ArrayList(uniqueTargetObjects);
+                    }
+                    
+                    qrysFired++;
+                    HibernateUtil.closeSession();
+		    query.setQueryModifier(null);
+
+                
+                // IF CLIENT ASKS FOR ANT ATTRIBUTES FROM OTHER OBJECTS ...
+                // BUILD NECESSARY CQLS ..
+
+                if (cql2hql.isReturnAttributes()) {
+                    session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
+                        ResultObjectAssemblerNlevels assembler = new ResultObjectAssemblerNlevels(session,dialect);
+                     //   ResultObjectAssembler assembler = new ResultObjectAssembler(session,dialect);
+                        targetObjects = assembler.buildResultObjects(targetObjects,query);
+                        System.out.println("# OF QRYS FIRED -- " + assembler.getQryCount()+1);
+                    HibernateUtil.closeSession();
+
+                }
+		    
+                    results = processResults(query,targetObjects);
+                    
+                    
+                    
 		} catch (Exception ex) {
+                        ex.printStackTrace();
 			throw new QueryProcessingException("Error invoking core query method: " + ex.getMessage(), ex);
 		}  finally {
                     HibernateUtil.closeSession();
                 }
-                HibernateUtil.closeSession();
-
-		// Fire multiple Queries 
-		// IF CLIENT ASKS FOR ANT ATTRIBUTES FROM OTHER OBJECTS ...
-                // BUILD NECESSARY CQLS .. 
-                 
-		// ResultObjectAssembler assembler = new ResultObjectAssembler();
-                // targetObjects = assembler.buildResultObjects(targetObjects,query);
-
-
-
-
+                
 		// possibly post-process the query
 		if (subclassesDetected && query.getQueryModifier() != null) {
 			try {
@@ -223,7 +272,8 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 				throw new QueryProcessingException("Error applying query modifiers: " + ex.getMessage(), ex);
 			}
 		}
-		return targetObjects;
+
+		return results;
 	}
 
 
@@ -300,5 +350,7 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
             params.setProperty(APPLICATION_SERVICE_URL, DEFAULT_LOCALHOST_CACORE_URL);
             params.setProperty(HIBERNATE_CONFIG_FILE, "hibernate.cfg.xml");
             return params;
+            
+             
     }
 }
