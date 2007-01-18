@@ -13,10 +13,13 @@ import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
 
 import gov.nih.nci.cagrid.fqp.processor.FederatedQueryEngine;
-
+import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
- * This is a system test to test the functionality of the FQE, which is performs DCQL queries.  
+ * This is a system test to test the functionality of the FQE, which is performs DCQL queries.
  * It is a system test because it requires a number of services to be available and running.
  * @author Srini Akkala
  * @testType system
@@ -40,7 +43,7 @@ public class TestFQE extends TestCase {
      * @throws Exception
      */
     public void testFQE()  throws Exception {
-        String qryFile = "simpleQuery1.xml";
+        String qryFile = "simpleQuery3.xml";
 		String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
         try {
             DCQLQuery dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(QUERIES_DIR+File.separator+qryFile)),DCQLQuery.class);
@@ -48,23 +51,19 @@ public class TestFQE extends TestCase {
 
             CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
 
-            CQLObjectResult[] objectResult = results.getObjectResult();
-            System.out.println(objectResult.length);
-            for (int i = 0; i < objectResult.length; i++) {
-                    CQLObjectResult objResult = objectResult[i];
-                    System.out.println(objResult.get_any()[0]);
-
+            ResultsParser parser = new ResultsParser();
+            List resultList = parser.getResultList(results);
+            Iterator resultsItr = resultList.iterator();
+            while (resultsItr.hasNext()) {
+                Map resultMap = (Map)resultsItr.next();
+                Iterator keys = resultMap.keySet().iterator();
+                while (keys.hasNext()) {
+                    String key = keys.next().toString();
+                    System.out.print( key + " " + resultMap.get(key).toString() + " ");
+                }
+                System.out.println("    ");
             }
-            /*
-            CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results,true);
-            int resultCount = 0;
 
-            while (iterator.hasNext()) {
-                    System.out.println("=====RESULT [" + resultCount++ + "] =====");
-                    //System.out.println(iterator.next());
-                    System.out.println("=====END RESULT=====\n\n");
-            }
-            */
 
         } catch (Exception e) {
         e.printStackTrace();

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:dcql="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" elementFormDefault="qualified"
-	attributeFormDefault="unqualified">
+<xsd:schema targetNamespace="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dcql="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xsd:import namespace="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" schemaLocation="./xsd/Data/1_gov.nih.nci.cagrid.CQLQuery.xsd"/>
 	<xsd:element name="DCQLQuery">
 		<xsd:annotation>
@@ -22,16 +20,20 @@
 		<xsd:annotation>
 			<xsd:documentation>Description of an Object instance</xsd:documentation>
 		</xsd:annotation>
-		<xsd:choice>
-			<xsd:element name="Attribute" type="cql:Attribute" minOccurs="0">
-				<xsd:annotation>
-					<xsd:documentation>The description of the object being targeted by the query; the return type.</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="Association" type="dcql:Association" minOccurs="0"/>
-			<xsd:element name="ForeignAssociation" type="dcql:ForeignAssociation" minOccurs="0"/>
-			<xsd:element name="Group" type="dcql:Group" minOccurs="0"/>
-		</xsd:choice>
+		<xsd:sequence>
+			<xsd:element name="ReturnAttributes" type="cql:ReturnAttributes" minOccurs="0"/>
+			<xsd:choice>
+				<xsd:element name="Attribute" type="cql:Attribute" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>The description of the object being targeted by the query; the return type.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="AttributeMatch" type="dcql:AttributeMatch" minOccurs="0"/>
+				<xsd:element name="Association" type="dcql:Association" minOccurs="0"/>
+				<xsd:element name="ForeignAssociation" type="dcql:ForeignAssociation" minOccurs="0"/>
+				<xsd:element name="Group" type="dcql:Group" minOccurs="0"/>
+			</xsd:choice>
+		</xsd:sequence>
 		<xsd:attribute name="name" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="Association">
@@ -51,6 +53,7 @@
 		<xsd:choice minOccurs="2" maxOccurs="unbounded">
 			<xsd:element name="Association" type="dcql:Association" maxOccurs="unbounded"/>
 			<xsd:element name="Attribute" type="cql:Attribute" maxOccurs="unbounded"/>
+			<xsd:element name="Attribute" type="dcql:AttributeMatch" maxOccurs="unbounded"/>
 			<xsd:element name="ForeignAssociation" type="dcql:ForeignAssociation" maxOccurs="unbounded"/>
 			<xsd:element name="Group" type="dcql:Group" maxOccurs="unbounded"/>
 		</xsd:choice>
@@ -111,4 +114,24 @@
 			</xsd:enumeration>
 		</xsd:restriction>
 	</xsd:simpleType>
+	<xsd:complexType name="AssociationToCompare">
+		<xsd:annotation>
+			<xsd:documentation>Association to Compare</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="dcql:Association">
+				<xsd:attribute name="compareOrder" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeMatch">
+		<xsd:annotation>
+			<xsd:documentation>Compares Arrtibutes between Objects</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice minOccurs="2" maxOccurs="2">
+			<xsd:element name="Association" type="dcql:AssociationToCompare" maxOccurs="2"/>
+			<xsd:element name="Attribute" type="cql:AttributeToCompare" maxOccurs="2"/>
+		</xsd:choice>
+		<xsd:attribute name="predicate" type="cql:Predicate" use="optional" default="EQUAL_TO"/>
+	</xsd:complexType>
 </xsd:schema>

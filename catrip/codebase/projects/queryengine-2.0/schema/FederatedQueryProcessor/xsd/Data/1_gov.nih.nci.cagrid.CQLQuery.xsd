@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Ramprakash Chilukuri (private) -->
 <!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by David W. Ervin (The Ohio State University / Department of Biomedical Informatics) -->
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" targetNamespace="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xsd:schema targetNamespace="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cql="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xsd:complexType name="Object">
 		<xsd:annotation>
 			<xsd:documentation>Object used as search criteria or target definition</xsd:documentation>
 		</xsd:annotation>
-		<xsd:choice>
-			<xsd:element name="Attribute" type="cql:Attribute" minOccurs="0"/>
-			<xsd:element name="Association" type="cql:Association" minOccurs="0"/>
-			<xsd:element name="Group" type="cql:Group" minOccurs="0"/>
-		</xsd:choice>
+		<xsd:sequence>
+			<xsd:element name="ReturnAttributes" type="cql:ReturnAttributes" minOccurs="0"/>
+			<xsd:choice>
+				<xsd:element name="Attribute" type="cql:Attribute" minOccurs="0"/>
+				<xsd:element name="AttributeMatch" type="cql:AttributeMatch" minOccurs="0"/>
+				<xsd:element name="Association" type="cql:Association" minOccurs="0"/>
+				<xsd:element name="Group" type="cql:Group" minOccurs="0"/>
+			</xsd:choice>
+		</xsd:sequence>
 		<xsd:attribute name="name" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="ReturnAttributes">
+		<xsd:sequence>
+			<xsd:element name="ReturnAttribute" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeToCompare">
+		<xsd:annotation>
+			<xsd:documentation>Attribute to Compare</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cql:Attribute">
+				<xsd:attribute name="compareOrder" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AssociationToCompare">
+		<xsd:annotation>
+			<xsd:documentation>Association to Compare</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cql:Association">
+				<xsd:attribute name="compareOrder" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
 	</xsd:complexType>
 	<xsd:complexType name="Association">
 		<xsd:annotation>
@@ -28,7 +58,7 @@
 		</xsd:annotation>
 		<xsd:attribute name="name" type="xsd:string" use="required"/>
 		<xsd:attribute name="predicate" type="cql:Predicate" use="optional" default="EQUAL_TO"/>
-		<xsd:attribute name="value" type="xsd:string" use="required"/>
+		<xsd:attribute name="value" type="xsd:string" use="optional"/>
 	</xsd:complexType>
 	<xsd:complexType name="Group">
 		<xsd:annotation>
@@ -37,6 +67,7 @@
 		<xsd:choice minOccurs="2" maxOccurs="unbounded">
 			<xsd:element name="Association" type="cql:Association" maxOccurs="unbounded"/>
 			<xsd:element name="Attribute" type="cql:Attribute" maxOccurs="unbounded"/>
+			<xsd:element name="AttributeMatch" type="cql:AttributeMatch" maxOccurs="unbounded"/>
 			<xsd:element name="Group" type="cql:Group" maxOccurs="unbounded"/>
 		</xsd:choice>
 		<xsd:attribute name="logicRelation" type="cql:LogicalOperator" use="required"/>
@@ -94,5 +125,15 @@
 			<xsd:element name="DistinctAttribute" type="xsd:string"/>
 		</xsd:choice>
 		<xsd:attribute name="countOnly" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="AttributeMatch">
+		<xsd:annotation>
+			<xsd:documentation>Compares Arrtibutes between Objects</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice minOccurs="2" maxOccurs="2">
+			<xsd:element name="Association" type="cql:AssociationToCompare" maxOccurs="2"/>
+			<xsd:element name="Attribute" type="cql:AttributeToCompare" maxOccurs="2"/>
+		</xsd:choice>
+		<xsd:attribute name="predicate" type="cql:Predicate" use="optional" default="EQUAL_TO"/>
 	</xsd:complexType>
 </xsd:schema>
