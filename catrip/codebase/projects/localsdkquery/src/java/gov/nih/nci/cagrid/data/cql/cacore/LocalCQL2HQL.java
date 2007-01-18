@@ -23,11 +23,13 @@ import java.util.Map;
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
  * 
  * @created Jul 19, 2006 
- * @version $Id: LocalCQL2HQL.java,v 1.2 2006-10-28 20:57:11 srakkala Exp $ 
+ * @version $Id: LocalCQL2HQL.java,v 1.3 2007-01-18 05:15:05 srakkala Exp $ 
  */
 public class LocalCQL2HQL {
 	public static final String TARGET_ALIAS = "xxTargetAliasxx";
 	
+        private boolean returnAttributes = false;
+        
 	private static Map predicateValues;
         
         private String dialect;
@@ -35,7 +37,10 @@ public class LocalCQL2HQL {
         public LocalCQL2HQL(String dialect){
             this.dialect = dialect;
         }
-
+        
+        public boolean isReturnAttributes(){
+            return returnAttributes;
+        }
 	/**
 	 * Translates a CQL query into an HQL string.  This translation process assumes the
 	 * CQL Query has passed validation.  Processing of invalid CQL may or may not procede
@@ -155,7 +160,8 @@ public class LocalCQL2HQL {
 		} else {
 			String[] names = mods.getAttributeNames();
 			if (names != null) {
-				hql.append("select ");
+			//	hql.append("select ");
+			   hql.append("select distinct ");
 				for (int i = 0; i < names.length; i++) {
 					hql.append(TARGET_ALIAS).append(".").append(names[i]);
 					if (i + 1 < names.length) {
@@ -171,7 +177,8 @@ public class LocalCQL2HQL {
 	
 	private void processTarget(StringBuilder hql, Object target, boolean eliminateSubclasses) 
 		throws QueryProcessingException {
-		String objName = target.getName();
+		
+                String objName = target.getName();
 		hql.append("From ").append(objName);
 		hql.append(" as ").append(TARGET_ALIAS);
 		if (eliminateSubclasses) {			
@@ -191,7 +198,7 @@ public class LocalCQL2HQL {
 			} else {
 				hql.append(" where ");
 			}
-			processAssociation(hql, objName, target.getAssociation(), true);
+			processAssociation(hql, objName,  "" , target.getAssociation(), true);
 		}
 		if (target.getGroup() != null) {
 			if (eliminateSubclasses) {
@@ -199,7 +206,7 @@ public class LocalCQL2HQL {
 			} else {
 				hql.append(" where ");
 			}
-			processGroup(hql, objName, target.getGroup(), true);
+			processGroup(hql, objName, "",target.getGroup(), true);
 		}
 	}
 	
@@ -213,8 +220,14 @@ public class LocalCQL2HQL {
 	 * 		The object to process into HQL
 	 * @throws QueryProcessingException
 	 */
-	private void processObject(StringBuilder hql, Object obj) throws QueryProcessingException {
+	private void processObject(StringBuilder hql, Association obj, String parentRoleName) throws QueryProcessingException {
 		String objName = obj.getName();
+                //String roleName = obj.getAssociation().getRoleName();
+                //if (!parentRoleName.equals("") && !parentRoleName.equals(roleName)) {
+                //    roleName = parentRoleName+"."+roleName;
+                //} else {
+                //    roleName = "";
+                //}
 		hql.append("select id From ").append(objName);
 		if (obj.getAttribute() != null) {
 			hql.append(" where ");
@@ -222,11 +235,11 @@ public class LocalCQL2HQL {
 		}
 		if (obj.getAssociation() != null) {
 			hql.append(" where ");
-			processAssociation(hql, objName, obj.getAssociation(), false);
+			processAssociation(hql, objName, parentRoleName, obj.getAssociation(), false);
 		}
 		if (obj.getGroup() != null) {
 			hql.append(" where ");
-			processGroup(hql, objName, obj.getGroup(), false);
+			processGroup(hql, objName, parentRoleName, obj.getGroup(), false);
 		}
 	}
 	
@@ -375,7 +388,7 @@ public class LocalCQL2HQL {
 	 * 		The association to process into HQL
 	 * @throws QueryProcessingException
 	 */
-	private void processAssociation(StringBuilder hql, String parentName, Association assoc, boolean useAlias) throws QueryProcessingException {
+	private void processAssociation(StringBuilder hql, String parentName, String parentRoleName, Association assoc, boolean useAlias) throws QueryProcessingException {
 		// get the role name of the association
 		String roleName = ClassAccessUtilities.getRoleName(parentName, assoc);
 		if (roleName == null) {
@@ -387,9 +400,23 @@ public class LocalCQL2HQL {
 		if (useAlias) {
 			hql.append(TARGET_ALIAS).append(".");
 		}
+                
+             //   if (!parentRoleName.equals("")) {
+              //      roleName = parentRoleName+"."+roleName;
+             //  }
 		hql.append(roleName).append(".id in (");
-		processObject(hql, assoc);
+                
+		processObject(hql, assoc, roleName);
 		hql.append(")");
+                
+                //
+                if (!returnAttributes) {
+                    if (assoc.getReturnAttributes() != null ) {
+                        returnAttributes = true;
+                    }
+                }
+	    
+                
 	}
 	
 	
@@ -404,7 +431,7 @@ public class LocalCQL2HQL {
 	 * 		The group to process into HQL
 	 * @throws QueryProcessingException
 	 */
-	private void processGroup(StringBuilder hql, String parentName, Group group, boolean useAlias) throws QueryProcessingException {
+	private void processGroup(StringBuilder hql, String parentName, String parentRoleName, Group group, boolean useAlias) throws QueryProcessingException {
 		String logic = convertLogicalOperator(group.getLogicRelation());
 		
 		// flag indicating a logic clause is needed before adding further query parts
@@ -428,7 +455,7 @@ public class LocalCQL2HQL {
 			}
 			for (int i = 0; i < group.getAssociation().length; i++) {
 				logicClauseNeeded = true;
-				processAssociation(hql, parentName, group.getAssociation(i), useAlias);
+				processAssociation(hql, parentName, parentRoleName, group.getAssociation(i), useAlias);
 				if (i + 1 < group.getAssociation().length) {
 					hql.append(" ").append(logic).append(" ");
 				}
@@ -442,7 +469,7 @@ public class LocalCQL2HQL {
 			}
 			for (int i = 0; i < group.getGroup().length; i++) {
 				hql.append("( ");
-				processGroup(hql, parentName, group.getGroup(i), useAlias);
+				processGroup(hql, parentName, parentRoleName, group.getGroup(i), useAlias);
 				hql.append(" )");
 				if (i + 1 < group.getGroup().length) {
 					hql.append(" ").append(logic).append(" ");

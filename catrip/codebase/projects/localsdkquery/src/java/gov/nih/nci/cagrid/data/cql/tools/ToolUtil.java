@@ -68,7 +68,7 @@ public class ToolUtil {
         }
         return newList;
     }
-    
+
     public static List buildObjcets(List resultObjectList,String[] returnAttrbs, String className ) throws Exception {
         List newList = new ArrayList();
         

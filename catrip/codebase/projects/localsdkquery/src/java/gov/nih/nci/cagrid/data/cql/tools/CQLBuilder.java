@@ -233,7 +233,7 @@ public class CQLBuilder {
             if (assoc.getChild("Association",nameSpace) != null && assoc.getChild("Attribute",nameSpace) !=null ) {
                 assoc = buildAssociationAttributeGroup(assoc);     
             }  
-            if (assoc.getChild("Group") != null ) {
+            if (assoc.getChild("Group",nameSpace) != null ) {
                 assoc = assoc.getChild("Group",nameSpace).getChild("Association",nameSpace);
             } else {
                 assoc = null;
@@ -267,7 +267,7 @@ public class CQLBuilder {
     }
     public static void main(String[] args) {
         String queryDir = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\";
-        String qryFile = "demo-cae.xml";
+        String qryFile = "demo-cae1.xml";
         java.lang.Object obj = null;
 
         try {

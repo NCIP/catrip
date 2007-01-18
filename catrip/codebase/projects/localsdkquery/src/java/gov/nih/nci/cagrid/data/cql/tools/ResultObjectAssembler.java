@@ -1,94 +1,25 @@
 package gov.nih.nci.cagrid.data.cql.tools;
 
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
-import gov.nih.nci.cagrid.data.QueryProcessingException;
-import gov.nih.nci.cagrid.data.cql.cacore.HibernateUtil;
-import gov.nih.nci.cagrid.data.cql.cacore.LocalCQL2HQL;
-import gov.nih.nci.common.util.HQLCriteria;
-
-import java.io.CharArrayReader;
-import java.io.StringWriter;
-import java.io.Writer;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.globus.wsrf.encoding.DeserializationException;
-import org.globus.wsrf.encoding.ObjectDeserializer;
-import org.globus.wsrf.encoding.ObjectSerializer;
-import org.globus.wsrf.encoding.SerializationException;
-
 import org.hibernate.Session;
 
-import org.xml.sax.InputSource;
+
+public class ResultObjectAssembler extends AbstractResultObjectAssembler {
 
 
-public class ResultObjectAssembler {
-    private String hibernateCfgFile ="";
-    private String dataBaseURL  ="";
-    private String schemaOrUser  ="";
-    public ResultObjectAssembler(String hibernateCfgFile,String dataBaseURL,String schemaOrUser) {
-        this.hibernateCfgFile=hibernateCfgFile;
-        this.dataBaseURL=dataBaseURL;
-        this.schemaOrUser=schemaOrUser;
-
+    public ResultObjectAssembler(Session session,String dialect) {
+        super(session,dialect);
     }
 
-    private static void print(CQLQuery cqlQuery){
-
-        Writer w = new StringWriter();
-
-           javax.xml.namespace.QName q= new javax.xml.namespace.QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
-
-        try {
-            ObjectSerializer.serialize(w,cqlQuery,q);
-        } catch (SerializationException e) {
-            e.printStackTrace();
-        }
-        System.out.println(w);
-    }
-
-    private CQLQuery convertStringToCQL(String cqlString){
-
-
-        StringBuffer buf = new StringBuffer(cqlString);
-
-        char[] chars = new char[buf.length()];
-        buf.getChars(0, chars.length, chars, 0);
-
-        CharArrayReader car = new CharArrayReader(chars);
-        InputSource source = new InputSource(car);
-         java.lang.Object obj = null ;
-
-        try {
-            obj = ObjectDeserializer.deserialize(source,CQLQuery.class);
-        } catch (DeserializationException e) {
-            e.printStackTrace();
-        }
-        return ((CQLQuery)obj);
-    }
-
-    private List executeQry (String cqlStr){
-        CQLQuery cqlQuery = convertStringToCQL(cqlStr);
-
-        LocalCQL2HQL cql2hql = new LocalCQL2HQL("org.hibernate.dialect.Oracle9Dialect");
-        String hql="";
-        try {
-            hql = cql2hql.translate(cqlQuery, false);
-        } catch (QueryProcessingException e) {
-            e.printStackTrace();
-        }
-        HQLCriteria hqlCriteria = new HQLCriteria(hql);
-
-        Session session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
-        List resultObjects = session.createQuery(hqlCriteria.getHqlString()).list();
-        HibernateUtil.closeSession();
-        return resultObjects;
-    }
 
 
     public List buildResultObjects (List targetObjects,CQLQuery query) {
+         
         //Document doc = buildDocument(query);
         CQLBuilder builder = new CQLBuilder(query);
        // builder.setDocument(doc);
@@ -113,9 +44,9 @@ public class ResultObjectAssembler {
          String  roleName = targetObjectEle.getAssociation().getRoleName();
          String assocClassName = targetObjectEle.getAssociation().getName();
             String returnAttrbs[] = null;
-          // UNCOMMENT LATER  if(targetObjectEle.getAssociation().getReturnAttributes() != null ) {
-          //      returnAttrbs = targetObjectEle.getAssociation().getReturnAttributes().getReturnAttribute();
-          //  }
+   //-------SRINI UNCOMMENT          if(targetObjectEle.getAssociation().getReturnAttributes() != null ) {
+   //-------SRINI UNCOMMENT               returnAttrbs = targetObjectEle.getAssociation().getReturnAttributes().getReturnAttribute();
+   //-------SRINI UNCOMMENT           }
 
             try {
 
@@ -127,9 +58,8 @@ public class ResultObjectAssembler {
                     Object targetObject = targetObjects.get(i);
                     String id = ToolUtil.performGetOperation(objectClass,targetObject,"id").toString();
                     String cqlStr1 = cqlStr.replaceAll(targetObjectClassName+"_ID",id);
-                 //   System.out.println(cqlStr1);
+                  //  System.out.println(cqlStr1);
                     if (c >1 ) {
-
                         Object outputObj= ToolUtil.performGetOperation(objectClass,targetObject,prevRole);
                         Class assocClass = Class.forName(prevClassName);
 
@@ -139,12 +69,11 @@ public class ResultObjectAssembler {
                             while (itr.hasNext()){
                                  Object obj1 = itr.next();
                                  String id1 = ToolUtil.performGetOperation(assocClass,obj1,"id").toString();
-                                 cqlStr1 = cqlStr1.replaceAll(prevClassName+"_ID",id1);
-                                 //System.out.println(cqlStr1);
-                                 List assocObjectsX = this.executeQry(cqlStr1);
+                                 String cqlStr2 = cqlStr1.replaceAll(prevClassName+"_ID",id1);
+                                // System.out.println(cqlStr2);
+                                 List assocObjectsX = executeQry(cqlStr2);
                                  List convertedObjectList = ToolUtil.buildObjcets(assocObjectsX,returnAttrbs,assocClassName);
                                  ToolUtil.performSetOperation(roleName,assocClass,obj1,convertedObjectList);
-
                             }
                         } else {
                              String id1 = ToolUtil.performGetOperation(assocClass,outputObj,"id").toString();
@@ -164,19 +93,20 @@ public class ResultObjectAssembler {
                 }
             } catch (Exception e ){
                e.printStackTrace();
-            }
+            } 
             prevRole = roleName;
             prevClassName = assocClassName;
             targetObjectEle = targetObjectEle.getAssociation();
             c++;
         }
 
+
   /*
         for (int i=0;i<targetObjects.size();i++){
             Participant p = (Participant)targetObjects.get(i);
-
-            System.out.println(p.getFirstName() + "   " + p.getLastName());
-
+            
+            System.out.print (p.getFirstName() + "   " + p.getLastName());
+            
             Collection l = p.getAnnotationEventParametersCollection();
             Iterator ltr = l.iterator();
             while (ltr.hasNext()) {
@@ -185,13 +115,14 @@ public class ResultObjectAssembler {
                 Iterator ltr1 = l1.iterator();
                 while (ltr1.hasNext()) {
                     NottinghamHistopathologicGrade n = (NottinghamHistopathologicGrade)ltr1.next();
-                    System.out.println("   " + n.getTotalScore());
+                    System.out.print ("   " + n.getTotalScore() + " " + n.getMitoticCount() + " ");
                 }
             }
-
+            System.out.println("   ");
+            
         }
-
-   */
+*/
+   
      return targetObjects;
     }
 
