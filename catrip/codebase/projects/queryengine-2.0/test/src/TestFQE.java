@@ -51,7 +51,7 @@ public class TestFQE extends TestCase {
 
             CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
 
-            ResultsParser parser = new ResultsParser();
+            ResultsParser parser = new ResultsParser(dcql,dcql.getTargetObject().getName());
             List resultList = parser.getResultList(results);
             Iterator resultsItr = resultList.iterator();
             while (resultsItr.hasNext()) {
