@@ -53,17 +53,15 @@
 	
 	<service displayName="Clinical Annotation Engine" url="http://152.16.96.114/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="edu.duke.catrip.cae.domain.general.Participant"   displaybleAttributes="gender,race,ethnicity" display="true">
+			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" selectable="true" displaybleAttributes="firstName,gender,race,ethnicity" display="true">
 				<associatedObjectTree>
-					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier"   roleName="medicalRecordNumberCollection" display="false"/>
-				
-					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters"   roleName="annotationEventParametersCollection" display="false">
-						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR"   roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR"   roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus"   roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR"   roleName="annotationSetCollection" display="true"/>
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection" display="false"/>
+					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" selectable="true" roleName="annotationEventParametersCollection" displaybleAttributes="id" display="true">
+						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR" roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR" roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" selectable="true" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" roleName="annotationSetCollection" display="true"/>
 					</Association>
-					
 				</associatedObjectTree>
 				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
 					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection"/>
