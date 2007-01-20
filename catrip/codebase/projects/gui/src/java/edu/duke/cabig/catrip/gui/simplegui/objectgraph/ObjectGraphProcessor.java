@@ -36,6 +36,7 @@ public class ObjectGraphProcessor {
         graphObject.setServiceName(serviceName);
         graphObject.setRefID(associationEle.getAttributeValue("refID"));
         graphObject.setDisplayable(Boolean.parseBoolean(associationEle.getAttributeValue("display")));
+		graphObject.setSelectable(Boolean.parseBoolean(associationEle.getAttributeValue("selectable")));
 
         List<GraphAssociation> associationPathWRTTargetObject = new ArrayList<GraphAssociation>();
         associationPathWRTTargetObject.add(buildGraphAssociation(associationEle));
@@ -150,6 +151,7 @@ public class ObjectGraphProcessor {
                 targetObj.setForeignAssociationOutboundCDE(foreignAssociationOutboundPathEle.getAttributeValue("cdeName"));
                 targetObj.setForeignAssociationOutboundPath(foreignAssociationOutboundPath);
                 targetObj.setServiceName(serviceName1);
+                targetObj.setSelectable(Boolean.parseBoolean(objectElement.getAttributeValue("selectable")));
 
                 GraphObjects.add(targetObj);
 

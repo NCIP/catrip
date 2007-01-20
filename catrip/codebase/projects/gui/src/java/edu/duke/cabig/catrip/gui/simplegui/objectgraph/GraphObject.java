@@ -3,7 +3,7 @@ package edu.duke.cabig.catrip.gui.simplegui.objectgraph;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import java.util.List;
- 
+
 public class GraphObject {
     private String className;
     private List<GraphAssociation> foreignAssociationOutboundPath;
@@ -15,11 +15,12 @@ public class GraphObject {
     private String foreignAssociationInboundCDE;
     private String refID;
     private boolean displayable;
-    
+    private boolean selectable = false;
+
     private ClassBean classBean;
     private boolean localObject = true;
-    
-    public GraphObject() { 
+
+    public GraphObject() {
     }
 
     public void setClassName(String className) {
@@ -103,19 +104,19 @@ public class GraphObject {
         return displayable;
     }
 
-    
-    
+
+
      public String toString() {
          // optimize this.. by cashing the class bean if null than only look in registry... and no need for cloning
          ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(getClassName()).clone();
-         
+
 //        String fullClassName = getClassName();
 //        String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
-//        
+//
 //        if (className.endsWith("Impl")){
 //            className = className.substring(0,className.length()-4);
 //        }
-//        
+//
 //        return className;
          return cBean.getCDEName();
     }
@@ -135,11 +136,18 @@ public class GraphObject {
     public void setLocalStatus(boolean localObject) {
         this.localObject = localObject;
     }
-    
+    public void setSelectable(boolean selectable) {
+        this.selectable = selectable;
+    }
+
+    public boolean isSelectable() {
+        return selectable;
+    }
+
     public GraphObject clone(){
-        
+
         GraphObject clone = new GraphObject();
-        
+
         clone.setAssociationPathWRTTargetObject(getAssociationPathWRTTargetObject());
         clone.setClassBean(getClassBean().clone());
         clone.setClassName(getClassName());
@@ -152,12 +160,13 @@ public class GraphObject {
         clone.setLocalStatus(isLocal());
         clone.setRefID(getRefID());
         clone.setServiceName(getServiceName());
-        
+	    clone.setSelectable(isSelectable());
+
         return clone;
-    } 
-    
-    
-    
-    
+    }
+
+
+
+
 
 }
