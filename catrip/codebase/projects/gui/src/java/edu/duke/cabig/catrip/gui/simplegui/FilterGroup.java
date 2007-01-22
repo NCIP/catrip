@@ -1,11 +1,4 @@
-/*
- * FilterGroup.java
- *
- * Created on December 19, 2006, 7:51 PM
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
+
 
 package edu.duke.cabig.catrip.gui.simplegui;
 
@@ -82,6 +75,10 @@ public class FilterGroup {
     }
     public String getConditionString(){
         return and?"    AND    ":"    OR    ";
+    }
+    
+    public boolean getCondition(){
+        return and;
     }
     
     public void setAND(boolean _cond){
@@ -172,11 +169,12 @@ public class FilterGroup {
     }
     
     private String getTextColor(int indentLevel){
+        int colors = GUIConstants.HTML_COLOR_SET.length;
         String col = null;
-        if (indentLevel >= 4){
+        if (indentLevel >= colors){
             for (int i = 0; i < indentLevel; i++) {
-                indentLevel-=4;
-                if (indentLevel < 4){
+                indentLevel-=colors;
+                if (indentLevel < colors){
                     col =  GUIConstants.HTML_COLOR_SET[indentLevel];
                     break;
                 }
@@ -186,6 +184,46 @@ public class FilterGroup {
         }
         return col;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public String getUniqueId(){
+        //return super.toString(); // this returns the instance ref for the object which is unique for that jvm instance..
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+    
+    public boolean equals(Object obj){
+        boolean equal = false;
+        if (obj instanceof FilterGroup){
+        FilterGroup fGroup = (FilterGroup) obj;
+        String thisRef = getUniqueId();
+        String objRef = fGroup.getUniqueId();
+        equal = thisRef.equals(objRef); // this compares the two references.. and will be true only if that is same object..
+        }
+        return equal; 
+    }  
+    
+//    public int hashCode() {
+//        return getUniqueId().hashCode(); 
+//    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

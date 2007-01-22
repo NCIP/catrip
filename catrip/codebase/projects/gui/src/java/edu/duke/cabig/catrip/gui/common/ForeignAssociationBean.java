@@ -58,7 +58,14 @@ public class ForeignAssociationBean {
     
     public boolean equals(Object obj) {
         ForeignAssociationBean object = (ForeignAssociationBean)obj;
-        return (getLeftObj().equals( object.getLeftObj()) && getRighObj().equals(object.getRighObj()));
+        
+        // in this old implementation.. there were unique left and right objects.. 
+//        return (getLeftObj().equals( object.getLeftObj()) && getRighObj().equals(object.getRighObj()));
+        
+        // but in case of AND / OR there may be different instances each time.. so check the class names..  there should be only one foreigin association..
+        return (getLeftObj().getFullyQualifiedName().equals( object.getLeftObj().getFullyQualifiedName()) && getRighObj().getFullyQualifiedName().equals(object.getRighObj().getFullyQualifiedName()));
+        
+        // you may change this later if you get stuck in cris-cross grouping between services.. that time probably you can have multiple FAs.
     }
     
     

@@ -24,6 +24,8 @@
                       <Component id="clearFilterBtn" min="-2" pref="213" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addGroupBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="88" max="32767" attributes="0"/>
+                      <Component id="returnAttributeBtn" min="-2" pref="195" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -42,6 +44,7 @@
                   <Component id="addFilterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="clearFilterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="addGroupBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="returnAttributeBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -227,6 +230,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addGroupBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="returnAttributeBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="SimpleSearchPanel.returnAttributeBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnAttributeBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

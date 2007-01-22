@@ -70,6 +70,22 @@ public class FilterRowPanel extends javax.swing.JPanel {
         return predicateCombo;
     }
     
+    public CDEComboboxBean getCDEComboboxBean(){
+        return (CDEComboboxBean)getCdeCombo().getSelectedItem();
+    } 
+    
+    public AttributeBean getAttributeBean(){
+        return ((CDEComboboxBean)getCdeCombo().getSelectedItem()).getAttributeBean();
+    }
+    
+    public ClassBean getClassBean(){ 
+        return ((CDEComboboxBean)getCdeCombo().getSelectedItem()).getClassBean(); 
+    }
+    
+    public GraphObject getGraphObject(){ 
+        return ((CDEComboboxBean)getCdeCombo().getSelectedItem()).getGraphObject(); 
+    }
+    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -310,7 +326,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
         this.parentGroup = parentGroup;
     }
     
-    
+    public boolean hasParentGroup( ) {
+        return (getParentGroup() == null)?false:true ; 
+    } 
     
     
     

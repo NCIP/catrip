@@ -185,7 +185,7 @@ public class CommandPanel extends CPanel {
                         PrefixedQName key = (PrefixedQName)itt.next();
                         String value = msgsElement.getAttributeValue(key).trim();
                         String stringKey = key.getLocalName().toString().trim();
-                        
+                        // sample date string : "1947-01-01T00:00:00.000-05:00";
                         String dateFormatExp = "\\d\\d\\d\\d[-]\\d\\d[-]\\d\\d[T]\\d\\d[:]\\d\\d[:]\\d\\d[.]\\d\\d\\d[-]\\d\\d[:]\\d\\d";
                         boolean b = Pattern.matches(dateFormatExp, value);
                         if (b){

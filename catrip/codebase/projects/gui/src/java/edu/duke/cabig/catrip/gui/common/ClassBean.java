@@ -14,6 +14,7 @@ public class ClassBean{
     private String id;
     private String version;
     private ArrayList<AttributeBean> attributes = new ArrayList(50);
+    private HashMap attributesMap = new HashMap(50);
     private ArrayList<String> associatedClasses= new ArrayList(20); // from the domain model..
     private String packageName;
     private String className;
@@ -26,7 +27,7 @@ public class ClassBean{
     private String domainModelId;
     private String CDEName;
     
-    private HashMap associationRoleNameMap = new HashMap(20);
+    
     
     // ----- DCQL helper attributes ---- //
     
@@ -36,8 +37,8 @@ public class ClassBean{
     private ArrayList<AttributeBean> notNullAttributes;
     
     private boolean hasAssociations = false;
-//    private int numAssociations = 0;
     private ArrayList<ClassBean> associations = new ArrayList(20);
+    private HashMap associationRoleNameMap = new HashMap(20);
     
     private ArrayList<ForeignAssociationBean> foreignAssociations = new ArrayList(10);
     private boolean hasForeignAssociations = false;
@@ -51,6 +52,15 @@ public class ClassBean{
     private ArrayList<String> superClassAssociatedClassList = new ArrayList(20);
     private ArrayList<String> subClassIds = new ArrayList(100);
     // ---- UML Generalization Collection attributes ----//
+    
+    
+    
+    // ------------- AND / OR group attributes --------------- //
+    private ArrayList<ClassBeanGroup> groups = new ArrayList(20);
+    private HashMap groupIdMap = new HashMap();
+    
+    // ------------- AND / OR group attributes --------------- //
+    
     
     
     
@@ -144,7 +154,24 @@ public class ClassBean{
     /** Add to the attribute list of the class. */
     public void addAttribute(AttributeBean ab){
         getAttributes().add(ab);
+        addToAttributesMap(ab);
     }
+    
+    /** Add to the attribute list of the class. */
+    public void addUniqueAttribute(AttributeBean ab){
+        if (!getAttributesMap().containsKey(ab.getAttributeName())){
+            addAttribute(ab);
+        }
+    }
+    
+    public HashMap getAttributesMap() {
+        return attributesMap;
+    }
+
+    public void addToAttributesMap(AttributeBean ab){
+        this.attributesMap.put(ab.getAttributeName(), ab);
+    }
+    
     
     public String getDescription() {
         return description;
@@ -363,15 +390,16 @@ public class ClassBean{
     
     /** to add the associations only once.. used in Simple gui  */
     public void addUniqueForeignAssociation(ForeignAssociationBean fass){
-        boolean alreadyAdded = foreignAssociations.contains(fass);
-        if (!alreadyAdded){
+        boolean alreadyAdded = foreignAssociations.contains(fass); // this thing checks the equals() method of this bean..
+        if (!alreadyAdded){   // create a Map and than check in that....
             foreignAssociations.add(fass);
         }
     }
     
     /** to add the associations only once.. used in Simple gui  */
     public void addUniqueAssociation(ClassBean ass){
-        boolean alreadyAdded = associations.contains(ass);
+        // check if associationRoleNameMap already contains the class.. do not add duplicates...
+        boolean alreadyAdded = (associationRoleNameMap.containsKey(ass.getId()) );
         if (!alreadyAdded){
             associations.add(ass);
         }
@@ -498,6 +526,184 @@ public class ClassBean{
         }
         
     }
+    
+    
+    
+    
+    
+    //------------------- methods for AND / OR grouping ----------------------------
+    
+    public String getUniqueId(){
+        // this returns the instance ref for the object which is unique for that jvm instance..
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+    
+    public boolean equals(Object obj){
+        boolean equal = false;
+        if (obj instanceof ClassBean){
+            ClassBean cBean = (ClassBean) obj;
+            String thisRef = getUniqueId();
+            String objRef = cBean.getUniqueId();
+            equal = thisRef.equals(objRef); // this compares the two references.. and will be true only if that is same object..
+        }
+        return equal;
+    }
+    
+
+    
+    
+    //------------------- methods for AND / OR grouping ----------------------------
+    
+    public ArrayList<ClassBeanGroup> getGroups() {
+        return groups;
+    }
+    
+    public void setGroups(ArrayList<ClassBeanGroup> groups) {
+        this.groups = groups;
+    }
+    
+    public boolean hasGroups() {
+        return (groups.size()>0)?true:false;
+    }
+    
+    public void addGroup(ClassBeanGroup group) {
+        if (!hasGroup(group)){
+            getGroups().add(group);
+            groupIdMap.put(group.getGroupId(), group);
+        }
+    }
+    
+    public boolean hasGroup(ClassBeanGroup group) {
+        return groupIdMap.containsKey(group.getGroupId());
+    }
+    public ClassBeanGroup getGroupById(String id) {
+        return (ClassBeanGroup)groupIdMap.get(id);
+    }
+    
+    
+    
+    // merge tow ClassBean instances..  child will be merged in parent.
+    public static void mergeClassBeans(ClassBean parent, ClassBean child){
+        // child has no not-null attributes and no associations..  don't do anything..
+        boolean hasAttributes = child.hasNotNullAttributes();
+        boolean hasAssociations = child.hasAssociations();
+        boolean hasGroups = child.hasGroups();
+        
+        if (hasGroups){
+            ArrayList groups = child.getGroups();
+            int groupNums = groups.size();
+            
+            for (int i = 0; i < groupNums; i++) {
+                ClassBeanGroup group = (ClassBeanGroup)groups.get(i);
+                boolean parentHasSameGroup = parent.hasGroup(group);
+                if (parentHasSameGroup){
+                    // set associations and attributes in that.. right now just set attributes..
+                    // use group merge stuff here... create a method in group class.
+                    ArrayList attList = group.getAttributeList();
+                    for (int j = 0; j < attList.size(); j++) {
+                        parent.getGroupById(group.getGroupId()).add((AttributeBean)attList.get(j));
+                    }
+                    
+                }else {
+                    parent.addGroup(group);
+                }
+                
+            }
+            
+        }
+        
+        
+        
+        if (!hasAttributes && !hasAssociations){
+            // do nothing..
+        }
+        
+        
+        // child has  not-null attributes but no associations..
+        // TODO - have to watch out for duplicate Attributes here...
+        // you have have attributes with same or different values.. so you may have to group them as well...
+        if (hasAttributes && !hasAssociations){
+            // set the attributes in parent..
+            ArrayList attributes = child.getAttributes(); // list of attributes..
+            for (int i = 0; i < attributes.size(); i++) {
+                parent.addAttribute((AttributeBean)attributes.get(i));
+            }
+        }
+        
+        
+        
+        // child has no not-null attributes and only associations..
+        else if (!hasAttributes && hasAssociations){
+            // set the same associations in the parent also..
+            ArrayList associations = child.getAssociations(); // list of associations..
+            for (int i = 0; i < associations.size(); i++) {
+                ClassBean cBeanTmp = (ClassBean)associations.get(i);
+                parent.addUniqueAssociation(cBeanTmp);
+                parent.addAssociationRoleName(cBeanTmp.getId(), child.getAssociationRoleName(cBeanTmp.getId()));
+            }
+            
+            // check for the foreign associations as well...
+            ArrayList foreignAssociations = child.getForeignAssociations(); // list of associations..
+            for (int i = 0; i < foreignAssociations.size(); i++) {
+                ForeignAssociationBean faBean = (ForeignAssociationBean)foreignAssociations.get(i);
+                parent.addUniqueForeignAssociation(faBean);
+            }
+            
+        }
+        
+        
+        
+        
+        // child has not-null attributes and associations..  set both in the parent also..
+        // check for the foreign associations as well...
+        else if (hasAttributes && hasAssociations){
+            // set the attributes in parent..
+            ArrayList attributes = child.getAttributes(); // list of attributes..
+            for (int i = 0; i < attributes.size(); i++) {
+                parent.addAttribute((AttributeBean)attributes.get(i));
+            }
+            
+            // set the same associations in the parent also..
+            ArrayList associations = child.getAssociations(); // list of associations..
+            for (int i = 0; i < associations.size(); i++) {
+                ClassBean cBeanTmp = (ClassBean)associations.get(i);
+                parent.addUniqueAssociation(cBeanTmp);
+                parent.addAssociationRoleName(cBeanTmp.getId(), child.getAssociationRoleName(cBeanTmp.getId()));
+            }
+            
+            // check for the foreign associations as well...
+            ArrayList foreignAssociations = child.getForeignAssociations(); // list of associations..
+            for (int i = 0; i < foreignAssociations.size(); i++) {
+                ForeignAssociationBean faBean = (ForeignAssociationBean)foreignAssociations.get(i);
+                parent.addUniqueForeignAssociation(faBean);
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    //------------------- methods for AND / OR grouping ----------------------------
+    
+    public static HashMap cloneClassBeanMap(HashMap map){
+        HashMap clonedMap = new HashMap(map.size());
+        Object[] keys = (Object[])map.keySet().toArray();
+        for (int i = 0; i < keys.length; i++) {
+            ClassBean cBean = (ClassBean)map.get(keys[i]);
+            clonedMap.put(keys[i], cBean.clone());
+        }
+        return clonedMap;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

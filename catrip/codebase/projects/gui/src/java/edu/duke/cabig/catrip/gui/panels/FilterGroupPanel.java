@@ -198,9 +198,14 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             SimpleGuiRegistry.addFilterSubGroup(fg);
             // TODO - sanju AND/OR
             parentFilterPanel.reArrangeFilters();
+            
+            // signal the simple gui changed..
+            SimpleGuiRegistry.setSimpleGuiChanged(true);
+            
         }
         JDialog parent = (JDialog)getRootPane().getParent();
         parent.dispose();
+        
     }//GEN-LAST:event_okBtnActionPerformed
     
     private void addFilterOrGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterOrGroupBtnActionPerformed
@@ -270,17 +275,16 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
- 
 
-class MyComboBoxRenderer extends BasicComboBoxRenderer {  
-    public Component getListCellRendererComponent(JList list, Object value,    
-        int index, boolean isSelected, boolean cellHasFocus) {
-//        System.out.println("#### :"+value.getClass().getName());
+
+class MyComboBoxRenderer extends BasicComboBoxRenderer {
+    public Component getListCellRendererComponent(JList list, Object value,
+            int index, boolean isSelected, boolean cellHasFocus) {
         if (value instanceof FilterGroup){
-        list.setToolTipText(  ((FilterGroup)value).getToolTipText() );
+            list.setToolTipText(  ((FilterGroup)value).getToolTipText() );
         } else if (value instanceof FilterRowPanel){
             list.setToolTipText(  ((FilterRowPanel)value).getToolTipText() );
         }
-      return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus); 
+        return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus);
     }
-  }
+}

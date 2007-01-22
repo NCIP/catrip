@@ -3,6 +3,7 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.components.DotDashBorder;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
 import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
@@ -17,6 +18,7 @@ import java.util.*;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 /**
@@ -80,6 +82,7 @@ public class SimpleSearchPanel extends CPanel {
     }
     
     public void removeFilter(FilterRowPanel fp){
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
         
         
 //        if (filterRows < 5){
@@ -134,6 +137,7 @@ public class SimpleSearchPanel extends CPanel {
         addFilterBtn = new javax.swing.JButton();
         clearFilterBtn = new javax.swing.JButton();
         addGroupBtn = new javax.swing.JButton();
+        returnAttributeBtn = new javax.swing.JButton();
 
         jLabel1.setText("Select");
 
@@ -242,6 +246,13 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
+        returnAttributeBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.returnAttributeBtn.text")); // NOI18N
+        returnAttributeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnAttributeBtnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,7 +267,9 @@ public class SimpleSearchPanel extends CPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(addGroupBtn)))
+                        .add(addGroupBtn)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 88, Short.MAX_VALUE)
+                        .add(returnAttributeBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 195, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -270,10 +283,25 @@ public class SimpleSearchPanel extends CPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(addFilterBtn)
                     .add(clearFilterBtn)
-                    .add(addGroupBtn))
+                    .add(addGroupBtn)
+                    .add(returnAttributeBtn))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void returnAttributeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnAttributeBtnActionPerformed
+
+        ReturnedAttributesPanel fgp = new ReturnedAttributesPanel(this);
+        
+        CJDialog jd = new CJDialog(getMainFrame(), "Select Returned Values..");
+        jd.add(fgp);
+        jd.setBounds(10,10,750, 320);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_returnAttributeBtnActionPerformed
     
     private void addGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupBtnActionPerformed
         
@@ -398,6 +426,8 @@ public class SimpleSearchPanel extends CPanel {
         targetSetChanged = false;
         SimpleGuiRegistry.setCurrentXMLObjectList(objs);
         SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        
+        returnAttributeBtn.setEnabled(true); // enable this button if that was disable.. there may be chances that in new filter set there is no groups..
     }//GEN-LAST:event_clearFilterBtnActionPerformed
     
     private void cleanPanel(){
@@ -495,6 +525,7 @@ public class SimpleSearchPanel extends CPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jpanel;
+    private javax.swing.JButton returnAttributeBtn;
     private javax.swing.JComboBox targetObjCombo;
     private javax.swing.JPanel targetPanel;
     private javax.swing.JComboBox targetServiceCombo;
@@ -620,13 +651,13 @@ public class SimpleSearchPanel extends CPanel {
 //        System.out.println("### available filters / groups :"+SimpleGuiRegistry.getNumGroupableEntities());
         
         filterPanel.removeAll(); // remove current laid out filter/groups...
-        
+        returnAttributeBtn.setEnabled(false); // disable the returned Attributes btn as this is not supproted with grouping stuff..
         
         // lay out groups first...
         ArrayList subGroups = SimpleGuiRegistry.getFilterSubGroupList();
         for (int i = 0; i < subGroups.size(); i++) {
             FilterGroup group = (FilterGroup)subGroups.get(i);
-            filterPanel.add(getSubGroupPanel(group ));
+            filterPanel.add(getSubGroupPanel(group , 0, false));
         }
         
         // lay out remaining filters now...
@@ -642,20 +673,21 @@ public class SimpleSearchPanel extends CPanel {
         
     }
     
-    public JPanel getSubGroupPanel(FilterGroup grp){
+    public JPanel getSubGroupPanel(FilterGroup grp, int level, boolean even){
         // draw the groups first and then the filters..
         JPanel jpp = new JPanel();
         
         PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(jpp, PreferredHeightMarginBorderBoxLayout.Y_AXIS);
         jpp.setLayout(layout);
-        jpp.setBorder(new LineBorder(Color.BLUE, 1));
+        jpp.setBorder(getBorder(level, even));
+//        jpp.setBorder(new LineBorder(Color.BLUE, 1));
         
         
         ArrayList subGroups = grp.getGroupList();
         for (int i = 0; i < subGroups.size(); i++) {
             FilterGroup group = (FilterGroup)subGroups.get(i);
 //            jpp.add(Box.createVerticalStrut(5));
-            jpp.add(getSubGroupPanel(group));
+            jpp.add(getSubGroupPanel(group, level+1, (even?false:true) ));
             
             if (i < subGroups.size()-1){
                 jpp.add(Box.createVerticalStrut(10));
@@ -761,6 +793,35 @@ public class SimpleSearchPanel extends CPanel {
         // now redraw filters and groups..
         reArrangeFilters();
     }
+    
+    
+    
+    private Border getBorder (int indentLevel, boolean even){
+        int colors = GUIConstants.COLOR_SET.length;
+        Color col = null; 
+        Border bord = null;  
+        if (indentLevel >= colors){
+            for (int i = 0; i < indentLevel; i++) {
+                indentLevel-=colors;
+                if (indentLevel < colors){
+                    col =  GUIConstants.COLOR_SET[indentLevel];
+                    break;
+                }
+            }
+        } else {
+            col =  GUIConstants.COLOR_SET[indentLevel]; 
+        }
+        
+        if (even){
+            bord = new DotDashBorder(DotDashBorder.DASH_LONG, 1, col);
+        } else {
+            bord = new LineBorder(col, 1);
+        }
+        
+        return bord;
+    }
+    
+    
     
     
     //------------------------ AND / OR grouping methods.. //------------------------

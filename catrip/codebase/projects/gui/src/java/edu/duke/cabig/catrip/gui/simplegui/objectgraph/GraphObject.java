@@ -16,100 +16,100 @@ public class GraphObject {
     private String refID;
     private boolean displayable;
     private boolean selectable = false;
-
+    
     private ClassBean classBean;
     private boolean localObject = true;
-
+    
     public GraphObject() {
     }
-
+    
     public void setClassName(String className) {
         this.className = className;
     }
-
+    
     public String getClassName() {
         return className;
     }
-
+    
     public void setForeignAssociationOutboundPath(List<GraphAssociation> foreignAssociationOutboundPath) {
         this.foreignAssociationOutboundPath = foreignAssociationOutboundPath;
     }
-
+    
     public List<GraphAssociation> getForeignAssociationOutboundPath() {
         return foreignAssociationOutboundPath;
     }
-
+    
     public void setForeignAssociationOutboundCDE(String foreignAssociationOutboundCDE) {
         this.foreignAssociationOutboundCDE = foreignAssociationOutboundCDE;
     }
-
+    
     public String getForeignAssociationOutboundCDE() {
         return foreignAssociationOutboundCDE;
     }
-
+    
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
-
+    
     public String getServiceName() {
         return serviceName;
     }
-
+    
     public void setDisplaybleAttributes(String displaybleAttributes) {
         this.displaybleAttributes = displaybleAttributes;
     }
-
+    
     public String getDisplaybleAttributes() {
         return displaybleAttributes;
     }
-
+    
     public void setForeignAssociationInboundCDE(String foreignAssociationInboundCDE) {
         this.foreignAssociationInboundCDE = foreignAssociationInboundCDE;
     }
-
+    
     public String getForeignAssociationInboundCDE() {
         return foreignAssociationInboundCDE;
     }
-
+    
     public void setAssociationPathWRTTargetObject(List<GraphAssociation> associationPathWRTTargetObject) {
         this.associationPathWRTTargetObject = associationPathWRTTargetObject;
     }
-
+    
     public List<GraphAssociation> getAssociationPathWRTTargetObject() {
         return associationPathWRTTargetObject;
     }
-
+    
     public void setForeignAssociationInboundPath(List<GraphAssociation> foreignAssociationInboundPath) {
         this.foreignAssociationInboundPath = foreignAssociationInboundPath;
     }
-
+    
     public List<GraphAssociation> getForeignAssociationInboundPath() {
         return foreignAssociationInboundPath;
     }
-
+    
     public void setRefID(String refID) {
         this.refID = refID;
     }
-
+    
     public String getRefID() {
         return refID;
     }
-
-
+    
+    
     public void setDisplayable(boolean displayable) {
         this.displayable = displayable;
     }
-
+    
     public boolean isDisplayable() {
         return displayable;
     }
-
-
-
-     public String toString() {
-         // optimize this.. by cashing the class bean if null than only look in registry... and no need for cloning
-         ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(getClassName()).clone();
-
+    
+    
+    
+    public String toString() {
+        // optimize this.. by cashing the class bean if null than only look in registry... and no need for cloning
+        ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(getClassName()).clone();
+        
 //        String fullClassName = getClassName();
 //        String className = fullClassName.substring(fullClassName.lastIndexOf(".")+1);
 //
@@ -118,36 +118,36 @@ public class GraphObject {
 //        }
 //
 //        return className;
-         return cBean.getCDEName();
+        return cBean.getCDEName();
     }
-
+    
     public ClassBean getClassBean() {
         return classBean;
     }
-
+    
     public void setClassBean(ClassBean classBean) {
         this.classBean = classBean;
     }
-
+    
     public boolean isLocal() {
         return localObject;
     }
-
+    
     public void setLocalStatus(boolean localObject) {
         this.localObject = localObject;
     }
     public void setSelectable(boolean selectable) {
         this.selectable = selectable;
     }
-
+    
     public boolean isSelectable() {
         return selectable;
     }
-
+    
     public GraphObject clone(){
-
+        
         GraphObject clone = new GraphObject();
-
+        
         clone.setAssociationPathWRTTargetObject(getAssociationPathWRTTargetObject());
         clone.setClassBean(getClassBean().clone());
         clone.setClassName(getClassName());
@@ -160,13 +160,13 @@ public class GraphObject {
         clone.setLocalStatus(isLocal());
         clone.setRefID(getRefID());
         clone.setServiceName(getServiceName());
-	    clone.setSelectable(isSelectable());
-
+        clone.setSelectable(isSelectable());
+        
         return clone;
     }
-
-
-
-
-
+    
+    
+    
+    
+    
 }
