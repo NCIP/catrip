@@ -122,17 +122,18 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 			if(!(args.length < 2)){
 				if(args[0].equals("-url")){
 					QueryServiceClient client = new QueryServiceClient(serviceURI);
-					insert();System.exit(1);
-					CQLQuery cqlQuery = (CQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),CQLQuery.class);
+					//insert();System.exit(1);
+					//CQLQuery cqlQuery = (CQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),CQLQuery.class);
 					//gov.nih.nci.cagrid.dcql.Object to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
 
 
 					// query
-					//CQLQuery cqlQuery = new CQLQuery();
+					CQLQuery cqlQuery = new CQLQuery();
 
-					//gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+					gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
 					//target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
-					//cqlQuery.setTarget(target);
+					target.setName("gov.nih.nci.catrip.cagrid.catripquery.CatripQuery");
+					cqlQuery.setTarget(target);
 					CQLQueryResults results = client.query(cqlQuery);
 
 					CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
@@ -247,7 +248,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 				//System.out.println(de.getId() +"   " + de.getFirstName());
 
 				System.out.println(de.getDcql());
-				dcql = de.getDcql();
+				dcql = de.getDcql().toString();
 
 			}
 		} catch (QueryProcessingExceptionType e) {
@@ -354,7 +355,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 					// don't need the group
 					attribAssoc.setAttribute(attribArray[0]);
 					attribAttributeArray[0] = attribAssoc;
-					// TBD can't get this to work -- stack overflow
+					// TODO can't get this to work -- stack overflow
 					//attributesAndAssociationsGroup.setAssociation(attribAttributeArray);
 					attributesAndAssociationsGroup.setGroup(assocGroupArray);  // temp
 				}
@@ -366,6 +367,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 					attributesAndAssociationsGroup.setAssociation(attribAttributeArray);
 				}
 			}
+			//if (classAssoc != null && attribAssoc != null){
 			if (classAssoc != null){
 				//attributesAndAssociationsGroup.setAssociation(attribAttributeArray);
 				attributesAndAssociationsGroup.setGroup(assocGroupArray);

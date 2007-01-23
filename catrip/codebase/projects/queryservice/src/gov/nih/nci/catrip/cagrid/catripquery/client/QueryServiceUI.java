@@ -71,7 +71,7 @@ public class QueryServiceUI extends JPanel {
 	private JButton btnAddFilter = null;
 	private JLabel lblQueryResult = null;
 
-	Collection<FilterRowPanel> filterCollection = new Vector<FilterRowPanel>();  //  @jve:decl-index=0:
+	Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
 	//Collection<ClassDb> classCollection = null;
 	private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
 	private QueryDb queryData = new QueryDb();  //  @jve:decl-index=0:
@@ -140,7 +140,7 @@ public class QueryServiceUI extends JPanel {
 							Collection<ClassDb> classCollection = new Vector<ClassDb>();
 							//filterCollection.add(getFilterRowPanel());
 							for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-								FilterRowPanel element = (FilterRowPanel) iter.next();
+								QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
 								classCollection.add(element.getSelectedClass());
 							}
 							queryData.setClassCollection(classCollection);
@@ -155,8 +155,8 @@ public class QueryServiceUI extends JPanel {
 		}
 		return btnSearch;
 	}
-	private FilterRowPanel getFilterRowPanel(){
-		FilterRowPanel filterRow = new FilterRowPanel(this);
+	private QueryFilterRowPanel getFilterRowPanel(){
+		QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this);
 		filterRow.setPreferredSize(new Dimension(538, 30));
 		return filterRow;
 	}
@@ -190,7 +190,7 @@ public class QueryServiceUI extends JPanel {
 		}
 		resultTable.getColumnModel();
 		resultTable.setModel(tableModel);
-		new ButtonColumn(resultTable, 3, collection, false);
+		new ButtonColumn(resultTable, 3, collection, true);
 		new ButtonColumn(resultTable, 4, collection, true);
 
 
@@ -346,7 +346,7 @@ public class QueryServiceUI extends JPanel {
 		return btnAddFilter;
 	}
 	private void addFilterRow(){
-		FilterRowPanel filterRow = getFilterRowPanel();
+		QueryFilterRowPanel filterRow = getFilterRowPanel();
 		filterCollection.add(filterRow);
 //		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
 //			FilterRowPanel element = (FilterRowPanel) iter.next();
@@ -402,7 +402,7 @@ public class QueryServiceUI extends JPanel {
 		frame.setVisible(true);
 	}
     
-    public void removeFilter(FilterRowPanel filterRowPanel){
+    public void removeFilter(QueryFilterRowPanel filterRowPanel){
     	getFilterPanel().remove(filterRowPanel);
     	getFilterPanel().revalidate();
     	getFilterPanel().repaint();
@@ -411,7 +411,7 @@ public class QueryServiceUI extends JPanel {
     		boolean wasRemoved = false;
     		//System.out.println("before : " + classCollection.size());
     		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-    			FilterRowPanel element = (FilterRowPanel) iter.next();
+    			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
     			if (element.getSelectedClass().getId() == filterRowPanel.getSelectedClass().getId())
     				wasRemoved = filterCollection.remove(element);
 
@@ -477,8 +477,10 @@ public class QueryServiceUI extends JPanel {
 
 		public void actionPerformed(ActionEvent e){
 			fireEditingStopped();
-			if (e.getActionCommand().equalsIgnoreCase("run"))
+			if (e.getActionCommand().equalsIgnoreCase("run")){
 				System.out.println( e.getActionCommand() + " : " + table.getSelectedRow());
+				System.out.println("dcql = " + table.getModel().getValueAt(table.getSelectedRow(), table.getSelectedColumn()));
+		}
 			else if(e.getActionCommand().equalsIgnoreCase("x")){
 				DefaultTableModel t = (DefaultTableModel) table.getModel();
 				t.removeRow(table.getSelectedRow());

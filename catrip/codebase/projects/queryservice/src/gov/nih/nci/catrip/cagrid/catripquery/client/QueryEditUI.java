@@ -69,7 +69,7 @@ public class QueryEditUI extends JPanel {
 	 */
 	private void initialize() {
         lblQueryName = new JLabel();
-        lblQueryName.setBounds(new Rectangle(46, 32, 85, 26));
+        lblQueryName.setBounds(new Rectangle(46, 27, 85, 26));
         lblQueryName.setText("Query Name : ");
         lblDescription = new JLabel();
         lblDescription.setBounds(new Rectangle(50, 61, 81, 20));
