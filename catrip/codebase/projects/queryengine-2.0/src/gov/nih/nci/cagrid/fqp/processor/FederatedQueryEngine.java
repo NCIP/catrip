@@ -2,8 +2,12 @@ package gov.nih.nci.cagrid.fqp.processor;
 
 import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+import gov.nih.nci.cagrid.cqlquery.ExternalObjects;
+import gov.nih.nci.cagrid.cqlresultset.CQLAttributeResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.cagrid.cqlresultset.TargetAttribute;
+import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcqlresult.DCQLQueryResultsCollection;
 import gov.nih.nci.cagrid.dcqlresult.DCQLResult;
@@ -11,14 +15,24 @@ import gov.nih.nci.cagrid.fqp.common.SerializationUtils;
 import gov.nih.nci.cagrid.fqp.processor.exceptions.FederatedQueryProcessingException;
 import gov.nih.nci.cagrid.fqp.processor.exceptions.RemoteDataServiceException;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.StringWriter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.globus.wsrf.encoding.DeserializationException;
+import org.globus.wsrf.encoding.ObjectDeserializer;
+
+import org.xml.sax.InputSource;
+
 
 /**
- * 
+ *
  * @author Srini Akkala
  * @author Scott Oster
  */
@@ -80,7 +94,12 @@ public class FederatedQueryEngine {
 		debugDCQLQuery("Beginning processing of DCQL", dcqlQuery);
 
 		CQLQuery cqlQuery = processor.processDCQLQuery(dcqlQuery.getTargetObject());
-
+                if (processor.getObjectsFromFA().size() >0 ) {
+                    ExternalObjects eo = new ExternalObjects();
+                    eo.setExternalObject(processor.getObjectsFromFA());                
+                    cqlQuery.setExternalObjects(eo);
+                }
+            
 		CQLQueryResults aggregateResults = null;
 		String[] targetServiceURLs = dcqlQuery.getTargetServiceURL();
 		for (int i = 0; i < targetServiceURLs.length; i++) {
@@ -104,7 +123,7 @@ public class FederatedQueryEngine {
 				}
 			}
 		}
-
+	       
 		return aggregateResults;
 	}
 
@@ -121,4 +140,30 @@ public class FederatedQueryEngine {
 			}
 		}
 	}
+        
+        public static void main(String[] args) {
+            
+            String queryDir = "C:\\CVS-CodeBase\\cagrid-1-0\\caGrid\\projects\\fqp\\test\\resources\\";
+            String qryFile = "simpleQuery1.xml";
+            java.lang.Object obj;
+
+        try {
+            obj = ObjectDeserializer.deserialize(new InputSource(new FileInputStream(queryDir+qryFile)),DCQLQuery.class);
+            FederatedQueryEngine fqe = new FederatedQueryEngine();
+            DCQLQueryResultsCollection results = fqe.execute((DCQLQuery)obj);
+            DCQLResult[] res = results.getDCQLResult();
+            DCQLResult d = res[0];
+            CQLQueryResults cqlResults = d.getCQLQueryResultCollection();
+            //CQLQueryResultsIterator iter = new CQLQueryResultsIterator(c, new FileInputStream(new File("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\gui\\conf\\client-config.wsdd")));
+            CQLObjectResult[] objectResult = cqlResults.getObjectResult();
+            for (int i = 0; i < objectResult.length; i++) {
+                    CQLObjectResult objResult = objectResult[i];
+
+                    System.out.println(objResult.get_any()[0]);
+
+            }
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+    }
 }

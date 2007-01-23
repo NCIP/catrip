@@ -17,6 +17,9 @@ import gov.nih.nci.cagrid.dcql.Object;
 import gov.nih.nci.cagrid.fqp.processor.exceptions.FederatedQueryProcessingException;
 import gov.nih.nci.cagrid.fqp.processor.exceptions.RemoteDataServiceException;
 
+import gov.nih.nci.cagrid.fqp.tools.CQLScanner;
+import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
+
 import java.io.FileInputStream;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -48,10 +51,15 @@ import org.xml.sax.InputSource;
  */
 class FederatedQueryProcessor {
 	protected static Log LOG = LogFactory.getLog(FederatedQueryProcessor.class.getName());
-        
+        private Map objectsFromFA = new HashMap();
 
+        public Map getObjectsFromFA(){
+            return objectsFromFA;
+        }
+        
 	public FederatedQueryProcessor() {
 	}
+
 
 
 	/**
@@ -87,7 +95,7 @@ class FederatedQueryProcessor {
 	    javax.xml.namespace.QName q= new javax.xml.namespace.QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
 	    
 	    ObjectSerializer.serialize(w,cqlQuery,q);
-	   // System.out.println(w);
+	//    System.out.println(w);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }              
@@ -263,18 +271,37 @@ class FederatedQueryProcessor {
                 
                 //phase2 added code to get full object and parse it to get the CDE value 
                 List remoteAttributeValues = new ArrayList();
-	        Map objectsFromFA = new HashMap();
+	        
+                boolean populateMap = false;
+                if (CQLScanner.isAttributesRequested(cqlQuery)) {
+                    populateMap = true;
+                }
+                
                 if (cqlResults != null ) {
+                    
                     CQLObjectResult[] objectResult = cqlResults.getObjectResult();
                     for (int i = 0; i < objectResult.length; i++) {
                             CQLObjectResult objResult = objectResult[i];
                             MessageElement msgsElement = objResult.get_any()[0];                            
+                            //System.out.println(msgsElement);
                             String cde = msgsElement.getAttributeValue(foreignAttribute).trim();
-                            remoteAttributeValues.add(cde);
+                        //System.out.println(cde);
+                            //if (cde.equals("T74718")) {
+                            //    System.out.println(cde);
+                            //    System.out.println(msgsElement);
+                            //}
                             
-                            if (msgsElement.getChildNodes().getLength() > 0 ) {
-                                objectsFromFA.put(cde,msgsElement.getChildNodes());
+                            ResultsParser rParser = new ResultsParser(cqlQuery,cqlQuery.getTarget().getName());
+                            if (populateMap) {
+                                //objectsFromFA.put(cde,rParser.getResultMap(msgsElement));
+                                 objectsFromFA.put(cde,rParser.convertMessageElementToListOfMaps(msgsElement));
                             }
+
+                           remoteAttributeValues.add(cde);
+                            
+                            //if (msgsElement.getChildNodes().getLength() > 0 ) {
+                            //    objectsFromFA.put(cde,msgsElement.getChildNodes());
+                            //}
                     }
                 }
 
@@ -309,7 +336,7 @@ class FederatedQueryProcessor {
 		}
 */
 		gov.nih.nci.cagrid.cqlquery.Group criteriaGroup = buildGroup(foreignAssociation.getJoinCondition(),
-			remoteAttributeValues,objectsFromFA);
+			remoteAttributeValues);
 		return criteriaGroup;
 	}
         
@@ -327,7 +354,7 @@ class FederatedQueryProcessor {
 	 * @param list
 	 * @return
 	 */
-	public static gov.nih.nci.cagrid.cqlquery.Group buildGroup(JoinCondition joinCondition, List list, Map objectsFromFA) {
+	public static gov.nih.nci.cagrid.cqlquery.Group buildGroup(JoinCondition joinCondition, List list) {
 		gov.nih.nci.cagrid.cqlquery.Group cqlGroup = new gov.nih.nci.cagrid.cqlquery.Group();
 		String property = joinCondition.getLocalAttributeName();
 
