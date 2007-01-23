@@ -213,7 +213,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
         // add the returned Attribute List to the SimpleGuiRegistry.
-        if (numEntities > 1){
+        if (numEntities > 0){
             
             // first reset the entries in the SimpleGuiRegistry..
             SimpleGuiRegistry.setReturnedAttributeListAvailable(false);

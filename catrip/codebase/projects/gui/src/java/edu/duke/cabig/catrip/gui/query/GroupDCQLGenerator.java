@@ -6,9 +6,11 @@ import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ClassBeanGroup;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
 import edu.duke.cabig.catrip.gui.dnd.ClassNode;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
 import gov.nih.nci.cagrid.cqlquery.Predicate;
+import gov.nih.nci.cagrid.cqlquery.ReturnAttributes;
 import gov.nih.nci.cagrid.dcql.Association;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
@@ -17,6 +19,7 @@ import gov.nih.nci.cagrid.dcql.Group;
 import gov.nih.nci.cagrid.dcql.JoinCondition;
 import java.util.ArrayList;
 import gov.nih.nci.cagrid.dcql.Object;
+import java.util.List;
 import javax.xml.XMLConstants;
 
 import org.apache.xmlbeans.XmlOptions;
@@ -107,7 +110,7 @@ public class GroupDCQLGenerator {
         if (hasGroups){
             int groupNums = outerObjectBean.getGroups().size();
             
-            // if there are more than 1 groups that means than check for 
+            // if there are more than 1 groups that means than check for
             // ClassBeanGroup.needOuterAttributeGroup() or ClassBeanGroup.needOuterClassGroup()
             
             for (int i = 0; i < groupNums; i++) {
@@ -211,31 +214,21 @@ public class GroupDCQLGenerator {
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            // these things will not work as now the target bean is blank..
-            
             // sanjeev: if more than one attribute.. create an internal group...
             if (targetObjectAttributeList.size() > 1){
                 // has multiple attcibutes..
                 dcqlGroup = new Group();
 //                dcqlGroup = dcqlOuterObject.addNewGroup();
                 dcqlOuterObject.setGroup(dcqlGroup);
-                
                 dcqlGroup.setLogicRelation(LogicalOperator.AND);
-                
                 createAttributesGroup(dcqlGroup, targetObjectAttributeList);
+                
+                // set any returned attributes if available..
+//                setReturnedAttributes(dcqlOuterObject);
                 
             }else {
                 // sanjeev: has only 1 attribute
-                Attribute dcqlAttribute = new Attribute(); //   Attribute dcqlAttribute = dcqlOuterObject.setAttribute();
+                Attribute dcqlAttribute = new Attribute(); //   Attribute dcqlAttriqbute = dcqlOuterObject.setAttribute();
                 dcqlOuterObject.setAttribute(dcqlAttribute);
                 
                 
@@ -251,6 +244,10 @@ public class GroupDCQLGenerator {
                 } else {
                     dcqlAttribute.setValue(aBean.getAttributeValue());
                 }
+                
+                // set any returned attributes if available..
+//                setReturnedAttributes(dcqlOuterObject);
+                
             }
             // </editor-fold>  // only attributes are there
             
@@ -316,6 +313,9 @@ public class GroupDCQLGenerator {
             
         }
         
+        // set any returned attributes if available..
+        setReturnedAttributes(dcqlOuterObject);
+        
     }
     
     
@@ -365,7 +365,7 @@ public class GroupDCQLGenerator {
     
     
     private static void createAssociations(Group outerObject, ClassBeanGroup group){
-
+        
         Group outerDcqlGroup = outerObject;
         ArrayList associationList = group.getClassList();
         Association[]   dcqlAssociationArray = new Association[associationList.size()];
@@ -569,6 +569,20 @@ public class GroupDCQLGenerator {
         }
     }
     
+    
+    
+    
+    
+    private static void setReturnedAttributes(Object dcqlOuterObject){
+        // set any returned attributes if available..
+        boolean  available = SimpleGuiRegistry.hasReturnedAttributesForClass(dcqlOuterObject.getName());
+        if (available){
+            List atts = SimpleGuiRegistry.getReturnedAttributesForClass(dcqlOuterObject.getName());
+            String[] attributes = new String[atts.size()];
+            ReturnAttributes rtAtt = new ReturnAttributes((String[]) atts.toArray(attributes));
+            dcqlOuterObject.setReturnAttributes(rtAtt);
+        }
+    }
     
     
     

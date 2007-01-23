@@ -288,9 +288,9 @@ public class SimpleSearchPanel extends CPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void returnAttributeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnAttributeBtnActionPerformed
-
+        
         ReturnedAttributesPanel fgp = new ReturnedAttributesPanel(this);
         
         CJDialog jd = new CJDialog(getMainFrame(), "Select Returned Values..");
@@ -427,6 +427,10 @@ public class SimpleSearchPanel extends CPanel {
         SimpleGuiRegistry.setCurrentXMLObjectList(objs);
         SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
         
+        
+        // Reset the returnedAttributes entries in the SimpleGuiRegistry..
+        SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
+        SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
         returnAttributeBtn.setEnabled(true); // enable this button if that was disable.. there may be chances that in new filter set there is no groups..
     }//GEN-LAST:event_clearFilterBtnActionPerformed
     
@@ -796,10 +800,10 @@ public class SimpleSearchPanel extends CPanel {
     
     
     
-    private Border getBorder (int indentLevel, boolean even){
+    private Border getBorder(int indentLevel, boolean even){
         int colors = GUIConstants.COLOR_SET.length;
-        Color col = null; 
-        Border bord = null;  
+        Color col = null;
+        Border bord = null;
         if (indentLevel >= colors){
             for (int i = 0; i < indentLevel; i++) {
                 indentLevel-=colors;
@@ -809,7 +813,7 @@ public class SimpleSearchPanel extends CPanel {
                 }
             }
         } else {
-            col =  GUIConstants.COLOR_SET[indentLevel]; 
+            col =  GUIConstants.COLOR_SET[indentLevel];
         }
         
         if (even){
