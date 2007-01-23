@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:DCQLQuery xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">
+	<ns1:TargetObject name="edu.duke.catrip.cae.domain.general.Participant" xsi:type="ns1:Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<ns1:ReturnAttributes xsi:type="ns2:ReturnAttributes" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+			<ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">firstName</ns2:ReturnAttribute>
+			<ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">gender</ns2:ReturnAttribute>
+			<ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">ethnicity</ns2:ReturnAttribute>
+		</ns1:ReturnAttributes>
+			<ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
+				<ns1:Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection" xsi:type="ns1:Association">
+					<ns1:ReturnAttributes xsi:type="ns3:ReturnAttributes" xmlns:ns3="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+						<ns3:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">tubuleFormation</ns3:ReturnAttribute>
+						<ns3:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">totalScore</ns3:ReturnAttribute>
+					</ns1:ReturnAttributes>
+					<ns1:Attribute name="totalScore" predicate="GREATER_THAN" value="7" xsi:type="ns4:Attribute" xmlns:ns4="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
+				</ns1:Association>
+			</ns1:Association>
+	</ns1:TargetObject>
+	<ns1:targetServiceURL xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://152.16.96.114:8080/wsrf/services/cagrid/CAE</ns1:targetServiceURL>
+</ns1:DCQLQuery>
