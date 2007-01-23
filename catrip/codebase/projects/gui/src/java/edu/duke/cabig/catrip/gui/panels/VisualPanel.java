@@ -27,6 +27,7 @@ public class VisualPanel extends CPanel {
         cQLDesignerPanel.setMainFrame(mainFrame);
         visualQueryDesignerPanel.setMainFrame(mainFrame);
         getSimpleSearchPanel().setMainFrame(mainFrame);
+        queryServiceUI1.setMainFrame(mainFrame);
     }
     
     
@@ -58,6 +59,7 @@ public class VisualPanel extends CPanel {
         visualQueryDesignerPanel = new edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel();
         cQLDesignerPanel = new edu.duke.cabig.catrip.gui.panels.CQLDesignerPanel();
         simpleSearchPanel = new edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel();
+        queryServiceUI1 = new edu.duke.cabig.catrip.gui.querysharing.QueryServiceUI();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -74,6 +76,8 @@ public class VisualPanel extends CPanel {
         tabbedPane.addTab(bundle.getString("VISUAL_PANEL_TAB_TWO"), cQLDesignerPanel); // NOI18N
 
         tabbedPane.addTab("Simple Query Interface", simpleSearchPanel);
+
+        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(VisualPanel.class, "VisualPanel.queryServiceUI1.tabtxt"), queryServiceUI1); // NOI18N
 
         add(tabbedPane);
 
@@ -102,6 +106,7 @@ public class VisualPanel extends CPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private edu.duke.cabig.catrip.gui.panels.CQLDesignerPanel cQLDesignerPanel;
+    private edu.duke.cabig.catrip.gui.querysharing.QueryServiceUI queryServiceUI1;
     private edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel simpleSearchPanel;
     private javax.swing.JTabbedPane tabbedPane;
     private edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel visualQueryDesignerPanel;

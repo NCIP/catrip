@@ -189,7 +189,7 @@ public class LoginScreen extends CJFrame {
                 mf.getCentralSplitPane().setEnabled(false);
                 
                 // reset the top size of the right hand side split pane.
-                mf.getRightSplitPane().setDividerLocation(400);
+                mf.getRightSplitPane().setDividerLocation(450);
                 // added added
                 
                 
