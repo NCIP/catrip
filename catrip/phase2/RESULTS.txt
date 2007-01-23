@@ -18,6 +18,12 @@ from TissueSpecimenImpl xxTargetAliasxx left join fetch xxTargetAliasxx.specimen
 <ns39:TissueSpecimen>......
 <ns40:TissueSpecimen>......
 
+PROTOTYPE COMPLEX EXAMPLE ....
+RETURN TYPES 
+DCQL JOININGS 
+FILTERS ON OTHER OBJECTS 
+ORDER IN XSD ATTRIBUTE COMPARE 
+
 select xxTargetAliasxx.id,xxTargetAliasxx.type,xxTargetAliasxx.externalIdentifierCollection.name 
 From edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl as xxTargetAliasxx 
 	left join xxTargetAliasxx.externalIdentifierCollection 
