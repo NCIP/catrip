@@ -43,7 +43,7 @@ public class TestFQE extends TestCase {
      * @throws Exception
      */
     public void testFQE()  throws Exception {
-        String qryFile = "simpleQuery3.xml";
+        String qryFile = "SanjeevQry.xml";
 		String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
         try {
             DCQLQuery dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(QUERIES_DIR+File.separator+qryFile)),DCQLQuery.class);
