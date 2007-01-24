@@ -1,6 +1,7 @@
 package gov.nih.nci.catrip.cagrid.catripquery.server;
 import java.lang.String;
 import java.util.HashSet;
+import java.util.Random;
 
 /**
  * @version 1.0
@@ -10,12 +11,33 @@ public class ClassDb {
  
 	private int id;
 	private String name;
-	public java.util.Collection<ClassDb> attributeCollection;
+	public java.util.Collection<AttributeDb> attributeCollection;
+	private Random generator = new Random();
 
 	public java.util.Collection getAttributeCollection() {
 		if (attributeCollection == null)
-			attributeCollection = new HashSet<ClassDb>();
+			attributeCollection = new HashSet<AttributeDb>();
 		return attributeCollection;
+	}
+
+	public void addAttribute(AttributeDb anAttribute){
+		if (anAttribute != null && anAttribute.getName() != null){
+			if (attributeCollection == null)
+				attributeCollection = new HashSet<AttributeDb>();
+			attributeCollection.add(anAttribute);
+		}
+	}
+
+	public void addAttribute(String anAttributeName){
+		if (anAttributeName != null && anAttributeName != ""){
+			if (attributeCollection == null){
+				attributeCollection = new HashSet<AttributeDb>();
+				AttributeDb attribute = new AttributeDb();
+				attribute.setName(anAttributeName);
+				attribute.setId(generator.nextInt());
+				attributeCollection.add(attribute);
+			}
+		}
 	}
 
 	public void setAttributeCollection(java.util.Collection attributeCollection) {

@@ -1,6 +1,7 @@
 package gov.nih.nci.catrip.cagrid.catripquery.server;
 
 import java.lang.String;
+import java.sql.Clob;
 import java.util.*;
 
 /**
@@ -22,6 +23,7 @@ public class QueryDb {
 	private String instance;
 	private String dcql;
 	private Collection<ClassDb> classCollection;
+	private Random generator = new Random();
 
 	public QueryDb(){ 
 
@@ -32,6 +34,17 @@ public class QueryDb {
 			if (classCollection == null)
 				classCollection = new HashSet<ClassDb>();
 			classCollection.add(aClass);
+		}
+	}
+	public void addClass(String anAttributeName){
+		if (anAttributeName != null && anAttributeName != ""){
+			if (classCollection == null){
+				classCollection = new HashSet<ClassDb>();
+				ClassDb aClass = new ClassDb();
+				aClass.setName(anAttributeName);
+				aClass.setId(generator.nextInt());
+				classCollection.add(aClass);
+			}
 		}
 	}
 	public Collection<ClassDb> getClassCollection() {
