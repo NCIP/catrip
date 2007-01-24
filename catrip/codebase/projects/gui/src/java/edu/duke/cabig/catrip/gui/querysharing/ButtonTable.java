@@ -21,8 +21,8 @@ import javax.swing.table.TableColumnModel;
 
 public class ButtonTable extends JTable {
 
-	public ButtonTable(){
-		
+	public ButtonTable(){ 
+		 
 	}
 	public ButtonTable(Collection collection){
 	       DefaultTableModel model = new DefaultTableModel();

@@ -36,8 +36,9 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.KeyEvent;
 import javax.swing.SwingConstants;
+import java.awt.Point;
 
-public class QueryServiceUI extends JPanel {
+public class QueryServiceUI extends JPanel { 
     
     /**
      *
@@ -62,7 +63,7 @@ public class QueryServiceUI extends JPanel {
     
     Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
     //Collection<ClassDb> classCollection = null;
-    private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
+   // private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
     private QueryDb queryData = new QueryDb();  //  @jve:decl-index=0:
     private DefaultTableModel tableModel = null ;
     private JPanel filterPanel = null;
@@ -104,16 +105,16 @@ public class QueryServiceUI extends JPanel {
      */
     private void initialize() {
         lblQueryResult = new JLabel();
-        lblQueryResult.setBounds(new Rectangle(605, 22, 127, 16));
+        lblQueryResult.setBounds(new Rectangle(592, 8, 127, 16));
         lblQueryResult.setText("Queries Results :");
         lblConceptl = new JLabel();
         lblConceptl.setText("Concept");
-        lblConceptl.setBounds(new Rectangle(17, 346, 47, 16));
+        lblConceptl.setBounds(new Rectangle(116, 197, 47, 16));
         lblFilter = new JLabel();
         lblFilter.setText("Filter");
         lblFilter.setDisplayedMnemonic(KeyEvent.VK_UNDEFINED);
         lblFilter.setHorizontalAlignment(SwingConstants.CENTER);
-        lblFilter.setBounds(new Rectangle(27, 155, 59, 16));
+        lblFilter.setBounds(new Rectangle(19, 178, 92, 26));
         lblLastName = new JLabel();
         lblLastName.setText("Last Name :");
         lblLastName.setBounds(new Rectangle(288, 93, 83, 20));
@@ -130,7 +131,6 @@ public class QueryServiceUI extends JPanel {
         
         this.add(lblFilter, null);
         this.add(lblConceptl, null);
-        this.add(getFilterPanel(), null);
         this.add(getJScrollPane1(), null);
     }
     
@@ -142,7 +142,7 @@ public class QueryServiceUI extends JPanel {
     private JButton getBtnSearch() {
         if (btnSearch == null) {
             btnSearch = new JButton();
-            btnSearch.setBounds(new Rectangle(333, 351, 85, 23));
+            btnSearch.setBounds(new Rectangle(356, 185, 85, 23));
             btnSearch.setText("Search");
             btnSearch.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -155,7 +155,7 @@ public class QueryServiceUI extends JPanel {
                             classCollection.add(element.getSelectedClass());
                         }
                         queryData.setClassCollection(classCollection);
-                        populateTable(QueryServiceClient.search(queryData));
+                        populateTable(QueryServiceClient.search(queryData)); 
                     } catch (Exception qe) {
                         qe.printStackTrace();
                     }
@@ -229,10 +229,10 @@ public class QueryServiceUI extends JPanel {
      *
      * @return javax.swing.JScrollPane
      */
-    private JScrollPane getResultsScrollPane() {
+    private JScrollPane getResultsScrollPane() { 
         if (resultsScrollPane == null) {
             resultsScrollPane = new JScrollPane();
-            resultsScrollPane.setBounds(new Rectangle(615, 53, 572, 166));
+            resultsScrollPane.setBounds(new Rectangle(594, 30, 575, 356));
             resultsScrollPane.setViewportView(getResultTable());
         }
         return resultsScrollPane;
@@ -243,7 +243,7 @@ public class QueryServiceUI extends JPanel {
      *
      * @return javax.swing.JTable
      */
-    private JTable getResultTable() {
+    private JTable getResultTable() { 
         if (resultTable == null) {
             resultTable = new ButtonTable();
             
@@ -284,7 +284,7 @@ public class QueryServiceUI extends JPanel {
             lblDescriptionl.setText("Description :");
             metaDataPanel = new JPanel();
             metaDataPanel.setLayout(null);
-            metaDataPanel.setBounds(new Rectangle(18, 17, 566, 133));
+            metaDataPanel.setBounds(new Rectangle(16, 30, 564, 134));
             metaDataPanel.add(lblFirstName, null);
             metaDataPanel.add(getTxtFirstName(), null);
             metaDataPanel.add(lblLastName, null);
@@ -307,7 +307,7 @@ public class QueryServiceUI extends JPanel {
         if (txtQueryName == null) {
             txtQueryName = new JTextField();
             txtQueryName.setBounds(new Rectangle(110, 16, 426, 20));
-            txtQueryName.setText("not");
+           // txtQueryName.setText("not");
             txtQueryName.setName("");
             txtQueryName.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent e) {
@@ -328,7 +328,7 @@ public class QueryServiceUI extends JPanel {
         if (txtDescription == null) {
             txtDescription = new JTextField();
             txtDescription.setBounds(new Rectangle(110, 52, 426, 20));
-            txtDescription.setText("query");
+           // txtDescription.setText("query");
             txtDescription.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent e) {
                     queryData.setDescription(txtDescription.getText());
@@ -346,7 +346,7 @@ public class QueryServiceUI extends JPanel {
     private JButton getBtnAddFilter() {
         if (btnAddFilter == null) {
             btnAddFilter = new JButton();
-            btnAddFilter.setBounds(new Rectangle(481, 348, 99, 24));
+            btnAddFilter.setBounds(new Rectangle(470, 185, 99, 24));
             btnAddFilter.setText("Add Filter");
             btnAddFilter.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -379,7 +379,6 @@ public class QueryServiceUI extends JPanel {
             PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(getFilterPanel(), PreferredHeightMarginBorderBoxLayout.Y_AXIS);
             filterPanel.setLayout(layout);
             //filterPanel.setLayout(new BoxLayout(getFilterPanel(), BoxLayout.Y_AXIS));
-            filterPanel.setBounds(new Rectangle(27, 201, 516, 161));
         }
         return filterPanel;
     }
@@ -392,9 +391,9 @@ public class QueryServiceUI extends JPanel {
     public JScrollPane getJScrollPane1() {
         if (jScrollPane1 == null) {
             jScrollPane1 = new JScrollPane();
-            jScrollPane1.setBounds(new Rectangle(18, 171, 566, 167));
             jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
             jScrollPane1.setViewportView(getFilterPanel());
+            jScrollPane1.setBounds(new Rectangle(16, 215, 564, 159));
         }
         return jScrollPane1;
     }

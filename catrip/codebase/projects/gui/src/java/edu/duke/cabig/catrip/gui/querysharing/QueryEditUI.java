@@ -212,18 +212,18 @@ public class QueryEditUI extends JPanel {
 			ObjectSerializer.serialize(w, dcqlQuery, qname);
 		} catch (SerializationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		System.out.println("QueryEditUI:getDCQLString()");
 		System.out.println(w);
 		System.out.println("QueryEditUI:getDCQLString()");
 		return w.toString().trim();
-		
+		 
 	}
 	private void save() {
 		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
 		try {
-			client = new QueryServiceClient(serviceURI);
+			client = new QueryServiceClient(serviceURI); 
 			client.save(queryFields);
 		} catch (MalformedURIException e) {
 			// TODO Auto-generated catch block
