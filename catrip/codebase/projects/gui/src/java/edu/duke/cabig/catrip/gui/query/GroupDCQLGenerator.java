@@ -56,7 +56,6 @@ public class GroupDCQLGenerator {
             
             Object dcqlTargetObject = new Object();
             dcqlTargetObject.setName(targetObjectBean.getFullyQualifiedName());
-            
             dcqlQuery.setTargetServiceURL(new String[]{targetObjectBean.getServiceUrl()});
             
             buildAssociationGroup(dcqlTargetObject, targetObjectBean);

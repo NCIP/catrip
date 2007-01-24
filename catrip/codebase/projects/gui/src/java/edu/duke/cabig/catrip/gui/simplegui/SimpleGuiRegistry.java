@@ -1,6 +1,7 @@
 
 package edu.duke.cabig.catrip.gui.simplegui;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ClassBeanGroup;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
@@ -57,6 +58,7 @@ public class SimpleGuiRegistry {
     private static FilterGroup rootGroup;
     private static ArrayList<FilterRowPanel> nonGroupFilters = new ArrayList(50); // this represents the filterPanels that are not used in any of the AND/OR groups at a given time.
     private static int numGroupableEntities = 0; // total number of non-group filterPanels plus sub-level groups..
+    private static boolean hasGroupsDefined = false;
     // AND / OR group members..
     
     
@@ -64,6 +66,7 @@ public class SimpleGuiRegistry {
     // Returned Attributes....
     private static boolean returnedAttributeListAvailable = false;
     private static HashMap classNameReturnedAttributeMap = new HashMap(); // map of FullClassName vs List of attribute names..
+    private static int numReturnedAttribute = 0;
     // Returned Attributes....
     
     
@@ -309,6 +312,21 @@ public class SimpleGuiRegistry {
             
             
         }
+        
+         // TODO - ToDo-ToDo
+//        // if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
+//            if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
+//                ClassBean targetBean = getTargetGraphObject().getClassBean();
+//                ArrayList atts = targetBean.getAttributes();
+//                for (int i = 0; i < atts.size(); i++) {
+//                    String cName = targetBean.getFullyQualifiedName();
+//                    String attName = ((AttributeBean)atts.get(i)).getAttributeName(); 
+//                    addToClassNameReturnedAttributeMap(cName, attName);
+//                }
+//            }
+            
+        
+        
         
 //        getTargetGraphObject().getClassBean().printAssociations();
         
@@ -782,6 +800,14 @@ public class SimpleGuiRegistry {
         numGroupableEntities = _numGroupableEntities;
     }
     
+    public static boolean hasGroupsDefined() {
+        return hasGroupsDefined;
+    }
+
+    public static void setHasGroupsDefined(boolean aHasGroupsDefined) {
+        hasGroupsDefined = aHasGroupsDefined;
+    }
+    
     
     //---------------------------- AND / OR groups methods...----------------------------
     
@@ -835,6 +861,7 @@ public class SimpleGuiRegistry {
             atts.add(attribute);
             getClassNameReturnedAttributeMap().put(classFullName, atts);
         }
+        numReturnedAttribute++;
     }
     
     public static boolean hasReturnedAttributesForClass(String classFullName){
@@ -851,10 +878,19 @@ public class SimpleGuiRegistry {
         return returnList;
     }
     
+    
+
+    public static int getNumReturnedAttribute() {
+        return numReturnedAttribute;
+    }
+
+    public static void setNumReturnedAttribute(int aNumReturnedAttribute) {
+        numReturnedAttribute = aNumReturnedAttribute;
+    }
+    
+    
     //---------------------------- returned Attributes methods...----------------------------
-    
-    
-    
+
     
     
     

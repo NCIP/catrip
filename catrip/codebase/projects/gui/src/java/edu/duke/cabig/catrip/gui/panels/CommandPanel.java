@@ -5,8 +5,10 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
+import edu.duke.cabig.catrip.gui.query.GroupDCQLGenerator;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.DisplayExceptions;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
@@ -14,16 +16,21 @@ import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.fqp.processor.FederatedQueryEngine;
+import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
 import java.awt.Cursor;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.xml.XMLConstants;
+import javax.xml.namespace.QName;
 import org.apache.axis.message.MessageElement;
 import org.apache.axis.message.PrefixedQName;
+import org.globus.wsrf.encoding.ObjectSerializer;
 
 /**
  * Panel which contains the Execute button. More commands can be added here.
@@ -77,7 +84,11 @@ public class CommandPanel extends CPanel {
         getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         if (GUIConstants.simpleGui){
-            executeSimpleGuiQuery();
+            if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
+                executeReturnAttributeQuery();
+            } else {
+                executeSimpleGuiQuery();
+            }
         }else {
             executeVisualGuiQuery();
         }
@@ -101,6 +112,76 @@ public class CommandPanel extends CPanel {
         executeVisualGuiQuery();
         
     }
+    
+    private void executeReturnAttributeQuery(){
+        try {
+            
+            FederatedQueryEngine fqe = new FederatedQueryEngine();
+            DCQLQuery dcql = GroupDCQLGenerator.getDCQLDocument();
+            
+            System.out.println(ObjectSerializer.toString(dcql,new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI)));
+            
+            getMainFrame().getOutputPanel().cleanResults();
+            
+            CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
+            
+            
+            
+            ResultsParser parser = new ResultsParser(dcql,dcql.getTargetObject().getName());
+            List resultList = parser.getResultList(results); // send this..
+            
+            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
+            String[] compositMapKeys = new String[SimpleGuiRegistry.getNumReturnedAttribute()]; // send this..
+            HashMap colNamesMap = new HashMap(); // send this..
+            
+            int k = 0;
+            Iterator keys = cMap.keySet().iterator();
+            while (keys.hasNext()) {
+                String className = keys.next().toString();
+                List atts = (List)cMap.get(className);
+                String[] attArray = (String[])atts.toArray(new String[atts.size()]); // un necessary.. conversion 
+                
+                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(className).clone();
+                cBean.filterAttributes(attArray);
+                // now this classBean is a returned only attribute bean..
+//                ArrayList attributes = cBean.getAttributes();
+                for (int i = 0; i < attArray.length; i++) {
+                    AttributeBean aBean = (AttributeBean)cBean.getAttributes().get(i) ;
+                    compositMapKeys[k] = cBean.getFullyQualifiedName()+"-"+ attArray[i];
+                    colNamesMap.put(compositMapKeys[k], aBean.getCDEName());
+                    k++;
+                }
+            }
+            
+             getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys);
+            
+            
+            
+//            Iterator resultsItr = resultList.iterator();
+//            while (resultsItr.hasNext()) {
+//                Map resultMap = (Map)resultsItr.next(); // one row...
+//                Iterator keys = resultMap.keySet().iterator();
+//                while (keys.hasNext()) {
+//                    String key = keys.next().toString();
+//                    System.out.println( key + "====" + resultMap.get(key).toString() );
+//                }
+//                System.out.println("\n\n");
+//            }
+            
+            
+            
+            
+//                ClassBean tmpObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
+            
+//                getMainFrame().getOutputPanel().setResults(classBeanList);
+            
+//                GUIConstants.resultAvailable = true;
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     
     private void executeVisualGuiQuery(){
         try {
@@ -189,7 +270,7 @@ public class CommandPanel extends CPanel {
                         String dateFormatExp = "\\d\\d\\d\\d[-]\\d\\d[-]\\d\\d[T]\\d\\d[:]\\d\\d[:]\\d\\d[.]\\d\\d\\d[-]\\d\\d[:]\\d\\d";
                         boolean b = Pattern.matches(dateFormatExp, value);
                         if (b){
-                            Date javaDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")).parse(value); 
+                            Date javaDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")).parse(value);
                             value = javaDate.toString();
                         }
                         

@@ -201,6 +201,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             
             // signal the simple gui changed..
             SimpleGuiRegistry.setSimpleGuiChanged(true);
+            SimpleGuiRegistry.setHasGroupsDefined(true);
             
         }
         JDialog parent = (JDialog)getRootPane().getParent();

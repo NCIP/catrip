@@ -54,14 +54,14 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
         // check the filter classes that are being set right now.. and then filter the beans.. then filter the beans based on the flag also..
         // get all the filtersPanels from simple gui.. and filter them for duplicates..
         ArrayList<FilterRowPanel> list = SimpleGuiRegistry.getFilterList();
-        ArrayList<CDEComboboxBean> attributeList = new ArrayList<CDEComboboxBean>(100);
+//        ArrayList<CDEComboboxBean> attributeList = new ArrayList<CDEComboboxBean>(100);
         
         for (int i = 0; i < list.size(); i++) {
             CDEComboboxBean cdeBean = list.get(i).getCDEComboboxBean();
             boolean isSelectable = list.get(i).getGraphObject().isSelectable(); // check if the class is selectable than only add it..
             if ( isSelectable && !entries.containsKey(cdeBean.getClassBean().getFullyQualifiedName())){
                 
-                attributeList.add(cdeBean);
+//                attributeList.add(cdeBean);
                 String fullClassName = cdeBean.getClassBean().getFullyQualifiedName();
                 entries.put(fullClassName, cdeBean);
                 keyEntries.add(fullClassName);
@@ -70,6 +70,22 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                 
             }
         }
+        
+        
+        // set the target classBean as well..
+        ClassBean targetBean = SimpleGuiRegistry.getTargetGraphObject().getClassBean();
+        CDEComboboxBean cdeBeanTmp = new CDEComboboxBean();
+        cdeBeanTmp.setClassBean( targetBean.clone() ) ;
+        String fullClassName = cdeBeanTmp.getClassBean().getFullyQualifiedName();
+        entries.put(fullClassName, cdeBeanTmp);
+        keyEntries.add(fullClassName);
+        numAvailableEntities += targetBean.getAttributes().size();
+        
+        
+        
+        
+        
+        
         
         // get all classes in the path of the association tree..
 //        SimpleGuiRegistry.prepareForDcql();
@@ -110,7 +126,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
         returnedAttributeListPanel.revalidate();
         returnedAttributeListPanel.repaint();
         numEntities--;
-    
+        
     }
     
     
@@ -218,6 +234,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             // first reset the entries in the SimpleGuiRegistry..
             SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
             SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
+            SimpleGuiRegistry.setNumReturnedAttribute(0);
             
             
             for (int i = 0; i < numEntities; i++) {
