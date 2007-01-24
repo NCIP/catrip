@@ -35,7 +35,7 @@ public class CDEComboboxBean {
     }
 
     public String toString() {
-        return cBean.getCDEName() + "  " +aBean.getCDEName();
+        return cBean.getCDEName() + "  " + aBean.getCDEName();  
 //        return cBean.getServiceName()+" -- "+cBean.getCDEName() + "  " +aBean.getCDEName();
     }
 

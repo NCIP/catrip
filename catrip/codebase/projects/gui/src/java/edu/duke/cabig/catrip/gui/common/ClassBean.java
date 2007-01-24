@@ -11,21 +11,21 @@ import java.util.*;
  */
 public class ClassBean{
     
-    private String id;
-    private String version;
-    private ArrayList<AttributeBean> attributes = new ArrayList(50);
+    private String id="";
+    private String version="";
+    private ArrayList<AttributeBean> attributes = new ArrayList(50); 
     private HashMap attributesMap = new HashMap(50);
     private ArrayList<String> associatedClasses= new ArrayList(20); // from the domain model..
-    private String packageName;
-    private String className;
-    private String description;
+    private String packageName="";
+    private String className="";
+    private String description="";
     
     // set the icon based on the service name.
     private Image icon;// = "edu/duke/cabig/catrip/gui/dnd/resources/caCore.png";
-    private String serviceName;
-    private String serviceUrl;
-    private String domainModelId;
-    private String CDEName;
+    private String serviceName="";
+    private String serviceUrl="";
+    private String domainModelId="";
+    private String CDEName="";
     
     
     
@@ -34,7 +34,7 @@ public class ClassBean{
     private boolean needImpl=false;
     
     private int numNotNullAttributes = 0;
-    private ArrayList<AttributeBean> notNullAttributes;
+    private ArrayList<AttributeBean> notNullAttributes = new ArrayList();
     
     private boolean hasAssociations = false;
     private ArrayList<ClassBean> associations = new ArrayList(20);
@@ -47,8 +47,8 @@ public class ClassBean{
     
     
     // ---- UML Generalization Collection attributes ----//
-    private String superClassRefId;
-    private String superClassName;
+    private String superClassRefId="";
+    private String superClassName="";
     private ArrayList<String> superClassAssociatedClassList = new ArrayList(20);
     private ArrayList<String> subClassIds = new ArrayList(100);
     // ---- UML Generalization Collection attributes ----//

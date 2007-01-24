@@ -1,6 +1,12 @@
 package edu.duke.cabig.catrip.gui.querysharing;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
+import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
@@ -35,10 +41,11 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.SwingConstants;
-import java.awt.Point;
 
-public class QueryServiceUI extends JPanel { 
+public class QueryServiceUI extends JPanel {
     
     /**
      *
@@ -63,7 +70,7 @@ public class QueryServiceUI extends JPanel {
     
     Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
     //Collection<ClassDb> classCollection = null;
-   // private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
+    // private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
     private QueryDb queryData = new QueryDb();  //  @jve:decl-index=0:
     private DefaultTableModel tableModel = null ;
     private JPanel filterPanel = null;
@@ -74,6 +81,7 @@ public class QueryServiceUI extends JPanel {
     
     // --------
     public MainFrame mainFrame;
+    private ArrayList<CDEComboboxBean> filterList = new ArrayList<CDEComboboxBean>(500);
     // --------
     
     
@@ -87,6 +95,7 @@ public class QueryServiceUI extends JPanel {
     public QueryServiceUI() {
         super();
         initialize();
+        init();
     }
     
     
@@ -97,6 +106,56 @@ public class QueryServiceUI extends JPanel {
     public MainFrame getMainFrame() {
         return mainFrame;
     }
+    
+    private void init(){
+        
+        ArrayList<GraphObject> objs = SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();
+        
+        for (int i=0;i<objs.size();i++) {
+            GraphObject gObj = objs.get(i);
+            if (gObj.isDisplayable()){
+                ClassBean cBean = gObj.getClassBean();
+                ArrayList attributes = cBean.getAttributes();
+                
+                for (int j = 0; j < attributes.size(); j++) {
+                    AttributeBean aBean = (AttributeBean)attributes.get(j);
+                    CDEComboboxBean cdeBean = new CDEComboboxBean();
+                    cdeBean.setGraphObject(gObj);
+                    cdeBean.setAttributeBean(aBean);
+                    filterList.add(cdeBean);
+                }
+                // add the class only entry..
+                CDEComboboxBean cdeBean = new CDEComboboxBean();
+                cdeBean.setGraphObject(gObj);
+                cdeBean.setAttributeBean(new AttributeBean());
+                filterList.add(cdeBean);
+                
+            }
+        }
+        
+        // sanjeev: add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
+        Collections.sort(filterList, new CDEComboboxBeanComparator());
+//        for (int i = 0; i < attributeList.size(); i++) {
+//            getCdeCombo().addItem(attributeList.get(i));
+//        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     /**
@@ -155,7 +214,7 @@ public class QueryServiceUI extends JPanel {
                             classCollection.add(element.getSelectedClass());
                         }
                         queryData.setClassCollection(classCollection);
-                        populateTable(QueryServiceClient.search(queryData)); 
+                        populateTable(QueryServiceClient.search(queryData));
                     } catch (Exception qe) {
                         qe.printStackTrace();
                     }
@@ -167,9 +226,10 @@ public class QueryServiceUI extends JPanel {
         return btnSearch;
     }
     private QueryFilterRowPanel getFilterRowPanel(){
-        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this);
-        filterRow.setPreferredSize(new Dimension(538, 30));
-        return filterRow;
+//        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this);
+        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this, filterList);
+        filterRow.setPreferredSize(new Dimension(538, 30)); 
+        return filterRow; 
     }
     @SuppressWarnings("unchecked")
     private void populateTable(Vector collection) {
@@ -229,7 +289,7 @@ public class QueryServiceUI extends JPanel {
      *
      * @return javax.swing.JScrollPane
      */
-    private JScrollPane getResultsScrollPane() { 
+    private JScrollPane getResultsScrollPane() {
         if (resultsScrollPane == null) {
             resultsScrollPane = new JScrollPane();
             resultsScrollPane.setBounds(new Rectangle(594, 30, 575, 356));
@@ -243,7 +303,7 @@ public class QueryServiceUI extends JPanel {
      *
      * @return javax.swing.JTable
      */
-    private JTable getResultTable() { 
+    private JTable getResultTable() {
         if (resultTable == null) {
             resultTable = new ButtonTable();
             
@@ -307,7 +367,7 @@ public class QueryServiceUI extends JPanel {
         if (txtQueryName == null) {
             txtQueryName = new JTextField();
             txtQueryName.setBounds(new Rectangle(110, 16, 426, 20));
-           // txtQueryName.setText("not");
+            // txtQueryName.setText("not");
             txtQueryName.setName("");
             txtQueryName.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent e) {
@@ -328,7 +388,7 @@ public class QueryServiceUI extends JPanel {
         if (txtDescription == null) {
             txtDescription = new JTextField();
             txtDescription.setBounds(new Rectangle(110, 52, 426, 20));
-           // txtDescription.setText("query");
+            // txtDescription.setText("query");
             txtDescription.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent e) {
                     queryData.setDescription(txtDescription.getText());

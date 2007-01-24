@@ -8,10 +8,10 @@ package edu.duke.cabig.catrip.gui.common;
  */
 public class AttributeBean {
     
-    private String attributeName;
-    private String attributeValue;
-    private String CDEName;
-    private String displayName;
+    private String attributeName="";
+    private String attributeValue="";
+    private String CDEName="";
+    private String displayName="";
     private String predicate = "LIKE"; // set as default predicate.
     
     /**

@@ -1,11 +1,12 @@
 package edu.duke.cabig.catrip.gui.querysharing;
 
+import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 
 import javax.swing.JPanel;
 import java.awt.Dimension;
-import javax.swing.JLabel;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JComboBox;
@@ -36,14 +37,37 @@ public class QueryFilterRowPanel extends JPanel {
 		initialize();
 		containterPanel = p;
 	}
+        
+        public QueryFilterRowPanel(QueryServiceUI p, ArrayList listItems) {
+		super();
+		initialize();
+		containterPanel = p;
+                // fill the combo with the classList..  this is of type CDEComboBoxBeans.. 
+                javax.swing.JComboBox filterBox = getCbFilter();
+                for (int i = 0; i < listItems.size(); i++) {
+                    CDEComboboxBean cdeBean = (CDEComboboxBean) listItems.get(i); 
+                    filterBox.addItem(cdeBean);
+                }
+                
+	}
+        
+        
 	public ClassDb getSelectedClass(){
 		Random generator = new Random();
 		ClassDb aClass = new ClassDb();
 		aClass.setId(generator.nextInt());
-		String selection = getCbFilter().getSelectedItem().toString();
-		if (selection != null){
-			aClass.setName(selection);
-		}
+                
+                CDEComboboxBean cdeBean = (CDEComboboxBean)getCbFilter().getSelectedItem();
+                if (cdeBean!=null){
+                    aClass.setName(cdeBean.getClassBean().getFullyQualifiedName());
+                    if (!cdeBean.getAttributeBean().isNull()){ // set the attribute here..
+                        aClass.addAttribute(cdeBean.getAttributeBean().getAttributeName());
+                    }
+                }
+//		String selection = getCbFilter().getSelectedItem().toString();
+//		if (selection != null){
+//			aClass.setName(selection);
+//		}
 		return aClass;
 		
 	}
@@ -56,9 +80,9 @@ public class QueryFilterRowPanel extends JPanel {
         this.setLayout(null);
         this.setSize(new Dimension(538, 26));
         // add concepts to combo box
-        getCbFilter().addItem("");
-        getCbFilter().addItem("edu.pitt.cabig.cae.domain.general.AnnotationEventParameters");
-        getCbFilter().addItem("edu.duke.catrip.cae.domain.general.Participant");
+//        getCbFilter().addItem("");
+//        getCbFilter().addItem("edu.pitt.cabig.cae.domain.general.AnnotationEventParameters");
+//        getCbFilter().addItem("edu.duke.catrip.cae.domain.general.Participant");
         this.add(getCbFilter(), null);
         this.add(getDelFilterButton(), null);
 			

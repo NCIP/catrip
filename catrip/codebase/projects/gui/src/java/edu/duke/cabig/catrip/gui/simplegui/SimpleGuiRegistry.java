@@ -1,7 +1,6 @@
 
 package edu.duke.cabig.catrip.gui.simplegui;
 
-import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ClassBeanGroup;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
@@ -71,7 +70,9 @@ public class SimpleGuiRegistry {
     
     
     
-    
+    // query sharing
+    private static ArrayList<GraphObject> allSimpleGuiXMLObjectList = new ArrayList(500);
+    // query sharing
     
     
     
@@ -313,18 +314,18 @@ public class SimpleGuiRegistry {
             
         }
         
-         // TODO - ToDo-ToDo
+        // TODO - ToDo-ToDo
 //        // if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
 //            if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
 //                ClassBean targetBean = getTargetGraphObject().getClassBean();
 //                ArrayList atts = targetBean.getAttributes();
 //                for (int i = 0; i < atts.size(); i++) {
 //                    String cName = targetBean.getFullyQualifiedName();
-//                    String attName = ((AttributeBean)atts.get(i)).getAttributeName(); 
+//                    String attName = ((AttributeBean)atts.get(i)).getAttributeName();
 //                    addToClassNameReturnedAttributeMap(cName, attName);
 //                }
 //            }
-            
+        
         
         
         
@@ -803,7 +804,7 @@ public class SimpleGuiRegistry {
     public static boolean hasGroupsDefined() {
         return hasGroupsDefined;
     }
-
+    
     public static void setHasGroupsDefined(boolean aHasGroupsDefined) {
         hasGroupsDefined = aHasGroupsDefined;
     }
@@ -879,19 +880,99 @@ public class SimpleGuiRegistry {
     }
     
     
-
+    
     public static int getNumReturnedAttribute() {
         return numReturnedAttribute;
     }
-
+    
     public static void setNumReturnedAttribute(int aNumReturnedAttribute) {
         numReturnedAttribute = aNumReturnedAttribute;
     }
     
     
     //---------------------------- returned Attributes methods...----------------------------
-
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //---------------------------- query sharing methods...----------------------------
+    public static ArrayList<GraphObject> getAllSimpleGuiXMLObjectList() {
+        if (allSimpleGuiXMLObjectList.size() == 0){
+            
+            
+            List<GraphObject> objss = processor.getTargetObjects();
+            
+            ArrayList tmpList = new ArrayList();
+            ArrayList tmpListObj = new ArrayList();
+            
+            // get unique services..
+            for (int i=0;i<objss.size();i++) {
+                String name = objss.get(i).toString();
+                String serviceName = objss.get(i).getServiceName();
+                if (!tmpList.contains(name)){
+                    tmpList.add(name);
+                    tmpListObj.add(objss.get(i));
+                }
+            }
+            // add the target objects as well.
+            for (int j = 0; j < tmpListObj.size(); j++) {
+                allSimpleGuiXMLObjectList.add((GraphObject)tmpListObj.get(j)); 
+            }
+            
+            // get the list of GraphObjects for each service..
+            for (int i = 0; i < tmpList.size(); i++) {
+                GraphObject tmpObj = (GraphObject)tmpListObj.get(i);
+                List<GraphObject> objs = processor.getAssociatedObjects(tmpObj.getClassName(),tmpObj.getServiceName());
+//            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(tmpObj.getServiceName()); // no need as all services will have their own association tree..
+                for (int j = 0; j < objs.size(); j++) {
+                    allSimpleGuiXMLObjectList.add(objs.get(j));
+                }
+            }
+            
+            // get the ClassBeans for each GraphObject and attach them to GraphObjects from the list..
+            GraphObject obj;
+            GraphAssociation assoc;
+            for (int i = 0; i < allSimpleGuiXMLObjectList.size(); i++) {
+                obj = allSimpleGuiXMLObjectList.get(i);
+                boolean display = obj.isDisplayable();
+                if (display){
+                    String[] displaybleAttributes = obj.getDisplaybleAttributes().split(",");
+                    ClassBean cBean =null;
+                    try {
+                        cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    
+                    cBean.filterAttributes(displaybleAttributes);
+                    obj.setClassBean(cBean);
+                    
+                }else { // show only visible classes here as well..
+//                ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(obj.getClassName()).clone();
+//                cBean.setAssociationRoleNameMap(new HashMap(20));
+//                obj.setClassBean(cBean);
+                }
+                
+            }
+            
+        } // by now the GraphObjects in this list is set..
+        
+        return allSimpleGuiXMLObjectList;
+    }
+    
+    public static void setAllSimpleGuiXMLObjectList(ArrayList<GraphObject> aAllSimpleGuiXMLObjectList) {
+        allSimpleGuiXMLObjectList = aAllSimpleGuiXMLObjectList;
+    }
+    
+    //---------------------------- query sharing methods...----------------------------
     
     
     
