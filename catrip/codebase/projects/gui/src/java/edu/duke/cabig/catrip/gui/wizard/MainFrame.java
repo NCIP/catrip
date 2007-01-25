@@ -2,8 +2,14 @@
 package edu.duke.cabig.catrip.gui.wizard;
 
 
+import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
+import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
+import edu.duke.cabig.catrip.gui.query.GroupDCQLGenerator;
+import edu.duke.cabig.catrip.gui.querysharing.QueryEditUI;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.HTMLResultExporter;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import javax.swing.JOptionPane;
 
 /**
@@ -77,6 +83,7 @@ public class MainFrame extends CJFrame {
         addSearchEngineURL = new javax.swing.JMenuItem();
         resultMenu = new javax.swing.JMenu();
         exportResultHtml = new javax.swing.JMenuItem();
+        exportResultExcel = new javax.swing.JMenuItem();
 
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -171,24 +178,60 @@ public class MainFrame extends CJFrame {
         servicesMenu.add(add);
 
         delete.setText(bundle.getString("MAIN_FRAME_WIZARD_SERVICE_MENU_DELETE")); // NOI18N
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+
         servicesMenu.add(delete);
 
         menuBar.add(servicesMenu);
 
         queryMenu.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU")); // NOI18N
         retrieve.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_RETRIEVE")); // NOI18N
+        retrieve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retrieveActionPerformed(evt);
+            }
+        });
+
         queryMenu.add(retrieve);
 
         create.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_CREATE")); // NOI18N
+        create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createActionPerformed(evt);
+            }
+        });
+
         queryMenu.add(create);
 
         save.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_SAVE")); // NOI18N
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+
         queryMenu.add(save);
 
         deleteQuery.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_DELETE")); // NOI18N
+        deleteQuery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteQueryActionPerformed(evt);
+            }
+        });
+
         queryMenu.add(deleteQuery);
 
         execute.setText(bundle.getString("MAIN_FRAME_WIZARD_QUERY_MENU_EXECUTE")); // NOI18N
+        execute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                executeActionPerformed(evt);
+            }
+        });
+
         queryMenu.add(execute);
 
         menuBar.add(queryMenu);
@@ -233,12 +276,57 @@ public class MainFrame extends CJFrame {
 
         resultMenu.add(exportResultHtml);
 
+        exportResultExcel.setText("Export Results to Excel");
+        resultMenu.add(exportResultExcel);
+
         menuBar.add(resultMenu);
 
         setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void executeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executeActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_executeActionPerformed
+
+    private void deleteQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteQueryActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_deleteQueryActionPerformed
+
+    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_createActionPerformed
+
+    private void retrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_retrieveActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+
+        // save query..
+        
+        // First Take the DCQL from the Registry..
+        String dcql; 
+        if (GUIConstants.simpleGui){ 
+            dcql = GroupDCQLGenerator.getDCQLText();
+        } else {
+           dcql = DCQLGenerator.getDCQLText();
+        }
+        
+        QueryEditUI savePnl = new QueryEditUI(dcql);  
+        savePnl.setMainFrame(this);
+        CJDialog jd = new CJDialog(this, "Save the Query"); 
+        jd.add(savePnl);
+        jd.setBounds(10,10,570, 250);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+        
+    }//GEN-LAST:event_saveActionPerformed
     
     private void exportResultHtmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultHtmlActionPerformed
         try {
@@ -346,6 +434,7 @@ public class MainFrame extends CJFrame {
     private javax.swing.JMenuItem delete;
     private javax.swing.JMenuItem deleteQuery;
     private javax.swing.JMenuItem execute;
+    private javax.swing.JMenuItem exportResultExcel;
     private javax.swing.JMenuItem exportResultHtml;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;

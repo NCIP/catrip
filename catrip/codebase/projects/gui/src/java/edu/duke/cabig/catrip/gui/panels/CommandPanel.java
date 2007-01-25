@@ -24,13 +24,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import javax.xml.XMLConstants;
-import javax.xml.namespace.QName;
 import org.apache.axis.message.MessageElement;
 import org.apache.axis.message.PrefixedQName;
-import org.globus.wsrf.encoding.ObjectSerializer;
 
 /**
  * Panel which contains the Execute button. More commands can be added here.
@@ -86,6 +84,7 @@ public class CommandPanel extends CPanel {
         if (GUIConstants.simpleGui){
             if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
                 executeReturnAttributeQuery();
+//                runExternalDcql(GroupDCQLGenerator.getDCQLDocument()); // just for testing..
             } else {
                 executeSimpleGuiQuery();
             }
@@ -96,6 +95,58 @@ public class CommandPanel extends CPanel {
         getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_ExecuteCommandActionPerformed
     
+    public void runExternalDcql(DCQLQuery dcql){
+        ExecuteCommand.setEnabled(false);
+        // assume that the parser can parse the results and use the same mechanism to show the results..
+        
+        try {
+            resultCountLbl.setText("   ");
+            FederatedQueryEngine fqe = new FederatedQueryEngine();
+            getMainFrame().getOutputPanel().cleanResults();
+            CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
+            
+            ResultsParser parser = new ResultsParser(dcql,dcql.getTargetObject().getName());
+            List resultList = parser.getResultList(results);
+            
+            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
+            String[] compositMapKeys;// = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
+            HashMap colNamesMap = new HashMap();
+            
+            int k = 0;
+            if (resultList.size() > 0){
+                Map resultMap = (Map)resultList.get(0);
+                compositMapKeys = new String[resultMap.size()];
+                Iterator keys = resultMap.keySet().iterator();
+                while (keys.hasNext()) {
+                    String key = keys.next().toString();
+                    String className = key.substring(0,key.indexOf("-"));
+                    String attributeName = key.substring(key.indexOf("-")+1, key.length());
+                    ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(className).clone();
+                    cBean.filterAttributes(new String[]{attributeName});
+                    String attCdeName = cBean.getAttributes().get(0).getCDEName();
+                    
+                    compositMapKeys[k] = key;
+                    colNamesMap.put(key, attCdeName);
+                    k++;
+                }
+                
+                getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys);
+                GUIConstants.resultAvailable = true;
+                resultCountLbl.setText("   Total Row Count : "+resultList.size());
+            }
+            
+            
+            
+        } catch (Exception ex) {
+//            ex.printStackTrace();
+            resultCountLbl.setText(" ");
+            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
+        }
+        
+        
+        
+        ExecuteCommand.setEnabled(true);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExecuteCommand;
@@ -115,11 +166,12 @@ public class CommandPanel extends CPanel {
     
     private void executeReturnAttributeQuery(){
         try {
-            
+            resultCountLbl.setText("   ");
             FederatedQueryEngine fqe = new FederatedQueryEngine();
+            
             DCQLQuery dcql = GroupDCQLGenerator.getDCQLDocument();
             
-            System.out.println(ObjectSerializer.toString(dcql,new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI)));
+//            System.out.println(ObjectSerializer.toString(dcql,new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI)));
             
             getMainFrame().getOutputPanel().cleanResults();
             
@@ -128,18 +180,18 @@ public class CommandPanel extends CPanel {
             
             
             ResultsParser parser = new ResultsParser(dcql,dcql.getTargetObject().getName());
-            List resultList = parser.getResultList(results); // send this..
+            List resultList = parser.getResultList(results);
             
             HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
-            String[] compositMapKeys = new String[SimpleGuiRegistry.getNumReturnedAttribute()]; // send this..
-            HashMap colNamesMap = new HashMap(); // send this..
+            String[] compositMapKeys = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
+            HashMap colNamesMap = new HashMap();
             
             int k = 0;
             Iterator keys = cMap.keySet().iterator();
             while (keys.hasNext()) {
                 String className = keys.next().toString();
                 List atts = (List)cMap.get(className);
-                String[] attArray = (String[])atts.toArray(new String[atts.size()]); // un necessary.. conversion 
+                String[] attArray = (String[])atts.toArray(new String[atts.size()]); // un necessary.. conversion
                 
                 ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(className).clone();
                 cBean.filterAttributes(attArray);
@@ -153,8 +205,8 @@ public class CommandPanel extends CPanel {
                 }
             }
             
-             getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys);
-            
+            getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys);
+            resultCountLbl.setText("   Total Row Count : "+resultList.size());
             
             
 //            Iterator resultsItr = resultList.iterator();
@@ -169,16 +221,12 @@ public class CommandPanel extends CPanel {
 //            }
             
             
-            
-            
-//                ClassBean tmpObject = DCQLRegistry.getTargetNode().getAssociatedClassObject();
-            
-//                getMainFrame().getOutputPanel().setResults(classBeanList);
-            
-//                GUIConstants.resultAvailable = true;
+            GUIConstants.resultAvailable = true;
             
         } catch (Exception ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
+            resultCountLbl.setText(" ");
+            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
         }
     }
     

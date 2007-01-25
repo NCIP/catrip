@@ -27,6 +27,9 @@
                   <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="MAIN_FRAME_WIZARD_SERVICE_MENU_DELETE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -43,6 +46,9 @@
                   <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="MAIN_FRAME_WIZARD_QUERY_MENU_RETRIEVE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="retrieveActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="create">
               <Properties>
@@ -50,6 +56,9 @@
                   <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="MAIN_FRAME_WIZARD_QUERY_MENU_CREATE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="save">
               <Properties>
@@ -57,6 +66,9 @@
                   <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="MAIN_FRAME_WIZARD_QUERY_MENU_SAVE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="deleteQuery">
               <Properties>
@@ -64,6 +76,9 @@
                   <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="MAIN_FRAME_WIZARD_QUERY_MENU_DELETE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteQueryActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="execute">
               <Properties>
@@ -71,6 +86,9 @@
                   <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="MAIN_FRAME_WIZARD_QUERY_MENU_EXECUTE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="executeActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -125,6 +143,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportResultHtmlActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="exportResultExcel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Export Results to Excel"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

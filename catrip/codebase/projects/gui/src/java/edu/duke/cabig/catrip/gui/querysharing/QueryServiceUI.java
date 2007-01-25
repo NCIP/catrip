@@ -8,6 +8,7 @@ import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
@@ -41,9 +42,12 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.KeyEvent;
+import java.io.CharArrayReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.SwingConstants;
+import org.globus.wsrf.encoding.ObjectDeserializer;
+import org.xml.sax.InputSource;
 
 public class QueryServiceUI extends JPanel {
     
@@ -127,7 +131,7 @@ public class QueryServiceUI extends JPanel {
                 // add the class only entry..
                 CDEComboboxBean cdeBean = new CDEComboboxBean();
                 cdeBean.setGraphObject(gObj);
-                cdeBean.setAttributeBean(new AttributeBean());
+                cdeBean.setAttributeBean(new AttributeBean()); // add a null bean..
                 filterList.add(cdeBean);
                 
             }
@@ -228,8 +232,8 @@ public class QueryServiceUI extends JPanel {
     private QueryFilterRowPanel getFilterRowPanel(){
 //        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this);
         QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this, filterList);
-        filterRow.setPreferredSize(new Dimension(538, 30)); 
-        return filterRow; 
+        filterRow.setPreferredSize(new Dimension(538, 30));
+        return filterRow;
     }
     @SuppressWarnings("unchecked")
     private void populateTable(Vector collection) {
@@ -472,6 +476,29 @@ public class QueryServiceUI extends JPanel {
         frame.setVisible(true);
     }
     
+    // convert the dcql string into object
+    private void executeDcql(String dcql){
+        StringBuffer buf = new StringBuffer(dcql);
+        char[] chars = new char[buf.length()];
+        buf.getChars(0, chars.length, chars, 0);
+        CharArrayReader car = new CharArrayReader(chars);
+        InputSource source = new InputSource(car);
+        DCQLQuery dcqlObj = null;
+        try {
+            dcqlObj = (DCQLQuery) ObjectDeserializer.deserialize(source,DCQLQuery.class);
+        } catch (Exception e){e.printStackTrace();}
+        executeDcql(dcqlObj);
+    }
+    
+    // execute DCQL in the outPut Pane of the SimpleGUI..
+    private void executeDcql(DCQLQuery dcql){
+        getMainFrame().getCommandPanel().runExternalDcql(dcql);
+    }
+    
+    
+    
+    
+    
     public void removeFilter(QueryFilterRowPanel filterRowPanel){
         getFilterPanel().remove(filterRowPanel);
         getFilterPanel().revalidate();
@@ -546,8 +573,10 @@ public class QueryServiceUI extends JPanel {
         public void actionPerformed(ActionEvent e){
             fireEditingStopped();
             if (e.getActionCommand().equalsIgnoreCase("run")){
-                System.out.println( e.getActionCommand() + " : " + table.getSelectedRow());
-                System.out.println("dcql = " + table.getModel().getValueAt(table.getSelectedRow(), table.getSelectedColumn()));
+                String dcql = (String)table.getModel().getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+                executeDcql(dcql); // execute the dcql...
+//                System.out.println( e.getActionCommand() + " : " + table.getSelectedRow());
+//                System.out.println("dcql = " + table.getModel().getValueAt(table.getSelectedRow(), table.getSelectedColumn()));
             } else if(e.getActionCommand().equalsIgnoreCase("x")){
                 DefaultTableModel t = (DefaultTableModel) table.getModel();
                 t.removeRow(table.getSelectedRow());

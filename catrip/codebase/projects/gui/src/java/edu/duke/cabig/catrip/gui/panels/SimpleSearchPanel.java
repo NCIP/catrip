@@ -31,7 +31,7 @@ public class SimpleSearchPanel extends CPanel {
     ObjectGraphProcessor processor  = null;
     private boolean targetSetChanged = true;
     
-    private ArrayList<FilterRowPanel> filters = new ArrayList(10);
+    private ArrayList<FilterRowPanel> filters = new ArrayList(10); 
     
     // sanjeev: for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
     private Hashtable targetObjectServiceMap = new Hashtable();
