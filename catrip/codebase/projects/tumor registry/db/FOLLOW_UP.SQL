@@ -4,8 +4,7 @@
 --  DBMS       : Oracle 
 --  ------------------------------------------- 
 
-DROP TABLE FOLLOW_UP CASCADE CONSTRAINTS
-;
+DROP TABLE FOLLOW_UP CASCADE CONSTRAINTS;
 
 CREATE TABLE FOLLOW_UP ( 
 	ID NUMBER(8) NOT NULL,
