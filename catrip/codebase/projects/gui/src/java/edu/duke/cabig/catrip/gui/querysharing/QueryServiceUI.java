@@ -478,11 +478,12 @@ public class QueryServiceUI extends JPanel {
     
     // convert the dcql string into object
     private void executeDcql(String dcql){
-        StringBuffer buf = new StringBuffer(dcql);
-        char[] chars = new char[buf.length()];
-        buf.getChars(0, chars.length, chars, 0);
-        CharArrayReader car = new CharArrayReader(chars);
-        InputSource source = new InputSource(car);
+//        StringBuffer buf = new StringBuffer(dcql);
+//        char[] chars = new char[buf.length()];
+//        buf.getChars(0, chars.length, chars, 0);
+//        CharArrayReader car = new CharArrayReader(chars);
+        java.io.Reader reader = new java.io.StringReader(dcql);    
+        InputSource source = new InputSource(reader);//source.setEncoding();
         DCQLQuery dcqlObj = null;
         try {
             dcqlObj = (DCQLQuery) ObjectDeserializer.deserialize(source,DCQLQuery.class);
