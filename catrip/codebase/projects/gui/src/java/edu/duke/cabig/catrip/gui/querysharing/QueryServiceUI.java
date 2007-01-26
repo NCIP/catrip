@@ -8,6 +8,7 @@ import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
+import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
@@ -218,8 +219,10 @@ public class QueryServiceUI extends JPanel {
                             classCollection.add(element.getSelectedClass());
                         }
                         queryData.setClassCollection(classCollection);
-                        populateTable(QueryServiceClient.search(queryData));
-                    } catch (Exception qe) {
+                       // populateTable(QueryServiceClient.search(queryData));
+                        CQLQuery cqlQuery = CqlParser.parse(queryData);
+                        populateTable(QueryServiceClient.search(cqlQuery));
+                   } catch (Exception qe) {
                         qe.printStackTrace();
                     }
                 }
@@ -482,6 +485,7 @@ public class QueryServiceUI extends JPanel {
 //        char[] chars = new char[buf.length()];
 //        buf.getChars(0, chars.length, chars, 0);
 //        CharArrayReader car = new CharArrayReader(chars);
+    	System.out.println("executeDcql " + dcql);
         java.io.Reader reader = new java.io.StringReader(dcql);    
         InputSource source = new InputSource(reader);//source.setEncoding();
         DCQLQuery dcqlObj = null;
@@ -574,10 +578,9 @@ public class QueryServiceUI extends JPanel {
         public void actionPerformed(ActionEvent e){
             fireEditingStopped();
             if (e.getActionCommand().equalsIgnoreCase("run")){
-                String dcql = (String)table.getModel().getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+                String dcql = data.get(table.getSelectedRow()).getDcql();
+                //System.out.println("dcql : " + dcql);
                 executeDcql(dcql); // execute the dcql...
-//                System.out.println( e.getActionCommand() + " : " + table.getSelectedRow());
-//                System.out.println("dcql = " + table.getModel().getValueAt(table.getSelectedRow(), table.getSelectedColumn()));
             } else if(e.getActionCommand().equalsIgnoreCase("x")){
                 DefaultTableModel t = (DefaultTableModel) table.getModel();
                 t.removeRow(table.getSelectedRow());
