@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@monkey8:1521:caesid</property>
+		<property name="hibernate.connection.username">tumor_registry</property>
+		<property name="hibernate.connection.password">tumor_registry</property>
+		<property name="hibernate.default_schema">tumor_registry</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</property>
+		
+      <!-- Print SQL to stdout. -->
+      <property name="show_sql">true</property>
+		
+		
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/Patient.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/PatientIdentifier.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/Address.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/Diagnosis.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/DiseaseExtent.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/DistantSite.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/Followup.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/Recurrence.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/CollaborativeStaging.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/FirstCourseTrmtSummary.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/ActivitySummary.hbm.xml" />
+		<mapping resource="edu/duke/cabig/tumorregistry/domain/Activity.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
