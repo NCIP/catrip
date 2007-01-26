@@ -14,7 +14,7 @@ import java.util.Date;
  * @version 1.0
  * @created 01-Sep-2006 1:33:17 PM
  */
-public abstract class Activity {
+public class Activity {
 
 	private Long id;
 	private Integer course;
@@ -26,7 +26,7 @@ public abstract class Activity {
 	protected String characterizationCode;
 	private ActivitySummary localActivity;
 	private ActivitySummary summaryActivity;
-	
+	private String treatmentType;
 	// for data load
 	private Long sequenceNumber;
 	private Long accountNumber;
@@ -153,5 +153,12 @@ public abstract class Activity {
 	public void setTxCodeGroup(String txCodeGroup) {
 		this.txCodeGroup = txCodeGroup;
 	}
+	public void setTreatmentType(String _treatmentType) {
+		this.treatmentType = _treatmentType;
+	}
+	public String getTreatmentType() {
+		return treatmentType;
+	}
+
 
 }
