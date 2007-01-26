@@ -215,11 +215,11 @@ public class QueryEditUI extends JPanel {
             btnSave.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     // DEBUG
-                    System.out.println("Query Name :  " + queryFields.getName());
-                    System.out.println("Query Description :  " + queryFields.getDescription());
-                    System.out.println("First Name : " + queryFields.getFirstName());
-                    System.out.println("Last Name : " + queryFields.getLastName());
-                    System.out.println("dcql : " + queryFields.getDcql());
+                    //System.out.println("Query Name :  " + queryFields.getName());
+                    //System.out.println("Query Description :  " + queryFields.getDescription());
+                    //System.out.println("First Name : " + queryFields.getFirstName());
+                    //System.out.println("Last Name : " + queryFields.getLastName());
+                    //System.out.println("dcql : " + queryFields.getDcql());
                     save();
                     close();
                     /// DEBUG END
@@ -243,9 +243,9 @@ public class QueryEditUI extends JPanel {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println("QueryEditUI:getDCQLString()");
-        System.out.println(w);
-        System.out.println("QueryEditUI:getDCQLString()");
+        //System.out.println("QueryEditUI:getDCQLString()");
+        //System.out.println(w);
+        //System.out.println("QueryEditUI:getDCQLString()");
         return w.toString().trim();
         
     }

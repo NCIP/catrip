@@ -268,7 +268,7 @@ public class QueryServiceUI extends JPanel {
         }
         resultTable.getColumnModel();
         resultTable.setModel(tableModel);
-        new ButtonColumn(resultTable, 3, collection, true);
+        new ButtonColumn(resultTable, 3, collection, false);
         new ButtonColumn(resultTable, 4, collection, true);
         
         
