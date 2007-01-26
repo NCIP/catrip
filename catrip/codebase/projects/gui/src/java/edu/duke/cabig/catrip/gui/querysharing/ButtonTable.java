@@ -77,9 +77,9 @@ public class ButtonTable extends JTable {
 	/**
 	 * @param args
 	 */
-    public Class getColumnClass(int column){
-        return getValueAt(0, column).getClass();
-    }
+//    public Class getColumnClass(int column){
+//        return getValueAt(0, column).getClass();
+//    }
 
 //	public static void main(String[] args) {
 //		JFrame frame = new JFrame();

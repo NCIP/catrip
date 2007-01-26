@@ -52,9 +52,68 @@ public class CqlParser {
 		return cqlQuery2;
 	}
 
-	private static CQLQuery createClassAttributeQuery(Attribute[] classAttributes, Attribute[] classAssociations, Attribute[] attributeAssociations) {
-		// TODO Auto-generated method stub
-		return null;
+	private static CQLQuery createClassAttributeQuery(Attribute[] cqlAttributeArray, Attribute[] classArray, Attribute[] attributeArray) {
+		gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+		target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
+		CQLQuery cqlQuery = new CQLQuery();
+		Association classAssoc = null;
+		Group outerGroup = new Group();
+		outerGroup.setLogicRelation(LogicalOperator.OR);
+		
+		Group superOuterGroup = new Group();
+		superOuterGroup.setLogicRelation(LogicalOperator.AND);
+		Group attributeGroup = new Group();
+		attributeGroup.setLogicRelation(LogicalOperator.AND);
+		
+		// classes
+		 classAssoc = new Association();
+		classAssoc.setName("gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb");
+		classAssoc.setRoleName("classCollection");
+		classAssoc.setGroup(outerGroup);
+		if (classArray.length >1){
+			// create a group for the attributes
+			Group classGroup = new Group();
+			classGroup.setLogicRelation(LogicalOperator.OR);
+			// add the attributes to the group
+			classGroup.setAttribute(classArray);
+			//classAssoc.setGroup(classGroup);
+			Group[] groupArray = {classGroup};
+			outerGroup.setGroup(groupArray);
+		}
+		if (classArray.length == 1){
+			outerGroup.setAttribute(classArray);
+		}
+		// end classes
+		//Association[] classAssocArray = {classAssoc};
+		
+		
+		Association[] attribAssoc = {getAttributeAssociation(attributeArray)};
+		
+		outerGroup.setAssociation(attribAssoc);
+		// deal with attributes on QueryDb
+		if (cqlAttributeArray.length > 1){
+			// create a group for the attributes
+			Group attributeGroup2 = new Group();
+			attributeGroup2.setLogicRelation(LogicalOperator.AND);
+			// add the attributes to the group
+			attributeGroup2.setAttribute(cqlAttributeArray);
+			Group[] g = {attributeGroup2};
+			//g[0] = attributeGroup;
+			// set the group on outer group
+			//target.setGroup(attributeGroup2);
+			superOuterGroup.setGroup(g);
+		}
+		// if only one attribute; don't need the group
+		if (cqlAttributeArray.length == 1)
+			superOuterGroup.setAttribute(cqlAttributeArray);
+		Association[] assArray = {classAssoc};
+		superOuterGroup.setAssociation(assArray);
+		target.setGroup(superOuterGroup);
+		cqlQuery.setTarget(target);	
+		System.out.println("printing from createClassQuery");
+		printCQL(cqlQuery);
+		
+		return cqlQuery;		
 	}
 
 	private static Attribute[] getClassAttributes() {
@@ -238,6 +297,22 @@ public class CqlParser {
 		if (classArray.length == 1)
 			classAssoc.setAttribute(classArray[0]);
 		return classAssoc;
+	}
+	private static Association getAttributeAssociation(Attribute[] attributeArray) {
+		Association attribAssoc = new Association();
+		attribAssoc.setName("gov.nih.nci.catrip.cagrid.catripquery.server.AttributeDb");
+		attribAssoc.setRoleName("attributeCollection");
+		if (attributeArray.length >1){
+			// create a group for the attributes
+			Group classGroup = new Group();
+			classGroup.setLogicRelation(LogicalOperator.OR);
+			// add the attributes to the group
+			classGroup.setAttribute(attributeArray);
+			attribAssoc.setGroup(classGroup);
+		}
+		if (attributeArray.length == 1)
+			attribAssoc.setAttribute(attributeArray[0]);
+		return attribAssoc;
 	}
 	private static void printCQL(CQLQuery cqlQuery) {
 		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.cql");

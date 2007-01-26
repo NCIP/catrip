@@ -17,6 +17,7 @@ public class QueryFilterRowPanel extends JPanel {
 	private JComboBox cbFilter = null;
 	private JButton delFilterButton = null;
 	private QueryServiceUI containterPanel;
+	private ClassDb aClass = null;
 
 	/**
 	 * This method initializes 
@@ -51,25 +52,25 @@ public class QueryFilterRowPanel extends JPanel {
                 
 	}
         
-        
+        private void createSelectionObject(){
+        	Random generator = new Random();
+        	aClass = new ClassDb();
+        	aClass.setId(generator.nextInt());
+
+        	CDEComboboxBean cdeBean = (CDEComboboxBean)getCbFilter().getSelectedItem();
+        	if (cdeBean!=null){
+        		aClass.setName(cdeBean.getClassBean().getFullyQualifiedName());
+        		System.out.println("Created class : " + aClass.getName());
+        		// if (!cdeBean.getAttributeBean().isNull()){ // set the attribute here..
+        		if (cdeBean.getAttributeBean() != null){ // set the attribute here..
+        			aClass.addAttribute(cdeBean.getAttributeBean().getAttributeName());
+        			System.out.println("Created attribute : " + cdeBean.getAttributeBean().getAttributeName());
+        		}
+        	}
+
+        }
 	public ClassDb getSelectedClass(){
-		Random generator = new Random();
-		ClassDb aClass = new ClassDb();
-		aClass.setId(generator.nextInt());
-                
-                CDEComboboxBean cdeBean = (CDEComboboxBean)getCbFilter().getSelectedItem();
-                if (cdeBean!=null){
-                    aClass.setName(cdeBean.getClassBean().getFullyQualifiedName());
-                    if (!cdeBean.getAttributeBean().isNull()){ // set the attribute here..
-                        aClass.addAttribute(cdeBean.getAttributeBean().getAttributeName());
-                    }
-                }
-//		String selection = getCbFilter().getSelectedItem().toString();
-//		if (selection != null){
-//			aClass.setName(selection);
-//		}
 		return aClass;
-		
 	}
 	/**
 	 * This method initializes this
@@ -99,7 +100,7 @@ public class QueryFilterRowPanel extends JPanel {
 			cbFilter.setBounds(new Rectangle(61, 1, 468, 21));
 			cbFilter.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println(cbFilter.getSelectedItem()); // TODO Auto-generated Event stub actionPerformed()
+					createSelectionObject();
 				}
 			});
 		}

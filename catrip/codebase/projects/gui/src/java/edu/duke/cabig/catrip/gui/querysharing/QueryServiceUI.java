@@ -504,22 +504,30 @@ public class QueryServiceUI extends JPanel {
     
     
     
-    public void removeFilter(QueryFilterRowPanel filterRowPanel){
-        getFilterPanel().remove(filterRowPanel);
-        getFilterPanel().revalidate();
-        getFilterPanel().repaint();
-        if (filterCollection != null){
-            // remove from array
-            boolean wasRemoved = false;
-            //System.out.println("before : " + classCollection.size());
-            for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-                if (element.getSelectedClass().getId() == filterRowPanel.getSelectedClass().getId())
-                    wasRemoved = filterCollection.remove(element);
-                
-            }
-            System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
-        }
+    public void removeFilter(edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel panel){
+    	Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();  
+    	getFilterPanel().remove(panel);
+    	getFilterPanel().revalidate();
+    	getFilterPanel().repaint();
+    	if (filterCollection != null){
+    		// remove from array
+    		boolean wasRemoved = false;
+    		//System.out.println("before : " + classCollection.size());
+    		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
+    			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+    			if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
+    				
+    				tempfilterCollection.add(element);
+    				
+    				}
+    			}
+       		for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
+       			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+       			wasRemoved = filterCollection.remove(element);
+        		System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
+    		}
+    	}
+    	
     }
     
     

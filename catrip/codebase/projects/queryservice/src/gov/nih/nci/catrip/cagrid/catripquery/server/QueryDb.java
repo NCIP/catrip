@@ -30,7 +30,7 @@ public class QueryDb {
 	}
 	
 	public void addClass(ClassDb aClass){
-		if (aClass != null && aClass.getName() != null){
+		if (aClass != null && aClass.getName() != null && aClass.getName().trim() != ""){
 			if (classCollection == null)
 				classCollection = new HashSet<ClassDb>();
 			classCollection.add(aClass);

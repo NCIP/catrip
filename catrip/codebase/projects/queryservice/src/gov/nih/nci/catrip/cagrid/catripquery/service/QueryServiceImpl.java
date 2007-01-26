@@ -1,14 +1,14 @@
 package gov.nih.nci.catrip.cagrid.catripquery.service;
 
+import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.dcql.Association;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
-import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.AttributeDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
-import gov.nih.nci.catrip.cagrid.catripquery.service.HibernateUtil;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
+
+import java.io.CharArrayReader;
 import java.rmi.RemoteException;
 import java.util.Collection;
 import java.util.Iterator;
@@ -17,12 +17,9 @@ import javax.xml.namespace.QName;
 
 import org.globus.wsrf.encoding.DeserializationException;
 import org.globus.wsrf.encoding.ObjectDeserializer;
-import org.globus.wsrf.encoding.ObjectSerializer;
-import org.hibernate.ObjectNotFoundException;
 import org.xml.sax.InputSource;
 
 /** 
- * TODO:I am the service side implementation class.  IMPLEMENT AND DOCUMENT ME
  * 
  * @created by Introduce Toolkit version 1.0
  * 
@@ -30,7 +27,7 @@ import org.xml.sax.InputSource;
 public class QueryServiceImpl extends QueryServiceImplBase {
 
     private QueryDb decomposedCatripQuery;
-    private final boolean DEBUG = false;
+    private final boolean DEBUG = true;
 	
 	public QueryServiceImpl() throws RemoteException {
 		super();
@@ -42,21 +39,22 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 			decomposedCatripQuery = getDbObject(caTripQuery.getId());
 		} 
 		DCQLQuery dcql = new DCQLQuery();
-//		try {
-//			dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(caTripQuery.getDcql())),DCQLQuery.class);
-//		} catch (DeserializationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		populateObjectFromDCQLObject(dcql.getTargetObject(), new ClassDb());
-//
-//		// serialize the dcql to be saved in the database
-//		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
+		try {
+			 dcql = convertStringToDCQL(caTripQuery.getDcql());
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//System.out.println("server side dcql = " + caTripQuery.getDcql());
+		//System.out.println("dcql.getTargetObject() = " + dcql.getTargetObject());
+		
+		populateObjectFromDCQLObject(dcql.getTargetObject(), new ClassDb());
 
+		// serialize the dcql to be saved in the database
+		//QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
+
+		//decomposedCatripQuery.setDcql(new java.sql.Clob());//caTripQuery.getDcql());
 		decomposedCatripQuery.setDcql(caTripQuery.getDcql());
 		decomposedCatripQuery.setId((int) caTripQuery.getId());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
@@ -74,24 +72,27 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		decomposedCatripQuery.setVersion(caTripQuery.getVersion());
 
 		// add the target object to the list of class names
-		//DCQLClass classs = new DCQLClass();
-		//classs.setName(caTripQuery.getTargetObject().getName());
-		//decomposedCatripQuery.addClass(classs);
+		ClassDb classs = new ClassDb();
+		classs.setName(dcql.getTargetObject().getName());
+		decomposedCatripQuery.addClass(classs);
 
 		if (DEBUG){
 			// DEBUG
 			System.out.println("\n******* attributes  *******");
-			System.out.println("ID is " + caTripQuery.getId());
-			System.out.println("first name : " + caTripQuery.getFirstName());
-			System.out.println("last name : " + caTripQuery.getLastName());
-			System.out.println("date created : " + caTripQuery.getCreationDate());
-			System.out.println("description : " + caTripQuery.getDescription());
-			System.out.println("query name : " + caTripQuery.getName());
-			System.out.println("source : " + caTripQuery.getSource());
-			System.out.println("updated : " + caTripQuery.getDateUpdated());
-			System.out.println("user name : " + caTripQuery.getUserName());
-			System.out.println("instance : " + caTripQuery.getInstance());
-			System.out.println("version : " + caTripQuery.getVersion());
+			System.out.println("ID is " + decomposedCatripQuery.getId());
+			System.out.println("first name : " + decomposedCatripQuery.getFirstName());
+			System.out.println("last name : " + decomposedCatripQuery.getLastName());
+			System.out.println("date created : " + decomposedCatripQuery.getCreationDate());
+			System.out.println("description : " + decomposedCatripQuery.getDescription());
+			System.out.println("query name : " + decomposedCatripQuery.getName());
+			System.out.println("source : " + decomposedCatripQuery.getSource());
+			System.out.println("updated : " + decomposedCatripQuery.getDateUpdated());
+			System.out.println("user name : " + decomposedCatripQuery.getUserName());
+			System.out.println("instance : " + decomposedCatripQuery.getInstance());
+			System.out.println("version : " + decomposedCatripQuery.getVersion());
+			System.out.println("dcql : " + decomposedCatripQuery.getDcql());
+						System.out.println("update 1 ");
+
 			Collection c = decomposedCatripQuery.getClassCollection();
 			System.out.println("****************** ");
 			for (Iterator iter = c.iterator(); iter.hasNext();) {
@@ -127,6 +128,16 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 	@SuppressWarnings("unchecked")
 	private void populateObjectFromDCQLObject(gov.nih.nci.cagrid.dcql.Object dcqlObject, ClassDb aDCQLClass){
 		ClassDb aClass;
+		if (dcqlObject.getAttribute() != null) {
+			if (DEBUG){
+				System.out.println("attribute = " + dcqlObject.getAttribute().getName());
+			}
+			if (aDCQLClass != null){
+				AttributeDb attr = new AttributeDb();
+				attr.setName(dcqlObject.getAttribute().getName());
+				aDCQLClass.getAttributeCollection().add(attr);
+			}
+		}
 		if (dcqlObject.getAssociation() != null) {
 			if (aDCQLClass != null)
 				decomposedCatripQuery.addClass(aDCQLClass);
@@ -140,14 +151,26 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 			processForeignAssociation(dcqlObject.getForeignAssociation(), aClass);
 		}
 
-		if (dcqlObject.getAttribute() != null) {
-			if (DEBUG){
-				System.out.println(dcqlObject.getAttribute().getName());
-			}
-			if (aDCQLClass != null){
-				AttributeDb attr = new AttributeDb();
-				attr.setName(dcqlObject.getAttribute().getName());
-				aDCQLClass.getAttributeCollection().add(attr);
+		if (dcqlObject.getGroup() != null) {
+			if (aDCQLClass != null)
+				aDCQLClass.setName(dcqlObject.getName());
+			if (dcqlObject.getGroup().getAssociation() != null)
+				;// do something
+			if (dcqlObject.getGroup().getAttribute() != null){
+				Attribute[] attributes = dcqlObject.getGroup().getAttribute();
+				if (aDCQLClass != null){
+					for (int i = 0; i < attributes.length; i++) {
+						AttributeDb attr = new AttributeDb();
+						attr.setName(attributes[i].getName());
+						aDCQLClass.getAttributeCollection().add(attr);
+						if (DEBUG){
+							System.out.println("processGroup attributes : " + attributes[i].getName());
+						}
+
+					}
+					decomposedCatripQuery.addClass(aDCQLClass);
+
+				}
 			}
 		}
 
@@ -184,12 +207,30 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		if (DEBUG){
 			System.out.println("foreignAttribute = " + foreignAttribute);
 		}
-
-		processAssociation(dcqlObject.getAssociation(), new ClassDb());
+		System.out.println("foreignAssociation method");
+		populateObjectFromDCQLObject(dcqlObject.getAssociation(), new ClassDb());
 
 		return null;
 
 	}
+	private DCQLQuery convertStringToDCQL(String cqlString){
+        
+        
+        StringBuffer buf = new StringBuffer(cqlString);
 
+        char[] chars = new char[buf.length()];
+        buf.getChars(0, chars.length, chars, 0);
+        
+        CharArrayReader car = new CharArrayReader(chars);
+        InputSource source = new InputSource(car);
+         Object obj = null ;
+
+        try {
+            obj = ObjectDeserializer.deserialize(source,DCQLQuery.class);
+        } catch (DeserializationException e) {
+            e.printStackTrace();
+        }
+        return ((DCQLQuery)obj);
+    }
 }
 
