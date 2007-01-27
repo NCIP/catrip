@@ -55,7 +55,7 @@
 		<targets>
 			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" selectable="true" displaybleAttributes="firstName,gender,race,ethnicity" display="true">
 				<associatedObjectTree>
-					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection" display="false"/>
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection" selectable="true"  display="true"  displaybleAttributes="medicalRecordNumber" />
 					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" selectable="true" roleName="annotationEventParametersCollection" displaybleAttributes="id" display="true">
 						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR" roleName="annotationSetCollection" display="true"/>
 						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR" roleName="annotationSetCollection" display="true"/>
@@ -121,9 +121,9 @@
 
 <service displayName="CGEMS" url="http://152.16.96.114/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" displaybleAttributes="administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode" display="true">
+			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" displaybleAttributes="studySubjectIdentifier,administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode"  selectable="true" display="true">
 				<associatedObjectTree>
-					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup"  displaybleAttributes="name,description,methods"  roleName="analysisGroupCollection" display="true">
+					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup"  selectable="true"  displaybleAttributes="name,description,methods"  roleName="analysisGroupCollection" display="true">
 						<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis"  displaybleAttributes="neoplasmPresent,extentInvolvement,otherExtentInvolvement" roleName="snpAssociationAnalysis" display="true">
 								<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationFinding" displaybleAttributes="pvalue,rank" roleName="snpAssociationFindingCollection" display="true"/>
 						</Association>
@@ -206,17 +206,17 @@
 
 <service displayName="Tumor Registry" url="http://152.16.96.114/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" displaybleAttributes="race,sex,ethnicGroup" display="true">
+			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" displaybleAttributes="race,sex,ethnicGroup,dateOfDeath" selectable="true" display="true">
 				<associatedObjectTree>
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier" roleName="patientIdentifier" display="false"/>
-					<Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" displaybleAttributes="ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite"  roleName="diagnosisCollection" display="true">
+					<Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" displaybleAttributes="initialDiagnosisDate,ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite"  roleName="diagnosisCollection"  selectable="true"  display="true">
 						<Association className="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" displaybleAttributes="bestSEERSummaryStage,clinicalMetStage,clinicalNodeStage,clinicalTumorStage,pathologicMetStage,pathologicNodeStage,pathologicTumorStage,regionalNodesPositive,regionalNodesExamined,tumorSize,tumorMarker1,tumorMarker2,tumorMarker3" roleName="diseaseExtentCollection" display="true">
 								<Association className="edu.duke.cabig.tumorregistry.domain.DistantSite" displaybleAttributes="name" roleName="distantSiteCollection" display="true"/>
 						</Association>
 						<Association className="edu.duke.cabig.tumorregistry.domain.Followup" displaybleAttributes="cancerStatus,date" roleName="followUpCollection" display="true">
-								<Association className="edu.duke.cabig.tumorregistry.domain.Recurrence" displaybleAttributes="date,type" roleName="recurrence" display="true"/>
+								<Association className="edu.duke.cabig.tumorregistry.domain.Recurrence" displaybleAttributes="date,type"  selectable="true" roleName="recurrence" display="true"/>
 						</Association>
-						<Association className="edu.duke.cabig.tumorregistry.domain.Activity" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
+						<Association className="edu.duke.cabig.tumorregistry.domain.Activity" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection"  selectable="true" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.Procedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.OtherProcedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.HemTransplantEndocrineProcedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
