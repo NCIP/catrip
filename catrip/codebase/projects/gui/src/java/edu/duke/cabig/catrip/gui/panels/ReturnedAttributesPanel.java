@@ -11,6 +11,7 @@ import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JDialog;
@@ -50,28 +51,50 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
         
         
         
-        
-        // check the filter classes that are being set right now.. and then filter the beans.. then filter the beans based on the flag also..
-        // get all the filtersPanels from simple gui.. and filter them for duplicates..
-        ArrayList<FilterRowPanel> list = SimpleGuiRegistry.getFilterList();
-//        ArrayList<CDEComboboxBean> attributeList = new ArrayList<CDEComboboxBean>(100);
-        
-        for (int i = 0; i < list.size(); i++) {
-            CDEComboboxBean cdeBean = list.get(i).getCDEComboboxBean();
-            boolean isSelectable = list.get(i).getGraphObject().isSelectable(); // check if the class is selectable than only add it..
-            if ( isSelectable && !entries.containsKey(cdeBean.getClassBean().getFullyQualifiedName())){
-                
-//                attributeList.add(cdeBean);
-                String fullClassName = cdeBean.getClassBean().getFullyQualifiedName();
-                entries.put(fullClassName, cdeBean);
-                keyEntries.add(fullClassName);
-                
-                numAvailableEntities += cdeBean.getClassBean().getAttributes().size();
-                
+        // display all possible returnable classes.
+        ArrayList<GraphObject> objs = SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();
+        for (int i=0;i<objs.size();i++) {
+            try {
+                GraphObject gObj = objs.get(i);
+                boolean isSelectable = gObj.isSelectable();
+                boolean alreadyThere = entries.containsKey(gObj.getClassBean().getFullyQualifiedName());
+                if (isSelectable && !alreadyThere){
+                    ClassBean cBean = gObj.getClassBean();
+                    CDEComboboxBean cdeBean = new CDEComboboxBean();
+//                    cdeBean.setClassBean( cBean.clone() ) ;
+                    cdeBean.setGraphObject( gObj.clone() ) ;
+                    AttributeBean phony = new AttributeBean(true);
+                    cdeBean.setAttributeBean(phony);
+                    String fullClassName = cBean.getFullyQualifiedName();
+                    entries.put(fullClassName, cdeBean);
+                    keyEntries.add(fullClassName);
+                    numAvailableEntities += cBean.getAttributes().size();
+                }
+            } catch (Exception e){
+                System.out.println("xxxxx "+objs.get(i).getClassName());
             }
         }
         
         
+        
+        
+        
+        /*
+         
+        // check the filter classes that are being set right now.. and then filter the beans.. then filter the beans based on the flag also..
+        // get all the filtersPanels from simple gui.. and filter them for duplicates..
+        ArrayList<FilterRowPanel> list = SimpleGuiRegistry.getFilterList();
+         
+        for (int i = 0; i < list.size(); i++) {
+            CDEComboboxBean cdeBean = list.get(i).getCDEComboboxBean();
+            boolean isSelectable = list.get(i).getGraphObject().isSelectable(); // check if the class is selectable than only add it..
+            if ( isSelectable && !entries.containsKey(cdeBean.getClassBean().getFullyQualifiedName())){
+                String fullClassName = cdeBean.getClassBean().getFullyQualifiedName();
+                entries.put(fullClassName, cdeBean);
+                keyEntries.add(fullClassName);
+                numAvailableEntities += cdeBean.getClassBean().getAttributes().size();
+            }
+        }
         // set the target classBean as well..
         ClassBean targetBean = SimpleGuiRegistry.getTargetGraphObject().getClassBean();
         CDEComboboxBean cdeBeanTmp = new CDEComboboxBean();
@@ -80,6 +103,12 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
         entries.put(fullClassName, cdeBeanTmp);
         keyEntries.add(fullClassName);
         numAvailableEntities += targetBean.getAttributes().size();
+         
+         */
+        
+        
+        
+        
         
         
         
@@ -240,8 +269,21 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             for (int i = 0; i < numEntities; i++) {
                 ReturnedAttributesRowPanel element = (ReturnedAttributesRowPanel)returnedAttributeListPanel.getComponent(i);
                 CDEComboboxBean cdeBean = (CDEComboboxBean)element.getReturnedAttributeCombo().getSelectedItem();
-                SimpleGuiRegistry.addToClassNameReturnedAttributeMap(cdeBean.getClassBean().getFullyQualifiedName(), cdeBean.getAttributeBean().getAttributeName());
-            }
+                String fullClassName = cdeBean.getClassBean().getFullyQualifiedName();
+                SimpleGuiRegistry.addToClassNameReturnedAttributeMap(fullClassName, cdeBean.getAttributeBean().getAttributeName());
+                
+                // check if the returned attribute's class is there in any of the filters.. if not than add a phony filter to any 1 attribute.
+                boolean filtered = SimpleGuiRegistry.getClassesUsedInFilters().contains(fullClassName);
+                boolean isTarget = SimpleGuiRegistry.getTargetGraphObject().getClassBean().getFullyQualifiedName().equals(fullClassName);
+                if (!filtered && !isTarget){
+                FilterRowPanel pnl = new FilterRowPanel();
+                CDEComboboxBean cdeBeanTmp = (CDEComboboxBean) entries.get(fullClassName); // get the phony CdeBean from list..
+                pnl.setCDEComboboxBean(cdeBeanTmp);
+                SimpleGuiRegistry.addFilterToList(pnl); 
+                SimpleGuiRegistry.setSimpleGuiChanged(true);
+//                System.out.println("XXXX adding phony class "+cdeBeanTmp.print());
+                } 
+            } 
             // signal the simple gui registry that returned attribute list has changed..
             SimpleGuiRegistry.setReturnedAttributeListAvailable(true);
         }

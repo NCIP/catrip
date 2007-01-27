@@ -45,12 +45,17 @@ public class CDEComboboxBean {
 
     public void setGraphObject(GraphObject graphBean) {
         this.graphBean = graphBean;
-        setClassBean(graphBean.getClassBean());  
+        setClassBean(graphBean.getClassBean()); 
     } 
     
     public void remove(){
         getAttributeBean().setAttributeValue("");
         getAttributeBean().setDefaultPredicate();
+    }
+    
+    
+    public String print(){
+        return getClassBean().getFullyQualifiedName() + " : " + getAttributeBean().getAttributeName();
     }
     
 }

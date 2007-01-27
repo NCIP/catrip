@@ -58,6 +58,12 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }
     
     
+    public void setCDEComboboxBean(CDEComboboxBean cdeBean){
+        currentFilter = cdeBean;
+//        getCdeCombo().addItem(cdeBean);
+//        getCdeCombo().setSelectedIndex(0);
+    }
+    
     public JTextField getValueBox(){
         return valueTextBox;
     }
@@ -71,19 +77,22 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }
     
     public CDEComboboxBean getCDEComboboxBean(){
-        return (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        if (currentFilter == null){
+           currentFilter =  (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        }
+        return currentFilter;
     } 
     
     public AttributeBean getAttributeBean(){
-        return ((CDEComboboxBean)getCdeCombo().getSelectedItem()).getAttributeBean();
+        return getCDEComboboxBean().getAttributeBean();
     }
     
     public ClassBean getClassBean(){ 
-        return ((CDEComboboxBean)getCdeCombo().getSelectedItem()).getClassBean(); 
+        return getCDEComboboxBean().getClassBean(); 
     }
     
     public GraphObject getGraphObject(){ 
-        return ((CDEComboboxBean)getCdeCombo().getSelectedItem()).getGraphObject(); 
+        return getCDEComboboxBean().getGraphObject(); 
     }
     
     

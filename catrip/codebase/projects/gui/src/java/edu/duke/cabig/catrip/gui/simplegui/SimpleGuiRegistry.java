@@ -1,6 +1,7 @@
 
 package edu.duke.cabig.catrip.gui.simplegui;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.common.ClassBeanGroup;
 import edu.duke.cabig.catrip.gui.common.ForeignAssociationBean;
@@ -315,16 +316,16 @@ public class SimpleGuiRegistry {
         }
         
         // TODO - ToDo-ToDo
-//        // if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
-//            if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
-//                ClassBean targetBean = getTargetGraphObject().getClassBean();
-//                ArrayList atts = targetBean.getAttributes();
-//                for (int i = 0; i < atts.size(); i++) {
-//                    String cName = targetBean.getFullyQualifiedName();
-//                    String attName = ((AttributeBean)atts.get(i)).getAttributeName();
-//                    addToClassNameReturnedAttributeMap(cName, attName);
-//                }
-//            }
+//         if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
+            if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
+                ClassBean targetBean = getTargetGraphObject().getClassBean();
+                ArrayList atts = targetBean.getAttributes();
+                for (int i = 0; i < atts.size(); i++) {
+                    String cName = targetBean.getFullyQualifiedName();
+                    String attName = ((AttributeBean)atts.get(i)).getAttributeName(); 
+                    addToClassNameReturnedAttributeMap(cName, attName); 
+                }
+            }
         
         
         
@@ -889,7 +890,17 @@ public class SimpleGuiRegistry {
         numReturnedAttribute = aNumReturnedAttribute;
     }
     
-    
+     public static ArrayList<String> getClassesUsedInFilters() {
+         // calculate every time.. as this is changing 
+         ArrayList<FilterRowPanel> filters = getFilterList();
+         ArrayList<String> classList = new ArrayList<String>();
+         
+         for (int i = 0; i < filters.size(); i++) { 
+             classList.add(filters.get(i).getClassBean().getFullyQualifiedName());
+         }
+         return classList;
+    } 
+
     //---------------------------- returned Attributes methods...----------------------------
     
     
@@ -915,8 +926,8 @@ public class SimpleGuiRegistry {
             
             // get unique services..
             for (int i=0;i<objss.size();i++) {
-                String name = objss.get(i).toString();
-                String serviceName = objss.get(i).getServiceName();
+                String name = objss.get(i).getClassName();
+//                String serviceName = objss.get(i).getServiceName();
                 if (!tmpList.contains(name)){
                     tmpList.add(name);
                     tmpListObj.add(objss.get(i));
@@ -931,9 +942,10 @@ public class SimpleGuiRegistry {
             for (int i = 0; i < tmpList.size(); i++) {
                 GraphObject tmpObj = (GraphObject)tmpListObj.get(i);
                 List<GraphObject> objs = processor.getAssociatedObjects(tmpObj.getClassName(),tmpObj.getServiceName());
-//            List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(tmpObj.getServiceName()); // no need as all services will have their own association tree..
                 for (int j = 0; j < objs.size(); j++) {
-                    allSimpleGuiXMLObjectList.add(objs.get(j));
+                    if (objs.get(j).isDisplayable()){
+                        allSimpleGuiXMLObjectList.add(objs.get(j));
+                    }
                 }
             }
             
@@ -973,6 +985,8 @@ public class SimpleGuiRegistry {
     }
     
     //---------------------------- query sharing methods...----------------------------
+
+   
     
     
     

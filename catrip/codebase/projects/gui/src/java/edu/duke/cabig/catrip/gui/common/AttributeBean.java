@@ -14,10 +14,23 @@ public class AttributeBean {
     private String displayName="";
     private String predicate = "LIKE"; // set as default predicate.
     
+    // phony attribute for returned attribute.
+    private boolean isPhony = false;
+    
     /**
      * Creates a new instance of AttributeBean.
      */
     public AttributeBean() {
+    }
+    
+    // create a phony attribute..
+    public AttributeBean(boolean phony) {
+        if (phony){
+            attributeName = "phony";
+            attributeValue = "phony";
+            predicate = "phony";
+            isPhony = true;
+        }
     }
     
     public String getAttributeName() {
@@ -110,6 +123,14 @@ public class AttributeBean {
             }
         }
         return false;
+    }
+
+    public boolean isPhony() {
+        return isPhony;
+    }
+
+    public void setPhony(boolean phony) {
+        this.isPhony = phony;
     }
     
 }

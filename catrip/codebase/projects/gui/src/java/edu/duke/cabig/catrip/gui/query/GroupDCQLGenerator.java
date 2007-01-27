@@ -269,24 +269,26 @@ public class GroupDCQLGenerator {
                 
                 createAssociations(dcqlGroup, outerObjectBean);
                 
-            }else {
-                // sanjeev: has only 1 attribute
-                
-                Attribute dcqlAttribute = new Attribute();//dcqlGroup.addNewAttribute();
-                dcqlGroup.setAttribute(new Attribute[]{dcqlAttribute});
+            }else { // sanjeev: has only 1 attribute
+                // check if the attribute is phony..
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
-                dcqlAttribute.setName(aBean.getAttributeName());
-                dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
-                boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
-                String attributeValue = aBean.getAttributeValue();
-                boolean hasChar = attributeValue.endsWith("%");
-                if (likePredicate && !hasChar){
-                    dcqlAttribute.setValue(aBean.getAttributeValue()+"%");
-                } else {
-                    dcqlAttribute.setValue(aBean.getAttributeValue());
+                if (!aBean.isPhony()){ // don't set the DCQL attribute..
+                    Attribute dcqlAttribute = new Attribute();//dcqlGroup.addNewAttribute();
+                    dcqlGroup.setAttribute(new Attribute[]{dcqlAttribute});
+                    
+                    dcqlAttribute.setName(aBean.getAttributeName());
+                    dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
+                    boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
+                    String attributeValue = aBean.getAttributeValue();
+                    boolean hasChar = attributeValue.endsWith("%");
+                    if (likePredicate && !hasChar){
+                        dcqlAttribute.setValue(aBean.getAttributeValue()+"%");
+                    } else {
+                        dcqlAttribute.setValue(aBean.getAttributeValue());
+                    }
                 }
-                
                 createAssociations(dcqlGroup, outerObjectBean);
+                
                 
             }
             // </editor-fold>   // attriibutes and associations both are there
