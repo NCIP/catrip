@@ -220,7 +220,7 @@ public class QueryServiceUI extends JPanel {
                         queryData.setClassCollection(classCollection);
                        // populateTable(QueryServiceClient.search(queryData));
                         CQLQuery cqlQuery = CqlParser.parse(queryData);
-//                        populateTable(QueryServiceClient.search(cqlQuery));
+                        populateTable(QueryServiceClient.search(cqlQuery));
                    } catch (Exception qe) {
                         qe.printStackTrace();
                     }
