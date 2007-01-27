@@ -963,7 +963,7 @@ public class SimpleGuiRegistry {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    
+                    System.out.println("---- xml class :"+obj.getClassName());
                     cBean.filterAttributes(displaybleAttributes);
                     obj.setClassBean(cBean);
                     

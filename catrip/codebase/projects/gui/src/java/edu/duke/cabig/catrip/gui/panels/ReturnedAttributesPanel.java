@@ -69,6 +69,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                     entries.put(fullClassName, cdeBean);
                     keyEntries.add(fullClassName);
                     numAvailableEntities += cBean.getAttributes().size();
+                    System.out.println("XXXX returnable class : "+fullClassName);
                 }
             } catch (Exception e){
                 System.out.println("xxxxx "+objs.get(i).getClassName());
