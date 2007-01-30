@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
-	<class name="Activity" table="ACTIVITY">
+	<class name="Activity" table="ACTIVITY" polymorphism="explicit">
 		
 		<id
 			name="Id"
@@ -18,28 +18,28 @@
 	    </discriminator>
 
 		<property
-			name="Course"
+			name="course"
 			column="COURSE"
 			type="integer"
 			not-null="false"
 			length="8"
 		/>
 		<property
-			name="AtLocalFacility"
+			name="atLocalFacility"
 			column="AT_LOCAL_FACILITY"
 			type="boolean"
 			not-null="false"
 			length="8"
 		/>
 		<property
-			name="StartDate"
+			name="startDate"
 			column="START_DATE"
 			type="date"
 			not-null="false"
 			length="7"
 		/>
 		<property
-			name="Characterization"
+			name="characterization"
 			column="CHARACTERIZATION"
 			type="string"
 			not-null="false"
@@ -52,25 +52,32 @@
 			not-null="false"
 			length="50"
 		/>
+		<property
+			name="treatmentType"
+			column="TREATMENT_TYPE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
 		<many-to-one
-			name="diagnosis" 
+			name="diagnosis"
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
 			not-null="false"
-			cascade="all"
+			cascade="all" lazy="false"
 		>
 		</many-to-one>
 		<subclass name="SubstanceAdministration" discriminator-value="SubstanceAdministration">
 			<property
-				name="StopDate"
+				name="stopDate"
 				column="STOP_DATE"
 				type="date"
 				not-null="false"
 				length="7"
 			/>
-			<subclass name="HormoneTherapy" discriminator-value="Hormone"/>
+			<subclass name="HormoneTherapy" discriminator-value="hormone"/>
 			<subclass name="Immunotherapy" discriminator-value="Immunotherapy"/>
-			<subclass name="OtherTherapy" discriminator-value="OtherTherapy"/>
+			<subclass name="OtherTherapy" discriminator-value="OtherTherapy" lazy="false"/>
 			<subclass name="Chemotherapy" discriminator-value="Chemotherapy"/>
 		</subclass>
 		<subclass name="Surgery" discriminator-value="Surgery">
@@ -85,57 +92,57 @@
 			<subclass name="OtherProcedure" discriminator-value="otherprocedure"/>
 			<subclass name="HemTransplantEndocrineProcedure" discriminator-value="HemTransplantEndocrineProcedure"/>
 			<subclass name="Radiation" discriminator-value="Radiation"/>
-			<subclass name="FirstCourseRadiation" discriminator-value="FirstCourseRadiation">
+			<subclass name="FirstCourseRadiation" discriminator-value="firstCourseRadiation">
 			
 				<property
-					name="StopDate"
+					name="stopDate"
 					column="STOP_DATE"
 					type="date"
 					not-null="false"
 					length="7"
 				/>
 				<property
-					name="NumberOfTreatments"
+					name="numberOfTreatments"
 					column="NUMBER_OF_TREATMENTS"
 					type="string"
 					not-null="false"
 					length="50"
 				/>
 				<property
-					name="Location"
+					name="location"
 					column="LOCATION"
 					type="string"
 					not-null="false"
 					length="50"
 				/>
 				<property
-					name="Volume"
+					name="volume"
 					column="VOLUME"
 					type="string"
 					not-null="false"
 					length="50"
 				/>
 				<property
-					name="RegionalDose"
+					name="regionalDose"
 					column="REGIONAL_DOSE"
 					type="integer"
 					not-null="false"
 				/>
 				<property
-					name="BoostDose"
+					name="boostDose"
 					column="BOOST_DOSE"
 					type="integer"
 					not-null="false"
 				/>
 				<property
-					name="BoostModality"
+					name="boostModality"
 					column="BOOST_MODALITY"
 					type="string"
 					not-null="false"
 					length="50"
 				/>
 				<property
-					name="RegionalModality"
+					name="regionalModality"
 					column="REGIONAL_MODALITY"
 					type="string"
 					not-null="false"
