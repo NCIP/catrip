@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,8 +28,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -68,11 +70,7 @@ public class QueryServiceUI extends JPanel {
     private JLabel lblQueryName = null;
     private JTextField txtQueryName = null;
     private JTextField txtDescription = null;
-    private JLabel lblFilter = null;
-    private JLabel lblConceptl = null;
     private JButton btnAddFilter = null;
-    private JLabel lblQueryResult = null;
-    
     Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
     //Collection<ClassDb> classCollection = null;
     // private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
@@ -87,12 +85,8 @@ public class QueryServiceUI extends JPanel {
     // --------
     public MainFrame mainFrame;
     private ArrayList<CDEComboboxBean> filterList = new ArrayList<CDEComboboxBean>(500);
-    // --------
-    
-    
-    
-    
-    
+	private JPanel outerPanel = null;
+	private JPanel resultsOuterPanel = null;
     /**
      * This method initializes
      *
@@ -169,17 +163,6 @@ public class QueryServiceUI extends JPanel {
      *
      */
     private void initialize() {
-        lblQueryResult = new JLabel();
-        lblQueryResult.setBounds(new Rectangle(592, 8, 127, 16));
-        lblQueryResult.setText("Queries Results :");
-        lblConceptl = new JLabel();
-        lblConceptl.setText("Concept");
-        lblConceptl.setBounds(new Rectangle(116, 197, 47, 16));
-        lblFilter = new JLabel();
-        lblFilter.setText("Filter");
-        lblFilter.setDisplayedMnemonic(KeyEvent.VK_UNDEFINED);
-        lblFilter.setHorizontalAlignment(SwingConstants.CENTER);
-        lblFilter.setBounds(new Rectangle(19, 178, 92, 26));
         lblLastName = new JLabel();
         lblLastName.setText("Last Name :");
         lblLastName.setBounds(new Rectangle(288, 93, 83, 20));
@@ -189,14 +172,10 @@ public class QueryServiceUI extends JPanel {
         this.setLayout(null);
         this.setSize(new Dimension(1256, 752));
         this.add(getBtnSearch(), null);
-        this.add(getResultsScrollPane(), null);
         this.add(getMetaDataPanel(), null);
-        this.add(getBtnAddFilter(), null);
-        this.add(lblQueryResult, null);
         
-        this.add(lblFilter, null);
-        this.add(lblConceptl, null);
-        this.add(getJScrollPane1(), null);
+        this.add(getOuterPanel(), null);
+        this.add(getResultsOuterPanel(), null);
     }
     
     /**
@@ -207,7 +186,7 @@ public class QueryServiceUI extends JPanel {
     private JButton getBtnSearch() {
         if (btnSearch == null) {
             btnSearch = new JButton();
-            btnSearch.setBounds(new Rectangle(356, 185, 85, 23));
+            btnSearch.setBounds(new Rectangle(630, 345, 92, 28));
             btnSearch.setText("Search");
             btnSearch.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -306,7 +285,6 @@ public class QueryServiceUI extends JPanel {
     private JScrollPane getResultsScrollPane() {
         if (resultsScrollPane == null) {
             resultsScrollPane = new JScrollPane();
-            resultsScrollPane.setBounds(new Rectangle(594, 30, 575, 356));
             resultsScrollPane.setViewportView(getResultTable());
         }
         return resultsScrollPane;
@@ -358,7 +336,7 @@ public class QueryServiceUI extends JPanel {
             lblDescriptionl.setText("Description :");
             metaDataPanel = new JPanel();
             metaDataPanel.setLayout(null);
-            metaDataPanel.setBounds(new Rectangle(16, 30, 564, 134));
+            metaDataPanel.setBounds(new Rectangle(17, 17, 593, 134));
             metaDataPanel.add(lblFirstName, null);
             metaDataPanel.add(getTxtFirstName(), null);
             metaDataPanel.add(lblLastName, null);
@@ -420,8 +398,8 @@ public class QueryServiceUI extends JPanel {
     private JButton getBtnAddFilter() {
         if (btnAddFilter == null) {
             btnAddFilter = new JButton();
-            btnAddFilter.setBounds(new Rectangle(470, 185, 99, 24));
             btnAddFilter.setText("Add Filter");
+            btnAddFilter.setBounds(new Rectangle(495, 180, 87, 26));
             btnAddFilter.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     addFilterRow();
@@ -452,7 +430,6 @@ public class QueryServiceUI extends JPanel {
             filterPanel = new JPanel();
             PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(getFilterPanel(), PreferredHeightMarginBorderBoxLayout.Y_AXIS);
             filterPanel.setLayout(layout);
-            //filterPanel.setLayout(new BoxLayout(getFilterPanel(), BoxLayout.Y_AXIS));
         }
         return filterPanel;
     }
@@ -465,14 +442,56 @@ public class QueryServiceUI extends JPanel {
     public JScrollPane getJScrollPane1() {
         if (jScrollPane1 == null) {
             jScrollPane1 = new JScrollPane();
-            jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+            //jScrollPane1.setBorder(BorderFactory.createTitledBorder(null, " Filter ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
             jScrollPane1.setViewportView(getFilterPanel());
-            jScrollPane1.setBounds(new Rectangle(16, 215, 564, 159));
+            jScrollPane1.setBounds(new Rectangle(13, 15, 571, 156));
         }
         return jScrollPane1;
     }
     
     /**
+	 * This method initializes outerPanel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getOuterPanel() {
+		if (outerPanel == null) {
+			outerPanel = new JPanel();
+			outerPanel.setLayout(null);
+			outerPanel.setBounds(new Rectangle(15, 165, 593, 211));
+			outerPanel.setBorder(BorderFactory.createTitledBorder(null, " Filter ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			outerPanel.add(getJScrollPane1(), null);
+			outerPanel.add(getBtnAddFilter(), null);
+		}
+		return outerPanel;
+	}
+
+
+	/**
+	 * This method initializes resultsOuterPanel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getResultsOuterPanel() {
+		if (resultsOuterPanel == null) {
+			GridBagConstraints gridBagConstraints = new GridBagConstraints();
+			gridBagConstraints.fill = GridBagConstraints.BOTH;
+			gridBagConstraints.gridy = 0;
+			gridBagConstraints.weightx = 1.0;
+			gridBagConstraints.weighty = 1.0;
+			gridBagConstraints.gridx = 0;
+			resultsOuterPanel = new JPanel();
+			resultsOuterPanel.setLayout(new GridBagLayout());
+			resultsOuterPanel.setBounds(new Rectangle(615, 3, 633, 327));
+			resultsOuterPanel.setBorder(BorderFactory.createTitledBorder(null, " Query Results ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			resultsOuterPanel.add(getResultsScrollPane(), gridBagConstraints);
+		}
+		return resultsOuterPanel;
+	}
+
+
+	/**
      * @param args
      */
     public static void main(String[] args) {

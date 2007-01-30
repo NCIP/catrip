@@ -183,7 +183,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 			processAttribute(dcqlObject.getAttribute(), aDCQLClass);
 		}
 		else{
-			if (dcqlObject.getGroup() != null){
+			if (dcqlObject.getGroup() != null && dcqlObject.getGroup().getAttribute() != null){
 				Attribute[] groupAttributes = dcqlObject.getGroup().getAttribute();
 				for (int i = 0; i < groupAttributes.length; i++) {
 					System.out.println(" group attrs : " + groupAttributes[i].getName());

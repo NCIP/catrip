@@ -1,7 +1,6 @@
 package gov.nih.nci.catrip.cagrid.catripquery.client;
 
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
-import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 
@@ -31,10 +30,15 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import javax.swing.border.TitledBorder;
+import java.awt.Font;
 
 public class QueryServiceUI extends JPanel {
 
@@ -58,6 +62,7 @@ public class QueryServiceUI extends JPanel {
 	private JLabel lblConceptl = null;
 	private JButton btnAddFilter = null;
 	private JLabel lblQueryResult = null;
+	private Border border = null;
 
 	Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
 	//Collection<ClassDb> classCollection = null;
@@ -66,6 +71,7 @@ public class QueryServiceUI extends JPanel {
 	private DefaultTableModel tableModel = null ;
 	private JPanel filterPanel = null;
 	private JScrollPane jScrollPane1 = null;
+	private JPanel jPanel = null;
 	/**
 	 * This method initializes 
 	 * 
@@ -109,6 +115,7 @@ public class QueryServiceUI extends JPanel {
 		this.add(lblConceptl, null);
 		this.add(getFilterPanel(), null);
 		this.add(getJScrollPane1(), null);
+		this.add(getJPanel(), null);
 	}
 
 	/**
@@ -377,9 +384,25 @@ public class QueryServiceUI extends JPanel {
 			jScrollPane1 = new JScrollPane();
 			jScrollPane1.setBounds(new Rectangle(18, 171, 566, 167));
 			jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			jScrollPane1.setBorder(BorderFactory.createTitledBorder(null, "test", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			jScrollPane1.setViewportView(getFilterPanel());
 		}
 		return jScrollPane1;
+	}
+
+	/**
+	 * This method initializes jPanel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel() {
+		if (jPanel == null) {
+			jPanel = new JPanel();
+			jPanel.setLayout(new GridBagLayout());
+			jPanel.setBounds(new Rectangle(695, 309, 486, 160));
+			jPanel.setBorder(BorderFactory.createTitledBorder(null, "Test", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+		}
+		return jPanel;
 	}
 
 	/**

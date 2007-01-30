@@ -244,16 +244,15 @@ public class QueryEditUI extends JPanel {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        //System.out.println("QueryEditUI:getDCQLString()");
-        //System.out.println(w);
-        //System.out.println("QueryEditUI:getDCQLString()");
         return w.toString().trim();
         
     }
     private void save() {
         String querySharingServiceUrl = System.getProperty("query.sharing.url"); // move this to gui config file..
         String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService"; // default
+        System.out.println("querySharingServiceUrl = " + querySharingServiceUrl);
         if (querySharingServiceUrl != null){
+        	System.out.println("querySharingServiceUrl != null");
             serviceURI = querySharingServiceUrl;
         }
         
@@ -266,8 +265,6 @@ public class QueryEditUI extends JPanel {
         } catch (RemoteException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } finally{
-            System.out.println("Error while saving query.");
         }
     }
     
