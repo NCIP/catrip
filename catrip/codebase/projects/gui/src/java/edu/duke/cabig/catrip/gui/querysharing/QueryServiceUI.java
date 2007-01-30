@@ -1,19 +1,5 @@
 package edu.duke.cabig.catrip.gui.querysharing;
 
-import edu.duke.cabig.catrip.gui.common.AttributeBean;
-import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
-import edu.duke.cabig.catrip.gui.common.ClassBean;
-import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
-import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
-import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
-import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
-import edu.duke.cabig.catrip.gui.wizard.MainFrame;
-import gov.nih.nci.cagrid.cqlquery.CQLQuery;
-import gov.nih.nci.cagrid.dcql.DCQLQuery;
-import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
-import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
-import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -21,8 +7,11 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -37,17 +26,29 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.Collections;
-import javax.swing.SwingConstants;
+
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.xml.sax.InputSource;
+
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
+import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
+import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import edu.duke.cabig.catrip.gui.wizard.MainFrame;
+import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
+import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
+import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
+import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 
 public class QueryServiceUI extends JPanel {
     
@@ -111,7 +112,8 @@ public class QueryServiceUI extends JPanel {
         return mainFrame;
     }
     
-    private void init(){
+    @SuppressWarnings("unchecked")
+	private void init(){
         
         ArrayList<GraphObject> objs = SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();
         
@@ -239,6 +241,8 @@ public class QueryServiceUI extends JPanel {
     }
     @SuppressWarnings("unchecked")
     private void populateTable(Vector collection) {
+    	String firstName = "";
+    	String lastName = "";
         tableModel = new DefaultTableModel();
         tableModel.setColumnCount(5);
         Vector<String> columnHeaders = new Vector<String>(5);
@@ -258,7 +262,11 @@ public class QueryServiceUI extends JPanel {
             // populate this row with the data out of the objects, using wrapper classes where primitive
             // data types are used.
             rowData.add(e.getName()) ;
-            rowData.add(e.getFirstName()+ " " + e.getLastName()) ;
+            if (e.getFirstName() != null)
+            	firstName = e.getFirstName();
+            if (e.getLastName() != null)
+            	lastName = e.getLastName();
+            rowData.add(firstName + " " + lastName) ;
             rowData.add(e.getDescription()) ;
             rowData.add("View/Modify") ;
             rowData.add("Run") ;
