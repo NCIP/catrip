@@ -317,15 +317,15 @@ public class SimpleGuiRegistry {
         
         // TODO - ToDo-ToDo
 //         if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
-            if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
-                ClassBean targetBean = getTargetGraphObject().getClassBean();
-                ArrayList atts = targetBean.getAttributes();
-                for (int i = 0; i < atts.size(); i++) {
-                    String cName = targetBean.getFullyQualifiedName();
-                    String attName = ((AttributeBean)atts.get(i)).getAttributeName(); 
-                    addToClassNameReturnedAttributeMap(cName, attName); 
-                }
+        if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
+            ClassBean targetBean = getTargetGraphObject().getClassBean();
+            ArrayList atts = targetBean.getAttributes();
+            for (int i = 0; i < atts.size(); i++) {
+                String cName = targetBean.getFullyQualifiedName();
+                String attName = ((AttributeBean)atts.get(i)).getAttributeName();
+                addToClassNameReturnedAttributeMap(cName, attName);
             }
+        }
         
         
         
@@ -514,6 +514,11 @@ public class SimpleGuiRegistry {
             leftClassBeanObject.addUniqueForeignAssociation(foreignAssociationBean);
             leftClassBeanObject.setHasForeignAssociations(true);
             
+            // set the returned attribute from FA in registry..
+            SimpleGuiRegistry.addToClassNameReturnedAttributeMap(leftClassBeanObject.getFullyQualifiedName(), leftProperty);
+            SimpleGuiRegistry.addToClassNameReturnedAttributeMap(rightClassBeanObject.getFullyQualifiedName(), rightProperty);
+            
+            
             // sanjeev: now set the local associations for the inbound path for the filter object in foreign service..
             // sanjeev: now the index will start from 1.
             tmpBeanLeft = rightClassBeanObject;
@@ -671,6 +676,8 @@ public class SimpleGuiRegistry {
             
             leftClassBeanObject.addUniqueForeignAssociation(foreignAssociationBean);
             leftClassBeanObject.setHasForeignAssociations(true);
+            
+            
             
             // sanjeev: now set the local associations for the inbound path for the filter object in foreign service..
             // sanjeev: now the index will start from 1.
@@ -890,17 +897,17 @@ public class SimpleGuiRegistry {
         numReturnedAttribute = aNumReturnedAttribute;
     }
     
-     public static ArrayList<String> getClassesUsedInFilters() {
-         // calculate every time.. as this is changing 
-         ArrayList<FilterRowPanel> filters = getFilterList();
-         ArrayList<String> classList = new ArrayList<String>();
-         
-         for (int i = 0; i < filters.size(); i++) { 
-             classList.add(filters.get(i).getClassBean().getFullyQualifiedName());
-         }
-         return classList;
-    } 
-
+    public static ArrayList<String> getClassesUsedInFilters() {
+        // calculate every time.. as this is changing
+        ArrayList<FilterRowPanel> filters = getFilterList();
+        ArrayList<String> classList = new ArrayList<String>();
+        
+        for (int i = 0; i < filters.size(); i++) {
+            classList.add(filters.get(i).getClassBean().getFullyQualifiedName());
+        }
+        return classList;
+    }
+    
     //---------------------------- returned Attributes methods...----------------------------
     
     
@@ -924,7 +931,7 @@ public class SimpleGuiRegistry {
             ArrayList tmpList = new ArrayList();
             ArrayList tmpListObj = new ArrayList();
             
-            // get unique services..
+            // get unique services and target objects from them..
             for (int i=0;i<objss.size();i++) {
                 String name = objss.get(i).getClassName();
 //                String serviceName = objss.get(i).getServiceName();
@@ -933,18 +940,24 @@ public class SimpleGuiRegistry {
                     tmpListObj.add(objss.get(i));
                 }
             }
-            // add the target objects as well.
+            // add the target objects.
             for (int j = 0; j < tmpListObj.size(); j++) {
-                allSimpleGuiXMLObjectList.add((GraphObject)tmpListObj.get(j)); 
+                allSimpleGuiXMLObjectList.add((GraphObject)tmpListObj.get(j));
             }
             
-            // get the list of GraphObjects for each service..
+            // get the list of associated GraphObjects for each service..
             for (int i = 0; i < tmpList.size(); i++) {
                 GraphObject tmpObj = (GraphObject)tmpListObj.get(i);
+//                boolean thisObjIsTarget = tmpObj.getClassName().equals(getTargetGraphObject().getClassName());
                 List<GraphObject> objs = processor.getAssociatedObjects(tmpObj.getClassName(),tmpObj.getServiceName());
                 for (int j = 0; j < objs.size(); j++) {
-                    if (objs.get(j).isDisplayable()){
-                        allSimpleGuiXMLObjectList.add(objs.get(j));
+                    GraphObject innerObj = objs.get(j);
+//                    if (!thisObjIsTarget){
+//                        tmpObj.setLocalStatus(false);
+//                        innerObj.setLocalStatus(false); 
+//                    }
+                    if (innerObj.isDisplayable()){
+                        allSimpleGuiXMLObjectList.add(innerObj);
                     }
                 }
             }
@@ -963,7 +976,7 @@ public class SimpleGuiRegistry {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    System.out.println("---- xml class :"+obj.getClassName());
+                    
                     cBean.filterAttributes(displaybleAttributes);
                     obj.setClassBean(cBean);
                     
@@ -972,6 +985,7 @@ public class SimpleGuiRegistry {
 //                cBean.setAssociationRoleNameMap(new HashMap(20));
 //                obj.setClassBean(cBean);
                 }
+//                System.out.println("---- xml class :"+obj.getClassName()+"  local = "+obj.isLocal()+"  Selectable = "+obj.isSelectable()+"  displayble= "+obj.isDisplayable());
                 
             }
             
@@ -985,8 +999,8 @@ public class SimpleGuiRegistry {
     }
     
     //---------------------------- query sharing methods...----------------------------
-
-   
+    
+    
     
     
     

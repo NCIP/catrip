@@ -14,6 +14,7 @@ import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.JDialog;
 
 /**
@@ -51,11 +52,12 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
         
         
         
-        // display all possible returnable classes.
-        ArrayList<GraphObject> objs = SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();
+        // display all possible returnable classes. // ideally it should be with respect to the target object..
+        List<GraphObject> objs = SimpleGuiRegistry.getCurrentXMLObjectList();//SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();//SimpleGuiRegistry.getCurrentXMLObjectList();//
         for (int i=0;i<objs.size();i++) {
             try {
                 GraphObject gObj = objs.get(i);
+//                System.out.println("---- xml class :"+gObj.getClassName()+"  local = "+gObj.isLocal()+"  Selectable = "+gObj.isSelectable()+"  displayble= "+gObj.isDisplayable());
                 boolean isSelectable = gObj.isSelectable();
                 boolean alreadyThere = entries.containsKey(gObj.getClassBean().getFullyQualifiedName());
                 if (isSelectable && !alreadyThere){
@@ -69,7 +71,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                     entries.put(fullClassName, cdeBean);
                     keyEntries.add(fullClassName);
                     numAvailableEntities += cBean.getAttributes().size();
-                    System.out.println("XXXX returnable class : "+fullClassName);
+//                    System.out.println("XXXX returnable class : "+fullClassName);
                 }
             } catch (Exception e){
                 System.out.println("xxxxx "+objs.get(i).getClassName());
@@ -306,6 +308,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                 for (int j = 0; j < attributes.size(); j++) {
                     CDEComboboxBean cdeBeanTmp = new CDEComboboxBean();
                     cdeBeanTmp.setAttributeBean( ((AttributeBean)attributes.get(j)).clone() ) ;
+                    cdeBeanTmp.setGraphObject(cdeBean.getGraphObject());
                     cdeBeanTmp.setClassBean( ((ClassBean)cdeBean.getClassBean()).clone() ) ;
                     
                     rap.getReturnedAttributeCombo().addItem(cdeBeanTmp);

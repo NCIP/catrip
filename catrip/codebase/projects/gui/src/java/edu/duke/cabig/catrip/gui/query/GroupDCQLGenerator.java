@@ -465,7 +465,6 @@ public class GroupDCQLGenerator {
             }
             // set all the foreign associations together here...
             outerDcqlGroup.setForeignAssociation(dcqlForeignAssociationArray);
-            
         }
     }
     
@@ -584,6 +583,7 @@ public class GroupDCQLGenerator {
             dcqlOuterObject.setReturnAttributes(rtAtt);
         }
     }
+    
     
     
     

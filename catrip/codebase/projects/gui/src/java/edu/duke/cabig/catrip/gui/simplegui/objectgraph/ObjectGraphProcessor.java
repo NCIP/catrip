@@ -218,6 +218,7 @@ public class ObjectGraphProcessor {
                 targetObj.setServiceName(serviceName);
                 targetObj.setRefID(objectElement.getAttributeValue("refID"));
                 targetObj.setLocalStatus(false); //  mark this object as foreign object to the target service..
+                targetObj.setSelectable(Boolean.parseBoolean(objectElement.getAttributeValue("selectable")));
 
                 foreignAssociationInboundPath = new ArrayList<GraphAssociation>();
                 Element associationEle = objectElement.getChild("Association");
