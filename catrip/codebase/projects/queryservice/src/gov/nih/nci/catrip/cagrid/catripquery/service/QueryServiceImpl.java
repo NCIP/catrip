@@ -40,6 +40,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		} 
 		DCQLQuery dcql = new DCQLQuery();
 		try {
+
 			 dcql = convertStringToDCQL(caTripQuery.getDcql());
 		}
 		catch (Exception e) {
@@ -49,7 +50,9 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		//System.out.println("server side dcql = " + caTripQuery.getDcql());
 		//System.out.println("dcql.getTargetObject() = " + dcql.getTargetObject());
 		
-		populateObjectFromDCQLObject(dcql.getTargetObject(), new ClassDb());
+		 ClassDb targetObject = new ClassDb();
+		 targetObject.setName(dcql.getTargetObject().getName());
+		populateObjectFromDCQLObject(dcql.getTargetObject(), targetObject);
 
 		// serialize the dcql to be saved in the database
 		//QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
@@ -72,9 +75,10 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		decomposedCatripQuery.setVersion(caTripQuery.getVersion());
 
 		// add the target object to the list of class names
-		ClassDb classs = new ClassDb();
-		classs.setName(dcql.getTargetObject().getName());
-		decomposedCatripQuery.addClass(classs);
+//		ClassDb classs = new ClassDb();
+//		classs.setName(dcql.getTargetObject().getName());
+//		decomposedCatripQuery.addClass(classs);
+		
 
 		if (DEBUG){
 			// DEBUG
@@ -128,70 +132,122 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 	@SuppressWarnings("unchecked")
 	private void populateObjectFromDCQLObject(gov.nih.nci.cagrid.dcql.Object dcqlObject, ClassDb aDCQLClass){
 		ClassDb aClass;
-		if (dcqlObject.getAttribute() != null) {
-			if (DEBUG){
-				System.out.println("attribute = " + dcqlObject.getAttribute().getName());
-			}
-			if (aDCQLClass != null){
-				AttributeDb attr = new AttributeDb();
-				attr.setName(dcqlObject.getAttribute().getName());
-				aDCQLClass.getAttributeCollection().add(attr);
-			}
+		if (dcqlObject.getAttribute() != null){
+			processAttribute(dcqlObject.getAttribute(), aDCQLClass);
+			//decomposedCatripQuery.addClass(aDCQLClass);
+			add(aDCQLClass);
 		}
+		else{
+			if (dcqlObject.getGroup() != null)
+				processGroup(dcqlObject.getGroup(), aDCQLClass);
+			if (aDCQLClass != null && aDCQLClass.getName() != null)
+				//decomposedCatripQuery.addClass(aDCQLClass);
+				add(aDCQLClass);
+		}
+
+		
 		if (dcqlObject.getAssociation() != null) {
-			if (aDCQLClass != null)
-				decomposedCatripQuery.addClass(aDCQLClass);
-			aClass = new ClassDb();
-			processAssociation(dcqlObject.getAssociation(), aClass);
+			processAssociation(dcqlObject.getAssociation(), new ClassDb());
+			populateObjectFromDCQLObject(dcqlObject.getAssociation(), null);
+		}
+		if (dcqlObject.getGroup() != null) {
+			ClassDb aGroupAssociation = new ClassDb();
+			aGroupAssociation.setName(dcqlObject.getName());
+			processGroup(dcqlObject.getGroup(),new ClassDb());
 		}
 		if (dcqlObject.getForeignAssociation() != null) {
-			if (aDCQLClass != null)
-				decomposedCatripQuery.addClass(aDCQLClass);
-			aClass = new ClassDb(); 
-			processForeignAssociation(dcqlObject.getForeignAssociation(), aClass);
+			gov.nih.nci.cagrid.dcql.Object o = processForeignAssociation(dcqlObject.getForeignAssociation(), new ClassDb());
+			populateObjectFromDCQLObject(o, new ClassDb());
 		}
-
-		if (dcqlObject.getGroup() != null) {
-			if (aDCQLClass != null)
-				aDCQLClass.setName(dcqlObject.getName());
-			if (dcqlObject.getGroup().getAssociation() != null)
-				;// do something
-			if (dcqlObject.getGroup().getAttribute() != null){
-				Attribute[] attributes = dcqlObject.getGroup().getAttribute();
-				if (aDCQLClass != null){
-					for (int i = 0; i < attributes.length; i++) {
-						AttributeDb attr = new AttributeDb();
-						attr.setName(attributes[i].getName());
-						aDCQLClass.getAttributeCollection().add(attr);
-						if (DEBUG){
-							System.out.println("processGroup attributes : " + attributes[i].getName());
-						}
-
-					}
-					decomposedCatripQuery.addClass(aDCQLClass);
-
-				}
-			}
-		}
-
+//
+//
+//		processAttribute(dcqlObject.getAttribute(), aDCQLClass);
 
 	}
 	
-	private gov.nih.nci.cagrid.cqlquery.Association processAssociation(Association dcqlAssociation, ClassDb aClass){
+	private void processAttribute(Attribute dcqlObject, ClassDb aDCQLClass){
+		
+		if (dcqlObject != null) {
+			if (DEBUG){
+				System.out.println("processAttribute : " + dcqlObject.getName());
+			}
+			if (aDCQLClass != null){
+				AttributeDb attr = new AttributeDb();
+				attr.setName(dcqlObject.getName());
+				aDCQLClass.getAttributeCollection().add(attr);
+			}
+		}
+	}
+	private void processAttributes(gov.nih.nci.cagrid.dcql.Object dcqlObject, ClassDb aDCQLClass){
+		if (dcqlObject.getAttribute() != null){
+			processAttribute(dcqlObject.getAttribute(), aDCQLClass);
+		}
+		else{
+			if (dcqlObject.getGroup() != null){
+				Attribute[] groupAttributes = dcqlObject.getGroup().getAttribute();
+				for (int i = 0; i < groupAttributes.length; i++) {
+					System.out.println(" group attrs : " + groupAttributes[i].getName());
+					processAttribute(groupAttributes[i], aDCQLClass);
+				}
+				//processGroup(dcqlObject.getGroup(), aDCQLClass);
+			}
+		}
+
+//		if (dcqlObject != null) {
+//			if (dcqlObject.getG)
+//			if (aDCQLClass != null){
+//				for (int i = 0; i < dcqlObject.length; i++) {
+//					System.out.println(" group attrs : " + dcqlObject[i].getName());
+//					processAttribute(dcqlObject[i], aDCQLClass);
+//				}
+//			}
+//		}
+	}
+	private void processGroup(gov.nih.nci.cagrid.dcql.Group dcqlGroup, ClassDb aClass) {
+		Attribute[] groupAttributes = dcqlGroup.getAttribute();
+		for (int i = 0; i < groupAttributes.length; i++) {
+			System.out.println(" group attrs : " + groupAttributes[i].getName());
+			processAttribute(groupAttributes[i], aClass);
+		}
+		
+		// associations
+		if (dcqlGroup.getAssociation() != null && dcqlGroup.getAssociation().length > 0) {
+			Association dcqlAssociationArray[] = dcqlGroup.getAssociation();
+			gov.nih.nci.cagrid.cqlquery.Association[] cqlAssociationArray = new gov.nih.nci.cagrid.cqlquery.Association[dcqlAssociationArray.length];
+			for (int i = 0; i < dcqlAssociationArray.length; i++) {
+				ClassDb aClassDb = new ClassDb();
+				processAssociation(dcqlAssociationArray[i],aClassDb);
+				
+			}
+		}
+		// groups
+		if (dcqlGroup.getGroup() != null && dcqlGroup.getGroup().length > 0) {
+			gov.nih.nci.cagrid.dcql.Group[] dcqlGroupArray = dcqlGroup.getGroup();
+			gov.nih.nci.cagrid.cqlquery.Group[] cqlGroupArray = new gov.nih.nci.cagrid.cqlquery.Group[dcqlGroupArray.length];
+			for (int i = 0; i < dcqlGroupArray.length; i++) {
+				processGroup(dcqlGroupArray[i], new ClassDb());
+			}
+		}
+		
+	}
+	
+	private Association processAssociation(Association dcqlAssociation, ClassDb aClass){
 
 		// create a new CQL Association from the DCQL Association
-		gov.nih.nci.cagrid.cqlquery.Association cqlAssociation = new gov.nih.nci.cagrid.cqlquery.Association();
 		if (DEBUG){
 			System.out.println("processAssociation : " +dcqlAssociation.getName());
 		}
 		aClass.setName(dcqlAssociation.getName());
-		decomposedCatripQuery.addClass(aClass);
-		populateObjectFromDCQLObject(dcqlAssociation, aClass);
+		processAttributes(dcqlAssociation, aClass);
+		//decomposedCatripQuery.addClass(aClass);
+		add(aClass);
+		//populateObjectFromDCQLObject(dcqlAssociation, new ClassDb());
 
-		return cqlAssociation;
+		return dcqlAssociation;
 	}
+	
 	@SuppressWarnings("unchecked")
-	private gov.nih.nci.cagrid.cqlquery.Group processForeignAssociation(ForeignAssociation foreignAssociation, ClassDb aClass) {
+	private gov.nih.nci.cagrid.dcql.Object processForeignAssociation(ForeignAssociation foreignAssociation, ClassDb aClass) {
 		// get Foreign Object
 		gov.nih.nci.cagrid.dcql.Object dcqlObject = foreignAssociation.getForeignObject();
 
@@ -203,16 +259,49 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		AttributeDb attribute = new AttributeDb();
 		attribute.setName(foreignAttribute);
 		aClass.getAttributeCollection().add(attribute);
-		decomposedCatripQuery.addClass(aClass);
+		//decomposedCatripQuery.addClass(aClass);
+		add(aClass);
 		if (DEBUG){
 			System.out.println("foreignAttribute = " + foreignAttribute);
 		}
-		System.out.println("foreignAssociation method");
-		populateObjectFromDCQLObject(dcqlObject.getAssociation(), new ClassDb());
+//		ClassDb aaClass = new ClassDb();
+//		aaClass.setName(dcqlObject.getAssociation().getName());
+//		processAttribute(dcqlObject.getAssociation().getAttribute(), aaClass);
+//		
+//
+//		decomposedCatripQuery.addClass(aaClass);
 
-		return null;
+		//populateObjectFromDCQLObject(dcqlObject, new ClassDb());
+
+		return dcqlObject;
 
 	}
+
+	private void add(ClassDb aClass) {
+		// Do not add duplicates
+		boolean duplicateFound = false;
+		Collection queryCollection = decomposedCatripQuery.getClassCollection();
+		if (queryCollection == null)
+			decomposedCatripQuery.addClass(aClass);	
+		else{
+			for (Iterator iter = queryCollection.iterator(); iter.hasNext();) {
+				ClassDb element = (ClassDb) iter.next();
+				if (element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
+					
+					duplicateFound = false;
+				}
+				else{
+					duplicateFound = true;
+					System.out.println("Found a duplicate " + aClass.getName());
+					break;
+				}
+
+			}
+			if (!duplicateFound)
+				decomposedCatripQuery.addClass(aClass);	
+		}
+	}
+
 	private DCQLQuery convertStringToDCQL(String cqlString){
         
         

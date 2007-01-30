@@ -29,6 +29,7 @@ import org.globus.wsrf.encoding.SerializationException;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
+@SuppressWarnings("serial")
 public class QueryEditUI extends JPanel {
     
     private JLabel lblFirstName = null;

@@ -19,6 +19,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+@SuppressWarnings("serial")
 public class ButtonTable extends JTable {
 
 	public ButtonTable(){ 
@@ -53,25 +54,8 @@ public class ButtonTable extends JTable {
             model.addRow(rowData) ;
 	}
 		this.setModel(model);
-
-		
-		
-		
-//		
-//        String[] columnNames = {"Date", "String", "Integer", "Decimal", ""};
-//        Object[][] data =
-//        {
-//            {new Date(), "A", new Integer(1), new Double(5.1), "Delete0"},
-//            {new Date(), "B", new Integer(2), new Double(6.2), "Delete1"},
-//            {new Date(), "C", new Integer(3), new Double(7.3), "Delete2"},
-//            {new Date(), "D", new Integer(4), new Double(8.4), "Delete3"}
-//        };
- 
-        // model.set
-        //model.setColumnIdentifiers(columnNames);
-        //this.setModel(model);
         //  Create button column
-        ButtonColumn buttonColumn = new ButtonColumn(this, 4);
+        new ButtonColumn(this, 4);
 
 	}
 	/**

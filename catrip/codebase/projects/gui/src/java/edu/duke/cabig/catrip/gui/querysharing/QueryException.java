@@ -2,12 +2,6 @@ package edu.duke.cabig.catrip.gui.querysharing;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.io.Writer;
-
-import javax.xml.namespace.QName;
-
-import org.globus.wsrf.encoding.ObjectSerializer;
-import org.globus.wsrf.encoding.SerializationException;
 
 public class QueryException extends Exception {
 	/**

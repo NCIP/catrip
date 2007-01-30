@@ -119,23 +119,28 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 		String qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\SimpleQuery1.xml";
 		//String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
 		try{
-			if(!(args.length < 2)){
-				if(args[0].equals("-url")){
+			try {
+				//insert();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			//if(!(args.length == 2)){
+			//	if(args[0].equals("-url")){
 					QueryServiceClient client = new QueryServiceClient(serviceURI);
-					//insert();System.exit(1);
-					//CQLQuery cqlQuery = (CQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),CQLQuery.class);
+					CQLQuery cqlQuery = (CQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),CQLQuery.class);
 					//gov.nih.nci.cagrid.dcql.Object to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
 
 
 					// query
-					CQLQuery cqlQuery = new CQLQuery();
+					//CQLQuery cqlQuery = new CQLQuery();
 
-					gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+					//gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
 					//target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
-					target.setName("gov.nih.nci.catrip.cagrid.catripquery.CatripQuery");
-					cqlQuery.setTarget(target);
+					//cqlQuery.setTarget(target);
+					printCQL(cqlQuery);
 					CQLQueryResults results = client.query(cqlQuery);
-
 					CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
 
 					//System.out.println("results is null ? " + (results == null));
@@ -149,18 +154,18 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 						System.out.println(de.getDcql());
 					}
 					if (results != null && results.getObjectResult() != null)
-					System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
-					printCQL(cqlQuery);
+						System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
+					
 
 
-				} else {
-					usage();
-					System.exit(1);
-				}
-			} else {
-				usage();
-				System.exit(1);
-			}
+//				} else {
+//					usage();
+//					System.exit(1);
+//				}
+//			} else {
+//				usage();
+//				System.exit(1);
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
@@ -180,7 +185,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 	private static void insert() throws QueryException, MalformedURIException, RemoteException{
 		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
 		String qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine-2.0\\test\\resources\\simpleQuery1.xml";
-
+		System.out.println("inserting");
 		QueryServiceClient client = new QueryServiceClient(serviceURI);
 		CatripQuery caTripQuery = new CatripQuery();
 		caTripQuery.setFirstName("DEEPI");
@@ -268,6 +273,10 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 		return dcql;
 	}
 
+	public static Vector search(CQLQuery cqlQuery) throws QueryException {
+		return (Vector) getResults(cqlQuery);
+
+	}
 	public static Vector search(QueryDb catripQuery) throws QueryException {
 		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
 		int index = 0;
@@ -293,9 +302,9 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 			if (catripQuery.getDescription() != null && !catripQuery.getDescription().trim().equals(""))
 				mainAttributeArray[index++] = new Attribute("description",Predicate.LIKE,"%"+catripQuery.getDescription()+"%");
 			if (catripQuery.getFirstName() != null  && !catripQuery.getFirstName().trim().equals(""))
-				mainAttributeArray[index++] = new Attribute("FIRST_NAME",Predicate.LIKE,"%"+catripQuery.getFirstName()+"%");
+				mainAttributeArray[index++] = new Attribute("firstName",Predicate.LIKE,"%"+catripQuery.getFirstName()+"%");
 			if (catripQuery.getLastName() != null  && !catripQuery.getLastName().trim().equals(""))
-				mainAttributeArray[index++] = new Attribute("last_name",Predicate.LIKE,"%"+catripQuery.getLastName()+"%");
+				mainAttributeArray[index++] = new Attribute("lastName",Predicate.LIKE,"%"+catripQuery.getLastName()+"%");
 
 			// Clear out any empty array slots
 			gov.nih.nci.cagrid.cqlquery.Attribute[] cqlAttributeArray = new gov.nih.nci.cagrid.cqlquery.Attribute[index];
@@ -367,7 +376,15 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 					attributesAndAssociationsGroup.setAssociation(attribAttributeArray);
 				}
 			}
-			//if (classAssoc != null && attribAssoc != null){
+			if (classAssoc == null && attribAssoc == null){
+				CQLQuery cqlQuery2 = createClassAttributeQuery(cqlAttributeArray);
+				return (Vector) getResults(cqlQuery2);
+			}
+			if (classAssoc != null && attribAssoc == null){
+				CQLQuery cqlQuery2 = createClassQuery(cqlAttributeArray, classArray);
+				return (Vector) getResults(cqlQuery2);
+			}
+
 			if (classAssoc != null){
 				//attributesAndAssociationsGroup.setAssociation(attribAttributeArray);
 				attributesAndAssociationsGroup.setGroup(assocGroupArray);
@@ -403,7 +420,6 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 			CQLQueryResults results;
 			results = client.query(cqlQuery);
 
-			//CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
 			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
 
 			//System.out.println("results is null ? " + (results == null));
@@ -412,10 +428,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 				gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb de = (gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb) iter.next();
 				queryResultCollection.add(de);
 				System.out.println(de.getId() +"   " + de.getFirstName());
-
-				System.out.println(de.getDcql());
-				//dcql = de.getDcql();
-
+				System.out.println("dcql = " + de.getDcql());
 			}
 			System.out.println("results = " + queryResultCollection.size());
 		} catch (QueryProcessingExceptionType e) {
@@ -440,6 +453,124 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 		return queryResultCollection;
 	}
 
+	private static CQLQuery createClassQuery(Attribute[] cqlAttributeArray, Attribute[] classArray) {
+		gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+		target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
+		CQLQuery cqlQuery = new CQLQuery();
+		Association classAssoc = getClassAssociation(classArray);
+		Group classAndAttributeGroup = new Group();
+		classAndAttributeGroup.setLogicRelation(LogicalOperator.AND);
+		Association[] classAssocArray = {classAssoc};
+		classAndAttributeGroup.setAssociation(classAssocArray);
+		
+		// deal with attributes on QueryDb
+		if (cqlAttributeArray.length > 1){
+			// create a group for the attributes
+			Group attributeGroup = new Group();
+			attributeGroup.setLogicRelation(LogicalOperator.AND);
+			// add the attributes to the group
+			attributeGroup.setAttribute(cqlAttributeArray);
+			Group[] g = new Group[1];
+			g[0] = attributeGroup;
+			// set the group on outer group
+			classAndAttributeGroup.setGroup(g);
+		}
+		// if only one attribute; don't need the group
+		if (cqlAttributeArray.length == 1)
+			classAndAttributeGroup.setAttribute(cqlAttributeArray);
+		target.setGroup(classAndAttributeGroup);
+		cqlQuery.setTarget(target);	
+		System.out.println("printing from createClassQuery");
+		printCQL(cqlQuery);
+		
+		return cqlQuery;
+	}
+
+	private static Association getClassAssociation(Attribute[] classArray) {
+		Association classAssoc = new Association();
+		classAssoc.setName("gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb");
+		classAssoc.setRoleName("classCollection");
+		if (classArray.length >1){
+			// create a group for the attributes
+			Group classGroup = new Group();
+			classGroup.setLogicRelation(LogicalOperator.OR);
+			// add the attributes to the group
+			classGroup.setAttribute(classArray);
+			classAssoc.setGroup(classGroup);
+		}
+		if (classArray.length == 1)
+			classAssoc.setAttribute(classArray[0]);
+		return classAssoc;
+	}
+
+	private static CQLQuery createClassAttributeQuery(Attribute[] cqlAttributeArray) {
+		gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+		target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
+		CQLQuery cqlQuery = new CQLQuery();
+		
+		if (cqlAttributeArray.length > 1){
+			// create a group for the attributes
+			Group attributeGroup = new Group();
+			attributeGroup.setLogicRelation(LogicalOperator.AND);
+			// add the attributes to the group
+			attributeGroup.setAttribute(cqlAttributeArray);
+			Group[] g = new Group[1];
+			g[0] = attributeGroup;
+			// set the group on the target
+			target.setGroup(attributeGroup);
+		}
+		// if only one attribute; don't need the group
+		if (cqlAttributeArray.length == 1)
+			target.setAttribute(cqlAttributeArray[0]);
+		
+		cqlQuery.setTarget(target);	
+		System.out.println("printing from createClassAttributeQuery");
+		printCQL(cqlQuery);
+		
+		return cqlQuery;
+	}
+	
+	private static Collection getResults(CQLQuery cqlQuery) throws QueryException{
+		Vector<QueryDb> queryResultCollection = new java.util.Vector<QueryDb>();
+		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+		CQLQueryResults results;
+		QueryServiceClient client = null;
+		try{
+			client = new QueryServiceClient(serviceURI);
+			results = client.query(cqlQuery);
+			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
+
+			//System.out.println("results is null ? " + (results == null));
+			//System.out.println("results.getObjectResult() is null ? " + (results.getObjectResult() == null));
+			while (iter.hasNext()) {
+				gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb de = (gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb) iter.next();
+				queryResultCollection.add(de);
+				System.out.println(de.getId() +"   " + de.getFirstName());
+				System.out.println("dcql = " + de.getDcql());
+			}
+			System.out.println("results = " + queryResultCollection.size());
+		} catch (QueryProcessingExceptionType e) {
+			e.printStackTrace();
+			throw new QueryException(e);
+		} catch (MalformedQueryExceptionType e) {
+			e.printStackTrace();
+			throw new QueryException(e);
+		}
+		catch (MalformedURIException e){
+			e.printStackTrace();
+			throw new QueryException(e);
+		}
+		catch (FileNotFoundException e){
+			e.printStackTrace();
+			throw new QueryException(e);
+		}
+		catch (RemoteException e) {
+			e.printStackTrace();
+			throw new QueryException(e);
+		}
+		return queryResultCollection;
+
+	}
 	private static Collection getAttributes(Collection<ClassDb> classCollection) {
 		Collection<String> c = new Vector<String>();
 		for (Iterator iter = classCollection.iterator(); iter.hasNext();) {
@@ -453,7 +584,7 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 		//DEBUG START
 		if (c.size() == 0){
 			c.add("medicalRecordNumber");
-			//c.add("totalScore");
+			c.add("totalScore");
 		}
 		// DEBUG END
 		return c;

@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 public class QueryFilterRowPanel extends JPanel {
+	private ClassDb aClass = null;
 
 	private JComboBox cbFilter = null;
 	private JButton delFilterButton = null;
@@ -37,9 +38,11 @@ public class QueryFilterRowPanel extends JPanel {
 		containterPanel = p;
 	}
 	public ClassDb getSelectedClass(){
-		Random generator = new Random();
-		ClassDb aClass = new ClassDb();
-		aClass.setId(generator.nextInt());
+		if (aClass == null){
+			aClass = new ClassDb();
+			Random generator = new Random();
+			aClass.setId(generator.nextInt());
+		}
 		String selection = getCbFilter().getSelectedItem().toString();
 		if (selection != null){
 			aClass.setName(selection);

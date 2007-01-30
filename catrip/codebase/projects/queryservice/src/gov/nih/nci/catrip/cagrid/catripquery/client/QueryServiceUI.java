@@ -1,6 +1,7 @@
 package gov.nih.nci.catrip.cagrid.catripquery.client;
 
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
+import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 
@@ -11,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,30 +25,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import javax.swing.JTextPane;
-import javax.swing.JScrollBar;
-import javax.swing.JTextArea;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.KeyEvent;
-import javax.swing.SwingConstants;
 
 public class QueryServiceUI extends JPanel {
 
@@ -73,7 +61,7 @@ public class QueryServiceUI extends JPanel {
 
 	Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
 	//Collection<ClassDb> classCollection = null;
-	private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
+	//private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
 	private QueryDb queryData = new QueryDb();  //  @jve:decl-index=0:
 	private DefaultTableModel tableModel = null ;
 	private JPanel filterPanel = null;
@@ -144,6 +132,12 @@ public class QueryServiceUI extends JPanel {
 								classCollection.add(element.getSelectedClass());
 							}
 							queryData.setClassCollection(classCollection);
+//	                        CQLQuery cqlQuery = CqlParser.parse(queryData);
+//	                        populateTable(QueryServiceClient.search(cqlQuery)); 
+	                        
+	                       // QueryServiceClient client = new QueryServiceClient(serviceURI);
+	                        //client.query(cqlQuery);
+
 							populateTable(QueryServiceClient.search(queryData));
 						} catch (QueryException qe) {
 							qe.printStackTrace();
@@ -296,7 +290,7 @@ public class QueryServiceUI extends JPanel {
 		if (txtQueryName == null) {
 			txtQueryName = new JTextField();
 			txtQueryName.setBounds(new Rectangle(110, 16, 426, 20));
-			txtQueryName.setText("not");
+			//txtQueryName.setText("not");
 			txtQueryName.setName("");
 			txtQueryName.addFocusListener(new java.awt.event.FocusAdapter() {
 				public void focusLost(java.awt.event.FocusEvent e) {
@@ -317,7 +311,7 @@ public class QueryServiceUI extends JPanel {
 		if (txtDescription == null) {
 			txtDescription = new JTextField();
 			txtDescription.setBounds(new Rectangle(110, 52, 426, 20));
-			txtDescription.setText("query");
+			//txtDescription.setText("query");
 			txtDescription.addFocusListener(new java.awt.event.FocusAdapter() {
 				public void focusLost(java.awt.event.FocusEvent e) {
 					queryData.setDescription(txtDescription.getText());
@@ -403,6 +397,7 @@ public class QueryServiceUI extends JPanel {
 	}
     
     public void removeFilter(QueryFilterRowPanel filterRowPanel){
+    	Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();  
     	getFilterPanel().remove(filterRowPanel);
     	getFilterPanel().revalidate();
     	getFilterPanel().repaint();
@@ -412,11 +407,17 @@ public class QueryServiceUI extends JPanel {
     		//System.out.println("before : " + classCollection.size());
     		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
     			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-    			if (element.getSelectedClass().getId() == filterRowPanel.getSelectedClass().getId())
-    				wasRemoved = filterCollection.remove(element);
-
+    			if (element.getSelectedClass().getId() == filterRowPanel.getSelectedClass().getId()){
+    				
+    				tempfilterCollection.add(element);
+    				
+    				}
+    			}
+       		for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
+       			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+       			wasRemoved = filterCollection.remove(element);
+        		System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
     		}
-    		System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
     	}
     }
 

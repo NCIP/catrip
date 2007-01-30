@@ -12,6 +12,7 @@ import java.util.Random;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class QueryFilterRowPanel extends JPanel {
 
 	private JComboBox cbFilter = null;
