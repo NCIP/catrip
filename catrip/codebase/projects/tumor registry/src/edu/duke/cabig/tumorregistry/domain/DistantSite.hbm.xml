@@ -4,7 +4,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
-	<class name="DistantSite" table="DISTANT_SITE">
+	<class name="DistantSite" table="DISTANT_SITE" polymorphism="explicit">
  		<id	name="id" type="long" column="ID"/>
 
 		<property

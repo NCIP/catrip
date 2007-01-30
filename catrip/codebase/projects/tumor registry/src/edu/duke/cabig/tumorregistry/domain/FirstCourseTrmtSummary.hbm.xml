@@ -8,28 +8,28 @@
  		<id	name="id" type="long" column="ID"/>
 
 		<property
-			name="FirstSurgeryDate"
+			name="firstSurgeryDate"
 			column="FIRST_SURGERY_DATE"
 			type="date"
 			not-null="false"
 			length="7"
 		/>
 		<property
-			name="MostDefinitiveSurgeryDate"
+			name="mostDefinitiveSurgeryDate"
 			column="MOST_DEFINITIVE_SURGERY_DATE"
 			type="date"
 			not-null="false"
 			length="7"
 		/>
 		<property
-			name="FirstTreatmentDate"
+			name="firstTreatmentDate"
 			column="FIRST_TREATMENT_DATE"
 			type="date"
 			not-null="false"
 			length="7"
 		/>
 		<property
-			name="FirstSystemicTreatmentDate"
+			name="firstSystemicTreatmentDate"
 			column="FIRST_SYSTEMIC_TREATMENT_DATE"
 			type="date"
 			not-null="false"

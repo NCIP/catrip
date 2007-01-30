@@ -6,7 +6,7 @@
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
 	<class
 		name="Followup"
-		table="FOLLOW_UP"
+		table="FOLLOW_UP" polymorphism="explicit"
 	>
 		
 		<id
@@ -37,12 +37,12 @@
 			not-null="false"
 			length="7"
 		/>
-		<one-to-one  name="recurrence" class="Recurrence" lazy="proxy" constrained="true"/>
+		<one-to-one  name="recurrence" outer-join="false" class="Recurrence" cascade="all"/>
 		<many-to-one
-			name="diagnosis" 
+			name="diagnosis"
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
-			not-null="false"
+			not-null="false" lazy="false"
 			cascade="all"
 		>
 		</many-to-one>

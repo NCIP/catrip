@@ -4,31 +4,23 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
-	<class name="ActivitySummary" table="ACTIVITY_SUMMARY">
+	<class name="ActivitySummary" table="ACTIVITY_SUMMARY" polymorphism="explicit">
 		
-<!--		<id name="id" column="ID" type="long">
+		<id name="id" column="ID" type="long">
 			<generator class="foreign">
 				<param name="property">diagnosis</param>
 			</generator>
 		</id>
--->
-		<id
-			name="id"
-			type="long"
-			column="ID"
-		>
-		
-		</id>
-		<one-to-one name="diagnosis" class="Diagnosis" outer-join="false" cascade="all" fetch="join"/>
+		<one-to-one name="diagnosis" class="Diagnosis" constrained="true"/>
 		<property
-			name="LocalDate"
+			name="localDate"
 			column="LOCAL_DATE"
 			type="date"
 			not-null="false"
 			length="7"
 		/>
 		<property
-			name="SummaryDate"
+			name="summaryDate"
 			column="SUMMARY_DATE"
 			type="date"
 			not-null="false"
@@ -42,18 +34,18 @@
 			length="50"
 		/>
 		<property
-			name="SummaryCharacterization"
+			name="summaryCharacterization"
 			column="SUMMARY_CHARACTERIZATION"
 			type="string"
 			not-null="false"
 			length="50"
 		/>
 
-		<set name="summaryActivityCollection"  lazy="true"  inverse="false" cascade="all" fetch="join">
+		<set name="summaryActivityCollection"  lazy="false"  inverse="false" cascade="all">
 			<key column="summary_activity_id"/>
 			<one-to-many class="Activity"/>
 		</set>
-		<set name="localActivityCollection"  lazy="true"  inverse="false" cascade="all" fetch="join">
+		<set name="localActivityCollection"  lazy="false"  inverse="false" cascade="all">
 			<key column="local_activity_id"/>
 			<one-to-many class="Activity"/>
 		</set>

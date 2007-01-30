@@ -6,7 +6,7 @@
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
 	<class
 		name="DiseaseExtent"
-		table="DISEASE_EXTENT"
+		table="DISEASE_EXTENT" polymorphism="explicit"
 	>
 
 		<id
@@ -103,14 +103,14 @@
 		<property
 			name="regionalNodesPositive"
 			column="REGIONAL_NODES_POSITIVE"
-			type="java.lang.Integer"
+			type="string"
 			not-null="false"
 			length="50"
 		/>
 		<property
 			name="regionalNodesExamined"
 			column="REGIONAL_NODES_EXAMINED"
-			type="java.lang.Integer"
+			type="string"
 			not-null="false"
 			length="50"
 		/>
@@ -150,8 +150,8 @@
 			length="50"
 		/>
 
-		<many-to-one fetch="join" 
-			name="Diagnosis"
+		<many-to-one
+			name="diagnosis"
 			column="DIAGNOSIS_ID"
 			class="Diagnosis"
 			not-null="false"
@@ -160,7 +160,7 @@
 		</many-to-one>
 	
 
-		<set name="distantSiteCollection" inverse="false" cascade="all" fetch="join">
+		<set name="distantSiteCollection" lazy="false"  inverse="false" cascade="all">
 			<key column="disease_extent_id" not-null="false"/>
 			<one-to-many class="DistantSite"/>
 		</set>

@@ -4,9 +4,13 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
-	<class name="PatientIdentifier" table="PATIENT_IDENTIFIER">
+	<class name="PatientIdentifier" table="PATIENT_IDENTIFIER" polymorphism="explicit">
 		
-		<id name="id" type="long" column="ID"></id>
+	    <id name="id" column="id" type="long">
+	        <generator class="foreign">
+	            <param name="property">patient</param>
+	        </generator>
+	    </id>
 
 		<property
 			name="medicalRecordNumber"
@@ -16,8 +20,7 @@
 			length="50"
 		/>
 
-
-		<one-to-one name="patient" class="Patient" lazy="proxy" constrained="true"/>
+		<one-to-one name="patient" outer-join="false" class="Patient" cascade="all"/>
 
 	</class>	
 </hibernate-mapping>

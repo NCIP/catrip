@@ -6,11 +6,11 @@
 <hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
 	<class
 		name="Radiation"
-		table="RADIATION"
+		table="RADIATION" polymorphism="explicit"
 	>
 		<meta attribute="sync-DAO">false</meta>
 		<id
-			name="Id"
+			name="id"
 			type="integer"
 			column="ID"
 		>
@@ -18,14 +18,14 @@
 		</id>
 
 		<property
-			name="NumberOfTreatments"
+			name="numberOfTreatments"
 			column="NUMBER_OF_TREATMENTS"
 			type="integer"
 			not-null="false"
 			length="22"
 		/>
 		<property
-			name="StopDate"
+			name="stopDate"
 			column="STOP_DATE"
 			type="date"
 			not-null="false"
