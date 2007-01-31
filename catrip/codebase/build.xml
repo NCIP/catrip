@@ -50,7 +50,7 @@
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
 	<property name="projects.list" value="deid, localsdkquery, data, ctom, queryengine-2.0, gui, queryengine, cae_reengineering, catrip-caeGenerateData, catrip-catissuecoreGenerateData, security-password, security-dukeidp, test-report, test-system," />
 	<!-- The name should be the path relative from projects.dir.  -->
-	<property name="services.list" value="xmi2model, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService " />
+	<property name="services.list" value="xmi2model, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, queryservice " />
 
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
