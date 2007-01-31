@@ -118,7 +118,10 @@ class FederatedQueryProcessor {
 		if (dcqlObject.getAttribute() != null) {
 			cqlObject.setAttribute(dcqlObject.getAttribute());
 		}
-
+                if (dcqlObject.getReturnAttributes() != null) {
+                    cqlObject.setReturnAttributes(dcqlObject.getReturnAttributes());
+                }
+                
 		// check for group
 		if (dcqlObject.getGroup() != null) {
 			// convert group and attach group to CQL object
@@ -283,15 +286,11 @@ class FederatedQueryProcessor {
                     for (int i = 0; i < objectResult.length; i++) {
                             CQLObjectResult objResult = objectResult[i];
                             MessageElement msgsElement = objResult.get_any()[0];                            
-                            //System.out.println(msgsElement);
+                       //     System.out.println(msgsElement);
                             String cde = msgsElement.getAttributeValue(foreignAttribute).trim();
-                        //System.out.println(cde);
-                            //if (cde.equals("T74718")) {
-                            //    System.out.println(cde);
-                            //    System.out.println(msgsElement);
-                            //}
+
                             
-                            ResultsParser rParser = new ResultsParser(cqlQuery,cqlQuery.getTarget().getName());
+                            ResultsParser rParser = new ResultsParser(cqlQuery);
                             if (populateMap) {
                                 //objectsFromFA.put(cde,rParser.getResultMap(msgsElement));
                                  objectsFromFA.put(cde,rParser.convertMessageElementToListOfMaps(msgsElement));
