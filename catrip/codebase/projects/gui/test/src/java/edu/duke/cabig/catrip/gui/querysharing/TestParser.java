@@ -1,131 +1,79 @@
-package gov.nih.nci.catrip.cagrid.catripquery.service;
+package edu.duke.cabig.catrip.gui.querysharing;
 
 import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.dcql.Association;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
+import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.AttributeDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 
+import java.io.BufferedReader;
 import java.io.CharArrayReader;
-import java.rmi.RemoteException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.xml.namespace.QName;
 
+import junit.framework.TestCase;
+
 import org.globus.wsrf.encoding.DeserializationException;
 import org.globus.wsrf.encoding.ObjectDeserializer;
+import org.globus.wsrf.encoding.ObjectSerializer;
+import org.globus.wsrf.encoding.SerializationException;
 import org.xml.sax.InputSource;
 
-/** 
- * 
- * @created by Introduce Toolkit version 1.0
- * 
- */
-public class QueryServiceImpl extends QueryServiceImplBase {
+public class TestParser extends TestCase {
 
-    private QueryDb decomposedCatripQuery;
-    private final boolean DEBUG = true;
+	@SuppressWarnings("unused")
+	private QueryServiceClient client;
+	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine-2.0\\test\\resources\\simpleQuery1.xml";
+	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine\\testDCQL\\catissuecore_tissuespecimens_cae_greatest.xml";
+	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine-2.0\\test\\resources\\simpleQuery1.xml";
+	private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\groupdcql.xml";
+	private DCQLQuery dcql = null;
+	private QueryDb decomposedCatripQuery;
+	private final boolean DEBUG = true;
 	
-	public QueryServiceImpl() throws RemoteException {
-		super();
+	protected void setUp() throws Exception {
+		super.setUp();
+		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+		client = new QueryServiceClient(serviceURI);
+		
+	}
+	@SuppressWarnings("unused")
+	private DCQLQuery getDCQLObject() throws DeserializationException, FileNotFoundException {
+        dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(dcqlQueryFile)),DCQLQuery.class);
+		return dcql;
+	}
+
+	@Override
+	protected void tearDown() throws Exception {
+		super.tearDown();
 	}
 	
-	public void save(gov.nih.nci.catrip.cagrid.catripquery.CatripQuery caTripQuery) throws RemoteException {
+	public void testParser() {
 		decomposedCatripQuery = new QueryDb();
-		if (caTripQuery.getId() != 0){
-			decomposedCatripQuery = getDbObject(caTripQuery.getId());
-		} 
 		DCQLQuery dcql = new DCQLQuery();
+		File t = new File(dcqlQueryFile);
 		try {
-
-			 dcql = convertStringToDCQL(caTripQuery.getDcql());
+			 dcql = convertStringToDCQL(getContents(t));
+			 System.out.println("target object : " + dcql.getTargetObject().getName());
+			 ClassDb targetObject = new ClassDb();
+			 targetObject.setName(dcql.getTargetObject().getName());
+			 populateObjectFromDCQLObject(dcql.getTargetObject(), targetObject);
+			 printDCQL(dcql);
 		}
 		catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		//System.out.println("server side dcql = " + caTripQuery.getDcql());
-		//System.out.println("dcql.getTargetObject() = " + dcql.getTargetObject());
-		
-		 ClassDb targetObject = new ClassDb();
-		 targetObject.setName(dcql.getTargetObject().getName());
-		populateObjectFromDCQLObject(dcql.getTargetObject(), targetObject);
-
-		// serialize the dcql to be saved in the database
-		//QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
-
-		//decomposedCatripQuery.setDcql(new java.sql.Clob());//caTripQuery.getDcql());
-		decomposedCatripQuery.setDcql(caTripQuery.getDcql());
-		decomposedCatripQuery.setId((int) caTripQuery.getId());
-		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
-		decomposedCatripQuery.setFirstName(caTripQuery.getFirstName());
-		decomposedCatripQuery.setLastName(caTripQuery.getLastName());
-		//if (caTripQuery.getCreationDate() != null)
-		//	decomposedCatripQuery.setCreationDate(caTripQuery.getCreationDate());
-		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
-		decomposedCatripQuery.setName(caTripQuery.getName());
-		decomposedCatripQuery.setSource(caTripQuery.getSource());
-		//if (caTripQuery.getDateUpdated() != null)
-		//	decomposedCatripQuery.setDateUpdated(caTripQuery.getDateUpdated());
-		decomposedCatripQuery.setUserName(caTripQuery.getUserName());
-		decomposedCatripQuery.setInstance(caTripQuery.getInstance());
-		decomposedCatripQuery.setVersion(caTripQuery.getVersion());
-
-		// add the target object to the list of class names
-//		ClassDb classs = new ClassDb();
-//		classs.setName(dcql.getTargetObject().getName());
-//		decomposedCatripQuery.addClass(classs);
-		
-
-		if (DEBUG){
-			// DEBUG
-			System.out.println("\n******* attributes  *******");
-			System.out.println("ID is " + decomposedCatripQuery.getId());
-			System.out.println("first name : " + decomposedCatripQuery.getFirstName());
-			System.out.println("last name : " + decomposedCatripQuery.getLastName());
-			System.out.println("date created : " + decomposedCatripQuery.getCreationDate());
-			System.out.println("description : " + decomposedCatripQuery.getDescription());
-			System.out.println("query name : " + decomposedCatripQuery.getName());
-			System.out.println("source : " + decomposedCatripQuery.getSource());
-			System.out.println("updated : " + decomposedCatripQuery.getDateUpdated());
-			System.out.println("user name : " + decomposedCatripQuery.getUserName());
-			System.out.println("instance : " + decomposedCatripQuery.getInstance());
-			System.out.println("version : " + decomposedCatripQuery.getVersion());
-			System.out.println("dcql : " + decomposedCatripQuery.getDcql());
-						System.out.println("update 1 ");
-
-			Collection c = decomposedCatripQuery.getClassCollection();
-			System.out.println("****************** ");
-			for (Iterator iter = c.iterator(); iter.hasNext();) {
-				ClassDb element = (ClassDb) iter.next();
-				System.out.println(element.getName());
-			}
-			System.out.println("******************");
-			//  END DEBUG
-		}
-
-		// save the decomposed DCQL data
-		System.out.println("creating object with id " + decomposedCatripQuery.getId());
-		HibernateUtil.create(decomposedCatripQuery);
-	}
-
-	private QueryDb getDbObject(long id) {
-		QueryDb dbObject;
-		dbObject = (QueryDb) HibernateUtil.currentSession().load(QueryDb.class, Long.valueOf(id).intValue());
-		// remove all the old classes and attributes as they may have changed
-		dbObject.getClassCollection().removeAll(dbObject.getClassCollection());
-
-		return dbObject;
-	}
-
-	public void delete(long _long) throws RemoteException {
-		if (_long != 0){
-			System.out.println("delete id = >"+ _long +"<");
-			QueryDb p = (QueryDb) HibernateUtil.currentSession().load(QueryDb.class, Long.valueOf(_long).intValue());
-			HibernateUtil.delete(p);
 		}
 	}
 	
@@ -183,7 +131,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 			processAttribute(dcqlObject.getAttribute(), aDCQLClass);
 		}
 		else{
-			if (dcqlObject.getGroup() != null && dcqlObject.getGroup().getAttribute() != null){
+			if (dcqlObject.getGroup() != null){
 				Attribute[] groupAttributes = dcqlObject.getGroup().getAttribute();
 				for (int i = 0; i < groupAttributes.length; i++) {
 					System.out.println(" group attrs : " + groupAttributes[i].getName());
@@ -259,8 +207,8 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		AttributeDb attribute = new AttributeDb();
 		attribute.setName(foreignAttribute);
 		aClass.getAttributeCollection().add(attribute);
-		//decomposedCatripQuery.addClass(aClass);
 		add(aClass);
+		//decomposedCatripQuery.addClass(aClass);
 		if (DEBUG){
 			System.out.println("foreignAttribute = " + foreignAttribute);
 		}
@@ -276,17 +224,18 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		return dcqlObject;
 
 	}
-
 	private void add(ClassDb aClass) {
 		// Do not add duplicates
 		boolean duplicateFound = false;
 		Collection queryCollection = decomposedCatripQuery.getClassCollection();
-		if (queryCollection == null)
+		if (queryCollection == null){
 			decomposedCatripQuery.addClass(aClass);	
+			System.out.println("colleciton was empty");
+		}
 		else{
 			for (Iterator iter = queryCollection.iterator(); iter.hasNext();) {
 				ClassDb element = (ClassDb) iter.next();
-				if (element != null && element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
+				if (element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
 					
 					duplicateFound = false;
 				}
@@ -297,11 +246,12 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 				}
 
 			}
-			if (!duplicateFound)
+			if (!duplicateFound){
 				decomposedCatripQuery.addClass(aClass);	
+				System.out.println("adding : " + aClass.getName());
+			}
 		}
 	}
-
 	private DCQLQuery convertStringToDCQL(String cqlString){
         
         
@@ -321,5 +271,56 @@ public class QueryServiceImpl extends QueryServiceImplBase {
         }
         return ((DCQLQuery)obj);
     }
-}
+	private  String getContents(File aFile) {
+		//...checks on aFile are elided
+		StringBuffer contents = new StringBuffer();
 
+		//declared here only to make visible to finally clause
+		BufferedReader input = null;
+		try {
+			//use buffering, reading one line at a time
+			//FileReader always assumes default encoding is OK!
+			input = new BufferedReader( new FileReader(aFile) );
+			String line = null; //not declared within while loop
+			/*
+			 * readLine is a bit quirky :
+			 * it returns the content of a line MINUS the newline.
+			 * it returns null only for the END of the stream.
+			 * it returns an empty String if two newlines appear in a row.
+			 */
+			while (( line = input.readLine()) != null){
+				contents.append(line);
+				contents.append(System.getProperty("line.separator"));
+			}
+		}
+		catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		}
+		catch (IOException ex){
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if (input!= null) {
+					//flush and close both "input" and its underlying FileReader
+					input.close();
+				}
+			}
+			catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return contents.toString();
+	}
+	private static void printDCQL(DCQLQuery cqlQuery) {
+		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.cql");
+		Writer w = new StringWriter();
+		try {
+			ObjectSerializer.serialize(w, cqlQuery, qname);
+		} catch (SerializationException e) {
+			e.printStackTrace();
+		}
+		System.out.println(w);
+	}
+
+}
