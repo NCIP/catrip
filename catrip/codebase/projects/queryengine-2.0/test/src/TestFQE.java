@@ -17,7 +17,7 @@ import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
+import gov.nih.nci.cagrid.fqp.tools.DataGroup;
 /**
  * This is a system test to test the functionality of the FQE, which is performs DCQL queries.
  * It is a system test because it requires a number of services to be available and running.
@@ -55,11 +55,16 @@ public class TestFQE extends TestCase {
             List resultList = parser.getResultList(results);
             Iterator resultsItr = resultList.iterator();
             while (resultsItr.hasNext()) {
-                Map resultMap = (Map)resultsItr.next();
-                Iterator keys = resultMap.keySet().iterator();
-                while (keys.hasNext()) {
-                    String key = keys.next().toString();
-                    System.out.print( key + " " + resultMap.get(key).toString() + " ");
+                DataGroup dg = (DataGroup)resultsItr.next();
+                List list = dg.getDataRows();
+                Iterator listItr = list.iterator();
+                while (listItr.hasNext()) {
+                    Map resultMap = (Map)listItr.next();
+                    Iterator keys = resultMap.keySet().iterator();
+                    while (keys.hasNext()) {
+                        String key = keys.next().toString();
+                        System.out.print( key + " " + resultMap.get(key).toString() + " ");
+                    }
                 }
                 System.out.println("    ");
             }

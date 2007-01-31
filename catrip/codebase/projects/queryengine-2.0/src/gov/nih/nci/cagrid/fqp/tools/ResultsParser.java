@@ -7,6 +7,8 @@ import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 
+
+
 import java.io.CharArrayReader;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -458,11 +460,14 @@ public class ResultsParser {
 
              }
              //List row = new ArrayList();
+              DataGroup dg = new DataGroup();
              for (int i=0;i<localList.size();i++) {
                  Map m = (Map)localList.get(i);
                  m.putAll(tempMap);
-                 resultList.add(m);
+                 dg.addDataRow(m);
+                 
              }
+             resultList.add(dg);
 ;
          }
          private Map processRow(Element currentRow) {
