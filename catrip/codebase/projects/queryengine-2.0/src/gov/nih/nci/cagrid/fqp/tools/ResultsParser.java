@@ -301,39 +301,61 @@ public class ResultsParser {
                 processME(msgsElement);
             //    parseMessageElement(msgsElement);
         }
+
+/*
+             while (resultsItr.hasNext()) {
+                 DataGroup dg = (DataGroup)resultsItr.next();
+                 List list = dg.getDataRows();
+                 Iterator listItr = list.iterator();
+                 while (listItr.hasNext()) {
+                     Map resultMap = (Map)listItr.next();
+                     Iterator keys = resultMap.keySet().iterator();
+                     while (keys.hasNext()) {
+                         String key = keys.next().toString();
+                         System.out.print( key + " " + resultMap.get(key).toString() + " ");
+                     }
+                 }
+                 Syst
+*/
+
         //add FA Attributes
         List finalList = new ArrayList();
         if (foreignObjectCollection != null) {
             Iterator resultListItr = resultList.iterator();
             while (resultListItr.hasNext()) {
-                Map map = (Map)resultListItr.next();
-                Object cedObj = map.get(cdeClassName+"-"+this.cdeMemberName);
-                String cdeValue = "";
-                if (cedObj != null) {
-                    cdeValue = cedObj.toString();
-                } else {
-                   //continue;
-                    throw new Exception ("CDE Attribure : "+ this.cdeMemberName + " not fetched for object : " + cdeClassName);
-                }
-                
-                
-            //    System.out.println(cdeValue);
-                // get Array of Maps
-                 Object[] objs = (Object[])foreignObjectCollection.get(cdeValue);
-                 for (int i=0;i<objs.length;i++) {
-                     Map ExternalAttributeMap = (Map)objs[i];
-                     
-                     map.putAll(ExternalAttributeMap);
-                     Map newMap = new HashMap();
-                     newMap.putAll(map);
-                     finalList.add(newMap);
-                 }
-                 
-                 
+                    DataGroup oDg = new DataGroup();
+                    DataGroup dg = (DataGroup)resultListItr.next();
+                    List list = dg.getDataRows();
+                    Iterator listItr = list.iterator();
+                    
+                    while (listItr.hasNext()) {
+                        Map map = (Map)listItr.next();
+                        Object cedObj = map.get(cdeClassName+"-"+this.cdeMemberName);
+                        String cdeValue = "";
+                        if (cedObj != null) {
+                            cdeValue = cedObj.toString();
+                        } else {
+                           //continue;
+                            throw new Exception ("CDE Attribure : "+ this.cdeMemberName + " not fetched for object : " + cdeClassName);
+                        }
+                        
+                        
+                    //    System.out.println(cdeValue);
+                        // get Array of Maps
+                         Object[] objs = (Object[])foreignObjectCollection.get(cdeValue);
+                         for (int i=0;i<objs.length;i++) {
+                             Map ExternalAttributeMap = (Map)objs[i];
+                             
+                             map.putAll(ExternalAttributeMap);
+                             Map newMap = new HashMap();
+                             newMap.putAll(map);
+                             oDg.addDataRow(newMap);                             
+                         }
+                    } 
+                finalList.add(oDg);
             }
             return finalList;
-        }
-        
+        }     
         
         return resultList;
         
@@ -468,7 +490,7 @@ public class ResultsParser {
                  
              }
              resultList.add(dg);
-;
+
          }
          private Map processRow(Element currentRow) {
                  Map dataMap = new HashMap();

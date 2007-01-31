@@ -65,6 +65,7 @@ public class TestFQE extends TestCase {
                         String key = keys.next().toString();
                         System.out.print( key + " " + resultMap.get(key).toString() + " ");
                     }
+System.out.println("    ");
                 }
                 System.out.println("    ");
             }

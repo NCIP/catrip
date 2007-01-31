@@ -18,6 +18,7 @@ import gov.nih.nci.cagrid.fqp.processor.exceptions.FederatedQueryProcessingExcep
 import gov.nih.nci.cagrid.fqp.processor.exceptions.RemoteDataServiceException;
 
 import gov.nih.nci.cagrid.fqp.tools.CQLScanner;
+import gov.nih.nci.cagrid.fqp.tools.DataGroup;
 import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
 
 import java.io.FileInputStream;
@@ -293,7 +294,19 @@ class FederatedQueryProcessor {
                             ResultsParser rParser = new ResultsParser(cqlQuery);
                             if (populateMap) {
                                 //objectsFromFA.put(cde,rParser.getResultMap(msgsElement));
-                                 objectsFromFA.put(cde,rParser.convertMessageElementToListOfMaps(msgsElement));
+                                 List l = rParser.convertMessageElementToListOfMaps(msgsElement);
+                                 List l1 = new ArrayList();
+                                 for (int j=0;j<l.size();j++){
+                                     DataGroup dg = (DataGroup)l.get(j);
+                                     List list = dg.getDataRows();
+                                     Iterator listItr = list.iterator();
+                                     while (listItr.hasNext()) {
+                                         Map resultMap = (Map)listItr.next();
+                                         l1.add(resultMap);
+                                     }
+                                 }
+                                 
+                                 objectsFromFA.put(cde,l1);//rParser.convertMessageElementToListOfMaps(msgsElement));
                             }
 
                            remoteAttributeValues.add(cde);
