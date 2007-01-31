@@ -187,7 +187,10 @@
         <copy overwrite="true" toDir="${ext.lib.dir}">
 		    <fileset dir="${basedir}/../queryengine-2.0/build/lib">
                 <include name="*.jar" />
-            </fileset> 
+            </fileset>
+			<fileset dir="${basedir}/../queryservice/build/lib">
+                <include name="*.jar" />
+            </fileset>
 
             <fileset dir="${basedir}/../CAEDataServiceV2/lib">
                 <include name="cae_domain.jar" />
