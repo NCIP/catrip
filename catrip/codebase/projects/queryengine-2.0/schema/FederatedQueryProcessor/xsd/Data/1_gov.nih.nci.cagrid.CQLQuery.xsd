@@ -113,6 +113,11 @@
 						<xsd:documentation>Optionally modifies the returned results of the query</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
+				<xsd:element name="ExternalObjects" type="cql:ExternalObjects" minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>Optional</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -135,5 +140,47 @@
 			<xsd:element name="Attribute" type="cql:AttributeToCompare" maxOccurs="2"/>
 		</xsd:choice>
 		<xsd:attribute name="predicate" type="cql:Predicate" use="optional" default="EQUAL_TO"/>
+		
 	</xsd:complexType>
+    <xsd:complexType name="ExternalObjects">
+	<xsd:sequence>
+		<xsd:element maxOccurs="1"  minOccurs="0"  name="ExternalObject"  type="xsd:anyType"/>
+	</xsd:sequence>
+   </xsd:complexType>
+<!--  
+	<xsd:complexType name="ExternalObjects">
+		<xsd:annotation>
+			<xsd:documentation>return External Objects</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ObjectResult" type="cql:CQLObjectResult" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CQLResult">
+		<xsd:annotation>
+			<xsd:documentation>Single result from a CQL query</xsd:documentation>
+		</xsd:annotation>
+	</xsd:complexType>
+	<xsd:complexType name="CQLObjectResult">
+		<xsd:annotation>
+			<xsd:documentation>Result object</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="cql:CQLResult">
+				<xsd:sequence>
+					<xsd:any processContents="lax"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="HashMap">
+      		<xsd:sequence>
+        		<xsd:element name="key"  type="xsd:string">  </xsd:element>
+       		<xsd:element name="valor" type="xsd:anyType">  </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   -->
+
+<!-- NEW ADDED-->
 </xsd:schema>
