@@ -16,6 +16,7 @@ import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.fqp.processor.FederatedQueryEngine;
+import gov.nih.nci.cagrid.fqp.tools.DataGroup;
 import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
 import java.awt.Cursor;
 import java.text.SimpleDateFormat;
@@ -82,12 +83,12 @@ public class CommandPanel extends CPanel {
         getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         if (GUIConstants.simpleGui){
-            if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
-                executeReturnAttributeQuery();
-//                runExternalDcql(GroupDCQLGenerator.getDCQLDocument()); // just for testing..
-            } else {
-                executeSimpleGuiQuery();
-            }
+//            if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
+                executeReturnAttributeQuery(); // it always has returned attribute now..
+////                runExternalDcql(GroupDCQLGenerator.getDCQLDocument()); // just for testing..
+//            } else {
+//                executeSimpleGuiQuery();
+//            }
         }else {
             executeVisualGuiQuery();
         }
@@ -105,7 +106,7 @@ public class CommandPanel extends CPanel {
             getMainFrame().getOutputPanel().cleanResults();
             CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
             
-            ResultsParser parser = new ResultsParser(dcql,dcql.getTargetObject().getName());
+            ResultsParser parser = new ResultsParser(dcql);//,dcql.getTargetObject().getName());
             List resultList = parser.getResultList(results);
             
             HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
@@ -170,19 +171,34 @@ public class CommandPanel extends CPanel {
             FederatedQueryEngine fqe = new FederatedQueryEngine();
             
             DCQLQuery dcql = GroupDCQLGenerator.getDCQLDocument();
-            
-//            System.out.println(ObjectSerializer.toString(dcql,new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI)));
-            
             getMainFrame().getOutputPanel().cleanResults();
             
             CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
             
             
             
-            ResultsParser parser = new ResultsParser(dcql,dcql.getTargetObject().getName());
-            List resultList = parser.getResultList(results);
+            ResultsParser parser = new ResultsParser(dcql);//,dcql.getTargetObject().getName());
+            List dataGroupList = parser.getResultList(results);
+            List resultList = new ArrayList();
+            ArrayList rColorsFlags = new ArrayList(); boolean change=false;
             
-            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
+            for (int i = 0; i < dataGroupList.size(); i++) {
+                DataGroup dg = (DataGroup)dataGroupList.get(i);  
+                List list = dg.getDataRows(); // list of maps..
+                for (int j = 0; j < list.size(); j++) {
+                    resultList.add(list.get(j));
+                    rColorsFlags.add(new Boolean(change));
+                }
+                change=change?false:true;
+            }
+             // TODO - do it decently.. or pass the List instead of Array.
+            boolean[] atlertaneCols = new boolean[rColorsFlags.size()];
+            for (int i = 0; i < atlertaneCols.length; i++) {
+                atlertaneCols[i] = ((Boolean)rColorsFlags.get(i)).booleanValue();
+            }
+            
+            
+            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap(); 
             String[] compositMapKeys = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
             HashMap colNamesMap = new HashMap();
             
@@ -200,26 +216,13 @@ public class CommandPanel extends CPanel {
                 for (int i = 0; i < attArray.length; i++) {
                     AttributeBean aBean = (AttributeBean)cBean.getAttributes().get(i) ;
                     compositMapKeys[k] = cBean.getFullyQualifiedName()+"-"+ attArray[i];
-                    colNamesMap.put(compositMapKeys[k], aBean.getCDEName());
+                    colNamesMap.put(compositMapKeys[k], aBean.getCDEName());//cBean.getCDEName()+" "+aBean.getCDEName());  // TODO - show the class CDE name also..
                     k++;
                 }
             }
             
-            getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys);
+            getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys, atlertaneCols);
             resultCountLbl.setText("   Total Row Count : "+resultList.size());
-            
-            
-//            Iterator resultsItr = resultList.iterator();
-//            while (resultsItr.hasNext()) {
-//                Map resultMap = (Map)resultsItr.next(); // one row...
-//                Iterator keys = resultMap.keySet().iterator();
-//                while (keys.hasNext()) {
-//                    String key = keys.next().toString();
-//                    System.out.println( key + "====" + resultMap.get(key).toString() );
-//                }
-//                System.out.println("\n\n");
-//            }
-            
             
             GUIConstants.resultAvailable = true;
             

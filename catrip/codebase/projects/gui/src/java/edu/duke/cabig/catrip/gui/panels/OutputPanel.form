@@ -28,6 +28,9 @@
               <Connection code="getTableModel()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="outputTable = new ColoredJTable();"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

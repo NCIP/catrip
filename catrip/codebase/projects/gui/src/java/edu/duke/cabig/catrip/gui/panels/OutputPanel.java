@@ -4,11 +4,19 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import java.awt.Color;
+import java.awt.Component;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
+import java.util.regex.Pattern;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 
 /**
  * Out Panel to show the results from the DCQL Query execution.
@@ -31,9 +39,17 @@ public class OutputPanel extends CPanel {
     public void setResults(ArrayList resultArray){
         getOutputTable().setModel(getTableModel(resultArray));
     }
-
+    
     public void setMapResults(List resultArray, HashMap colNamesMap, String[] keys){
-        getOutputTable().setModel(getMapTableModel(resultArray, colNamesMap, keys));
+        ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)getMapTableModel(resultArray, colNamesMap, keys);
+        
+        ((ColoredJTable)getOutputTable()).setModel(colModel, colModel.getRowColors());
+    }
+    
+    public void setMapResults(List resultArray, HashMap colNamesMap, String[] keys, boolean[] alternate){
+        ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)getMapTableModel(resultArray, colNamesMap, keys, alternate);
+        
+        ((ColoredJTable)getOutputTable()).setModel(colModel, colModel.getRowColors());
     }
     
     public void cleanResults(){
@@ -49,6 +65,7 @@ public class OutputPanel extends CPanel {
     private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
         outputTable = new javax.swing.JTable();
+        outputTable = new ColoredJTable();
 
         setLayout(new java.awt.GridLayout(1, 0));
 
@@ -99,34 +116,127 @@ public class OutputPanel extends CPanel {
     }
     
     
+    private DefaultTableModel getMapTableModel(List array, HashMap colNamesMap, String[] keys){
+        boolean[] alternates = new boolean[array.size()];
+        
+        for (int i = 0; i < alternates.length; i++) {
+            if (i % 2 == 0){
+                alternates[i]=true;
+            } else {
+                alternates[i]=false;
+            }
+        }
+        
+        return getMapTableModel(array, colNamesMap, keys, alternates);
+    }
     
-    /** This method assumes that the Target object and the results are an instance of type ClassBean. */
-    private DefaultTableModel getMapTableModel(List array, HashMap colNamesMap, String[] keys){ 
+    
+    private DefaultTableModel getMapTableModel(List array, HashMap colNamesMap, String[] keys, boolean[] alternates){
+        Color[] rowColors = new Color[alternates.length];
+        for (int i = 0; i < alternates.length; i++) {
+            if (alternates[i]){
+                rowColors[i]=new Color(235, 235, 235);
+            } else {
+//                rowColors[i]=Color.white; // white is already the default color of JTable.
+            }
+        }
+        
         Vector rowV = new Vector();
         Vector colNames = new Vector();
         
-        for (int i = 0; i < keys.length; i++) { 
+        for (int i = 0; i < keys.length; i++) {
             colNames.add(colNamesMap.get(keys[i]));
         }
         
-        for (int i = 0; i < array.size(); i++){  
+        for (int i = 0; i < array.size(); i++){
             Object obj = array.get(i);
             
             HashMap map = (HashMap)obj;
             Vector colV = new Vector();
             for (int j = 0; j< keys.length;j++){
-                colV.add(map.get(keys[j]));
+                String value = (String)map.get(keys[j]);
+                String dateFormatExp = "\\d\\d\\d\\d[-]\\d\\d[-]\\d\\d[T]\\d\\d[:]\\d\\d[:]\\d\\d[.]\\d\\d\\d[-]\\d\\d[:]\\d\\d";
+                boolean b = false;
+                if (value!=null && !value.equals("")){
+                    b = Pattern.matches(dateFormatExp, value);
+                }
+                try{
+                    if (b){
+                        Date javaDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")).parse(value);
+                        value = javaDate.toString();
+                    }
+                } catch (java.text.ParseException pe){
+                    pe.printStackTrace();
+                    // eat the exception here..
+                }
+                colV.add(value);
             }
             rowV.add(colV);
         }
         
-        DefaultTableModel tb = new javax.swing.table.DefaultTableModel(rowV, colNames){
-            public boolean isCellEditable(int row, int col) {
-                return false;
-            }
-        };
+        ColoredDefaultTableModel tb = new ColoredDefaultTableModel(rowV, colNames, rowColors);
+        
+//        DefaultTableModel tb = new javax.swing.table.DefaultTableModel(rowV, colNames){
+//            public boolean isCellEditable(int row, int col) {
+//                return false;
+//            }
+//        };
         
         return tb;
+    }
+    
+}
+
+
+class ColoredDefaultTableModel extends javax.swing.table.DefaultTableModel{
+    private Color[] rowColors;
+    public ColoredDefaultTableModel(Vector rowV, Vector colNames, Color[] rColors){
+        super(rowV, colNames);
+        rowColors = rColors;
+    }
+    public boolean isCellEditable(int row, int col) {
+        return false;
+    }
+    
+    public void setRowColors(Color[] colors){
+        rowColors = colors;
+    }
+    public Color[] getRowColors(){
+        return rowColors;
+    }
+}
+
+
+
+class ColoredJTable extends JTable {
+    private Color[] rowColors;
+    
+    public void setModel(TableModel model){
+        super.setModel(model);
+//        ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)model;
+//        this.setRowColors(colModel.getRowColors());
+    }
+    
+    public void setModel(TableModel model, Color[] rColors ){
+        this.setRowColors(rColors);
+        super.setModel(model);
+    }
+    
+    public void setRowColors(Color[] colors){
+        rowColors = colors;
+    }
+    
+    public Component prepareRenderer(TableCellRenderer renderer,
+            int rowIndex, int vColIndex) {
+        Component c = super.prepareRenderer(renderer, rowIndex, vColIndex);
+        c.setBackground(rowColors[rowIndex]); // get the defined color of that row..
+//        if (rowIndex % 2 == 0 && !isCellSelected(rowIndex, vColIndex)) {
+//            c.setBackground(Color.yellow);
+//        } else {
+//            // If not shaded, match the table's background
+//            c.setBackground(getBackground());
+//        }
+        return c;
     }
     
 }
