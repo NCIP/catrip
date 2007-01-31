@@ -48,7 +48,7 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
-	<property name="projects.list" value="deid, localsdkquery, data, ctom, queryengine-2.0, gui, queryengine, cae_reengineering, catrip-caeGenerateData, catrip-catissuecoreGenerateData, security-password, security-dukeidp, test-report, test-system," />
+	<property name="projects.list" value="deid, localsdkquery, data, ctom, queryengine-2.0, queryservice, gui, queryengine, cae_reengineering, catrip-caeGenerateData, catrip-catissuecoreGenerateData, security-password, security-dukeidp, test-report, test-system," />
 	<!-- The name should be the path relative from projects.dir.  -->
 	<property name="services.list" value="xmi2model, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, queryservice " />
 
@@ -217,6 +217,18 @@
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
 		<ant dir="${projects.dir}/TumorRegistryDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+
+	<!-- =============================================================== -->
+	<!-- QuerySharingService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-queryservice" depends="prepare" description="Builds the queryservice project">
+		<resolveDependencies extdir="${projects.dir}/queryservice">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/queryservice" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 
