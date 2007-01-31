@@ -59,7 +59,7 @@
 					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" selectable="true" roleName="annotationEventParametersCollection" displaybleAttributes="id" display="true">
 						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR" roleName="annotationSetCollection" display="true"/>
 						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR" roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" selectable="true"  roleName="annotationSetCollection" display="true"/>
 						<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" selectable="true" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" roleName="annotationSetCollection" display="true"/>
 					</Association>
 				</associatedObjectTree>
