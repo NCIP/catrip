@@ -193,6 +193,9 @@
 				<ns2:UMLAttribute dataTypeName="java.lang.Integer" name="performedIndicator" publicID="270979225" version="1.0" xsi:type="ns2:UMLAttribute">
 					<ns2:SemanticMetadata conceptCode="C12345" conceptDefinition="tmp" conceptName="Activity Performed Indicator" order="0" xsi:type="ns2:SemanticMetadata"/>
 				</ns2:UMLAttribute>
+				<ns2:UMLAttribute dataTypeName="java.lang.String" name="treatmentType" publicID="270979226" version="1.0" xsi:type="ns2:UMLAttribute">
+					<ns2:SemanticMetadata conceptCode="C49236" conceptDefinition="Treatment Type." conceptName="Activity Treatment Type" order="0" xsi:type="ns2:SemanticMetadata"/>
+				</ns2:UMLAttribute>
 			</ns2:umlAttributeCollection>
 			<ns2:SemanticMetadata conceptCode="C43431" conceptDefinition="An action taken in pursuit of an objective; the state of being active." conceptName="Activity" order="0" xsi:type="ns2:SemanticMetadata"/>
 		</ns2:UMLClass>

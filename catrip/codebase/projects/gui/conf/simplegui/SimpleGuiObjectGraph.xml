@@ -216,7 +216,7 @@
 						<Association className="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" displaybleAttributes="bestSEERSummaryStage,clinicalMetStage,clinicalNodeStage,clinicalTumorStage,pathologicMetStage,pathologicNodeStage,pathologicTumorStage,regionalNodesPositive,regionalNodesExamined,tumorSize,tumorMarker1,tumorMarker2,tumorMarker3" roleName="diseaseExtentCollection" display="true">
 								<Association className="edu.duke.cabig.tumorregistry.domain.DistantSite" displaybleAttributes="name" roleName="distantSiteCollection" display="true"/>
 						</Association>
-						<Association className="edu.duke.cabig.tumorregistry.domain.Activity" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection"  selectable="true" display="true"/>
+						<Association className="edu.duke.cabig.tumorregistry.domain.Activity" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator,treatmentType" roleName="activityCollection"  selectable="true" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.Procedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.OtherProcedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.HemTransplantEndocrineProcedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
@@ -286,7 +286,7 @@
 			</foreignAssociationInboundPath>
 
 
-			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Activity" cdeName="medicalRecordNumber"  selectable="true"  displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" display="true">
+			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Activity" cdeName="medicalRecordNumber"  selectable="true"  displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator,treatmentType" display="true">
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
 				    <Association className="edu.duke.cabig.tumorregistry.domain.Patient" roleName="patient">
 					      <Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" roleName="diagnosisCollection">
