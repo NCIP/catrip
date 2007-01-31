@@ -10,9 +10,9 @@ public class CQLScanner {
     public static boolean isAttributesRequested(CQLQuery query){
         gov.nih.nci.cagrid.cqlquery.Object target = query.getTarget();
 
-        if (target.getReturnAttributes() != null ) {
-            return true;
-        }
+      //  if (target.getReturnAttributes() != null ) {
+       //     return true;
+        //}
         
         Association assoc = target.getAssociation();
         
