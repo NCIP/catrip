@@ -279,6 +279,8 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 
 	private void add(ClassDb aClass) {
 		// Do not add duplicates
+		if (aClass == null)
+			return;
 		boolean duplicateFound = false;
 		Collection queryCollection = decomposedCatripQuery.getClassCollection();
 		if (queryCollection == null)
@@ -286,13 +288,15 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		else{
 			for (Iterator iter = queryCollection.iterator(); iter.hasNext();) {
 				ClassDb element = (ClassDb) iter.next();
-				if (element != null && element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
+				System.out.println("aclass = " + aClass);
+				System.out.println("element = " + element);
+				if (aClass != null && element != null && element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
 					
 					duplicateFound = false;
 				}
 				else{
 					duplicateFound = true;
-					System.out.println("Found a duplicate " + aClass.getName());
+					//System.out.println("Found a duplicate " + aClass.getName());
 					break;
 				}
 
