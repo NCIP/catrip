@@ -205,11 +205,12 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 	}
 	private void processGroup(gov.nih.nci.cagrid.dcql.Group dcqlGroup, ClassDb aClass) {
 		Attribute[] groupAttributes = dcqlGroup.getAttribute();
-		for (int i = 0; i < groupAttributes.length; i++) {
-			System.out.println(" group attrs : " + groupAttributes[i].getName());
-			processAttribute(groupAttributes[i], aClass);
+		if (groupAttributes != null){
+			for (int i = 0; i < groupAttributes.length; i++) {
+				System.out.println(" group attrs : " + groupAttributes[i].getName());
+				processAttribute(groupAttributes[i], aClass);
+			}
 		}
-		
 		// associations
 		if (dcqlGroup.getAssociation() != null && dcqlGroup.getAssociation().length > 0) {
 			Association dcqlAssociationArray[] = dcqlGroup.getAssociation();
@@ -228,7 +229,16 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 				processGroup(dcqlGroupArray[i], new ClassDb());
 			}
 		}
-		
+		if (dcqlGroup.getForeignAssociation() != null) {
+			ForeignAssociation[] fa = dcqlGroup.getForeignAssociation();
+			if (fa != null){
+			for (int i = 0; i < fa.length; i++) {
+				gov.nih.nci.cagrid.dcql.Object o = processForeignAssociation(fa[i], new ClassDb());
+				populateObjectFromDCQLObject(o, new ClassDb());
+				
+			}
+			}
+		}		
 	}
 	
 	private Association processAssociation(Association dcqlAssociation, ClassDb aClass){
@@ -279,7 +289,7 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 
 	private void add(ClassDb aClass) {
 		// Do not add duplicates
-		if (aClass == null)
+		if (aClass == null || aClass.getName() == null)
 			return;
 		boolean duplicateFound = false;
 		Collection queryCollection = decomposedCatripQuery.getClassCollection();
