@@ -31,7 +31,7 @@
     <field name="instance" type="string">
       <bind-xml name="instance" node="attribute" />
     </field>
-    <field name="dcql" type="clob">
+    <field name="dcql" type="string">
       <bind-xml name="dcql" node="attribute" />
     </field>
     <field name="creationDate" type="date">
