@@ -85,6 +85,9 @@ public class QueryServiceUI extends JPanel {
     // --------
     public MainFrame mainFrame;
     private ArrayList<CDEComboboxBean> filterList = new ArrayList<CDEComboboxBean>(500);
+    String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService"; // default
+    
+    
 	private JPanel outerPanel = null;
 	private JPanel resultsOuterPanel = null;
     /**
@@ -139,7 +142,15 @@ public class QueryServiceUI extends JPanel {
 //            getCdeCombo().addItem(attributeList.get(i));
 //        }
         
+        // get the service URL from the SystemProperties.. 
+         // TODO - change this to config file later on..
         
+        String querySharingServiceUrl = System.getProperty("query.sharing.url"); // move this to gui config file..
+        System.out.println("querySharingServiceUrl = " + querySharingServiceUrl);
+        if (querySharingServiceUrl != null){
+        	System.out.println("querySharingServiceUrl != null");
+            serviceURI = querySharingServiceUrl;
+        }
         
     }
     
@@ -201,7 +212,7 @@ public class QueryServiceUI extends JPanel {
                         queryData.setClassCollection(classCollection);
                        // populateTable(QueryServiceClient.search(queryData));
                         CQLQuery cqlQuery = CqlParser.parse(queryData);
-                        populateTable(QueryServiceClient.search(cqlQuery));
+                        populateTable(QueryServiceClient.search(cqlQuery, serviceURI));  // pass the url of the service as well..
                    } catch (Exception qe) {
                         qe.printStackTrace();
                     }
