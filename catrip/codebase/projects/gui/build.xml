@@ -273,7 +273,8 @@
     <!-- Run the GUI                                                    -->
     <!-- ============================================================== -->
     <target name="run" depends="all,install" description="Run the GUI">
-        <java classname="${main.class}" fork="true" >
+        <echo message=" The Query Service URL is : ${query.sharing.url}" />
+        <java jvmargs="-Dquery.sharing.url=${query.sharing.url}" classname="${main.class}" fork="true" >
             <classpath refid="run.classpath" />
         </java>
     </target>
