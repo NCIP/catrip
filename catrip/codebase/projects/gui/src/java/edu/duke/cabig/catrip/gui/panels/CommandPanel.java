@@ -84,7 +84,7 @@ public class CommandPanel extends CPanel {
         
         if (GUIConstants.simpleGui){
 //            if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
-                executeReturnAttributeQuery(); // it always has returned attribute now..
+                executeReturnAttributeQuery(null); // it always has returned attribute now..
 ////                runExternalDcql(GroupDCQLGenerator.getDCQLDocument()); // just for testing..
 //            } else {
 //                executeSimpleGuiQuery();
@@ -99,52 +99,7 @@ public class CommandPanel extends CPanel {
     public void runExternalDcql(DCQLQuery dcql){
         ExecuteCommand.setEnabled(false);
         // assume that the parser can parse the results and use the same mechanism to show the results..
-        
-        try {
-            resultCountLbl.setText("   ");
-            FederatedQueryEngine fqe = new FederatedQueryEngine();
-            getMainFrame().getOutputPanel().cleanResults();
-            CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
-            
-            ResultsParser parser = new ResultsParser(dcql);//,dcql.getTargetObject().getName());
-            List resultList = parser.getResultList(results);
-            
-            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
-            String[] compositMapKeys;// = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
-            HashMap colNamesMap = new HashMap();
-            
-            int k = 0;
-            if (resultList.size() > 0){
-                Map resultMap = (Map)resultList.get(0);
-                compositMapKeys = new String[resultMap.size()];
-                Iterator keys = resultMap.keySet().iterator();
-                while (keys.hasNext()) {
-                    String key = keys.next().toString();
-                    String className = key.substring(0,key.indexOf("-"));
-                    String attributeName = key.substring(key.indexOf("-")+1, key.length());
-                    ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(className).clone();
-                    cBean.filterAttributes(new String[]{attributeName});
-                    String attCdeName = cBean.getAttributes().get(0).getCDEName();
-                    
-                    compositMapKeys[k] = key;
-                    colNamesMap.put(key, attCdeName);
-                    k++;
-                }
-                
-                getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys);
-                GUIConstants.resultAvailable = true;
-                resultCountLbl.setText("   Total Row Count : "+resultList.size());
-            }
-            
-            
-            
-        } catch (Exception ex) {
-//            ex.printStackTrace();
-            resultCountLbl.setText(" ");
-            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
-        }
-        
-        
+        executeReturnAttributeQuery(dcql);
         
         ExecuteCommand.setEnabled(true);
     }
@@ -165,13 +120,15 @@ public class CommandPanel extends CPanel {
         
     }
     
-    private void executeReturnAttributeQuery(){
+    private void executeReturnAttributeQuery(DCQLQuery dcql){
         try {
             resultCountLbl.setText("   ");
             FederatedQueryEngine fqe = new FederatedQueryEngine();
+            if (dcql == null){
+                dcql = GroupDCQLGenerator.getDCQLDocument();
+            }
             
-            DCQLQuery dcql = GroupDCQLGenerator.getDCQLDocument();
-            getMainFrame().getOutputPanel().cleanResults();
+            getMainFrame().getOutputPanel().cleanResults(); 
             
             CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
             
