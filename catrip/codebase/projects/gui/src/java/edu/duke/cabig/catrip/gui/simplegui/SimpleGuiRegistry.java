@@ -317,7 +317,7 @@ public class SimpleGuiRegistry {
         
         // TODO - ToDo-ToDo
 //         if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
-        if (!hasGroupsDefined() && !isReturnedAttributeListAvailable()){
+        if (!hasGroupsDefined()){// && !isReturnedAttributeListAvailable()){ // by default return all the attributes of Target Object..
             ClassBean targetBean = getTargetGraphObject().getClassBean();
             ArrayList atts = targetBean.getAttributes();
             for (int i = 0; i < atts.size(); i++) {

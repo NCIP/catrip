@@ -9,6 +9,7 @@ import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +17,9 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 /**
  *
@@ -52,7 +55,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
 //        filterId = System.currentTimeMillis();
         fillPredicateCombo();
-        
+        getCdeCombo().setRenderer(new CDEComboBoxRenderer());
 //        fillCdeCombo1();
         
     }
@@ -355,4 +358,16 @@ public class FilterRowPanel extends javax.swing.JPanel {
 
 
 
+// this is to show the Service_name + CDE name for the filter combo.. where the CDE has same name.. like Participant.
+class CDEComboBoxRenderer extends BasicComboBoxRenderer {  
+    public Component getListCellRendererComponent(JList list, Object value,  
+            int index, boolean isSelected, boolean cellHasFocus) {
+        if (value instanceof CDEComboboxBean){
+            CDEComboboxBean cdeBean = (CDEComboboxBean)value;
+            String toolTip = cdeBean.getClassBean().getServiceName() + " -- " +  cdeBean.toString();
+            list.setToolTipText(toolTip);
+        } 
+        return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus); 
+    } 
+}
 

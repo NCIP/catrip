@@ -163,7 +163,7 @@ public class OutputPanel extends CPanel {
                 try{
                     if (b){
                         Date javaDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")).parse(value);
-                        value = javaDate.toString();
+                        value = new SimpleDateFormat("MMM-yyyy").format(javaDate);
                     }
                 } catch (java.text.ParseException pe){
                     pe.printStackTrace();

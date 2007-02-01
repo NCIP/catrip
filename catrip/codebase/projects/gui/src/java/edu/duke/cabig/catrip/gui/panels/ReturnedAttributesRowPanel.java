@@ -23,6 +23,7 @@ public class ReturnedAttributesRowPanel extends javax.swing.JPanel {
      public ReturnedAttributesRowPanel(ReturnedAttributesPanel parent_) {
         initComponents();
         this.containerPanel = parent_;
+         getReturnedAttributeCombo().setRenderer(new CDEComboBoxRenderer()); 
     }
     
     /** This method is called from within the constructor to
