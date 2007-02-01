@@ -217,15 +217,25 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 
 	}
 
-	public static Vector search(CQLQuery cqlQuery) throws Exception {
-		return (Vector) getResults(cqlQuery);
+	public static Vector search(CQLQuery cqlQuery , String serviceURI) throws Exception {
+		return (Vector) getResults(cqlQuery, serviceURI);
 
 	}
 
+    public static Vector search(CQLQuery cqlQuery ) throws Exception {
+		return (Vector) getResults(cqlQuery);
+
+	}
 	
 	private static Collection getResults(CQLQuery cqlQuery) throws Exception{
+		String defaultUrl = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+           return getResults(cqlQuery, defaultUrl);
+    }
+
+	
+	private static Collection getResults(CQLQuery cqlQuery, String serviceURI ) throws Exception{
 		Vector<QueryDb> queryResultCollection = new java.util.Vector<QueryDb>();
-		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+//		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
 		CQLQueryResults results;
 		QueryServiceClient client = null;
 		try{
