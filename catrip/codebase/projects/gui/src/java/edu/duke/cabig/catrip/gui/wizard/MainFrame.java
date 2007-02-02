@@ -84,6 +84,7 @@ public class MainFrame extends CJFrame {
         resultMenu = new javax.swing.JMenu();
         exportResultHtml = new javax.swing.JMenuItem();
         exportResultExcel = new javax.swing.JMenuItem();
+        exportResultCSV = new javax.swing.JMenuItem();
 
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -277,7 +278,22 @@ public class MainFrame extends CJFrame {
         resultMenu.add(exportResultHtml);
 
         exportResultExcel.setText("Export Results to Excel");
+        exportResultExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportResultExcelActionPerformed(evt);
+            }
+        });
+
         resultMenu.add(exportResultExcel);
+
+        exportResultCSV.setText("Export Results to CSV");
+        exportResultCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportResultCSVActionPerformed(evt);
+            }
+        });
+
+        resultMenu.add(exportResultCSV);
 
         menuBar.add(resultMenu);
 
@@ -285,6 +301,14 @@ public class MainFrame extends CJFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exportResultCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultCSVActionPerformed
+    // Ask user for the delimeter in a option pane then export the results..  
+    }//GEN-LAST:event_exportResultCSVActionPerformed
+
+    private void exportResultExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultExcelActionPerformed
+    // call the APIs to export results to a Excel format..
+    }//GEN-LAST:event_exportResultExcelActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
 // TODO add your handling code here:
@@ -434,6 +458,7 @@ public class MainFrame extends CJFrame {
     private javax.swing.JMenuItem delete;
     private javax.swing.JMenuItem deleteQuery;
     private javax.swing.JMenuItem execute;
+    private javax.swing.JMenuItem exportResultCSV;
     private javax.swing.JMenuItem exportResultExcel;
     private javax.swing.JMenuItem exportResultHtml;
     private javax.swing.JPanel jPanel1;

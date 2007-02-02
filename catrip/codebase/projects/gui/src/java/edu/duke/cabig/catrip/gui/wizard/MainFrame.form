@@ -148,6 +148,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Export Results to Excel"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportResultExcelActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="exportResultCSV">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Export Results to CSV"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportResultCSVActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
