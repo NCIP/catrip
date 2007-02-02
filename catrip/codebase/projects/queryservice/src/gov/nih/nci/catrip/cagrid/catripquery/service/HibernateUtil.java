@@ -55,6 +55,9 @@ public class HibernateUtil {
 				tx.rollback();
 			throw e;
 		}
+		finally{
+			HibernateUtil.closeSession();
+		}
 	}
 	
 
@@ -75,6 +78,9 @@ public class HibernateUtil {
 			if (tx != null)
 				tx.rollback();
 			//assertTrue(false);
+		}
+		finally{
+			HibernateUtil.closeSession();
 		}
 	}
 }

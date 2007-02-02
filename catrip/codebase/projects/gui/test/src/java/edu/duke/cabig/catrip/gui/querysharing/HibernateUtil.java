@@ -55,6 +55,10 @@ public class HibernateUtil {
 				tx.rollback();
 			throw e;
 		}
+		finally{
+			HibernateUtil.closeSession();
+		}
+		
 	}
 	
 
