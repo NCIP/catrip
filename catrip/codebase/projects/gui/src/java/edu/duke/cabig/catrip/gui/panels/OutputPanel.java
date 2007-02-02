@@ -211,15 +211,10 @@ class ColoredDefaultTableModel extends javax.swing.table.DefaultTableModel{
 class ColoredJTable extends JTable {
     private Color[] rowColors;
     
-    public void setModel(TableModel model){
-        super.setModel(model);
-//        ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)model;
-//        this.setRowColors(colModel.getRowColors());
-    }
     
     public void setModel(TableModel model, Color[] rColors ){
-        this.setRowColors(rColors);
         super.setModel(model);
+        this.setRowColors(rColors);
     }
     
     public void setRowColors(Color[] colors){
@@ -229,13 +224,7 @@ class ColoredJTable extends JTable {
     public Component prepareRenderer(TableCellRenderer renderer,
             int rowIndex, int vColIndex) {
         Component c = super.prepareRenderer(renderer, rowIndex, vColIndex);
-        c.setBackground(rowColors[rowIndex]); // get the defined color of that row..
-//        if (rowIndex % 2 == 0 && !isCellSelected(rowIndex, vColIndex)) {
-//            c.setBackground(Color.yellow);
-//        } else {
-//            // If not shaded, match the table's background
-//            c.setBackground(getBackground());
-//        }
+        c.setBackground(rowColors[rowIndex]);
         return c;
     }
     

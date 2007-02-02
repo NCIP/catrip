@@ -152,10 +152,18 @@ public class SimpleGuiRegistry {
         
         
         // TODO - sanju AND/OR   : this keeps the old groups filters.. even if you clear all filters...
-        // things from AND/OR grouping
+        // clean things from AND/OR grouping
         setNonGroupFilters(new ArrayList(50));
         setFilterSubGroupList(new ArrayList(50));
         setNumGroupableEntities(0);
+        
+        
+        // clean things for returned attributes..
+        setReturnedAttributeListAvailable(false);
+        setClassNameReturnedAttributeMap(new HashMap());
+        setNumReturnedAttribute(0);
+                
+                
     }
     
     public static List getCurrentXMLObjectList() {
@@ -315,7 +323,11 @@ public class SimpleGuiRegistry {
             
         }
         
-        // TODO - ToDo-ToDo
+        
+        
+        
+        
+        
 //         if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
         if (!hasGroupsDefined()){// && !isReturnedAttributeListAvailable()){ // by default return all the attributes of Target Object..
             ClassBean targetBean = getTargetGraphObject().getClassBean();

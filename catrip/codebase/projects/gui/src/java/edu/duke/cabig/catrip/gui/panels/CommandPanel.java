@@ -83,8 +83,11 @@ public class CommandPanel extends CPanel {
         getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         if (GUIConstants.simpleGui){
+            if (SimpleGuiRegistry.isSimpleGuiChanged()){
+                SimpleGuiRegistry.prepareForDcql();
+            }
 //            if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
-                executeReturnAttributeQuery(null); // it always has returned attribute now..
+            executeReturnAttributeQuery(); // it always has returned attribute now..
 ////                runExternalDcql(GroupDCQLGenerator.getDCQLDocument()); // just for testing..
 //            } else {
 //                executeSimpleGuiQuery();
@@ -99,7 +102,73 @@ public class CommandPanel extends CPanel {
     public void runExternalDcql(DCQLQuery dcql){
         ExecuteCommand.setEnabled(false);
         // assume that the parser can parse the results and use the same mechanism to show the results..
-        executeReturnAttributeQuery(dcql);
+        
+        try {
+            resultCountLbl.setText("   ");
+            FederatedQueryEngine fqe = new FederatedQueryEngine();
+            getMainFrame().getOutputPanel().cleanResults();
+            CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
+            
+            ResultsParser parser = new ResultsParser(dcql);//,dcql.getTargetObject().getName());
+            List dataGroupList = parser.getResultList(results);
+            List resultList = new ArrayList();
+            ArrayList rColorsFlags = new ArrayList(); boolean change=false;
+            
+            for (int i = 0; i < dataGroupList.size(); i++) {
+                DataGroup dg = (DataGroup)dataGroupList.get(i);
+                List list = dg.getDataRows(); // list of maps..
+                for (int j = 0; j < list.size(); j++) {
+                    resultList.add(list.get(j));
+                    rColorsFlags.add(new Boolean(change));
+                }
+                change=change?false:true;
+            }
+            // TODO - do it decently.. or pass the List instead of Array.
+            boolean[] atlertaneCols = new boolean[rColorsFlags.size()];
+            for (int i = 0; i < atlertaneCols.length; i++) {
+                atlertaneCols[i] = ((Boolean)rColorsFlags.get(i)).booleanValue();
+            }
+            
+            
+            // instead of getting the composite keys a nd CDE names.. from registry.. calculate it..
+            String[] compositMapKeys; // = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
+            HashMap colNamesMap = new HashMap();
+            
+            int k = 0;
+            if (resultList.size() > 0){
+                Map resultMap = (Map)resultList.get(0);
+                compositMapKeys = new String[resultMap.size()];
+                
+                System.out.println("XXXX query sharing result column Map size :"+resultMap.size());
+                
+                Iterator keys = resultMap.keySet().iterator();
+                while (keys.hasNext()) {
+                    String key = keys.next().toString();
+                    String className = key.substring(0,key.indexOf("-"));
+                    String attributeName = key.substring(key.indexOf("-")+1, key.length());
+                    ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByFullyQualifiedName(className).clone();
+                    cBean.filterAttributes(new String[]{attributeName});
+                    String attCdeName = cBean.getAttributes().get(0).getCDEName();
+                    
+                    compositMapKeys[k] = key;
+                    colNamesMap.put(key, attCdeName);
+                    k++;
+                }
+                
+                getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys, atlertaneCols);
+                GUIConstants.resultAvailable = true;
+                resultCountLbl.setText("   Total Row Count : "+resultList.size());
+            }
+            
+            
+            
+        } catch (Exception ex) {
+//            ex.printStackTrace();
+            resultCountLbl.setText(" ");
+            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
+        }
+        
+        
         
         ExecuteCommand.setEnabled(true);
     }
@@ -120,15 +189,15 @@ public class CommandPanel extends CPanel {
         
     }
     
-    private void executeReturnAttributeQuery(DCQLQuery dcql){
+    private void executeReturnAttributeQuery(){
         try {
             resultCountLbl.setText("   ");
             FederatedQueryEngine fqe = new FederatedQueryEngine();
-            if (dcql == null){
-                dcql = GroupDCQLGenerator.getDCQLDocument();
-            }
+            DCQLQuery dcql = GroupDCQLGenerator.getDCQLDocument();
             
-            getMainFrame().getOutputPanel().cleanResults(); 
+//            System.out.println(GroupDCQLGenerator.getDCQLText());
+            
+            getMainFrame().getOutputPanel().cleanResults();
             
             CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
             
@@ -140,7 +209,7 @@ public class CommandPanel extends CPanel {
             ArrayList rColorsFlags = new ArrayList(); boolean change=false;
             
             for (int i = 0; i < dataGroupList.size(); i++) {
-                DataGroup dg = (DataGroup)dataGroupList.get(i);  
+                DataGroup dg = (DataGroup)dataGroupList.get(i);
                 List list = dg.getDataRows(); // list of maps..
                 for (int j = 0; j < list.size(); j++) {
                     resultList.add(list.get(j));
@@ -148,14 +217,20 @@ public class CommandPanel extends CPanel {
                 }
                 change=change?false:true;
             }
-             // TODO - do it decently.. or pass the List instead of Array.
+            // TODO - do it decently.. or pass the List instead of Array.
             boolean[] atlertaneCols = new boolean[rColorsFlags.size()];
             for (int i = 0; i < atlertaneCols.length; i++) {
                 atlertaneCols[i] = ((Boolean)rColorsFlags.get(i)).booleanValue();
             }
             
             
-            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap(); 
+             // TODO - testing..
+            
+            System.out.println("XXXX Return Attribute Query result column Map size :"+((Map)((DataGroup)dataGroupList.get(0)).getDataRows().get(0)).size());
+            
+            
+            
+            HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
             String[] compositMapKeys = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
             HashMap colNamesMap = new HashMap();
             

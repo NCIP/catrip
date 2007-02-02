@@ -320,6 +320,8 @@ public class MainFrame extends CJFrame {
 
     private void deleteQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteQueryActionPerformed
 // TODO add your handling code here:
+        // TODO - tmp remove this code later on..
+        getOutputPanel().cleanResults();
     }//GEN-LAST:event_deleteQueryActionPerformed
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed

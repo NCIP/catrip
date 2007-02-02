@@ -359,6 +359,8 @@ public class SimpleSearchPanel extends CPanel {
             targetSetChanged = false;
             SimpleGuiRegistry.setCurrentXMLObjectList(objs);
             SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+            
+            SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
         }
         //-------------------------
         
@@ -388,6 +390,8 @@ public class SimpleSearchPanel extends CPanel {
             targetSetChanged = false;
             SimpleGuiRegistry.setCurrentXMLObjectList(objs);
             SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+            
+            SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
         }
         
         
@@ -614,6 +618,8 @@ public class SimpleSearchPanel extends CPanel {
         targetSetChanged = false;
         SimpleGuiRegistry.setCurrentXMLObjectList(objs);
         SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
+        
+        SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
         //---------------------------
         
         
