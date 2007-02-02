@@ -4,8 +4,8 @@ import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
-import java.awt.BorderLayout;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -19,15 +19,15 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.xml.namespace.QName;
 
 import org.apache.axis.types.URI.MalformedURIException;
 import org.globus.wsrf.encoding.ObjectSerializer;
 import org.globus.wsrf.encoding.SerializationException;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 
 @SuppressWarnings("serial")
 public class QueryEditUI extends JPanel {
