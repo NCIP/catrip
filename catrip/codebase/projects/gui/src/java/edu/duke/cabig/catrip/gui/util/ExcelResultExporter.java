@@ -29,9 +29,9 @@ public class ExcelResultExporter {
     
     static  HSSFWorkbook workbook = new HSSFWorkbook();
     static int num = 0;
-    private static JFrame owner ; 
+    private static JFrame owner ;
     
-    public static void exportToExcel(JTable table, JFrame owner_){ 
+    public static void exportToExcel(JTable table, JFrame owner_){
         owner = owner_;
         if(GUIConstants.resultAvailable){
             export(table);
@@ -85,13 +85,18 @@ public class ExcelResultExporter {
     public static void exportTableToSheet(JTable table, HSSFSheet sheet) {
         int rowCount = table.getRowCount();
         int colCount = table.getColumnCount();
-        int currentSheetRow = 0;
+        
         
         
         // set the columns also.. in the first row..
+        TableModel model = table.getModel();
+        for(int i=0; i<colCount;i++) {
+            String colName = model.getColumnName(i);
+            createHSSFCell(sheet, colName, 0, i);
+        }
         
         
-        
+        int currentSheetRow = 1;
         for (int tableRowIndex = 0; tableRowIndex < rowCount; tableRowIndex++) {
             for (int tableColIndex = 0; tableColIndex < colCount; tableColIndex++) {
                 // create and format the cell in the spreadsheet
@@ -144,7 +149,17 @@ public class ExcelResultExporter {
         
         // set the cell value
         String cellValue = (value == null) ? "" : value.toString();
-        cell.setCellValue(cellValue);
+        // check if the value can be converted to a double convert it and than add it.
+        Double dobValue = null; 
+        try{
+          dobValue =  Double.valueOf(cellValue);
+        }catch (Exception e){}
+                
+        if (dobValue != null){
+            cell.setCellValue(dobValue.doubleValue());
+        } else {
+            cell.setCellValue(cellValue);
+        }
         
         
         return cell;
