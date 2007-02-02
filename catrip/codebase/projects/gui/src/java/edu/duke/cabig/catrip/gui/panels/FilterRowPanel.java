@@ -79,6 +79,15 @@ public class FilterRowPanel extends javax.swing.JPanel {
         return predicateCombo;
     }
     
+    
+    public boolean isEmpty(){
+        boolean  empty = true;
+        CDEComboboxBean cdeBean = getCDEComboboxBean();
+        empty = cdeBean.getAttributeBean().isNull();        
+        return empty;
+    }
+    
+    
     public CDEComboboxBean getCDEComboboxBean(){
         if (currentFilter == null){
            currentFilter =  (CDEComboboxBean)getCdeCombo().getSelectedItem();
@@ -225,7 +234,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
 //        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
         CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
         cdeBean.getAttributeBean().setAttributeValue(valueTextBox.getText().trim());
-        currentFilter = cdeBean;
+//        currentFilter = cdeBean;
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
 //        }
     }//GEN-LAST:event_valueTextBoxKeyReleased
     

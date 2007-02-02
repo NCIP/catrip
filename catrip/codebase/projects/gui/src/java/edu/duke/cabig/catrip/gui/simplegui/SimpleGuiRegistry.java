@@ -288,7 +288,7 @@ public class SimpleGuiRegistry {
             GraphObject filterObject = pnl.getGraphObject();
             GraphObject targetObject =  getTargetGraphObject();
             boolean filterIsOnTarget = filterObject.getClassBean().getFullyQualifiedName().equals(targetObject.getClassBean().getFullyQualifiedName()) ; // Before I was comparing the instances...
-            if (!filterIsOnTarget){
+            if (!filterIsOnTarget && !pnl.isEmpty()){
                 addFilterPanelObjectToDCQL(pnl);//addFilterObjectToDCQL(filterObject); // send the panel so that it has the gui grouping information as well..
             }
             

@@ -436,6 +436,7 @@ public class SimpleSearchPanel extends CPanel {
         SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
         SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
         returnAttributeBtn.setEnabled(true); // enable this button if that was disable.. there may be chances that in new filter set there is no groups..
+        SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
     }//GEN-LAST:event_clearFilterBtnActionPerformed
     
     private void cleanPanel(){
