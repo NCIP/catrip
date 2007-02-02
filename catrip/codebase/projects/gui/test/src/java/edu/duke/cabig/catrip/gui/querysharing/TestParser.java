@@ -37,8 +37,8 @@ public class TestParser extends TestCase {
 	private QueryServiceClient client;
 	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine-2.0\\test\\resources\\simpleQuery1.xml";
 	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine\\testDCQL\\catissuecore_tissuespecimens_cae_greatest.xml";
-	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryengine-2.0\\test\\resources\\simpleQuery1.xml";
-	private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\groupdcql.xml";
+	private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\DemoUseCase1-CGEMSTARGET.xml";
+	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\groupdcql.xml";
 	private DCQLQuery dcql = null;
 	private QueryDb decomposedCatripQuery;
 	private final boolean DEBUG = true;
@@ -133,11 +133,12 @@ public class TestParser extends TestCase {
 		else{
 			if (dcqlObject.getGroup() != null){
 				Attribute[] groupAttributes = dcqlObject.getGroup().getAttribute();
-				for (int i = 0; i < groupAttributes.length; i++) {
-					System.out.println(" group attrs : " + groupAttributes[i].getName());
-					processAttribute(groupAttributes[i], aDCQLClass);
+				if (groupAttributes != null){
+					for (int i = 0; i < groupAttributes.length; i++) {
+						System.out.println(" group attrs : " + groupAttributes[i].getName());
+						processAttribute(groupAttributes[i], aDCQLClass);
+					}
 				}
-				//processGroup(dcqlObject.getGroup(), aDCQLClass);
 			}
 		}
 
@@ -153,11 +154,12 @@ public class TestParser extends TestCase {
 	}
 	private void processGroup(gov.nih.nci.cagrid.dcql.Group dcqlGroup, ClassDb aClass) {
 		Attribute[] groupAttributes = dcqlGroup.getAttribute();
-		for (int i = 0; i < groupAttributes.length; i++) {
-			System.out.println(" group attrs : " + groupAttributes[i].getName());
-			processAttribute(groupAttributes[i], aClass);
+		if (groupAttributes != null){
+			for (int i = 0; i < groupAttributes.length; i++) {
+				System.out.println(" group attrs : " + groupAttributes[i].getName());
+				processAttribute(groupAttributes[i], aClass);
+			}
 		}
-		
 		// associations
 		if (dcqlGroup.getAssociation() != null && dcqlGroup.getAssociation().length > 0) {
 			Association dcqlAssociationArray[] = dcqlGroup.getAssociation();
@@ -176,6 +178,16 @@ public class TestParser extends TestCase {
 				processGroup(dcqlGroupArray[i], new ClassDb());
 			}
 		}
+		if (dcqlGroup.getForeignAssociation() != null) {
+			ForeignAssociation[] fa = dcqlGroup.getForeignAssociation();
+			if (fa != null){
+			for (int i = 0; i < fa.length; i++) {
+				gov.nih.nci.cagrid.dcql.Object o = processForeignAssociation(fa[i], new ClassDb());
+				populateObjectFromDCQLObject(o, new ClassDb());
+				
+			}
+			}
+		}
 		
 	}
 	
@@ -189,7 +201,7 @@ public class TestParser extends TestCase {
 		processAttributes(dcqlAssociation, aClass);
 		//decomposedCatripQuery.addClass(aClass);
 		add(aClass);
-		//populateObjectFromDCQLObject(dcqlAssociation, new ClassDb());
+		populateObjectFromDCQLObject(dcqlAssociation, new ClassDb());
 
 		return dcqlAssociation;
 	}
@@ -225,17 +237,18 @@ public class TestParser extends TestCase {
 
 	}
 	private void add(ClassDb aClass) {
+		if (aClass == null || aClass.getName() == null)
+			return;
 		// Do not add duplicates
 		boolean duplicateFound = false;
 		Collection queryCollection = decomposedCatripQuery.getClassCollection();
 		if (queryCollection == null){
 			decomposedCatripQuery.addClass(aClass);	
-			System.out.println("colleciton was empty");
 		}
 		else{
 			for (Iterator iter = queryCollection.iterator(); iter.hasNext();) {
 				ClassDb element = (ClassDb) iter.next();
-				if (element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
+				if (element != null && element.getName() != null && !(element.getName().trim().equalsIgnoreCase(aClass.getName().trim()))){
 					
 					duplicateFound = false;
 				}

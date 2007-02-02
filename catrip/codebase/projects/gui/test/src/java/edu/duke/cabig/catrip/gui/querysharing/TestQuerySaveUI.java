@@ -17,8 +17,10 @@ import org.xml.sax.InputSource;
 
 public class TestQuerySaveUI extends TestCase {
 	private QueryServiceClient client;
+	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\built_DemoUseCase2-b.xml";
 	private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\DemoUseCase1-CGEMSTARGET.xml";
-	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\simplequery1.xml";
+	//
+	//private String dcqlQueryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\cgemsQuery.xml";
 	private DCQLQuery dcql = null;
 
 	@Override
@@ -34,7 +36,7 @@ public class TestQuerySaveUI extends TestCase {
 		System.out.println("target object " + dcql.getTargetObject().getName());
 		return dcql;
 	}
-
+	
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
@@ -54,7 +56,7 @@ public class TestQuerySaveUI extends TestCase {
 			
 			CatripQuery catripQuery = new CatripQuery();
 			catripQuery.setName("inserted");
-			catripQuery.setDcql(s.getValues().getDcql());
+			catripQuery.setDcql(dcqlAsString);
 			client.save(catripQuery);
 		}
 		catch (RemoteException e) {
