@@ -7,9 +7,10 @@ import edu.duke.cabig.catrip.gui.components.CJFrame;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.GroupDCQLGenerator;
 import edu.duke.cabig.catrip.gui.querysharing.QueryEditUI;
+import edu.duke.cabig.catrip.gui.util.CSVResultExporter;
+import edu.duke.cabig.catrip.gui.util.ExcelResultExporter;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.HTMLResultExporter;
-import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import javax.swing.JOptionPane;
 
 /**
@@ -304,10 +305,21 @@ public class MainFrame extends CJFrame {
 
     private void exportResultCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultCSVActionPerformed
     // Ask user for the delimeter in a option pane then export the results..  
+        try {
+            CSVResultExporter.exportToCSV( getOutputPanel().getOutputTable());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_exportResultCSVActionPerformed
 
     private void exportResultExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultExcelActionPerformed
     // call the APIs to export results to a Excel format..
+        try {
+            ExcelResultExporter.exportToExcel( getOutputPanel().getOutputTable());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_exportResultExcelActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
