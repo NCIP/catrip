@@ -2,6 +2,8 @@ package edu.duke.cabig.catrip.gui.util;
 
 import java.io.File;
 import java.io.FileWriter;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
@@ -10,9 +12,10 @@ import javax.swing.table.TableModel;
  * @author Sanjeev Agarwal
  */
 public class CSVResultExporter {
+    private static JFrame owner ; 
     
-    
-    public static void exportToCSV(JTable table){
+    public static void exportToCSV(JTable table, JFrame owner_){ 
+        owner = owner_;
         if(GUIConstants.resultAvailable){
             export(table);
         }
@@ -47,6 +50,10 @@ public class CSVResultExporter {
                 }
                 out.write("\n");
             }
+            
+            
+            JOptionPane jpane = new JOptionPane();
+            jpane.showMessageDialog(owner ,"The results are exported to HTML file :\n"+file);
             
             
         } catch (Exception e) {

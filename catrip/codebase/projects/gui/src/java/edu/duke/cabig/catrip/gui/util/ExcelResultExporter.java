@@ -7,7 +7,9 @@ import java.awt.Font;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
@@ -25,11 +27,12 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  */
 public class ExcelResultExporter {
     
-    static  HSSFWorkbook workbook = new HSSFWorkbook(); 
+    static  HSSFWorkbook workbook = new HSSFWorkbook();
     static int num = 0;
+    private static JFrame owner ; 
     
-    
-    public static void exportToExcel(JTable table){
+    public static void exportToExcel(JTable table, JFrame owner_){ 
+        owner = owner_;
         if(GUIConstants.resultAvailable){
             export(table);
         }
@@ -42,25 +45,29 @@ public class ExcelResultExporter {
             String file = GUIConstants.CATRIP_HOME+File.separator+"caTRIP_Query_Results.xls";
             
             TableModel model = table.getModel();
-            File f = new File(file); 
+            File f = new File(file);
             
             if (f.exists()){
-                FileInputStream fis = new FileInputStream(f); 
+                FileInputStream fis = new FileInputStream(f);
                 workbook = new HSSFWorkbook(fis);
                 fis.close();
                 num = workbook.getNumberOfSheets();
             }
             
             
-                
-        HSSFSheet sheet1 = workbook.createSheet("Sheet "+num);
-        sheet1.setDefaultColumnWidth((short) 20);
-        
-        exportTableToSheet(table, sheet1);
-        
-        FileOutputStream fout = new FileOutputStream(f); 
-        workbook.write(fout);
-        fout.close();
+            
+            HSSFSheet sheet1 = workbook.createSheet("Sheet "+num);
+            sheet1.setDefaultColumnWidth((short) 20);
+            
+            exportTableToSheet(table, sheet1);
+            
+            FileOutputStream fout = new FileOutputStream(f);
+            workbook.write(fout);
+            fout.close();
+            
+            
+            JOptionPane jpane = new JOptionPane();
+            jpane.showMessageDialog(owner ,"The results are exported to HTML file :\n"+file);
             
             
         } catch (Exception e) {
@@ -75,11 +82,11 @@ public class ExcelResultExporter {
     
     
     
-    public static void exportTableToSheet(JTable table, HSSFSheet sheet) { 
+    public static void exportTableToSheet(JTable table, HSSFSheet sheet) {
         int rowCount = table.getRowCount();
         int colCount = table.getColumnCount();
         int currentSheetRow = 0;
-
+        
         
         // set the columns also.. in the first row..
         
@@ -122,7 +129,7 @@ public class ExcelResultExporter {
         }
         
 //        formatCell(cell, rendererComponent);  / do not format the cells..
-         
+        
     }
     
     
@@ -152,8 +159,8 @@ public class ExcelResultExporter {
         // set the cell color
         cellStyle.setWrapText(false);
         
-                
-        cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND); 
+        
+        cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
         Color color = rendererComponent.getBackground();
         HSSFPalette palette = workbook.getCustomPalette();
         

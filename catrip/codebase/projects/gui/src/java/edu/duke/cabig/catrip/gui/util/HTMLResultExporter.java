@@ -8,6 +8,7 @@ import edu.duke.cabig.catrip.gui.query.DCQLRegistry;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
@@ -20,8 +21,10 @@ import org.apache.xmlbeans.XmlOptions;
  */
 public class HTMLResultExporter {
     
+    private static JFrame owner ; 
     
-    public static void exportToHtml(JTable table){
+    public static void exportToHtml(JTable table, JFrame owner_){ 
+        owner = owner_;
         if(GUIConstants.resultAvailable){
             export(table);
         }
@@ -104,8 +107,7 @@ public class HTMLResultExporter {
             System.out.println("write to " + file);
             
             JOptionPane jpane = new JOptionPane();
-            jpane.setLocation(25,25);
-            jpane.showMessageDialog(table ,"The results are exported to HTML file :\n"+file);
+            jpane.showMessageDialog(owner ,"The results are exported to HTML file :\n"+file);
             
             
             

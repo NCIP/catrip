@@ -306,7 +306,7 @@ public class MainFrame extends CJFrame {
     private void exportResultCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultCSVActionPerformed
     // Ask user for the delimeter in a option pane then export the results..  
         try {
-            CSVResultExporter.exportToCSV( getOutputPanel().getOutputTable());
+            CSVResultExporter.exportToCSV( getOutputPanel().getOutputTable(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -315,7 +315,7 @@ public class MainFrame extends CJFrame {
     private void exportResultExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultExcelActionPerformed
     // call the APIs to export results to a Excel format..
         try {
-            ExcelResultExporter.exportToExcel( getOutputPanel().getOutputTable());
+            ExcelResultExporter.exportToExcel( getOutputPanel().getOutputTable(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -368,7 +368,7 @@ public class MainFrame extends CJFrame {
     
     private void exportResultHtmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultHtmlActionPerformed
         try {
-            HTMLResultExporter.exportToHtml( getOutputPanel().getOutputTable());
+            HTMLResultExporter.exportToHtml( getOutputPanel().getOutputTable(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
