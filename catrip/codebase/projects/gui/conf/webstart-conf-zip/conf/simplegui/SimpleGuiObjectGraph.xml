@@ -2,7 +2,7 @@
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
 	
 	
-	<service displayName="Tissue Bank" url="http://152.16.96.114/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
+	<service displayName="Tissue Bank" url="http://152.16.96.114:8080/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
 		<targets>
 			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
 				<associatedObjectTree>
@@ -51,19 +51,17 @@
 	
 
 	
-	<service displayName="Clinical Annotation Engine" url="http://152.16.96.114/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
+	<service displayName="Clinical Annotation Engine" url="http://152.16.96.114:8080/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="edu.duke.catrip.cae.domain.general.Participant"   displaybleAttributes="gender,race,ethnicity" display="true">
+			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" selectable="true" displaybleAttributes="firstName,gender,race,ethnicity" display="true">
 				<associatedObjectTree>
-					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier"   roleName="medicalRecordNumberCollection" display="false"/>
-				
-					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters"   roleName="annotationEventParametersCollection" display="false">
-						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR"   roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR"   roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus"   roleName="annotationSetCollection" display="true"/>
-						<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR"   roleName="annotationSetCollection" display="true"/>
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection" selectable="true"  display="true"  displaybleAttributes="medicalRecordNumber" />
+					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" selectable="true" roleName="annotationEventParametersCollection" displaybleAttributes="id" display="true">
+						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR" roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR" roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" selectable="true"  roleName="annotationSetCollection" display="true"/>
+						<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" selectable="true" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" roleName="annotationSetCollection" display="true"/>
 					</Association>
-					
 				</associatedObjectTree>
 				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
 					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection"/>
@@ -72,7 +70,7 @@
 		</targets>
 
 		<foreignAssociationInboundTree>
-			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade"   cdeName="medicalRecordNumber" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" display="true">
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade"  selectable="true"  cdeName="medicalRecordNumber" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" display="true">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
 						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
@@ -84,7 +82,7 @@
 
 <!-- new CAE1.2 classes. -->
 
-			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize"   cdeName="medicalRecordNumber" displaybleAttributes="greatestDimension,MVR" display="true">
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize"  selectable="true"  cdeName="medicalRecordNumber" displaybleAttributes="greatestDimension,MVR" display="true">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
 						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
@@ -104,7 +102,7 @@
 				</Association>
 			</foreignAssociationInboundPath>
 
-			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers"   cdeName="medicalRecordNumber" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" display="true">
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers"   selectable="true" cdeName="medicalRecordNumber" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" display="true">
 				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
 					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
 						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
@@ -121,11 +119,11 @@
 
 
 
-<service displayName="CGEMS" url="http://152.16.96.114/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
+<service displayName="CGEMS" url="http://152.16.96.114:8080/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" displaybleAttributes="administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode" display="true">
+			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" displaybleAttributes="studySubjectIdentifier,administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode"  selectable="true" display="true">
 				<associatedObjectTree>
-					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup"  displaybleAttributes="name,description,methods"  roleName="analysisGroupCollection" display="true">
+					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup"  selectable="true"  displaybleAttributes="name,description,methods"  roleName="analysisGroupCollection" display="true">
 						<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationAnalysis"  displaybleAttributes="neoplasmPresent,extentInvolvement,otherExtentInvolvement" roleName="snpAssociationAnalysis" display="true">
 								<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAssociationFinding" displaybleAttributes="pvalue,rank" roleName="snpAssociationFindingCollection" display="true"/>
 						</Association>
@@ -139,7 +137,7 @@
 		<foreignAssociationInboundTree>
 
 			<foreignAssociationInboundPath className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" 
-										 cdeName="studySubjectIdentifier" displaybleAttributes="name,description,memberCount" display="true">
+										 selectable="true" cdeName="studySubjectIdentifier" displaybleAttributes="name,description,memberCount" display="true">
 				<Association className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant">
 					<Association className="gov.nih.nci.caintegrator.domain.analysis.snp.bean.SNPAnalysisGroup" roleName="analysisGroupCollection"/>
 				</Association>
@@ -206,19 +204,19 @@
 
 
 
-<service displayName="Tumor Registry" url="http://152.16.96.114/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
+<service displayName="Tumor Registry" url="http://152.16.96.114:8080/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" displaybleAttributes="race,sex,ethnicGroup" display="true">
+			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" displaybleAttributes="race,sex,ethnicGroup,dateOfDeath" selectable="true" display="true">
 				<associatedObjectTree>
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier" roleName="patientIdentifier" display="false"/>
-					<Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" displaybleAttributes="ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite"  roleName="diagnosisCollection" display="true">
+					<Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" displaybleAttributes="initialDiagnosisDate,ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite"  roleName="diagnosisCollection"  selectable="true"  display="true">
+						<Association className="edu.duke.cabig.tumorregistry.domain.Followup" displaybleAttributes="cancerStatus,date" roleName="followUpCollection" display="true">
+								<Association className="edu.duke.cabig.tumorregistry.domain.Recurrence" displaybleAttributes="date,type"  selectable="true" roleName="recurrence" display="true"/>
+						</Association>
 						<Association className="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" displaybleAttributes="bestSEERSummaryStage,clinicalMetStage,clinicalNodeStage,clinicalTumorStage,pathologicMetStage,pathologicNodeStage,pathologicTumorStage,regionalNodesPositive,regionalNodesExamined,tumorSize,tumorMarker1,tumorMarker2,tumorMarker3" roleName="diseaseExtentCollection" display="true">
 								<Association className="edu.duke.cabig.tumorregistry.domain.DistantSite" displaybleAttributes="name" roleName="distantSiteCollection" display="true"/>
 						</Association>
-						<Association className="edu.duke.cabig.tumorregistry.domain.Followup" displaybleAttributes="cancerStatus,date" roleName="followUpCollection" display="true">
-								<Association className="edu.duke.cabig.tumorregistry.domain.Recurrence" displaybleAttributes="date,type" roleName="recurrence" display="true"/>
-						</Association>
-						<Association className="edu.duke.cabig.tumorregistry.domain.Activity" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
+						<Association className="edu.duke.cabig.tumorregistry.domain.Activity" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator,treatmentType" roleName="activityCollection"  selectable="true" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.Procedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.OtherProcedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.HemTransplantEndocrineProcedure" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" roleName="activityCollection" display="true"/>
@@ -237,7 +235,6 @@
 
 						<Association className="edu.duke.cabig.tumorregistry.domain.Radiation" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator,stopDate,numberOfTreatments,location,volume,regionalDose,boostDose,boostModality,regionalModality" roleName="activityCollection" display="true"/>
 						<Association className="edu.duke.cabig.tumorregistry.domain.FirstCourseRadiation" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator,stopDate,numberOfTreatments,location,volume,regionalDose,boostDose,boostModality,regionalModality" roleName="activityCollection" display="true"/>
-
 						
 					</Association>
 				</associatedObjectTree>
@@ -250,14 +247,14 @@
 		
 		<foreignAssociationInboundTree>
 
-			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Patient" cdeName="medicalRecordNumber" displaybleAttributes="race,sex,ethnicGroup" display="true">
+			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Patient"  selectable="true" cdeName="medicalRecordNumber" displaybleAttributes="race,sex,ethnicGroup,dateOfDeath" display="true">
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
 					<Association className="edu.duke.cabig.tumorregistry.domain.Patient" roleName="patient"/>
 				</Association>
 			</foreignAssociationInboundPath>
 			
 
-			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Diagnosis" cdeName="medicalRecordNumber" displaybleAttributes="ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite" display="true">
+			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Diagnosis" cdeName="medicalRecordNumber"  selectable="true"  displaybleAttributes="initialDiagnosisDate,ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite" display="true">
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
 				    <Association className="edu.duke.cabig.tumorregistry.domain.Patient" roleName="patient">
 					   <Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" roleName="diagnosisCollection"/>
@@ -265,8 +262,20 @@
 				</Association>
 			</foreignAssociationInboundPath>
 
+			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Recurrence" cdeName="medicalRecordNumber"  selectable="true"  displaybleAttributes="date,type" display="true">
+				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
+				    <Association className="edu.duke.cabig.tumorregistry.domain.Patient" roleName="patient">
+					      <Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" roleName="diagnosisCollection">
+					            <Association className="edu.duke.cabig.tumorregistry.domain.Followup" roleName="followUpCollection">
+										<Association className="edu.duke.cabig.tumorregistry.domain.Recurrence" roleName="recurrence"/>
+								</Association>
+				          </Association>
+				    </Association>
+				</Association>
+			</foreignAssociationInboundPath>
 
-			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" cdeName="medicalRecordNumber" displaybleAttributes="bestSEERSummaryStage,clinicalMetStage,clinicalNodeStage,clinicalTumorStage,pathologicMetStage,pathologicNodeStage,pathologicTumorStage,regionalNodesPositive,regionalNodesExamined,tumorSize,tumorMarker1,tumorMarker2,tumorMarker3" display="true">
+
+			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" cdeName="medicalRecordNumber"  selectable="true"  displaybleAttributes="bestSEERSummaryStage,clinicalMetStage,clinicalNodeStage,clinicalTumorStage,pathologicMetStage,pathologicNodeStage,pathologicTumorStage,regionalNodesPositive,regionalNodesExamined,tumorSize,tumorMarker1,tumorMarker2,tumorMarker3" display="true">
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
 				    <Association className="edu.duke.cabig.tumorregistry.domain.Patient" roleName="patient">
 					      <Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" roleName="diagnosisCollection">
@@ -277,7 +286,7 @@
 			</foreignAssociationInboundPath>
 
 
-			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Activity" cdeName="medicalRecordNumber" displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator" display="true">
+			<foreignAssociationInboundPath className="edu.duke.cabig.tumorregistry.domain.Activity" cdeName="medicalRecordNumber"  selectable="true"  displaybleAttributes="id,course,atLocalFacility,startDate,characterization,performedIndicator,treatmentType" display="true">
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
 				    <Association className="edu.duke.cabig.tumorregistry.domain.Patient" roleName="patient">
 					      <Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" roleName="diagnosisCollection">
@@ -379,4 +388,4 @@
 
 
 </simpleGuiServices>
-<!-- 152.16.96.114 -->
+<!-- 152.16.96.114:8080 -->
