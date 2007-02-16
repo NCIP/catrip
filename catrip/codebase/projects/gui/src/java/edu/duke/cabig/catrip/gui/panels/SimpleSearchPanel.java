@@ -662,7 +662,7 @@ public class SimpleSearchPanel extends CPanel {
 //        System.out.println("### available filters / groups :"+SimpleGuiRegistry.getNumGroupableEntities());
         
         filterPanel.removeAll(); // remove current laid out filter/groups...
-        returnAttributeBtn.setEnabled(false); // disable the returned Attributes btn as this is not supproted with grouping stuff..
+//        returnAttributeBtn.setEnabled(false); // disable the returned Attributes btn as this is not supproted with grouping stuff..
         
         // lay out groups first...
         ArrayList subGroups = SimpleGuiRegistry.getFilterSubGroupList();

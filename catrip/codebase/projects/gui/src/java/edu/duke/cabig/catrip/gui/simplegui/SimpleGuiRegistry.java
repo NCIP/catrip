@@ -156,6 +156,7 @@ public class SimpleGuiRegistry {
         setNonGroupFilters(new ArrayList(50));
         setFilterSubGroupList(new ArrayList(50));
         setNumGroupableEntities(0);
+        setHasGroupsDefined(false);
         
         
         // clean things for returned attributes..
@@ -419,8 +420,7 @@ public class SimpleGuiRegistry {
                 // add it to our tmp tree..
 //                tmpBeanLeft = tmpBeanRight; // here you get the left beans from that list.. not this object..
                 tmpBeanLeft = ((ClassBean)getBeanMap().get(tmpBeanRight.getFullyQualifiedName()));  // left object always point to that same list..
-//                System.out.println("XXXXX inside.."+tmpBeanLeft);
-//                System.out.println("XXXXX inside.. id "+k);
+
             }
             // at the end of iterating the whole association loop..  tmpBeanLeft is the right most bean which contains the filter value..
             
