@@ -567,7 +567,7 @@ public class SimpleGuiRegistry {
     
     
     
-    // original method..
+    // original method.. not used anymore now..
     private static void addFilterObjectToDCQL(GraphObject filterObject){
 //       GraphObject filterObject = ((CDEComboboxBean)pnl.getCdeCombo().getSelectedItem()).getGraphObject();
         
