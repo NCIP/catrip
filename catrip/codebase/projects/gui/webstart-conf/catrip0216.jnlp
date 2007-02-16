@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jnlp PUBLIC "-//Sun Microsystems, Inc.//DTD JNLP 1.5//EN" "http://www.netbeans.org/jnlp/DTD/jnlp.dtd">
+<jnlp codebase="@codebase@" href="catrip0216.jnlp">
+  <information>
+    <title>caTRIP Federated Query Engine: 02/16 demo.</title>
+
+    <vendor>Duke Comprehensive Cancer Center, SemanticBits LLC.</vendor>
+
+    <homepage href="http://www.semanticbits.com"/>
+
+    <description>This is GUI for caTRIP Federated Search Engine. This is the Webstart version of the stand alone caTRIP user Interface.</description>
+    <description kind="short">Webstart version of the stand alone caTRIP user Interface.</description>
+
+    <icon href="@codebase@/catrip_logo.jpg"/>
+
+    <offline-allowed/>
+
+    <shortcut online="true">
+      <desktop/>
+      <menu submenu="caTRIP Project"/>
+    </shortcut>
+
+  </information>
+  <resources>
+    <j2se href="http://java.sun.com/products/autodl/j2se" version="1.4+"  max-heap-size="512m"  />
+  </resources>
+
+  <resources locale="" os="">
+
+<jar download="eager" href="lib0216/_conf_files_0216.jar"/>
+<jar download="eager" href="lib0216/_xml-mapping.jar"/>
+<jar download="eager" href="lib0216/catrip-gui-1.0.jar"/>
+
+<property name="catrip.home.dir" value=".caTRIP_0216" />
+<property name="catrip.config.version" value="2_beta" />
+
+<jar download="eager" href="lib0216/QueryService-client.jar"/>
+<jar download="eager" href="lib0216/QueryService-common.jar"/>
+<jar download="eager" href="lib0216/QueryService-service.jar"/>
+<jar download="eager" href="lib0216/QueryService-stubs.jar"/>
+<jar download="eager" href="lib0216/QueryService-tests.jar"/>
+<jar download="eager" href="lib0216/addressing-1.0.jar"/>
+<jar download="eager" href="lib0216/ant-contrib.jar"/>
+<jar download="eager" href="lib0216/antlr-2.7.5H3.jar"/>
+<jar download="eager" href="lib0216/axis-url.jar"/>
+<jar download="eager" href="lib0216/axis.jar"/>
+<jar download="eager" href="lib0216/bootstrap.jar"/>
+<jar download="eager" href="lib0216/bounce.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-ServiceSecurityProvider-client.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-ServiceSecurityProvider-common.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-ServiceSecurityProvider-service.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-ServiceSecurityProvider-stubs.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-caDSR-client.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-caDSR-common.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-caDSR-portal.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-caDSR-service.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-caDSR-stubs.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-caDSR-tests.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-core.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-common.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-cql.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-extension.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-service.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-stubs.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-tools.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-utils.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-data-validation.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-discovery.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-fqp-client.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-fqp-common.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-fqp-service.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-fqp-stubs.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-fqp-tests.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-gridgrouper-1.0-client.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-gridgrouper-1.0-common.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-gridgrouper-1.0-stubs.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-metadata-common.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-metadata-data.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-metadata-security.jar"/>
+<jar download="eager" href="lib0216/caGrid-1.0-metadataUtils.jar"/>
+<jar download="eager" href="lib0216/caGrid-GlobalModelExchange.jar"/>
+<jar download="eager" href="lib0216/caGrid-GlobalModelExchange_stubs.jar"/>
+<jar download="eager" href="lib0216/caGrid-core-1.0.jar"/>
+<jar download="eager" href="lib0216/caGrid-introduce-core-1.0.jar"/>
+<jar download="eager" href="lib0216/caGrid-introduce-portal-1.0.jar"/>
+<jar download="eager" href="lib0216/cae_domain.jar"/>
+<jar download="eager" href="lib0216/castor-0.9.9.jar"/>
+<jar download="eager" href="lib0216/catissuecore_domain.jar"/>
+<jar download="eager" href="lib0216/catrip-gui-tests-1.0.jar"/>
+<jar download="eager" href="lib0216/catrip_config_beans.jar"/>
+<jar download="eager" href="lib0216/cgems-domain.jar"/>
+<jar download="eager" href="lib0216/cglib-full-2.0.1.jar"/>
+<jar download="eager" href="lib0216/cglib-nodep-2.1_3.jar"/>
+<jar download="eager" href="lib0216/client.jar"/>
+<jar download="eager" href="lib0216/cog-axis.jar"/>
+<jar download="eager" href="lib0216/cog-jglobus.jar"/>
+<jar download="eager" href="lib0216/cog-tomcat.jar"/>
+<jar download="eager" href="lib0216/cog-url.jar"/>
+<jar download="eager" href="lib0216/commonj.jar"/>
+<jar download="eager" href="lib0216/commons-beanutils.jar"/>
+<jar download="eager" href="lib0216/commons-cli-2.0.jar"/>
+<jar download="eager" href="lib0216/commons-collections-3.0.jar"/>
+<jar download="eager" href="lib0216/commons-digester.jar"/>
+<jar download="eager" href="lib0216/commons-discovery.jar"/>
+<jar download="eager" href="lib0216/commons-logging.jar"/>
+<jar download="eager" href="lib0216/concurrent.jar"/>
+<jar download="eager" href="lib0216/cryptix-asn1.jar"/>
+<jar download="eager" href="lib0216/cryptix.jar"/>
+<jar download="eager" href="lib0216/cryptix32.jar"/>
+<jar download="eager" href="lib0216/dom4j-1.4.jar"/>
+<jar download="eager" href="lib0216/ehcache-1.1.jar"/>
+<jar download="eager" href="lib0216/globus_usage_core.jar"/>
+<jar download="eager" href="lib0216/globus_usage_packets_common.jar"/>
+<jar download="eager" href="lib0216/globus_wsrf_tools_test.jar"/>
+<jar download="eager" href="lib0216/grouper.jar"/>
+<jar download="eager" href="lib0216/hibernate3.jar"/>
+<jar download="eager" href="lib0216/jaxen-1.1-beta-9.jar"/>
+<jar download="eager" href="lib0216/jaxrpc.jar"/>
+<jar download="eager" href="lib0216/jdom-1.0.jar"/>
+<jar download="eager" href="lib0216/jgss.jar"/>
+<jar download="eager" href="lib0216/jsr173_1.0_api.jar"/>
+<jar download="eager" href="lib0216/junit.jar"/>
+<jar download="eager" href="lib0216/log4j-1.2.8.jar"/>
+<jar download="eager" href="lib0216/naming-common.jar"/>
+<jar download="eager" href="lib0216/naming-factory.jar"/>
+<jar download="eager" href="lib0216/naming-java.jar"/>
+<jar download="eager" href="lib0216/naming-resources.jar"/>
+<jar download="eager" href="lib0216/ojdbc14.jar"/>
+<jar download="eager" href="lib0216/opensaml.jar"/>
+<jar download="eager" href="lib0216/org-netbeans-graph-vmd.jar"/>
+<jar download="eager" href="lib0216/org-netbeans-graph.jar"/>
+<jar download="eager" href="lib0216/org-openide-util.jar"/>
+<jar download="eager" href="lib0216/poi-2.5.1-final-20040804.jar"/>
+<jar download="eager" href="lib0216/puretls.jar"/>
+<jar download="eager" href="lib0216/resolver.jar"/>
+<jar download="eager" href="lib0216/saaj.jar"/>
+<jar download="eager" href="lib0216/servlet.jar"/>
+<jar download="eager" href="lib0216/spring.jar"/>
+<jar download="eager" href="lib0216/subject-0.2.1.jar"/>
+<jar download="eager" href="lib0216/swing-layout-1.0.jar"/>
+<jar download="eager" href="lib0216/tumor_registry_domain.jar"/>
+<jar download="eager" href="lib0216/wsdl4j.jar"/>
+<jar download="eager" href="lib0216/wsrf_common.jar"/>
+<jar download="eager" href="lib0216/wsrf_core.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_registry.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_registry_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_samples_authzService.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_samples_authzService_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_samples_counter.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_samples_counter_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_samples_mgmt.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_samples_mgmt_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_core_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_test.jar"/>
+<jar download="eager" href="lib0216/wsrf_test_interop.jar"/>
+<jar download="eager" href="lib0216/wsrf_test_interop_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_test_unit.jar"/>
+<jar download="eager" href="lib0216/wsrf_test_unit_stubs.jar"/>
+<jar download="eager" href="lib0216/wsrf_tools.jar"/>
+<jar download="eager" href="lib0216/wss4j.jar"/>
+<jar download="eager" href="lib0216/xalan.jar"/>
+<jar download="eager" href="lib0216/xbean.jar"/>
+<jar download="eager" href="lib0216/xbean_xpath.jar"/>
+<jar download="eager" href="lib0216/xercesImpl.jar"/>
+<jar download="eager" href="lib0216/xml-apis.jar"/>
+<jar download="eager" href="lib0216/xmlpublic.jar"/>
+<jar download="eager" href="lib0216/xmlsec.jar"/>
+
+
+ 
+<extension name="jce-jdk13-125.jar" href="jce-jdk13-125.jar.jnlp"/>
+<extension name="wsrf_provider_jce.jar" href="wsrf_provider_jce.jar.jnlp"/>
+
+
+</resources>
+  
+  <application-desc main-class="edu.duke.cabig.catrip.gui.Main"/>
+  <security>
+    <all-permissions/>
+  </security>
+</jnlp>
