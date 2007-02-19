@@ -106,10 +106,11 @@ public class FilterGroupPanel extends javax.swing.JPanel {
                     .add(jLabel1)
                     .add(conditionCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(15, 15, 15)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        addFilterOrGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
         addFilterOrGroupBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.addFilterOrGroupBtn.text")); // NOI18N
         addFilterOrGroupBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,8 +118,10 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             }
         });
 
+        delGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/delete.gif")));
         delGroupBtn.setText("Delete Group");
 
+        okBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif")));
         okBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.okBtn.text")); // NOI18N
         okBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +129,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             }
         });
 
+        cancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/cancel.gif")));
         cancelBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.cancelBtn.text")); // NOI18N
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +149,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
                         .add(addFilterOrGroupBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(21, 21, 21)
                         .add(delGroupBtn)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 211, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 149, Short.MAX_VALUE)
                         .add(okBtn)
                         .add(24, 24, 24)
                         .add(cancelBtn)))

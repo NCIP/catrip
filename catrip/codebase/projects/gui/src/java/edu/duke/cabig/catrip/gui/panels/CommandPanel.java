@@ -57,15 +57,16 @@ public class CommandPanel extends CPanel {
         pnlTwo = new javax.swing.JPanel();
         ExecuteCommand = new javax.swing.JButton();
 
-        setLayout(new java.awt.GridLayout());
+        setLayout(new java.awt.GridLayout(1, 0));
 
-        pnlOne.setLayout(new java.awt.GridLayout());
+        pnlOne.setLayout(new java.awt.GridLayout(1, 0));
 
         resultCountLbl.setFont(new java.awt.Font("Arial", 1, 14));
         pnlOne.add(resultCountLbl);
 
         add(pnlOne);
 
+        ExecuteCommand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/execute.gif")));
         ExecuteCommand.setText("Execute Query");
         ExecuteCommand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

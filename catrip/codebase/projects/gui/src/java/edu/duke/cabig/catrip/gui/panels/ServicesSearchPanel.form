@@ -24,10 +24,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
-                      <Component id="selectBtn" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="exitBtn" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="selectBtn" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="exitBtn" min="-2" pref="98" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="simpleGuiBtn" min="-2" pref="174" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -44,9 +44,9 @@
               <Component id="resultPanel" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="exitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="selectBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="simpleGuiBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="simpleGuiBtn" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="selectBtn" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="exitBtn" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -77,11 +77,11 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="searchBtn" min="-2" pref="98" max="-2" attributes="0"/>
+                          <Component id="searchBtn" min="-2" pref="119" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="showAllBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="showAllBtn" min="-2" pref="123" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="clearBtn" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="clearBtn" min="-2" pref="118" max="-2" attributes="0"/>
                       </Group>
                       <Component id="commonDataElement" pref="592" max="32767" attributes="2"/>
                       <Component id="concept" alignment="0" pref="592" max="32767" attributes="2"/>
@@ -105,8 +105,8 @@
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="searchBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="showAllBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="clearBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="showAllBtn" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clearBtn" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -116,11 +116,17 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="searchBtn">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="showAllBtn">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/showall.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Show All"/>
           </Properties>
           <Events>
@@ -129,6 +135,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="clearBtn">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Clear"/>
           </Properties>
         </Component>
@@ -176,7 +185,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="scrollPane" pref="168" max="32767" attributes="0"/>
+                  <Component id="scrollPane" pref="154" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -204,6 +213,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="selectBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Select"/>
       </Properties>
       <Events>
@@ -212,6 +224,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="exitBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/exit.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>

@@ -31,7 +31,7 @@ public class SimpleSearchPanel extends CPanel {
     ObjectGraphProcessor processor  = null;
     private boolean targetSetChanged = true;
     
-    private ArrayList<FilterRowPanel> filters = new ArrayList(10); 
+    private ArrayList<FilterRowPanel> filters = new ArrayList(10);  
     
     // sanjeev: for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
     private Hashtable targetObjectServiceMap = new Hashtable();
@@ -221,10 +221,11 @@ public class SimpleSearchPanel extends CPanel {
                     .add(jLabel5)
                     .add(jLabel6))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(filterPanelScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .add(filterPanelScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        addFilterBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
         addFilterBtn.setText("Add Filter");
         addFilterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +233,7 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
+        clearFilterBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
         clearFilterBtn.setText("Clear Filters");
         clearFilterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +241,7 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
+        addGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
         addGroupBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.addGroupBtn.text")); // NOI18N
         addGroupBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +249,7 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
+        returnAttributeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/select_attribute.gif")));
         returnAttributeBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.returnAttributeBtn.text")); // NOI18N
         returnAttributeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,7 +272,7 @@ public class SimpleSearchPanel extends CPanel {
                         .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(addGroupBtn)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 88, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 68, Short.MAX_VALUE)
                         .add(returnAttributeBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 195, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );

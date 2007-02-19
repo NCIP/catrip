@@ -197,8 +197,9 @@ public class QueryServiceUI extends JPanel {
     private JButton getBtnSearch() {
         if (btnSearch == null) {
             btnSearch = new JButton();
-            btnSearch.setBounds(new Rectangle(630, 345, 92, 28));
+            btnSearch.setBounds(new Rectangle(620, 345, 112, 28));
             btnSearch.setText("Search");
+            btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif")));
             btnSearch.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     try {
@@ -410,7 +411,8 @@ public class QueryServiceUI extends JPanel {
         if (btnAddFilter == null) {
             btnAddFilter = new JButton();
             btnAddFilter.setText("Add Filter");
-            btnAddFilter.setBounds(new Rectangle(495, 180, 87, 26));
+            btnAddFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
+            btnAddFilter.setBounds(new Rectangle(480, 180, 107, 26));
             btnAddFilter.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     addFilterRow();

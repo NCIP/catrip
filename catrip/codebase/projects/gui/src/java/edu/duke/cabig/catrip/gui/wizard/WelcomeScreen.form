@@ -126,6 +126,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="loginBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/login.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Proceed for Login"/>
       </Properties>
       <Events>
@@ -134,6 +137,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="exitBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/exit.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>

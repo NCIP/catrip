@@ -198,10 +198,11 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        addReturnedAttribute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
         addReturnedAttribute.setText(org.openide.util.NbBundle.getMessage(ReturnedAttributesPanel.class, "ReturnedAttributesPanel.addReturnedAttribute.text")); // NOI18N
         addReturnedAttribute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,6 +210,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             }
         });
 
+        cancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/cancel.gif")));
         cancelBtn.setText(org.openide.util.NbBundle.getMessage(ReturnedAttributesPanel.class, "ReturnedAttributesPanel.cancelBtn.text")); // NOI18N
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +218,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             }
         });
 
+        okBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif")));
         okBtn.setText(org.openide.util.NbBundle.getMessage(ReturnedAttributesPanel.class, "ReturnedAttributesPanel.okBtn.text")); // NOI18N
         okBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +236,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                     .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
                         .add(addReturnedAttribute, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 269, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 227, Short.MAX_VALUE)
                         .add(okBtn)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cancelBtn)))

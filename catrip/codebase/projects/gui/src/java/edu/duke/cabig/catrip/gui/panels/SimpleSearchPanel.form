@@ -24,7 +24,7 @@
                       <Component id="clearFilterBtn" min="-2" pref="213" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addGroupBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="88" max="32767" attributes="0"/>
+                      <EmptySpace pref="68" max="32767" attributes="0"/>
                       <Component id="returnAttributeBtn" min="-2" pref="195" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -163,7 +163,7 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="filterPanelScrollPane" pref="155" max="32767" attributes="0"/>
+                  <Component id="filterPanelScrollPane" pref="153" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -208,6 +208,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="addFilterBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add Filter"/>
       </Properties>
       <Events>
@@ -216,6 +219,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="clearFilterBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Clear Filters"/>
       </Properties>
       <Events>
@@ -224,6 +230,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="addGroupBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="SimpleSearchPanel.addGroupBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>
@@ -234,6 +243,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="returnAttributeBtn">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/select_attribute.gif"/>
+        </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="SimpleSearchPanel.returnAttributeBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>

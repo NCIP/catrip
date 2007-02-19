@@ -40,6 +40,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="ExecuteCommand">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/execute.gif"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Execute Query"/>
           </Properties>
           <Events>
