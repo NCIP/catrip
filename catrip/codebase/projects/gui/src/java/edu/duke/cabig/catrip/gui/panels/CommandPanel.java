@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.discovery.DomainModelMetaDataRegistry;
 import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 import org.apache.axis.message.MessageElement;
 import org.apache.axis.message.PrefixedQName;
 
@@ -38,6 +40,10 @@ import org.apache.axis.message.PrefixedQName;
  */
 public class CommandPanel extends CPanel {
     // TODO - set the variable somewhere else...
+    
+    boolean processingDone = false;
+    JProgressBar progressBar ;
+    CJDialog progressBarWindow ;
     
     
     /** Creates new form CommandPanel */
@@ -80,27 +86,75 @@ public class CommandPanel extends CPanel {
 
     }// </editor-fold>//GEN-END:initComponents
     
-    private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
-        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
-        if (GUIConstants.simpleGui){
-            if (SimpleGuiRegistry.isSimpleGuiChanged()){
-                SimpleGuiRegistry.prepareForDcql();
-            }
-//            if (SimpleGuiRegistry.isReturnedAttributeListAvailable()){
-            executeReturnAttributeQuery(); // it always has returned attribute now..
-////                runExternalDcql(GroupDCQLGenerator.getDCQLDocument()); // just for testing..
-//            } else {
-//                executeSimpleGuiQuery();
-//            }
-        }else {
-            executeVisualGuiQuery();
-        }
-        
-        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_ExecuteCommandActionPerformed
+    private void showProgressBar(){
+        progressBar = new JProgressBar();
+        progressBar.setIndeterminate(true);
+        progressBarWindow = new CJDialog(getMainFrame(), "Executing the query.");
+        progressBarWindow.add(progressBar);
+        progressBarWindow.setBounds(10,10,570, 50);
+        progressBarWindow.center();progressBarWindow.setModal(true);
+//        progressBarWindow.setDefaultCloseOperation(CJDialog.DO_NOTHING_ON_CLOSE);
+        progressBarWindow.setVisible(true);
+    }
     
-    public void runExternalDcql(DCQLQuery dcql){
+    private void hideProgressBar(){
+        progressBar.setIndeterminate(false);
+        progressBarWindow.setVisible(false);
+        progressBarWindow.dispose();
+    }
+    
+    private void beforeExecution(){
+        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ExecuteCommand.setEnabled(false);
+        
+        new Thread() {
+            public void run() {
+                showProgressBar();
+            }
+        }.start();
+        
+    }
+    
+    private void afterExecution(){
+        getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        ExecuteCommand.setEnabled(true);
+        hideProgressBar();
+        
+    }
+    
+    private void ExecuteCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExecuteCommandActionPerformed
+        
+        beforeExecution();
+        
+        
+        new Thread() {
+            public void run() {
+                
+                if (GUIConstants.simpleGui){
+                    if (SimpleGuiRegistry.isSimpleGuiChanged()){
+                        SimpleGuiRegistry.prepareForDcql();
+                    }
+                    executeReturnAttributeQuery(); // it always has returned attribute now..
+                }else {
+                    executeVisualGuiQuery();
+                }
+                
+            }
+        }.start();
+        
+    }//GEN-LAST:event_ExecuteCommandActionPerformed
+    public void runExternalDcql(final DCQLQuery dcql){
+        beforeExecution();
+        
+        new Thread() {
+            public void run() {
+                runOnlyDcql(dcql);
+            }
+        }.start();
+    }
+    
+    
+    public void runOnlyDcql(DCQLQuery dcql){
         ExecuteCommand.setEnabled(false);
         // assume that the parser can parse the results and use the same mechanism to show the results..
         
@@ -140,7 +194,7 @@ public class CommandPanel extends CPanel {
                 Map resultMap = (Map)resultList.get(0);
                 compositMapKeys = new String[resultMap.size()];
                 
-                System.out.println("XXXX query sharing result column Map size :"+resultMap.size());
+//                System.out.println("XXXX query sharing result column Map size :"+resultMap.size());
                 
                 Iterator keys = resultMap.keySet().iterator();
                 while (keys.hasNext()) {
@@ -156,17 +210,41 @@ public class CommandPanel extends CPanel {
                     k++;
                 }
                 
-                getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys, atlertaneCols);
-                GUIConstants.resultAvailable = true;
-                resultCountLbl.setText("   Total Row Count : "+resultList.size());
+//                getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys, atlertaneCols);
+//                GUIConstants.resultAvailable = true;
+//                resultCountLbl.setText("   Total Row Count : "+resultList.size());
+                
+                
+                // final variables just for the inner class.
+                final List _resultList = resultList;
+                final HashMap _colNamesMap = colNamesMap;
+                final String[] _compositMapKeys = compositMapKeys;
+                final boolean[] _atlertaneCols = atlertaneCols;
+                final String txt = "   Total Row Count : "+resultList.size();
+                
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        getMainFrame().getOutputPanel().setMapResults(_resultList, _colNamesMap, _compositMapKeys, _atlertaneCols);
+                        resultCountLbl.setText(txt);
+                        GUIConstants.resultAvailable = true;
+                        afterExecution();
+                    }
+                });
+                
             }
             
             
-            
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
 //            ex.printStackTrace();
-            resultCountLbl.setText(" ");
-            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    resultCountLbl.setText(" ");
+                    afterExecution();
+                    DisplayExceptions.display("Error.", "Error executing the Query.", ex);
+                }
+            });
+            
         }
         
         
@@ -200,8 +278,8 @@ public class CommandPanel extends CPanel {
             
             getMainFrame().getOutputPanel().cleanResults();
             
-            CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
             
+            CQLQueryResults results = fqe.executeAndAggregateResults(dcql);
             
             
             ResultsParser parser = new ResultsParser(dcql);//,dcql.getTargetObject().getName());
@@ -225,9 +303,9 @@ public class CommandPanel extends CPanel {
             }
             
             
-             // TODO - testing..
+            // TODO - testing..
             
-            System.out.println("XXXX Return Attribute Query result column Map size :"+((Map)((DataGroup)dataGroupList.get(0)).getDataRows().get(0)).size());
+//            System.out.println("XXXX Return Attribute Query result column Map size :"+((Map)((DataGroup)dataGroupList.get(0)).getDataRows().get(0)).size());
             
             
             
@@ -254,15 +332,40 @@ public class CommandPanel extends CPanel {
                 }
             }
             
-            getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys, atlertaneCols);
-            resultCountLbl.setText("   Total Row Count : "+resultList.size());
+//            getMainFrame().getOutputPanel().setMapResults(resultList,colNamesMap, compositMapKeys, atlertaneCols);
+//            resultCountLbl.setText("   Total Row Count : "+resultList.size());
+//            GUIConstants.resultAvailable = true;
             
-            GUIConstants.resultAvailable = true;
+            // final variables just for the inner class.
+            final List _resultList = resultList;
+            final HashMap _colNamesMap = colNamesMap;
+            final String[] _compositMapKeys = compositMapKeys;
+            final boolean[] _atlertaneCols = atlertaneCols;
+            final String txt = "   Total Row Count : "+resultList.size();
             
-        } catch (Exception ex) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    getMainFrame().getOutputPanel().setMapResults(_resultList, _colNamesMap, _compositMapKeys, _atlertaneCols);
+                    resultCountLbl.setText(txt);
+                    GUIConstants.resultAvailable = true;
+                    
+                    afterExecution();
+                }
+            });
+            
+            
+        } catch (final Exception ex) {
 //            ex.printStackTrace();
-            resultCountLbl.setText(" ");
-            DisplayExceptions.display("Error.", "Error executing the Query.", ex);
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    resultCountLbl.setText(" ");
+                    afterExecution();
+                    DisplayExceptions.display("Error.", "Error executing the Query.", ex);
+                }
+            });
+            
+            
         }
     }
     
