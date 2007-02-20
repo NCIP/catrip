@@ -7,12 +7,14 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JDialog;
@@ -300,6 +302,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     private void addReturnedAttributeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addReturnedAttributeActionPerformed
         
         if (numEntities < numAvailableEntities ){
+            ArrayList<CDEComboboxBean> listReturnedAttributes = new ArrayList(100);
             ReturnedAttributesRowPanel rap = new ReturnedAttributesRowPanel(this);
             rap.setPreferredSize(new java.awt.Dimension(200, 40));
             
@@ -314,13 +317,21 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                     cdeBeanTmp.setGraphObject(cdeBean.getGraphObject());
                     cdeBeanTmp.setClassBean( ((ClassBean)cdeBean.getClassBean()).clone() ) ;
                     
-                    rap.getReturnedAttributeCombo().addItem(cdeBeanTmp);
+                    listReturnedAttributes.add(cdeBeanTmp);
+//                    rap.getReturnedAttributeCombo().addItem(cdeBeanTmp);
                 }
                 
 //                if (cdeBean.getGraphObject().isSelectable()){
 //                rap.getReturnedAttributeCombo().addItem(cdeBean);
 //                }
             }
+            
+            // for sorted list of Returned Attributes..
+            Collections.sort(listReturnedAttributes, new CDEComboboxBeanComparator()); 
+            for (int i = 0; i < listReturnedAttributes.size(); i++) {
+                rap.getReturnedAttributeCombo().addItem(listReturnedAttributes.get(i));
+            }
+            
             
             rap.getReturnedAttributeCombo().setSelectedIndex(numEntities);
             returnedAttributeListPanel.add(rap);
