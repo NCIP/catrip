@@ -246,7 +246,7 @@ public class QueryServiceUI extends JPanel {
         // loop over the  vector, getting out the entry object
         for (Iterator iter = collection.iterator(); iter.hasNext();) {
             QueryDb e = (QueryDb) iter.next();
-            
+            //System.out.println("e is null ? " + (e == null));
             // create another vector, this one will be used as a row in the table
             Vector<Serializable> rowData = new Vector<Serializable> () ;
             
@@ -626,8 +626,7 @@ public class QueryServiceUI extends JPanel {
             fireEditingStopped();
             if (e.getActionCommand().equalsIgnoreCase("run")){
                 String dcql = data.get(table.getSelectedRow()).getDcql();
-                //System.out.println("dcql : " + dcql);
-                executeDcql(dcql); // execute the dcql...
+                executeDcql(dcql); 
             } else if(e.getActionCommand().equalsIgnoreCase("x")){
                 DefaultTableModel t = (DefaultTableModel) table.getModel();
                 t.removeRow(table.getSelectedRow());
