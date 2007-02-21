@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" name="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" tests="1" time="0.0">
+<testsuite errors="3" failures="2" name="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" tests="6" time="5.172">
   <properties>
     <property name="file.encoding.pkg" value="sun.io"></property>
     <property name="env.PROMPT" value="$P$G"></property>
@@ -10,7 +10,7 @@
     <property name="src.dir" value="src"></property>
     <property name="ext.globus.dir" value="c:\ws-core-4.0.3"></property>
     <property name="sun.os.patch.level" value="Service Pack 2"></property>
-    <property name="tomcat.common.lib.dir" value="C:\Tomcat_5.0/common/lib"></property>
+    <property name="tomcat.common.lib.dir" value="C:\tomcat_cagrid_5.0.28/common/lib"></property>
     <property name="java.vendor.url" value="http://java.sun.com/"></property>
     <property name="env.COMPUTERNAME" value="MONKEY8"></property>
     <property name="java.version" value="1.5.0_06"></property>
@@ -23,7 +23,7 @@
     <property name="introduce.ns.excludes" value=" -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.service -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata -x http://gov.nih.nci.cagrid.data/DataServiceExceptions -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.security -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common"></property>
     <property name="user.name" value="Bill Mason"></property>
     <property name="env.CVS_RSH" value="c:\Putty\ssh.bat"></property>
-    <property name="tomcat.deploy.lib.dir" value="C:\Tomcat_5.0/webapps/wsrf/WEB-INF/lib"></property>
+    <property name="tomcat.deploy.lib.dir" value="C:\tomcat_cagrid_5.0.28/webapps/wsrf/WEB-INF/lib"></property>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
     <property name="sun.jnu.encoding" value="Cp1252"></property>
     <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
@@ -83,7 +83,7 @@
     <property name="service.properties.file" value="service.properties"></property>
     <property name="env.OS" value="Windows_NT"></property>
     <property name="gar.name" value="cagrid_QueryService.gar"></property>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.5.0_06\jre\bin;.;C:\WINDOWS\system32;C:\WINDOWS;%JAVA_HOME%\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\QuickTime\QTSystem\;%ANT_HOME%\bin;C:\Program Files\UltraEdit-32;C:\oracle\ora92\bin;C:\Program Files\Oracle\jre\1.3.1\bin;C:\Program Files\Oracle\jre\1.1.8\bin;C:\Tomcat_5.0;c:\axis2\lib;C:\Program Files\Java\jdk1.5.0_06\bin;c:\ant\bin;C:\oracle\ora92\bin;C:\Documents and Settings\Bill Mason\My Documents\workspace\CTOM\lib;c:\xdoclet-1.2.3\lib;C:\Program Files\UltraCompare"></property>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.5.0_06\jre\bin;.;C:\WINDOWS\system32;C:\WINDOWS;%JAVA_HOME%\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\QuickTime\QTSystem\;%ANT_HOME%\bin;C:\Program Files\UltraEdit-32;C:\oracle\ora92\bin;C:\Program Files\Oracle\jre\1.3.1\bin;C:\Program Files\Oracle\jre\1.1.8\bin;C:\tomcat_cagrid_5.0.28;c:\axis2\lib;C:\Program Files\Java\jdk1.5.0_06\bin;c:\ant\bin;C:\oracle\ora92\bin;C:\Documents and Settings\Bill Mason\My Documents\workspace\CTOM\lib;c:\xdoclet-1.2.3\lib;C:\Program Files\UltraCompare"></property>
     <property name="ant.java.version" value="1.5"></property>
     <property name="env.AXIS2_HOME" value="C:\axis2"></property>
     <property name="basedir" value="C:\catrip\catrip\codebase\projects\queryservice"></property>
@@ -92,8 +92,8 @@
     <property name="ant.home" value="c:\ant"></property>
     <property name="introduce.skeleton.services.list" value="QueryService"></property>
     <property name="env.JBOSS_HOME" value="C:\jboss-4.0.0"></property>
-    <property name="tomcat.wsrf.schema.dir" value="C:\Tomcat_5.0/webapps/wsrf/share/schema"></property>
-    <property name="env.Path" value="%JAVA_HOME%\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\QuickTime\QTSystem\;%ANT_HOME%\bin;C:\Program Files\UltraEdit-32;C:\oracle\ora92\bin;C:\Program Files\Oracle\jre\1.3.1\bin;C:\Program Files\Oracle\jre\1.1.8\bin;C:\Tomcat_5.0;c:\axis2\lib;C:\Program Files\Java\jdk1.5.0_06\bin;c:\ant\bin;C:\oracle\ora92\bin;C:\Documents and Settings\Bill Mason\My Documents\workspace\CTOM\lib;c:\xdoclet-1.2.3\lib;C:\Program Files\UltraCompare"></property>
+    <property name="tomcat.wsrf.schema.dir" value="C:\tomcat_cagrid_5.0.28/webapps/wsrf/share/schema"></property>
+    <property name="env.Path" value="%JAVA_HOME%\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\QuickTime\QTSystem\;%ANT_HOME%\bin;C:\Program Files\UltraEdit-32;C:\oracle\ora92\bin;C:\Program Files\Oracle\jre\1.3.1\bin;C:\Program Files\Oracle\jre\1.1.8\bin;C:\tomcat_cagrid_5.0.28;c:\axis2\lib;C:\Program Files\Java\jdk1.5.0_06\bin;c:\ant\bin;C:\oracle\ora92\bin;C:\Documents and Settings\Bill Mason\My Documents\workspace\CTOM\lib;c:\xdoclet-1.2.3\lib;C:\Program Files\UltraCompare"></property>
     <property name="env.HOMEDRIVE" value="C:"></property>
     <property name="service.deployment.prefix" value="cagrid"></property>
     <property name="env.WV_GATEWAY_CFG" value="C:\oracle\ora92\Apache\modplsql\cfg\wdbsvr.app"></property>
@@ -130,13 +130,13 @@
     <property name="schema.path" value="QueryService"></property>
     <property name="env.FP_NO_HOST_CHECK" value="NO"></property>
     <property name="test.dir" value="test"></property>
-    <property name="tomcat.dir" value="C:\Tomcat_5.0"></property>
+    <property name="tomcat.dir" value="C:\tomcat_cagrid_5.0.28"></property>
     <property name="sun.cpu.endian" value="little"></property>
     <property name="env._USE_CLASSPATH" value="yes"></property>
     <property name="env.ALLUSERSPROFILE" value="C:\Documents and Settings\All Users"></property>
     <property name="env.PROCESSOR_ARCHITECTURE" value="x86"></property>
     <property name="java.vm.version" value="1.5.0_06-b05"></property>
-    <property name="java.class.path" value="C:\catrip\catrip\codebase\projects\queryservice\build\test\classes;C:\catrip\catrip\codebase\projects\queryservice\build\classes;C:\catrip\catrip\codebase\projects\queryservice\build\stubs-QueryService\classes;C:\catrip\catrip\codebase\projects\queryservice\lib\ant-contrib.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-client.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-service.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-client.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-portal.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-service.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-tests.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-core.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-cql.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-extension.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-service.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-tests.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-tools.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-utils.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-validation.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadata-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadata-data.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadata-security.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadataUtils.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-caTrip-sdkQuery-1.0.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\castor-0.9.9.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\cglib-nodep-2.1_3.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\client.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_mds_aggregator.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_mds_aggregator_stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_servicegroup.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_servicegroup_stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\hibernate3.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_common_client-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_factories-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_gme_client-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_mako_client-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_tools-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\oldqueryservice.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\queryservice.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\spring.jar;C:\ws-core-4.0.3\lib\addressing-1.0.jar;C:\ws-core-4.0.3\lib\axis-url.jar;C:\ws-core-4.0.3\lib\axis.jar;C:\ws-core-4.0.3\lib\bootstrap.jar;C:\ws-core-4.0.3\lib\cog-axis.jar;C:\ws-core-4.0.3\lib\cog-jglobus.jar;C:\ws-core-4.0.3\lib\cog-tomcat.jar;C:\ws-core-4.0.3\lib\cog-url.jar;C:\ws-core-4.0.3\lib\commonj.jar;C:\ws-core-4.0.3\lib\commons-beanutils.jar;C:\ws-core-4.0.3\lib\commons-cli-2.0.jar;C:\ws-core-4.0.3\lib\commons-collections-3.0.jar;C:\ws-core-4.0.3\lib\commons-digester.jar;C:\ws-core-4.0.3\lib\commons-discovery.jar;C:\ws-core-4.0.3\lib\commons-logging.jar;C:\ws-core-4.0.3\lib\concurrent.jar;C:\ws-core-4.0.3\lib\cryptix-asn1.jar;C:\ws-core-4.0.3\lib\cryptix.jar;C:\ws-core-4.0.3\lib\cryptix32.jar;C:\ws-core-4.0.3\lib\globus_resolution_service.jar;C:\ws-core-4.0.3\lib\globus_resolution_stubs_java.jar;C:\ws-core-4.0.3\lib\globus_resolution_test.jar;C:\ws-core-4.0.3\lib\globus_transfer_service.jar;C:\ws-core-4.0.3\lib\globus_transfer_stubs_java.jar;C:\ws-core-4.0.3\lib\globus_transfer_test.jar;C:\ws-core-4.0.3\lib\globus_usage_core.jar;C:\ws-core-4.0.3\lib\globus_usage_packets_common.jar;C:\ws-core-4.0.3\lib\globus_wsrf_tools_test.jar;C:\ws-core-4.0.3\lib\jaxrpc.jar;C:\ws-core-4.0.3\lib\jce-jdk13-125.jar;C:\ws-core-4.0.3\lib\jgss.jar;C:\ws-core-4.0.3\lib\junit.jar;C:\ws-core-4.0.3\lib\log4j-1.2.8.jar;C:\ws-core-4.0.3\lib\naming-common.jar;C:\ws-core-4.0.3\lib\naming-factory.jar;C:\ws-core-4.0.3\lib\naming-java.jar;C:\ws-core-4.0.3\lib\naming-resources.jar;C:\ws-core-4.0.3\lib\opensaml.jar;C:\ws-core-4.0.3\lib\puretls.jar;C:\ws-core-4.0.3\lib\resolver.jar;C:\ws-core-4.0.3\lib\saaj.jar;C:\ws-core-4.0.3\lib\wsdl4j.jar;C:\ws-core-4.0.3\lib\wsrf_common.jar;C:\ws-core-4.0.3\lib\wsrf_core.jar;C:\ws-core-4.0.3\lib\wsrf_core_registry.jar;C:\ws-core-4.0.3\lib\wsrf_core_registry_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_authzService.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_authzService_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_counter.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_counter_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_mgmt.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_mgmt_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_provider_jce.jar;C:\ws-core-4.0.3\lib\wsrf_test.jar;C:\ws-core-4.0.3\lib\wsrf_test_interop.jar;C:\ws-core-4.0.3\lib\wsrf_test_interop_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_test_unit.jar;C:\ws-core-4.0.3\lib\wsrf_test_unit_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_tools.jar;C:\ws-core-4.0.3\lib\wss4j.jar;C:\ws-core-4.0.3\lib\xalan.jar;C:\ws-core-4.0.3\lib\xercesImpl.jar;C:\ws-core-4.0.3\lib\xml-apis.jar;C:\ws-core-4.0.3\lib\xmlsec.jar;C:\tomcat_5.0;C:\jboss-4.0.0\server\default\lib\ojdbc14.jar;C:\axis2\lib;C:\Documents and Settings\Bill Mason\My Documents\software\junit\junit4.1\junit-4.1.jar;C:\ws-core-4.0.2\lib\addressing-1.0.jar;C:\ant\lib\ant-launcher.jar;C:\ant\lib\ant.jar;C:\ant\lib\ant-junit.jar"></property>
+    <property name="java.class.path" value="C:\catrip\catrip\codebase\projects\queryservice\build\test\classes;C:\catrip\catrip\codebase\projects\queryservice\build\classes;C:\catrip\catrip\codebase\projects\queryservice\build\stubs-QueryService\classes;C:\catrip\catrip\codebase\projects\queryservice\lib\ant-contrib.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\c3p0-0.9.0.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-client.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-service.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-ServiceSecurityProvider-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-client.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-portal.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-service.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-caDSR-tests.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-core.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-cql.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-extension.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-service.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-tests.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-tools.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-utils.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-data-validation.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadata-common.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadata-data.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadata-security.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-1.0-metadataUtils.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caGrid-caTrip-sdkQuery-1.0.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\caTrip-Query-1.0-data-stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\castor-0.9.9.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\cglib-nodep-2.1_3.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\client.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\dom4j-1.6.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\ehcache-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_mds_aggregator.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_mds_aggregator_stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_servicegroup.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\globus_wsrf_servicegroup_stubs.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\hibernate3.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_common_client-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_factories-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_gme_client-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_mako_client-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\mobius_tools-1.1.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\queryservice.jar;C:\catrip\catrip\codebase\projects\queryservice\lib\spring.jar;C:\ws-core-4.0.3\lib\addressing-1.0.jar;C:\ws-core-4.0.3\lib\axis-url.jar;C:\ws-core-4.0.3\lib\axis.jar;C:\ws-core-4.0.3\lib\bootstrap.jar;C:\ws-core-4.0.3\lib\cog-axis.jar;C:\ws-core-4.0.3\lib\cog-jglobus.jar;C:\ws-core-4.0.3\lib\cog-tomcat.jar;C:\ws-core-4.0.3\lib\cog-url.jar;C:\ws-core-4.0.3\lib\commonj.jar;C:\ws-core-4.0.3\lib\commons-beanutils.jar;C:\ws-core-4.0.3\lib\commons-cli-2.0.jar;C:\ws-core-4.0.3\lib\commons-collections-3.0.jar;C:\ws-core-4.0.3\lib\commons-digester.jar;C:\ws-core-4.0.3\lib\commons-discovery.jar;C:\ws-core-4.0.3\lib\commons-logging.jar;C:\ws-core-4.0.3\lib\concurrent.jar;C:\ws-core-4.0.3\lib\cryptix-asn1.jar;C:\ws-core-4.0.3\lib\cryptix.jar;C:\ws-core-4.0.3\lib\cryptix32.jar;C:\ws-core-4.0.3\lib\globus_resolution_service.jar;C:\ws-core-4.0.3\lib\globus_resolution_stubs_java.jar;C:\ws-core-4.0.3\lib\globus_resolution_test.jar;C:\ws-core-4.0.3\lib\globus_transfer_service.jar;C:\ws-core-4.0.3\lib\globus_transfer_stubs_java.jar;C:\ws-core-4.0.3\lib\globus_transfer_test.jar;C:\ws-core-4.0.3\lib\globus_usage_core.jar;C:\ws-core-4.0.3\lib\globus_usage_packets_common.jar;C:\ws-core-4.0.3\lib\globus_wsrf_tools_test.jar;C:\ws-core-4.0.3\lib\jaxrpc.jar;C:\ws-core-4.0.3\lib\jce-jdk13-125.jar;C:\ws-core-4.0.3\lib\jgss.jar;C:\ws-core-4.0.3\lib\junit.jar;C:\ws-core-4.0.3\lib\log4j-1.2.8.jar;C:\ws-core-4.0.3\lib\naming-common.jar;C:\ws-core-4.0.3\lib\naming-factory.jar;C:\ws-core-4.0.3\lib\naming-java.jar;C:\ws-core-4.0.3\lib\naming-resources.jar;C:\ws-core-4.0.3\lib\opensaml.jar;C:\ws-core-4.0.3\lib\puretls.jar;C:\ws-core-4.0.3\lib\resolver.jar;C:\ws-core-4.0.3\lib\saaj.jar;C:\ws-core-4.0.3\lib\wsdl4j.jar;C:\ws-core-4.0.3\lib\wsrf_common.jar;C:\ws-core-4.0.3\lib\wsrf_core.jar;C:\ws-core-4.0.3\lib\wsrf_core_registry.jar;C:\ws-core-4.0.3\lib\wsrf_core_registry_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_authzService.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_authzService_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_counter.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_counter_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_mgmt.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_mgmt_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_provider_jce.jar;C:\ws-core-4.0.3\lib\wsrf_test.jar;C:\ws-core-4.0.3\lib\wsrf_test_interop.jar;C:\ws-core-4.0.3\lib\wsrf_test_interop_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_test_unit.jar;C:\ws-core-4.0.3\lib\wsrf_test_unit_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_tools.jar;C:\ws-core-4.0.3\lib\wss4j.jar;C:\ws-core-4.0.3\lib\xalan.jar;C:\ws-core-4.0.3\lib\xercesImpl.jar;C:\ws-core-4.0.3\lib\xml-apis.jar;C:\ws-core-4.0.3\lib\xmlsec.jar;C:\tomcat_5.0;C:\jboss-4.0.0\server\default\lib\ojdbc14.jar;C:\axis2\lib;C:\Documents and Settings\Bill Mason\My Documents\software\junit\junit4.1\junit-4.1.jar;C:\ws-core-4.0.2\lib\addressing-1.0.jar;C:\ant\lib\ant-launcher.jar;C:\ant\lib\ant.jar;C:\ant\lib\ant-junit.jar"></property>
     <property name="env.HOMEPATH" value="\Documents and Settings\Bill Mason"></property>
     <property name="env.SonicCentral" value="C:\Program Files\Common Files\Sonic Shared\Sonic Central\"></property>
     <property name="ant.library.dir" value="C:\ant\lib"></property>
@@ -160,22 +160,138 @@
     <property name="service.name" value="QueryService"></property>
     <property name="java.vendor" value="Sun Microsystems Inc."></property>
     <property name="service.deployment.dir.name" value="cagrid_QueryService"></property>
-    <property name="tomcat.deploy.dir" value="C:\Tomcat_5.0/webapps/wsrf/WEB-INF"></property>
-    <property name="env.CATALINA_HOME" value="C:\Tomcat_5.0"></property>
+    <property name="tomcat.deploy.dir" value="C:\tomcat_cagrid_5.0.28/webapps/wsrf/WEB-INF"></property>
+    <property name="env.CATALINA_HOME" value="C:\tomcat_cagrid_5.0.28"></property>
     <property name="java.specification.version" value="1.5"></property>
     <property name="sun.arch.data.model" value="32"></property>
   </properties>
-  <error message="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: gov.nih.nci.catrip.cagrid.catripquery.TestQueryService
-	at java.net.URLClassLoader$1.run(URLClassLoader.java:200)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:188)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:268)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
-	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:319)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:164)
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testQuery" time="2.906"></testcase>
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testInsert" time="0.125">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at gov.nih.nci.catrip.cagrid.catripquery.TestQueryService.testInsert(TestQueryService.java:169)
+</failure>
+  </testcase>
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testHibernateRetrieve" time="1.687">
+    <error type="java.lang.ExceptionInInitializerError">java.lang.ExceptionInInitializerError
+	at gov.nih.nci.catrip.cagrid.catripquery.HibernateUtil.&lt;clinit&gt;(HibernateUtil.java:21)
+	at gov.nih.nci.catrip.cagrid.catripquery.TestQueryService.testHibernateRetrieve(TestQueryService.java:176)
+Caused by: java.lang.NoClassDefFoundError: javax/transaction/SystemException
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1055)
+	at gov.nih.nci.catrip.cagrid.catripquery.HibernateUtil.&lt;clinit&gt;(HibernateUtil.java:17)
+	... 16 more
 </error>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  </testcase>
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testHibernateInsert" time="0.016">
+    <error type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError
+	at gov.nih.nci.catrip.cagrid.catripquery.TestQueryService.testHibernateInsert(TestQueryService.java:238)
+</error>
+  </testcase>
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testUpdate" time="0.094">
+    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
+	at gov.nih.nci.catrip.cagrid.catripquery.TestQueryService.testUpdate(TestQueryService.java:260)
+</failure>
+  </testcase>
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testDelete" time="0.094">
+    <error message="org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb#1688]" type="org.apache.axis.AxisFault">AxisFault
+ faultCode: {http://schemas.xmlsoap.org/soap/envelope/}Server.userException
+ faultSubcode: 
+ faultString: org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb#1688]
+ faultActor: 
+ faultNode: 
+ faultDetail: 
+	{http://xml.apache.org/axis/}stackTrace:org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb#1688]
+	at org.hibernate.ObjectNotFoundException.throwIfNull(ObjectNotFoundException.java:27)
+	at org.hibernate.event.def.DefaultLoadEventListener.load(DefaultLoadEventListener.java:128)
+	at org.hibernate.event.def.DefaultLoadEventListener.proxyOrLoad(DefaultLoadEventListener.java:161)
+	at org.hibernate.event.def.DefaultLoadEventListener.onLoad(DefaultLoadEventListener.java:87)
+	at org.hibernate.impl.SessionImpl.fireLoad(SessionImpl.java:862)
+	at org.hibernate.impl.SessionImpl.load(SessionImpl.java:781)
+	at org.hibernate.impl.SessionImpl.load(SessionImpl.java:774)
+	at gov.nih.nci.catrip.cagrid.catripquery.service.QueryServiceImpl.delete(QueryServiceImpl.java:161)
+	at gov.nih.nci.catrip.cagrid.catripquery.service.globus.QueryServiceProviderImpl.delete(QueryServiceProviderImpl.java:39)
+	at org.apache.axis.providers.java.RPCProvider.invokeMethod(RPCProvider.java:384)
+	at org.globus.axis.providers.RPCProvider.invokeMethodSub(RPCProvider.java:107)
+	at org.globus.axis.providers.RPCProvider.invokeMethod(RPCProvider.java:90)
+	at org.apache.axis.providers.java.RPCProvider.processMessage(RPCProvider.java:281)
+	at org.apache.axis.providers.java.JavaProvider.invoke(JavaProvider.java:319)
+	at org.apache.axis.strategies.InvocationStrategy.visit(InvocationStrategy.java:32)
+	at org.apache.axis.SimpleChain.doVisiting(SimpleChain.java:118)
+	at org.apache.axis.SimpleChain.invoke(SimpleChain.java:83)
+	at org.apache.axis.handlers.soap.SOAPService.invoke(SOAPService.java:450)
+	at org.apache.axis.server.AxisServer.invoke(AxisServer.java:285)
+	at org.apache.axis.transport.http.AxisServlet.doPost(AxisServlet.java:697)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:709)
+	at org.apache.axis.transport.http.AxisServletBase.service(AxisServletBase.java:327)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:237)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:157)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:214)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.StandardContextValve.invokeInternal(StandardContextValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:152)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:118)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:102)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.ContainerBase.invoke(ContainerBase.java:929)
+	at org.apache.coyote.tomcat5.CoyoteAdapter.service(CoyoteAdapter.java:160)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:799)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.processConnection(Http11Protocol.java:705)
+	at org.apache.tomcat.util.net.TcpWorkerThread.runIt(PoolTcpEndpoint.java:577)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:683)
+	at java.lang.Thread.run(Thread.java:595)
+
+	{http://xml.apache.org/axis/}hostname:monkey8
+
+org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb#1688]
+	at org.apache.axis.message.SOAPFaultBuilder.createFault(SOAPFaultBuilder.java:221)
+	at org.apache.axis.message.SOAPFaultBuilder.endElement(SOAPFaultBuilder.java:128)
+	at org.apache.axis.encoding.DeserializationContext.endElement(DeserializationContext.java:1087)
+	at org.apache.xerces.parsers.AbstractSAXParser.endElement(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanEndElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at javax.xml.parsers.SAXParser.parse(SAXParser.java:375)
+	at org.apache.axis.encoding.DeserializationContext.parse(DeserializationContext.java:227)
+	at org.apache.axis.SOAPPart.getAsSOAPEnvelope(SOAPPart.java:645)
+	at org.apache.axis.Message.getSOAPEnvelope(Message.java:424)
+	at org.apache.axis.message.addressing.handler.AddressingHandler.processClientResponse(AddressingHandler.java:305)
+	at org.apache.axis.message.addressing.handler.AddressingHandler.invoke(AddressingHandler.java:110)
+	at org.apache.axis.strategies.InvocationStrategy.visit(InvocationStrategy.java:32)
+	at org.apache.axis.SimpleChain.doVisiting(SimpleChain.java:118)
+	at org.apache.axis.SimpleChain.invoke(SimpleChain.java:83)
+	at org.apache.axis.client.AxisClient.invoke(AxisClient.java:190)
+	at org.apache.axis.client.Call.invokeEngine(Call.java:2727)
+	at org.apache.axis.client.Call.invoke(Call.java:2710)
+	at org.apache.axis.client.Call.invoke(Call.java:2386)
+	at org.apache.axis.client.Call.invoke(Call.java:2309)
+	at org.apache.axis.client.Call.invoke(Call.java:1766)
+	at gov.nih.nci.catrip.cagrid.catripquery.stubs.bindings.QueryServicePortTypeSOAPBindingStub.delete(QueryServicePortTypeSOAPBindingStub.java:1266)
+	at gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient.delete(QueryServiceClient.java:173)
+	at gov.nih.nci.catrip.cagrid.catripquery.TestQueryService.testDelete(TestQueryService.java:272)
+</error>
+  </testcase>
+  <system-out><![CDATA[Running QueryService query
+1799   Name : null
+ Returned Result Count :  1
+insert
+insert done
+testHibernateRetrieve
+testHibernateInsert
+testUpdate
+testDelete
+]]></system-out>
+  <system-err><![CDATA[Initial SessionFactory creation failed.java.lang.NoClassDefFoundError: javax/transaction/SystemException
+]]></system-err>
 </testsuite>

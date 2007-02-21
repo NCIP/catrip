@@ -35,7 +35,7 @@ import org.xml.sax.InputSource;
 /**
  * This system test validates an existing Query Sharing service by submitting CQL to it and 
  * calling the other methods on the service.
- * @author Patrick McConnell
+ * @author Bill Mason
  * @testType system
  */
 public class TestQueryService extends TestCase {
@@ -44,6 +44,7 @@ public class TestQueryService extends TestCase {
 	private String qryFile;
 	private String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
 	private String serviceURI = "";
+	private String wsdd;
 	CatripQuery caTripQuery;
 	DCQLQuery dcql ;
 	gov.nih.nci.cagrid.dcql.Object to;
@@ -61,13 +62,15 @@ public class TestQueryService extends TestCase {
 			properties.load(new FileInputStream(QUERIES_DIR+File.separator+"query_service.properties"));
 			serviceURI = properties.getProperty("service_URI");
 			qryFile = properties.getProperty("SAMPLE_DCQL_FILE");
+			wsdd = properties.getProperty("WSDD");
 		} 
 		catch (IOException e) {
 			properties.load(new FileInputStream("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\query_service.properties"));
 			serviceURI = properties.getProperty("service_URI");
-			// qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\simpleQuery2.xml";
+			wsdd="C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd";
+			// qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\junk\\simpleQuery2.xml";
 			qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\simpleQuery1.xml";
-			//qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\built_DemoUseCase2-b.xml";
+			//qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\junk\\built_DemoUseCase2-b.xml";
 			System.out.println("Not Run from ANT");
 		}
 
@@ -94,9 +97,8 @@ public class TestQueryService extends TestCase {
      * @throws Exception
      */
 	public void testQuery() throws Exception{
-		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
 		System.out.println("Running QueryService query");
-		//String qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\SimpleQuery1.xml";
+		//String qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\junk\\SimpleQuery1.xml";
 		try{
 			QueryServiceClient client = new QueryServiceClient(serviceURI);
 			CQLQuery cqlQuery = new CQLQuery();
@@ -105,7 +107,7 @@ public class TestQueryService extends TestCase {
 			target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
 			cqlQuery.setTarget(target);
 			CQLQueryResults results = client.query(cqlQuery);
-			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
+			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(wsdd)));
 
 			while (iter.hasNext()) {
 				//Object o = iter.next();
@@ -185,16 +187,13 @@ public class TestQueryService extends TestCase {
 					System.out.println("ID is " + obj.getId());
 					System.out.println("first name : " + obj.getFirstName());
 					System.out.println("last name : " + obj.getLastName());
-					//System.out.println("date created : " + obj.getCreated());
 					System.out.println("description : " + obj.getDescription());
 					System.out.println("query name : " + obj.getName());
 					System.out.println("source : " + obj.getSource());
-					//System.out.println("updated : " + obj.getUpdated());
 					System.out.println("user name : " + obj.getUserName());
 					System.out.println("instance : " + obj.getInstance());
 					System.out.println("version : " + obj.getVersion());
-					//System.out.println(" length = " + obj.getDcql().length());
-						System.out.println("dcql : " + obj.getDcql());
+					System.out.println("dcql : " + obj.getDcql());
 					//System.out.println("dcql : " + getBlobData(obj.getDcql().getAsciiStream(),(int) obj.getDcql().length()));
 				}
 			} catch (RuntimeException e) {
