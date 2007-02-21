@@ -49,7 +49,8 @@ public class SimpleSearchPanel extends CPanel {
         
     }
     
-    
+    /** This method is called before the swing components initialization. 
+     * This loads the DOmain model MetaData from the local xml files. */
     private void initBefore(){
         // TODO - call these methods from an initail screen so that we have enough time to load these..
         processor = SimpleGuiRegistry.getProcessor();

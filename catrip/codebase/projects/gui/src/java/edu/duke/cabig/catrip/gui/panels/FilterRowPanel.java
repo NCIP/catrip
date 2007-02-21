@@ -95,6 +95,10 @@ public class FilterRowPanel extends javax.swing.JPanel {
         return currentFilter;
     } 
     
+    private CDEComboboxBean getCurrentFilter(){
+        return getCDEComboboxBean();
+    }
+    
     public AttributeBean getAttributeBean(){
         return getCDEComboboxBean().getAttributeBean();
     }
@@ -178,8 +182,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
-        if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
-            currentFilter.remove();
+        if (getCurrentFilter() != null){ // sanjeev: that means a filter was already set on this row...
+            getCurrentFilter().remove();
         }
         
         SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
@@ -199,8 +203,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
 // sanjeev: clean filter from previous CDEComboboxBean and reset predicate and value fields..
-        if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
-            currentFilter.remove();
+        if (getCurrentFilter() != null){ // sanjeev: that means a filter was already set on this row...
+            getCurrentFilter().remove();
             getPredicateCombo().setSelectedIndex(0);
             getValueBox().setText("");
             

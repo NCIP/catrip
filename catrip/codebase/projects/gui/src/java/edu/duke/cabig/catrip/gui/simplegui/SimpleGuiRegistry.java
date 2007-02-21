@@ -114,6 +114,7 @@ public class SimpleGuiRegistry {
             
             DomainModelRetrievalStrategy retrievalStrategy = DomainModelRetrievalFactory.getRetrievalStrategy(sBean);
             DomainModel domainModel = retrievalStrategy.retrievDomainModel();
+            // Now populate the Domain Model registry with this service metadata.
             DomainModelMetaDataRegistry.populateDomainModelMetaData(domainModel, sBean);
             
         }
@@ -329,8 +330,8 @@ public class SimpleGuiRegistry {
         
         
         
-//         if hasGroupsDefined() is false and isReturnedAttributeListAvailable() is also flase than add all the default returned attribute to target object
-        if (!hasGroupsDefined()){// && !isReturnedAttributeListAvailable()){ // by default return all the attributes of Target Object..
+          // by default return all the attributes of Target Object..
+//        if (!hasGroupsDefined()){
             ClassBean targetBean = getTargetGraphObject().getClassBean();
             ArrayList atts = targetBean.getAttributes();
             for (int i = 0; i < atts.size(); i++) {
@@ -338,11 +339,12 @@ public class SimpleGuiRegistry {
                 String attName = ((AttributeBean)atts.get(i)).getAttributeName();
                 addToClassNameReturnedAttributeMap(cName, attName);
             }
-        }
+
+            
         
         
         
-        
+        // using this method to print the association tree starting from teh target object.
 //        getTargetGraphObject().getClassBean().printAssociations();
         
     }
@@ -787,8 +789,8 @@ public class SimpleGuiRegistry {
             numGroupableEntities--;
         }
         
-        
-        numGroupableEntities++;
+        // TODO -SB- uncomment the code below when you implement the nested gruping DCQL generation.
+//        numGroupableEntities++;
     }
     
     public static FilterGroup getRootGroup() {

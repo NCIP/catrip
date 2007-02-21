@@ -225,11 +225,14 @@ public class FilterGroupPanel extends javax.swing.JPanel {
 //            System.out.println("Filter IDs are :"+filters.get(i).getFilterId());
             }
             
+            // here you add the first level groups into the list for available items for grouping.
+             // TODO -SB- uncomment the code below when you implement the nested gruping DCQL generation.
+            /*
             ArrayList<FilterGroup> filterGroups = SimpleGuiRegistry.getFilterSubGroupList();
             for (int i = 0; i < filterGroups.size(); i++) {
                 frp.getFilterValueCombo().addItem(filterGroups.get(i));
             }
-            
+            */
             
             frp.getFilterValueCombo().setSelectedIndex(numEntities);
             frp.getFilterValueCombo().setRenderer(new MyComboBoxRenderer());
@@ -241,14 +244,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             
             filterValuePanel.revalidate();
             filterValuePanel.repaint();
-            
-//        int count = filterValuePanel.getComponentCount();
-            
-//        if (count > 4){
-//            GridLayout gl = (GridLayout)filterPanel.getLayout();
-//            gl.setRows(count);
-//        }
-            
+
             numEntities++;
         }
     }//GEN-LAST:event_addFilterOrGroupBtnActionPerformed
