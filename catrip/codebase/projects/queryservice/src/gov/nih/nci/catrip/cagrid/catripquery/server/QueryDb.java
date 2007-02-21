@@ -1,8 +1,12 @@
 package gov.nih.nci.catrip.cagrid.catripquery.server;
 
-import java.lang.String;
-import java.sql.Clob;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
+import java.util.Vector;
 
 /**
  * @version 1.0
@@ -21,8 +25,9 @@ public class QueryDb {
 	private String source;
 	private String version;
 	private String instance;
-	private String dcql;
+	private String dcql; 
 	private Collection<ClassDb> classCollection;
+	private Set<DcqlDb> dcqlCollection;
 	private Random generator = new Random();
 
 	public QueryDb(){ 
@@ -78,7 +83,7 @@ public class QueryDb {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+ 
 	public String getFirstName() {
 		return firstName;
 	}
@@ -142,8 +147,41 @@ public class QueryDb {
 	public void setVersion(String version) {
 		this.version = version;
 	}
+	public Vector<DcqlDb> bubbleSort(Vector<DcqlDb> sorted)
+	  {
+	    for (int i = sorted.size()-2; i >= 0; i--) 
+	    {
+	      for (int j = 0; j <= i; j++) 
+	      {
+	        int s1 = sorted.elementAt(j).getSequence();
+	        int s2 = sorted.elementAt(j+1).getSequence();
+	        if (s1 > s2) 
+	        {
+	          DcqlDb tmp = sorted.elementAt(j);
+	          sorted.setElementAt(sorted.elementAt(j+1), j);
+	          sorted.setElementAt(tmp, j+1);
+	       	}
+	      }
+	    }
+	    return sorted;
+	  }
 
 	public String getDcql() {
+		// concatinate the dcql strings
+		Vector<DcqlDb> v = new Vector<DcqlDb>(dcqlCollection.size());
+		dcql = "";
+		for (Iterator iter = dcqlCollection.iterator(); iter.hasNext();) {
+			DcqlDb dcqlObject = (DcqlDb) iter.next();
+			v.add(dcqlObject);
+			}
+		v = bubbleSort(v);
+		for (int i = 0; i < v.size(); i++) {
+			DcqlDb dcqlObject = (DcqlDb) v.elementAt(i);
+			if (dcqlObject != null && dcqlObject.getDcql() != null){
+				dcql += dcqlObject.getDcql();
+			}
+			
+		}
 		return dcql;
 	}
 
@@ -165,5 +203,13 @@ public class QueryDb {
 		this.userName = q.getUserName();
 		this.version = q.getVersion();
 		
+	}
+
+	public Set<DcqlDb> getDcqlCollection() {
+		return dcqlCollection;
+	}
+
+	public void setDcqlCollection(Set<DcqlDb> dcqlCollection) {
+		this.dcqlCollection = dcqlCollection;
 	}
 }

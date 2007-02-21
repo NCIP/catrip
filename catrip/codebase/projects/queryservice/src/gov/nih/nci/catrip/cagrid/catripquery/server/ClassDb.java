@@ -40,7 +40,7 @@ public class ClassDb {
 		}
 	}
 
-	public void setAttributeCollection(java.util.Collection attributeCollection) {
+	public void setAttributeCollection(java.util.Collection<AttributeDb> attributeCollection) {
 		this.attributeCollection = attributeCollection;
 	}
 

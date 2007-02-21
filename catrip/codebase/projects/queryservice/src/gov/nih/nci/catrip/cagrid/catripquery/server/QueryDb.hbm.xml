@@ -19,10 +19,16 @@
 		<property name="source" column="SOURCE" type="string"/>
 		<property name="version" column="VERSION" type="string"/>
 		<property name="instance" column="INSTANCE" type="string"/>
-		<property name="dcql" column="DCQL" type="string"/>
-		 <set name="classCollection" inverse="false" cascade="all" >
+<!--		<property name="dcql" column="DCQL" type="string"/>
+		<property name="dcql_2" column="DCQL_2" type="string"/>
+		-->
+		 <set name="classCollection" inverse="false" cascade="all" lazy="false">
 			<key column="CATRIP_QUERY_ID"/>
 			<one-to-many class="gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb"/>
+		</set>
+		 <set name="dcqlCollection" inverse="false" cascade="all" lazy="false" order-by="sequence">
+			<key column="CATRIP_QUERY_ID"/>
+			<one-to-many class="gov.nih.nci.catrip.cagrid.catripquery.server.DcqlDb"/>
 		</set>
 		
    </class>

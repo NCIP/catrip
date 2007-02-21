@@ -1,6 +1,4 @@
 package gov.nih.nci.catrip.cagrid.catripquery.server;
-import java.lang.Long;
-import java.lang.String;
 
 /**
  * @version 1.0

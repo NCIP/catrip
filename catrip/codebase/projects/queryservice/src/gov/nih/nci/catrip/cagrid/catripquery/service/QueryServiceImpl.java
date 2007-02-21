@@ -4,16 +4,18 @@ import gov.nih.nci.cagrid.cqlquery.Attribute;
 import gov.nih.nci.cagrid.dcql.Association;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
+import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.server.AttributeDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
+import gov.nih.nci.catrip.cagrid.catripquery.server.DcqlDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 
 import java.io.CharArrayReader;
 import java.rmi.RemoteException;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
-
-import javax.xml.namespace.QName;
+import java.util.Set;
 
 import org.globus.wsrf.encoding.DeserializationException;
 import org.globus.wsrf.encoding.ObjectDeserializer;
@@ -57,8 +59,9 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		// serialize the dcql to be saved in the database
 		//QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
 
-		//decomposedCatripQuery.setDcql(new java.sql.Clob());//caTripQuery.getDcql());
-		decomposedCatripQuery.setDcql(caTripQuery.getDcql());
+		decomposeDcql(caTripQuery, decomposedCatripQuery);
+		//decomposedCatripQuery.setDcql(caTripQuery.getDcql());
+				
 		decomposedCatripQuery.setId((int) caTripQuery.getId());
 		decomposedCatripQuery.setDescription(caTripQuery.getDescription());
 		decomposedCatripQuery.setFirstName(caTripQuery.getFirstName());
@@ -73,11 +76,6 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		decomposedCatripQuery.setUserName(caTripQuery.getUserName());
 		decomposedCatripQuery.setInstance(caTripQuery.getInstance());
 		decomposedCatripQuery.setVersion(caTripQuery.getVersion());
-
-		// add the target object to the list of class names
-//		ClassDb classs = new ClassDb();
-//		classs.setName(dcql.getTargetObject().getName());
-//		decomposedCatripQuery.addClass(classs);
 		
 
 		if (DEBUG){
@@ -110,6 +108,42 @@ public class QueryServiceImpl extends QueryServiceImplBase {
 		// save the decomposed DCQL data
 		System.out.println("creating object with id " + decomposedCatripQuery.getId());
 		HibernateUtil.create(decomposedCatripQuery);
+	}
+
+	private void decomposeDcql(CatripQuery caTripQuery, QueryDb decomposedCatripQuery) {
+		Set<DcqlDb> dcqlCollection = new HashSet<DcqlDb>();
+		int startingPosition = 0;
+		int maxLength = 4000;
+		int totalDcqlLength = caTripQuery.getDcql().length();
+		int i = 1;
+		
+			
+		try {
+			while (totalDcqlLength >= startingPosition) {
+				System.out.println("totalDcqlLength (" + totalDcqlLength + ") > startingPosition " + startingPosition);
+				String substring;
+				if (maxLength + startingPosition > totalDcqlLength)
+					substring = caTripQuery.getDcql().substring(startingPosition, totalDcqlLength);
+				else
+					substring = caTripQuery.getDcql().substring(startingPosition, maxLength + startingPosition);
+				System.out.println("substring : " + substring);
+				DcqlDb obj = new DcqlDb();
+				obj.setDcql(substring);
+				obj.setSequence(i++);
+				dcqlCollection.add(obj);
+				startingPosition += maxLength;
+			}
+		} catch (RuntimeException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+//	System.out.println("last one");
+//	String substring = decomposedCatripQuery.getDcql().substring(startingPosition, maxLength + startingPosition);
+//	DcqlDb obj = new DcqlDb();
+//	obj.setDcql(substring);
+//	obj.setSequence(i++);
+//	dcqlCollection.add(obj);
+	decomposedCatripQuery.setDcqlCollection(dcqlCollection);
 	}
 
 	private QueryDb getDbObject(long id) {

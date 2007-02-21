@@ -11,7 +11,7 @@
         </id>
         <property name="name" column="NAME" type="string"/>
 		
-		<set name="attributeCollection" inverse="false" cascade="all" >
+		<set name="attributeCollection" inverse="false" cascade="all" lazy="false">
 			<key column="CLASS_ID"/>
 			<one-to-many class="gov.nih.nci.catrip.cagrid.catripquery.server.AttributeDb"/>
 		</set>
