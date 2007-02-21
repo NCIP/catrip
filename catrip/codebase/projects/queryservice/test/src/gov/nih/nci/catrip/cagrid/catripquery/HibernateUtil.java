@@ -48,12 +48,15 @@ public class HibernateUtil {
 			session.saveOrUpdate(obj);
 			tx.commit();
 			session.flush();
-			HibernateUtil.closeSession();
+			
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			if (tx != null)
 				tx.rollback();
 			throw e;
+		}
+		finally{
+			HibernateUtil.closeSession();
 		}
 	}
 	
