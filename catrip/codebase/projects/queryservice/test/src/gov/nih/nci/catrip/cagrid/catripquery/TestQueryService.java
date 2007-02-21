@@ -233,17 +233,6 @@ public class TestQueryService extends TestCase {
 			e1.printStackTrace();
 		} 
 		
-		if (totalDcqlLength - startingPosition > 0) {
-			System.out.println("last one");
-			System.out.println("totalDcqlLength (" + totalDcqlLength + ") > startingPosition " + startingPosition);
-			String substring = caTripQuery.getDcql().substring(startingPosition, totalDcqlLength);
-			DcqlDb obj = new DcqlDb();
-			obj.setDcql(substring);
-			obj.setSequence(i++);
-			dcqlCollection.add(obj);
-			System.out.println("substring : " + substring);
-		}
-		
 		queryDb.setDcqlCollection(dcqlCollection);
 		
 		try {

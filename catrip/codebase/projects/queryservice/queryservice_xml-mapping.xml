@@ -31,15 +31,18 @@
     <field name="instance" type="string">
       <bind-xml name="instance" node="attribute" />
     </field>
-    <field name="dcql" type="string">
+     <field name="dcql" type="string">
       <bind-xml name="dcql" node="attribute" />
     </field>
-    <field name="creationDate" type="date">
+  <field name="creationDate" type="date">
       <bind-xml name="creationDate" node="attribute" />
     </field>
     <field name="dateUpdated" type="date">
       <bind-xml name="dateUpdated" node="attribute" />
     </field>
+ 	  <field name="dcqlCollection" type="gov.nih.nci.catrip.cagrid.catripquery.server.DcqlDb" collection="set">
+         <bind-xml name="dcqlCollection"/>
+    </field>    
   </class>
 </mapping>
 
