@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Main class of the GUI project. Entry point for the GUI.
  *
- * @author Sanjeev Agarwal
+ * @author Sanjeev Agarwal . 
  */
 public class Main {
     
