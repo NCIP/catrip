@@ -372,16 +372,13 @@ public class CommandPanel extends CPanel {
     
     private void executeVisualGuiQuery(){
         try {
-            /** can dump the generated XML into a file also. */
-//            FileWriter fop = new FileWriter(new File("dcql.xml"), false);
-//            fop.write(DCQLGenerator.getDCQLText());
-//            fop.close();
+
             long startTime = System.currentTimeMillis();
             
             FederatedQueryEngine fqe = new FederatedQueryEngine();
             DCQLQuery dcqlQueryDocument = DCQLGenerator.getDCQLDocument();
             // sanjeev: if the dcqlQueryDocument is null throw the error Dialog.
-            // sanjeev: if it is not null that only fire the query with FQE to avoid Null pointer Exception.
+
             
             long dcqlGenerationTime = System.currentTimeMillis();
             
@@ -498,8 +495,9 @@ public class CommandPanel extends CPanel {
 //                System.out.println("Total time taken in Serialization and Reflection: "+  (serializationTime-resultIteratorTime) +" Milli Seconds" );
                 System.out.println("Total time taken in xml parsing : "+  (serializationTime-resultIteratorTime) +" Milli Seconds" );
                 
+                 // TODO -SB- add this to SwingUtilities.invokeLater method..
                 resultCountLbl.setText("   Total Row Count : "+classBeanList.size());
-                getMainFrame().getOutputPanel().setResults(classBeanList);
+                getMainFrame().getOutputPanel().setResults(classBeanList);  // TODO -SB- use the same mechanisl to load the display both in simple and advance gui..
                 
                 long resultDisplayTime = System.currentTimeMillis();
                 System.out.println("Total time taken in Result Display: "+  (resultDisplayTime-serializationTime) +" Milli Seconds" );
@@ -508,9 +506,13 @@ public class CommandPanel extends CPanel {
                 GUIConstants.resultAvailable = true;
 //                HTMLResultExporter.exportToHtml( getMainFrame().getOutputPanel().getOutputTable());
                 
+                
+                afterExecution();
             }
             
         } catch (Exception ex) {
+            afterExecution();
+            
             resultCountLbl.setText(" ");
             DisplayExceptions.display("Error.", "Error executing the Query.", ex);
 //            ex.printStackTrace();

@@ -37,7 +37,15 @@ public class OutputPanel extends CPanel {
     }
     
     public void setResults(ArrayList resultArray){
-        getOutputTable().setModel(getTableModel(resultArray));
+        Color[] rowColors = new Color[resultArray.size()];
+        for (int i = 0; i < rowColors.length; i++) {
+            rowColors[i]=Color.white; // rowColors[i]=new Color(235, 235, 235);
+            if (i%2 == 0){
+                rowColors[i]=new Color(235, 235, 235);
+            }
+        }
+        
+        ((ColoredJTable)getOutputTable()).setModel(getTableModel(resultArray), rowColors);
     }
     
     public void setMapResults(List resultArray, HashMap colNamesMap, String[] keys){

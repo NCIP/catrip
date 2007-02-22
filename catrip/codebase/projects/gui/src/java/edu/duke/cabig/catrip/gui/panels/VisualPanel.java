@@ -2,6 +2,7 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.query.DCQLGenerator;
 import edu.duke.cabig.catrip.gui.query.GroupDCQLGenerator;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
@@ -99,7 +100,11 @@ public class VisualPanel extends CPanel {
             }
             
 //            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));
-            getCQLDesignerPanel().setDcqlQueryText(GroupDCQLGenerator.getDCQLText(xmlOptions)); 
+            if (GUIConstants.simpleGui){ 
+                getCQLDesignerPanel().setDcqlQueryText(GroupDCQLGenerator.getDCQLText(xmlOptions)); 
+            }
+            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));  
+            
         }
     }//GEN-LAST:event_tabbedPaneStateChanged
     

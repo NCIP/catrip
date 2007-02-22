@@ -45,6 +45,7 @@ import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
@@ -88,16 +89,18 @@ public class QueryServiceUI extends JPanel {
     String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService"; // default
     
     
-	private JPanel outerPanel = null;
-	private JPanel resultsOuterPanel = null;
+    private JPanel outerPanel = null;
+    private JPanel resultsOuterPanel = null;
     /**
      * This method initializes
      *
      */
     public QueryServiceUI() {
         super();
-        initialize();
-        init();
+        if (GUIConstants.simpleGui){ 
+            initialize();
+            init();
+        }
     }
     
     
@@ -110,7 +113,7 @@ public class QueryServiceUI extends JPanel {
     }
     
     @SuppressWarnings("unchecked")
-	private void init(){
+    private void init(){
         
         ArrayList<GraphObject> objs = SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();
         
@@ -142,13 +145,13 @@ public class QueryServiceUI extends JPanel {
 //            getCdeCombo().addItem(attributeList.get(i));
 //        }
         
-        // get the service URL from the SystemProperties.. 
-         // TODO - change this to config file later on..
+        // get the service URL from the SystemProperties..
+        // TODO - change this to config file later on..
         
         String querySharingServiceUrl = System.getProperty("query.sharing.url"); // move this to gui config file..
         System.out.println("querySharingServiceUrl = " + querySharingServiceUrl);
         if (querySharingServiceUrl != null){
-        	System.out.println("querySharingServiceUrl != null");
+            System.out.println("querySharingServiceUrl != null");
             serviceURI = querySharingServiceUrl;
         }
         
@@ -211,10 +214,10 @@ public class QueryServiceUI extends JPanel {
                             classCollection.add(element.getSelectedClass());
                         }
                         queryData.setClassCollection(classCollection);
-                       // populateTable(QueryServiceClient.search(queryData));
+                        // populateTable(QueryServiceClient.search(queryData));
                         CQLQuery cqlQuery = CqlParser.parse(queryData);
                         populateTable(QueryServiceClient.search(cqlQuery, serviceURI));  // pass the url of the service as well..
-                   } catch (Exception qe) {
+                    } catch (Exception qe) {
                         qe.printStackTrace();
                     }
                 }
@@ -232,8 +235,8 @@ public class QueryServiceUI extends JPanel {
     }
     @SuppressWarnings("unchecked")
     private void populateTable(Vector collection) {
-    	String firstName = "";
-    	String lastName = "";
+        String firstName = "";
+        String lastName = "";
         tableModel = new DefaultTableModel();
         tableModel.setColumnCount(5);
         Vector<String> columnHeaders = new Vector<String>(5);
@@ -254,9 +257,9 @@ public class QueryServiceUI extends JPanel {
             // data types are used.
             rowData.add(e.getName()) ;
             if (e.getFirstName() != null)
-            	firstName = e.getFirstName();
+                firstName = e.getFirstName();
             if (e.getLastName() != null)
-            	lastName = e.getLastName();
+                lastName = e.getLastName();
             rowData.add(firstName + " " + lastName) ;
             rowData.add(e.getDescription()) ;
             rowData.add("View/Modify") ;
@@ -464,47 +467,47 @@ public class QueryServiceUI extends JPanel {
     }
     
     /**
-	 * This method initializes outerPanel	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getOuterPanel() {
-		if (outerPanel == null) {
-			outerPanel = new JPanel();
-			outerPanel.setLayout(null);
-			outerPanel.setBounds(new Rectangle(15, 165, 593, 211));
-			outerPanel.setBorder(BorderFactory.createTitledBorder(null, " Filter ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			outerPanel.add(getJScrollPane1(), null);
-			outerPanel.add(getBtnAddFilter(), null);
-		}
-		return outerPanel;
-	}
-
-
-	/**
-	 * This method initializes resultsOuterPanel	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
-	private JPanel getResultsOuterPanel() {
-		if (resultsOuterPanel == null) {
-			GridBagConstraints gridBagConstraints = new GridBagConstraints();
-			gridBagConstraints.fill = GridBagConstraints.BOTH;
-			gridBagConstraints.gridy = 0;
-			gridBagConstraints.weightx = 1.0;
-			gridBagConstraints.weighty = 1.0;
-			gridBagConstraints.gridx = 0;
-			resultsOuterPanel = new JPanel();
-			resultsOuterPanel.setLayout(new GridBagLayout());
-			resultsOuterPanel.setBounds(new Rectangle(615, 3, 633, 327));
-			resultsOuterPanel.setBorder(BorderFactory.createTitledBorder(null, " Query Results ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			resultsOuterPanel.add(getResultsScrollPane(), gridBagConstraints);
-		}
-		return resultsOuterPanel;
-	}
-
-
-	/**
+     * This method initializes outerPanel
+     *
+     * @return javax.swing.JPanel
+     */
+    private JPanel getOuterPanel() {
+        if (outerPanel == null) {
+            outerPanel = new JPanel();
+            outerPanel.setLayout(null);
+            outerPanel.setBounds(new Rectangle(15, 165, 593, 211));
+            outerPanel.setBorder(BorderFactory.createTitledBorder(null, " Filter ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+            outerPanel.add(getJScrollPane1(), null);
+            outerPanel.add(getBtnAddFilter(), null);
+        }
+        return outerPanel;
+    }
+    
+    
+    /**
+     * This method initializes resultsOuterPanel
+     *
+     * @return javax.swing.JPanel
+     */
+    private JPanel getResultsOuterPanel() {
+        if (resultsOuterPanel == null) {
+            GridBagConstraints gridBagConstraints = new GridBagConstraints();
+            gridBagConstraints.fill = GridBagConstraints.BOTH;
+            gridBagConstraints.gridy = 0;
+            gridBagConstraints.weightx = 1.0;
+            gridBagConstraints.weighty = 1.0;
+            gridBagConstraints.gridx = 0;
+            resultsOuterPanel = new JPanel();
+            resultsOuterPanel.setLayout(new GridBagLayout());
+            resultsOuterPanel.setBounds(new Rectangle(615, 3, 633, 327));
+            resultsOuterPanel.setBorder(BorderFactory.createTitledBorder(null, " Query Results ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+            resultsOuterPanel.add(getResultsScrollPane(), gridBagConstraints);
+        }
+        return resultsOuterPanel;
+    }
+    
+    
+    /**
      * @param args
      */
     public static void main(String[] args) {
@@ -524,8 +527,8 @@ public class QueryServiceUI extends JPanel {
 //        char[] chars = new char[buf.length()];
 //        buf.getChars(0, chars.length, chars, 0);
 //        CharArrayReader car = new CharArrayReader(chars);
-    	System.out.println("executeDcql " + dcql);
-        java.io.Reader reader = new java.io.StringReader(dcql);    
+        System.out.println("executeDcql " + dcql);
+        java.io.Reader reader = new java.io.StringReader(dcql);
         InputSource source = new InputSource(reader);//source.setEncoding();
         DCQLQuery dcqlObj = null;
         try {
@@ -544,29 +547,29 @@ public class QueryServiceUI extends JPanel {
     
     
     public void removeFilter(edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel panel){
-    	Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();  
-    	getFilterPanel().remove(panel);
-    	getFilterPanel().revalidate();
-    	getFilterPanel().repaint();
-    	if (filterCollection != null){
-    		// remove from array
-    		boolean wasRemoved = false;
-    		//System.out.println("before : " + classCollection.size());
-    		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-    			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-    			if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
-    				
-    				tempfilterCollection.add(element);
-    				
-    				}
-    			}
-       		for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
-       			QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-       			wasRemoved = filterCollection.remove(element);
-        		System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
-    		}
-    	}
-    	
+        Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();
+        getFilterPanel().remove(panel);
+        getFilterPanel().revalidate();
+        getFilterPanel().repaint();
+        if (filterCollection != null){
+            // remove from array
+            boolean wasRemoved = false;
+            //System.out.println("before : " + classCollection.size());
+            for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
+                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+                if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
+                    
+                    tempfilterCollection.add(element);
+                    
+                }
+            }
+            for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
+                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+                wasRemoved = filterCollection.remove(element);
+                System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
+            }
+        }
+        
     }
     
     
