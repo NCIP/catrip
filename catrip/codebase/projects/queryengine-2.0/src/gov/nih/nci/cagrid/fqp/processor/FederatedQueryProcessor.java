@@ -4,24 +4,18 @@ import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.cqlquery.LogicalOperator;
 import gov.nih.nci.cagrid.cqlquery.Predicate;
-import gov.nih.nci.cagrid.cqlquery.QueryModifier;
-import gov.nih.nci.cagrid.cqlresultset.CQLAttributeResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
-import gov.nih.nci.cagrid.cqlresultset.TargetAttribute;
 import gov.nih.nci.cagrid.dcql.Association;
+import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 import gov.nih.nci.cagrid.dcql.Group;
 import gov.nih.nci.cagrid.dcql.JoinCondition;
 import gov.nih.nci.cagrid.dcql.Object;
 import gov.nih.nci.cagrid.fqp.processor.exceptions.FederatedQueryProcessingException;
-import gov.nih.nci.cagrid.fqp.processor.exceptions.RemoteDataServiceException;
-
-import gov.nih.nci.cagrid.fqp.tools.CQLScanner;
+import gov.nih.nci.cagrid.fqp.tools.*;
 import gov.nih.nci.cagrid.fqp.tools.DataGroup;
 import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
-
-import java.io.FileInputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 
@@ -35,13 +29,7 @@ import java.util.Map;
 import org.apache.axis.message.MessageElement;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import org.globus.wsrf.encoding.DeserializationException;
-import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.globus.wsrf.encoding.ObjectSerializer;
-
-import org.xml.sax.InputSource;
-
 
 /**
  * FederatedQueryProcessor decomposes the DCQL into individual CQLs. Each
@@ -53,7 +41,7 @@ import org.xml.sax.InputSource;
 class FederatedQueryProcessor {
 	protected static Log LOG = LogFactory.getLog(FederatedQueryProcessor.class.getName());
         private Map objectsFromFA = new HashMap();
-
+        private DCQLQuery dcqlQuery = null;
         public Map getObjectsFromFA(){
             return objectsFromFA;
         }
@@ -70,12 +58,14 @@ class FederatedQueryProcessor {
 	 * @return
 	 * @throws FederatedQueryProcessingException
 	 */
-	public CQLQuery processDCQLQuery(Object targetObject) throws FederatedQueryProcessingException {
+	public CQLQuery processDCQLQuery(DCQLQuery dcqlQuery) throws FederatedQueryProcessingException {
 		CQLQuery cqlQuery = new CQLQuery();
+                this.dcqlQuery = dcqlQuery;
 	    
 		// initialize CQLObject .all the nested Queries would get resolved and
 		// attached to this CQL object .
-		gov.nih.nci.cagrid.cqlquery.Object cqlObject = new gov.nih.nci.cagrid.cqlquery.Object();
+		Object targetObject = dcqlQuery.getTargetObject();
+                gov.nih.nci.cagrid.cqlquery.Object cqlObject = new gov.nih.nci.cagrid.cqlquery.Object();
 		cqlObject.setName(targetObject.getName());
                 
                 cqlObject.setReturnAttributes(targetObject.getReturnAttributes());
@@ -277,7 +267,8 @@ class FederatedQueryProcessor {
                 List remoteAttributeValues = new ArrayList();
 	        
                 boolean populateMap = false;
-                if (CQLScanner.isAttributesRequested(cqlQuery)) {
+                if (DCQLParseHelper.checkReturnAttributes(cqlQuery)) {
+              //  if (CQLScanner.isAttributesRequested(cqlQuery)) {
                     populateMap = true;
                 }
                 
@@ -287,11 +278,11 @@ class FederatedQueryProcessor {
                     for (int i = 0; i < objectResult.length; i++) {
                             CQLObjectResult objResult = objectResult[i];
                             MessageElement msgsElement = objResult.get_any()[0];                            
-                       //     System.out.println(msgsElement);
+                           // System.out.println(msgsElement);
                             String cde = msgsElement.getAttributeValue(foreignAttribute).trim();
 
                             
-                            ResultsParser rParser = new ResultsParser(cqlQuery);
+                            ResultsParser rParser = new ResultsParser(cqlQuery,dcqlQuery);
                             if (populateMap) {
                                 //objectsFromFA.put(cde,rParser.getResultMap(msgsElement));
                                  List l = rParser.convertMessageElementToListOfMaps(msgsElement);
@@ -316,7 +307,10 @@ class FederatedQueryProcessor {
                             //}
                     }
                 }
-
+		gov.nih.nci.cagrid.cqlquery.Group criteriaGroup = buildGroup(foreignAssociation.getJoinCondition(),
+			remoteAttributeValues);
+		return criteriaGroup;
+                
 	    /* phase2 just returning attribute is not enough as we need 
 	     * associated objects also . Without the owner column associated objects doesnot exist
 	     * so getting full object insted on attribute , 
@@ -347,9 +341,7 @@ class FederatedQueryProcessor {
 			}
 		}
 */
-		gov.nih.nci.cagrid.cqlquery.Group criteriaGroup = buildGroup(foreignAssociation.getJoinCondition(),
-			remoteAttributeValues);
-		return criteriaGroup;
+
 	}
         
 
