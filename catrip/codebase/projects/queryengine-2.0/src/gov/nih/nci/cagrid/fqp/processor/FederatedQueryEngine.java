@@ -57,7 +57,7 @@ public class FederatedQueryEngine {
 		FederatedQueryProcessor processor = new FederatedQueryProcessor();
 		debugDCQLQuery("Beginning processing of DCQL", dcqlQuery);
 
-		CQLQuery cqlQuery = processor.processDCQLQuery(dcqlQuery.getTargetObject());
+		CQLQuery cqlQuery = processor.processDCQLQuery(dcqlQuery);
 
 		String[] targetServiceURLs = dcqlQuery.getTargetServiceURL();
 		DCQLQueryResultsCollection result = new DCQLQueryResultsCollection();
@@ -93,7 +93,7 @@ public class FederatedQueryEngine {
 		FederatedQueryProcessor processor = new FederatedQueryProcessor();
 		debugDCQLQuery("Beginning processing of DCQL", dcqlQuery);
 
-		CQLQuery cqlQuery = processor.processDCQLQuery(dcqlQuery.getTargetObject());
+		CQLQuery cqlQuery = processor.processDCQLQuery(dcqlQuery);
                 if (processor.getObjectsFromFA().size() >0 ) {
                     ExternalObjects eo = new ExternalObjects();
                     eo.setExternalObject(processor.getObjectsFromFA());                
