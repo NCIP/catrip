@@ -230,11 +230,10 @@ public class ResultsParser {
             while (resultListItr.hasNext()) {
                 DataGroup oDg = new DataGroup();
                 DataGroup dg = (DataGroup)resultListItr.next();
-                List list = dg.getDataRows();
-                Iterator listItr = list.iterator();
+                List dataGroupRows = dg.getDataRows();
                 
-                while (listItr.hasNext()) {
-                    Map map = (Map)listItr.next();
+                for (Object i:dataGroupRows) {
+                    Map map = (Map)i;
                     Object cedObj = map.get(cdeClassName+"-"+this.cdeMemberName);
                     String cdeValue = "";
                     if (cedObj != null) {
@@ -244,8 +243,8 @@ public class ResultsParser {
                     }
                     // get Array of Maps
                     Object[] objs = (Object[])foreignObjectCollection.get(cdeValue);
-                    for (int i=0;i<objs.length;i++) {
-                        Map ExternalAttributeMap = (Map)objs[i];                        
+                    for (int j=0;j<objs.length;j++) {
+                        Map ExternalAttributeMap = (Map)objs[j];                        
                         map.putAll(ExternalAttributeMap);
                         Map newMap = new HashMap();
                         newMap.putAll(map);
@@ -259,23 +258,22 @@ public class ResultsParser {
         return resultList;
         
     }
-    private List addEachChildToList(Element ele,List list,Map dataMap , List prevMaps){
-        List children1 = ele.getChildren();
-        Iterator itr1 = children1.iterator();
-        while(itr1.hasNext()){
-            Element ele1 = (Element)itr1.next();
-            Map eleMap1 = new HashMap();
-            eleMap1.putAll(processRow(ele1));
-            eleMap1.putAll(dataMap);
-            for (int i=0;i<prevMaps.size();i++){
-                Map m = (Map)prevMaps.get(i);                
-                eleMap1.putAll(m);
+    private List addEachChildToList(Element ele,List list,Map dataMap , List<Map> prevMaps){
+        List children = ele.getChildren();
+        for (Object i:children) {
+            Element element = (Element)i;
+            Map elementMap = new HashMap();
+            elementMap.putAll(processRow(element));
+            elementMap.putAll(dataMap);
+            for (Map j : prevMaps) {
+                Map map = j;                
+                elementMap.putAll(map);
             }
-            if (ele1.getChildren().size() == 0 ) {
-                list.add(eleMap1);
+            if (element.getChildren().size() == 0 ) {
+                list.add(elementMap);
             } else {
-                list = addEachChildToList(ele1,list,dataMap,prevMaps);
-                prevMaps.add(eleMap1);
+                list = addEachChildToList(element,list,dataMap,prevMaps);
+                prevMaps.add(elementMap);
             }
         }
         return list;
@@ -294,49 +292,47 @@ public class ResultsParser {
         Element currentRow = jdomDoc.getRootElement();
         Map dataMap = processRow(currentRow);
         Map tempMap = new HashMap();
-        List localList = new ArrayList();
-        List prevMaps = new ArrayList();
+        List<Map> localList = new ArrayList<Map>();
+        List<Map> prevMaps = new ArrayList<Map>();
         List children = currentRow.getChildren();
         if (children.size() == 0) {
             localList.add(dataMap);
         }
         
-        Iterator itr = children.iterator();
-        while(itr.hasNext()){
-            Element ele = (Element)itr.next();
+        for (Object i:children) {
+            Element element = (Element)i;
             //System.out.println(ele.getName());
-            if (ele.getName().equals(outboundRoleName)) {
-                tempMap.putAll(processRow(ele));
+            if (element.getName().equals(outboundRoleName)) {
+                tempMap.putAll(processRow(element));
             }
-            Map eleMap = new HashMap();
+            Map elementMap = new HashMap();
             //localList = addEachChildToList(ele,localList,dataMap,prevMaps);
             
-            eleMap.putAll(processRow(ele));
-            eleMap.putAll(dataMap);
-            prevMaps.add(eleMap);
-            if (ele.getChildren().size() == 0 ) {
-                localList.add(eleMap);
+            elementMap.putAll(processRow(element));
+            elementMap.putAll(dataMap);
+            prevMaps.add(elementMap);
+            if (element.getChildren().size() == 0 ) {
+                localList.add(elementMap);
             } else {
-                localList = addEachChildToList(ele,localList,dataMap,prevMaps);
+                localList = addEachChildToList(element,localList,dataMap,prevMaps);
             }
         }
         //List row = new ArrayList();
-        DataGroup dg = new DataGroup();
-        for (int i=0;i<localList.size();i++) {
-            Map m = (Map)localList.get(i);
-            m.putAll(tempMap);
-            dg.addDataRow(m);
-            
+        DataGroup dataGroup = new DataGroup();
+        for (Map i : localList) {
+            Map map = i;
+            map.putAll(tempMap);
+            dataGroup.addDataRow(map);            
         }
-        resultList.add(dg);
+        resultList.add(dataGroup);
         
     }
     private Map processRow(Element currentRow) {
         Map dataMap = new HashMap();
         List columns = currentRow.getAttributes();
         
-        for(int i=0;i<columns.size();i++) {
-            Attribute attr = (Attribute)columns.get(i);
+       for (Object i : columns) {
+            Attribute attr = (Attribute)i;
             if (attr.getName() != "id" ) {
                 if (currentRow.isRootElement()) {
                     String target = "";
@@ -356,19 +352,16 @@ public class ResultsParser {
     }
     
     private Map loadAssociatedObject(List list ,Map resultMap){
-        Iterator itr1 = list.iterator();
         Map newMap = new HashMap();
-        while (itr1.hasNext()) {
-            Element e = (Element)itr1.next();
-            String className = roleClassMap.get(e.getName()).toString();
+        for (Object i:list ) {
+            Element element = (Element)i;
+            String className = roleClassMap.get(element.getName()).toString();
             
-            List l2 = e.getAttributes();
-            // l2.remove(classAttr);
-            Iterator itr2 = l2.iterator();
-            while (itr2.hasNext()) {
-                Attribute a = (Attribute)itr2.next();
-                if (!a.getName().equals("id") && !a.getName().equals("type")) {
-                    resultMap.put(className+"-"+a.getName(),a.getValue());
+            List attribs = element.getAttributes();
+            for (Object j:attribs ) {
+                Attribute attr = (Attribute)j;
+                if (!attr.getName().equals("id") && !attr.getName().equals("type")) {
+                    resultMap.put(className+"-"+attr.getName(),attr.getValue());
                 }
                 //System.out.print(className+"-"+a.getName() + " : " + a.getValue() + " ");
             }
@@ -379,8 +372,8 @@ public class ResultsParser {
         return newMap;
     }
     private void processSubList(List list,Map resultMap){
-        for (int i= 0;i<list.size();i++) {
-            Element e = (Element)list.get(i);
+        for (Object i : list) {
+            Element e = (Element)i;
             List outlist = processChildren(e.getChildren(),resultMap);
             if (outlist == null) {
                 outlist = new ArrayList();
@@ -392,8 +385,8 @@ public class ResultsParser {
     private List processChildren(List list,Map resultMap){
         List lastGoodList = null;
         while (list.size() != 0 ) {
-            for (int i=0;i<list.size();i++) {
-                Element e = (Element)list.get(i);
+            for (Object i : list) {
+                Element e = (Element)i;
                 list = e.getChildren();
                 processSubList(list,resultMap);
             }
@@ -401,7 +394,7 @@ public class ResultsParser {
         return lastGoodList;
     }
     
-    
+}    
                  /*
                  // TODO -- MAKE IT RECURSIVE LOOP ...
                  if (ele.getChildren().size() == 0 ) {
@@ -451,4 +444,4 @@ public class ResultsParser {
                      }
                  }
                   */
-}
+

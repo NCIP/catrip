@@ -16,28 +16,28 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/** 
  *  CQL2HQL
  *  Translates a CQL query to Hibernate v3 HQL
- *
+ * 
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
- *
- * @created Jul 19, 2006
- * @version $Id: LocalCQL2HQL.java,v 1.5 2007-01-18 15:50:21 srakkala Exp $
+ * 
+ * @created Jul 19, 2006 
+ * @version $Id: LocalCQL2HQL.java,v 1.6 2007-02-25 16:52:31 srakkala Exp $ 
  */
 public class LocalCQL2HQL {
 	public static final String TARGET_ALIAS = "xxTargetAliasxx";
-
+	
         private boolean returnAttributes = false;
-
+        
 	private static Map predicateValues;
-
+        
         private String dialect;
-
+        
         public LocalCQL2HQL(String dialect){
             this.dialect = dialect;
         }
-
+        
         public boolean isReturnAttributes(){
             return returnAttributes;
         }
@@ -45,7 +45,7 @@ public class LocalCQL2HQL {
 	 * Translates a CQL query into an HQL string.  This translation process assumes the
 	 * CQL Query has passed validation.  Processing of invalid CQL may or may not procede
 	 * with undefined results.
-	 *
+	 * 
 	 * @param query
 	 * 		The CQL Query to translate into HQL
 	 * @param eliminateSubclasses
@@ -64,13 +64,14 @@ public class LocalCQL2HQL {
 		} else {
 			processTarget(hql, query.getTarget(), eliminateSubclasses);
 		}
+                //System.out.println(hql.toString());
 		return hql.toString();
 	}
-
-
+	
+	
 	/**
 	 * Processes a query with Query Modifications applied to it
-	 *
+	 * 
 	 * @param hql
 	 * 		The HQL built thus far
 	 * @param mods
@@ -86,11 +87,11 @@ public class LocalCQL2HQL {
 			processAttributeQuery(hql, mods, target);
 		}
 	}
-
-
+	
+	
 	/**
 	 * Processes a query which returns a count
-	 *
+	 * 
 	 * @param hql
 	 * 		The HQL query fragment
 	 * @param mods
@@ -112,7 +113,7 @@ public class LocalCQL2HQL {
 			// process the target object normally
 			processTarget(hql, target, false);
 			// only add a where statement if the target has no child restrictions
-			boolean addWhereStatement = target.getAssociation() == null
+			boolean addWhereStatement = target.getAssociation() == null 
 				&& target.getAttribute() == null && target.getGroup()== null;
 			if (addWhereStatement) {
 				hql.append(" where ");
@@ -140,11 +141,11 @@ public class LocalCQL2HQL {
 			processTarget(hql, target, false);
 		}
 	}
-
-
+	
+	
 	/**
 	 * Processes a query which returns attributes (distinct or otherwise)
-	 *
+	 * 
 	 * @param hql
 	 * 		The existing HQL fragment
 	 * @param mods
@@ -173,15 +174,15 @@ public class LocalCQL2HQL {
 		hql.append(" ");
 		processTarget(hql, target, false);
 	}
-
-
-	private void processTarget(StringBuilder hql, Object target, boolean eliminateSubclasses)
+	
+	
+	private void processTarget(StringBuilder hql, Object target, boolean eliminateSubclasses) 
 		throws QueryProcessingException {
-
+		
                 String objName = target.getName();
 		hql.append("From ").append(objName);
 		hql.append(" as ").append(TARGET_ALIAS);
-		if (eliminateSubclasses) {
+		if (eliminateSubclasses) {			
 			hql.append(" where ").append(TARGET_ALIAS).append(".class = ").append(objName);
 		}
 		if (target.getAttribute() != null) {
@@ -209,11 +210,11 @@ public class LocalCQL2HQL {
 			processGroup(hql, objName, "",target.getGroup(), true);
 		}
 	}
-
-
+	
+	
 	/**
 	 * Processes an Object of a CQL Query.
-	 *
+	 * 
 	 * @param hql
 	 * 		The existing HQL query fragment
 	 * @param obj
@@ -242,7 +243,7 @@ public class LocalCQL2HQL {
 			processGroup(hql, objName, parentRoleName, obj.getGroup(), false);
 		}
 	}
-
+	
     /**
     * Checks if the field name(propety) exists in the list of declared fields of given object (objectType)
     * Added by Srini Akkala , SemanticBits srini.akkala@semanticbits.com
@@ -260,19 +261,19 @@ public class LocalCQL2HQL {
                 found = true;
                 break;
             }
-
+            
         }
         return found;
-    }
-
+    }	
+    
        private Class getClassToCheck(String property , Class cls) {
-           boolean found = checkFiled(property,cls);
-
+           boolean found = checkFiled(property,cls); 
+           
            if(!found){
                Class superClass  = cls.getSuperclass();
                while (superClass != null) {
-                   found = checkFiled(property,superClass);
-
+                   found = checkFiled(property,superClass);  
+                   
                    if (found) {
                        cls = superClass;
                        break;
@@ -280,13 +281,13 @@ public class LocalCQL2HQL {
                        superClass = superClass.getSuperclass();
                    }
                }
-           }
-
+           }  
+           
            return cls;
        }
 	/**
 	 * Proceses an Attribute of a CQL Query.
-	 *
+	 * 
 	 * @param hql
 	 * 		The existing HQL query fragment
 	 * @param attrib
@@ -299,87 +300,87 @@ public class LocalCQL2HQL {
                 String property = attrib.getName();
                 Predicate predicate = attrib.getPredicate();
                 String predValue = convertPredicate(predicate);
-
+                
                 boolean isFieldBoolean = false;
-
+                
                 try {
                     cls = Class.forName(objName);
                 } catch (Exception e) {
                     throw new QueryProcessingException(e);
                 }
                 cls = getClassToCheck(property,cls);
-
+                
                 try {
                     field = cls.getDeclaredField(property);
                 } catch (NoSuchFieldException ex) {
                     throw new QueryProcessingException("No property " + property + " was found on type " + cls.getName());
-                }
-
+                } 
+            
                 Class propertyType = field.getType();
                 if (propertyType == Boolean.class) {
                         isFieldBoolean=true;
                 }
-
-
+                
+		
                 boolean oracle = false;
                 if (dialect.indexOf("Oracle") > 0){
                     oracle = true;
                 }
 
                 if (oracle) {
-                    if (predicate.equals(Predicate.EQUAL_TO) ||
-                        predicate.equals(Predicate.LIKE) ||
+                    if (predicate.equals(Predicate.EQUAL_TO) || 
+                        predicate.equals(Predicate.LIKE) || 
                         predicate.equals(Predicate.NOT_EQUAL_TO)) {
                             hql.append("lower(");
                                 if (useAlias) {
                                         hql.append(TARGET_ALIAS).append(".");
-                                }
+                                }        
                             hql.append(property);
-                            hql.append(")");
+                            hql.append(")");                    
                     } else {
                         if (useAlias) {
                                 hql.append(TARGET_ALIAS).append(".");
-                        }
-                        hql.append(property);
+                        } 
+                        hql.append(property); 
                     }
                 } else {
-                    hql.append(attrib.getName());
+                    hql.append(attrib.getName()); 
                 }
-
+                
 		// unary predicates
 		if (predicate.equals(Predicate.IS_NULL)) {
 			hql.append(" is null");
 		} else if (predicate.equals(Predicate.IS_NOT_NULL)) {
 			hql.append(" is not null");
-		} else if (isFieldBoolean) {
-                    hql = buildQryWithOutQuotes(predValue,attrib.getValue().replace("%",""),hql);
+		} else if (isFieldBoolean) {      
+                    hql = buildQryWithOutQuotes(predValue,attrib.getValue().replace("%",""),hql); 
                 } else if (oracle) {
-                    if (predicate.equals(Predicate.EQUAL_TO) ||
-                        predicate.equals(Predicate.LIKE) ||
+                    if (predicate.equals(Predicate.EQUAL_TO) || 
+                        predicate.equals(Predicate.LIKE) || 
                         predicate.equals(Predicate.NOT_EQUAL_TO)) {
                             hql = buildQryWithLower(predValue,attrib.getValue(),hql);
                    } else {
-                        hql = buildQryWithQuotes(predValue,attrib.getValue(),hql);
-                    }
+                        hql = buildQryWithQuotes(predValue,attrib.getValue(),hql);                      
+                    }                    
                 } else {
-                    hql = buildQryWithQuotes(predValue,attrib.getValue(),hql);
+                    hql = buildQryWithQuotes(predValue,attrib.getValue(),hql);                     
                 }
         }
-
+        
         private StringBuilder buildQryWithLower(String predValue,String attrValue, StringBuilder hql){
             return  hql.append(" ").append(predValue).append(" lower('").append(attrValue).append("')");
         }
 
         private StringBuilder buildQryWithQuotes(String predValue,String attrValue, StringBuilder hql){
-            return hql.append(" ").append(predValue).append(" '").append(attrValue).append("'");
+            return hql.append(" ").append(predValue).append(" '").append(attrValue).append("'");  
         }
-
+        
         private StringBuilder buildQryWithOutQuotes(String predValue,String attrValue, StringBuilder hql){
-            return hql.append(" ").append(predValue).append(" ").append(attrValue);
-        }
+            return hql.append(" ").append(predValue).append(" ").append(attrValue);  
+        }    
 	/**
 	 * Processes an Association of a CQL Query.
-	 *
+	 * 
 	 * @param hql
 	 * 		The existing HQL query fragment
 	 * @param parentName
@@ -393,36 +394,38 @@ public class LocalCQL2HQL {
 		String roleName = ClassAccessUtilities.getRoleName(parentName, assoc);
 		if (roleName == null) {
 			// still null?? no association to the object!
-			throw new QueryProcessingException("Association from type " + parentName +
+			throw new QueryProcessingException("Association from type " + parentName + 
 				" to type " + assoc.getName() + " does not exist.  Use only direct associations");
 		}
 		// make an HQL subquery for the object
 		if (useAlias) {
 			hql.append(TARGET_ALIAS).append(".");
 		}
-
+                
              //   if (!parentRoleName.equals("")) {
               //      roleName = parentRoleName+"."+roleName;
              //  }
 		hql.append(roleName).append(".id in (");
-
+                
 		processObject(hql, assoc, roleName);
 		hql.append(")");
-
+                
                 //
                 if (!returnAttributes) {
                     if (assoc.getReturnAttributes() != null ) {
-                       returnAttributes = true;
-                   }
+                        returnAttributes = true;
+                    }
                 }
-
-
+                
+//	    System.out.println(hql.toString());
+	    
+                
 	}
-
-
+	
+	
 	/**
 	 * Processes a Group of a CQL Query.
-	 *
+	 * 
 	 * @param hql
 	 * 		The existing HQL query fragment
 	 * @param parentName
@@ -433,10 +436,10 @@ public class LocalCQL2HQL {
 	 */
 	private void processGroup(StringBuilder hql, String parentName, String parentRoleName, Group group, boolean useAlias) throws QueryProcessingException {
 		String logic = convertLogicalOperator(group.getLogicRelation());
-
+		
 		// flag indicating a logic clause is needed before adding further query parts
 		boolean logicClauseNeeded = false;
-
+		
 		// attributes
 		if (group.getAttribute() != null) {
 			for (int i = 0; i < group.getAttribute().length; i++) {
@@ -447,7 +450,7 @@ public class LocalCQL2HQL {
 				}
 			}
 		}
-
+		
 		// associations
 		if (group.getAssociation() != null) {
 			if (logicClauseNeeded) {
@@ -461,7 +464,7 @@ public class LocalCQL2HQL {
 				}
 			}
 		}
-
+		
 		// subgroups
 		if (group.getGroup() != null) {
 			if (logicClauseNeeded) {
@@ -477,11 +480,11 @@ public class LocalCQL2HQL {
 			}
 		}
 	}
-
-
+	
+	
 	/**
 	 * Converts a predicate to its HQL string equivalent.
-	 *
+	 * 
 	 * @param p
 	 * @return
 	 */
@@ -498,11 +501,11 @@ public class LocalCQL2HQL {
 		}
 		return (String) predicateValues.get(p);
 	}
-
-
+	
+	
 	/**
 	 * Converts a logical operator to its HQL string equiavalent.
-	 *
+	 * 
 	 * @param op
 	 * @return
 	 */
@@ -514,11 +517,11 @@ public class LocalCQL2HQL {
 		}
 		throw new QueryProcessingException("Logical operator '" + op.getValue() + "' is not recognized.");
 	}
-
+        
         public static void main (String[] args) {
             String dialect = "org.hibernate.dialect.Oracle9Dialect";
-
+            
             System.out.println(dialect.indexOf("MySQL"));
-
+            
         }
 }

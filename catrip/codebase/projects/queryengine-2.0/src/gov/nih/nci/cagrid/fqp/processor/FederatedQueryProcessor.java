@@ -11,9 +11,10 @@ import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.cagrid.dcql.ForeignAssociation;
 import gov.nih.nci.cagrid.dcql.Group;
 import gov.nih.nci.cagrid.dcql.JoinCondition;
-import gov.nih.nci.cagrid.dcql.Object;
+
 import gov.nih.nci.cagrid.fqp.processor.exceptions.FederatedQueryProcessingException;
-import gov.nih.nci.cagrid.fqp.tools.*;
+import gov.nih.nci.cagrid.fqp.tools.DCQLParseHelper;
+
 import gov.nih.nci.cagrid.fqp.tools.DataGroup;
 import gov.nih.nci.cagrid.fqp.tools.ResultsParser;
 import java.io.StringWriter;
@@ -64,7 +65,7 @@ class FederatedQueryProcessor {
 	    
 		// initialize CQLObject .all the nested Queries would get resolved and
 		// attached to this CQL object .
-		Object targetObject = dcqlQuery.getTargetObject();
+		gov.nih.nci.cagrid.dcql.Object targetObject = dcqlQuery.getTargetObject();
                 gov.nih.nci.cagrid.cqlquery.Object cqlObject = new gov.nih.nci.cagrid.cqlquery.Object();
 		cqlObject.setName(targetObject.getName());
                 
@@ -103,7 +104,7 @@ class FederatedQueryProcessor {
 	 * @throws FederatedQueryProcessingException
 	 */
 
-	private void populateObjectFromDCQLObject(Object dcqlObject, gov.nih.nci.cagrid.cqlquery.Object cqlObject)
+	private void populateObjectFromDCQLObject(gov.nih.nci.cagrid.dcql.Object dcqlObject, gov.nih.nci.cagrid.cqlquery.Object cqlObject)
 		throws FederatedQueryProcessingException {
 		// check for any attribute (PASS THRU)
 		if (dcqlObject.getAttribute() != null) {
@@ -235,7 +236,7 @@ class FederatedQueryProcessor {
 	private gov.nih.nci.cagrid.cqlquery.Group processForeignAssociation(ForeignAssociation foreignAssociation)
 		throws FederatedQueryProcessingException {
 		// get Foreign Object
-		Object dcqlObject = foreignAssociation.getForeignObject();
+		gov.nih.nci.cagrid.dcql.Object dcqlObject = foreignAssociation.getForeignObject();
 
 		// make a new query with the CQL Object created by processing the
 		// foreign association
@@ -285,19 +286,19 @@ class FederatedQueryProcessor {
                             ResultsParser rParser = new ResultsParser(cqlQuery,dcqlQuery);
                             if (populateMap) {
                                 //objectsFromFA.put(cde,rParser.getResultMap(msgsElement));
-                                 List l = rParser.convertMessageElementToListOfMaps(msgsElement);
-                                 List l1 = new ArrayList();
-                                 for (int j=0;j<l.size();j++){
-                                     DataGroup dg = (DataGroup)l.get(j);
+                                 List msgElementToMapList = rParser.convertMessageElementToListOfMaps(msgsElement);
+                                 List flatDataGroups = new ArrayList();
+                                 for (Object j : msgElementToMapList ) {
+                                     DataGroup dg = (DataGroup)j;
                                      List list = dg.getDataRows();
                                      Iterator listItr = list.iterator();
                                      while (listItr.hasNext()) {
                                          Map resultMap = (Map)listItr.next();
-                                         l1.add(resultMap);
+                                         flatDataGroups.add(resultMap);
                                      }
                                  }
                                  
-                                 objectsFromFA.put(cde,l1);//rParser.convertMessageElementToListOfMaps(msgsElement));
+                                 objectsFromFA.put(cde,flatDataGroups);//rParser.convertMessageElementToListOfMaps(msgsElement));
                             }
 
                            remoteAttributeValues.add(cde);

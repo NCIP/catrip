@@ -3,16 +3,27 @@ package gov.nih.nci.cagrid.data.cql.tools;
 import gov.nih.nci.cagrid.cqlquery.Association;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 
+import gov.nih.nci.cagrid.cqlquery.Group;
+
 import java.io.CharArrayReader;
 import java.io.FileInputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 import org.globus.wsrf.encoding.ObjectDeserializer;
 import org.globus.wsrf.encoding.ObjectSerializer;
 
+import org.jdom.Content;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -26,118 +37,59 @@ import org.xml.sax.InputSource;
 public class CQLBuilder {
     CQLQuery cqlQuery = null;
     public CQLBuilder(CQLQuery cqlQuery) {
-            this.cqlQuery = cqlQuery;
-
+        this.cqlQuery = cqlQuery;
+        
     }
     
     private static final Namespace nameSpace = Namespace.getNamespace("ns1","http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery");
-  
-    private Element buildAssociationAndAttachPKAttribute(String name,String roleName){
+    
+    private Element buildAssociationAndAttachPKAttribute(Element parantElement,String roleName){
+        List contentList = new ArrayList();
+        
         Element assocEle = new Element("Association",nameSpace);
-        assocEle.setAttribute("name",name);
-        assocEle.setAttribute("roleName",roleName);      
+        assocEle.setAttribute("name",parantElement.getAttributeValue("name"));
+        assocEle.setAttribute("roleName",roleName);
         
         Element attrEle = new Element("Attribute",nameSpace);
         attrEle.setAttribute("name","id");
-        attrEle.setAttribute("value",name+"_ID");
-        attrEle.setAttribute("predicate","EQUAL_TO");  
-
-        assocEle.setContent(attrEle);
+        attrEle.setAttribute("value",parantElement.getAttributeValue("name")+"_ID");
+        attrEle.setAttribute("predicate","EQUAL_TO");
+        
+        contentList.add(attrEle);
+        
+        
+        //check if parent have any Attributes
+        Element existingAttrEle =  parantElement.getChild("Attribute",nameSpace);
+        
+        if (existingAttrEle != null ) {
+            
+            contentList.add(existingAttrEle.detach());
+        }
+        
+        // check for Group <mutiple attributes , just get attributes out of Group and attach
+        Element group =  parantElement.getChild("Group",nameSpace);
+        if (group != null ) {
+            List existingAttrEleList = group.getChildren("Attribute",nameSpace);
+            for (int i=0;i<existingAttrEleList.size();i++) {
+                Element tmp = (Element)existingAttrEleList.get(i);
+                contentList.add(tmp.detach());
+            }
+        }
+        
+        assocEle.setContent(contentList);
         return assocEle;
     }
     
-    private Element buildGroup(Element e1, Element e2){
-        Element groupEle = new Element("Group",nameSpace);
-        groupEle.setAttribute("logicRelation","AND");        
-        if (e1 != null) {
-            groupEle.addContent(e1.detach());
-        }        
-        if (e2 != null) {
-            groupEle.addContent(e2.detach());
-        }        
-        return groupEle;
-    }
-
-
     
-    private String getRoleName(String sourceObj,String targetObj) {
-        String roleName = "";
-        try {           
-            // check this class or super class 
-            Class sourceClass =Class.forName(sourceObj);
-           
-            boolean found = false;
-            Class targetClass = Class.forName(targetObj);
-            String[] classTokens = targetClass.getName().split("\\.");            
-            String className = classTokens[classTokens.length-1];            
-            roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
-            
-            sourceClass = ToolUtil.getClassToCheck(roleName,sourceClass);
-            found = ToolUtil.checkFiled(roleName,sourceClass);
-            if (!found) {
-                roleName = roleName+"Collection";
-                sourceClass = ToolUtil.getClassToCheck(roleName,sourceClass);
-                found = ToolUtil.checkFiled(roleName,sourceClass);
-            }
-            
-            if (!found) {
-                Class superClass  = targetClass.getSuperclass();
-                
-                while (superClass != null) {
-                    targetClass = superClass;
-                    classTokens = targetClass.getName().split("\\.");
-                    className = classTokens[classTokens.length-1];
-                    roleName = className.substring(0,1).toLowerCase()+className.substring(1,className.length());
-                    targetClass = ToolUtil.getClassToCheck(roleName,sourceClass);
-                    found = ToolUtil.checkFiled(roleName,targetClass);
-                    if (!found) {
-                        roleName = roleName+"Collection";
-                        targetClass = ToolUtil.getClassToCheck(roleName,sourceClass);
-                        found = ToolUtil.checkFiled(roleName,targetClass);
-                    }             
-                    if (found) {
-                        break;
-                    }
-                    superClass = superClass.getSuperclass();
-                    if (superClass.getName().equals("java.lang.Object")) {
-                        break;
-                    }
-                } 
-            }
-            
-            if (!found) {
-                roleName = "UNDEFINED - THROW ERROR ";
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return roleName;
-    }
-    public String buildCQL(int level) {
-        Document doc = buildDocument(cqlQuery);
-        Element root = new Element("CQLQuery",nameSpace);
-        Element targetEle = new Element("Target",nameSpace);        
-
-        Element te = doc.getRootElement().getChild("Target",nameSpace);
-        //first Associtaion
-         for (int i=1;i<=level;i++){
-             te = te.getChild("Association",nameSpace);
-         }
-        
-        String targetObjectName = te.getAttributeValue("name");
-        targetEle.setAttribute("name",targetObjectName);     
-        
-        //check for return Attributes ..
-        Element retAttr = te.getChild("ReturnAttributes",nameSpace);
+    private Element buildQueryModifiers(Element retAttr) {
         // Build Query modifiers
-         Element qm = new Element("QueryModifier",nameSpace);
-         qm.setAttribute("countOnly","false");
-
+        Element qm = new Element("QueryModifier",nameSpace);
+        qm.setAttribute("countOnly","false");
+        
         Element ra = new Element("AttributeNames",nameSpace);
         ra.setText("id");
         qm.addContent(ra);
-            
+        
         if (retAttr != null ) {
             List retAttrList = retAttr.getChildren("ReturnAttribute",nameSpace);
             
@@ -146,104 +98,316 @@ public class CQLBuilder {
                 ra = new Element("AttributeNames",nameSpace);
                 ra.setText(e.getText());
                 qm.addContent(ra);
-            }  
+            }
             
-        }   
-       
-        //get attributes 
-        List attrList = te.getChildren("Attribute",nameSpace);
-
-        for (int j=0; j < attrList.size();j++){
-            Element e = (Element)attrList.get(j);
-            targetEle.addContent(e.detach());
         }
         
-        Element e = te.getParentElement();        
-        Element e1 = buildAssociationAndAttachPKAttribute(e.getAttributeValue("name"),getRoleName(targetObjectName,e.getAttributeValue("name")));
-        // make all the parents as childs  
-        // this works only in bi directional scenario 
-        Element x = null;
-        int c=1;
-        while (e.getParentElement() != null) {
-            Element pe = e.getParentElement();
-            if (!pe.getName().equals("CQLQuery")) {
-                Element ae = buildAssociationAndAttachPKAttribute(pe.getAttributeValue("name"),getRoleName(e.getAttributeValue("name"),pe.getAttributeValue("name")));
-                if (c == 1 ) {
-                    x=ae;
-                } else {
-                    x = x.addContent(ae);
-                }               
-            }          
-            c++;
-            e=pe;
-        }
-        if (x != null) e1.addContent(x);
-        
-        Element e2 = te.getChild("Association",nameSpace);
-
-        if (e1 != null) {
-            targetEle.addContent(e1.detach());
-        }
-        
-        if (e2 != null) {
-            targetEle.addContent(e2.detach());
-        }
-        
-       targetEle=renderGroups(targetEle);
-       root.addContent(targetEle);
-       root.addContent(qm);
-       Document docOut = new Document(root);         
-       Writer s = new  StringWriter();  
-       
-       try{
-            XMLOutputter outputter =   new XMLOutputter(Format.getPrettyFormat());        
-            outputter.output(docOut , s);            
-       } catch (Exception ex){
-            ex.printStackTrace();
-       }         
-       return s.toString();        
+        return qm;
     }
-
-    private Element buildAssociationGroup(Element ele) {
-        List l = ele.getChildren("Association",nameSpace);
-        Element group = buildGroup((Element)l.get(0),(Element)l.get(1));
-        ele.addContent(group);
-        ele.removeChildren("Association",nameSpace);            
-        return ele;
-    }
-    private Element buildAssociationAttributeGroup(Element ele) {
-        Element group = buildGroup(ele.getChild("Association",nameSpace),ele.getChild("Attribute",nameSpace));
-        ele.addContent(group);
-        ele.removeChild("Association",nameSpace);
-        ele.removeChild("Attribute",nameSpace);         
-        return ele;
-    }    
-    
-    private Element renderGroups(Element targetEle){        
-        if (targetEle.getChildren("Association",nameSpace).size() >=2 ) {
-            buildAssociationGroup(targetEle);
+    public String buildCQL(int level) {
+        Document doc = buildDocument(cqlQuery);
+        
+        Element te = doc.getRootElement().getChild("Target",nameSpace);
+        //first Associtaion
+        for (int i=1;i<=level;i++){
+            Element groupEle = te.getChild("Group",nameSpace);
+            List assocEleList = te.getChildren("Association",nameSpace);
+            
+            if (groupEle != null ) {
+                //process Group
+                assocEleList = groupEle.getChildren("Association",nameSpace);
+            }
+            
+            for (int k=0;k<assocEleList.size();k++) {
+                te = (Element)assocEleList.get(k);
+            }
         }
-
-        if (targetEle.getChildren("Association",nameSpace).size() > 0 && targetEle.getChildren("Attribute",nameSpace).size() >0 ) {
-            buildAssociationAttributeGroup(targetEle);
-        }        
-        // chech for associations 
-        Element assoc = targetEle.getChild("Group",nameSpace).getChild("Association",nameSpace);
-        while (assoc != null) {
-            if (assoc.getChild("Association",nameSpace) != null && assoc.getChild("Attribute",nameSpace) !=null ) {
-                assoc = buildAssociationAttributeGroup(assoc);     
-            }  
-            if (assoc.getChild("Group",nameSpace) != null ) {
-                assoc = assoc.getChild("Group",nameSpace).getChild("Association",nameSpace);
+        
+        return buildNewTarget(te);
+    }
+    private Map subCQL= new HashMap();
+    public Map getSubCQL() {
+        Document doc = buildDocument(cqlQuery);
+        Element target = doc.getRootElement().getChild("Target",nameSpace);
+        
+        // check for Groups
+        if (target.getChild("Group",nameSpace) != null) {
+            //process Group
+            processGroup(target.getChild("Group",nameSpace));
+        }
+        //check for Assoc
+        if (target.getChild("Association",nameSpace) != null) {
+            //process Association
+            processAssociation(target.getChild("Association",nameSpace));
+        }
+        
+        return subCQL;
+    }
+    private List getParents(Element association){
+        List parentList = new ArrayList();
+        //System.out.println(association.getName() + "  " + association.getAttributeValue("name"));
+        Element p = association.getParentElement();
+        while ( !p.getName().equals("Target") ) {
+            if (p.getName().equals("Association")) {
+                Parent par = new Parent();
+                par.setParentAssocationClassName(p.getAttributeValue("name"));
+                par.setParentAssocationRoleName(p.getAttributeValue("roleName"));
+                parentList.add(par);
+                //System.out.println(p.getName()  + "  " + p.getAttributeValue("name"));
+                p=p.getParentElement();
             } else {
-                assoc = null;
-            }            
+                p = p.getParentElement();
+            }
+        }
+        return parentList;
+    }
+    
+    private void processAssociation(Element  assoctioanElement) {
+        //     System.out.println(assoctioanElement.getAttributeValue("name"));
+        SubCQL scqlVo = new SubCQL();
+        //if (parentAssoc != null) {
+        List parentList = getParents(assoctioanElement);
+        scqlVo.setParents(parentList);
+        //}
+        //   scqlVo.s
+        scqlVo.setCQLString(buildNewTarget(assoctioanElement));
+        
+        subCQL.put(assoctioanElement.getAttributeValue("name")+"-"+assoctioanElement.getAttributeValue("roleName"),scqlVo);
+        //subCQL.add(buildNewTarget(assoctioanElement));
+        
+        //  System.out.println(assoctioanElement.getChildren().size());
+        
+        if (assoctioanElement.getChild("Association",nameSpace) != null) {
+            processAssociation(assoctioanElement.getChild("Association",nameSpace));
+        }
+        if (assoctioanElement.getChild("Group",nameSpace) != null) {
+            processGroup(assoctioanElement.getChild("Group",nameSpace));
+        }
+    }
+    
+    private void processGroup(Element  groupElement) {
+        
+        if (groupElement.getChildren("Group",nameSpace) != null) {
+            List groupList = groupElement.getChildren("Group",nameSpace);
+            for (int i=0;i<groupList.size();i++) {
+                Object tempObj = groupList.get(i);
+                Element tempEle = (Element)tempObj;
+                processGroup(tempEle);
+            }
+        }
+        
+        
+        if (groupElement.getChildren("Association",nameSpace) != null) {
+            List assocList = groupElement.getChildren("Association",nameSpace);
+            //  Iterator assocItr = assocList.iterator();
+            for (int i=0;i<assocList.size();i++) {
+                Object tempObj = assocList.get(i);
+                Element tempEle = (Element)tempObj;
+                processAssociation(tempEle);
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
+    public String buildCQL(int level,int assocIndex) {
+        Document doc = buildDocument(cqlQuery);
+        
+        Element te = doc.getRootElement().getChild("Target",nameSpace);
+        //first Associtaion
+        for (int i=1;i<=level;i++){
+            Element groupEle = te.getChild("Group",nameSpace);
+            List assocEleList = te.getChildren("Association",nameSpace);
+            
+            if (groupEle != null ) {
+                //process Group
+                assocEleList = groupEle.getChildren("Association",nameSpace);
+            }
+            
+            for (int k=0;k<assocEleList.size();k++) {
+                te = (Element)assocEleList.get(assocIndex);
+            }
+        }
+        
+        return buildNewTarget(te);
+    }
+    public String buildNewTarget(Element assocEle) {
+        String targetObjectName = assocEle.getAttributeValue("name");
+        if (targetObjectName.equals("edu.duke.cabig.tumorregistry.domain.DiseaseExtent")) {
+            int a=1;
+        }
+        Element targetEle = new Element("Target",nameSpace);
+        targetEle.setAttribute("name",targetObjectName);
+        
+        //check for return Attributes ..
+        Element retAttr = assocEle.getChild("ReturnAttributes",nameSpace);
+        // Build Query modifiers
+        Element QryModifiers = buildQueryModifiers(retAttr);
+        
+        
+        //get attribute
+        Element attrEle = assocEle.getChild("Attribute",nameSpace);
+        if (attrEle != null) {
+            targetEle.addContent(attrEle.detach());
+        }
+        //what if multiple attributes , which means group
+        Element grpEle = assocEle.getChild("Group",nameSpace);
+        if (grpEle != null) {
+            Element tempGrp = (Element)grpEle.clone();
+            targetEle.addContent(tempGrp.detach());
+        }
+        
+        //Now parents become Child. Get Parents
+        Element parEle = assocEle.getParentElement();
+        //Parent can be Group or Association .
+        //If Group get the higher Association.
+        if (parEle.getName().endsWith("Group")) {
+            parEle = parEle.getParentElement();
+        }
+        String parentClassName = parEle.getAttributeValue("name");
+        String roleName = ToolUtil.getRoleName(targetObjectName,parentClassName);
+        
+        Element newAssocEle = buildAssociationAndAttachPKAttribute(parEle,roleName);
+        // make all the parents as childs
+        // this works only in bi directional scenario
+        Element ele = null;
+        int c=1;
+        while (parEle.getParentElement() != null) {
+            //    System.out.println(parEle.getAttributeValue("name"));
+            Element grandParentEle = parEle.getParentElement();
+            //    System.out.println(grandParentEle.getAttributeValue("name"));
+            //if Parent is Group get higher Associaton
+            if (grandParentEle.getName().endsWith("Group")) {
+                grandParentEle = grandParentEle.getParentElement();
+            }
+            
+            if (!grandParentEle.getName().equals("CQLQuery")) {
+                Element newAssocEle1 = buildAssociationAndAttachPKAttribute(grandParentEle,ToolUtil.getRoleName(parEle.getAttributeValue("name"),grandParentEle.getAttributeValue("name")));
+                // keep adding to higherlevels
+                if (c == 1 ) {
+                    ele=newAssocEle1;
+                } else {
+                    Element ex = ele;
+                    int cl = 0;
+                    while (ex.getChild("Association",nameSpace) != null) {
+                        ex = ex.getChild("Association",nameSpace);
+                        //        System.out.println(ex.getAttributeValue("name"));
+                        cl++;
+                    }
+                    if (cl == 0 ) {
+                        ele = ele.addContent(newAssocEle1);
+                    } else {
+                        ex.addContent(newAssocEle1);
+                    }
+                }
+            }
+            c++;
+            parEle=grandParentEle;
+            
+        }
+        if (ele != null) newAssocEle.addContent(ele);
+        
+        //check for any childs
+        Element childAssocEle = assocEle.getChild("Association",nameSpace);
+        
+        if (newAssocEle != null) {
+            Element tempAssoc = (Element)newAssocEle.clone();
+            targetEle.addContent(tempAssoc.detach());
+        }
+        
+        if (childAssocEle != null) {
+            Element tempAssoc = (Element)childAssocEle.clone();
+            targetEle.addContent(tempAssoc.detach());
+        }
+        Element root = new Element("CQLQuery",nameSpace);
+        targetEle=renderGroups(targetEle);
+        return buildDocString(root,targetEle,QryModifiers);
+    }
+    private Element renderGroups(Element targetEle){
+        //   System.out.println(targetEle.getChildren().size());
+        List children = targetEle.getChildren();
+        if (children.size() > 1 ) {
+            Element groupEle = buildGroup(children);
+            targetEle.removeContent();
+            targetEle.addContent(groupEle);
+        }
+        Element assoc = targetEle.getChild("Association",nameSpace);
+        
+        if (assoc == null) {
+            Element group = targetEle.getChild("Group",nameSpace);
+            if (group !=null ) {
+                assoc = group.getChild("Association",nameSpace);
+            }
+        }
+        
+        while (assoc != null) {
+            assoc =   renderAssocGroups(assoc);
         }
         return targetEle;
     }
-
-    private Document buildDocument(CQLQuery query) {        
-        Writer w = new StringWriter();        
+    
+    private Element renderAssocGroups(Element assoc) {
+        List assocChildren = assoc.getChildren();
+        if (assocChildren.size() > 1 ) {
+            Element groupEle = buildGroup(assocChildren);
+            assoc.removeContent();
+            assoc.addContent(groupEle);
+        }
+        if (assoc.getChild("Group",nameSpace) != null ) {
+            Element group = assoc.getChild("Group",nameSpace);
+            List assocList = group.getChildren("Association",nameSpace);
+            for (int i=0;i<assocList.size();i++) {
+                assoc = (Element)assocList.get(i);
+                assoc = renderAssocGroups(assoc);
+            }
+            //assoc = assoc.getChild("Group",nameSpace).getChild("Association",nameSpace);
+        } else {
+            assoc = null;
+        }
+        return assoc;
+    }
+    
+    private String buildDocString(Element root,Element targetEle,Element queryModifier) {
+        root.addContent(targetEle);
+        root.addContent(queryModifier);
+        Document docOut = new Document(root);
+        Writer s = new  StringWriter();
+        
+        try{
+            XMLOutputter outputter =   new XMLOutputter(Format.getPrettyFormat());
+            outputter.output(docOut , s);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return s.toString();
+    }
+    
+    
+    
+    private Element buildGroup(List elements) {
+        Element groupEle = new Element("Group",nameSpace);
+        groupEle.setAttribute("logicRelation","AND");
+        
+        List localList = new ArrayList(elements);
+        
+        List newContent = new ArrayList();
+        for (int i=0; i < localList.size();i++){
+            Element newEle = (Element)localList.get(i);
+            newContent.add(newEle.detach());
+        }
+        
+        groupEle.setContent(newContent);
+        
+        return groupEle;
+        
+    }
+    
+    
+    private Document buildDocument(CQLQuery query) {
+        Writer w = new StringWriter();
         Document doc = null;
         try {
             javax.xml.namespace.QName q= new javax.xml.namespace.QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
@@ -252,51 +416,75 @@ public class CQLBuilder {
             
             String qry = w.toString();
             StringBuffer buf = new StringBuffer(qry);
-
+            
             char[] chars = new char[buf.length()];
             buf.getChars(0, chars.length, chars, 0);
             
             CharArrayReader car = new CharArrayReader(chars);
-            InputSource source = new InputSource(car);            
-            doc = builder.build(source);    
+            InputSource source = new InputSource(car);
+            doc = builder.build(source);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         return doc;
+    }
+    private void execute(Association childAssoc) {
+        int c = 1;
+        while (childAssoc != null ) {
+            // System.out.println(buildCQL(c));
+            
+            Group g = childAssoc.getGroup();
+            if (g != null ) {
+                childAssoc = g.getAssociation(0);
+            } else {
+                childAssoc = childAssoc.getAssociation();
+            }
+            
+            
+            c++;
+        }
     }
     public static void main(String[] args) {
         String queryDir = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\";
-        String qryFile = "demo-cae1.xml";
+        String qryFile = "tr.xml";
         java.lang.Object obj = null;
-
+        
         try {
             obj = ObjectDeserializer.deserialize(new InputSource(new FileInputStream(queryDir+qryFile)),CQLQuery.class);
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
-        CQLBuilder cb = new CQLBuilder((CQLQuery)obj);   
-        System.out.println("Executing ....");
-        Long t1 = System.currentTimeMillis(); 
+        CQLBuilder cb = new CQLBuilder((CQLQuery)obj);
+        //  System.out.println("Executing ....");
+        Long t1 = System.currentTimeMillis();
         
-        gov.nih.nci.cagrid.cqlquery.Object target = cb.cqlQuery.getTarget();
+        Map cqlMap = cb.getSubCQL();
+        Set assocKeys = cqlMap.keySet();
+        Iterator keyItr = assocKeys.iterator();
         
-        int c = 1;
-        
-        Association childAssoc = target.getAssociation();
-        
-        while (childAssoc != null ) {            
-            System.out.println(cb.buildCQL(c));
-            childAssoc = childAssoc.getAssociation();
-            c++;
+        while (keyItr.hasNext()){
+            String key = keyItr.next().toString();
+            Object obj1 = cqlMap.get(key);
+            
+            SubCQL sc = (SubCQL)obj1;       
+            
+            System.out.println(key);
+            List parents = sc.getParents();
+            System.out.println("PARENT : " );
+            for (int i=0;i<parents.size();i++){
+                Parent p = (Parent)parents.get(i);
+                System.out.println(p.getParentAssocationClassName() + "-" + p.getParentAssocationRoleName());
+            }
+            System.out.println(" - - - - " );
+            //System.out.println("PARENT : " +sc.getParentAssocationClassName() + "-" +sc.getParentRoleName());
+            System.out.println(sc.getCQLString());
         }
         
-        Long t2 = System.currentTimeMillis(); 
-        System.out.println("Time Taken " + (t2-t1)/1000);    
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Time Taken " + (t2-t1)/1000);
         
     }
     
-
 }
-    
-    
+

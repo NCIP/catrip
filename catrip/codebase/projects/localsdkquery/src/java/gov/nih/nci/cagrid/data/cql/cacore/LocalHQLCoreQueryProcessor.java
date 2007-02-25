@@ -1,30 +1,40 @@
 package gov.nih.nci.cagrid.data.cql.cacore;
 
-import edu.duke.catrip.cae.domain.general.Participant;
+
 
 import gov.nih.nci.cagrid.common.Utils;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+import gov.nih.nci.cagrid.cqlquery.ExternalObjects;
 import gov.nih.nci.cagrid.cqlquery.QueryModifier;
 import gov.nih.nci.cagrid.cqlquery.ReturnAttributes;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.data.MalformedQueryException;
 import gov.nih.nci.cagrid.data.QueryProcessingException;
 import gov.nih.nci.cagrid.data.cql.LazyCQLQueryProcessor;
+
+
 import gov.nih.nci.cagrid.data.cql.tools.ResultObjectAssembler;
-import gov.nih.nci.cagrid.data.cql.tools.ResultObjectAssemblerNlevels;
+
 import gov.nih.nci.cagrid.data.cql.tools.ToolUtil;
 import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsUtil;
 import gov.nih.nci.common.util.HQLCriteria;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.InputStream;
+
+import java.io.StringWriter;
+
+import java.io.Writer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,7 +45,11 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import org.globus.wsrf.encoding.ObjectSerializer;
+
 import org.hibernate.Session;
+
+import org.hibernate.proxy.HibernateProxyHelper;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -49,9 +63,10 @@ import org.jdom.xpath.XPath;
  *  Implementation of CQL against a caCORE data source using HQL queries
  *
  * @author <A HREF="MAILTO:ervin@bmi.osu.edu">David W. Ervin</A>
+ * @author Srini Akkala
  *
  * @created May 2, 2006
- * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.7 2007-01-18 15:50:21 srakkala Exp $
+ * @version $Id: LocalHQLCoreQueryProcessor.java,v 1.8 2007-02-25 16:54:27 srakkala Exp $
  */
 public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 	public static final String DEFAULT_LOCALHOST_CACORE_URL = "http://localhost:8080/cacore31/server/HTTPServer";
@@ -79,10 +94,7 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
             } else {
                     return null;
             }
-            
-       // wsddContents = Utils.inputStreamToStringBuffer(new FileInputStream("C:\\CVS-CodeBase\\catrip\\codebase\\projects\\CAEDataServiceV2\\server-config.wsdd"));
-       // System.out.println(wsddContents.toString());
-       // return new ByteArrayInputStream(wsddContents.toString().getBytes());
+
     }
 
         private CQLQueryResults processResults(CQLQuery cqlQuery,List coreResultsList) 
@@ -143,7 +155,7 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
         Document doc = null;
         try {
             SAXBuilder builder = new SAXBuilder();
-            //InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
+           // InputStream stream = ClassLoader.getSystemResourceAsStream(filename);
             InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
             doc = builder.build(stream);
         } catch (Exception e) {
@@ -154,6 +166,18 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 
 	private CQLQueryResults queryCoreService(CQLQuery query)
 		throws MalformedQueryException, QueryProcessingException {
+	   /*
+            try {
+	        Writer w = new FileWriter(new File("C:\\tmp\\qry.txt"));        
+                javax.xml.namespace.QName q= new javax.xml.namespace.QName("http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery","CQLQuery");
+	        ObjectSerializer.serialize(w,query,q);        
+	        
+	        //String qry = w.toString();
+                //System.out.println(qry);
+	    } catch (Exception e) {
+	            LOG.error("Problem in debug printout of CQL query:" + e.getMessage(), e);
+	    }              
+             */   
                 CQLQueryResults results = null;
 		String hibernateCfgFile = getConfiguredParameters().getProperty(HIBERNATE_CONFIG_FILE);
 		//String hibernateCfgFile ="hibernate.cfg.xml";
@@ -199,7 +223,8 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
                      }
                      qm.setAttributeNames(returnAttrbsWithId);
                      query.setQueryModifier(qm);
-                 }      
+                 }  
+
                  
 	    // see if the target has subclasses
 	    //boolean subclassesDetected = false;
@@ -220,49 +245,69 @@ public class LocalHQLCoreQueryProcessor extends LazyCQLQueryProcessor {
 
 		// process the query
 		HQLCriteria hqlCriteria = new HQLCriteria(hql);
-	    
-                int  qrysFired = 0;
+                Session session = null;
 
 		try {
-		    //Session session = HibernateUtil.currentSession();
-		    Session session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
-                    targetObjects = session.createQuery(hqlCriteria.getHqlString()).setCacheable(true).list();
-		    // BUILD OBJECTS 
-		    if (returnAttrbs != null ) {
+                    
+                    session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
+                    System.out.println( hqlCriteria.getHqlString());
+                    System.out.println( "Executing main target Object Query .." ) ; 
+                    targetObjects = session.createQuery(hqlCriteria.getHqlString()).list();
+                } catch (Exception ex) {
+                        ex.printStackTrace();
+                        throw new QueryProcessingException("Error executing HQL : " + hqlCriteria.getHqlString() + ex.getMessage(), ex);
+                }  finally {
+                    HibernateUtil.closeSession();
+                }
+                
+                // BUILD OBJECTS 
+                try {
+                    if (returnAttrbs != null ) {
                         targetObjects = ToolUtil.buildObjcets(targetObjects,returnAttrbs,query.getTarget().getName());
                     } else {
                         Set uniqueTargetObjects = new HashSet(targetObjects);
                         targetObjects = new ArrayList(uniqueTargetObjects);
-                    }
+    
+                   }                    
+                } catch (Exception ex) {
+                        ex.printStackTrace();
+                        throw new QueryProcessingException("Error building target Objects  : " + ex.getMessage(), ex);
+                }
+                query.setQueryModifier(null);
                     
-                    qrysFired++;
-                    HibernateUtil.closeSession();
-		    query.setQueryModifier(null);
 
                 
                 // IF CLIENT ASKS FOR ANT ATTRIBUTES FROM OTHER OBJECTS ...
                 // BUILD NECESSARY CQLS ..
 
                 if (cql2hql.isReturnAttributes()) {
-                    session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
-                        ResultObjectAssemblerNlevels assembler = new ResultObjectAssemblerNlevels(session,dialect);
-                     //   ResultObjectAssembler assembler = new ResultObjectAssembler(session,dialect);
+                    try {
+                        System.out.println( "Building session for sub queries .. " ) ; 
+                        session = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
+              //          ResultObjectAssembler assembler = new ResultObjectAssembler(session,dialect);
+                        ResultObjectAssembler assembler = new ResultObjectAssembler(hibernateCfgFile,dataBaseURL,schemaOrUser,dialect);
                         targetObjects = assembler.buildResultObjects(targetObjects,query);
+                        HibernateUtil.closeSession();
                         System.out.println("# OF QRYS FIRED -- " + assembler.getQryCount()+1);
-                    HibernateUtil.closeSession();
-
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                         throw new QueryProcessingException("Error building return attributes : " + ex.getMessage(), ex);
+                    }  finally {
+                        
+                        HibernateUtil.closeSession();
+                    }
                 }
+
 		    
+                    ExternalObjects eo = query.getExternalObjects();
+                    if (eo != null) {
+                        targetObjects.add(eo);
+                    }
                     results = processResults(query,targetObjects);
                     
                     
                     
-		} catch (Exception ex) {
-                        ex.printStackTrace();
-			throw new QueryProcessingException("Error invoking core query method: " + ex.getMessage(), ex);
-		}  finally {
-                    HibernateUtil.closeSession();
-                }
+
                 
 		// possibly post-process the query
 		if (subclassesDetected && query.getQueryModifier() != null) {

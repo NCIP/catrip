@@ -1,133 +1,270 @@
 package gov.nih.nci.cagrid.data.cql.tools;
 
+import gov.nih.nci.cagrid.cqlquery.Association;
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+import gov.nih.nci.cagrid.cqlquery.Group;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 
 
 public class ResultObjectAssembler extends AbstractResultObjectAssembler {
-
-
+    
+    private Map subCqlMap = new HashMap();
+    String targetObjectClassIDToReplace = "";
+    String targetObjectIDToReplace = "";
+    
     public ResultObjectAssembler(Session session,String dialect) {
         super(session,dialect);
+        
     }
-
-
-
-    public List buildResultObjects (List targetObjects,CQLQuery query) {
-         
-        //Document doc = buildDocument(query);
-        CQLBuilder builder = new CQLBuilder(query);
-       // builder.setDocument(doc);
-
-        gov.nih.nci.cagrid.cqlquery.Object targetObjectEle = query.getTarget();
-
-        //Element targetObjectEle = doc.getRootElement().getChild("Target");
-        //String targetObjectClassName = targetObjectEle.getAttributeValue("name");
-         String targetObjectClassName = targetObjectEle.getName();
-
-        int c = 1;
-        String cqlStr="";
-        Class objectClass = null;
+    public ResultObjectAssembler(String hibernateCfgFile,String dataBaseURL,String schemaOrUser,String dialect) {
+        super(hibernateCfgFile,dataBaseURL,schemaOrUser,dialect);
+        
+    }
+    private List execute(String cqlStr,String[] returnAttrbs,String assocClassName) throws Exception {
+        List results = executeQry(cqlStr);
+        List convertedObjectList = null;
+        
         try {
-            objectClass = Class.forName(targetObjectClassName);
-        } catch (Exception e ){
-           e.printStackTrace();
+            convertedObjectList = ToolUtil.buildObjcets(results,returnAttrbs,assocClassName);
+        } catch (Exception e) {
+            throw new Exception("Error building Objects for  " + assocClassName, e);
         }
-        String prevRole = "";
-        String prevClassName = "";
-        while (targetObjectEle.getAssociation() != null ) {
-         String  roleName = targetObjectEle.getAssociation().getRoleName();
-         String assocClassName = targetObjectEle.getAssociation().getName();
-            String returnAttrbs[] = null;
-           if(targetObjectEle.getAssociation().getReturnAttributes() != null ) {
-               returnAttrbs = targetObjectEle.getAssociation().getReturnAttributes().getReturnAttribute();
-         }
-
-            try {
-
-                cqlStr = builder.buildCQL(c);
-                //System.out.println(cqlStr);
-                //cqlStr=cqlStr.replaceAll("<CQLQuery","<CQLQuery xmlns=\"http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery\"");
-
-                for (int i=0;i<targetObjects.size();i++){
-                    Object targetObject = targetObjects.get(i);
-                    String id = ToolUtil.performGetOperation(objectClass,targetObject,"id").toString();
-                    String cqlStr1 = cqlStr.replaceAll(targetObjectClassName+"_ID",id);
-                  //  System.out.println(cqlStr1);
-                    if (c >1 ) {
-                        Object outputObj= ToolUtil.performGetOperation(objectClass,targetObject,prevRole);
-                        Class assocClass = Class.forName(prevClassName);
-
-                        if(prevRole.endsWith("Collection")) {
-                            Collection coll = (Collection)outputObj;
-                            Iterator itr= coll.iterator();
-                            while (itr.hasNext()){
-                                 Object obj1 = itr.next();
-                                 String id1 = ToolUtil.performGetOperation(assocClass,obj1,"id").toString();
-                                 String cqlStr2 = cqlStr1.replaceAll(prevClassName+"_ID",id1);
-                                // System.out.println(cqlStr2);
-                                 List assocObjectsX = executeQry(cqlStr2);
-                                 List convertedObjectList = ToolUtil.buildObjcets(assocObjectsX,returnAttrbs,assocClassName);
-                                 ToolUtil.performSetOperation(roleName,assocClass,obj1,convertedObjectList);
-                            }
-                        } else {
-                             String id1 = ToolUtil.performGetOperation(assocClass,outputObj,"id").toString();
-                             cqlStr1 = cqlStr1.replaceAll(prevClassName+"_ID",id1);
-                            // System.out.println(cqlStr1);
-
-                             List assocObjectsX = this.executeQry(cqlStr1);
-                             List convertedObjectList = ToolUtil.buildObjcets(assocObjectsX,returnAttrbs,assocClassName);
-                             ToolUtil.performSetOperation(roleName,assocClass,outputObj,convertedObjectList);
-                        }
-                    } else {
-                        //System.out.println(cqlStr1);
-                        List assocObjects = this.executeQry(cqlStr1);
-                        List convertedObjectList = ToolUtil.buildObjcets(assocObjects,returnAttrbs,assocClassName);
-                        ToolUtil.performSetOperation(roleName,objectClass,targetObject,convertedObjectList);
+        
+        return convertedObjectList;
+    }
+    
+    public List buildResultObjects(List targetObjects,CQLQuery query) throws Exception{
+        gov.nih.nci.cagrid.cqlquery.Object target = query.getTarget();
+        CQLBuilder builder = new CQLBuilder(query);
+        subCqlMap = builder.getSubCQL();
+        
+        for (int i=0;i<targetObjects.size();i++){
+            Object targetObject = targetObjects.get(i);
+            Class targetObjectClass = Class.forName(target.getName());
+            
+            // check for Groups
+            if (target.getGroup() != null) {
+                //process Group
+                processGroup(target.getGroup(),targetObject,targetObjectClass);
+            }
+            //check for Assoc
+            if (target.getAssociation() != null) {
+                //process Association
+                processAssociation(target.getAssociation(),targetObject,targetObjectClass);
+            }
+        }
+        //tempDisplay(targetObjects);
+        return targetObjects;
+    }
+    
+    private void processGroup(Group  group,
+            Object targetObject,
+            Class targetObjectClass) throws Exception{
+        
+        if (group.getGroup() != null) {
+            Group[]  groupList = group.getGroup();
+            for (int i=0;i<groupList.length;i++) {
+                processGroup(groupList[i],targetObject,targetObjectClass);
+            }
+        }
+        
+        
+        if (group.getAssociation() != null) {
+            Association[]  assocList = group.getAssociation();
+            for (int i=0;i<assocList.length;i++) {
+                processAssociation(assocList[i],targetObject,targetObjectClass);
+            }
+            
+        }
+        
+    }
+    
+    private void processAssociation(Association  association,
+            Object targetObjectValue,
+            Class targetObjectClass) throws Exception {
+        String assocClassName = association.getName();
+        String roleName = association.getRoleName();
+        
+        String[] returnAttrbs = null;
+        if(association.getReturnAttributes() != null ) {
+            returnAttrbs = association.getReturnAttributes().getReturnAttribute();
+        }
+        String key = assocClassName+"-"+roleName;
+        Object obj = subCqlMap.get(key);
+        if (obj == null) {
+            throw new Exception("CQL NOT FOUND FOR THIS ASSOCIATION " + key);
+        }
+        SubCQL subCQL = (SubCQL)obj;
+        
+        String cqlStr = subCQL.getCQLString();
+        
+        //if parent is target , only one ID to replace
+        //which is target Class ID
+        List parents = subCQL.getParents();
+        String targetObjectPK = ToolUtil.performGetOperation(targetObjectClass,targetObjectValue,"id").toString();
+        cqlStr = cqlStr.replaceAll(targetObjectClass.getName()+"_ID",targetObjectPK);
+        
+        if (parents.size() == 0) {
+            // System.out.println(cqlStr);
+            targetObjectClassIDToReplace = targetObjectClass.getName()+"_ID";
+            List results = execute(cqlStr,returnAttrbs,assocClassName);
+            //SET RESULTS TO TARGET OBJECT ...
+            ToolUtil.performSetOperation(roleName,targetObjectClass,targetObjectValue,results);
+        } else {
+            //If not Target Object, the executed CQL results needs to set to its Parent class
+            //recursively back to Target Object.
+            int index = parents.size()-1;
+            Parent parent = (Parent)parents.get(index);
+            processParentTree(parent,targetObjectClass,targetObjectValue,cqlStr,assocClassName,roleName,returnAttrbs,parents,index);
+        }
+        if (association.getAssociation() != null ) {
+            processAssociation(association.getAssociation(),targetObjectValue,targetObjectClass);
+        }
+        if (association.getGroup() != null) {
+            processGroup(association.getGroup(),targetObjectValue,targetObjectClass);
+        }
+        
+    }
+    
+    private void processParentTree(Parent parent ,Class targetObjectClass, Object targetObjectValue, String cqlStr,
+            String assocClassName, String roleName, String[] returnAttrbs,List parents, int index ) throws Exception {
+        
+        String parentClassName = parent.getParentAssocationClassName();
+        String parentRoleName = parent.getParentAssocationRoleName();
+        // System.out.println(cqlStr);
+        //Get Parent Object based on role name
+        Object parentObject = ToolUtil.performGetOperation(targetObjectClass,targetObjectValue,parentRoleName);
+        Class parentClass = Class.forName(parentClassName);
+        
+        if(parentRoleName.endsWith("Collection")) {
+            //process collection
+            processCollectionAssociation(parentObject,parentClass,cqlStr,assocClassName, roleName, returnAttrbs, parents, index);
+        } else {
+            processNonCollectionAssociation(parentObject,parentClass,cqlStr,assocClassName, roleName, returnAttrbs, parents, index);
+        }
+        //return index;
+    }
+    
+    private void processNonCollectionAssociation(Object parentObject,Class parentClass, String cqlStr,
+            String assocClassName, String roleName, String[] returnAttrbs , List parents, int index) throws Exception {
+        String id = ToolUtil.performGetOperation(parentClass,parentObject,"id").toString();
+        String _cqlStr = cqlStr.replaceAll(parentClass.getName() +"_ID",id);
+        
+        
+        
+        index--;
+        //System.out.println(_cqlStr);
+        if (index >= 0) {
+            Parent grandParent = (Parent)parents.get(index);
+            processParentTree(grandParent,parentClass,parentObject,_cqlStr,assocClassName, roleName, returnAttrbs, parents, index);
+            index++;
+        } else {
+            //                  System.out.println(_cqlStr);
+            List results = execute(_cqlStr,returnAttrbs,assocClassName);
+            ToolUtil.performSetOperation(roleName,parentClass,parentObject,results);
+        }
+        //return index;
+    }
+    
+    private void processCollectionAssociation(Object parentObject,Class parentClass, String cqlStr,
+            String assocClassName, String roleName, String[] returnAttrbs , List parents, int index) throws Exception {
+        Collection parentObjectCollection = (Collection)parentObject;
+        Iterator parentObjectItr= parentObjectCollection.iterator();
+        
+        while (parentObjectItr.hasNext()){
+            Object indivParentObjectValue = parentObjectItr.next();
+            // get Grand Parent if any ...
+            String id = ToolUtil.performGetOperation(parentClass,indivParentObjectValue,"id").toString();
+            String _cqlStr = cqlStr.replaceAll(parentClass.getName()+"_ID",id);
+            
+            index--;
+            //  System.out.println(_cqlStr);
+            if (index >= 0) {
+                Parent grandParent = (Parent)parents.get(index);
+                processParentTree(grandParent,parentClass,indivParentObjectValue,_cqlStr,assocClassName, roleName, returnAttrbs, parents, index);
+                index++;
+            } else {
+                //                  System.out.println(_cqlStr);
+                List results = execute(_cqlStr,returnAttrbs,assocClassName);
+                ToolUtil.performSetOperation(roleName,parentClass,indivParentObjectValue,results);
+            }
+        }
+        //return index;
+    }
+    
+    // ------------ F I N I S H
+    
+    // test method to see the results when debugging ...
+    private void tempDisplay(List targetObjects) {
+        
+        
+    /*
+            for (int i=0;i<targetObjects.size();i++){
+     
+                ParticipantMedicalIdentifier pmi = (ParticipantMedicalIdentifier)targetObjects.get(i);
+     
+                Participant p = pmi.getParticipant();
+     
+                System.out.print (p.getFirstName() + "   " + p.getLastName());
+     
+                Collection l = p.getAnnotationEventParametersCollection();
+                Iterator ltr = l.iterator();
+                while (ltr.hasNext()) {
+                    AnnotationEventParameters aep = (AnnotationEventParameters)ltr.next();
+                    Collection l1 = aep.getAnnotationSetCollection();
+                    Iterator ltr1 = l1.iterator();
+                    while (ltr1.hasNext()) {
+                        NottinghamHistopathologicGrade n = (NottinghamHistopathologicGrade)ltr1.next();
+                        System.out.print ("   " + n.getTotalScore() + " " + n.getMitoticCount() + " ");
                     }
                 }
-            } catch (Exception e ){
-               e.printStackTrace();
-            } 
-            prevRole = roleName;
-            prevClassName = assocClassName;
-            targetObjectEle = targetObjectEle.getAssociation();
-            c++;
-        }
-
-
-  /*
+                System.out.println("   ");
+     
+            }
+     
+     
         for (int i=0;i<targetObjects.size();i++){
-            Participant p = (Participant)targetObjects.get(i);
-            
-            System.out.print (p.getFirstName() + "   " + p.getLastName());
-            
-            Collection l = p.getAnnotationEventParametersCollection();
+            edu.duke.cabig.tumorregistry.domain.Patient p = (edu.duke.cabig.tumorregistry.domain.Patient)targetObjects.get(i);
+     
+            System.out.print (p.getId());
+     
+            Collection l = p.getDiagnosisCollection();
             Iterator ltr = l.iterator();
             while (ltr.hasNext()) {
-                AnnotationEventParameters aep = (AnnotationEventParameters)ltr.next();
-                Collection l1 = aep.getAnnotationSetCollection();
+                edu.duke.cabig.tumorregistry.domain.Diagnosis aep = (edu.duke.cabig.tumorregistry.domain.Diagnosis)ltr.next();
+                System.out.print ("  DIAG DATE : " + aep.getInitialDiagnosisDate() + " ");
+                Collection l1 = aep.getActivityCollection();
                 Iterator ltr1 = l1.iterator();
                 while (ltr1.hasNext()) {
-                    NottinghamHistopathologicGrade n = (NottinghamHistopathologicGrade)ltr1.next();
-                    System.out.print ("   " + n.getTotalScore() + " " + n.getMitoticCount() + " ");
+                    edu.duke.cabig.tumorregistry.domain.Activity n = (edu.duke.cabig.tumorregistry.domain.Activity)ltr1.next();
+                    System.out.print (" ACT STRT DATE :  " + n.getStartDate() + " ");
                 }
+     
+                Collection l2 = aep.getFollowUpCollection();
+                Iterator ltr2 = l2.iterator();
+                while (ltr2.hasNext()) {
+                    edu.duke.cabig.tumorregistry.domain.Followup n = (edu.duke.cabig.tumorregistry.domain.Followup)ltr2.next();
+                    edu.duke.cabig.tumorregistry.domain.Recurrence r = n.getRecurrence();
+                    System.out.print (" TYPE :  " + r.getType() + " ");
+                }
+     
             }
             System.out.println("   ");
-            
-        }
-*/
-   
-     return targetObjects;
+            }
+     */
+        
+        
     }
-
-
-    public static void main (String[] args ) {
+    
+    
+    public static void main(String[] args ) {
         String queryDir = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\";
         String qryFile = "demo-cae.xml";
     }
@@ -135,5 +272,5 @@ public class ResultObjectAssembler extends AbstractResultObjectAssembler {
 
 
     /*
-
-    */
+     
+     */

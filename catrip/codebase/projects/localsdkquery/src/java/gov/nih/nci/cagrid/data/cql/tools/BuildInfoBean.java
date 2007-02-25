@@ -6,6 +6,9 @@ public class BuildInfoBean {
     
     private String roleName = "";
     private String associationClassName = "";
+    private Object targetObject;
+    private Class targetObjectClass;
+    private String id;
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
@@ -21,5 +24,29 @@ public class BuildInfoBean {
 
     public String getAssociationClassName() {
         return associationClassName;
+    }
+
+    public void setTargetObject(Object targetObject) {
+        this.targetObject = targetObject;
+    }
+
+    public Object getTargetObject() {
+        return targetObject;
+    }
+
+    public void setTargetObjectClass(Class targetObjectClass) {
+        this.targetObjectClass = targetObjectClass;
+    }
+
+    public Class getTargetObjectClass() {
+        return targetObjectClass;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }
