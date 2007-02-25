@@ -2,6 +2,7 @@ package gov.nih.nci.cagrid.data.cql.tools;
 
 import gov.nih.nci.cagrid.cqlquery.CQLQuery;
 import gov.nih.nci.cagrid.data.QueryProcessingException;
+import gov.nih.nci.cagrid.data.cql.cacore.HibernateUtil;
 import gov.nih.nci.cagrid.data.cql.cacore.LocalCQL2HQL;
 import gov.nih.nci.common.util.HQLCriteria;
 
@@ -20,23 +21,21 @@ public class AbstractResultObjectAssembler {
     private String dialect  ="";
     private Session session;
     private int qryCount = 0;
-    /*
-     private String hibernateCfgFile ="";
-     private String dataBaseURL  ="";
-     private String schemaOrUser  ="";
-
-     public ResultObjectAssemblerNlevels(String hibernateCfgFile,String dataBaseURL,String schemaOrUser) {
-         this.hibernateCfgFile=hibernateCfgFile;
-         this.dataBaseURL=dataBaseURL;
-         this.schemaOrUser=schemaOrUser;
-         
-     }
-     */    
+    private String hibernateCfgFile;
+    private String dataBaseURL;
+    private String schemaOrUser;
+  
     public AbstractResultObjectAssembler(Session session,String dialect) {
         this.session=session;
         this.dialect=dialect;
     }
-    
+    public AbstractResultObjectAssembler(String hibernateCfgFile,String dataBaseURL,
+                                            String schemaOrUser,String dialect) {
+        this.dataBaseURL=dataBaseURL;
+        this.schemaOrUser=schemaOrUser;
+        this.hibernateCfgFile=hibernateCfgFile;
+        this.dialect=dialect;
+    }    
     public int getQryCount() {
         return qryCount;
     }
@@ -56,6 +55,7 @@ public class AbstractResultObjectAssembler {
         try {
             obj = ObjectDeserializer.deserialize(source,CQLQuery.class);
         } catch (DeserializationException e) {
+            System.out.println("ERROR deserializing CQLQuery .. ");
             e.printStackTrace();
         }
         return ((CQLQuery)obj);
@@ -73,10 +73,11 @@ public class AbstractResultObjectAssembler {
             e.printStackTrace();
         }
         HQLCriteria hqlCriteria = new HQLCriteria(hql);
-
+        Session sessionx = HibernateUtil.currentSession(hibernateCfgFile,dataBaseURL,schemaOrUser);
         //session.flush();
-        List resultObjects = session.createQuery(hqlCriteria.getHqlString()).list();
+        List resultObjects = sessionx.createQuery(hqlCriteria.getHqlString()).list();
         
+        HibernateUtil.closeSession();
         return resultObjects;
     }
 }
