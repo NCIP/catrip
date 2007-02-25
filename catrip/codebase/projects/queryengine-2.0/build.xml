@@ -61,7 +61,7 @@
 
     <!-- We want detailed error messages -->
     <property name="java.debug" value="on" />
-	<property name="java.source" value="1.4" />
+	<property name="java.source" value="1.5" />
 
     <!--import deployment ant files -->
     <import file="build-deploy.xml" />
