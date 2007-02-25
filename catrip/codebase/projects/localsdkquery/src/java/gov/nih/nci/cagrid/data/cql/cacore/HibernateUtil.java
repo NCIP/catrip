@@ -3,6 +3,7 @@ package gov.nih.nci.cagrid.data.cql.cacore;
 
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 import org.hibernate.HibernateException;
@@ -14,7 +15,7 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 
     public static final ThreadLocal session = new ThreadLocal();
-    public static Map sessionFactoryMap = new HashMap();
+    public static Hashtable sessionFactoryMap = new Hashtable();
 
     
     public static SessionFactory getSessionFactory(String hibernateConfig,String dataBaseURL, String schemaOrUser) {
