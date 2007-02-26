@@ -102,9 +102,9 @@ public class VisualPanel extends CPanel {
 //            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));
             if (GUIConstants.simpleGui){ 
                 getCQLDesignerPanel().setDcqlQueryText(GroupDCQLGenerator.getDCQLText(xmlOptions)); 
-            }
+            } else {
             getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));  
-            
+            }
         }
     }//GEN-LAST:event_tabbedPaneStateChanged
     

@@ -86,17 +86,6 @@ public class SimpleSearchPanel extends CPanel {
         SimpleGuiRegistry.setSimpleGuiChanged(true);
         
         
-//        if (filterRows < 5){
-//            filterRows--;
-//            JPanel jp =  new JPanel();
-//            jp.setPreferredSize(new java.awt.Dimension(200, 40));
-//            filterPanel.add(jp);
-//        } else {
-//            filterRows--;
-//            GridLayout gl = (GridLayout)filterPanel.getLayout();
-//            gl.setRows(filterRows);
-//        }
-        
         // check if this filter is in group or not.. if it is in a group.. then reArrange.. otherwise normal old call...
         if (fp.getParentGroup() == null){
             filterPanel.remove(fp);

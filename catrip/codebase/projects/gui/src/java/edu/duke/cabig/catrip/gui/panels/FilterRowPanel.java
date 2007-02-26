@@ -92,6 +92,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         if (currentFilter == null){
            currentFilter =  (CDEComboboxBean)getCdeCombo().getSelectedItem();
         }
+        
         return currentFilter;
     } 
     
@@ -182,8 +183,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
-        if (getCurrentFilter() != null){ // sanjeev: that means a filter was already set on this row...
-            getCurrentFilter().remove();
+        if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
+            currentFilter.remove();
         }
         
         SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
@@ -203,11 +204,12 @@ public class FilterRowPanel extends javax.swing.JPanel {
     
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
 // sanjeev: clean filter from previous CDEComboboxBean and reset predicate and value fields..
-        if (getCurrentFilter() != null){ // sanjeev: that means a filter was already set on this row...
-            getCurrentFilter().remove();
+        if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
+            currentFilter.remove();
             getPredicateCombo().setSelectedIndex(0);
             getValueBox().setText("");
             
+            // this will not be necessary as you are cloning the target object bean now..
             SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
             HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
             
@@ -216,8 +218,11 @@ public class FilterRowPanel extends javax.swing.JPanel {
                 ClassBean cBean = (ClassBean) itt.next();
                 cBean.removeAllUniqueAssociations();
             }
+            // this will not be necessary as you are cloning the target object bean now..
+            currentFilter = null;
             SimpleGuiRegistry.setSimpleGuiChanged(true);
         }
+        
         
     }//GEN-LAST:event_cdeComboItemStateChanged
     

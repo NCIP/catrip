@@ -200,7 +200,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
                 fg.add(filterPanel);
             }
             SimpleGuiRegistry.addFilterSubGroup(fg);
-            // TODO - sanju AND/OR
+
             parentFilterPanel.reArrangeFilters();
             
             // signal the simple gui changed..

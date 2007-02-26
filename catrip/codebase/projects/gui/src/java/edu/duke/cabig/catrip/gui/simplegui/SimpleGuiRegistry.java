@@ -164,8 +164,8 @@ public class SimpleGuiRegistry {
         setReturnedAttributeListAvailable(false);
         setClassNameReturnedAttributeMap(new HashMap());
         setNumReturnedAttribute(0);
-                
-                
+        
+        
     }
     
     public static List getCurrentXMLObjectList() {
@@ -248,7 +248,7 @@ public class SimpleGuiRegistry {
     public static void addToBeanMap(ClassBean cBean) {
         String fullClassName = cBean.getFullyQualifiedName();
         boolean alreadyThere = beanMap.containsKey(fullClassName);
-        if (!alreadyThere){
+        if (!alreadyThere){  // check if you have to overwrite the previous instance
             beanMap.put(fullClassName, cBean);
         }
         
@@ -330,17 +330,17 @@ public class SimpleGuiRegistry {
         
         
         
-          // by default return all the attributes of Target Object..
+        // by default return all the attributes of Target Object..
 //        if (!hasGroupsDefined()){
-            ClassBean targetBean = getTargetGraphObject().getClassBean();
-            ArrayList atts = targetBean.getAttributes();
-            for (int i = 0; i < atts.size(); i++) {
-                String cName = targetBean.getFullyQualifiedName();
-                String attName = ((AttributeBean)atts.get(i)).getAttributeName();
-                addToClassNameReturnedAttributeMap(cName, attName);
-            }
-
-            
+        ClassBean targetBean = getTargetGraphObject().getClassBean();
+        ArrayList atts = targetBean.getAttributes();
+        for (int i = 0; i < atts.size(); i++) {
+            String cName = targetBean.getFullyQualifiedName();
+            String attName = ((AttributeBean)atts.get(i)).getAttributeName();
+            addToClassNameReturnedAttributeMap(cName, attName);
+        }
+        
+        
         
         
         
@@ -349,7 +349,7 @@ public class SimpleGuiRegistry {
         
     }
     
-    
+    // setting the filter as association for the target object.
     private static void addFilterPanelObjectToDCQL(FilterRowPanel pnl){
         GraphObject filterObject = pnl.getGraphObject();
         
@@ -422,7 +422,7 @@ public class SimpleGuiRegistry {
                 // add it to our tmp tree..
 //                tmpBeanLeft = tmpBeanRight; // here you get the left beans from that list.. not this object..
                 tmpBeanLeft = ((ClassBean)getBeanMap().get(tmpBeanRight.getFullyQualifiedName()));  // left object always point to that same list..
-
+                
             }
             // at the end of iterating the whole association loop..  tmpBeanLeft is the right most bean which contains the filter value..
             
@@ -968,7 +968,7 @@ public class SimpleGuiRegistry {
                     GraphObject innerObj = objs.get(j);
 //                    if (!thisObjIsTarget){
 //                        tmpObj.setLocalStatus(false);
-//                        innerObj.setLocalStatus(false); 
+//                        innerObj.setLocalStatus(false);
 //                    }
                     if (innerObj.isDisplayable()){
                         allSimpleGuiXMLObjectList.add(innerObj);

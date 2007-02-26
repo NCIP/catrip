@@ -107,6 +107,8 @@ public class GroupDCQLGenerator {
         
         
         if (hasGroups){
+            
+            // <editor-fold> 
             int groupNums = outerObjectBean.getGroups().size();
             
             // if there are more than 1 groups that means than check for
@@ -203,7 +205,7 @@ public class GroupDCQLGenerator {
                 
                 
             }
-            
+            // </editor-fold> 
         }
         
         

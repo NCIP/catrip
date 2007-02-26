@@ -221,7 +221,7 @@ public class ClassBean{
         cBean.setServiceName(getServiceName());
         cBean.setServiceUrl(getServiceUrl());
         cBean.setVersion(getVersion());
-        cBean.setAssociationRoleNameMap(this.getAssociationRoleNameMap());
+        cBean.removeAllUniqueAssociations();//setAssociationRoleNameMap(this.getAssociationRoleNameMap());
         cBean.needImpl(needImpl());
         
         return cBean;
@@ -408,6 +408,7 @@ public class ClassBean{
     public void removeAllUniqueAssociations(){
         hasAssociations = false;
         associations = new ArrayList(20);
+        associationRoleNameMap = new HashMap(20);
         foreignAssociations = new ArrayList(10);
         hasForeignAssociations = false;
     }
