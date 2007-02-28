@@ -445,7 +445,12 @@ public class SimpleSearchPanel extends CPanel {
         // Reset the returnedAttributes entries in the SimpleGuiRegistry..
         SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
         SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
-        returnAttributeBtn.setEnabled(true); // enable this button if that was disable.. there may be chances that in new filter set there is no groups..
+        if (!selectedTargetObject.isSupportReturnAttributes()) {
+            returnAttributeBtn.setEnabled(false);
+        } else {
+            returnAttributeBtn.setEnabled(true);
+        }
+        //returnAttributeBtn.setEnabled(true); // enable this button if that was disable.. there may be chances that in new filter set there is no groups..
         SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
     }//GEN-LAST:event_clearFilterBtnActionPerformed
     
