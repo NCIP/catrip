@@ -333,6 +333,7 @@ public class SimpleSearchPanel extends CPanel {
         
         
         
+        
 //        GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
 //        Service serv = SimpleGuiRegistry.getServiceFromMap(selectedTargetObject.getServiceName().trim());
 //        getTargetServiceCombo().addItem(serv);
@@ -357,6 +358,14 @@ public class SimpleSearchPanel extends CPanel {
             SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
         }
         //-------------------------
+        
+        if (!selectedTargetObject.isSupportReturnAttributes()) {
+            returnAttributeBtn.setEnabled(false);
+        } else {
+            returnAttributeBtn.setEnabled(true);
+        }
+        
+        
         
         
     }//GEN-LAST:event_targetObjComboActionPerformed
@@ -386,6 +395,13 @@ public class SimpleSearchPanel extends CPanel {
             SimpleGuiRegistry.setTargetGraphObject(selectedTargetObject);
             
             SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
+            
+            if (!selectedTargetObject.isSupportReturnAttributes()) {
+                returnAttributeBtn.setEnabled(false);
+            } else {
+                returnAttributeBtn.setEnabled(true);
+            }
+            
         }
         
         

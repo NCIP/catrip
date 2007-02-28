@@ -16,6 +16,7 @@ public class GraphObject {
     private String refID;
     private boolean displayable;
     private boolean selectable = false;
+    private boolean supportReturnAttributes = false;
     
     private ClassBean classBean;
     private boolean localObject = true;
@@ -144,6 +145,13 @@ public class GraphObject {
         return selectable;
     }
     
+    public boolean isSupportReturnAttributes() {
+        return supportReturnAttributes;
+    }
+    
+    public void setSupportReturnAttributes(boolean supportReturnAttributes) {
+        this.supportReturnAttributes = supportReturnAttributes;
+    }
     public GraphObject clone(){
         
         GraphObject clone = new GraphObject();
@@ -164,6 +172,8 @@ public class GraphObject {
         
         return clone;
     }
+    
+    
     
     
     

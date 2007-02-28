@@ -152,6 +152,7 @@ public class ObjectGraphProcessor {
                 targetObj.setForeignAssociationOutboundPath(foreignAssociationOutboundPath);
                 targetObj.setServiceName(serviceName1);
                 targetObj.setSelectable(Boolean.parseBoolean(objectElement.getAttributeValue("selectable")));
+                targetObj.setSupportReturnAttributes(Boolean.parseBoolean(objectElement.getAttributeValue("supportReturnAttributes")));
 
                 GraphObjects.add(targetObj);
 

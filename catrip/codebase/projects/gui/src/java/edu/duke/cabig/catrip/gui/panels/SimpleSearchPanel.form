@@ -66,7 +66,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="targetServiceCombo" min="-2" pref="227" max="-2" attributes="0"/>
-                  <EmptySpace pref="396" max="32767" attributes="0"/>
+                  <EmptySpace pref="409" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,9 +139,9 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="filterPanelScrollPane" pref="867" max="32767" attributes="0"/>
+                      <Component id="filterPanelScrollPane" pref="885" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel4" pref="349" max="32767" attributes="0"/>
+                          <Component id="jLabel4" pref="367" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="96" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
