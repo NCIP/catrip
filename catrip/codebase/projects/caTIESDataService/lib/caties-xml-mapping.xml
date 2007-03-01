@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN" "http://www.castor.org/mapping.dtd">
+
+<mapping>
+  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Address">
+    <map-to xml="Address" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="version" type="long">
+      <bind-xml name="version" node="attribute" />
+    </field>
+    <field name="uuid" type="string">
+      <bind-xml name="uuid" node="attribute" />
+    </field>
+    <field name="street" type="string">
+      <bind-xml name="street" node="attribute" />
+    </field>
+    <field name="city" type="string">
+      <bind-xml name="city" node="attribute" />
+    </field>
+    <field name="state" type="string">
+      <bind-xml name="state" node="attribute" />
+    </field>
+    <field name="country" type="string">
+      <bind-xml name="country" node="attribute" />
+    </field>
+    <field name="zipCode" type="string">
+      <bind-xml name="zipCode" node="attribute" />
+    </field>
+    <field name="phoneNumber" type="string">
+      <bind-xml name="phoneNumber" node="attribute" />
+    </field>
+    <field name="faxNumber" type="string">
+      <bind-xml name="faxNumber" node="attribute" />
+    </field>
+    <field name="emailAddress" type="string">
+      <bind-xml name="emailAddress" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient">
+    <map-to xml="IdentifiedPatient" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="version" type="long">
+      <bind-xml name="version" node="attribute" />
+    </field>
+    <field name="uuid" type="string">
+      <bind-xml name="uuid" node="attribute" />
+    </field>
+    <field name="organizationId" type="long">
+      <bind-xml name="organizationId" node="attribute" />
+    </field>
+    <field name="deidentifiedId" type="string">
+      <bind-xml name="deidentifiedId" node="attribute" />
+    </field>
+    <field name="medicalRecordNumber" type="string">
+      <bind-xml name="medicalRecordNumber" node="attribute" />
+    </field>
+    <field name="lastName" type="string">
+      <bind-xml name="lastName" node="attribute" />
+    </field>
+    <field name="firstName" type="string">
+      <bind-xml name="firstName" node="attribute" />
+    </field>
+    <field name="middleName" type="string">
+      <bind-xml name="middleName" node="attribute" />
+    </field>
+    <field name="birthDate" type="date">
+      <bind-xml name="birthDate" node="attribute" />
+    </field>
+    <field name="socialSecurityNumber" type="string">
+      <bind-xml name="socialSecurityNumber" node="attribute" />
+    </field>
+    <field name="race" type="string">
+      <bind-xml name="race" node="attribute" />
+    </field>
+    <field name="gender" type="string">
+      <bind-xml name="gender" node="attribute" />
+    </field>
+    <field name="ethnicity" type="string">
+      <bind-xml name="ethnicity" node="attribute" />
+    </field>
+    <field name="maritalStatus" type="string">
+      <bind-xml name="maritalStatus" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Organization">
+    <map-to xml="Organization" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="version" type="long">
+      <bind-xml name="version" node="attribute" />
+    </field>
+    <field name="uuid" type="string">
+      <bind-xml name="uuid" node="attribute" />
+    </field>
+    <field name="parentId" type="long">
+      <bind-xml name="parentId" node="attribute" />
+    </field>
+    <field name="addressId" type="long">
+      <bind-xml name="addressId" node="attribute" />
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute" />
+    </field>
+    <field name="abbreviationName" type="string">
+      <bind-xml name="abbreviationName" node="attribute" />
+    </field>
+    <field name="publicHandle" type="string">
+      <bind-xml name="publicHandle" node="attribute" />
+    </field>
+    <field name="privateHandle" type="string">
+      <bind-xml name="privateHandle" node="attribute" />
+    </field>
+    <field name="indexHandle" type="string">
+      <bind-xml name="indexHandle" node="attribute" />
+    </field>
+  </class>
+</mapping>
+
