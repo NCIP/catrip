@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
 	
-	
+	<service displayName="caTIES" url="http://localhost:8181/wsrf/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="true">
+		<targets>
+			<objectElement className="edu.upmc.opi.caBIG.caTIES.database.domain.impl.AddressImpl"   
+					displaybleAttributes="street,city" 
+					display="true"
+					supportReturnAttributes="false">
+					<associatedObjectTree/>
+				<foreignAssociationOutboundPath/>
+			</objectElement>
+		</targets>
+	</service>
+
+
 	<service displayName="Tissue Bank" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
 		<targets>
 			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   
