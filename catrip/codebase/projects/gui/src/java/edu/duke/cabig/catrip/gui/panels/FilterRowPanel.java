@@ -14,9 +14,11 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
@@ -58,6 +60,31 @@ public class FilterRowPanel extends javax.swing.JPanel {
         getCdeCombo().setRenderer(new CDEComboBoxRenderer());
 //        fillCdeCombo1();
         
+        
+        
+        // set an action listner on the editor component of the editable valueCombobox so to listen to the keyTyped events.
+        valueComboBox.getEditor().getEditorComponent().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                valueComboBoxTextBoxKeyTyped(evt);
+            }
+        });
+        
+        
+        
+    }
+    
+    
+    
+    private void valueComboBoxTextBoxKeyTyped(java.awt.event.KeyEvent evt) {
+        
+        String typedText = ((JTextField)valueComboBox.getEditor().getEditorComponent()).getText() ;
+        valueComboBox.setSelectedItem(typedText);
+        
+        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        cdeBean.getAttributeBean().setAttributeValue(typedText.trim());
+//        currentFilter = cdeBean;
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
+        
     }
     
     
@@ -67,9 +94,6 @@ public class FilterRowPanel extends javax.swing.JPanel {
 //        getCdeCombo().setSelectedIndex(0);
     }
     
-    public JTextField getValueBox(){
-        return valueTextBox;
-    }
     
     public javax.swing.JComboBox getCdeCombo() {
         return cdeCombo;
@@ -83,18 +107,18 @@ public class FilterRowPanel extends javax.swing.JPanel {
     public boolean isEmpty(){
         boolean  empty = true;
         CDEComboboxBean cdeBean = getCDEComboboxBean();
-        empty = cdeBean.getAttributeBean().isNull();        
+        empty = cdeBean.getAttributeBean().isNull();
         return empty;
     }
     
     
     public CDEComboboxBean getCDEComboboxBean(){
         if (currentFilter == null){
-           currentFilter =  (CDEComboboxBean)getCdeCombo().getSelectedItem();
+            currentFilter =  (CDEComboboxBean)getCdeCombo().getSelectedItem();
         }
         
         return currentFilter;
-    } 
+    }
     
     private CDEComboboxBean getCurrentFilter(){
         return getCDEComboboxBean();
@@ -104,12 +128,12 @@ public class FilterRowPanel extends javax.swing.JPanel {
         return getCDEComboboxBean().getAttributeBean();
     }
     
-    public ClassBean getClassBean(){ 
-        return getCDEComboboxBean().getClassBean(); 
+    public ClassBean getClassBean(){
+        return getCDEComboboxBean().getClassBean();
     }
     
-    public GraphObject getGraphObject(){ 
-        return getCDEComboboxBean().getGraphObject(); 
+    public GraphObject getGraphObject(){
+        return getCDEComboboxBean().getGraphObject();
     }
     
     
@@ -122,19 +146,14 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private void initComponents() {
         cdeCombo = new javax.swing.JComboBox();
         cdeCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
-        valueTextBox = new javax.swing.JTextField();
         predicateCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         delFilterBtn = new javax.swing.JButton();
+        distinctValueBtn = new javax.swing.JButton();
+        valueComboBox = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
 
         cdeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cdeComboItemStateChanged(evt);
-            }
-        });
-
-        valueTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                valueTextBoxKeyReleased(evt);
             }
         });
 
@@ -155,6 +174,22 @@ public class FilterRowPanel extends javax.swing.JPanel {
             }
         });
 
+        distinctValueBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/find.gif")));
+        distinctValueBtn.setText(org.openide.util.NbBundle.getMessage(FilterRowPanel.class, "FilterRowPanel.distinctValueBtn.text")); // NOI18N
+        distinctValueBtn.setToolTipText(org.openide.util.NbBundle.getMessage(FilterRowPanel.class, "FilterRowPanel.distinctValueBtn.toolTipText")); // NOI18N
+        distinctValueBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                distinctValueBtnActionPerformed(evt);
+            }
+        });
+
+        valueComboBox.setEditable(true);
+        valueComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                valueComboBoxItemStateChanged(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,25 +197,66 @@ public class FilterRowPanel extends javax.swing.JPanel {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(delFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cdeCombo, 0, 369, Short.MAX_VALUE)
+                .add(cdeCombo, 0, 303, Short.MAX_VALUE)
                 .add(17, 17, 17)
                 .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(14, 14, 14)
-                .add(valueTextBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                .add(15, 15, 15)
+                .add(valueComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(distinctValueBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(valueTextBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(delFilterBtn)
                 .add(predicateCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(cdeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(distinctValueBtn)
+                .add(valueComboBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        layout.linkSize(new java.awt.Component[] {cdeCombo, predicateCombo, valueTextBox}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        layout.linkSize(new java.awt.Component[] {cdeCombo, predicateCombo}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void valueComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_valueComboBoxItemStateChanged
+//System.out.println("XXXXXX  :"+valueComboBox.getSelectedItem());
+        
+// capture this also... this is fired after enter is pressed or another item is selected..
+//        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
+        boolean itIsSelf = valueComboBox.isPopupVisible();
+        
+        if (valueComboBox.isShowing() && itIsSelf){
+        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        cdeBean.getAttributeBean().setAttributeValue(valueComboBox.getSelectedItem().toString().trim());
+//        currentFilter = cdeBean;
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
+        }
+        
+    }//GEN-LAST:event_valueComboBoxItemStateChanged
+    
+    private void distinctValueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distinctValueBtnActionPerformed
+        
+        // get the set of distinct values from backend. call the backend here.. and cache the valueSet for that class..
+        // alternatively you can bind the FullyQualifiedClassName vs distinct values with registry also..
+        Set<String> valueSet = new HashSet<String>();
+        for (int i = 0; i < 20; i++) {
+            valueSet.add("Distinct value : "+i);
+        }
+        
+        // clean the combo box.
+        if (!(valueComboBox.getComponentCount() == 0)){
+            valueComboBox.removeAllItems();
+        }
+        
+        Object[] values = valueSet.toArray( new Object[ valueSet.size() ] );
+        for (int i = 0; i < values.length; i++) {
+            valueComboBox.addItem(values[i]);
+        }
+        
+        
+    }//GEN-LAST:event_distinctValueBtnActionPerformed
     
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
         if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
@@ -207,7 +283,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
             currentFilter.remove();
             getPredicateCombo().setSelectedIndex(0);
-            getValueBox().setText("");
+            valueComboBox.removeAllItems();
             
             // this will not be necessary as you are cloning the target object bean now..
             SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
@@ -236,17 +312,14 @@ public class FilterRowPanel extends javax.swing.JPanel {
         return getFilterTextValue();
     }
     public String getToolTipText(){
-     return toString();
+        return toString();
     }
     
-    private void valueTextBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valueTextBoxKeyReleased
-//        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
-        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
-        cdeBean.getAttributeBean().setAttributeValue(valueTextBox.getText().trim());
-//        currentFilter = cdeBean;
-        SimpleGuiRegistry.setSimpleGuiChanged(true);
-//        }
-    }//GEN-LAST:event_valueTextBoxKeyReleased
+    // of no use now...
+    public void setDistinctValue(String value){
+//        valueTextBox.setText(value);
+//        valueTextBoxKeyReleased(null);
+    }
     
     private void predicateComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_predicateComboItemStateChanged
         
@@ -264,8 +337,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cdeCombo;
     private javax.swing.JButton delFilterBtn;
+    private javax.swing.JButton distinctValueBtn;
     private edu.duke.cabig.catrip.gui.components.SteppedComboBox predicateCombo;
-    private javax.swing.JTextField valueTextBox;
+    private edu.duke.cabig.catrip.gui.components.SteppedComboBox valueComboBox;
     // End of variables declaration//GEN-END:variables
     
     
@@ -348,18 +422,18 @@ public class FilterRowPanel extends javax.swing.JPanel {
 //    public long getFilterId() {
 //        return filterId;
 //    }
-
+    
     public FilterGroup getParentGroup() {
         return parentGroup;
     }
-
+    
     public void setParentGroup(FilterGroup parentGroup) {
         this.parentGroup = parentGroup;
     }
     
     public boolean hasParentGroup( ) {
-        return (getParentGroup() == null)?false:true ; 
-    } 
+        return (getParentGroup() == null)?false:true ;
+    }
     
     
     
@@ -378,15 +452,31 @@ public class FilterRowPanel extends javax.swing.JPanel {
 
 
 // this is to show the Service_name + CDE name for the filter combo.. where the CDE has same name.. like Participant.
-class CDEComboBoxRenderer extends BasicComboBoxRenderer {  
-    public Component getListCellRendererComponent(JList list, Object value,  
+class CDEComboBoxRenderer extends BasicComboBoxRenderer {
+    public Component getListCellRendererComponent(JList list, Object value,
             int index, boolean isSelected, boolean cellHasFocus) {
         if (value instanceof CDEComboboxBean){
             CDEComboboxBean cdeBean = (CDEComboboxBean)value;
             String toolTip = cdeBean.getClassBean().getServiceName() + " -- " +  cdeBean.toString();
             list.setToolTipText(toolTip);
-        } 
-        return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus); 
-    } 
+        }
+        return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus);
+    }
 }
 
+
+
+
+
+
+
+/*
+private void valueTextBoxKeyReleased(java.awt.event.KeyEvent evt) {
+//        if (!valueTextBox.getText().trim().equalsIgnoreCase("")){
+        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+        cdeBean.getAttributeBean().setAttributeValue(valueTextBox.getText().trim());
+//        currentFilter = cdeBean;
+        SimpleGuiRegistry.setSimpleGuiChanged(true);
+//        }
+    }
+ */
