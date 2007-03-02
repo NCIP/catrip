@@ -1,0 +1,45 @@
+<ns1:DomainModel projectDescription="caTIES Service" projectLongName="caTIES" projectShortName="caTIES" projectVersion="1" xsi:type="ns1:DomainModel" xmlns:ns1="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.dataservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+ <ns1:exposedUMLAssociationCollection/>
+  
+ <ns1:exposedUMLClassCollection>
+  <ns2:UMLClass className="Address" id="EAID_90D59C96_1A3F_4e1e_9A15_D7553C50F918-CATIES" packageName="edu.upmc.opi.caBIG.caTIES.database.domain" projectName="caTIES" projectVersion="1" xsi:type="ns2:UMLClass" xmlns:ns2="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain">
+   <ns2:umlAttributeCollection>
+    <ns2:UMLAttribute dataTypeName="java.lang.Long" name="id" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Identifier" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+	<ns2:UMLAttribute dataTypeName="java.lang.Long" name="id" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Identifier" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="street" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Street" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="city" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="City" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="state" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="State" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="country" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Country" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="zipCode" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Zip Code" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="phoneNumber" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Phone Number" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="faxNumber" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Fax Number" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+    <ns2:UMLAttribute dataTypeName="java.lang.String" name="emailAddress" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Email Address" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+   </ns2:umlAttributeCollection>
+   <ns2:SemanticMetadata conceptCode="C12345" conceptDefinition="Address." conceptName="Address" order="0" xsi:type="ns2:SemanticMetadata"/>
+  </ns2:UMLClass>
+ </ns1:exposedUMLClassCollection>
+ 
+ <ns1:umlGeneralizationCollection/>
+
+</ns1:DomainModel>
