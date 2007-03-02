@@ -72,7 +72,7 @@ public class DomainModelMetaDataRegistry {
     /** Populate the data from Domain Model extract into ClassBean instances and bind them into registry.  */
     
     public static void populateDomainModelMetaData(DomainModel domainModel, ServiceMetaDataBean sBean){
-
+        
         ArrayList<ClassBean> serviceClassList = new ArrayList(100); // sanjeev: The collection of classes that belongs to only this DomainModel.
         
         UMLClass[] umlClasses = domainModel.getExposedUMLClassCollection().getUMLClass();
@@ -171,50 +171,56 @@ public class DomainModelMetaDataRegistry {
         // sanjeev: now set the umlAssociations with the classes in registry :
         UMLAssociation[] umlAssociations = domainModel.getExposedUMLAssociationCollection().getUMLAssociation();
         
-        for (int i = 0; i < umlAssociations.length; i++) {
-            boolean biDirectional = umlAssociations[i].isBidirectional();
-            String sourceRef = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            String targetRef = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            String targetRole = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+        if (umlAssociations != null){
             
-            ClassBean sourceClassBean = null;
-            ClassBean targetClassBean = null;
-            try {
-                sourceClassBean = lookupClassByRefId(sourceRef);
-            } catch (Exception ee) {
-                ee.printStackTrace();
-            }
-            try {
-                targetClassBean = lookupClassByRefId(targetRef);
-            } catch (Exception ee) {
-                ee.printStackTrace();
-            }
-            if (sourceClassBean != null){
-                sourceClassBean.addAssociatedClass(targetRef);
-                sourceClassBean.addAssociationRoleName(targetRef, targetRole);
-            } // sanjeev: put the cross references for the source into target class...
-            if ( (targetClassBean != null ) && biDirectional ) {
-                targetClassBean.addAssociatedClass(sourceRef);
-                String sourceRole = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
-                targetClassBean.addAssociationRoleName(sourceRef, sourceRole);
+            for (int i = 0; i < umlAssociations.length; i++) {
+                boolean biDirectional = umlAssociations[i].isBidirectional();
+                String sourceRef = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+                String targetRef = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+                String targetRole = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+                
+                ClassBean sourceClassBean = null;
+                ClassBean targetClassBean = null;
+                try {
+                    sourceClassBean = lookupClassByRefId(sourceRef);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
+                try {
+                    targetClassBean = lookupClassByRefId(targetRef);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
+                if (sourceClassBean != null){
+                    sourceClassBean.addAssociatedClass(targetRef);
+                    sourceClassBean.addAssociationRoleName(targetRef, targetRole);
+                } // sanjeev: put the cross references for the source into target class...
+                if ( (targetClassBean != null ) && biDirectional ) {
+                    targetClassBean.addAssociatedClass(sourceRef);
+                    String sourceRole = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+                    targetClassBean.addAssociationRoleName(sourceRef, sourceRole);
+                }
+                
             }
             
         }
-        
-        
         
         // sanjeev: load association data from the umlGeneralizationCollection also..
         UMLGeneralization[] umlUMLGeneralization = domainModel.getUmlGeneralizationCollection().getUMLGeneralization();
-        for (int i = 0; i < umlUMLGeneralization.length; i++) {
-            //  sanjeev: get  superRefId subRefId
-            String superRefId = umlUMLGeneralization[i].getSuperClassReference().getRefid();
-            String subRefId = umlUMLGeneralization[i].getSubClassReference().getRefid();
-            
-            // sanjeev: add to the umlUMLGeneralization map.. used for recursive action..
-            getClassGeneralizationMap().put(subRefId, superRefId);
-//            setSuperClassAssociations(subRefId, superRefId, domainModel);
-        }
         
+        if (umlUMLGeneralization != null){
+            
+            for (int i = 0; i < umlUMLGeneralization.length; i++) {
+                //  sanjeev: get  superRefId subRefId
+                String superRefId = umlUMLGeneralization[i].getSuperClassReference().getRefid();
+                String subRefId = umlUMLGeneralization[i].getSubClassReference().getRefid();
+                
+                // sanjeev: add to the umlUMLGeneralization map.. used for recursive action..
+                getClassGeneralizationMap().put(subRefId, superRefId);
+//            setSuperClassAssociations(subRefId, superRefId, domainModel);
+            }
+            
+        }
         // sanjeev: now as the ClassGeneralizationMap is ready.. set the associations from super class to sub class recursively..
         HashMap subSuperclassMap = getClassGeneralizationMap();
         Object[] subrefs = subSuperclassMap.keySet().toArray();
@@ -305,48 +311,51 @@ public class DomainModelMetaDataRegistry {
     public static void addSubClassesAsSameRole(DomainModel domainModel){
         UMLAssociation[] umlAssociations = domainModel.getExposedUMLAssociationCollection().getUMLAssociation();
         
-        for (int i = 0; i < umlAssociations.length; i++) {
-            boolean biDirectional = umlAssociations[i].isBidirectional();
-            String sourceRef = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            String targetRef = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
-            String targetRole = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+        if (umlAssociations != null){
             
-            ClassBean sourceClassBean = null;
-            ClassBean targetClassBean = null;
-            try {
-                sourceClassBean = lookupClassByRefId(sourceRef);
-                targetClassBean = lookupClassByRefId(targetRef);
-            } catch (Exception ee) {
-                ee.printStackTrace();
-            }
-            
-            if ((sourceClassBean != null) && (targetClassBean != null )){
+            for (int i = 0; i < umlAssociations.length; i++) {
+                boolean biDirectional = umlAssociations[i].isBidirectional();
+                String sourceRef = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+                String targetRef = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getUMLClassReference().getRefid();
+                String targetRole = umlAssociations[i].getTargetUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
                 
-                ArrayList<String> subClasses =  getAllSubClassFromHierarchy( targetClassBean );
-                
-                for (int j = 0; j < subClasses.size(); j++) {
-                    String subClassId = (String)subClasses.get(j);
-                    sourceClassBean.addAssociatedClass(subClassId);
-                    sourceClassBean.addAssociationRoleName(subClassId, targetRole);
+                ClassBean sourceClassBean = null;
+                ClassBean targetClassBean = null;
+                try {
+                    sourceClassBean = lookupClassByRefId(sourceRef);
+                    targetClassBean = lookupClassByRefId(targetRef);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
                 }
                 
-                
-            } // sanjeev: put the cross references for the source into target class...
-            if ( (sourceClassBean != null) && (targetClassBean != null ) && biDirectional ) {
-                
-                ArrayList<String> subClasses =  getAllSubClassFromHierarchy( sourceClassBean );
-                String sourceRole = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
-                
-                for (int j = 0; j < subClasses.size(); j++) {
-                    String subClassId = (String)subClasses.get(j);
-                    targetClassBean.addAssociatedClass(subClassId);
-                    targetClassBean.addAssociationRoleName(subClassId, sourceRole);
+                if ((sourceClassBean != null) && (targetClassBean != null )){
+                    
+                    ArrayList<String> subClasses =  getAllSubClassFromHierarchy( targetClassBean );
+                    
+                    for (int j = 0; j < subClasses.size(); j++) {
+                        String subClassId = (String)subClasses.get(j);
+                        sourceClassBean.addAssociatedClass(subClassId);
+                        sourceClassBean.addAssociationRoleName(subClassId, targetRole);
+                    }
+                    
+                    
+                } // sanjeev: put the cross references for the source into target class...
+                if ( (sourceClassBean != null) && (targetClassBean != null ) && biDirectional ) {
+                    
+                    ArrayList<String> subClasses =  getAllSubClassFromHierarchy( sourceClassBean );
+                    String sourceRole = umlAssociations[i].getSourceUMLAssociationEdge().getUMLAssociationEdge().getRoleName();
+                    
+                    for (int j = 0; j < subClasses.size(); j++) {
+                        String subClassId = (String)subClasses.get(j);
+                        targetClassBean.addAssociatedClass(subClassId);
+                        targetClassBean.addAssociationRoleName(subClassId, sourceRole);
+                    }
+                    
                 }
                 
             }
             
         }
-        
         
     }
     
