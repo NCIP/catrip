@@ -5,6 +5,7 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.query.DistinctValues;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
@@ -14,7 +15,6 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
@@ -228,10 +228,10 @@ public class FilterRowPanel extends javax.swing.JPanel {
         boolean itIsSelf = valueComboBox.isPopupVisible();
         
         if (valueComboBox.isShowing() && itIsSelf){
-        CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
-        cdeBean.getAttributeBean().setAttributeValue(valueComboBox.getSelectedItem().toString().trim());
+            CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
+            cdeBean.getAttributeBean().setAttributeValue(valueComboBox.getSelectedItem().toString().trim());
 //        currentFilter = cdeBean;
-        SimpleGuiRegistry.setSimpleGuiChanged(true);
+            SimpleGuiRegistry.setSimpleGuiChanged(true);
         }
         
     }//GEN-LAST:event_valueComboBoxItemStateChanged
@@ -240,21 +240,33 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         // get the set of distinct values from backend. call the backend here.. and cache the valueSet for that class..
         // alternatively you can bind the FullyQualifiedClassName vs distinct values with registry also..
-        Set<String> valueSet = new HashSet<String>();
-        for (int i = 0; i < 20; i++) {
-            valueSet.add("Distinct value : "+i);
+
+        String serviceUrl = getClassBean().getServiceUrl();
+        String className = getClassBean().getFullyQualifiedName();
+        String attributeName = getAttributeBean().getAttributeName();
+        
+        System.out.println("xxxxxxx  "+serviceUrl +" -- "+ className+" -- "+ attributeName);
+        
+        Set valueSet = null;
+        
+        try {
+            valueSet= DistinctValues.getDistinctValues(serviceUrl, className, attributeName);
+        } catch (Exception e){
+            e.printStackTrace();
         }
         
-        // clean the combo box.
-        if (!(valueComboBox.getComponentCount() == 0)){
-            valueComboBox.removeAllItems();
+        if (valueSet !=null){
+            
+            // clean the combo box.
+            if (!(valueComboBox.getComponentCount() == 0)){
+                valueComboBox.removeAllItems();
+            }
+            
+            Object[] values = valueSet.toArray( new Object[ valueSet.size() ] );
+            for (int i = 0; i < values.length; i++) {
+                valueComboBox.addItem(values[i]);
+            }
         }
-        
-        Object[] values = valueSet.toArray( new Object[ valueSet.size() ] );
-        for (int i = 0; i < values.length; i++) {
-            valueComboBox.addItem(values[i]);
-        }
-        
         
     }//GEN-LAST:event_distinctValueBtnActionPerformed
     
