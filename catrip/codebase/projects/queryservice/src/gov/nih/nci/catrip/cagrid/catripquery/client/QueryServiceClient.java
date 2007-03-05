@@ -124,7 +124,8 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 		try{
 			client = new QueryServiceClient(serviceURI);
 			results = client.query(cqlQuery);
-			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
+			//CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
+			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/catrip/cagrid/catripquery/client/client-config.wsdd")));
 
 			while (iter.hasNext()) {
 				gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb de = (gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb) iter.next();
