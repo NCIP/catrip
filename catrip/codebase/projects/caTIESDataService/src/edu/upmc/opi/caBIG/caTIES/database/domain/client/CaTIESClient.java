@@ -96,25 +96,40 @@ public class CaTIESClient extends ServiceSecurityClient implements CaTIESI {
 	}
 	
 	public static void main(String [] args){  
+		int count = 1;
 	    System.out.println("Running the Grid Service Client");
-	    String wsdd = "C:\\catrip\\catrip\\codebase\\projects\\caTIESDataService\\src\\edu\\upmc\\opi\\caBIG\\caTIES\\database\\domain\\client\\client-config.wsdd";
+//	    String wsdd = "C:\\catrip\\catrip\\codebase\\projects\\caTIESDataService\\src\\edu\\upmc\\opi\\caBIG\\caTIES\\database\\domain\\client\\client-config.wsdd";
+	    String wsdd = "src/edu/upmc/opi/caBIG/caTIES/database/domain/client/client-config.wsdd";
 		try{
 			CaTIESClient client = new CaTIESClient("http://localhost:8181/wsrf/services/cagrid/CaTIES");
 			CQLQuery cqlQuery = new CQLQuery();
 
 			gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
-			target.setName("edu.upmc.opi.caBIG.caTIES.database.domain.impl.AddressImpl");
+			target.setName("edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl");
 			cqlQuery.setTarget(target);
 			CQLQueryResults results = client.query(cqlQuery);
 			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(wsdd)));
 			while (iter.hasNext()) {
-				//Object o = iter.next();
-				edu.upmc.opi.caBIG.caTIES.database.domain.impl.AddressImpl de = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.AddressImpl) iter.next();
+				Object o = iter.next();
+				edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl de = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl) o;
 				if (de == null)
-					System.out.println("null");
+					System.out.println("object is null");
 				else{
-					System.out.println(" id : " + de.getId() +" email Address :  " + de.getEmailAddress());
-					//System.out.println("dcql: " + de.getOrganization().getName());
+					System.out.println("*******  Identified Patient " + (count++) +"  *******");
+					System.out.println(" id : " + de.getId());
+					System.out.println(" version : " + de.getVersion());
+					System.out.println(" uuid : " + de.getUuid());
+					System.out.println(" deidentifiedid : " + de.getDeidentifiedId());
+					System.out.println(" mrn : " + de.getMedicalRecordNumber());
+					System.out.println(" first : " + de.getFirstName());
+					System.out.println(" last : " + de.getLastName());
+					System.out.println(" middle : " + de.getMiddleName());
+					System.out.println(" birthdate : " + de.getBirthDate());
+					System.out.println(" ssn : " + de.getSocialSecurityNumber());
+					System.out.println(" gender : " + de.getGender());
+					System.out.println(" race : " + de.getRace());
+					System.out.println(" ethinicity : " + de.getEthnicity());
+					System.out.println(" marital status : " + de.getMaritalStatus());
 				}
 			}
 			if (results != null && results.getObjectResult() != null)
