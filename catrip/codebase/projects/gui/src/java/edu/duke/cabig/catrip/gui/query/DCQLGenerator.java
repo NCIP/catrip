@@ -38,7 +38,7 @@ public class DCQLGenerator {
     
     /** Creates a DCQLDocument object. */
     public static DCQLQuery getDCQLDocument(){
-        
+        // <editor-fold defaultstate="collapsed" desc=" Code ">
         DCQLQuery dcqlQuery = null;
         
         try{
@@ -67,6 +67,7 @@ public class DCQLGenerator {
             e.printStackTrace();
         }
         return dcqlQuery;
+        // </editor-fold>
     }
     
     /** get the DCQL as XML text. */

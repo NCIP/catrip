@@ -31,6 +31,7 @@ import java.util.List;
  */
 public class SimpleGuiRegistry {
     
+    // <editor-fold defaultstate="collapsed" desc=" Member Declarations ">
     private static ObjectGraphProcessor processor = new ObjectGraphProcessor(GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+File.separator+"simplegui"+File.separator+"SimpleGuiObjectGraph.xml");
     private static List<GraphObject> currentXMLObjectList = new ArrayList(50);
     
@@ -75,7 +76,7 @@ public class SimpleGuiRegistry {
     private static ArrayList<GraphObject> allSimpleGuiXMLObjectList = new ArrayList(500);
     // query sharing
     
-    
+    // </editor-fold>
     
     
     /** Creates a new instance of SimpleGuiRegistry */
@@ -87,7 +88,7 @@ public class SimpleGuiRegistry {
         return processor;
     }
     
-    public static void loadMetadata(){
+    public static void loadMetadata(){// <editor-fold defaultstate="collapsed">
         GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
         List<Service> services = processor.getServices();
         
@@ -120,7 +121,7 @@ public class SimpleGuiRegistry {
         }
         
         
-    }
+    }// </editor-fold>
     
     
     
@@ -139,7 +140,7 @@ public class SimpleGuiRegistry {
     
     
     
-    public static void cleanRegistry() {
+    public static void cleanRegistry() {// <editor-fold defaultstate="collapsed">
         setCurrentClassBeanList(new ArrayList(50));
         setCurrentXMLObjectList(new ArrayList(50));
         setFilterList(new ArrayList(50));
@@ -166,13 +167,13 @@ public class SimpleGuiRegistry {
         setNumReturnedAttribute(0);
         
         
-    }
+    }// </editor-fold>
     
     public static List getCurrentXMLObjectList() {
         return currentXMLObjectList;
     }
     
-    public static void setCurrentXMLObjectList(List<GraphObject> objs) {
+    public static void setCurrentXMLObjectList(List<GraphObject> objs) {// <editor-fold defaultstate="collapsed">
         currentXMLObjectList = objs;
         
         GraphObject obj;
@@ -208,20 +209,20 @@ public class SimpleGuiRegistry {
             
         }
         
-    }
+    }// </editor-fold>
     
     public static GraphObject getTargetGraphObject() {
         return targetGraphObject;
     }
     
-    public static void setTargetGraphObject(GraphObject aTargetGraphObject) {
+    public static void setTargetGraphObject(GraphObject aTargetGraphObject) {// <editor-fold defaultstate="collapsed">
         if (aTargetGraphObject != null){
             targetGraphObject = aTargetGraphObject;
             ClassNode tNode = new ClassNode(); // this is just to reuse the code.. ClassNode is a Graph object.. which is really not used here..
             tNode.setAssociatedClassObject(targetGraphObject.getClassBean());
             DCQLRegistry.setTargetNode(tNode);
         }
-    }
+    }// </editor-fold>
     
     
     public static ArrayList<FilterRowPanel> getFilterList() {
@@ -257,7 +258,7 @@ public class SimpleGuiRegistry {
     
     
     
-    public static void prepareForDcql(){
+    public static void prepareForDcql(){// <editor-fold defaultstate="collapsed">
         
         // set this flag again.. as it is done now..
         setSimpleGuiChanged(false);
@@ -347,10 +348,10 @@ public class SimpleGuiRegistry {
         // using this method to print the association tree starting from teh target object.
 //        getTargetGraphObject().getClassBean().printAssociations();
         
-    }
+    } // </editor-fold>
     
     // setting the filter as association for the target object.
-    private static void addFilterPanelObjectToDCQL(FilterRowPanel pnl){
+    private static void addFilterPanelObjectToDCQL(FilterRowPanel pnl){ // <editor-fold defaultstate="collapsed">
         GraphObject filterObject = pnl.getGraphObject();
         
         GraphObject targetObject =  getTargetGraphObject();
@@ -568,14 +569,14 @@ public class SimpleGuiRegistry {
             }
             
         } // </editor-fold>
-    }
+    }// </editor-fold>
     
     
     
     
     
     // original method.. not used anymore now..
-    private static void addFilterObjectToDCQL(GraphObject filterObject){
+    private static void addFilterObjectToDCQL(GraphObject filterObject){ // <editor-fold defaultstate="collapsed">
 //       GraphObject filterObject = ((CDEComboboxBean)pnl.getCdeCombo().getSelectedItem()).getGraphObject();
         
         GraphObject targetObject =  getTargetGraphObject();
@@ -728,7 +729,7 @@ public class SimpleGuiRegistry {
             }
             
         }
-    }
+    }// </editor-fold>
     
     
     public static HashMap getCurrentClassBeanMap() {
@@ -742,10 +743,6 @@ public class SimpleGuiRegistry {
     public static void addToCurrentClassBeanMap(String key, ClassBean cBean) {
         currentClassBeanMap.put(key, cBean);
     }
-    
-    
-    
-    
     
     public static boolean isSimpleGuiChanged() {
         return simpleGuiChanged;
@@ -768,13 +765,15 @@ public class SimpleGuiRegistry {
     
     
     //---------------------------- AND / OR groups methods...----------------------------
+    
+    // <editor-fold defaultstate="collapsed" desc=" AND / OR Methods ">
     public static ArrayList<FilterGroup> getFilterSubGroupList() {
         return filterSubGroups;
     }
     public static void setFilterSubGroupList(ArrayList<FilterGroup> aFilterGroup) {
         filterSubGroups = aFilterGroup;
     }
-    public static void addFilterSubGroup(FilterGroup aFilterGroup) {
+    public static void addFilterSubGroup(FilterGroup aFilterGroup) {// <editor-fold defaultstate="collapsed">
         // when you add a new sub group... remove the filterPanels and inner groups from subgroup list..
         filterSubGroups.add(aFilterGroup);
         
@@ -796,7 +795,7 @@ public class SimpleGuiRegistry {
         
         // TODO -SB- uncomment the code below when you implement the nested gruping DCQL generation.
 //        numGroupableEntities++;
-    }
+    }// </editor-fold>
     
     public static FilterGroup getRootGroup() {
         return rootGroup;
@@ -835,7 +834,7 @@ public class SimpleGuiRegistry {
     public static void setHasGroupsDefined(boolean aHasGroupsDefined) {
         hasGroupsDefined = aHasGroupsDefined;
     }
-    
+     // </editor-fold>
     
     //---------------------------- AND / OR groups methods...----------------------------
     
@@ -852,6 +851,8 @@ public class SimpleGuiRegistry {
     
     
     //---------------------------- returned Attributes methods...----------------------------
+    
+    // <editor-fold defaultstate="collapsed" desc=" Returned Attributes Methods ">
     
     public static boolean isReturnedAttributeListAvailable() {
         return returnedAttributeListAvailable;
@@ -876,7 +877,7 @@ public class SimpleGuiRegistry {
         }
     }
     
-    public static void addToClassNameReturnedAttributeMap(String classFullName, String attribute) {
+    public static void addToClassNameReturnedAttributeMap(String classFullName, String attribute) {// <editor-fold defaultstate="collapsed">
         boolean alreadyThere = getClassNameReturnedAttributeMap().containsKey(classFullName);
         if (alreadyThere){
             // add the attribute to the list.. check duplicates..
@@ -890,13 +891,13 @@ public class SimpleGuiRegistry {
             getClassNameReturnedAttributeMap().put(classFullName, atts);
         }
         numReturnedAttribute++;
-    }
+    }// </editor-fold>
     
     public static boolean hasReturnedAttributesForClass(String classFullName){
         return getClassNameReturnedAttributeMap().containsKey(classFullName);
     }
     
-    public static List getReturnedAttributesForClass(String classFullName){
+    public static List getReturnedAttributesForClass(String classFullName){// <editor-fold defaultstate="collapsed">
         List returnList;
         if (hasReturnedAttributesForClass(classFullName)){
             returnList  = (List)getClassNameReturnedAttributeMap().get(classFullName);
@@ -904,7 +905,7 @@ public class SimpleGuiRegistry {
             returnList = new ArrayList();
         }
         return returnList;
-    }
+    }// </editor-fold>
     
     
     
@@ -916,7 +917,7 @@ public class SimpleGuiRegistry {
         numReturnedAttribute = aNumReturnedAttribute;
     }
     
-    public static ArrayList<String> getClassesUsedInFilters() {
+    public static ArrayList<String> getClassesUsedInFilters() {// <editor-fold defaultstate="collapsed">
         // calculate every time.. as this is changing
         ArrayList<FilterRowPanel> filters = getFilterList();
         ArrayList<String> classList = new ArrayList<String>();
@@ -925,7 +926,9 @@ public class SimpleGuiRegistry {
             classList.add(filters.get(i).getClassBean().getFullyQualifiedName());
         }
         return classList;
-    }
+    }// </editor-fold>
+    
+    // </editor-fold>
     
     //---------------------------- returned Attributes methods...----------------------------
     
@@ -941,7 +944,7 @@ public class SimpleGuiRegistry {
     
     
     //---------------------------- query sharing methods...----------------------------
-    public static ArrayList<GraphObject> getAllSimpleGuiXMLObjectList() {
+    public static ArrayList<GraphObject> getAllSimpleGuiXMLObjectList() { // <editor-fold defaultstate="collapsed">
         if (allSimpleGuiXMLObjectList.size() == 0){
             
             
@@ -1011,7 +1014,7 @@ public class SimpleGuiRegistry {
         } // by now the GraphObjects in this list is set..
         
         return allSimpleGuiXMLObjectList;
-    }
+    }// </editor-fold>
     
     public static void setAllSimpleGuiXMLObjectList(ArrayList<GraphObject> aAllSimpleGuiXMLObjectList) {
         allSimpleGuiXMLObjectList = aAllSimpleGuiXMLObjectList;

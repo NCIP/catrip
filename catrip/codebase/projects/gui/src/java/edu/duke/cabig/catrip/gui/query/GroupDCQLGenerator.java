@@ -41,7 +41,7 @@ public class GroupDCQLGenerator {
     
     /** Creates a DCQLDocument object. */
     public static DCQLQuery getDCQLDocument(){
-        
+        // <editor-fold defaultstate="collapsed">
         DCQLQuery dcqlQuery = null;
         
         try{
@@ -66,10 +66,11 @@ public class GroupDCQLGenerator {
             e.printStackTrace();
         }
         return dcqlQuery;
+        // </editor-fold>
     }
     
     /** get the DCQL as XML text. */
-    public static String getDCQLText(){
+    public static String getDCQLText(){// <editor-fold defaultstate="collapsed">
         String txt = "";
         try{
             txt = ObjectSerializer.toString(getDCQLDocument(),new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI));//xmlText();
@@ -78,10 +79,10 @@ public class GroupDCQLGenerator {
             e.printStackTrace();
         }
         return txt;
-    }
+    }// </editor-fold>
     
     /** get the DCQL as formatted XML text. */
-    public static String getDCQLText(XmlOptions xmlOptions){
+    public static String getDCQLText(XmlOptions xmlOptions){// <editor-fold defaultstate="collapsed">
         String txt = "";
         try{
             txt = ObjectSerializer.toString(getDCQLDocument(),new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI));//xmlText(xmlOptions);
@@ -90,12 +91,12 @@ public class GroupDCQLGenerator {
             e.printStackTrace();
         }
         return txt;
-    }
+    }// </editor-fold>
     
     
     
     private static void buildAssociationGroup(Object dcqlOuterObject, ClassBean outerObjectBean){//Association
-        
+        // <editor-fold defaultstate="collapsed">
         boolean targetObjectHasAttributes = outerObjectBean.hasNotNullAttributes();
         boolean targetObjectHasAssociations = outerObjectBean.hasAssociations();
         boolean targetObjectHasForeignAssociations = outerObjectBean.hasForeignAssociations();
@@ -117,7 +118,7 @@ public class GroupDCQLGenerator {
         
         
         if (hasGroups){
-            // <editor-fold>
+            // <editor-fold defaultstate="collapsed">
             int groupNums = outerObjectBean.getGroups().size();
             
             // if there are more than 1 groups than check for
@@ -128,7 +129,7 @@ public class GroupDCQLGenerator {
                 
                 // only attributes..  check for more than 1 attribute.. if more than 1 attribute than only create group otherwise not..
                 if (group.isAttributeOnlyGroup()){
-                    // <editor-fold>
+                    // <editor-fold defaultstate="collapsed">
                     ArrayList attList = group.getAttributeList();
                     
                     
@@ -170,7 +171,7 @@ public class GroupDCQLGenerator {
                 
                 // only associations..
                 else if (group.isClassOnlyGroup()){
-                    // <editor-fold>
+                    // <editor-fold defaultstate="collapsed">
                     // check how many class in there.. if more than one.. than create a group.. otherwise not..
                     int numClass = group.getClassList().size();
                     
@@ -256,7 +257,7 @@ public class GroupDCQLGenerator {
             // </editor-fold>
             
         } else if (targetObjectHasAttributes && !(targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // <editor-fold>   // only attributes are there
+            // <editor-fold defaultstate="collapsed">   // only attributes are there
             
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
             
@@ -271,27 +272,30 @@ public class GroupDCQLGenerator {
                 
             }else {
                 // sanjeev: has only 1 attribute
-                Attribute dcqlAttribute = new Attribute();
-                dcqlOuterObject.setAttribute(dcqlAttribute);
-                
-                
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
-                dcqlAttribute.setName(aBean.getAttributeName());
-                
-                dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));
-                boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
-                String attributeValue = aBean.getAttributeValue();
-                boolean hasChar = attributeValue.endsWith("%");
-                if (likePredicate && !hasChar){
-                    dcqlAttribute.setValue(aBean.getAttributeValue()+"%");
-                } else {
-                    dcqlAttribute.setValue(aBean.getAttributeValue());
+                if (!aBean.isPhony()){
+                    Attribute dcqlAttribute = new Attribute();
+                    dcqlOuterObject.setAttribute(dcqlAttribute);
+                    
+                    
+                    
+                    dcqlAttribute.setName(aBean.getAttributeName());
+                    
+                    dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));
+                    boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
+                    String attributeValue = aBean.getAttributeValue();
+                    boolean hasChar = attributeValue.endsWith("%");
+                    if (likePredicate && !hasChar){
+                        dcqlAttribute.setValue(aBean.getAttributeValue()+"%");
+                    } else {
+                        dcqlAttribute.setValue(aBean.getAttributeValue());
+                    }
                 }
             }
             // </editor-fold>  // only attributes are there
             
         } else if (targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // <editor-fold>   // attriibutes and associations both are there
+            // <editor-fold defaultstate="collapsed">   // attriibutes and associations both are there
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
             
             dcqlGroup = new Group();//dcqlOuterObject.addNewGroup();
@@ -334,7 +338,7 @@ public class GroupDCQLGenerator {
             // </editor-fold>
             
         }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // <editor-fold>
+            // <editor-fold defaultstate="collapsed">
             // sanjeev: check if the associations are more than 1 than create a AND Group and than add these to the Group.
             int numOfForeignAssociations = outerObjectBean.getForeignAssociations().size();
             int numOfAssociations = outerObjectBean.getAssociations().size();
@@ -355,11 +359,12 @@ public class GroupDCQLGenerator {
         
         // set any returned attributes if available..
         setReturnedAttributes(dcqlOuterObject);
-        
+        // </editor-fold>
     }
     
     
     private static void createAttributesGroup(Group outerDcqlGroup, ArrayList targetObjectAttributeList){
+        // <editor-fold defaultstate="collapsed">
         Attribute[] dcqlAttributes = new Attribute[targetObjectAttributeList.size()];
         for (int i = 0; i < targetObjectAttributeList.size(); i++) {
             AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(i);
@@ -377,10 +382,12 @@ public class GroupDCQLGenerator {
             
         }
         outerDcqlGroup.setAttribute(dcqlAttributes);//setAttributeArray(dcqlAttributes);
+        // </editor-fold>
     }
     
     
     private static void createAttributesGroup(Object outerObject, ArrayList targetObjectAttributeList){
+        // <editor-fold defaultstate="collapsed">
         Object outerDcqlObject = outerObject;
         
         Attribute[] dcqlAttributes = new Attribute[targetObjectAttributeList.size()];
@@ -400,11 +407,12 @@ public class GroupDCQLGenerator {
             
         }
         outerDcqlObject.setAttribute(dcqlAttributes[0]);
+        // </editor-fold>
     }
     
     
     private static void createAssociations(Group outerObject, ClassBeanGroup group){
-        
+        // <editor-fold defaultstate="collapsed">
         Group outerDcqlGroup = outerObject;
         ArrayList associationList = group.getClassList();
         Association[]   dcqlAssociationArray = new Association[associationList.size()];
@@ -422,12 +430,12 @@ public class GroupDCQLGenerator {
         }
         
         outerDcqlGroup.setAssociation(dcqlAssociationArray);
-        
+        // </editor-fold>
     }
     
     
     private static void createAssociations(Group outerObject, ClassBean outerObjectBean){
-        
+        // <editor-fold defaultstate="collapsed">
         boolean targetObjectHasAssociations = outerObjectBean.hasAssociations();
         boolean targetObjectHasForeignAssociations = outerObjectBean.hasForeignAssociations();
         
@@ -491,10 +499,12 @@ public class GroupDCQLGenerator {
             // set all the foreign associations together here...
             outerDcqlGroup.setForeignAssociation(dcqlForeignAssociationArray);
         }
+        // </editor-fold>
     }
     
     
     private static void createAssociations(Object outerObject, ClassBeanGroup group){
+        // <editor-fold defaultstate="collapsed">
         Object outerDcqlObject = outerObject;
         
         ArrayList associationList = group.getClassList();
@@ -512,18 +522,19 @@ public class GroupDCQLGenerator {
             buildAssociationGroup(dcqlAssociation, localAssociation); // this guy also need to use groups.. for association..
         }
         outerObject.setAssociation(dcqlAssociationArray[0]);
-        
+        // </editor-fold>
     }
     
     
     private static void createAssociations(Object outerObject, ClassBean outerObjectBean){
-        
+        // <editor-fold defaultstate="collapsed">
         boolean targetObjectHasAssociations = outerObjectBean.hasAssociations();
         boolean targetObjectHasForeignAssociations = outerObjectBean.hasForeignAssociations();
         
         Object outerDcqlObject = outerObject;
         
         if(targetObjectHasAssociations){
+            // <editor-fold defaultstate="collapsed">
             //- sanjeev: iterate the local associations... recursively.. and create the DCQL.
             ArrayList associationList = outerObjectBean.getAssociations();
             for (int i = 0;i<associationList.size() ;i++){
@@ -539,9 +550,11 @@ public class GroupDCQLGenerator {
                 buildAssociationGroup(dcqlAssociation, localAssociation);
                 
             }
+            // </editor-fold>
         }
         
         if(targetObjectHasForeignAssociations){
+            // <editor-fold defaultstate="collapsed">
             //- sanjeev: iterate the foreign associations... recursively.. and create the DCQL.
             ArrayList foreignAssociationList = outerObjectBean.getForeignAssociations();
             
@@ -571,29 +584,19 @@ public class GroupDCQLGenerator {
                 dcqlJoinCondition.setForeignAttributeName(rightProperty);
                 dcqlJoinCondition.setPredicate(ForeignPredicate.EQUAL_TO);
                 
-                /*
-                Join leftJoin = Join.Factory.newInstance();
-                leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName());
-                leftJoin.setProperty(leftProperty);
-                Join rightJoin = Join.Factory.newInstance();
-                rightJoin.setObject(foreignAssociationRightBean.getFullyQualifiedName());
-                rightJoin.setProperty(rightProperty);
-                dcqlJoinCondition.setLeftJoin(leftJoin);dcqlJoinCondition.setRightJoin(rightJoin);
-                 */
                 dcqlForeignAssociation.setJoinCondition(dcqlJoinCondition);
                 
                 buildAssociationGroup(dcqlForeignObject, foreignAssociationRightBean);
                 
             }
-            
-            
-            
-            
+            // </editor-fold>
         }
+        // </editor-fold>
     }
     
     
     private static void setReturnedAttributes(Object dcqlOuterObject){
+        // <editor-fold defaultstate="collapsed">
         // set any returned attributes if available..
         boolean  available = SimpleGuiRegistry.hasReturnedAttributesForClass(dcqlOuterObject.getName());
         if (available){
@@ -602,15 +605,16 @@ public class GroupDCQLGenerator {
             ReturnAttributes rtAtt = new ReturnAttributes((String[]) atts.toArray(attributes));
             dcqlOuterObject.setReturnAttributes(rtAtt);
         }
+        // </editor-fold>
     }
     
     
     private static void buildGroupOfGroupsAssociationsAttributes(boolean targetObjectHasAttributes, boolean targetObjectHasAssociations, boolean targetObjectHasForeignAssociations, ClassBean outerObjectBean, Group outerGroup){
-        
+        // <editor-fold defaultstate="collapsed">
         Group[] dcqlGroup = new Group[1];
         
         if (targetObjectHasAttributes && !(targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // <editor-fold>   // only attributes are there
+            // <editor-fold defaultstate="collapsed">   // only attributes are there
             
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
             
@@ -645,7 +649,7 @@ public class GroupDCQLGenerator {
             // </editor-fold>  // only attributes are there
             
         } else if (targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // <editor-fold>   // attriibutes and associations both are there
+            // <editor-fold defaultstate="collapsed">   // attriibutes and associations both are there
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
             
             dcqlGroup[0]  = new Group();//dcqlOuterObject.addNewGroup();
@@ -687,7 +691,7 @@ public class GroupDCQLGenerator {
             } // attriibutes and associations both are there
             
         }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
-            // <editor-fold>
+            // <editor-fold defaultstate="collapsed">
             // sanjeev: check if the associations are more than 1 than create a AND Group and than add these to the Group.
             int numOfForeignAssociations = outerObjectBean.getForeignAssociations().size();
             int numOfAssociations = outerObjectBean.getAssociations().size();
@@ -704,7 +708,7 @@ public class GroupDCQLGenerator {
             }
             // </editor-fold>
         }
-        
+        // </editor-fold>
     }
     
     
