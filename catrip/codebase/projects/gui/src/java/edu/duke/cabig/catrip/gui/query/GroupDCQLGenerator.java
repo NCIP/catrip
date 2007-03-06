@@ -194,8 +194,15 @@ public class GroupDCQLGenerator {
                             createAssociations(dcqlGroupTmp[0], group); // set the group stuff
                             buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
                         }else{
-                            createAssociations(dcqlGroupNonGroup, group);// set the group stuff
-                            buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
+                            if (targetObjectHasAttributes && !(targetObjectHasAssociations || targetObjectHasForeignAssociations)){
+                                createAssociations(dcqlGroupNonGroup, group);// set the group stuff
+                                buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
+                            } else {
+                                dcqlOuterObject.setGroup(null); // remove the outer group that you created.. as that is not used now..
+                                createAssociations(dcqlOuterObject, group);// set the group stuff
+                            }
+                            
+//                            buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
                         }
                     }
                     
@@ -208,7 +215,7 @@ public class GroupDCQLGenerator {
                 // that means both attribute and association are there..
                 else if (group.isMixGroup()){
                     // create a group of these two... cos there is atleast 1 attribute and 1 association..
-                    // <editor-fold>
+                    // <editor-fold defaultstate="collapsed">
                     ArrayList attList = group.getAttributeList();
                     ArrayList classList = group.getClassList();
                     
