@@ -445,7 +445,12 @@ public class SimpleGuiRegistry {
                     tmpBeanLeft.getAttributes().remove(pnl.getAttributeBean());
                     tmpBeanLeft.getGroupById(group.getGroupId()).add(pnl.getAttributeBean());
                 }
+            } else {
+                tmpBeanLeft.getAttributes().remove(pnl.getAttributeBean());
+                tmpBeanLeft.addAttribute(pnl.getAttributeBean());
             }
+            
+            
             
 //            System.out.println("XXXXX "+tmpBeanLeft);
             

@@ -100,18 +100,27 @@ public class GroupDCQLGenerator {
         boolean targetObjectHasAssociations = outerObjectBean.hasAssociations();
         boolean targetObjectHasForeignAssociations = outerObjectBean.hasForeignAssociations();
         
+        boolean hasNonGroupItems = (targetObjectHasAttributes || targetObjectHasAssociations || targetObjectHasForeignAssociations)?true:false;
+        Group dcqlGroupNonGroup = null;
+        
         Group dcqlGroup = null;
         
         // check the groups in target object..
         boolean hasGroups = outerObjectBean.hasGroups();
         
+        if (hasGroups && hasNonGroupItems){
+            // create a group between normal and grouped entities.. and then add stuff to that group..
+            dcqlGroupNonGroup = new Group();
+            dcqlGroupNonGroup.setLogicRelation(LogicalOperator.AND);
+            dcqlOuterObject.setGroup(dcqlGroupNonGroup);
+        }
+        
         
         if (hasGroups){
-            
-            // <editor-fold> 
+            // <editor-fold>
             int groupNums = outerObjectBean.getGroups().size();
             
-            // if there are more than 1 groups that means than check for
+            // if there are more than 1 groups than check for
             // ClassBeanGroup.needOuterAttributeGroup() or ClassBeanGroup.needOuterClassGroup()
             
             for (int i = 0; i < groupNums; i++) {
@@ -119,43 +128,86 @@ public class GroupDCQLGenerator {
                 
                 // only attributes..  check for more than 1 attribute.. if more than 1 attribute than only create group otherwise not..
                 if (group.isAttributeOnlyGroup()){
+                    // <editor-fold>
                     ArrayList attList = group.getAttributeList();
-                    if(attList.size() > 1){
-                        // create a dcql group with attributes only..
-                        Group dcqlGroupTmp = new Group();
-                        dcqlGroupTmp.setLogicRelation(group.isAND()?LogicalOperator.AND:LogicalOperator.OR);
-                        dcqlOuterObject.setGroup(dcqlGroupTmp);
+                    
+                    
+                    if (!hasNonGroupItems){ // there was only groups defined under this target object..
+                        if(attList.size() > 1){
+                            // create a dcql group with attributes only..
+                            Group dcqlGroupTmp = new Group();
+                            dcqlGroupTmp.setLogicRelation(group.isAND()?LogicalOperator.AND:LogicalOperator.OR);
+                            dcqlOuterObject.setGroup(dcqlGroupTmp);
+                            
+                            createAttributesGroup(dcqlGroupTmp, group.getAttributeList());
+                        } else {
+                            // just add the attribute normally..
+                            createAttributesGroup(dcqlOuterObject, group.getAttributeList());
+                        }
                         
-                        createAttributesGroup(dcqlGroupTmp, group.getAttributeList());
-                    } else {
-                        // just add the attribute normally..
-                        createAttributesGroup(dcqlOuterObject, group.getAttributeList());
+                    } else { // there are nonGroup stuff to add along with the group and there exist a valid outer groupNonGroup..
+                        
+                        if(attList.size() > 1){
+                            // create a dcql group with attributes only..
+                            Group[] dcqlGroupTmp = new Group[1];
+                            dcqlGroupTmp[0] = new Group();
+                            dcqlGroupTmp[0].setLogicRelation(group.isAND()?LogicalOperator.AND:LogicalOperator.OR);
+                            dcqlGroupNonGroup.setGroup(dcqlGroupTmp);
+                            
+                            createAttributesGroup(dcqlGroupTmp[0], group.getAttributeList()); // set the group stuff
+                            buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
+                        } else {
+                            // just add the attribute normally..
+                            createAttributesGroup(dcqlGroupNonGroup, group.getAttributeList()); // set the group stuff
+                            buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
+                        }
                     }
+                    
+                    
+                    // </editor-fold>
                 }
                 
                 
                 // only associations..
-                
                 else if (group.isClassOnlyGroup()){
+                    // <editor-fold>
                     // check how many class in there.. if more than one.. than create a group.. otherwise not..
                     int numClass = group.getClassList().size();
                     
-                    if (numClass > 1){
-                        Group dcqlGroupTmp = new Group();
-                        dcqlGroupTmp.setLogicRelation(group.isAND()?LogicalOperator.AND:LogicalOperator.OR);
-                        dcqlOuterObject.setGroup(dcqlGroupTmp);
-                        createAssociations(dcqlGroupTmp, group);
-                    }else{
-                        createAssociations(dcqlOuterObject, group);
+                    if (!hasNonGroupItems){ // there was only groups defined under this target object..
+                        if (numClass > 1){
+                            Group dcqlGroupTmp = new Group();
+                            dcqlGroupTmp.setLogicRelation(group.isAND()?LogicalOperator.AND:LogicalOperator.OR);
+                            dcqlOuterObject.setGroup(dcqlGroupTmp);
+                            createAssociations(dcqlGroupTmp, group);
+                        }else{
+                            createAssociations(dcqlOuterObject, group);
+                        }
+                    } else { // there are nonGroup stuff to add along with the group and there exist a valid outer groupNonGroup..
+                        
+                        if (numClass > 1){
+                            Group[] dcqlGroupTmp = new Group[1];
+                            dcqlGroupTmp[0] = new Group();
+                            dcqlGroupTmp[0].setLogicRelation(group.isAND()?LogicalOperator.AND:LogicalOperator.OR);
+                            dcqlGroupNonGroup.setGroup(dcqlGroupTmp);
+                            createAssociations(dcqlGroupTmp[0], group); // set the group stuff
+                            buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
+                        }else{
+                            createAssociations(dcqlGroupNonGroup, group);// set the group stuff
+                            buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
+                        }
                     }
                     
+                    
+                    
+                    // </editor-fold>
                 }
                 
                 
                 // that means both attribute and association are there..
                 else if (group.isMixGroup()){
                     // create a group of these two... cos there is atleast 1 attribute and 1 association..
-                    
+                    // <editor-fold>
                     ArrayList attList = group.getAttributeList();
                     ArrayList classList = group.getClassList();
                     
@@ -197,19 +249,13 @@ public class GroupDCQLGenerator {
                     }
                     
                     
-                    
+                    // </editor-fold>
                 }
                 
-                
-                
-                
-                
             }
-            // </editor-fold> 
-        }
-        
-        
-        if (targetObjectHasAttributes && !(targetObjectHasAssociations || targetObjectHasForeignAssociations)){
+            // </editor-fold>
+            
+        } else if (targetObjectHasAttributes && !(targetObjectHasAssociations || targetObjectHasForeignAssociations)){
             // <editor-fold>   // only attributes are there
             
             ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
@@ -219,24 +265,20 @@ public class GroupDCQLGenerator {
             if (targetObjectAttributeList.size() > 1){
                 // has multiple attcibutes..
                 dcqlGroup = new Group();
-//                dcqlGroup = dcqlOuterObject.addNewGroup();
                 dcqlOuterObject.setGroup(dcqlGroup);
                 dcqlGroup.setLogicRelation(LogicalOperator.AND);
                 createAttributesGroup(dcqlGroup, targetObjectAttributeList);
                 
-                // set any returned attributes if available..
-//                setReturnedAttributes(dcqlOuterObject);
-                
             }else {
                 // sanjeev: has only 1 attribute
-                Attribute dcqlAttribute = new Attribute(); //   Attribute dcqlAttriqbute = dcqlOuterObject.setAttribute();
+                Attribute dcqlAttribute = new Attribute();
                 dcqlOuterObject.setAttribute(dcqlAttribute);
                 
                 
                 AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
                 dcqlAttribute.setName(aBean.getAttributeName());
                 
-                dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
+                dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));
                 boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
                 String attributeValue = aBean.getAttributeValue();
                 boolean hasChar = attributeValue.endsWith("%");
@@ -245,10 +287,6 @@ public class GroupDCQLGenerator {
                 } else {
                     dcqlAttribute.setValue(aBean.getAttributeValue());
                 }
-                
-                // set any returned attributes if available..
-//                setReturnedAttributes(dcqlOuterObject);
-                
             }
             // </editor-fold>  // only attributes are there
             
@@ -291,12 +329,12 @@ public class GroupDCQLGenerator {
                 }
                 createAssociations(dcqlGroup, outerObjectBean);
                 
-                
-            }
-            // </editor-fold>   // attriibutes and associations both are there
+            } // attriibutes and associations both are there
             
+            // </editor-fold>
             
         }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
+            // <editor-fold>
             // sanjeev: check if the associations are more than 1 than create a AND Group and than add these to the Group.
             int numOfForeignAssociations = outerObjectBean.getForeignAssociations().size();
             int numOfAssociations = outerObjectBean.getAssociations().size();
@@ -311,10 +349,9 @@ public class GroupDCQLGenerator {
             }else{
                 createAssociations(dcqlOuterObject, outerObjectBean);
             }
-            
-            
-            
+            // </editor-fold>
         }
+        
         
         // set any returned attributes if available..
         setReturnedAttributes(dcqlOuterObject);
@@ -366,7 +403,6 @@ public class GroupDCQLGenerator {
     }
     
     
-    
     private static void createAssociations(Group outerObject, ClassBeanGroup group){
         
         Group outerDcqlGroup = outerObject;
@@ -405,8 +441,7 @@ public class GroupDCQLGenerator {
             
             for (int i = 0;i<associationList.size() ;i++){
                 
-                Association dcqlAssociation = new Association();//outerDcqlGroup.addNewAssociation(); // adding a local association..
-//                outerDcqlGroup.setAssociation(new Association[]{dcqlAssociation});
+                Association dcqlAssociation = new Association();
                 dcqlAssociationArray[i] = dcqlAssociation;
                 
                 ClassBean localAssociation = (ClassBean)associationList.get(i);
@@ -433,33 +468,21 @@ public class GroupDCQLGenerator {
                 String leftProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getLeftProperty();
                 String rightProperty = ((ForeignAssociationBean)foreignAssociationList.get(i)).getRightProperty();
                 
-                ForeignAssociation dcqlForeignAssociation = new ForeignAssociation();//outerDcqlGroup.addNewForeignAssociation(); // adding a foreign association..
-//                outerDcqlGroup.setForeignAssociation(new ForeignAssociation[]{dcqlForeignAssociation});
+                ForeignAssociation dcqlForeignAssociation = new ForeignAssociation();
                 dcqlForeignAssociationArray[i] = dcqlForeignAssociation;
                 
-                Object dcqlForeignObject = new Object() ;//dcqlForeignAssociation.addNewForeignObject();//TargetObject.Factory.newInstance(); // foreign object  //foreignAssociationRightBean
+                Object dcqlForeignObject = new Object() ;
                 dcqlForeignAssociation.setForeignObject(dcqlForeignObject);
                 
                 dcqlForeignObject.setName(foreignAssociationRightBean.getFullyQualifiedName());
-                //dcqlForeignObject.setServiceURL(foreignAssociationRightBean.getServiceUrl());
                 dcqlForeignAssociation.setTargetServiceURL(foreignAssociationRightBean.getServiceUrl());
                 
-                JoinCondition dcqlJoinCondition = new JoinCondition();//JoinCondition.Factory.newInstance();
+                JoinCondition dcqlJoinCondition = new JoinCondition();
                 
                 dcqlJoinCondition.setLocalAttributeName(leftProperty);
                 dcqlJoinCondition.setForeignAttributeName(rightProperty);
                 dcqlJoinCondition.setPredicate(ForeignPredicate.EQUAL_TO);
                 
-                
-                /*
-                Join leftJoin = Join.Factory.newInstance();
-                leftJoin.setObject(foreignAssociationLeftBean.getFullyQualifiedName());
-                leftJoin.setProperty(leftProperty);
-                Join rightJoin = Join.Factory.newInstance();
-                rightJoin.setObject(foreignAssociationRightBean.getFullyQualifiedName());
-                rightJoin.setProperty(rightProperty);
-                dcqlJoinCondition.setLeftJoin(leftJoin);dcqlJoinCondition.setRightJoin(rightJoin);
-                 */
                 dcqlForeignAssociation.setJoinCondition(dcqlJoinCondition);
                 
                 buildAssociationGroup(dcqlForeignObject, foreignAssociationRightBean);
@@ -469,7 +492,6 @@ public class GroupDCQLGenerator {
             outerDcqlGroup.setForeignAssociation(dcqlForeignAssociationArray);
         }
     }
-    
     
     
     private static void createAssociations(Object outerObject, ClassBeanGroup group){
@@ -492,7 +514,6 @@ public class GroupDCQLGenerator {
         outerObject.setAssociation(dcqlAssociationArray[0]);
         
     }
-    
     
     
     private static void createAssociations(Object outerObject, ClassBean outerObjectBean){
@@ -572,9 +593,6 @@ public class GroupDCQLGenerator {
     }
     
     
-    
-    
-    
     private static void setReturnedAttributes(Object dcqlOuterObject){
         // set any returned attributes if available..
         boolean  available = SimpleGuiRegistry.hasReturnedAttributesForClass(dcqlOuterObject.getName());
@@ -587,6 +605,107 @@ public class GroupDCQLGenerator {
     }
     
     
+    private static void buildGroupOfGroupsAssociationsAttributes(boolean targetObjectHasAttributes, boolean targetObjectHasAssociations, boolean targetObjectHasForeignAssociations, ClassBean outerObjectBean, Group outerGroup){
+        
+        Group[] dcqlGroup = new Group[1];
+        
+        if (targetObjectHasAttributes && !(targetObjectHasAssociations || targetObjectHasForeignAssociations)){
+            // <editor-fold>   // only attributes are there
+            
+            ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
+            
+            
+            // sanjeev: if more than one attribute.. create an internal group...
+            if (targetObjectAttributeList.size() > 1){
+                // has multiple attcibutes..
+                dcqlGroup[0] = new Group();
+                outerGroup.setGroup(dcqlGroup);
+                dcqlGroup[0].setLogicRelation(LogicalOperator.AND);
+                createAttributesGroup(dcqlGroup[0], targetObjectAttributeList);
+                
+            }else {
+                // sanjeev: has only 1 attribute
+                Attribute[] dcqlAttribute = new Attribute[1];
+                outerGroup.setAttribute(dcqlAttribute);
+                
+                dcqlAttribute[0] = new Attribute();
+                AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
+                dcqlAttribute[0].setName(aBean.getAttributeName());
+                
+                dcqlAttribute[0].setPredicate(Predicate.fromString(aBean.getPredicate()));
+                boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
+                String attributeValue = aBean.getAttributeValue();
+                boolean hasChar = attributeValue.endsWith("%");
+                if (likePredicate && !hasChar){
+                    dcqlAttribute[0].setValue(aBean.getAttributeValue()+"%");
+                } else {
+                    dcqlAttribute[0].setValue(aBean.getAttributeValue());
+                }
+            }
+            // </editor-fold>  // only attributes are there
+            
+        } else if (targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
+            // <editor-fold>   // attriibutes and associations both are there
+            ArrayList targetObjectAttributeList = outerObjectBean.getNonNullAttributes();
+            
+            dcqlGroup[0]  = new Group();//dcqlOuterObject.addNewGroup();
+            outerGroup.setGroup(dcqlGroup);
+            
+            dcqlGroup[0] .setLogicRelation(LogicalOperator.AND);
+            if (targetObjectAttributeList.size() > 1){
+                
+                // sanjeev: has multiple attributes.. create an internal group...
+                Group gp2 = new Group();// dcqlGroup.addNewGroup();
+                dcqlGroup[0].setGroup(new Group[]{gp2});
+                gp2.setLogicRelation(LogicalOperator.AND);
+                
+                createAttributesGroup(gp2, targetObjectAttributeList);
+                
+                createAssociations(dcqlGroup[0], outerObjectBean);
+                
+            }else { // sanjeev: has only 1 attribute
+                // check if the attribute is phony..
+                AttributeBean aBean = (AttributeBean)targetObjectAttributeList.get(0);
+                if (!aBean.isPhony()){ // don't set the DCQL attribute..
+                    Attribute dcqlAttribute = new Attribute();//dcqlGroup.addNewAttribute();
+                    dcqlGroup[0].setAttribute(new Attribute[]{dcqlAttribute});
+                    
+                    dcqlAttribute.setName(aBean.getAttributeName());
+                    dcqlAttribute.setPredicate(Predicate.fromString(aBean.getPredicate()));//gov.nih.nci.catrip.cqlquery.Predicate.Enum.forString(aBean.getPredicate()));
+                    boolean likePredicate = aBean.getPredicate().equalsIgnoreCase("LIKE");
+                    String attributeValue = aBean.getAttributeValue();
+                    boolean hasChar = attributeValue.endsWith("%");
+                    if (likePredicate && !hasChar){
+                        dcqlAttribute.setValue(aBean.getAttributeValue()+"%");
+                    } else {
+                        dcqlAttribute.setValue(aBean.getAttributeValue());
+                    }
+                }
+                createAssociations(dcqlGroup[0], outerObjectBean);
+                
+                // </editor-fold>
+            } // attriibutes and associations both are there
+            
+        }else if (!targetObjectHasAttributes && (targetObjectHasAssociations || targetObjectHasForeignAssociations)){
+            // <editor-fold>
+            // sanjeev: check if the associations are more than 1 than create a AND Group and than add these to the Group.
+            int numOfForeignAssociations = outerObjectBean.getForeignAssociations().size();
+            int numOfAssociations = outerObjectBean.getAssociations().size();
+            int numTotalAssociations = numOfForeignAssociations+numOfAssociations;
+            
+            
+            if (numTotalAssociations>1){
+                dcqlGroup[0] = new Group();//dcqlOuterObject.addNewGroup();
+                outerGroup.setGroup(dcqlGroup);
+                dcqlGroup[0].setLogicRelation(LogicalOperator.AND);
+                createAssociations(dcqlGroup[0], outerObjectBean);
+            }else{
+                createAssociations(outerGroup, outerObjectBean);
+            }
+            // </editor-fold>
+        }
+        
+    }
     
     
     
