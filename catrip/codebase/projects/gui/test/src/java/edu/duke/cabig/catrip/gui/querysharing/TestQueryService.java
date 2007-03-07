@@ -1,33 +1,43 @@
 package edu.duke.cabig.catrip.gui.querysharing;
 
+import gov.nih.nci.cagrid.cqlquery.CQLQuery;
+import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
+import gov.nih.nci.cagrid.data.utilities.CQLQueryResultsIterator;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.CatripQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
+import gov.nih.nci.catrip.cagrid.catripquery.server.DcqlDb;
+import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-
-import javax.xml.namespace.QName;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
 import org.globus.wsrf.encoding.ObjectDeserializer;
-import org.globus.wsrf.encoding.ObjectSerializer;
-import org.globus.wsrf.encoding.SerializationException;
 import org.hibernate.Session;
 import org.xml.sax.InputSource;
 
+// in the QueryService project  ******************
+/**
+ * This system test validates an existing Query Sharing service by submitting CQL to it and 
+ * calling the other methods on the service.
+ * @author Bill Mason
+ * @testType system
+ */
 public class TestQueryService extends TestCase {
     private Properties properties = new Properties();
 	private QueryServiceClient client;
 	private String qryFile;
+	private String wsdd;
 	private String QUERIES_DIR = "test" + File.separator + "resources" + File.separator;
 	private String serviceURI = "";
 	CatripQuery caTripQuery;
@@ -35,7 +45,7 @@ public class TestQueryService extends TestCase {
 	gov.nih.nci.cagrid.dcql.Object to;
 	
 	public TestQueryService() {
-	}
+	} 
 
 	public TestQueryService(String arg0) {
 		super(arg0);
@@ -47,20 +57,21 @@ public class TestQueryService extends TestCase {
 			properties.load(new FileInputStream(QUERIES_DIR+File.separator+"query_service.properties"));
 			serviceURI = properties.getProperty("service_URI");
 			qryFile = properties.getProperty("SAMPLE_DCQL_FILE");
+			wsdd = properties.getProperty("WSDD");
 		} 
 		catch (IOException e) {
-			properties.load(new FileInputStream("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\groupdcql.xml"));
+			properties.load(new FileInputStream("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\query_service.properties"));
 			serviceURI = properties.getProperty("service_URI");
-			qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\groupdcql.xml";
+			// qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\simpleQuery2.xml";
+			qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\simpleQuery1.xml";
+			//qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\built_DemoUseCase2-b.xml";
+			wsdd="C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd";
 			System.out.println("Not Run from ANT");
 		}
 
-		client = new QueryServiceClient("http://localhost:8181/wsrf/services/cagrid/QueryService");
+		client = new QueryServiceClient(serviceURI);
 		caTripQuery = new CatripQuery();
 		caTripQuery.setFirstName("DEEPI");
-		File t = new File(qryFile); 
-		String dcqlAsString = DcqlUtil.getContents(t);
-
 		dcql = (DCQLQuery) ObjectDeserializer.deserialize(new InputSource(new FileInputStream(qryFile)),DCQLQuery.class);
 		to = (gov.nih.nci.cagrid.dcql.Object)dcql.getTargetObject();
 		caTripQuery.setDescription("desc");
@@ -68,22 +79,85 @@ public class TestQueryService extends TestCase {
 		caTripQuery.setLastName("last");
 		caTripQuery.setInstance("instance");
 		caTripQuery.setSource("source");
-		//caTripQuery.setDcql(getDCQLString(dcql));
-		caTripQuery.setDcql(dcqlAsString);
+		
 	}
 
     protected void tearDown() throws Exception {
         super.tearDown();
     }
     
+    /**
+     * Tests querying of the service
+     * @throws Exception
+     */
 	public void testQuery() throws Exception{
+		String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+		System.out.println("Running Query Test");
+		//String qryFile = "C:\\catrip\\catrip\\codebase\\projects\\queryservice\\SimpleQuery1.xml";
+		try{
+			QueryServiceClient client = new QueryServiceClient(serviceURI);
+			CQLQuery cqlQuery = new CQLQuery();
+
+			gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
+			target.setName("gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb");
+			cqlQuery.setTarget(target);
+			CQLQueryResults results = client.query(cqlQuery);
+			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(wsdd)));
+
+			while (iter.hasNext()) {
+				//Object o = iter.next();
+				gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb de = (gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb) iter.next();
+				if (de == null)
+					System.out.println("null");
+				else{
+					System.out.println(de.getId() +"   " + de.getDescription());
+					//System.out.println("dcql: " + de.getDcql());
+				}
+			}
+			if (results != null && results.getObjectResult() != null)
+				System.out.println( " Returned Result Count :  " + results.getObjectResult().length);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
+	/**
+	 * Tests inserting a new object
+	 * @throws Exception
+	 */
 	public void testInsert() throws Exception{
 		System.out.println("insert");
-          				
-		to.setName("DCQL QRY1");
+		Collection<DcqlDb> dcqlCollection = new HashSet<DcqlDb>();
+		int startingPosition = 0;
+		int maxLength = 400;
+		int totalDcqlLength = caTripQuery.getDcql().length();
+		int i = 1;
+		
+			
+		try {
+			while (totalDcqlLength >= startingPosition) {
+				System.out.println("totalDcqlLength (" + totalDcqlLength + ") > startingPosition " + startingPosition);
+				String substring;
+				if (totalDcqlLength > startingPosition)
+					substring = caTripQuery.getDcql().substring(startingPosition, totalDcqlLength);
+				else
+					substring = caTripQuery.getDcql().substring(startingPosition, maxLength + startingPosition);
+				//System.out.println("substring : " + substring);
+				DcqlDb obj = new DcqlDb();
+				obj.setDcql(substring);
+				obj.setSequence(i++);
+				dcqlCollection.add(obj);
+				startingPosition += maxLength;
+			}
+		} catch (RuntimeException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+	
+	
+		System.out.println("insert done");
 		try {
 			client.save(caTripQuery);
 		} 
@@ -92,18 +166,92 @@ public class TestQueryService extends TestCase {
 			e.printStackTrace();
 		}
 	}
-	private  String getDCQLString(DCQLQuery dcqlQuery) {
-		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
-		Writer w = new StringWriter();
-		try {
-			ObjectSerializer.serialize(w, dcqlQuery, qname);
-		} catch (SerializationException e) {
-			e.printStackTrace();
-		}
-		System.out.println(w);
-		return w.toString(); 
-	}
 	
+	public void testHibernateRetrieve() throws Exception{
+
+			Session session = HibernateUtil.currentSession();
+
+			List result = new ArrayList();
+			result = session.createQuery("from gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb").list();
+
+			
+			int j = 1;
+			try {
+				for (int i = 0; i < result.size(); i++) {
+					QueryDb obj = (QueryDb) result.get(i);
+					System.out.println("\n******* Query " + (j++) + " *******");
+					System.out.println("ID is " + obj.getId());
+					System.out.println("first name : " + obj.getFirstName());
+					System.out.println("last name : " + obj.getLastName());
+					System.out.println("description : " + obj.getDescription());
+					System.out.println("query name : " + obj.getName());
+					System.out.println("source : " + obj.getSource());
+					System.out.println("user name : " + obj.getUserName());
+					System.out.println("instance : " + obj.getInstance());
+					System.out.println("version : " + obj.getVersion());
+					System.out.println("dcql : " + obj.getDcql());
+					//System.out.println("dcql : " + getBlobData(obj.getDcql().getAsciiStream(),(int) obj.getDcql().length()));
+				}
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			HibernateUtil.closeSession();
+		}
+	
+	public void ttestHibernateInsert() throws Exception{
+		QueryDb queryDb = new QueryDb();
+		Set<DcqlDb> dcqlCollection = new HashSet<DcqlDb>();
+		int startingPosition = 0;
+		int maxLength = 4000;
+		int totalDcqlLength = caTripQuery.getDcql().length();
+		int i = 1;
+		try {
+			while (totalDcqlLength >= startingPosition) {
+				System.out.println("totalDcqlLength (" + totalDcqlLength + ") > startingPosition " + startingPosition);
+				String substring;
+				if (maxLength + startingPosition > totalDcqlLength)
+					substring = caTripQuery.getDcql().substring(startingPosition, totalDcqlLength);
+				else
+					substring = caTripQuery.getDcql().substring(startingPosition, maxLength + startingPosition);
+				//System.out.println("substring : ("+ substring.length() + ") : " + substring);
+				DcqlDb obj = new DcqlDb();
+				obj.setDcql(substring);
+				obj.setSequence(i++);
+				dcqlCollection.add(obj);
+				startingPosition += maxLength;
+			}
+		} catch (RuntimeException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+		
+		if (totalDcqlLength - startingPosition > 0) {
+			System.out.println("last one");
+			System.out.println("totalDcqlLength (" + totalDcqlLength + ") > startingPosition " + startingPosition);
+			String substring = caTripQuery.getDcql().substring(startingPosition, totalDcqlLength);
+			DcqlDb obj = new DcqlDb();
+			obj.setDcql(substring);
+			obj.setSequence(i++);
+			dcqlCollection.add(obj);
+		}
+		
+		queryDb.setDcqlCollection(dcqlCollection);
+		
+		try {
+			HibernateUtil.create(queryDb);
+			HibernateUtil.closeSession();
+		} 
+		catch (Exception e) {
+			HibernateUtil.closeSession();
+			assertFalse(true);
+			e.printStackTrace();
+		}		
+	}
+	/**
+	 * Tests updating an object
+	 * @throws Exception
+	 */
 	public void testUpdate() throws Exception{
 		System.out.println("update");
 		caTripQuery.setId(1688);
@@ -117,9 +265,13 @@ public class TestQueryService extends TestCase {
 		}
 	}
 	
+	/**
+	 * Tests deleting an object
+	 * @throws Exception
+	 */
 	public void testDelete() throws Exception{
 		System.out.println("delete");
-		//client.delete(1688);
+		client.delete(1688);
 	}
 	
 	public long getId() throws Exception {
@@ -137,5 +289,16 @@ public class TestQueryService extends TestCase {
 		}
 		return  maxId;
 	}
+//	private  String getDCQLString(DCQLQuery dcqlQuery) {
+//		QName qname = new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql");
+//		Writer w = new StringWriter();
+//		try {
+//			ObjectSerializer.serialize(w, dcqlQuery, qname);
+//		} catch (SerializationException e) {
+//			e.printStackTrace();
+//		}
+//		//System.out.println(w);
+//		return w.toString(); 
+//	}
 
 }

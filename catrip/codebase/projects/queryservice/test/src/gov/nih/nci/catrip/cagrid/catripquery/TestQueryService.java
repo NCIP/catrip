@@ -116,7 +116,7 @@ public class TestQueryService extends TestCase {
 					System.out.println("null");
 				else{
 					System.out.println(de.getId() +"   Name : " + de.getName());
-					//System.out.println("dcql: " + de.getDcql());
+					System.out.println("dcql: " + de.getDcql());
 				}
 			}
 			if (results != null && results.getObjectResult() != null)
@@ -132,7 +132,7 @@ public class TestQueryService extends TestCase {
 	 * Tests inserting a new object
 	 * @throws Exception
 	 */
-	public void testInsert() throws Exception{
+	public void ttestInsert() throws Exception{
 		System.out.println("insert");
 		Collection<DcqlDb> dcqlCollection = new HashSet<DcqlDb>();
 		int startingPosition = 0;
@@ -171,7 +171,7 @@ public class TestQueryService extends TestCase {
 		}
 	}
 	
-	public void testHibernateRetrieve() throws Exception{
+	public void ttestHibernateRetrieve() throws Exception{
 		System.out.println("testHibernateRetrieve");
 			Session session = HibernateUtil.currentSession();
 
@@ -200,11 +200,13 @@ public class TestQueryService extends TestCase {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			HibernateUtil.closeSession();
+			finally{
+				HibernateUtil.closeSession();
+			}
 			System.out.println("testHibernateRetrieve - Done");
 		}
 	
-	public void testHibernateInsert() throws Exception{
+	public void ttestHibernateInsert() throws Exception{
 		System.out.println("testHibernateInsert");
 		QueryDb queryDb = new QueryDb();
 		Set<DcqlDb> dcqlCollection = new HashSet<DcqlDb>();
@@ -243,13 +245,16 @@ public class TestQueryService extends TestCase {
 			assertFalse(true);
 			e.printStackTrace();
 		}		
+		finally{
+			HibernateUtil.closeSession();
+		}
 		System.out.println("testHibernateInsert - Done");
 	}
 	/**
 	 * Tests updating an object
 	 * @throws Exception
 	 */
-	public void testUpdate() throws Exception{
+	public void ttestUpdate() throws Exception{
 		System.out.println("testUpdate");
 		caTripQuery.setId(1688);
 		caTripQuery.setName("Updated");
@@ -267,7 +272,7 @@ public class TestQueryService extends TestCase {
 	 * Tests deleting an object
 	 * @throws Exception
 	 */
-	public void testDelete() throws Exception{
+	public void ttestDelete() throws Exception{
 		System.out.println("testDelete");
 		client.delete(1688);
 		System.out.println("testDelete - Done");
