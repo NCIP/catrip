@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
 	
-	
-	<service displayName="Tissue Bank" url="http://152.16.96.114:8080/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
+	<service displayName="caTIES" url="http://localhost:8181/wsrf/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="true">
 		<targets>
-			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" display="true">
+			<objectElement className="edu.upmc.opi.caBIG.caTIES.database.domain.impl.AddressImpl"   
+					displaybleAttributes="street,city" 
+					display="true"
+					supportReturnAttributes="false">
+					<associatedObjectTree/>
+				<foreignAssociationOutboundPath/>
+			</objectElement>
+		</targets>
+	</service>
+
+
+	<service displayName="Tissue Bank" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
+		<targets>
+			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   
+					displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" 
+					display="true"
+					supportReturnAttributes="false">
 				<associatedObjectTree>
 					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"   roleName="specimenCollectionGroup" display="true">
 						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber"   roleName="clinicalReport" display="true">
@@ -22,22 +37,7 @@
 				</foreignAssociationOutboundPath>
 			</objectElement>
 
-<!-- 
-			<objectElement className="edu.wustl.catissuecore.domainobject.impl.CellSpecimenImpl"   displaybleAttributes="barcode,activityStatus,type,quantityInCellCount,positionDimensionOne,positionDimensionTwo,available,availableQuantityInCellCount" display="true">
-				<associatedObjectTree>
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" displaybleAttributes="clinicalDiagnosis,clinicalStatus,activityStatus"   roleName="specimenCollectionGroup" display="true">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" displaybleAttributes="surgicalPathologyNumber"   roleName="clinicalReport" display="true"/>
-					</Association>
-				</associatedObjectTree>
-				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
-					<Association className="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
-						<Association className="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
-							<Association className="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier"/>
-						</Association>
-					</Association>
-				</foreignAssociationOutboundPath>
-			</objectElement>
- -->
+
 
 		</targets>
 		<foreignAssociationInboundTree>
@@ -51,11 +51,14 @@
 	
 
 	
-	<service displayName="Clinical Annotation Engine" url="http://152.16.96.114:8080/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
+	<service displayName="Clinical Annotation Engine" url="http://localhost:8181/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" selectable="true" displaybleAttributes="firstName,gender,race,ethnicity" display="true">
+			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" selectable="true" 
+				displaybleAttributes="firstName,gender,race,ethnicity" 
+				display="true"
+				supportReturnAttributes="true">
 				<associatedObjectTree>
-					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection" selectable="true"  display="true"  displaybleAttributes="medicalRecordNumber" />
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="participantMedicalIdentifierCollection" selectable="true"  display="true"  displaybleAttributes="medicalRecordNumber" />
 					<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" selectable="true" roleName="annotationEventParametersCollection" displaybleAttributes="id" display="true">
 						<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR" roleName="annotationSetCollection" display="true"/>
 						<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR" roleName="annotationSetCollection" display="true"/>
@@ -64,7 +67,7 @@
 					</Association>
 				</associatedObjectTree>
 				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
-					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection"/>
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="participantMedicalIdentifierCollection"/>
 				</foreignAssociationOutboundPath>
 			</objectElement>
 		</targets>
@@ -119,7 +122,7 @@
 
 
 
-<service displayName="CGEMS" url="http://152.16.96.114:8080/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
+<service displayName="CGEMS" url="http://localhost:8181/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" displaybleAttributes="studySubjectIdentifier,administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode"  selectable="true" display="true">
 				<associatedObjectTree>
@@ -204,9 +207,12 @@
 
 
 
-<service displayName="Tumor Registry" url="http://152.16.96.114:8080/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
+<service displayName="Tumor Registry" url="http://localhost:8181/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
 		<targets>
-			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" displaybleAttributes="race,sex,ethnicGroup,dateOfDeath" selectable="true" display="true">
+			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" 
+			displaybleAttributes="race,sex,ethnicGroup,dateOfDeath" 
+			selectable="true" display="true"
+			supportReturnAttributes="true">
 				<associatedObjectTree>
 				<Association className="edu.duke.cabig.tumorregistry.domain.PatientIdentifier" roleName="patientIdentifier" display="false"/>
 					<Association className="edu.duke.cabig.tumorregistry.domain.Diagnosis" displaybleAttributes="initialDiagnosisDate,ageAtDiagnosis,causeOfDeath,histology,histologyCode,histologicGrade,primarySite"  roleName="diagnosisCollection"  selectable="true"  display="true">
@@ -388,4 +394,4 @@
 
 
 </simpleGuiServices>
-<!-- 152.16.96.114:8080 -->
+<!-- localhost:8181 -->
