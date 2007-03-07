@@ -199,6 +199,7 @@ public class GroupDCQLGenerator {
                                 buildGroupOfGroupsAssociationsAttributes( targetObjectHasAttributes,  targetObjectHasAssociations,  targetObjectHasForeignAssociations,  outerObjectBean,  dcqlGroupNonGroup); // set the nonGroup stuff..
                             } else {
                                 dcqlOuterObject.setGroup(null); // remove the outer group that you created.. as that is not used now..
+                                // instead of doing this here.. capture this scenario above.. as this is working only for 1 group.. if there are more than 1 group.. the above line is remving the group..;
                                 createAssociations(dcqlOuterObject, group);// set the group stuff
                             }
                             
