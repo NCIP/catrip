@@ -202,7 +202,9 @@ public class ResultsParser {
     
     public List getResultList(CQLQueryResults results)
     throws Exception{
-        
+        if (results == null ) {
+            return new ArrayList();
+        }
         CQLObjectResult[] objectResult = results.getObjectResult();
         int arraySize = objectResult.length;
         MessageElement forignAssociationResults = objectResult[arraySize-1].get_any()[0];
