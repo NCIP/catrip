@@ -111,6 +111,17 @@ public class WebstartConfigurator {
             properties.storeToXML(os,"Modified via webstart.");
             
             
+            
+            // log file setup.
+//            File logFile = new File("C:\\caTRIP_logs.txt");
+//            if (!logFile.exists()){
+//                logFile.createNewFile();
+//            }
+            
+            
+            
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

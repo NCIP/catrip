@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Main class of the GUI project. Entry point for the GUI.
  *
- * @author Sanjeev Agarwal . 
+ * @author Sanjeev Agarwal .
  */
 public class Main {
     
@@ -30,7 +30,7 @@ public class Main {
         // Process all arguments here.
         String caTripHomeDir = System.getProperty("catrip.home.dir");
         if (caTripHomeDir != null){
-            GUIConstants.CATRIP_HOME = System.getProperty("user.home") + File.separator + caTripHomeDir.trim();  
+            GUIConstants.CATRIP_HOME = System.getProperty("user.home") + File.separator + caTripHomeDir.trim();
             GUIConstants.CATRIP_CONFIG_FILE_LOCATION = GUIConstants.CATRIP_HOME + File.separator + "catrip-config.xml";
             // change that in fqe class also..
             //gov.nih.nci.catrip.fqe.utils.PropertyReader.CATRIP_HOME = GUIConstants.CATRIP_HOME;
@@ -45,21 +45,30 @@ public class Main {
         
         
         
+        // log file setup.
+        try{
+            File logFile = new File("C:\\caTRIP_logs.txt");
+            if (!logFile.exists()){
+                logFile.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
-       
+        
         
         // sanjeev: check if the application is launched via the webstart context.
         String webstartStr = System.getProperty("deployment.user.cachedir");
         if(webstartStr != null){
             System.out.println("This is a webstart version of caTRIP");
-            WebstartConfigurator.configure(); 
+            WebstartConfigurator.configure();
         } else {
             System.out.println("This is a stand alone version of caTRIP");
         }
         
-
         
-        ThreadGroup exceptionThreadGroup = new ExceptionThreadGroup(); 
+        
+        ThreadGroup exceptionThreadGroup = new ExceptionThreadGroup();
         
         java.awt.EventQueue.invokeLater(new Thread(exceptionThreadGroup, "Init thread") {
             public void run() {

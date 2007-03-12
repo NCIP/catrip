@@ -13,6 +13,7 @@ import edu.duke.cabig.catrip.gui.query.GroupDCQLGenerator;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.DisplayExceptions;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import edu.duke.cabig.catrip.gui.util.Logger;
 import gov.nih.nci.cagrid.cqlresultset.CQLObjectResult;
 import gov.nih.nci.cagrid.cqlresultset.CQLQueryResults;
 import gov.nih.nci.cagrid.dcql.DCQLQuery;
@@ -32,6 +33,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import org.apache.axis.message.MessageElement;
 import org.apache.axis.message.PrefixedQName;
+import org.apache.commons.logging.Log;
 
 /**
  * Panel which contains the Execute button. More commands can be added here.
@@ -45,6 +47,7 @@ public class CommandPanel extends CPanel {
     JProgressBar progressBar ;
     CJDialog progressBarWindow ;
     
+    Log log = Logger.getDefaultLogger(); 
     
     /** Creates new form CommandPanel */
     public CommandPanel() {
@@ -274,6 +277,9 @@ public class CommandPanel extends CPanel {
             FederatedQueryEngine fqe = new FederatedQueryEngine();
             DCQLQuery dcql = GroupDCQLGenerator.getDCQLDocument();
             
+            // log the DCQL.
+            log.info("---- DCQL Text Start ---- \n"+GroupDCQLGenerator.getDCQLText() + "\n---- DCQL Text End ----\n\n");
+
 //            System.out.println(GroupDCQLGenerator.getDCQLText());
             
             getMainFrame().getOutputPanel().cleanResults();
