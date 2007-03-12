@@ -35,20 +35,26 @@ public class GUIConstants {
     public static String caTRIPVersion = "1_beta"; 
     
     
+    public static final Color[] COLOR_SET = {Color.BLACK, Color.RED, Color.GREEN, Color.BLUE}; 
+    public static final String[] HTML_COLOR_SET = {"#000000", "#FF0033", "#006600", "#3333CC"};  // Black, Red, Green, Blue
+    
+    
+    public static final Image LARGE_TEXT_ICON = Utilities.loadImage ("edu/duke/cabig/catrip/gui/resources/btn_icons/view.png");
+    public static final int LARGE_TEXT_LIMIT = 20; // Limit of the number of chars in the result table after which it will be considered as a Long text and will be displayed in a popup.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // runtime properties..
     public static boolean simpleGui = true;
     public static boolean resultAvailable = false;
-    
-    public static Color[] COLOR_SET = {Color.BLACK, Color.RED, Color.GREEN, Color.BLUE}; 
-    public static String[] HTML_COLOR_SET = {"#000000", "#FF0033", "#006600", "#3333CC"};  // Black, Red, Green, Blue
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
