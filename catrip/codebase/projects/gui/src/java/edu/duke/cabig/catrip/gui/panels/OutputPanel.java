@@ -4,6 +4,7 @@ package edu.duke.cabig.catrip.gui.panels;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
@@ -13,7 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 import java.util.regex.Pattern;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
@@ -52,12 +56,27 @@ public class OutputPanel extends CPanel {
         ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)getMapTableModel(resultArray, colNamesMap, keys);
         
         ((ColoredJTable)getOutputTable()).setModel(colModel, colModel.getRowColors());
+        
+        TextWithIconCellRenderer renderer = new TextWithIconCellRenderer();
+        int numColumns = getOutputTable().getColumnCount();
+        for (int i = 0; i < numColumns; i++) {
+            getOutputTable().getColumnModel().getColumn(i).setCellRenderer(renderer);
+        }
+        
     }
     
     public void setMapResults(List resultArray, HashMap colNamesMap, String[] keys, boolean[] alternate){
         ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)getMapTableModel(resultArray, colNamesMap, keys, alternate);
         
         ((ColoredJTable)getOutputTable()).setModel(colModel, colModel.getRowColors());
+        
+        TextWithIconCellRenderer renderer = new TextWithIconCellRenderer();
+        int numColumns = getOutputTable().getColumnCount();
+        for (int i = 0; i < numColumns; i++) {
+            getOutputTable().getColumnModel().getColumn(i).setCellRenderer(renderer);
+        }
+        
+        
     }
     
     public void cleanResults(){
@@ -212,6 +231,7 @@ class ColoredDefaultTableModel extends javax.swing.table.DefaultTableModel{
     public Color[] getRowColors(){
         return rowColors;
     }
+    
 }
 
 
@@ -225,6 +245,10 @@ class ColoredJTable extends JTable {
         this.setRowColors(rColors);
     }
     
+    public Color  getRowColor(int row){
+        return rowColors[row];
+    }
+    
     public void setRowColors(Color[] colors){
         rowColors = colors;
     }
@@ -235,5 +259,67 @@ class ColoredJTable extends JTable {
         c.setBackground(rowColors[rowIndex]);
         return c;
     }
+    
+}
+
+
+
+
+
+class TextWithIconCellRenderer extends DefaultTableCellRenderer {
+    
+    
+    public Component getTableCellRendererComponent(JTable tblDataTable, Object value, boolean isSelected, boolean hasFocus, int markedRow, int col){
+        JLabel origRet=(JLabel)super.getTableCellRendererComponent(tblDataTable,value,isSelected,hasFocus,markedRow,col);
+        
+        if (value != null ) {
+            String strValue = value.toString().trim();
+            boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
+            if (bigText){
+                origRet.setIcon(new javax.swing.ImageIcon(GUIConstants.LARGE_TEXT_ICON) );
+                origRet.setHorizontalTextPosition(SwingConstants.RIGHT);
+                origRet.setVerticalTextPosition(SwingConstants.CENTER);
+                origRet.setHorizontalAlignment(SwingConstants.LEFT);
+                origRet.setVerticalAlignment(SwingConstants.CENTER);
+                
+                // set an action handler also..
+                
+                
+                String str = "<html> **REVISED DIAGNOSIS**:<BR>C. \"\"<?xml:namespace prefix = " +
+                        "maw3 ns = \"\"http://maw3.duhs.duke.edu\"\" />USNCB RIGHT BREAST, NUMBER OF " +
+                        "CORES FIVE, 9:00 POSITION\"\":<BR><BR>&nbsp;&nbsp;&nbsp; INVASIVE DUCTAL CARCINOMA." +
+                        "<BR>&nbsp;&nbsp;&nbsp;&nbsp; NOTTINGHAM COMBINED HISTOLOGIC GRADE, AT LEAST 2 OF 3.<BR>" +
+                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TUBULE FORMATION SCORE: 3.<BR>&nbsp;&nbsp;&nbsp;" +
+                        "&nbsp;&nbsp;&nbsp; NUCLEAR PLEOMORPHISM SCORE: 3.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                        " MITOTIC ACTIVITY SCORE: TOO LIMITED TO PERFORM.<BR>&nbsp;&nbsp;&nbsp; DUCTAL CARCINOMA " +
+                        "IN-SITU, NUCLEAR GRADE 3.<BR>&nbsp;&nbsp;&nbsp; INTRADUCTAL PAPILLOMA.<BR><BR>COMMENT:&nbsp; " +
+                        "Diagnosis C has been revised secondary to inadvertent verification<BR>with the incorrect " +
+                        "biopsy site. The original diagnosis indicated the biopsy<BR>was obtained from the left side. " +
+                        "The diagnosis has been changed reflect that<BR>the biopsy material was obtained from the right " +
+                        "breast as indicated in the<BR>mammography report. Otherwise, the diagnosis remains unchanged." +
+                        "&nbsp; <BR><BR>A. \"\"STNCB RIGHT BREAST, NUMBER OF CORES THREE WITH CALCIUM 10:00 POSITION\"\":" +
+                        "<BR><BR>&nbsp;&nbsp;&nbsp; DUCTAL CARCINOMA IN SITU, MICROPAPILLARY TYPE, FOCALLY SUSPICIOUS FOR" +
+                        "<BR>&nbsp;&nbsp;&nbsp; INVASION.<BR>&nbsp;&nbsp;&nbsp; NUCLEAR GRADE 3 WITH NECROSIS.<BR>&nbsp;" +
+                        "&nbsp;&nbsp; MICROCALCIFICATIONS ASSOCIATED WITH DCIS.<BR><BR><BR><BR>B. \"\"STNCB RIGHT BREAST, " +
+                        "NUMBER OF CORES FIVE WITHOUT CALCIUM 10:00 POSITION\"\":<BR><BR>&nbsp;&nbsp;&nbsp; DUCTAL " +
+                        "CARCINOMA IN SITU, CRIBIFORM TYPE.<BR>&nbsp;&nbsp;&nbsp; NUCLEAR GRADE 3 WITH NECROSIS.<BR>" +
+                        "&nbsp;&nbsp;&nbsp; NO INVASIVE CARCINOMA IS SEEN.<BR>&nbsp;&nbsp;&nbsp; NO CALCIFICATINS ARE SEEN." +
+                        "<BR><BR><BR>C. *** SEE REVISION ***<BR>REPORT REVISED ON [__Apr.2004] AT 1519 BY [__unrecognizedName]" +
+                        "<BR><BR>COMMENT:<BR>Ancillary studies have been requested on specimen C. The results will be<BR>issued " +
+                        "in an addendum.<BR><BR>CI ADDENDUM 1:<BR>Please see Image Cytometry Report [__accession] for results of " +
+                        "supplementary<BR>tests.<BR><br></html>";
+                
+                
+                
+            } else {
+                origRet.setIcon(null);
+            }
+            
+        } else {
+            origRet.setIcon(null);
+        }
+        return origRet;
+    }
+    
     
 }

@@ -40,7 +40,7 @@ public class GUIConstants {
     
     
     public static final Image LARGE_TEXT_ICON = Utilities.loadImage ("edu/duke/cabig/catrip/gui/resources/btn_icons/view.png");
-    public static final int LARGE_TEXT_LIMIT = 20; // Limit of the number of chars in the result table after which it will be considered as a Long text and will be displayed in a popup.
+    public static final int LARGE_TEXT_LIMIT = 10; // Limit of the number of chars in the result table after which it will be considered as a Long text and will be displayed in a popup.
     
     
     
