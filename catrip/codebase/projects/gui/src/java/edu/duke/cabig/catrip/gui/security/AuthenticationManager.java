@@ -1,12 +1,6 @@
 
 package edu.duke.cabig.catrip.gui.security;
 
-import gov.nih.nci.cagrid.authentication.bean.BasicAuthenticationCredential;
-import gov.nih.nci.cagrid.authentication.bean.Credential;
-import gov.nih.nci.cagrid.authentication.client.AuthenticationServiceClient;
-import java.rmi.RemoteException;
-import org.apache.axis.types.URI;
-
 /**
  * Authentication Manager to authenticate the user form the login screen.
  *
