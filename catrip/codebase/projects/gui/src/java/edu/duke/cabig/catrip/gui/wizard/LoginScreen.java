@@ -79,7 +79,7 @@ public class LoginScreen extends CJFrame {
             }
         });
 
-        password.setText("catrip1");
+        password.setText("catrip");
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/login.gif")));
         loginBtn.setText("Login");
