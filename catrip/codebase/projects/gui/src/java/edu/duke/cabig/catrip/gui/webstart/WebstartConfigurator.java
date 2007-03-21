@@ -25,6 +25,7 @@ public class WebstartConfigurator {
     public static final String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_CONF_HOME = CATRIP_HOME + File.separator + "conf";
     
+    private static String ROOT_CERT_LOCATION = System.getProperty("user.home") + File.separator + ".globus" + File.separator+ "certificates";
     
     /** Creates a new instance of WebstartConfigurator */
     public WebstartConfigurator() {
@@ -50,7 +51,19 @@ public class WebstartConfigurator {
                 File verFile = new File(versionFile);
                 verFile.createNewFile();
             }
+ 
+            File certDir = new File(ROOT_CERT_LOCATION);
+           // versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
             
+            if (certDir.exists()){ 
+                deleteDir(certDir); 
+//                confDir.mkdir();
+                copyCertificate();
+            }
+            
+            if (!certDir.exists()){
+                copyCertificate();
+            } 
             
             
         } catch (IOException ex) {
@@ -59,7 +72,28 @@ public class WebstartConfigurator {
     }
     
     
-    
+        private static void copyCertificate(){
+        try {
+            File certDir = new File(ROOT_CERT_LOCATION);
+            certDir.mkdir();
+            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("rootCA_cert.0");
+            String outFilename = ROOT_CERT_LOCATION+File.separator+"rootCA_cert.0";
+            OutputStream out = new FileOutputStream(outFilename);
+            
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            out.close();
+            in.close();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+        
     public static void configureForWebstart(){
         try {
             
