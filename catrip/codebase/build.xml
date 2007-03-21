@@ -286,6 +286,9 @@
 			<artifact refid="cagrid.misc.jars" />  <!-- New jars that have been added in caGRID..	 -->
 			<artifact refid="ant-contrib.jars" />
 			<artifact refid="xmlbeans.jars" />
+			
+			<artifact refid="cagrid.gridca.jars" />
+			<artifact refid="cagrid.coretests.jars" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
