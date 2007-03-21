@@ -12,23 +12,24 @@ import java.util.ArrayList;
  * @author Sanjeev Agarwal
  */
 public class XMLFileLoginProviderLocator implements LoginProviderLocator {
-    String[] loginProviderUrls = null;
+    IndentityProviderBean[] indentityProviderBean = null;
     
     /** Creates a new instance of XMLFileLoginProviderLocator */
     public XMLFileLoginProviderLocator() {
     }
     
-    public String[] getLoginProviderURLs() {
+    public IndentityProviderBean[] getLoginProviderURLs() {
         GUIConfigurationBean guiConfiguration = GUIConfigurationLoader.getGUIConfiguration();
         ArrayList idps = guiConfiguration.getGridIndentityProviders();
         
-        loginProviderUrls = new String[idps.size()];
+        indentityProviderBean = new IndentityProviderBean[idps.size()];
         
         for (int i = 0; i < idps.size(); i++) {
-            loginProviderUrls[i] = ((IndentityProviderBean)idps.get(i)).getDisplayName();
+         //   loginProviderUrls[i] = ((IndentityProviderBean)idps.get(i)).getDisplayName();
+            indentityProviderBean[i] = (IndentityProviderBean)idps.get(i);
         }
         
-        return loginProviderUrls;
+        return indentityProviderBean;
     }
     
 }

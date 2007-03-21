@@ -72,9 +72,8 @@ public  class GUIConfigurationLoader {
         for (int i=0; i < iProvider.length;i++){
             IndentityProviderBean idBean = new IndentityProviderBean();
             idBean.setDisplayName(iProvider[i].getName());
-            idBean.setUrl(iProvider[i].getUrl());
-            idBean.setType(iProvider[i].getType());
-            idBean.setKeystore(iProvider[i].getKeystore());
+            idBean.setIdpUrl(iProvider[i].getIdpUrl());
+            idBean.setDorianUrl(iProvider[i].getDorianUrl());
             configBean.addGridIndentityProvider(idBean);
         }
         

@@ -1,12 +1,14 @@
 
 package edu.duke.cabig.catrip.gui.security;
 
+import edu.duke.cabig.catrip.gui.common.IndentityProviderBean;
+
 /**
  * @author Sanjeev Agarwal
  */
 public interface LoginProviderLocator {
     
-    public abstract String[] getLoginProviderURLs();
+    public abstract IndentityProviderBean[] getLoginProviderURLs();
     
     
 }

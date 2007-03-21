@@ -1,11 +1,16 @@
 
 package edu.duke.cabig.catrip.gui.wizard;
 
+import edu.duke.cabig.catrip.gui.common.IndentityProviderBean;
 import edu.duke.cabig.catrip.gui.components.CJFrame;
+import edu.duke.cabig.catrip.gui.security.AuthenticationErrorException;
 import edu.duke.cabig.catrip.gui.security.AuthenticationManager;
+import edu.duke.cabig.catrip.gui.security.AuthenticationManagerFactory;
 import edu.duke.cabig.catrip.gui.security.LoginProviderLocatorFactory;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.Cursor;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -16,7 +21,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class LoginScreen extends CJFrame {
     
-    
+    private Map<String,IndentityProviderBean> idpBeans = new HashMap<String,IndentityProviderBean>();
     /** Creates new form LoginScreen */
     public LoginScreen() {
         initComponents();
@@ -52,23 +57,27 @@ public class LoginScreen extends CJFrame {
         visualGuiChkBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
-        setTitle(bundle.getString("TITLE_LOGIN_SCREEN")); // NOI18N
+        setTitle(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("TITLE_LOGIN_SCREEN"));
         setAlwaysOnTop(true);
         setName("LoginScreen");
         setResizable(false);
         loginIdLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        loginIdLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID")); // NOI18N
+        loginIdLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID"));
 
         passwordLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        passwordLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_PASSWORD")); // NOI18N
+        passwordLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_PASSWORD"));
 
         identityProviderLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        identityProviderLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER")); // NOI18N
+        identityProviderLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER"));
 
         userId.setText("User ID");
 
         identityProvider.setModel(getComboBoxModel());
+        identityProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                identityProviderActionPerformed(evt);
+            }
+        });
 
         password.setText("User Password");
 
@@ -153,6 +162,10 @@ public class LoginScreen extends CJFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void identityProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identityProviderActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_identityProviderActionPerformed
     
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         userId.setText("");
@@ -164,8 +177,16 @@ public class LoginScreen extends CJFrame {
     }//GEN-LAST:event_exitBtnActionPerformed
     
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        
-        if (AuthenticationManager.authenticate(userId.getText().trim(), password.getPassword().toString().trim(), identityProvider.getSelectedItem().toString() )){
+        boolean authenticate = false;
+        IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
+        try {
+            AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
+            authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
+        } catch (AuthenticationErrorException ex) {
+            ex.printStackTrace();
+        }
+              
+        if (authenticate) {
             
             if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
                 
@@ -219,11 +240,21 @@ public class LoginScreen extends CJFrame {
     }
     
     private DefaultComboBoxModel getComboBoxModel(){
-        String[] urls = LoginProviderLocatorFactory.getLoginProviderLocator().getLoginProviderURLs();
-        DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(urls);
+        IndentityProviderBean[] indentityProviderBeans = LoginProviderLocatorFactory.getLoginProviderLocator().getLoginProviderURLs();
+        String idpNames[] = new String[indentityProviderBeans.length];
+        for (int i=0; i<indentityProviderBeans.length ; i++) {            
+            idpNames[i] = ((IndentityProviderBean)indentityProviderBeans[i]).getDisplayName();
+            idpBeans.put(idpNames[i],(IndentityProviderBean)indentityProviderBeans[i]);
+        }
+        
+        DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(idpNames);
+        
         return cb;
     }
     
+    private Map<String,IndentityProviderBean> getIdpBeans() {
+        return idpBeans;
+    }
     private void disableButtons(){
         clearBtn.setEnabled(false);
         exitBtn.setEnabled(false);

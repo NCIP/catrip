@@ -19,7 +19,7 @@ public class DorianLoginProviderLocator implements LoginProviderLocator{
     }
 
     /** get the list of IDPs from Dorian. */
-    public String[] getLoginProviderURLs() {
+    public IndentityProviderBean[] getLoginProviderURLs() {
          // TODO - go to Dorian and get the list of IDPs.
         loginProviderUrls = new String[] {"Duke Identity Provider","NCICB Identity Provider","Semantic Bits Identity Provider"};
         
@@ -32,7 +32,7 @@ public class DorianLoginProviderLocator implements LoginProviderLocator{
 //           loginProviderUrls[i] = ((IndentityProviderBean)idps.get(i)).getDisplayName();  
 //        }
         
-        return loginProviderUrls;
+        return null;
     }
     
     

@@ -4,13 +4,13 @@ package edu.duke.cabig.catrip.gui.common;
  * Captures the Indentity Providers listed in caTrip-config.xml file.
  *
  * @author Sanjeev Agarwal
+ * @author Srini Akkala
  */
 public class IndentityProviderBean {
     private String displayName;
-    private String url;
-    private String type;
-    private String keystore;
-    private boolean trusted;
+    private String idpUrl;
+    private String dorianUrl;
+    private String gridGrouperUrl;
     
     /** Creates a new instance of IndentityProviderBean */
     public IndentityProviderBean() {
@@ -24,36 +24,28 @@ public class IndentityProviderBean {
         this.displayName = displayName;
     }
 
-    public String getUrl() {
-        return url;
+    public String getIdpUrl() {
+        return idpUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setIdpUrl(String idpUrl) {
+        this.idpUrl = idpUrl;
     }
 
-    public String getType() {
-        return type;
+    public String getDorianUrl() {
+        return dorianUrl;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDorianUrl(String dorianUrl) {
+        this.dorianUrl = dorianUrl;
     }
 
-    public String getKeystore() {
-        return keystore;
+    public String getGridGrouperUrl() {
+        return gridGrouperUrl;
     }
 
-    public void setKeystore(String keystore) {
-        this.keystore = keystore;
-    }
-
-    public boolean isTrusted() {
-        return trusted;
-    }
-
-    public void setTrusted(boolean trusted) {
-        this.trusted = trusted;
+    public void setGridGrouperUrl(String gridGrouperUrl) {
+        this.gridGrouperUrl = gridGrouperUrl;
     }
     
 }
