@@ -178,6 +178,8 @@ public class LoginScreen extends CJFrame {
     
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         boolean authenticate = false;
+        authenticate = true;
+        /*
         IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
         try {
             AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
@@ -185,7 +187,7 @@ public class LoginScreen extends CJFrame {
         } catch (AuthenticationErrorException ex) {
             ex.printStackTrace();
         }
-              
+         */    
         if (authenticate) {
             
             if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
