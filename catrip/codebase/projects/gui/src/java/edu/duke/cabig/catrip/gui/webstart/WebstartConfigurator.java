@@ -8,6 +8,7 @@ import edu.duke.catrip.config.CatripConfigurationDocument;
 import edu.duke.catrip.config.GuiConfiguration;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,7 @@ public class WebstartConfigurator {
     public static final String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_CONF_HOME = CATRIP_HOME + File.separator + "conf";
     
+    public static final String ROOT_CERT_LOCATION = GUIConstants.GLOBUS_HOME + File.separator + "certificates"; 
     
     /** Creates a new instance of WebstartConfigurator */
     public WebstartConfigurator() {
@@ -51,14 +53,45 @@ public class WebstartConfigurator {
                 verFile.createNewFile();
             }
             
+            File certDir = new File(ROOT_CERT_LOCATION);
+           // versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
             
+            if (certDir.exists()){ 
+                deleteDir(certDir); 
+//                confDir.mkdir();
+                copyCertificate();
+            }
+            
+            if (!certDir.exists()){
+                copyCertificate();
+            }            
             
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
     
-    
+    private static void copyCertificate(){
+        try {
+            File certDir = new File(ROOT_CERT_LOCATION);
+            certDir.mkdir();
+            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(GUIConstants.ROOT_CERT);
+            String outFilename = ROOT_CERT_LOCATION+File.separator+GUIConstants.ROOT_CERT;
+            OutputStream out = new FileOutputStream(outFilename);
+            
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            out.close();
+            in.close();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+    }
     
     public static void configureForWebstart(){
         try {
