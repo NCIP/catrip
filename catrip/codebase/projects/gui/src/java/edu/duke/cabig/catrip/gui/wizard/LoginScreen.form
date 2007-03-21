@@ -108,7 +108,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="userId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="User ID"/>
+        <Property name="text" type="java.lang.String" value="catrip"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="identityProvider">
@@ -123,7 +123,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="password">
       <Properties>
-        <Property name="text" type="java.lang.String" value="User Password"/>
+        <Property name="text" type="java.lang.String" value="catrip1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="loginBtn">

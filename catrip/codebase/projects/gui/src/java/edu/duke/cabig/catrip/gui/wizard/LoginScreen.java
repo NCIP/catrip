@@ -70,7 +70,7 @@ public class LoginScreen extends CJFrame {
         identityProviderLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         identityProviderLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER"));
 
-        userId.setText("User ID");
+        userId.setText("catrip");
 
         identityProvider.setModel(getComboBoxModel());
         identityProvider.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class LoginScreen extends CJFrame {
             }
         });
 
-        password.setText("User Password");
+        password.setText("catrip1");
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/login.gif")));
         loginBtn.setText("Login");
