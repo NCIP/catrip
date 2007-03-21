@@ -31,6 +31,8 @@ public class GUIConstants {
     public static String CATRIP_HOME = System.getProperty("user.home") + File.separator + ".caTRIP"; // default home.
     public static String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_SERVICES_CONFIG_FILE_NAME = "services-config.xml";
+    public static String GLOBUS_HOME = System.getProperty("user.home") + File.separator + ".globus" ;
+    public static String ROOT_CERT = "rootCA_cert.0" ;
     
     public static String caTRIPVersion = "1_beta"; 
     
