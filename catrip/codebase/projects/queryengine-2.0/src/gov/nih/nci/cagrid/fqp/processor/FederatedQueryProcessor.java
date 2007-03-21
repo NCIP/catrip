@@ -273,7 +273,7 @@ class FederatedQueryProcessor {
                     populateMap = true;
                 }
                 
-                if (cqlResults != null ) {
+                if (cqlResults != null && cqlResults.getObjectResult() !=null ) {
                     
                     CQLObjectResult[] objectResult = cqlResults.getObjectResult();
                     for (int i = 0; i < objectResult.length; i++) {
@@ -281,8 +281,6 @@ class FederatedQueryProcessor {
                             MessageElement msgsElement = objResult.get_any()[0];                            
                            // System.out.println(msgsElement);
                             String cde = msgsElement.getAttributeValue(foreignAttribute).trim();
-
-                            
                             ResultsParser rParser = new ResultsParser(cqlQuery,dcqlQuery);
                             if (populateMap) {
                                 //objectsFromFA.put(cde,rParser.getResultMap(msgsElement));
@@ -302,10 +300,6 @@ class FederatedQueryProcessor {
                             }
 
                            remoteAttributeValues.add(cde);
-                            
-                            //if (msgsElement.getChildNodes().getLength() > 0 ) {
-                            //    objectsFromFA.put(cde,msgsElement.getChildNodes());
-                            //}
                     }
                 }
 		gov.nih.nci.cagrid.cqlquery.Group criteriaGroup = buildGroup(foreignAssociation.getJoinCondition(),
