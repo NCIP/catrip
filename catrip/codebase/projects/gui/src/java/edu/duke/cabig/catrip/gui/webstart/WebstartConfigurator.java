@@ -52,7 +52,7 @@ public class WebstartConfigurator {
                 File verFile = new File(versionFile);
                 verFile.createNewFile();
             }
-            /*
+            
             File certDir = new File(ROOT_CERT_LOCATION);
            // versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
             
@@ -65,7 +65,7 @@ public class WebstartConfigurator {
             if (!certDir.exists()){
                 copyCertificate();
             }      
-             **/      
+                  
             
         } catch (IOException ex) {
             ex.printStackTrace();
