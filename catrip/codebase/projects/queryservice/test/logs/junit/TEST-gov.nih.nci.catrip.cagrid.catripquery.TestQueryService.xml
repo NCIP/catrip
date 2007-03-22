@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" name="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" tests="1" time="10.515">
+<testsuite errors="0" failures="0" name="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" tests="1" time="10.313">
   <properties>
     <property name="file.encoding.pkg" value="sun.io"></property>
     <property name="env.PROMPT" value="$P$G"></property>
@@ -56,7 +56,7 @@
     <property name="introduce.skeleton.service.name" value="QueryService"></property>
     <property name="env.JSERV" value="C:\oracle\ora92/Apache/Jserv/conf"></property>
     <property name="schema.src" value="C:\ws-core-4.0.3\share\schema"></property>
-    <property name="java.vm.info" value="mixed mode"></property>
+    <property name="java.vm.info" value="mixed mode, sharing"></property>
     <property name="sun.desktop" value="windows"></property>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
     <property name="ant.file.run-tools file" value="C:\catrip\catrip\codebase\projects\queryservice\run-tools.xml"></property>
@@ -165,129 +165,18 @@
     <property name="java.specification.version" value="1.5"></property>
     <property name="sun.arch.data.model" value="32"></property>
   </properties>
-  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testQuery" time="10.281"></testcase>
-  <system-out><![CDATA[Running QueryService query
-1808   Name : DCQL 1
-dcql: <http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql xmlns:http="">
- <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup" xsi:type="ns1:Association">
-   <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport" xsi:type="ns1:Association">
-    <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier" xsi:type="ns1:Association">
-     <ns1:ForeignAssociation targetServiceURL="http://localhost:8181/wsrf/services/cagrid/CAE" xsi:type="ns1:ForeignAssociation">
-      <ns1:JoinCondition foreignAttributeName="medicalRecordNumber" localAttributeName="medicalRecordNumber" predicate="EQUAL_TO" xsi:type="ns1:JoinCondition"/>
-      <ns1:ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" xsi:type="ns1:Object">
-       <ns1:Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant" xsi:type="ns1:Association">
-        <ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
-         <ns1:Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection" xsi:type="ns1:Association">
-          <ns1:Attribute name="totalScore" predicate="GREATER_THAN" value="1" xsi:type="ns2:Attribute" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
-         </ns1:Association>
-        </ns1:Association>
-       </ns1:Association>
-      </ns1:ForeignObject>
-     </ns1:ForeignAssociation>
-    </ns1:Association>
-   </ns1:Association>
-  </ns1:Association>
- </ns1:TargetObject>
- <ns3:targetServiceURL xsi:type="xsd:string" xmlns:ns3="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://localhost:8181/wsrf/services/cagrid/CaTissueCore</ns3:targetServiceURL>
-</http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql>
-1826   Name : DCQL 3
-dcql: <http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql xmlns:http="">
- <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup" xsi:type="ns1:Association">
-   <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport" xsi:type="ns1:Association">
-    <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier" xsi:type="ns1:Association">
-     <ns1:ForeignAssociation targetServiceURL="http://localhost:8181/wsrf/services/cagrid/CAE" xsi:type="ns1:ForeignAssociation">
-      <ns1:JoinCondition foreignAttributeName="medicalRecordNumber" localAttributeName="medicalRecordNumber" predicate="EQUAL_TO" xsi:type="ns1:JoinCondition"/>
-      <ns1:ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" xsi:type="ns1:Object">
-       <ns1:Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant" xsi:type="ns1:Association">
-        <ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
-         <ns1:Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection" xsi:type="ns1:Association">
-          <ns1:Attribute name="totalScore" predicate="GREATER_THAN" value="1" xsi:type="ns2:Attribute" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
-         </ns1:Association>
-        </ns1:Association>
-       </ns1:Association>
-      </ns1:ForeignObject>
-     </ns1:ForeignAssociation>
-    </ns1:Association>
-   </ns1:Association>
-  </ns1:Association>
- </ns1:TargetObject>
- <ns3:targetServiceURL xsi:type="xsd:string" xmlns:ns3="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://localhost:8181/wsrf/services/cagrid/CaTissueCore</ns3:targetServiceURL>
-</http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql>
-1835   Name : DCQL 4
-dcql: <http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql xmlns:http="">
- <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup" xsi:type="ns1:Association">
-   <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport" xsi:type="ns1:Association">
-    <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier" xsi:type="ns1:Association">
-     <ns1:ForeignAssociation targetServiceURL="http://localhost:8181/wsrf/services/cagrid/CAE" xsi:type="ns1:ForeignAssociation">
-      <ns1:JoinCondition foreignAttributeName="medicalRecordNumber" localAttributeName="medicalRecordNumber" predicate="EQUAL_TO" xsi:type="ns1:JoinCondition"/>
-      <ns1:ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" xsi:type="ns1:Object">
-       <ns1:Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant" xsi:type="ns1:Association">
-        <ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
-         <ns1:Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection" xsi:type="ns1:Association">
-          <ns1:Attribute name="totalScore" predicate="GREATER_THAN" value="1" xsi:type="ns2:Attribute" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
-         </ns1:Association>
-        </ns1:Association>
-       </ns1:Association>
-      </ns1:ForeignObject>
-     </ns1:ForeignAssociation>
-    </ns1:Association>
-   </ns1:Association>
-  </ns1:Association>
- </ns1:TargetObject>
- <ns3:targetServiceURL xsi:type="xsd:string" xmlns:ns3="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://localhost:8181/wsrf/services/cagrid/CaTissueCore</ns3:targetServiceURL>
-</http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql>
-1844   Name : DCQL 5
-dcql: <http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql xmlns:http="">
- <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup" xsi:type="ns1:Association">
-   <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport" xsi:type="ns1:Association">
-    <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier" xsi:type="ns1:Association">
-     <ns1:ForeignAssociation targetServiceURL="http://localhost:8181/wsrf/services/cagrid/CAE" xsi:type="ns1:ForeignAssociation">
-      <ns1:JoinCondition foreignAttributeName="medicalRecordNumber" localAttributeName="medicalRecordNumber" predicate="EQUAL_TO" xsi:type="ns1:JoinCondition"/>
-      <ns1:ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" xsi:type="ns1:Object">
-       <ns1:Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant" xsi:type="ns1:Association">
-        <ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
-         <ns1:Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection" xsi:type="ns1:Association">
-          <ns1:Attribute name="totalScore" predicate="GREATER_THAN" value="1" xsi:type="ns2:Attribute" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
-         </ns1:Association>
-        </ns1:Association>
-       </ns1:Association>
-      </ns1:ForeignObject>
-     </ns1:ForeignAssociation>
-    </ns1:Association>
-   </ns1:Association>
-  </ns1:Association>
- </ns1:TargetObject>
- <ns3:targetServiceURL xsi:type="xsd:string" xmlns:ns3="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://localhost:8181/wsrf/services/cagrid/CaTissueCore</ns3:targetServiceURL>
-</http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql>
-1817   Name : DCQL 2
-dcql: <http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql xmlns:http="">
- <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup" xsi:type="ns1:Association">
-   <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport" xsi:type="ns1:Association">
-    <ns1:Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier" xsi:type="ns1:Association">
-     <ns1:ForeignAssociation targetServiceURL="http://localhost:8181/wsrf/services/cagrid/CAE" xsi:type="ns1:ForeignAssociation">
-      <ns1:JoinCondition foreignAttributeName="medicalRecordNumber" localAttributeName="medicalRecordNumber" predicate="EQUAL_TO" xsi:type="ns1:JoinCondition"/>
-      <ns1:ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" xsi:type="ns1:Object">
-       <ns1:Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant" xsi:type="ns1:Association">
-        <ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
-         <ns1:Association name="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection" xsi:type="ns1:Association">
-          <ns1:Attribute name="totalScore" predicate="GREATER_THAN" value="1" xsi:type="ns2:Attribute" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
-         </ns1:Association>
-        </ns1:Association>
-       </ns1:Association>
-      </ns1:ForeignObject>
-     </ns1:ForeignAssociation>
-    </ns1:Association>
-   </ns1:Association>
-  </ns1:Association>
- </ns1:TargetObject>
- <ns3:targetServiceURL xsi:type="xsd:string" xmlns:ns3="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://localhost:8181/wsrf/services/cagrid/CaTissueCore</ns3:targetServiceURL>
-</http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql>
- Returned Result Count :  5
+  <testcase classname="gov.nih.nci.catrip.cagrid.catripquery.TestQueryService" name="testQuery" time="10.063"></testcase>
+  <system-out><![CDATA[Run from ANT
+Running QueryService query
+1865   Name : 2222
+dcql: <ns1:DCQLQuery xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">  <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>  <ns1:targetServiceURL xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://152.16.96.114/wsrf-0216/services/cagrid/CaTissueCore</ns1:targetServiceURL> </ns1:DCQLQuery>
+1868   Name : new
+dcql: <ns1:DCQLQuery xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">  <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>  <ns1:targetServiceURL xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://152.16.96.114/wsrf-0216/services/cagrid/CaTissueCore</ns1:targetServiceURL> </ns1:DCQLQuery>
+1859   Name : test
+dcql: <ns1:DCQLQuery xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">  <ns1:TargetObject name="edu.duke.cabig.tumorregistry.domain.Patient" xsi:type="ns1:Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>  <ns1:targetServiceURL xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://152.16.96.114/wsrf-0216/services/cagrid/CaTRIPTumorRegistry</ns1:targetServiceURL> </ns1:DCQLQuery>
+1862   Name : tissue specimen
+dcql: <ns1:DCQLQuery xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">  <ns1:TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" xsi:type="ns1:Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">   <ns1:ReturnAttributes xsi:type="ns2:ReturnAttributes" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">type</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">available</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">positionDimensionOne</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">positionDimensionTwo</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">barcode</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">activityStatus</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">quantityInGram</ns2:ReturnAttribute>    <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">availableQuantityInGram</ns2:ReturnAttribute>   </ns1:ReturnAttributes>  </ns1:TargetObject>  <ns1:targetServiceURL xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://152.16.96.114/wsrf-0216/services/cagrid/CaTissueCore</ns1:targetServiceURL> </ns1:DCQLQuery>
+ Returned Result Count :  4
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -63,6 +63,7 @@ public class TestQueryService extends TestCase {
 			serviceURI = properties.getProperty("service_URI");
 			qryFile = properties.getProperty("SAMPLE_DCQL_FILE");
 			wsdd = properties.getProperty("WSDD");
+			System.out.println("Run from ANT");
 		} 
 		catch (IOException e) {
 			properties.load(new FileInputStream("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\test\\resources\\query_service.properties"));
