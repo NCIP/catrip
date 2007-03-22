@@ -126,11 +126,11 @@ public class CAEClient extends ServiceSecurityClient implements CAEI {
 
             CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/cagrid/cae/client/client-config.wsdd")));
 
-            while (iter.hasNext()) {
-                edu.duke.catrip.cae.domain.general.Participant de = (edu.duke.catrip.cae.domain.general.Participant) iter.next();
-
-                System.out.println(de.getFirstName() );
-            }
+//            while (iter.hasNext()) {
+//                edu.duke.catrip.cae.domain.general.Participant de = (edu.duke.catrip.cae.domain.general.Participant) iter.next();
+//
+//                System.out.println(de.getFirstName() );
+//            }
 
 		} catch (Exception e) {
 			e.printStackTrace();

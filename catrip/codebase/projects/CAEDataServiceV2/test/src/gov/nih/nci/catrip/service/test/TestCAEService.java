@@ -64,8 +64,8 @@ public class TestCAEService extends TestCase {
          CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(clientConfig)));
 		 System.out.println("Results for "+fileName);
          while (iter.hasNext()) {
-                edu.duke.catrip.cae.domain.general.Participant de = (edu.duke.catrip.cae.domain.general.Participant) iter.next();
-          System.out.println(de.getId());
+//                edu.duke.catrip.cae.domain.general.Participant de = (edu.duke.catrip.cae.domain.general.Participant) iter.next();
+//          System.out.println(de.getId());
          }
          System.out.println("---------------------");
     }
