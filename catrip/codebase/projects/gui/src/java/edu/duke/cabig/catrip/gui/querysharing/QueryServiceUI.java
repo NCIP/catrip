@@ -10,6 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,6 +43,7 @@ import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
+import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
@@ -86,7 +88,7 @@ public class QueryServiceUI extends JPanel {
     // --------
     public MainFrame mainFrame;
     private ArrayList<CDEComboboxBean> filterList = new ArrayList<CDEComboboxBean>(500);
-    String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService"; // default
+    String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService"; // default  //  @jve:decl-index=0:
     
     
     private JPanel outerPanel = null;
@@ -205,7 +207,8 @@ public class QueryServiceUI extends JPanel {
             btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif")));
             btnSearch.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                    try {
+                	String wsddURI = GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+ File.separator +"query-client-config.wsdd";
+                    try { 
                         // fill query data with the Concepts selected
                         Collection<ClassDb> classCollection = new Vector<ClassDb>();
                         //filterCollection.add(getFilterRowPanel());
@@ -216,7 +219,7 @@ public class QueryServiceUI extends JPanel {
                         queryData.setClassCollection(classCollection);
                         // populateTable(QueryServiceClient.search(queryData));
                         CQLQuery cqlQuery = CqlParser.parse(queryData);
-                        populateTable(QueryServiceClient.search(cqlQuery, serviceURI));  // pass the url of the service as well..
+                        populateTable(QueryServiceClient.search(cqlQuery, serviceURI, wsddURI));  // pass the url of the service as well..
                     } catch (Exception qe) {
                         qe.printStackTrace();
                     }

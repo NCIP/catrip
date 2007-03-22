@@ -101,31 +101,40 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 	public static void main(String [] args){
 	}
 
-	public static Vector search(CQLQuery cqlQuery , String serviceURI) throws Exception {
-		return (Vector) getResults(cqlQuery, serviceURI);
+	public static Vector search(CQLQuery cqlQuery , String serviceURI, String wsddURI ) throws Exception {
+		return (Vector) getResults(cqlQuery, serviceURI, wsddURI );
 
 	}
 
-	public static Vector search(CQLQuery cqlQuery ) throws Exception {
-		return (Vector) getResults(cqlQuery);
+//	public static Vector search(CQLQuery cqlQuery ) throws Exception {
+//		return (Vector) getResults(cqlQuery);
+//
+//	}
 
-	}
-
-	private static Collection getResults(CQLQuery cqlQuery) throws Exception{
-		String defaultUrl = "http://localhost:8181/wsrf/services/cagrid/QueryService";
-		return getResults(cqlQuery, defaultUrl);
-	}
+//	private static Collection getResults(CQLQuery cqlQuery) throws Exception{
+//		String defaultUrl = "http://localhost:8181/wsrf/services/cagrid/QueryService";
+//		return getResults(cqlQuery, defaultUrl);
+//	}
 
 
-	private static Collection getResults(CQLQuery cqlQuery, String serviceURI ) throws Exception{
+	private static Collection getResults(CQLQuery cqlQuery, String serviceURI, String wsddURI ) throws Exception{
 		Vector<QueryDb> queryResultCollection = new java.util.Vector<QueryDb>();
+		String wsdd = "client-config.wsdd";
 		CQLQueryResults results;
 		QueryServiceClient client = null;
 		try{
 			client = new QueryServiceClient(serviceURI);
 			results = client.query(cqlQuery);
-			//CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("C:\\catrip\\catrip\\codebase\\projects\\queryservice\\src\\gov\\nih\\nci\\catrip\\cagrid\\catripquery\\client\\client-config.wsdd")));
-			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File("src/gov/nih/nci/catrip/cagrid/catripquery/client/client-config.wsdd")));
+			CQLQueryResultsIterator iter = null;
+			try {
+//				CQLQueryResultsIterator iterator = new CQLQueryResultsIterator(results, new FileInputStream(new
+//						File(wsddURI + File.separator +"client-config.wsdd")));
+
+				iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(wsddURI)));
+			} catch (FileNotFoundException e) {
+				System.out.println(wsdd + " : file not found");
+				e.printStackTrace();
+			}
 
 			while (iter.hasNext()) {
 				gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb de = (gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb) iter.next();
@@ -143,10 +152,10 @@ public class QueryServiceClient extends ServiceSecurityClient implements QuerySe
 			e.printStackTrace();
 			throw e;
 		}
-		catch (FileNotFoundException e){
-			e.printStackTrace();
-			throw e;
-		}
+//		catch (FileNotFoundException e){
+//			e.printStackTrace();
+//			throw e;
+//		}
 		catch (RemoteException e) {
 			e.printStackTrace();
 			throw e;
