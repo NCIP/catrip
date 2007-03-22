@@ -28,6 +28,9 @@
     <field name="performedIndicator" type="string">
       <bind-xml name="performedIndicator" node="attribute" />
     </field>
+    <field name="treatmentType" type="string">
+      <bind-xml name="treatmentType" node="attribute" />
+    </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Diagnosis">
     <map-to xml="Diagnosis" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
@@ -73,6 +76,15 @@
     <field name="primarySiteCode" type="string">
       <bind-xml name="primarySiteCode" node="attribute" />
     </field>
+     <field name="followUpCollection" type="edu.duke.cabig.tumorregistry.domain.Followup" collection="set">
+         <bind-xml name="followUpCollection"/>
+    </field>
+     <field name="activityCollection" type="edu.duke.cabig.tumorregistry.domain.Activity" collection="set">
+         <bind-xml name="activityCollection"/>
+    </field>
+     <field name="diseaseExtentCollection" type="edu.duke.cabig.tumorregistry.domain.DiseaseExtent" collection="set">
+         <bind-xml name="diseaseExtentCollection"/>
+    </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Procedure" extends="edu.duke.cabig.tumorregistry.domain.Activity">
     <map-to xml="Procedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
@@ -117,6 +129,9 @@
     </field>
     <field name="date" type="date">
       <bind-xml name="date" node="attribute" />
+    </field>
+    <field name="recurrence" type="edu.duke.cabig.tumorregistry.domain.Recurrence">
+           <bind-xml name="recurrence"/>
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Chemotherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
@@ -250,6 +265,9 @@
     <field name="medicalRecordNumber" type="string">
       <bind-xml name="medicalRecordNumber" node="attribute" />
     </field>
+    <field name="patient" type="edu.duke.cabig.tumorregistry.domain.Patient">
+      <bind-xml name="patient" />
+    </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.DiseaseExtent">
     <map-to xml="DiseaseExtent" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
@@ -319,6 +337,9 @@
     <field name="regionalNodesPositiveQualifier" type="string">
       <bind-xml name="regionalNodesPositiveQualifier" node="attribute" />
     </field>
+    <field name="diagnosis" type="edu.duke.cabig.tumorregistry.domain.Diagnosis">
+          <bind-xml name="diagnosis"/>
+    </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.OtherTherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
     <map-to xml="OtherTherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
@@ -381,6 +402,12 @@
     </field>
     <field name="autopsy" type="string">
       <bind-xml name="autopsy" node="attribute" />
+    </field>
+    <field name="diagnosisCollection" type="edu.duke.cabig.tumorregistry.domain.Diagnosis" collection="set">
+        <bind-xml name="diagnosisCollection"/>
+    </field>
+    <field name="patientIdentifier" type="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
+        <bind-xml name="patientIdentifier"/>
     </field>
   </class>
   <class name="edu.duke.cabig.tumorregistry.domain.Address">
