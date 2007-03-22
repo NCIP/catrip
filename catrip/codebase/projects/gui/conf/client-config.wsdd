@@ -410,7 +410,6 @@
 <ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastCancerAccessionCharacteristics" qname="ns2:BreastCancerAccessionCharacteristics" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
 <ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.AccessionCharacteristics" qname="ns2:AccessionCharacteristics" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
 <ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" qname="ns2:BreastCancerBiomarkers" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
-<ns3:typeMapping encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" qname="ns2:ThreeDimensionalTumorSize" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caTissueCAE.caBIG/1.0/edu.pitt.cabig.cae.domain.general" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
  
  <!-- CAE  -->
 <!-- END INTRODUCE TYPEMAPPINGS -->
@@ -498,6 +497,18 @@
   <ns3:typeMapping xmlns:ns3="http://xml.apache.org/axis/wsdd/" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caCORE.cabig/3.0/gov.nih.nci.caintegrator.domain.finding.variation.snpFrequency" encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nci.caintegrator.domain.finding.variation.snpFrequency.bean.SNPFrequencyFinding" qname="ns2:SNPFrequencyFinding" />
 
 <!-- END CGEMS TYPEMAPPINGS -->
+
+
+
+
+
+
+<!-- START QUERY SERVICE TYPEMAPPINGS -->
+
+<ns3:typeMapping xmlns:ns3="http://xml.apache.org/axis/wsdd/" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://caCORE.cabig/3.0/gov.nih.nci.catrip.cagrid.catripquery.server" encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb" qname="ns2:QueryDb" />
+
+<!-- END QUERY SERVICE TYPEMAPPINGS -->
+
 
 
 </deployment>
