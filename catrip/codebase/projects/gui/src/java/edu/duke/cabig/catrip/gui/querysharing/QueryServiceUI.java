@@ -207,7 +207,7 @@ public class QueryServiceUI extends JPanel {
             btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif")));
             btnSearch.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
-                	String wsddURI = GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+ File.separator +"query-client-config.wsdd";
+                	String wsddURI = GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+ File.separator +"client-config.wsdd";
                     try { 
                         // fill query data with the Concepts selected
                         Collection<ClassDb> classCollection = new Vector<ClassDb>();
