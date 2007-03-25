@@ -57,20 +57,21 @@ public class LoginScreen extends CJFrame {
         visualGuiChkBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("TITLE_LOGIN_SCREEN"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
+        setTitle(bundle.getString("TITLE_LOGIN_SCREEN")); // NOI18N
         setAlwaysOnTop(true);
         setName("LoginScreen");
         setResizable(false);
         loginIdLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        loginIdLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID"));
+        loginIdLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_LOGIN_ID")); // NOI18N
 
         passwordLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        passwordLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_PASSWORD"));
+        passwordLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_PASSWORD")); // NOI18N
 
         identityProviderLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        identityProviderLbl.setText(java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle").getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER"));
+        identityProviderLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER")); // NOI18N
 
-        userId.setText("catrip");
+        userId.setText("guest");
 
         identityProvider.setModel(getComboBoxModel());
         identityProvider.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +80,7 @@ public class LoginScreen extends CJFrame {
             }
         });
 
-        password.setText("catrip");
+        password.setText("catrip1");
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/login.gif")));
         loginBtn.setText("Login");
@@ -162,7 +163,7 @@ public class LoginScreen extends CJFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void identityProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identityProviderActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_identityProviderActionPerformed
@@ -178,16 +179,30 @@ public class LoginScreen extends CJFrame {
     
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         boolean authenticate = false;
-        authenticate = true;
-        /*
-        IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
-        try {
-            AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
-            authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
-        } catch (AuthenticationErrorException ex) {
-            ex.printStackTrace();
+        
+        // check if that is a guest demo login.
+        boolean guestUser = false;
+        String userIdStr = userId.getText().trim();
+        if (userIdStr.equalsIgnoreCase("guest")){
+            guestUser = true;
+            authenticate = true;
         }
-         */    
+        
+        
+        if (!guestUser){
+            
+            IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
+            try {
+                System.out.println("xxxx"+userId.getText().trim()+" : "+ password.getText().trim()+" : "+ idpBean.getIdpUrl()+" : "+idpBean.getDorianUrl());
+                AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
+                authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
+            } catch (AuthenticationErrorException ex) {
+                ex.printStackTrace();
+            }
+            
+        }
+        
+        
         if (authenticate) {
             
             if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
@@ -203,7 +218,7 @@ public class LoginScreen extends CJFrame {
                 disableButtons();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                GUIConstants.simpleGui = true; 
+                GUIConstants.simpleGui = true;
                 
                 MainFrame mf = new MainFrame();
                 
@@ -244,7 +259,7 @@ public class LoginScreen extends CJFrame {
     private DefaultComboBoxModel getComboBoxModel(){
         IndentityProviderBean[] indentityProviderBeans = LoginProviderLocatorFactory.getLoginProviderLocator().getLoginProviderURLs();
         String idpNames[] = new String[indentityProviderBeans.length];
-        for (int i=0; i<indentityProviderBeans.length ; i++) {            
+        for (int i=0; i<indentityProviderBeans.length ; i++) {
             idpNames[i] = ((IndentityProviderBean)indentityProviderBeans[i]).getDisplayName();
             idpBeans.put(idpNames[i],(IndentityProviderBean)indentityProviderBeans[i]);
         }
