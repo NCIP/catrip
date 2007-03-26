@@ -20,6 +20,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
+
+
 
 /**
  *
@@ -31,10 +35,14 @@ public class SimpleSearchPanel extends CPanel {
     ObjectGraphProcessor processor  = null;
     private boolean targetSetChanged = true;
     
-    private ArrayList<FilterRowPanel> filters = new ArrayList(10);  
+    private ArrayList<FilterRowPanel> filters = new ArrayList(10);
     
     // sanjeev: for grouping similar Target objects... String key = GraphObject.toString()+""+GraphObject.getServiceName();
     private Hashtable targetObjectServiceMap = new Hashtable();
+    
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
+    
     
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
@@ -49,7 +57,7 @@ public class SimpleSearchPanel extends CPanel {
         
     }
     
-    /** This method is called before the swing components initialization. 
+    /** This method is called before the swing components initialization.
      * This loads the DOmain model MetaData from the local xml files. */
     private void initBefore(){
         // TODO - call these methods from an initail screen so that we have enough time to load these..
@@ -298,7 +306,7 @@ public class SimpleSearchPanel extends CPanel {
     }//GEN-LAST:event_returnAttributeBtnActionPerformed
     
     private void addGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupBtnActionPerformed
-        
+        log.info(" Adding Group. "); 
         FilterGroupPanel fgp = new FilterGroupPanel(this);
         
         CJDialog jd = new CJDialog(getMainFrame(), "Create Group between Filters or Groups");
@@ -344,6 +352,8 @@ public class SimpleSearchPanel extends CPanel {
             cleanPanel();//clearFilterBtnActionPerformed(null);
             Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
             
+            log.info(" Target Object changed to: "+selectedService.getServiceName());
+            
             List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
             List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
             
@@ -360,8 +370,10 @@ public class SimpleSearchPanel extends CPanel {
         //-------------------------
         
         if (!selectedTargetObject.isSupportReturnAttributes()) {
+            log.info(" This service doesn't support returned attributes. "); 
             returnAttributeBtn.setEnabled(false);
         } else {
+            log.info(" This service supports returned attributes. Enabling \" Select Returned Attribute\" Button."); 
             returnAttributeBtn.setEnabled(true);
         }
         
@@ -371,7 +383,7 @@ public class SimpleSearchPanel extends CPanel {
     }//GEN-LAST:event_targetObjComboActionPerformed
     
     private void targetServiceComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetServiceComboActionPerformed
-        
+        log.info(" Target Service changed. ");
         boolean itIsSelf = getTargetServiceCombo().isPopupVisible();
         
         if(getTargetServiceCombo().isShowing() && itIsSelf){
@@ -422,7 +434,7 @@ public class SimpleSearchPanel extends CPanel {
     }//GEN-LAST:event_targetServiceComboActionPerformed
     
     private void clearFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterBtnActionPerformed
-        
+        log.info(" Clear All Filter Action Performed. ");
         cleanPanel();
         
         Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
@@ -445,6 +457,9 @@ public class SimpleSearchPanel extends CPanel {
         // Reset the returnedAttributes entries in the SimpleGuiRegistry..
         SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
         SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
+        SimpleGuiRegistry.setNumReturnedAttribute(0);
+        SimpleGuiRegistry.setReturnedAttributeForeignServices(new HashSet());
+        
         if (!selectedTargetObject.isSupportReturnAttributes()) {
             returnAttributeBtn.setEnabled(false);
         } else {
@@ -465,17 +480,19 @@ public class SimpleSearchPanel extends CPanel {
     }
     
     private void addFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterBtnActionPerformed
-        
+        log.info(" Adding a filter to the Simple GUI. ");
         filterRows++;
+        log.info(" Number to existing filters on the Simple GUI panel: "+filterRows);
         
         FilterRowPanel jp =  new FilterRowPanel(this);
         jp.setPreferredSize(new java.awt.Dimension(200, 40));
         
         
         if (targetSetChanged){
+            log.debug(" Target Service or Object changed. Building the list of Graph Objects again. ");
             Service selectedService = (Service)getTargetServiceCombo().getSelectedItem();
             GraphObject selectedTargetObject = (GraphObject)getTargetObjCombo().getSelectedItem();
-            
+            log.info(" The new Target Service: "+selectedService+" Target Object: "+selectedTargetObject.getClassName());
             List<GraphObject> objs = processor.getAssociatedObjects(selectedTargetObject.getClassName(),selectedService.getServiceName());
             List<GraphObject> forObjs = processor.getAvialbleTargetObjectsToAssociateInRemoteServices(selectedService.getServiceName());
             

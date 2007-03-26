@@ -1,10 +1,13 @@
 package edu.duke.cabig.catrip.gui;
 
+import edu.duke.cabig.catrip.gui.util.CommonUtils;
 import edu.duke.cabig.catrip.gui.util.ExceptionThreadGroup;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import edu.duke.cabig.catrip.gui.util.Logger;
 import edu.duke.cabig.catrip.gui.webstart.WebstartConfigurator;
 import edu.duke.cabig.catrip.gui.wizard.WelcomeScreen;
 import java.io.File;
+import org.apache.commons.logging.Log;
 
 /**
  * Main class of the GUI project. Entry point for the GUI.
@@ -12,6 +15,7 @@ import java.io.File;
  * @author Sanjeev Agarwal .
  */
 public class Main {
+    static Log log ;//= Logger.getDefaultLogger();
     
     /** Creates a new instance of Main */
     public Main() {
@@ -27,7 +31,22 @@ public class Main {
         // Check:
         // caTRIP_config.xml for Index service and Dorian Urls.
         
+        
+        // log file setup.
+        try{
+            File logFile = new File("C:\\caTRIP_logs.txt");
+            if (!logFile.exists()){
+                System.out.println(" Log File doesn't exist.. Creating one.. ");
+                logFile.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(" Error in Creating the Log File: \n"+ CommonUtils.getStringException(e));
+        }
+        
+        
         // Process all arguments here.
+        
         String caTripHomeDir = System.getProperty("catrip.home.dir");
         if (caTripHomeDir != null){
             GUIConstants.CATRIP_HOME = System.getProperty("user.home") + File.separator + caTripHomeDir.trim();
@@ -37,32 +56,32 @@ public class Main {
             System.out.println("CaTRIP configuration Directory location is changed to: "+GUIConstants.CATRIP_HOME);
         }
         
+        log = Logger.getDefaultLogger();
+        log.info(" reading proeprty: catrip.home.dir ");
+        
+        log.info(" User supplied the new CATRIP_HOME property: "+caTripHomeDir);
+        log.info(" CaTRIP configuration Directory location is changed to: "+GUIConstants.CATRIP_HOME);
+        
+        
+        log.info(" reading proeprty: catrip.config.version ");
         String caTRIP_Version = System.getProperty("catrip.config.version");
         if (caTRIP_Version != null){
             GUIConstants.caTRIPVersion = caTRIP_Version.trim();
+            log.info(" User supplied the new CATRIP_VERSION property: "+caTRIP_Version);
         }
         
         
-        
-        
-        // log file setup.
-        try{
-            File logFile = new File("C:\\caTRIP_logs.txt");
-            if (!logFile.exists()){
-                logFile.createNewFile();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         
         
         
         // sanjeev: check if the application is launched via the webstart context.
         String webstartStr = System.getProperty("deployment.user.cachedir");
         if(webstartStr != null){
+            log.info(" This is a webstart version of caTRIP");
             System.out.println("This is a webstart version of caTRIP");
             WebstartConfigurator.configure();
         } else {
+            log.info(" This is a stand alone version of caTRIP");
             System.out.println("This is a stand alone version of caTRIP");
         }
         

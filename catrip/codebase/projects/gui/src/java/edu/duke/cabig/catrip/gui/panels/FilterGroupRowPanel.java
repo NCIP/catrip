@@ -6,12 +6,18 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
+import java.awt.event.ItemEvent;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
+
 /**
  *
- * @author  Sanjeev Agarwal 
+ * @author  Sanjeev Agarwal
  */
 public class FilterGroupRowPanel extends javax.swing.JPanel {
-    
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
+
     /** Creates new form FilterGroupRowPanel */
     public FilterGroupRowPanel() {
         initComponents();
@@ -61,13 +67,15 @@ public class FilterGroupRowPanel extends javax.swing.JPanel {
                 .add(filterValueCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
         
     }//GEN-LAST:event_delFilterBtnActionPerformed
-
+    
     private void filterValueComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterValueComboItemStateChanged
-
+        if (evt.getStateChange() == ItemEvent.DESELECTED) {
+            log.info(" Filter value changed : "+getFilterValueCombo().getSelectedItem()); 
+        }
     }//GEN-LAST:event_filterValueComboItemStateChanged
     
     public javax.swing.JComboBox getFilterValueCombo(){

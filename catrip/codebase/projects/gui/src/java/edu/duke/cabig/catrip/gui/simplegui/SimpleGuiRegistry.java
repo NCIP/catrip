@@ -19,10 +19,13 @@ import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.ObjectGraphProcessor;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.Service;
 import edu.duke.cabig.catrip.gui.util.SwingUtils;
+
 import gov.nih.nci.cagrid.metadata.dataservice.DomainModel;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -68,6 +71,7 @@ public class SimpleGuiRegistry {
     private static boolean returnedAttributeListAvailable = false;
     private static HashMap classNameReturnedAttributeMap = new HashMap(); // map of FullClassName vs List of attribute names..
     private static int numReturnedAttribute = 0;
+    private static HashSet returnedAttributeForeignServices = new HashSet();
     // Returned Attributes....
     
     
@@ -535,7 +539,11 @@ public class SimpleGuiRegistry {
             leftClassBeanObject.setHasForeignAssociations(true);
             
             // set the returned attribute from FA in registry..
-            SimpleGuiRegistry.addToClassNameReturnedAttributeMap(leftClassBeanObject.getFullyQualifiedName(), leftProperty);
+            // add the left class only when there is no returned attribute of this FA..
+            boolean serviceInvolved = hasReturnedAttributesFromService(rightClassBeanObject.getServiceName());
+            if (serviceInvolved){
+                SimpleGuiRegistry.addToClassNameReturnedAttributeMap(leftClassBeanObject.getFullyQualifiedName(), leftProperty);
+            }
             SimpleGuiRegistry.addToClassNameReturnedAttributeMap(rightClassBeanObject.getFullyQualifiedName(), rightProperty);
             
             
@@ -834,7 +842,7 @@ public class SimpleGuiRegistry {
     public static void setHasGroupsDefined(boolean aHasGroupsDefined) {
         hasGroupsDefined = aHasGroupsDefined;
     }
-     // </editor-fold>
+    // </editor-fold>
     
     //---------------------------- AND / OR groups methods...----------------------------
     
@@ -927,6 +935,23 @@ public class SimpleGuiRegistry {
         }
         return classList;
     }// </editor-fold>
+    
+    
+    public static HashSet getReturnedAttributeForeignServices() {
+        return returnedAttributeForeignServices;
+    }
+    
+    public static void setReturnedAttributeForeignServices(HashSet aReturnedAttributeForeignServices) {
+        returnedAttributeForeignServices = aReturnedAttributeForeignServices;
+    }
+    
+    public static void addToReturnedAttributeForeignServices(String foreignServicesName) {
+        returnedAttributeForeignServices.add(foreignServicesName);
+    }
+    
+    public static boolean hasReturnedAttributesFromService( String serviceName){
+        return returnedAttributeForeignServices.contains(serviceName);
+    }
     
     // </editor-fold>
     
@@ -1021,6 +1046,8 @@ public class SimpleGuiRegistry {
     }
     
     //---------------------------- query sharing methods...----------------------------
+    
+    
     
     
     

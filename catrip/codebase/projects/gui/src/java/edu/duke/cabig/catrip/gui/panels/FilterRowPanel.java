@@ -22,6 +22,8 @@ import java.util.Set;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
 
 /**
  *
@@ -35,6 +37,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private Hashtable uniqueFilterMap = new Hashtable();
     
     private SimpleSearchPanel containerPanel;
+    
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
     
 //    private long filterId; // unique id of the filter instance.. to manage the AND/OR groups..
     private FilterGroup parentGroup;  // parent group of this filter..  need this when you delete the filter itself..
@@ -84,7 +89,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         cdeBean.getAttributeBean().setAttributeValue(typedText.trim());
 //        currentFilter = cdeBean;
         SimpleGuiRegistry.setSimpleGuiChanged(true);
-        
+        log.info(" Filter value changed. Filter: "+cdeBean.getClassBean().getFullyQualifiedName()+" | Attribute :"+cdeBean.getAttributeBean().getAttributeName()+" | Value: "+typedText);
     }
     
     
@@ -229,9 +234,11 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         if (valueComboBox.isShowing() && itIsSelf){
             CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
-            cdeBean.getAttributeBean().setAttributeValue(valueComboBox.getSelectedItem().toString().trim());
+            String value = valueComboBox.getSelectedItem().toString().trim();
+            cdeBean.getAttributeBean().setAttributeValue(value);
 //        currentFilter = cdeBean;
             SimpleGuiRegistry.setSimpleGuiChanged(true);
+            log.info(" Filter value changed. Filter: "+cdeBean.getClassBean().getFullyQualifiedName()+" | Attribute :"+cdeBean.getAttributeBean().getAttributeName()+" | Value: "+value);
         }
         
     }//GEN-LAST:event_valueComboBoxItemStateChanged
@@ -240,12 +247,12 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         // get the set of distinct values from backend. call the backend here.. and cache the valueSet for that class..
         // alternatively you can bind the FullyQualifiedClassName vs distinct values with registry also..
-
+        
         String serviceUrl = getClassBean().getServiceUrl();
         String className = getClassBean().getFullyQualifiedName();
         String attributeName = getAttributeBean().getAttributeName();
-        
-        System.out.println("xxxxxxx  "+serviceUrl +" -- "+ className+" -- "+ attributeName);
+        log.info(" Getting Distinct Values for: "+serviceUrl +" -- "+ className+" -- "+ attributeName);
+        System.out.println("Getting Distinct Values for  "+serviceUrl +" -- "+ className+" -- "+ attributeName);
         
         Set valueSet = null;
         
@@ -256,7 +263,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         }
         
         if (valueSet !=null){
-            
+            log.info(" Result count for Distinct Value Search: "+valueSet.size()); 
             // clean the combo box.
             if (!(valueComboBox.getComponentCount() == 0)){
                 valueComboBox.removeAllItems();
@@ -271,10 +278,16 @@ public class FilterRowPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_distinctValueBtnActionPerformed
     
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
+        
+        
         if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
+            log.info(" Deleting the filter : "+getCdeCombo().getSelectedItem()); 
             currentFilter.remove();
+        } else {
+            log.info(" Removing a blank filter row "+getCdeCombo().getSelectedItem()); 
         }
         
+
         SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
         HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
         
@@ -293,6 +306,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
 // sanjeev: clean filter from previous CDEComboboxBean and reset predicate and value fields..
         if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
+            log.info(" Current filter changed: "+getCdeCombo().getSelectedItem()); 
             currentFilter.remove();
             getPredicateCombo().setSelectedIndex(0);
             valueComboBox.removeAllItems();
@@ -337,6 +351,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
 //        if (evt.getStateChange() == ItemEvent.SELECTED) {
 //        } else
+        log.info(" Predicate value changed, new Predicate: "+getPredicateCombo().getSelectedItem().toString()); 
         
         if (evt.getStateChange() == ItemEvent.DESELECTED) {
             CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();

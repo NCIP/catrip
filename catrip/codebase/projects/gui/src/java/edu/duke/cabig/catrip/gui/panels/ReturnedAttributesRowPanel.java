@@ -5,6 +5,10 @@
  */
 
 package edu.duke.cabig.catrip.gui.panels;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
+import java.awt.event.ItemEvent;
+
 
 /**
  *
@@ -14,16 +18,19 @@ public class ReturnedAttributesRowPanel extends javax.swing.JPanel {
     
     private ReturnedAttributesPanel containerPanel;
     
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
+    
     
     /** Creates new form ReturnedAttributesRowPanel */
     public ReturnedAttributesRowPanel() {
         initComponents();
     }
     
-     public ReturnedAttributesRowPanel(ReturnedAttributesPanel parent_) {
+    public ReturnedAttributesRowPanel(ReturnedAttributesPanel parent_) {
         initComponents();
         this.containerPanel = parent_;
-         getReturnedAttributeCombo().setRenderer(new CDEComboBoxRenderer()); 
+        getReturnedAttributeCombo().setRenderer(new CDEComboBoxRenderer());
     }
     
     /** This method is called from within the constructor to
@@ -35,6 +42,12 @@ public class ReturnedAttributesRowPanel extends javax.swing.JPanel {
     private void initComponents() {
         returnedAttributeCombo = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
         delFilterBtn = new javax.swing.JButton();
+
+        returnedAttributeCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                returnedAttributeComboItemStateChanged(evt);
+            }
+        });
 
         delFilterBtn.setFont(new java.awt.Font("Tahoma", 1, 11));
         delFilterBtn.setForeground(new java.awt.Color(255, 0, 0));
@@ -65,7 +78,13 @@ public class ReturnedAttributesRowPanel extends javax.swing.JPanel {
             .add(returnedAttributeCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void returnedAttributeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_returnedAttributeComboItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED) { 
+            log.info(" Returned Attribute Changed: "+getReturnedAttributeCombo().getSelectedItem());
+        }
+    }//GEN-LAST:event_returnedAttributeComboItemStateChanged
+    
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
         // delete this entry from the parent's list..
         this.removeAll();

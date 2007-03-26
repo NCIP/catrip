@@ -16,8 +16,13 @@ import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.JDialog;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
+
+
 
 /**
  *
@@ -31,6 +36,8 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     private HashMap entries = new HashMap();
     private ArrayList keyEntries = new ArrayList();
     
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
     
     /** Creates new form ReturnedAttributesPanel */
     public ReturnedAttributesPanel() {
@@ -260,6 +267,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
 // clear the current changed settings.. in this instance...
+        log.info(" Cancelling the Returned Attribute Selection. "); 
         JDialog parent = (JDialog)getRootPane().getParent();
         parent.dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
@@ -272,26 +280,34 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
             SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
             SimpleGuiRegistry.setNumReturnedAttribute(0);
-            
+            SimpleGuiRegistry.setReturnedAttributeForeignServices(new HashSet());
             
             for (int i = 0; i < numEntities; i++) {
                 ReturnedAttributesRowPanel element = (ReturnedAttributesRowPanel)returnedAttributeListPanel.getComponent(i);
                 CDEComboboxBean cdeBean = (CDEComboboxBean)element.getReturnedAttributeCombo().getSelectedItem();
                 String fullClassName = cdeBean.getClassBean().getFullyQualifiedName();
-                SimpleGuiRegistry.addToClassNameReturnedAttributeMap(fullClassName, cdeBean.getAttributeBean().getAttributeName());
+                String returndAttributeName = cdeBean.getAttributeBean().getAttributeName();
+                SimpleGuiRegistry.addToClassNameReturnedAttributeMap(fullClassName, returndAttributeName );
+                
+                log.info(" Added Returned Attribute| Class: "+fullClassName + " | Attribute: "+ returndAttributeName);
+                
+                // adding the service also for which you have the returned attribute set.
+                //Helpful in determining if the returned attributes should be set for linking CDE for other FAs.
+                SimpleGuiRegistry.addToReturnedAttributeForeignServices(cdeBean.getClassBean().getServiceName());
                 
                 // check if the returned attribute's class is there in any of the filters.. if not than add a phony filter to any 1 attribute.
                 boolean filtered = SimpleGuiRegistry.getClassesUsedInFilters().contains(fullClassName);
                 boolean isTarget = SimpleGuiRegistry.getTargetGraphObject().getClassBean().getFullyQualifiedName().equals(fullClassName);
                 if (!filtered && !isTarget){
-                FilterRowPanel pnl = new FilterRowPanel();
-                CDEComboboxBean cdeBeanTmp = (CDEComboboxBean) entries.get(fullClassName); // get the phony CdeBean from list..
-                pnl.setCDEComboboxBean(cdeBeanTmp);
-                SimpleGuiRegistry.addFilterToList(pnl); 
-                SimpleGuiRegistry.setSimpleGuiChanged(true);
+                    log.info(" Adding a phony Filter for the class: "+fullClassName);
+                    FilterRowPanel pnl = new FilterRowPanel();
+                    CDEComboboxBean cdeBeanTmp = (CDEComboboxBean) entries.get(fullClassName); // get the phony CdeBean from list..
+                    pnl.setCDEComboboxBean(cdeBeanTmp);
+                    SimpleGuiRegistry.addFilterToList(pnl);
+                    SimpleGuiRegistry.setSimpleGuiChanged(true);
 //                System.out.println("XXXX adding phony class "+cdeBeanTmp.print());
-                } 
-            } 
+                }
+            }
             // signal the simple gui registry that returned attribute list has changed..
             SimpleGuiRegistry.setReturnedAttributeListAvailable(true);
         }
@@ -302,6 +318,9 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     private void addReturnedAttributeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addReturnedAttributeActionPerformed
         
         if (numEntities < numAvailableEntities ){
+            
+            log.info(" Adding Returned Attribute. ");
+            
             ArrayList<CDEComboboxBean> listReturnedAttributes = new ArrayList(100);
             ReturnedAttributesRowPanel rap = new ReturnedAttributesRowPanel(this);
             rap.setPreferredSize(new java.awt.Dimension(200, 40));
@@ -327,7 +346,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             }
             
             // for sorted list of Returned Attributes..
-            Collections.sort(listReturnedAttributes, new CDEComboboxBeanComparator()); 
+            Collections.sort(listReturnedAttributes, new CDEComboboxBeanComparator());
             for (int i = 0; i < listReturnedAttributes.size(); i++) {
                 rap.getReturnedAttributeCombo().addItem(listReturnedAttributes.get(i));
             }

@@ -7,7 +7,6 @@
 package edu.duke.cabig.catrip.gui.panels;
 
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
-import edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel;
 import edu.duke.cabig.catrip.gui.simplegui.FilterGroup;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import java.awt.Component;
@@ -16,6 +15,9 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
+import java.awt.event.ItemEvent;
 
 
 /**
@@ -26,6 +28,8 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     
     private SimpleSearchPanel parentFilterPanel;
     private int numEntities = 0;
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
     
     /** Creates new form FilterGroupPanel */
     public FilterGroupPanel() {
@@ -78,6 +82,11 @@ public class FilterGroupPanel extends javax.swing.JPanel {
         jLabel2.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.jLabel2.text")); // NOI18N
 
         conditionCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "    AND    ", "    OR    " }));
+        conditionCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                conditionComboItemStateChanged(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,7 +103,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
                         .add(conditionCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)))
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)))
                 .add(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
@@ -170,8 +179,15 @@ public class FilterGroupPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    private void conditionComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_conditionComboItemStateChanged
+        if (evt.getStateChange() == ItemEvent.DESELECTED) {
+            log.info(" group condition changed. "); 
+        }
+    }//GEN-LAST:event_conditionComboItemStateChanged
+    
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // clear the current changed settings.. in this instance...
+        log.info(" Adding Items into Group cancelled.. ");
         numEntities = 0;
         JDialog parent = (JDialog)getRootPane().getParent();
         parent.dispose();
@@ -193,14 +209,16 @@ public class FilterGroupPanel extends javax.swing.JPanel {
 //            System.out.println("creating OR group...");
             }
             
+            log.info(" Adding Items into Group| id :"+fg.getUniqueId()+"| Condition: "+fg.getConditionString());
             
             for (int i = 0; i < numEntities; i++) {
                 FilterGroupRowPanel element = (FilterGroupRowPanel)filterValuePanel.getComponent(i);
                 Object filterPanel = element.getFilterValueCombo().getSelectedItem();
                 fg.add(filterPanel);
+                log.info(" Adding entity into group: "+fg.getUniqueId()+" Item:" + filterPanel);
             }
             SimpleGuiRegistry.addFilterSubGroup(fg);
-
+            
             parentFilterPanel.reArrangeFilters();
             
             // signal the simple gui changed..
@@ -225,14 +243,16 @@ public class FilterGroupPanel extends javax.swing.JPanel {
 //            System.out.println("Filter IDs are :"+filters.get(i).getFilterId());
             }
             
+            log.info(" Adding filter to the group: "+frp.getFilterValueCombo().getSelectedItem());
+            
             // here you add the first level groups into the list for available items for grouping.
-             // TODO -SB- uncomment the code below when you implement the nested gruping DCQL generation.
+            // TODO -SB- uncomment the code below when you implement the nested gruping DCQL generation.
             /*
             ArrayList<FilterGroup> filterGroups = SimpleGuiRegistry.getFilterSubGroupList();
             for (int i = 0; i < filterGroups.size(); i++) {
                 frp.getFilterValueCombo().addItem(filterGroups.get(i));
             }
-            */
+             */
             
             frp.getFilterValueCombo().setSelectedIndex(numEntities);
             frp.getFilterValueCombo().setRenderer(new MyComboBoxRenderer());
@@ -244,7 +264,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             
             filterValuePanel.revalidate();
             filterValuePanel.repaint();
-
+            
             numEntities++;
         }
     }//GEN-LAST:event_addFilterOrGroupBtnActionPerformed

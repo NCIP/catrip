@@ -8,6 +8,8 @@ import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.wizard.MainFrame;
 import org.apache.xmlbeans.XmlOptions;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
 
 
 /**
@@ -17,6 +19,8 @@ import org.apache.xmlbeans.XmlOptions;
  * @author  Sanjeev Agarwal
  */
 public class VisualPanel extends CPanel {
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
     
     /** Creates new form VisualPanel */
     public VisualPanel() {
@@ -95,15 +99,19 @@ public class VisualPanel extends CPanel {
             xmlOptions.setUseDefaultNamespace();
             
             // if the simple gui was changed.. than show the DCQL from simple gui.. after preparing the SimpleGuiRegistry for DCQL.
-            if (GUIConstants.simpleGui && SimpleGuiRegistry.isSimpleGuiChanged()){ 
+            if (GUIConstants.simpleGui && SimpleGuiRegistry.isSimpleGuiChanged()){
                 SimpleGuiRegistry.prepareForDcql();
             }
             
 //            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));
-            if (GUIConstants.simpleGui){ 
-                getCQLDesignerPanel().setDcqlQueryText(GroupDCQLGenerator.getDCQLText(xmlOptions)); 
+            if (GUIConstants.simpleGui){
+                String dcqlStr = GroupDCQLGenerator.getDCQLText(xmlOptions);
+                log.info(" Viewing DCQL: "+dcqlStr);
+                getCQLDesignerPanel().setDcqlQueryText(dcqlStr);
             } else {
-            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));  
+                String dcqlStr = DCQLGenerator.getDCQLText(xmlOptions);
+                log.info(" Viewing DCQL: "+dcqlStr);
+                getCQLDesignerPanel().setDcqlQueryText(dcqlStr);
             }
         }
     }//GEN-LAST:event_tabbedPaneStateChanged
@@ -117,7 +125,7 @@ public class VisualPanel extends CPanel {
     private edu.duke.cabig.catrip.gui.panels.VisualQueryDesignerPanel visualQueryDesignerPanel;
     // End of variables declaration//GEN-END:variables
     
-//    
+//
 //    public static void main(String[] args) {
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {

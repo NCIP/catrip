@@ -12,6 +12,8 @@ import java.awt.Cursor;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
 
 
 /**
@@ -20,7 +22,8 @@ import javax.swing.DefaultComboBoxModel;
  * @author  Sanjeev Agarwal
  */
 public class LoginScreen extends CJFrame {
-    
+    static Log log = Logger.getDefaultLogger();
+
     private Map<String,IndentityProviderBean> idpBeans = new HashMap<String,IndentityProviderBean>();
     /** Creates new form LoginScreen */
     public LoginScreen() {
@@ -183,6 +186,7 @@ public class LoginScreen extends CJFrame {
         // check if that is a guest demo login.
         boolean guestUser = false;
         String userIdStr = userId.getText().trim();
+        log.info(" User Login id: "+userIdStr); 
         if (userIdStr.equalsIgnoreCase("guest")){
             guestUser = true;
             authenticate = true;
@@ -193,6 +197,7 @@ public class LoginScreen extends CJFrame {
             
             IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
             try {
+                log.info("\n Trying to authenticate the user: "+userIdStr +"\n IDP url: "+idpBean.getIdpUrl()+"\n Dorian URL:"+idpBean.getDorianUrl()+"\n"); 
                 System.out.println("xxxx"+userId.getText().trim()+" : "+ password.getText().trim()+" : "+ idpBean.getIdpUrl()+" : "+idpBean.getDorianUrl());
                 AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
                 authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
@@ -206,7 +211,7 @@ public class LoginScreen extends CJFrame {
         if (authenticate) {
             
             if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
-                
+                log.info(" Going into Advance GUI mode. "); 
                 GUIConstants.simpleGui = false;
                 
                 SearchServicesScreen screen= new SearchServicesScreen();
@@ -214,6 +219,7 @@ public class LoginScreen extends CJFrame {
                 screen.setVisible(true);
                 
             }else { // show simple gui main screen directly..
+                log.info(" Going into Simple GUI mode. "); 
                 // disable all the buttons first and show a waiting cursor..
                 disableButtons();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -242,6 +248,8 @@ public class LoginScreen extends CJFrame {
             this.dispose();
             
             
+        } else {
+            // tell the user to login again or exit..
         }
     }//GEN-LAST:event_loginBtnActionPerformed
     
@@ -264,7 +272,14 @@ public class LoginScreen extends CJFrame {
             idpBeans.put(idpNames[i],(IndentityProviderBean)indentityProviderBeans[i]);
         }
         
-        DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(idpNames);
+        // log idp stuff..
+        log.debug(" IDPs : " );
+        for (int i = 0; i < idpNames.length; i++) {
+            log.debug(" IDP Name: "+ idpNames[i].toString() +" | " +  " IDP URL: "+ indentityProviderBeans[i].getIdpUrl() +" | " +  " Dorian URL: "+ indentityProviderBeans[i].getDorianUrl() );  
+        }
+        
+        
+        DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(idpNames); 
         
         return cb;
     }
