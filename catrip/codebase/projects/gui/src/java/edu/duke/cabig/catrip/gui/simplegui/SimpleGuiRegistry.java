@@ -45,6 +45,8 @@ public class SimpleGuiRegistry {
     
     // array of the filterpanel.. currently added to the simple gui.. each one represent a unique filter..
     private static ArrayList<FilterRowPanel> filters = new ArrayList(50);
+    private static ArrayList<FilterRowPanel> phonyFilters = new ArrayList(10);
+    
     
     private static HashMap beanMap = new HashMap(20); // sanjeev: holds unique classBean instaces which are used in filters.. filled ones..
     private static HashMap currentClassBeanMap = new HashMap(100); // sanjeev: holds unique classBean instances for all the classes that are defined in the simple gui xml.. the objects get's populated laong the way in prepareForDcql method.
@@ -233,13 +235,32 @@ public class SimpleGuiRegistry {
         return filters;
     }
     
-    public static void setFilterList(ArrayList<FilterRowPanel> filters) {
-        filters = filters;
+    public static void setFilterList(ArrayList<FilterRowPanel> filters_) {
+        filters = filters_;
     }
-    
     public static void addFilterToList(FilterRowPanel filter) {
         getFilterList().add(filter);
         addNonGroupFilter(filter);   // TODO - these two should not be together..
+    }
+    public static void addPhonyFilterToList(FilterRowPanel filter) {
+        getFilterList().add(filter);
+        //addNonGroupFilter(filter);   // do not add a phony filter to a group as that is only to support returned attribute.
+        getPhonyFilterList().add(filter); // add to the phony filter list as well.
+    }
+    public static ArrayList<FilterRowPanel> getPhonyFilterList() {
+        return phonyFilters;
+    }
+    public static void setPhonyFilterList(ArrayList<FilterRowPanel> pFilters) {
+        phonyFilters = pFilters;
+    }
+    public static void cleanPhonyFilterList (){
+        ArrayList<FilterRowPanel> pFilters = getPhonyFilterList();
+        for (int i = 0; i < pFilters.size(); i++) {
+            FilterRowPanel fPanel = pFilters.get(i);
+            getFilterList().remove(fPanel);
+        }
+        setPhonyFilterList(new ArrayList<FilterRowPanel>(10));
+        setSimpleGuiChanged(true);
     }
     
     public static HashMap getBeanMap() {
@@ -271,6 +292,8 @@ public class SimpleGuiRegistry {
         GraphObject target = getTargetGraphObject().clone();
         setTargetGraphObject(target);
         
+        // clean the bean map, from the previous operations.
+        setBeanMap(new HashMap());
         
         // sanjeev: fill the hash map with filled objects only...
         ArrayList<FilterRowPanel> list = getFilterList();

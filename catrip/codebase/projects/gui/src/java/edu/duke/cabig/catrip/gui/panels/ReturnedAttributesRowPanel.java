@@ -5,9 +5,14 @@
  */
 
 package edu.duke.cabig.catrip.gui.panels;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
+import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import org.apache.commons.logging.Log;
 import edu.duke.cabig.catrip.gui.util.Logger;
 import java.awt.event.ItemEvent;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 /**
@@ -80,13 +85,29 @@ public class ReturnedAttributesRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void returnedAttributeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_returnedAttributeComboItemStateChanged
-        if (evt.getStateChange() == ItemEvent.DESELECTED) { 
+        if (evt.getStateChange() == ItemEvent.DESELECTED) {
             log.info(" Returned Attribute Changed: "+getReturnedAttributeCombo().getSelectedItem());
         }
     }//GEN-LAST:event_returnedAttributeComboItemStateChanged
     
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
         // delete this entry from the parent's list..
+        
+        CDEComboboxBean cdeBean = (CDEComboboxBean)getReturnedAttributeCombo().getSelectedItem();
+        String fullClassName = cdeBean.getClassBean().getFullyQualifiedName();
+        String returndAttributeName = cdeBean.getAttributeBean().getAttributeName();
+        String serviceName = cdeBean.getClassBean().getServiceName();
+        
+        // delete the returned attribute that is set in the SimpleGuiRegistry.
+        SimpleGuiRegistry.getClassNameReturnedAttributeMap().remove(fullClassName);
+        SimpleGuiRegistry.setNumReturnedAttribute(SimpleGuiRegistry.getNumReturnedAttribute() - 1);
+        SimpleGuiRegistry.getReturnedAttributeForeignServices().remove(serviceName);
+        
+        // delete all phony filters as well, they will be added again after the new set of returnedAttributes are added.
+        SimpleGuiRegistry.cleanPhonyFilterList();
+        
+        log.info(" Deleted Returned Attribute| Class: "+fullClassName + " | Attribute: "+ returndAttributeName+ " | Service: "+ serviceName);
+        
         this.removeAll();
         containerPanel.removeRow(this);
     }//GEN-LAST:event_delFilterBtnActionPerformed

@@ -44,6 +44,12 @@ public class SimpleSearchPanel extends CPanel {
     static Log log = Logger.getDefaultLogger();
     
     
+    // ---- Returned Attributes ----- //
+    ReturnedAttributesPanel returnedAttributesPanel;
+    
+    
+    
+    
     /** Creates new form SimpleSearchPanel */
     public SimpleSearchPanel() {
         
@@ -99,7 +105,7 @@ public class SimpleSearchPanel extends CPanel {
             filterPanel.remove(fp);
             filterPanel.revalidate();
             filterPanel.repaint();
-            SimpleGuiRegistry.getFilterList().remove(fp);
+            SimpleGuiRegistry.getFilterList().remove(fp); // delete it from the registry as well..
         } else {
             filterPanel.revalidate();
             filterPanel.repaint();
@@ -292,11 +298,13 @@ public class SimpleSearchPanel extends CPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void returnAttributeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnAttributeBtnActionPerformed
-        
-        ReturnedAttributesPanel fgp = new ReturnedAttributesPanel(this);
+        log.info(" Selecting Returned Attributes.. "); 
+        if (returnedAttributesPanel == null){
+            returnedAttributesPanel = new ReturnedAttributesPanel(this);
+        }
         
         CJDialog jd = new CJDialog(getMainFrame(), "Select Returned Values..");
-        jd.add(fgp);
+        jd.add(returnedAttributesPanel);
         jd.setBounds(10,10,750, 320);
         jd.center();jd.setModal(true);
         jd.setVisible(true);

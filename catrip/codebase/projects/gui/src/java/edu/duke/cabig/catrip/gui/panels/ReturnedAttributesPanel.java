@@ -39,6 +39,8 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     // Define Logger..
     static Log log = Logger.getDefaultLogger();
     
+    private boolean attributeDeleteActionPerformed = false;
+    
     /** Creates new form ReturnedAttributesPanel */
     public ReturnedAttributesPanel() {
         initComponents();
@@ -168,6 +170,8 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
         returnedAttributeListPanel.repaint();
         numEntities--;
         
+        attributeDeleteActionPerformed = true;
+                
     }
     
     
@@ -267,7 +271,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
     
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
 // clear the current changed settings.. in this instance...
-        log.info(" Cancelling the Returned Attribute Selection. "); 
+        log.info(" Cancelling the Returned Attribute Selection. ");
         JDialog parent = (JDialog)getRootPane().getParent();
         parent.dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
@@ -303,7 +307,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
                     FilterRowPanel pnl = new FilterRowPanel();
                     CDEComboboxBean cdeBeanTmp = (CDEComboboxBean) entries.get(fullClassName); // get the phony CdeBean from list..
                     pnl.setCDEComboboxBean(cdeBeanTmp);
-                    SimpleGuiRegistry.addFilterToList(pnl);
+                    SimpleGuiRegistry.addPhonyFilterToList(pnl);
                     SimpleGuiRegistry.setSimpleGuiChanged(true);
 //                System.out.println("XXXX adding phony class "+cdeBeanTmp.print());
                 }
@@ -311,6 +315,15 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             // signal the simple gui registry that returned attribute list has changed..
             SimpleGuiRegistry.setReturnedAttributeListAvailable(true);
         }
+        
+        if (attributeDeleteActionPerformed && (numEntities == 0)){
+            SimpleGuiRegistry.setReturnedAttributeListAvailable(false);
+            SimpleGuiRegistry.setClassNameReturnedAttributeMap(new HashMap());
+            SimpleGuiRegistry.setNumReturnedAttribute(0);
+            SimpleGuiRegistry.setReturnedAttributeForeignServices(new HashSet());
+            SimpleGuiRegistry.setSimpleGuiChanged(true);
+        }
+        
         JDialog parent = (JDialog)getRootPane().getParent();
         parent.dispose();
     }//GEN-LAST:event_okBtnActionPerformed

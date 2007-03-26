@@ -299,7 +299,6 @@ public class FilterRowPanel extends javax.swing.JPanel {
         SimpleGuiRegistry.setSimpleGuiChanged(true);
         
         this.removeAll();
-//        repaint();
         containerPanel.removeFilter(this);
     }//GEN-LAST:event_delFilterBtnActionPerformed
     
