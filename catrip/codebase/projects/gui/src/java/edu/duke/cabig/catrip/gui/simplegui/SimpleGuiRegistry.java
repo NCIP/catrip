@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import org.apache.commons.logging.Log;
+import edu.duke.cabig.catrip.gui.util.Logger;
 
 /**
  *
@@ -81,6 +83,11 @@ public class SimpleGuiRegistry {
     // query sharing
     private static ArrayList<GraphObject> allSimpleGuiXMLObjectList = new ArrayList(500);
     // query sharing
+    
+    // Define Logger..
+    static Log log = Logger.getDefaultLogger();
+
+    
     
     // </editor-fold>
     
@@ -284,7 +291,7 @@ public class SimpleGuiRegistry {
     
     
     public static void prepareForDcql(){// <editor-fold defaultstate="collapsed">
-        
+        log.info(" Preparing the Association tree in Simple GUI for generation of DCQL. "); 
         // set this flag again.. as it is done now..
         setSimpleGuiChanged(false);
         

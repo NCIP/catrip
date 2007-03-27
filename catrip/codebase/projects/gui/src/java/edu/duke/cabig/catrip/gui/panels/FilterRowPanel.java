@@ -273,6 +273,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
             for (int i = 0; i < values.length; i++) {
                 valueComboBox.addItem(values[i]);
             }
+            valueComboBoxTextBoxKeyTyped(null); //  this is to fire the event so that the object is filled with the first value in the result combo box.
         }
         
     }//GEN-LAST:event_distinctValueBtnActionPerformed

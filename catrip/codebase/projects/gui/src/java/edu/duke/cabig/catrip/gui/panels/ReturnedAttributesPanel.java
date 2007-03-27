@@ -314,6 +314,7 @@ public class ReturnedAttributesPanel extends javax.swing.JPanel {
             }
             // signal the simple gui registry that returned attribute list has changed..
             SimpleGuiRegistry.setReturnedAttributeListAvailable(true);
+            SimpleGuiRegistry.setSimpleGuiChanged(true);
         }
         
         if (attributeDeleteActionPerformed && (numEntities == 0)){
