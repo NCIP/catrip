@@ -45,7 +45,7 @@ public class SimpleSearchPanel extends CPanel {
     
     
     // ---- Returned Attributes ----- //
-    ReturnedAttributesPanel returnedAttributesPanel;
+    private ReturnedAttributesPanel returnedAttributesPanel;
     
     
     
@@ -473,6 +473,14 @@ public class SimpleSearchPanel extends CPanel {
         } else {
             returnAttributeBtn.setEnabled(true);
         }
+        
+        // Also clean the returned attributes panel, as the panel itself is cached.. 
+        // By caching the panel instance itself, it was easier in order to display the last selected state of the returned attributes.
+        // Cleaning the panel and creating a new one has the same amount of cost assoociated with it.
+        if (returnedAttributesPanel != null){
+            returnedAttributesPanel = new ReturnedAttributesPanel(this);
+        }
+        
         //returnAttributeBtn.setEnabled(true); // enable this button if that was disable.. there may be chances that in new filter set there is no groups..
         SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
     }//GEN-LAST:event_clearFilterBtnActionPerformed
