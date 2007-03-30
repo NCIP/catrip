@@ -528,17 +528,6 @@ public class SimpleSearchPanel extends CPanel {
         
         
         
-        
-        // and or
-//        if (filterRows < 5){
-//            filterPanel.remove(filterRows-1);
-//            filterPanel.add(jp, filterRows-1);
-//        } else {
-//            GridLayout gl = (GridLayout)filterPanel.getLayout();
-//            gl.setRows(filterRows);
-//            filterPanel.add(jp);
-//        }
-        
         filterPanel.add(jp);
         
         

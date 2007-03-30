@@ -330,7 +330,7 @@ public class SimpleGuiRegistry {
             }
             
             
-            else {
+            else if (filterIsOnTarget && !pnl.isEmpty() ) {
                 // even if the filter is on target object.. check the grouping stuff.. there may be group of the attributes as well..
                 ClassBean targetBean = targetObject.getClassBean();
                 ClassBeanGroup group = null;
@@ -922,13 +922,14 @@ public class SimpleGuiRegistry {
             List atts = (List)getClassNameReturnedAttributeMap().get(classFullName);
             if (!atts.contains(attribute)){
                 atts.add(attribute);
+                numReturnedAttribute++;
             }
         } else { // create a new List and add to the Map..
             List atts = new ArrayList();
             atts.add(attribute);
             getClassNameReturnedAttributeMap().put(classFullName, atts);
+            numReturnedAttribute++;
         }
-        numReturnedAttribute++;
     }// </editor-fold>
     
     public static boolean hasReturnedAttributesForClass(String classFullName){
