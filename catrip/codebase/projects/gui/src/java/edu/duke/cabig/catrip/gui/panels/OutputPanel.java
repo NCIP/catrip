@@ -24,9 +24,9 @@ import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.querysharing.HtmlDemo;
-import edu.duke.cabig.catrip.gui.querysharing.TableSorter;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.LargeTextDialog;
+import edu.duke.cabig.catrip.gui.util.TableSorter;
 
 /**
  * Out Panel to show the results from the DCQL Query execution.
