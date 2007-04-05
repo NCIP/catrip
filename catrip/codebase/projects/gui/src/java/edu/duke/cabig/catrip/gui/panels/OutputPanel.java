@@ -1,10 +1,6 @@
 
 package edu.duke.cabig.catrip.gui.panels;
 
-import edu.duke.cabig.catrip.gui.common.AttributeBean;
-import edu.duke.cabig.catrip.gui.common.ClassBean;
-import edu.duke.cabig.catrip.gui.components.CPanel;
-import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
@@ -14,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 import java.util.regex.Pattern;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -22,6 +20,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
+import edu.duke.cabig.catrip.gui.common.AttributeBean;
+import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.querysharing.HtmlDemo;
+import edu.duke.cabig.catrip.gui.querysharing.TableSorter;
+import edu.duke.cabig.catrip.gui.util.GUIConstants;
+import edu.duke.cabig.catrip.gui.util.LargeTextDialog;
+
 /**
  * Out Panel to show the results from the DCQL Query execution.
  * It has a dynamic Table Model, where the Table columns are shown based on the Target object selected on the Graph.
@@ -29,11 +35,39 @@ import javax.swing.table.TableModel;
  * @author  Sanjeev Agarwal
  */
 public class OutputPanel extends CPanel {
-    
-    
+    private final boolean SORT_ON = false;
     /** Creates new form OutputPanel */
     public OutputPanel() {
         initComponents();
+        if (SORT_ON){
+        //Set up tool tips for column headers.
+        getOutputTable().getTableHeader().setToolTipText(
+                "Click to specify sorting; Control-Click to specify secondary sorting");
+        }
+        outputTable.addMouseListener(new java.awt.event.MouseListener() {
+        	public void mouseClicked(java.awt.event.MouseEvent e) {
+        		if (e.getClickCount() == 2)  {
+        		String columnName = outputTable.getColumnName(outputTable.getSelectedColumn());
+        		String strValue = (String)outputTable.getValueAt(outputTable.getSelectedRow(), outputTable.getSelectedColumn());
+        		boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
+        		if (bigText){
+	        		LargeTextDialog  f = new LargeTextDialog(columnName, strValue);
+	        		//JFrame  f = HtmlDemo.createAndShowGUI(columnName, strValue);
+	        		f.setLocationRelativeTo(null); 
+	        		// f.setLocation(e.getX(), e.getY());
+	        	    f.setVisible(true);
+        		}
+        		}
+        	}
+        	public void mousePressed(java.awt.event.MouseEvent e) {
+        	}
+        	public void mouseReleased(java.awt.event.MouseEvent e) {
+        	}
+        	public void mouseEntered(java.awt.event.MouseEvent e) {
+        	}
+        	public void mouseExited(java.awt.event.MouseEvent e) {
+        	}
+        });
     }
     
     public javax.swing.JTable getOutputTable() {
@@ -62,7 +96,6 @@ public class OutputPanel extends CPanel {
         for (int i = 0; i < numColumns; i++) {
             getOutputTable().getColumnModel().getColumn(i).setCellRenderer(renderer);
         }
-        
     }
     
     public void setMapResults(List resultArray, HashMap colNamesMap, String[] keys, boolean[] alternate){
@@ -75,7 +108,6 @@ public class OutputPanel extends CPanel {
         for (int i = 0; i < numColumns; i++) {
             getOutputTable().getColumnModel().getColumn(i).setCellRenderer(renderer);
         }
-        
         
     }
     
@@ -97,6 +129,7 @@ public class OutputPanel extends CPanel {
         setLayout(new java.awt.GridLayout(1, 0));
 
         outputTable.setModel(getTableModel());
+
         jScrollPane1.setViewportView(outputTable);
 
         add(jScrollPane1);
@@ -231,19 +264,24 @@ class ColoredDefaultTableModel extends javax.swing.table.DefaultTableModel{
     public Color[] getRowColors(){
         return rowColors;
     }
-    
-}
+ }
 
 
 
 class ColoredJTable extends JTable {
     private Color[] rowColors;
-    
+    private final boolean SORT_ON = false;
     
     public void setModel(TableModel model, Color[] rColors ){
-        super.setModel(model);
-        this.setRowColors(rColors);
-    }
+    	this.setRowColors(rColors);
+    	if (SORT_ON){
+    		TableSorter sorter = new TableSorter(model);
+    		sorter.setTableHeader(this.getTableHeader());
+    		super.setModel(sorter);
+    	}
+    	else
+    		super.setModel(model);
+    	}
     
     public Color  getRowColor(int row){
         return rowColors[row];
@@ -264,14 +302,12 @@ class ColoredJTable extends JTable {
 
 
 
-
-
 class TextWithIconCellRenderer extends DefaultTableCellRenderer {
     
     
     public Component getTableCellRendererComponent(JTable tblDataTable, Object value, boolean isSelected, boolean hasFocus, int markedRow, int col){
         JLabel origRet=(JLabel)super.getTableCellRendererComponent(tblDataTable,value,isSelected,hasFocus,markedRow,col);
-        
+
         if (value != null ) {
             String strValue = value.toString().trim();
             boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
@@ -283,7 +319,6 @@ class TextWithIconCellRenderer extends DefaultTableCellRenderer {
                 origRet.setVerticalAlignment(SwingConstants.CENTER);
                 
                 // set an action handler also..
-                
                 
                 String str = "<html> **REVISED DIAGNOSIS**:<BR>C. \"\"<?xml:namespace prefix = " +
                         "maw3 ns = \"\"http://maw3.duhs.duke.edu\"\" />USNCB RIGHT BREAST, NUMBER OF " +
