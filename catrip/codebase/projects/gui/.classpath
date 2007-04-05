@@ -3,11 +3,11 @@
 	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="test/src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/tomcat_cagrid_5.0.28/webapps/wsrf/WEB-INF/lib/_queryservice.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/_conf_files.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/_xml-mapping.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/bounce.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/catrip_config_beans.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-client.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/cglib-full-2.0.1.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/client.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/hibernate3.jar"/>
@@ -68,10 +68,6 @@
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/grouper.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/jsr173_1.0_api.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-common.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-service.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-stubs.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-tests.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/resolver.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/subject-0.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/tumor_registry_domain.jar"/>
@@ -83,11 +79,6 @@
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryengine-2.0/build/lib/caGrid-1.0-fqp-service.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryengine-2.0/build/lib/caGrid-1.0-fqp-stubs.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryengine-2.0/build/lib/caGrid-1.0-fqp-tests.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryservice/build/lib/QueryService-client.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryservice/build/lib/QueryService-common.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryservice/build/lib/QueryService-service.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryservice/build/lib/QueryService-stubs.jar"/>
-	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/queryservice/build/lib/QueryService-tests.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/addressing-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/axis.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/axis-url.jar"/>
@@ -120,6 +111,7 @@
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/jce-jdk13-125.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/jgss.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/junit.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/security-password/ext/lib/caGrid-1.0-gridca-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/log4j-1.2.8.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/naming-common.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/naming-factory.jar"/>
@@ -154,6 +146,21 @@
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/xml-apis.jar"/>
 	<classpathentry kind="lib" path="C:/ws-core-4.0.3/lib/xmlsec.jar"/>
 	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/lib/caGrid-1.0-fqp-stubs.jar"/>
-	<classpathentry kind="lib" path="C:/new_Tomcat5/webapps/wsrf/WEB-INF/lib/_queryservice.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-tests.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-client.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-common.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-service.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/QueryService-stubs.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-authentication-service-common.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-authentication-service-service.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-authentication-service-stubs.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-authentication-service-client.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-dorian-ui.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-dorian-client.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-dorian-common.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-dorian-service.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-dorian-stubs.jar"/>
+	<classpathentry kind="lib" path="C:/catrip/catrip/codebase/projects/gui/ext/lib/caGrid-1.0-dorian-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/Bill Mason/My Documents/software/POI/poi-2.5.1-final-20040804.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
