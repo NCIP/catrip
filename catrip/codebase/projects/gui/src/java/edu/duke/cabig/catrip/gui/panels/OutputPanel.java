@@ -23,7 +23,6 @@ import javax.swing.table.TableModel;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
-import edu.duke.cabig.catrip.gui.querysharing.HtmlDemo;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.LargeTextDialog;
 import edu.duke.cabig.catrip.gui.util.TableSorter;
@@ -52,7 +51,6 @@ public class OutputPanel extends CPanel {
         		boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
         		if (bigText){
 	        		LargeTextDialog  f = new LargeTextDialog(columnName, strValue);
-	        		//JFrame  f = HtmlDemo.createAndShowGUI(columnName, strValue);
 	        		f.setLocationRelativeTo(null); 
 	        		// f.setLocation(e.getX(), e.getY());
 	        	    f.setVisible(true);
