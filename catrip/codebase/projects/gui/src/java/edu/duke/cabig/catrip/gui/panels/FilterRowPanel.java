@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import org.apache.commons.logging.Log;
 import edu.duke.cabig.catrip.gui.util.Logger;
+import java.util.Arrays;
 
 /**
  *
@@ -270,7 +271,8 @@ public class FilterRowPanel extends javax.swing.JPanel {
             }
             
             Object[] values = valueSet.toArray( new Object[ valueSet.size() ] );
-            for (int i = 0; i < values.length; i++) {
+            Arrays.sort(values); 
+            for (int i = 0; i < values.length; i++) { 
                 valueComboBox.addItem(values[i]);
             }
             valueComboBoxTextBoxKeyTyped(null); //  this is to fire the event so that the object is filled with the first value in the result combo box.

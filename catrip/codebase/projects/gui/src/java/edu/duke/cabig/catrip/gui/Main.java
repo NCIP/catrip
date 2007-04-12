@@ -65,7 +65,7 @@ public class Main {
         
          // TODO -SB- Ideally check if the new caTRIP_HOME is having correct set of config files? or version? if not than overwrite that.
         
-        log = Logger.getDefaultLogger();
+        
         
         bufferedLogMsgs.add(" reading proeprty: catrip.config.version ");
         String caTRIP_Version = System.getProperty("catrip.config.version");
@@ -73,8 +73,6 @@ public class Main {
             GUIConstants.caTRIPVersion = caTRIP_Version.trim();
             bufferedLogMsgs.add(" User supplied the new CATRIP_VERSION property: "+caTRIP_Version);
         }
-        
-        
         
         
         
@@ -89,6 +87,7 @@ public class Main {
             System.out.println("This is a stand alone version of caTRIP");
         }
         
+        log = Logger.getDefaultLogger();
         
         // now add the buffered log msgs into log file.
         for (int i = 0; i < bufferedLogMsgs.size(); i++) {
