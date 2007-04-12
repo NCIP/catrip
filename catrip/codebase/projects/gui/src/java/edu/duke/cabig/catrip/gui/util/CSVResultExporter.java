@@ -53,7 +53,7 @@ public class CSVResultExporter {
             
             
             JOptionPane jpane = new JOptionPane();
-            jpane.showMessageDialog(owner ,"The results are exported to HTML file :\n"+file);
+            jpane.showMessageDialog(owner ,"The results are exported to CSV file :\n"+file);
             
             
         } catch (Exception e) {

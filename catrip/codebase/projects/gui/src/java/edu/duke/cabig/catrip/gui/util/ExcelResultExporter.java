@@ -67,7 +67,7 @@ public class ExcelResultExporter {
             
             
             JOptionPane jpane = new JOptionPane();
-            jpane.showMessageDialog(owner ,"The results are exported to HTML file :\n"+file);
+            jpane.showMessageDialog(owner ,"The results are exported to Excel file :\n"+file);
             
             
         } catch (Exception e) {
