@@ -24,7 +24,11 @@ import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import org.apache.commons.logging.Log;
 import edu.duke.cabig.catrip.gui.util.Logger;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.regex.Pattern;
+
 
 /**
  *
@@ -264,16 +268,32 @@ public class FilterRowPanel extends javax.swing.JPanel {
         }
         
         if (valueSet !=null){
-            log.info(" Result count for Distinct Value Search: "+valueSet.size()); 
+            log.info(" Result count for Distinct Value Search: "+valueSet.size());
             // clean the combo box.
             if (!(valueComboBox.getComponentCount() == 0)){
                 valueComboBox.removeAllItems();
             }
             
             Object[] values = valueSet.toArray( new Object[ valueSet.size() ] );
-            Arrays.sort(values); 
-            for (int i = 0; i < values.length; i++) { 
-                valueComboBox.addItem(values[i]);
+            Arrays.sort(values);
+            for (int i = 0; i < values.length; i++) {
+                // check if the value is date type
+                String value = values[i].toString();
+                String dateFormatExp = "\\d\\d\\d\\d[-]\\d\\d[-]\\d\\d[T]\\d\\d[:]\\d\\d[:]\\d\\d[.]\\d\\d\\d[-]\\d\\d[:]\\d\\d";
+                boolean b = false;
+                if (value!=null && !value.equals("")){
+                    b = Pattern.matches(dateFormatExp, value);
+                }
+                try{
+                    if (b){
+                        Date javaDate = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")).parse(value);
+                        value = new SimpleDateFormat("MM-dd-yyyy").format(javaDate);
+                    }
+                } catch (java.text.ParseException pe){
+                    pe.printStackTrace();
+                    // eat the exception here..
+                }
+                valueComboBox.addItem(value);
             }
             valueComboBoxTextBoxKeyTyped(null); //  this is to fire the event so that the object is filled with the first value in the result combo box.
         }
@@ -284,13 +304,13 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
         
         if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
-            log.info(" Deleting the filter : "+getCdeCombo().getSelectedItem()); 
+            log.info(" Deleting the filter : "+getCdeCombo().getSelectedItem());
             currentFilter.remove();
         } else {
-            log.info(" Removing a blank filter row "+getCdeCombo().getSelectedItem()); 
+            log.info(" Removing a blank filter row "+getCdeCombo().getSelectedItem());
         }
         
-
+        
         SimpleGuiRegistry.getTargetGraphObject().getClassBean().removeAllUniqueAssociations();
         HashMap allBeans = SimpleGuiRegistry.getCurrentClassBeanMap();//getBeanMap();
         
@@ -308,7 +328,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
     private void cdeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdeComboItemStateChanged
 // sanjeev: clean filter from previous CDEComboboxBean and reset predicate and value fields..
         if (currentFilter != null){ // sanjeev: that means a filter was already set on this row...
-            log.info(" Current filter changed: "+getCdeCombo().getSelectedItem()); 
+            log.info(" Current filter changed: "+getCdeCombo().getSelectedItem());
             currentFilter.remove();
             getPredicateCombo().setSelectedIndex(0);
             valueComboBox.removeAllItems();
@@ -353,7 +373,7 @@ public class FilterRowPanel extends javax.swing.JPanel {
         
 //        if (evt.getStateChange() == ItemEvent.SELECTED) {
 //        } else
-        log.info(" Predicate value changed, new Predicate: "+getPredicateCombo().getSelectedItem().toString()); 
+        log.info(" Predicate value changed, new Predicate: "+getPredicateCombo().getSelectedItem().toString());
         
         if (evt.getStateChange() == ItemEvent.DESELECTED) {
             CDEComboboxBean cdeBean = (CDEComboboxBean)getCdeCombo().getSelectedItem();
