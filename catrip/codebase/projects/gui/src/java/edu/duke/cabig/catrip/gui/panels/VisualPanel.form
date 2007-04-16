@@ -55,8 +55,8 @@
         <Component class="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel" name="simpleSearchPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Simple Query Interface">
-                <Property name="tabTitle" type="java.lang.String" value="Simple Query Interface"/>
+              <JTabbedPaneConstraints tabName="Basic Query Builder">
+                <Property name="tabTitle" type="java.lang.String" value="Basic Query Builder"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

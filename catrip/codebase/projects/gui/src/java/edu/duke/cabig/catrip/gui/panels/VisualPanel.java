@@ -80,7 +80,7 @@ public class VisualPanel extends CPanel {
 
         tabbedPane.addTab(bundle.getString("VISUAL_PANEL_TAB_TWO"), cQLDesignerPanel); // NOI18N
 
-        tabbedPane.addTab("Simple Query Interface", simpleSearchPanel);
+        tabbedPane.addTab("Basic Query Builder", simpleSearchPanel);
 
         tabbedPane.addTab(org.openide.util.NbBundle.getMessage(VisualPanel.class, "VisualPanel.queryServiceUI1.tabtxt"), queryServiceUI1); // NOI18N
 

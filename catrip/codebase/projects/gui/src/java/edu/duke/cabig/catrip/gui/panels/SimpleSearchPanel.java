@@ -46,8 +46,8 @@ public class SimpleSearchPanel extends CPanel {
     
     // ---- Returned Attributes ----- //
     private ReturnedAttributesPanel returnedAttributesPanel;
-    
-    
+    private boolean filterPresent = false;
+    private boolean targetObjectSupportsReturnedAttributes = false;
     
     
     /** Creates new form SimpleSearchPanel */
@@ -111,6 +111,12 @@ public class SimpleSearchPanel extends CPanel {
             filterPanel.repaint();
             // TODO - sanju AND/OR
 //            removeAndReArrange( fp );
+        }
+        
+        
+        filterRows--;
+        if (filterRows == 0){
+            returnAttributeBtn.setEnabled(false);
         }
         
         
@@ -298,7 +304,7 @@ public class SimpleSearchPanel extends CPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void returnAttributeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnAttributeBtnActionPerformed
-        log.info(" Selecting Returned Attributes.. "); 
+        log.info(" Selecting Returned Attributes.. ");
         if (returnedAttributesPanel == null){
             returnedAttributesPanel = new ReturnedAttributesPanel(this);
         }
@@ -314,7 +320,7 @@ public class SimpleSearchPanel extends CPanel {
     }//GEN-LAST:event_returnAttributeBtnActionPerformed
     
     private void addGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupBtnActionPerformed
-        log.info(" Adding Group. "); 
+        log.info(" Adding Group. ");
         FilterGroupPanel fgp = new FilterGroupPanel(this);
         
         CJDialog jd = new CJDialog(getMainFrame(), "Create Group between Filters or Groups");
@@ -327,7 +333,7 @@ public class SimpleSearchPanel extends CPanel {
     
     private void targetObjComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_targetObjComboActionPerformed
         
-//        cleanClean();
+        
         targetSetChanged = true;
         getTargetServiceCombo().removeAllItems();
         
@@ -376,13 +382,13 @@ public class SimpleSearchPanel extends CPanel {
             SimpleGuiRegistry.setSimpleGuiChanged(true); // flag simple gui changed so that the default Attribute set can be calculated.
         }
         //-------------------------
-        
-        if (!selectedTargetObject.isSupportReturnAttributes()) {
-            log.info(" This service doesn't support returned attributes. "); 
+        targetObjectSupportsReturnedAttributes = selectedTargetObject.isSupportReturnAttributes();
+        if (!targetObjectSupportsReturnedAttributes) {
+            log.info(" This service doesn't support returned attributes. ");
             returnAttributeBtn.setEnabled(false);
         } else {
-            log.info(" This service supports returned attributes. Enabling \" Select Returned Attribute\" Button."); 
-            returnAttributeBtn.setEnabled(true);
+            log.info(" This service supports returned attributes. Enabling \" Select Returned Attribute\" Button.");
+            //returnAttributeBtn.setEnabled(true); // the return attribute btn will be enabled the moment a new filter is added.
         }
         
         
@@ -419,7 +425,7 @@ public class SimpleSearchPanel extends CPanel {
             if (!selectedTargetObject.isSupportReturnAttributes()) {
                 returnAttributeBtn.setEnabled(false);
             } else {
-                returnAttributeBtn.setEnabled(true);
+                //returnAttributeBtn.setEnabled(true); // the return attribute btn will be enabled the moment a new filter is added.
             }
             
         }
@@ -474,7 +480,7 @@ public class SimpleSearchPanel extends CPanel {
             returnAttributeBtn.setEnabled(true);
         }
         
-        // Also clean the returned attributes panel, as the panel itself is cached.. 
+        // Also clean the returned attributes panel, as the panel itself is cached..
         // By caching the panel instance itself, it was easier in order to display the last selected state of the returned attributes.
         // Cleaning the panel and creating a new one has the same amount of cost assoociated with it.
         if (returnedAttributesPanel != null){
@@ -489,10 +495,16 @@ public class SimpleSearchPanel extends CPanel {
         SimpleGuiRegistry.cleanRegistry();
         targetSetChanged = true;
         
+        
         filterPanel.removeAll();
         filterPanel.revalidate();
         filterPanel.repaint();
         //initFilters(); // and or
+        
+        
+        filterRows = 0;
+        returnAttributeBtn.setEnabled(false);
+        
     }
     
     private void addFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterBtnActionPerformed
@@ -539,6 +551,15 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.repaint();
         
         SimpleGuiRegistry.setSimpleGuiChanged(true);
+        
+        // mark that the filter is being added, enable the "add returned attributes" button so that the return attributes can be added now.
+        if (!filterPresent){
+            filterPresent = true;
+        }
+        if (filterPresent && targetObjectSupportsReturnedAttributes){
+            returnAttributeBtn.setEnabled(true);
+        }
+        
         // sanjeev: after adding each filter.. prepare registry for DCQL..
 //        SimpleGuiRegistry.prepareForDcql();
         

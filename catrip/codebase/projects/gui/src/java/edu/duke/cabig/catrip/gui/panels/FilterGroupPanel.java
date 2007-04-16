@@ -18,6 +18,7 @@ import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import org.apache.commons.logging.Log;
 import edu.duke.cabig.catrip.gui.util.Logger;
 import java.awt.event.ItemEvent;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -181,7 +182,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     
     private void conditionComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_conditionComboItemStateChanged
         if (evt.getStateChange() == ItemEvent.DESELECTED) {
-            log.info(" group condition changed. "); 
+            log.info(" group condition changed. ");
         }
     }//GEN-LAST:event_conditionComboItemStateChanged
     
@@ -209,21 +210,36 @@ public class FilterGroupPanel extends javax.swing.JPanel {
 //            System.out.println("creating OR group...");
             }
             
-            log.info(" Adding Items into Group| id :"+fg.getUniqueId()+"| Condition: "+fg.getConditionString());
-            
+            // check if any of the Foriegn Association Filter is being added to OR group.
+            boolean foreignFilter = false;
             for (int i = 0; i < numEntities; i++) {
                 FilterGroupRowPanel element = (FilterGroupRowPanel)filterValuePanel.getComponent(i);
-                Object filterPanel = element.getFilterValueCombo().getSelectedItem();
-                fg.add(filterPanel);
-                log.info(" Adding entity into group: "+fg.getUniqueId()+" Item:" + filterPanel);
+                FilterRowPanel filterPanel = (FilterRowPanel)element.getFilterValueCombo().getSelectedItem();
+                if (!foreignFilter){
+                    foreignFilter = !filterPanel.isLocal();
+                }
+                
             }
-            SimpleGuiRegistry.addFilterSubGroup(fg);
             
-            parentFilterPanel.reArrangeFilters();
+            if (fg.isOR() && foreignFilter ){
+                // show an alert taht can't add filters from foreign services to and OR group.
+                new JOptionPane().showMessageDialog(this ,"Can not add Filter from Foreign Service to an OR group.\nReason: Feature not implemented.", "Error adding Filters to the OR group", JOptionPane.ERROR_MESSAGE );
+            } else {
+                log.info(" Adding Items into Group| id :"+fg.getUniqueId()+"| Condition: "+fg.getConditionString());
+                for (int i = 0; i < numEntities; i++) {
+                    FilterGroupRowPanel element = (FilterGroupRowPanel)filterValuePanel.getComponent(i);
+                    Object filterPanel = element.getFilterValueCombo().getSelectedItem();
+                    fg.add(filterPanel);
+                    log.info(" Adding entity into group: "+fg.getUniqueId()+" Item:" + filterPanel);
+                }
+                SimpleGuiRegistry.addFilterSubGroup(fg);
+                parentFilterPanel.reArrangeFilters();
+                
+                // signal the simple gui changed..
+                SimpleGuiRegistry.setSimpleGuiChanged(true);
+                SimpleGuiRegistry.setHasGroupsDefined(true);
+            }
             
-            // signal the simple gui changed..
-            SimpleGuiRegistry.setSimpleGuiChanged(true);
-            SimpleGuiRegistry.setHasGroupsDefined(true);
             
         }
         JDialog parent = (JDialog)getRootPane().getParent();
@@ -239,7 +255,11 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             ArrayList<FilterRowPanel> filters = SimpleGuiRegistry.getNonGroupFilters();
             for (int i = 0; i < filters.size(); i++) {
 //            String filterVal = filters.get(i).getFilterTextValue();
+                
+                // add only local filters in the group group.
+//                if (filters.get(i).isLocal()){
                 frp.getFilterValueCombo().addItem(filters.get(i));
+//                }
 //            System.out.println("Filter IDs are :"+filters.get(i).getFilterId());
             }
             
@@ -304,7 +324,14 @@ class MyComboBoxRenderer extends BasicComboBoxRenderer {
         if (value instanceof FilterGroup){
             list.setToolTipText(  ((FilterGroup)value).getToolTipText() );
         } else if (value instanceof FilterRowPanel){
-            list.setToolTipText(  ((FilterRowPanel)value).getToolTipText() );
+            FilterRowPanel pnl = (FilterRowPanel)value;
+            boolean foreignFilter = !pnl.isLocal();
+            if (foreignFilter){
+                list.setToolTipText(  (pnl.getToolTipText() + " : A Filter from Foreign Service.") );
+            } else {
+                list.setToolTipText(  (pnl.getToolTipText()) );
+            }
+            
         }
         return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus);
     }

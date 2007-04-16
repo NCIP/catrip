@@ -70,6 +70,10 @@ public class FilterGroup {
     public boolean isAND(){
         return and;
     }
+    
+    public boolean isOR(){
+        return !and;
+    }
     public String getHtmlConditionString(){
         return and?"<b>AND</b>":"<b>OR</b>";
     }

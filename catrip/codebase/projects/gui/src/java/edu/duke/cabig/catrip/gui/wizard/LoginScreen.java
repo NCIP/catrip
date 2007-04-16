@@ -109,7 +109,7 @@ public class LoginScreen extends CJFrame {
             }
         });
 
-        visualGuiChkBox.setText(" Show Visual Query Designer");
+        visualGuiChkBox.setText(bundle.getString("LOGIN_SCREEN_RADIO_BTN_LBL")); // NOI18N
         visualGuiChkBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         visualGuiChkBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
 

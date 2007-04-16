@@ -1,47 +1,15 @@
+/*
+ * QueryServiceUI.java
+ *
+ * Created on April 13, 2007, 12:51 AM
+ */
+
 package edu.duke.cabig.catrip.gui.querysharing;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Vector;
-
-import javax.swing.AbstractCellEditor;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
-
-import org.globus.wsrf.encoding.ObjectDeserializer;
-import org.xml.sax.InputSource;
 
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
@@ -54,67 +22,64 @@ import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Vector;
+import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
+import org.globus.wsrf.encoding.ObjectDeserializer;
+import org.xml.sax.InputSource;
 
-public class QueryServiceUI extends JPanel {
+/**
+ *
+ * @author  Administrator
+ */
+public class QueryServiceUI extends CPanel {
     
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    private JButton btnSearch = null;
-    private JLabel lblFirstName = null;
-    private JTextField txtFirstName = null;
-    private JScrollPane resultsScrollPane = null;
-    private JTable resultTable = null;
-    private JTextField txtLastName = null;
-    private JLabel lblLastName = null;
-    private JPanel metaDataPanel = null;
-    private JLabel lblDescriptionl = null;
-    private JLabel lblQueryName = null;
-    private JTextField txtQueryName = null;
-    private JTextField txtDescription = null;
-    private JButton btnAddFilter = null;
-    Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();  //  @jve:decl-index=0:
-    //Collection<ClassDb> classCollection = null;
-    // private DefaultTableModel conceptCodeTableModel = new DefaultTableModel();
+    Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();
+    
     private QueryDb queryData = new QueryDb();  //  @jve:decl-index=0:
     private DefaultTableModel tableModel = null ;
-    private JPanel filterPanel = null;
-    private JScrollPane jScrollPane1 = null;
     
-    
-    
-    
-    // --------
     public MainFrame mainFrame;
     private ArrayList<CDEComboboxBean> filterList = new ArrayList<CDEComboboxBean>(500);
     String serviceURI = "http://localhost:8181/wsrf/services/cagrid/QueryService"; // default  //  @jve:decl-index=0:
     
     
-    private JPanel outerPanel = null;
-    private JPanel resultsOuterPanel = null;
-    /**
-     * This method initializes
-     *
-     */
+    
+    /** Creates new form QueryServiceUI */
     public QueryServiceUI() {
-        super();
-        if (GUIConstants.simpleGui){ 
-            initialize();
+        initComponents();
+        if (GUIConstants.simpleGui){
+            initComp();
             init();
         }
     }
     
     
-    public void setMainFrame(MainFrame mainFrame) {
-        this.mainFrame = mainFrame;
+    private void initComp(){
+        PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(getFilterPanel(), PreferredHeightMarginBorderBoxLayout.Y_AXIS);
+        filterPanel.setLayout(layout);
     }
     
-    public MainFrame getMainFrame() {
-        return mainFrame;
-    }
     
-    @SuppressWarnings("unchecked")
     private void init(){
         
         ArrayList<GraphObject> objs = SimpleGuiRegistry.getAllSimpleGuiXMLObjectList();
@@ -143,14 +108,11 @@ public class QueryServiceUI extends JPanel {
         
         // sanjeev: add them in sorted order.. add all the filters in an array list than use collections to sort than add tham to combo.
         Collections.sort(filterList, new CDEComboboxBeanComparator());
-//        for (int i = 0; i < attributeList.size(); i++) {
-//            getCdeCombo().addItem(attributeList.get(i));
-//        }
         
         // get the service URL from the SystemProperties..
         // TODO - change this to config file later on..
-        
         String querySharingServiceUrl = System.getProperty("query.sharing.url"); // move this to gui config file..
+        
         System.out.println("querySharingServiceUrl = " + querySharingServiceUrl);
         if (querySharingServiceUrl != null){
             System.out.println("querySharingServiceUrl != null");
@@ -161,82 +123,316 @@ public class QueryServiceUI extends JPanel {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /**
-     * This method initializes this
-     *
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
      */
-    private void initialize() {
-        lblLastName = new JLabel();
-        lblLastName.setText("Last Name :");
-        lblLastName.setBounds(new Rectangle(288, 93, 83, 20));
-        lblFirstName = new JLabel();
-        lblFirstName.setText("First Name : ");
-        lblFirstName.setBounds(new Rectangle(34, 92, 74, 20));
-        this.setLayout(null);
-        this.setSize(new Dimension(1256, 752));
-        this.add(getBtnSearch(), null);
-        this.add(getMetaDataPanel(), null);
-        
-        this.add(getOuterPanel(), null);
-        this.add(getResultsOuterPanel(), null);
-    }
-    
-    /**
-     * This method initializes btnSearch
-     *
-     * @return javax.swing.JButton
-     */
-    private JButton getBtnSearch() {
-        if (btnSearch == null) {
-            btnSearch = new JButton();
-            btnSearch.setBounds(new Rectangle(620, 345, 112, 28));
-            btnSearch.setText("Search");
-            btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif")));
-            btnSearch.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                	String wsddURI = GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+ File.separator +"query-client-config.wsdd";
-                    try { 
-                        // fill query data with the Concepts selected
-                        Collection<ClassDb> classCollection = new Vector<ClassDb>();
-                        //filterCollection.add(getFilterRowPanel());
-                        for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-                            QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-                            classCollection.add(element.getSelectedClass());
-                        }
-                        queryData.setClassCollection(classCollection);
-                        // populateTable(QueryServiceClient.search(queryData));
-                        CQLQuery cqlQuery = CqlParser.parse(queryData);
-                        populateTable(QueryServiceClient.search(cqlQuery, serviceURI, wsddURI));  // pass the url of the service as well..
-                    } catch (Exception qe) {
-                        qe.printStackTrace();
-                    }
-                }
-                
+    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtQueryName = new javax.swing.JTextField();
+        txtFirstName = new javax.swing.JTextField();
+        txtLastName = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescription = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        filterPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        resultTable = new javax.swing.JTable();
+        btnSearch = new javax.swing.JButton();
+        btnAddFilter = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Query Details"));
+        jLabel1.setText("Query name:");
+
+        jLabel2.setText("First Name:");
+
+        jLabel3.setText("Last Name:");
+
+        jLabel4.setText("Description:");
+
+        txtDescription.setColumns(20);
+        txtDescription.setLineWrap(true);
+        txtDescription.setRows(2);
+        jScrollPane1.setViewportView(txtDescription);
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                        .add(6, 6, 6)
+                        .add(jLabel4)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel2)
+                            .add(jLabel1))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(txtFirstName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel3)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(txtLastName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                            .add(txtQueryName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel1)
+                    .add(txtQueryName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txtFirstName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(txtLastName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel3)
+                    .add(jLabel2))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel4)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Filters"));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        org.jdesktop.layout.GroupLayout filterPanelLayout = new org.jdesktop.layout.GroupLayout(filterPanel);
+        filterPanel.setLayout(filterPanelLayout);
+        filterPanelLayout.setHorizontalGroup(
+            filterPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 634, Short.MAX_VALUE)
+        );
+        filterPanelLayout.setVerticalGroup(
+            filterPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 243, Short.MAX_VALUE)
+        );
+        jScrollPane2.setViewportView(filterPanel);
+
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Query Results"));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        resultTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
             }
-            );
+        ));
+        jScrollPane3.setViewportView(resultTable);
+
+        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnAddFilter.setText("Add Filter");
+        btnAddFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFilterActionPerformed(evt);
+            }
+        });
+
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(btnClear, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnAddFilter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 115, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 175, Short.MAX_VALUE)
+                        .add(btnSearch, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(btnClear)
+                            .add(btnAddFilter)
+                            .add(btnSearch))))
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
+    
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String wsddURI = GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+ File.separator +"query-client-config.wsdd";
+        try {
+            // fill query data with the Concepts selected
+            Collection<ClassDb> classCollection = new Vector<ClassDb>();
+            //filterCollection.add(getFilterRowPanel());
+            for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
+                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+                classCollection.add(element.getSelectedClass()); 
+            }
+            queryData.setClassCollection(classCollection);
+            // populateTable(QueryServiceClient.search(queryData));
+            CQLQuery cqlQuery = CqlParser.parse(queryData);
+            populateTable(QueryServiceClient.search(cqlQuery, serviceURI, wsddURI));  // pass the url of the service as well..
+        } catch (Exception qe) {
+            qe.printStackTrace();
         }
-        return btnSearch;
-    }
+    }//GEN-LAST:event_btnSearchActionPerformed
+    
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnClearActionPerformed
+    
+    private void btnAddFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFilterActionPerformed
+        addFilterRow();
+    }//GEN-LAST:event_btnAddFilterActionPerformed
+    
+    
+    
     private QueryFilterRowPanel getFilterRowPanel(){
 //        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this);
-        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this, filterList);
-        filterRow.setPreferredSize(new Dimension(538, 30));
+        QueryFilterRowPanel filterRow = new QueryFilterRowPanel(this, filterList); 
+        filterRow.setPreferredSize(new Dimension(100, 40));
         return filterRow;
     }
-    @SuppressWarnings("unchecked")
+    
+    
+    private void addFilterRow(){
+        QueryFilterRowPanel filterRow = getFilterRowPanel();
+        filterCollection.add(filterRow);
+//		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
+//			FilterRowPanel element = (FilterRowPanel) iter.next();
+//			//System.out.println("adding " + element.getSelectedClass().getName());
+//		}
+        getFilterPanel().add(filterRow);
+        getFilterPanel().revalidate();
+        getFilterPanel().repaint();
+        
+    }
+    
+    public JPanel getFilterPanel() {
+        return filterPanel;
+    }
+    
+    public void removeFilter(edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel panel){
+        Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();
+        getFilterPanel().remove(panel);
+        getFilterPanel().revalidate();
+        getFilterPanel().repaint();
+        if (filterCollection != null){
+            // remove from array
+            boolean wasRemoved = false;
+            //System.out.println("before : " + classCollection.size());
+            for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
+                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+                if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
+                    
+                    tempfilterCollection.add(element);
+                    
+                }
+            }
+            for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
+                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+                wasRemoved = filterCollection.remove(element);
+                System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
+            }
+        }
+        
+    }
+    
+    
+    private void executeDcql(String dcql){
+//        StringBuffer buf = new StringBuffer(dcql);
+//        char[] chars = new char[buf.length()];
+//        buf.getChars(0, chars.length, chars, 0);
+//        CharArrayReader car = new CharArrayReader(chars);
+        System.out.println("executeDcql " + dcql);
+        java.io.Reader reader = new java.io.StringReader(dcql);
+        InputSource source = new InputSource(reader);//source.setEncoding();
+        DCQLQuery dcqlObj = null;
+        try {
+            dcqlObj = (DCQLQuery) ObjectDeserializer.deserialize(source,DCQLQuery.class);
+        } catch (Exception e){e.printStackTrace();}
+        executeDcql(dcqlObj);
+    }
+    
+    // execute DCQL in the outPut Pane of the SimpleGUI..
+    private void executeDcql(DCQLQuery dcql){
+        getMainFrame().getCommandPanel().runExternalDcql(dcql);
+    }
+    
+    
+    
     private void populateTable(Vector collection) {
         String firstName = "";
         String lastName = "";
@@ -278,302 +474,31 @@ public class QueryServiceUI extends JPanel {
         
     }
     
-    /**
-     * This method initializes txtUserName
-     *
-     * @return javax.swing.JTextField
-     */
-    private JTextField getTxtFirstName() {
-        if (txtFirstName == null) {
-            txtFirstName = new JTextField();
-            txtFirstName.setBounds(new Rectangle(110, 92, 157, 20));
-            txtFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
-                public void focusLost(java.awt.event.FocusEvent e) {
-                    queryData.setFirstName(txtFirstName.getText());				}
-            });
-        }
-        return txtFirstName;
-    }
-    
-    /**
-     * This method initializes resultsScrollPane
-     *
-     * @return javax.swing.JScrollPane
-     */
-    private JScrollPane getResultsScrollPane() {
-        if (resultsScrollPane == null) {
-            resultsScrollPane = new JScrollPane();
-            resultsScrollPane.setViewportView(getResultTable());
-        }
-        return resultsScrollPane;
-    }
-    
-    /**
-     * This method initializes resultTable
-     *
-     * @return javax.swing.JTable
-     */
-    private JTable getResultTable() {
-        if (resultTable == null) {
-            resultTable = new ButtonTable();
-            
-        }
-        return resultTable;
-    }
-    
-    /**
-     * This method initializes txtLastName
-     *
-     * @return javax.swing.JTextField
-     */
-    private JTextField getTxtLastName() {
-        if (txtLastName == null) {
-            txtLastName = new JTextField();
-            txtLastName.setBounds(new Rectangle(379, 93, 157, 20));
-            txtLastName.addFocusListener(new java.awt.event.FocusAdapter() {
-                public void focusLost(java.awt.event.FocusEvent e) {
-                    queryData.setLastName(txtLastName.getText());
-                }
-            });
-        }
-        return txtLastName;
-    }
-    
-    /**
-     * This method initializes metaDataPanel
-     *
-     * @return javax.swing.JPanel
-     */
-    private JPanel getMetaDataPanel() {
-        if (metaDataPanel == null) {
-            lblQueryName = new JLabel();
-            lblQueryName.setBounds(new Rectangle(26, 15, 82, 20));
-            lblQueryName.setText("Query Name : ");
-            lblDescriptionl = new JLabel();
-            lblDescriptionl.setBounds(new Rectangle(28, 52, 80, 20));
-            lblDescriptionl.setText("Description :");
-            metaDataPanel = new JPanel();
-            metaDataPanel.setLayout(null);
-            metaDataPanel.setBounds(new Rectangle(17, 17, 593, 134));
-            metaDataPanel.add(lblFirstName, null);
-            metaDataPanel.add(getTxtFirstName(), null);
-            metaDataPanel.add(lblLastName, null);
-            metaDataPanel.add(getTxtLastName(), null);
-            metaDataPanel.add(lblDescriptionl, null);
-            metaDataPanel.add(lblQueryName, null);
-            metaDataPanel.add(getTxtQueryName(), null);
-            metaDataPanel.add(getTxtDescription(), null);
-            metaDataPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        }
-        return metaDataPanel;
-    }
-    
-    /**
-     * This method initializes txtQueryName
-     *
-     * @return javax.swing.JTextField
-     */
-    private JTextField getTxtQueryName() {
-        if (txtQueryName == null) {
-            txtQueryName = new JTextField();
-            txtQueryName.setBounds(new Rectangle(110, 16, 426, 20));
-            // txtQueryName.setText("not");
-            txtQueryName.setName("");
-            txtQueryName.addFocusListener(new java.awt.event.FocusAdapter() {
-                public void focusLost(java.awt.event.FocusEvent e) {
-                    System.out.println(">" + txtQueryName.getText() +"<");
-                    queryData.setName(txtQueryName.getText());
-                }
-            });
-        }
-        return txtQueryName;
-    }
-    
-    /**
-     * This method initializes txtDescription
-     *
-     * @return javax.swing.JTextField
-     */
-    private JTextField getTxtDescription() {
-        if (txtDescription == null) {
-            txtDescription = new JTextField();
-            txtDescription.setBounds(new Rectangle(110, 52, 426, 20));
-            // txtDescription.setText("query");
-            txtDescription.addFocusListener(new java.awt.event.FocusAdapter() {
-                public void focusLost(java.awt.event.FocusEvent e) {
-                    queryData.setDescription(txtDescription.getText());
-                }
-            });
-        }
-        return txtDescription;
-    }
-    
-    /**
-     * This method initializes btnAddFilter
-     *
-     * @return javax.swing.JButton
-     */
-    private JButton getBtnAddFilter() {
-        if (btnAddFilter == null) {
-            btnAddFilter = new JButton();
-            btnAddFilter.setText("Add Filter");
-            btnAddFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
-            btnAddFilter.setBounds(new Rectangle(480, 180, 107, 26));
-            btnAddFilter.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    addFilterRow();
-                }
-            });
-        }
-        return btnAddFilter;
-    }
-    private void addFilterRow(){
-        QueryFilterRowPanel filterRow = getFilterRowPanel();
-        filterCollection.add(filterRow);
-//		for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-//			FilterRowPanel element = (FilterRowPanel) iter.next();
-//			//System.out.println("adding " + element.getSelectedClass().getName());
-//		}
-        getFilterPanel().add(filterRow,null);
-        getFilterPanel().revalidate();
-        getFilterPanel().repaint();
-        
-    }
-    /**
-     * This method initializes filterPanel
-     *
-     * @return javax.swing.JPanel
-     */
-    public JPanel getFilterPanel() {
-        if (filterPanel == null) {
-            filterPanel = new JPanel();
-            PreferredHeightMarginBorderBoxLayout layout = new PreferredHeightMarginBorderBoxLayout(getFilterPanel(), PreferredHeightMarginBorderBoxLayout.Y_AXIS);
-            filterPanel.setLayout(layout);
-        }
-        return filterPanel;
-    }
-    
-    /**
-     * This method initializes jScrollPane1
-     *
-     * @return javax.swing.JScrollPane
-     */
-    public JScrollPane getJScrollPane1() {
-        if (jScrollPane1 == null) {
-            jScrollPane1 = new JScrollPane();
-            jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-            //jScrollPane1.setBorder(BorderFactory.createTitledBorder(null, " Filter ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-            jScrollPane1.setViewportView(getFilterPanel());
-            jScrollPane1.setBounds(new Rectangle(13, 15, 571, 156));
-        }
-        return jScrollPane1;
-    }
-    
-    /**
-     * This method initializes outerPanel
-     *
-     * @return javax.swing.JPanel
-     */
-    private JPanel getOuterPanel() {
-        if (outerPanel == null) {
-            outerPanel = new JPanel();
-            outerPanel.setLayout(null);
-            outerPanel.setBounds(new Rectangle(15, 165, 593, 211));
-            outerPanel.setBorder(BorderFactory.createTitledBorder(null, " Filter ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-            outerPanel.add(getJScrollPane1(), null);
-            outerPanel.add(getBtnAddFilter(), null);
-        }
-        return outerPanel;
-    }
     
     
-    /**
-     * This method initializes resultsOuterPanel
-     *
-     * @return javax.swing.JPanel
-     */
-    private JPanel getResultsOuterPanel() {
-        if (resultsOuterPanel == null) {
-            GridBagConstraints gridBagConstraints = new GridBagConstraints();
-            gridBagConstraints.fill = GridBagConstraints.BOTH;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            gridBagConstraints.gridx = 0;
-            resultsOuterPanel = new JPanel();
-            resultsOuterPanel.setLayout(new GridBagLayout());
-            resultsOuterPanel.setBounds(new Rectangle(615, 3, 633, 327));
-            resultsOuterPanel.setBorder(BorderFactory.createTitledBorder(null, " Query Results ", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-            resultsOuterPanel.add(getResultsScrollPane(), gridBagConstraints);
-        }
-        return resultsOuterPanel;
-    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddFilter;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JPanel filterPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable resultTable;
+    private javax.swing.JTextArea txtDescription;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtQueryName;
+    // End of variables declaration//GEN-END:variables
     
     
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        QueryServiceUI s = new QueryServiceUI();
-        //s.setOpaque(true);
-        JFrame frame = new JFrame("Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(s,BorderLayout.CENTER);
-        //  frame.pack();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setVisible(true);
-    }
-    
-    // convert the dcql string into object
-    private void executeDcql(String dcql){
-//        StringBuffer buf = new StringBuffer(dcql);
-//        char[] chars = new char[buf.length()];
-//        buf.getChars(0, chars.length, chars, 0);
-//        CharArrayReader car = new CharArrayReader(chars);
-        System.out.println("executeDcql " + dcql);
-        java.io.Reader reader = new java.io.StringReader(dcql);
-        InputSource source = new InputSource(reader);//source.setEncoding();
-        DCQLQuery dcqlObj = null;
-        try {
-            dcqlObj = (DCQLQuery) ObjectDeserializer.deserialize(source,DCQLQuery.class);
-        } catch (Exception e){e.printStackTrace();}
-        executeDcql(dcqlObj);
-    }
-    
-    // execute DCQL in the outPut Pane of the SimpleGUI..
-    private void executeDcql(DCQLQuery dcql){
-        getMainFrame().getCommandPanel().runExternalDcql(dcql);
-    }
-    
-    
-    
-    
-    
-    public void removeFilter(edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel panel){
-        Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();
-        getFilterPanel().remove(panel);
-        getFilterPanel().revalidate();
-        getFilterPanel().repaint();
-        if (filterCollection != null){
-            // remove from array
-            boolean wasRemoved = false;
-            //System.out.println("before : " + classCollection.size());
-            for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-                if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
-                    
-                    tempfilterCollection.add(element);
-                    
-                }
-            }
-            for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
-                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-                wasRemoved = filterCollection.remove(element);
-                System.out.println("after : " + filterCollection.size() + " was removed ? " + wasRemoved);
-            }
-        }
-        
-    }
     
     
     class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener{
@@ -632,7 +557,7 @@ public class QueryServiceUI extends JPanel {
             fireEditingStopped();
             if (e.getActionCommand().equalsIgnoreCase("run")){
                 String dcql = data.get(table.getSelectedRow()).getDcql();
-                executeDcql(dcql); 
+                executeDcql(dcql);
             } else if(e.getActionCommand().equalsIgnoreCase("x")){
                 DefaultTableModel t = (DefaultTableModel) table.getModel();
                 t.removeRow(table.getSelectedRow());
@@ -681,5 +606,4 @@ public class QueryServiceUI extends JPanel {
         }
     }
     
-    
-}  //  @jve:decl-index=0:visual-constraint="-7,7"
+}

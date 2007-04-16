@@ -121,6 +121,14 @@ public class FilterRowPanel extends javax.swing.JPanel {
         return empty;
     }
     
+    public boolean isLocal(){
+        boolean  local = true;
+        CDEComboboxBean cdeBean = getCDEComboboxBean();
+        local = cdeBean.getGraphObject().isLocal();
+        return local;
+    }
+    
+    
     
     public CDEComboboxBean getCDEComboboxBean(){
         if (currentFilter == null){
@@ -506,7 +514,16 @@ class CDEComboBoxRenderer extends BasicComboBoxRenderer {
             int index, boolean isSelected, boolean cellHasFocus) {
         if (value instanceof CDEComboboxBean){
             CDEComboboxBean cdeBean = (CDEComboboxBean)value;
-            String toolTip = cdeBean.getClassBean().getServiceName() + " -- " +  cdeBean.toString();
+            boolean foreignFilter = false;
+            foreignFilter = !cdeBean.getGraphObject().isLocal();
+            
+            String toolTip = "";
+            if (foreignFilter){
+                toolTip = cdeBean.getClassBean().getServiceName() + " -- " +  cdeBean.toString() + " : A Filter from Foreign Service.";
+            } else {
+                toolTip = cdeBean.getClassBean().getServiceName() + " -- " +  cdeBean.toString();
+            }
+            
             list.setToolTipText(toolTip);
         }
         return super.getListCellRendererComponent( list,  value, index,  isSelected,  cellHasFocus);
