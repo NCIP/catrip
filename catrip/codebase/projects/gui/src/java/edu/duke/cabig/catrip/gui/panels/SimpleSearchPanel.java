@@ -477,7 +477,7 @@ public class SimpleSearchPanel extends CPanel {
         if (!selectedTargetObject.isSupportReturnAttributes()) {
             returnAttributeBtn.setEnabled(false);
         } else {
-            returnAttributeBtn.setEnabled(true);
+            //returnAttributeBtn.setEnabled(true); // the return attribute btn will be enabled the moment a new filter is added.
         }
         
         // Also clean the returned attributes panel, as the panel itself is cached..
