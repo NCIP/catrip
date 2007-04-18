@@ -6,6 +6,33 @@
 
 package edu.duke.cabig.catrip.gui.querysharing;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Vector;
+
+import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
+import org.globus.wsrf.encoding.ObjectDeserializer;
+import org.xml.sax.InputSource;
+
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
@@ -22,30 +49,6 @@ import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Vector;
-import javax.swing.AbstractCellEditor;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
-import org.globus.wsrf.encoding.ObjectDeserializer;
-import org.xml.sax.InputSource;
 
 /**
  *
@@ -350,7 +353,17 @@ public class QueryServiceUI extends CPanel {
     }//GEN-LAST:event_btnSearchActionPerformed
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-// TODO add your handling code here:
+    	txtQueryName.setText("");
+    	txtDescription.setText("");
+    	txtFirstName.setText("");
+    	txtLastName.setText("");
+    	
+    	// clear the filters
+   	    //getFilterPanel().remove(panel);
+        getFilterPanel().revalidate();
+        getFilterPanel().repaint();
+        getFilterPanel().removeAll();
+
     }//GEN-LAST:event_btnClearActionPerformed
     
     private void btnAddFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFilterActionPerformed
@@ -383,9 +396,8 @@ public class QueryServiceUI extends CPanel {
     public JPanel getFilterPanel() {
         return filterPanel;
     }
-    
-    public void removeFilter(edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel panel){
-        Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();
+     public void removeFilter(edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel panel){
+         Collection<QueryFilterRowPanel> tempfilterCollection = new Vector<QueryFilterRowPanel>();
         getFilterPanel().remove(panel);
         getFilterPanel().revalidate();
         getFilterPanel().repaint();
@@ -394,13 +406,12 @@ public class QueryServiceUI extends CPanel {
             boolean wasRemoved = false;
             //System.out.println("before : " + classCollection.size());
             for (Iterator iter = filterCollection.iterator(); iter.hasNext();) {
-                QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
-                if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
-                    
-                    tempfilterCollection.add(element);
-                    
-                }
-            }
+            	QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
+             		if (element.getSelectedClass().getId() == panel.getSelectedClass().getId()){
+            			tempfilterCollection.add(element);
+            		}
+            	}
+            
             for (Iterator iter = tempfilterCollection.iterator(); iter.hasNext();) {
                 QueryFilterRowPanel element = (QueryFilterRowPanel) iter.next();
                 wasRemoved = filterCollection.remove(element);
