@@ -111,11 +111,7 @@ public class QueryFilterRowPanel extends javax.swing.JPanel {
     
     protected void removeFilter() {
         containterPanel.removeFilter(this);
-//		containterPanel.getFilterPanel().revalidate();
-//		containterPanel.getFilterPanel().repaint();
     }
-    
-    
     
     private void createSelectionObject(){
         Random generator = new Random();
