@@ -349,6 +349,11 @@
                 <include name="client.jar" />
             </fileset>            
         </copy>
+
+
+        <echo message="--- Making GUI config zip/jar file for webstart. ---" />
+		<antcall target="catrip_conf_zip"/>
+
         
         <echo message="----------------------------------------------------------------------------------------" />
         <echo message="Signing Jars Using keystore: ${use.keystore}" />
@@ -436,7 +441,43 @@
     
     
     
-    
+    <target name="catrip_conf_zip" >
+        
+        <delete dir="conf_tmp"/>
+		<delete file="conf.zip"/>
+
+        <mkdir dir="conf_tmp" />
+        <mkdir dir="conf_tmp/conf" />
+        
+        <copy overwrite="true" toDir="conf_tmp/conf">
+            <fileset dir="conf">
+                <exclude name="CVS" />
+				<exclude name="webstart-conf-zip" />
+            </fileset>
+        </copy>
+        
+        <move todir="conf_tmp">
+            <fileset dir="conf_tmp/conf">
+                <include name="catrip-config.xml"/>
+                <include name="log4j_config.xml"/>
+                <include name="query_engine_services_config.xml"/>
+            </fileset>
+        </move>
+        
+        <zip destfile="conf.zip" basedir="conf_tmp"/>
+        
+		<delete file="${webstart.build.dir}/lib/_conf_files.jar"/>
+        <jar destfile="${webstart.build.dir}/lib/_conf_files.jar" basedir=".">
+            <include name="conf.zip"/>
+            <manifest>
+                <attribute name="Built-By" value="Sanjeev Agarwal"/>
+            </manifest>
+        </jar>
+
+        <delete dir="conf_tmp"/>
+		<delete file="conf.zip"/>
+        
+    </target>
     
     
     
