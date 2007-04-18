@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Will be modified at Ant build time.</comment>
+
+<entry key="clientConfigWsdd">@client.config@</entry>
+
+<entry key="CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
+<entry key="CaTissueCore">gov.nih.nci.cagrid.catissuecore.client.CaTissueCoreClient</entry>
+<entry key="CaTRIPTumorRegistry">gov.nih.nci.cagrid.catriptumorregistry.client.CaTRIPTumorRegistryClient</entry>
+<entry key="CGEMS">gov.nih.nci.cagrid.cgems.client.CGEMSClient</entry>
+
+
+</properties>
