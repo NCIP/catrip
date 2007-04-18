@@ -1,1 +1,0 @@
-Update the config fiels for Webstart Version, make jar and put in lib directory.
