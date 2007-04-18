@@ -383,8 +383,8 @@
 
 
 
-
-<service displayName="caTIES" url="http://http://152.16.96.114/wsrf-0216/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="true">
+<!--
+<service displayName="caTIES" url="http://http://152.16.96.114:443/wsrf-0216/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="true">
 		<targets>
 			<objectElement className="edu.upmc.opi.caBIG.caTIES.database.domain.impl.AddressImpl"   
 					displaybleAttributes="street,city" 
@@ -395,10 +395,35 @@
 			</objectElement>
 		</targets>
 	</service>
+-->
 
 
+<service displayName="caTIES" url="http://152.16.96.114/wsrf-0216/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="false">
+		<targets>
+			<objectElement className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient"  displaybleAttributes="firstName,lastName,race,ethincity"  display="true"  supportReturnAttributes="true" selectable="true">
+				<associatedObjectTree>
+					<Association className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport" displaybleAttributes="documentText"   roleName="identifiedPathologyReportCollection" display="true"  selectable="true"/>
+				</associatedObjectTree>
+				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
+				</foreignAssociationOutboundPath>
+			</objectElement>
+		</targets>
 
+		<foreignAssociationInboundTree>
+			<foreignAssociationInboundPath className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient" 
+										 cdeName="medicalRecordNumber" displaybleAttributes="firstName,lastName,race,ethincity" selectable="true" display="true">
+					<Association className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient"/>
+	       </foreignAssociationInboundPath>
 
+		   <foreignAssociationInboundPath className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport"  selectable="true" cdeName="medicalRecordNumber" displaybleAttributes="documentText" display="true">
+					<Association className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient">
+					    <Association className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport" roleName="identifiedPathologyReportCollection"/>
+				    </Association>
+	      </foreignAssociationInboundPath>
+	
+	
+     </foreignAssociationInboundTree>
+	</service>
 
 
 
