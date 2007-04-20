@@ -36,6 +36,9 @@ import org.xml.sax.InputSource;
 
 public class CQLBuilder {
     CQLQuery cqlQuery = null;
+    private Map subCQL= new HashMap();
+    
+    
     public CQLBuilder(CQLQuery cqlQuery) {
         this.cqlQuery = cqlQuery;
         
@@ -123,9 +126,9 @@ public class CQLBuilder {
             }
         }
         
-        return buildNewTarget(te);
+        return buildNewTarget(te,"AND");
     }
-    private Map subCQL= new HashMap();
+    
     public Map getSubCQL() {
         Document doc = buildDocument(cqlQuery);
         Element target = doc.getRootElement().getChild("Target",nameSpace);
@@ -138,7 +141,7 @@ public class CQLBuilder {
         //check for Assoc
         if (target.getChild("Association",nameSpace) != null) {
             //process Association
-            processAssociation(target.getChild("Association",nameSpace));
+            processAssociation(target.getChild("Association",nameSpace),"AND");
         }
         
         return subCQL;
@@ -162,7 +165,7 @@ public class CQLBuilder {
         return parentList;
     }
     
-    private void processAssociation(Element  assoctioanElement) {
+    private void processAssociation(Element  assoctioanElement,String logicRelation) {
         //     System.out.println(assoctioanElement.getAttributeValue("name"));
         SubCQL scqlVo = new SubCQL();
         //if (parentAssoc != null) {
@@ -170,7 +173,7 @@ public class CQLBuilder {
         scqlVo.setParents(parentList);
         //}
         //   scqlVo.s
-        scqlVo.setCQLString(buildNewTarget(assoctioanElement));
+        scqlVo.setCQLString(buildNewTarget(assoctioanElement,logicRelation));
         
         subCQL.put(assoctioanElement.getAttributeValue("name")+"-"+assoctioanElement.getAttributeValue("roleName"),scqlVo);
         //subCQL.add(buildNewTarget(assoctioanElement));
@@ -178,7 +181,7 @@ public class CQLBuilder {
         //  System.out.println(assoctioanElement.getChildren().size());
         
         if (assoctioanElement.getChild("Association",nameSpace) != null) {
-            processAssociation(assoctioanElement.getChild("Association",nameSpace));
+            processAssociation(assoctioanElement.getChild("Association",nameSpace),logicRelation);
         }
         if (assoctioanElement.getChild("Group",nameSpace) != null) {
             processGroup(assoctioanElement.getChild("Group",nameSpace));
@@ -186,6 +189,8 @@ public class CQLBuilder {
     }
     
     private void processGroup(Element  groupElement) {
+        
+        String logicRelation = groupElement.getAttributeValue("logicRelation");
         
         if (groupElement.getChildren("Group",nameSpace) != null) {
             List groupList = groupElement.getChildren("Group",nameSpace);
@@ -203,7 +208,7 @@ public class CQLBuilder {
             for (int i=0;i<assocList.size();i++) {
                 Object tempObj = assocList.get(i);
                 Element tempEle = (Element)tempObj;
-                processAssociation(tempEle);
+                processAssociation(tempEle,logicRelation);
             }
             
         }
@@ -232,13 +237,11 @@ public class CQLBuilder {
             }
         }
         
-        return buildNewTarget(te);
+        return buildNewTarget(te,"AND");
     }
-    public String buildNewTarget(Element assocEle) {
+    public String buildNewTarget(Element assocEle,String logicRelation) {
         String targetObjectName = assocEle.getAttributeValue("name");
-        if (targetObjectName.equals("edu.duke.cabig.tumorregistry.domain.DiseaseExtent")) {
-            int a=1;
-        }
+
         Element targetEle = new Element("Target",nameSpace);
         targetEle.setAttribute("name",targetObjectName);
         
@@ -323,14 +326,14 @@ public class CQLBuilder {
             targetEle.addContent(tempAssoc.detach());
         }
         Element root = new Element("CQLQuery",nameSpace);
-        targetEle=renderGroups(targetEle);
+        targetEle=renderGroups(targetEle,logicRelation);
         return buildDocString(root,targetEle,QryModifiers);
     }
-    private Element renderGroups(Element targetEle){
+    private Element renderGroups(Element targetEle,String logicRelation){
         //   System.out.println(targetEle.getChildren().size());
         List children = targetEle.getChildren();
         if (children.size() > 1 ) {
-            Element groupEle = buildGroup(children);
+            Element groupEle = buildGroup(children,logicRelation);
             targetEle.removeContent();
             targetEle.addContent(groupEle);
         }
@@ -352,7 +355,7 @@ public class CQLBuilder {
     private Element renderAssocGroups(Element assoc) {
         List assocChildren = assoc.getChildren();
         if (assocChildren.size() > 1 ) {
-            Element groupEle = buildGroup(assocChildren);
+            Element groupEle = buildGroup(assocChildren,"AND");
             assoc.removeContent();
             assoc.addContent(groupEle);
         }
@@ -387,9 +390,9 @@ public class CQLBuilder {
     
     
     
-    private Element buildGroup(List elements) {
+    private Element buildGroup(List elements,String logicRelation) {
         Element groupEle = new Element("Group",nameSpace);
-        groupEle.setAttribute("logicRelation","AND");
+        groupEle.setAttribute("logicRelation",logicRelation);
         
         List localList = new ArrayList(elements);
         
@@ -446,7 +449,7 @@ public class CQLBuilder {
         }
     }
     public static void main(String[] args) {
-        String queryDir = "C:\\CVS-CodeBase\\catrip\\codebase\\projects\\localsdkquery\\testCQL\\test\\";
+        String queryDir = "/Users/sakkala/temp/cql/";
         String qryFile = "tr.xml";
         java.lang.Object obj = null;
         
