@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -70,7 +71,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         column = resultTable.getColumnModel().getColumn(4);
         column.setCellRenderer(new ButtonRenderer());
         
-        simpleGuiBtn.setEnabled(false);
+        
         
     }
     
@@ -94,12 +95,16 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         resultTable = new javax.swing.JTable();
         selectBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
-        simpleGuiBtn = new javax.swing.JButton();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/resources/ResourceBundle"); // NOI18N
         searchPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("SEARCH_SERVICES_PANEL_BORDER_STR_1"))); // NOI18N
         searchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif")));
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         showAllBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/showall.png")));
         showAllBtn.setText("Show All");
@@ -111,6 +116,11 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
 
         clearBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
         clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         lbl1.setText(bundle.getString("SEARCH_SERVICES_PANEL_STR_1")); // NOI18N
 
@@ -194,13 +204,6 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             }
         });
 
-        simpleGuiBtn.setText("Show Simple GUI");
-        simpleGuiBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpleGuiBtnActionPerformed(evt);
-            }
-        });
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,12 +216,10 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                             .add(org.jdesktop.layout.GroupLayout.LEADING, resultPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, searchPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .add(layout.createSequentialGroup()
-                        .add(174, 174, 174)
+                        .add(260, 260, 260)
                         .add(selectBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(35, 35, 35)
-                        .add(exitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(30, 30, 30)
-                        .add(simpleGuiBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 174, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(47, 47, 47)
+                        .add(exitBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -230,19 +231,22 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 .add(resultPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(simpleGuiBtn)
-                    .add(selectBtn)
-                    .add(exitBtn))
+                    .add(exitBtn)
+                    .add(selectBtn))
                 .addContainerGap())
         );
 
-        layout.linkSize(new java.awt.Component[] {exitBtn, selectBtn, simpleGuiBtn}, org.jdesktop.layout.GroupLayout.VERTICAL);
+        layout.linkSize(new java.awt.Component[] {exitBtn, selectBtn}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
     }// </editor-fold>//GEN-END:initComponents
     
-    private void simpleGuiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpleGuiBtnActionPerformed
-        parentFrame.fwdAction();
-    }//GEN-LAST:event_simpleGuiBtnActionPerformed
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        commonDataElement.setText("");concept.setText("");
+    }//GEN-LAST:event_clearBtnActionPerformed
+    
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        new JOptionPane().showMessageDialog(this ,"Search Not implemented. Please use \"Show All\"");
+    }//GEN-LAST:event_searchBtnActionPerformed
     
     /** Action for Search All button. */
     private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
@@ -271,7 +275,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             tableModel.addRow(tableRow);
         }
         
-        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); 
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_showAllBtnActionPerformed
     
     /**
@@ -302,7 +306,7 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
         // sanjeev: to handle the window.. call parent action..
         parentFrame.fwdAction();
         
-        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR)); 
+        setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_selectBtnActionPerformed
     
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
@@ -386,7 +390,6 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel searchPanel;
     private javax.swing.JButton selectBtn;
     private javax.swing.JButton showAllBtn;
-    private javax.swing.JButton simpleGuiBtn;
     // End of variables declaration//GEN-END:variables
     
 }
