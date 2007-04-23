@@ -262,6 +262,15 @@ public class CommandPanel extends CPanel {
     private javax.swing.JLabel resultCountLbl;
     // End of variables declaration//GEN-END:variables
     
+    
+    public void disableBtn(){
+        ExecuteCommand.setEnabled(false);
+    }
+    public void enableBtn(){ 
+        ExecuteCommand.setEnabled(true);
+    }
+    
+    
     private void executeSimpleGuiQuery(){
         
         if (SimpleGuiRegistry.isSimpleGuiChanged()){

@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import org.apache.commons.logging.Log;
 import edu.duke.cabig.catrip.gui.util.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -23,8 +24,11 @@ import edu.duke.cabig.catrip.gui.util.Logger;
  */
 public class LoginScreen extends CJFrame {
     static Log log = Logger.getDefaultLogger();
-
+    
     private Map<String,IndentityProviderBean> idpBeans = new HashMap<String,IndentityProviderBean>();
+    
+    private int loginAttempts = 0;
+    
     /** Creates new form LoginScreen */
     public LoginScreen() {
         initComponents();
@@ -183,10 +187,12 @@ public class LoginScreen extends CJFrame {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         boolean authenticate = false;
         
+        loginAttempts++;
+        
         // check if that is a guest demo login.
         boolean guestUser = false;
         String userIdStr = userId.getText().trim();
-        log.info(" User Login id: "+userIdStr); 
+        log.info(" User Login id: "+userIdStr);
         if (userIdStr.equalsIgnoreCase("guest")){
             guestUser = true;
             authenticate = true;
@@ -197,7 +203,7 @@ public class LoginScreen extends CJFrame {
             
             IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
             try {
-                log.info("\n Trying to authenticate the user: "+userIdStr +"\n IDP url: "+idpBean.getIdpUrl()+"\n Dorian URL:"+idpBean.getDorianUrl()+"\n"); 
+                log.info("\n Trying to authenticate the user: "+userIdStr +"\n IDP url: "+idpBean.getIdpUrl()+"\n Dorian URL:"+idpBean.getDorianUrl()+"\n");
                 System.out.println("xxxx"+userId.getText().trim()+" : "+ password.getText().trim()+" : "+ idpBean.getIdpUrl()+" : "+idpBean.getDorianUrl());
                 AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
                 authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
@@ -211,7 +217,7 @@ public class LoginScreen extends CJFrame {
         if (authenticate) {
             
             if (visualGuiChkBox.isSelected()){ // show the complax gui search service screen..
-                log.info(" Going into Advance GUI mode. "); 
+                log.info(" Going into Advance GUI mode. ");
                 GUIConstants.simpleGui = false;
                 
                 SearchServicesScreen screen= new SearchServicesScreen();
@@ -219,7 +225,7 @@ public class LoginScreen extends CJFrame {
                 screen.setVisible(true);
                 
             }else { // show simple gui main screen directly..
-                log.info(" Going into Simple GUI mode. "); 
+                log.info(" Going into Simple GUI mode. ");
                 // disable all the buttons first and show a waiting cursor..
                 disableButtons();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -249,7 +255,9 @@ public class LoginScreen extends CJFrame {
             
             
         } else {
-            // tell the user to login again or exit..
+            // tell the user to login again or exit.. // popup a info window..
+            new JOptionPane().showMessageDialog(this ,"Username or Password is incorrect. \nPlease re-enter the correct Username and Password. \n\nLogin Attempts : "+loginAttempts,"Login Error.", JOptionPane.ERROR_MESSAGE);
+            
         }
     }//GEN-LAST:event_loginBtnActionPerformed
     
@@ -275,11 +283,11 @@ public class LoginScreen extends CJFrame {
         // log idp stuff..
         log.debug(" IDPs : " );
         for (int i = 0; i < idpNames.length; i++) {
-            log.debug(" IDP Name: "+ idpNames[i].toString() +" | " +  " IDP URL: "+ indentityProviderBeans[i].getIdpUrl() +" | " +  " Dorian URL: "+ indentityProviderBeans[i].getDorianUrl() );  
+            log.debug(" IDP Name: "+ idpNames[i].toString() +" | " +  " IDP URL: "+ indentityProviderBeans[i].getIdpUrl() +" | " +  " Dorian URL: "+ indentityProviderBeans[i].getDorianUrl() );
         }
         
         
-        DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(idpNames); 
+        DefaultComboBoxModel cb = new javax.swing.DefaultComboBoxModel(idpNames);
         
         return cb;
     }

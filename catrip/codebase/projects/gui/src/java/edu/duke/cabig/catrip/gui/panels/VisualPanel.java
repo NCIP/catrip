@@ -90,30 +90,43 @@ public class VisualPanel extends CPanel {
     
     private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
         // parse the DCQL and show here...
-        
-        int id = getTabbedPane().getSelectedIndex();
-        if (id == 1){ // it is the dcql tab.. now show the DCQL..
-            XmlOptions xmlOptions = new XmlOptions();
-            xmlOptions.setSavePrettyPrint();
-            xmlOptions.setSavePrettyPrintIndent(4);
-            xmlOptions.setUseDefaultNamespace();
-            
-            // if the simple gui was changed.. than show the DCQL from simple gui.. after preparing the SimpleGuiRegistry for DCQL.
-            if (GUIConstants.simpleGui && SimpleGuiRegistry.isSimpleGuiChanged()){
-                SimpleGuiRegistry.prepareForDcql();
+        if (getTabbedPane().isShowing()){
+            int id = getTabbedPane().getSelectedIndex();
+            if (id == 1){ // it is the dcql tab.. now show the DCQL..
+                XmlOptions xmlOptions = new XmlOptions();
+                xmlOptions.setSavePrettyPrint();
+                xmlOptions.setSavePrettyPrintIndent(4);
+                xmlOptions.setUseDefaultNamespace();
+                
+                // if the simple gui was changed.. than show the DCQL from simple gui.. after preparing the SimpleGuiRegistry for DCQL.
+                if (GUIConstants.simpleGui && SimpleGuiRegistry.isSimpleGuiChanged()){
+                    SimpleGuiRegistry.prepareForDcql();
+                }
+                
+//            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));
+                if (GUIConstants.simpleGui){
+                    String dcqlStr = GroupDCQLGenerator.getDCQLText(xmlOptions);
+                    log.info(" Viewing DCQL: "+dcqlStr);
+                    getCQLDesignerPanel().setDcqlQueryText(dcqlStr);
+                } else {
+                    String dcqlStr = DCQLGenerator.getDCQLText(xmlOptions);
+                    log.info(" Viewing DCQL: "+dcqlStr);
+                    getCQLDesignerPanel().setDcqlQueryText(dcqlStr);
+                }
             }
             
-//            getCQLDesignerPanel().setDcqlQueryText(DCQLGenerator.getDCQLText(xmlOptions));
-            if (GUIConstants.simpleGui){
-                String dcqlStr = GroupDCQLGenerator.getDCQLText(xmlOptions);
-                log.info(" Viewing DCQL: "+dcqlStr);
-                getCQLDesignerPanel().setDcqlQueryText(dcqlStr);
+            
+            if (id == 3){  // it is Query Sharing Tab.
+                // disable the ExecuteQuery btn of command Panel.
+                getMainFrame().getCommandPanel().disableBtn();
             } else {
-                String dcqlStr = DCQLGenerator.getDCQLText(xmlOptions);
-                log.info(" Viewing DCQL: "+dcqlStr);
-                getCQLDesignerPanel().setDcqlQueryText(dcqlStr);
+                // enable the ExecuteQuery btn of command Panel.
+                getMainFrame().getCommandPanel().enableBtn();
             }
         }
+        
+        
+        
     }//GEN-LAST:event_tabbedPaneStateChanged
     
     

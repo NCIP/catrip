@@ -58,7 +58,7 @@ public class QueryServiceUI extends CPanel {
     
     Collection<QueryFilterRowPanel> filterCollection = new Vector<QueryFilterRowPanel>();
     
-    private QueryDb queryData = new QueryDb();  //  @jve:decl-index=0:
+    private QueryDb queryData;// = new QueryDb();  //  @jve:decl-index=0:
     private DefaultTableModel tableModel = null ;
     
     public MainFrame mainFrame;
@@ -336,6 +336,17 @@ public class QueryServiceUI extends CPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String wsddURI = GUIConfigurationLoader.getGUIConfiguration().getConfigRootLocation()+ File.separator +"query-client-config.wsdd";
         try {
+            
+            // create a new instance so that old values are not cached.
+            queryData = new QueryDb();
+            
+            // fill query data with query Meta data:
+            queryData.setFirstName(txtFirstName.getText());
+            queryData.setLastName(txtLastName.getText());
+            queryData.setName(txtQueryName.getText());
+            queryData.setDescription(txtDescription.getText());
+            
+            
             // fill query data with the Concepts selected
             Collection<ClassDb> classCollection = new Vector<ClassDb>();
             //filterCollection.add(getFilterRowPanel());
@@ -358,6 +369,10 @@ public class QueryServiceUI extends CPanel {
     	txtFirstName.setText("");
     	txtLastName.setText("");
     	
+        // create a new instance so that old values are not cached.
+        queryData = new QueryDb();
+        filterCollection = new Vector<QueryFilterRowPanel>();
+        
     	// clear the filters
    	    //getFilterPanel().remove(panel);
         getFilterPanel().revalidate();
