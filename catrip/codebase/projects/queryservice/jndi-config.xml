@@ -55,7 +55,7 @@
         </parameter>
         <parameter>
           <name>cqlQueryProcessorConfig_hibernateConfigFile</name>
-          <value>@cqlQueryProcessorConfig_hibernateConfigFile@</value>
+          <value>hibernate.cfg.xml</value>
         </parameter>
       </resourceParams>
     </resource>
