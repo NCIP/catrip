@@ -1,10 +1,10 @@
-CREATE DATABASE caties_test;
+CREATE DATABASE caties;
 
-GRANT ALL PRIVILEGES ON *.* TO ‘caties_test'@'localhost’ IDENTIFIED BY 'caties_test' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO ‘caties'@'localhost’ IDENTIFIED BY 'caties' WITH GRANT OPTION;
 
-GRANT ALL PRIVILEGES ON *.* TO 'caties_test'@'%' IDENTIFIED BY 'caties_test' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'caties'@'%' IDENTIFIED BY 'caties' WITH GRANT OPTION;
 
-use caties_test;
+use caties;
 
 /* Formatted on 2007/04/23 09:50 (QP5 v5.50) */
 CREATE TABLE `IDENTIFIED_PATHOLOGY_REPORT` (

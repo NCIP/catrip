@@ -1,22 +1,22 @@
 
-create user tumor_registry_test identified by tumor_registry_test
+create user tumor_registry identified by tumor_registry
 default tablespace users
 temporary tablespace temp
 quota unlimited on users;
-grant connect to tumor_registry_test;
+grant connect to tumor_registry;
 
-GRANT CREATE TABLE TO tumor_registry_test;
-GRANT CREATE INDEXTYPE TO tumor_registry_test;
-GRANT CREATE PROCEDURE TO tumor_registry_test;
-GRANT CREATE SYNONYM TO tumor_registry_test;
-GRANT CREATE TABLE TO tumor_registry_test;
-GRANT CREATE TRIGGER TO tumor_registry_test;
-GRANT CREATE TYPE TO tumor_registry_test;
-GRANT CREATE VIEW TO tumor_registry_test;
-GRANT CREATE SEQUENCE TO tumor_registry_test;
-GRANT CREATE SESSION TO tumor_registry_test;
+GRANT CREATE TABLE TO tumor_registry;
+GRANT CREATE INDEXTYPE TO tumor_registry;
+GRANT CREATE PROCEDURE TO tumor_registry;
+GRANT CREATE SYNONYM TO tumor_registry;
+GRANT CREATE TABLE TO tumor_registry;
+GRANT CREATE TRIGGER TO tumor_registry;
+GRANT CREATE TYPE TO tumor_registry;
+GRANT CREATE VIEW TO tumor_registry;
+GRANT CREATE SEQUENCE TO tumor_registry;
+GRANT CREATE SESSION TO tumor_registry;
 
-connect tumor_registry_test/tumor_registry_test;
+connect tumor_registry/tumor_registry;
 
 
 

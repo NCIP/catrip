@@ -1,22 +1,22 @@
 
-create user query_share_test identified by query_share_test
+create user query_share identified by query_share
 default tablespace users
 temporary tablespace temp
 quota unlimited on users;
-grant connect to query_share_test;
+grant connect to query_share;
 
-GRANT CREATE TABLE TO query_share_test;
-GRANT CREATE INDEXTYPE TO query_share_test;
-GRANT CREATE PROCEDURE TO query_share_test;
-GRANT CREATE SYNONYM TO query_share_test;
-GRANT CREATE TABLE TO query_share_test;
-GRANT CREATE TRIGGER TO query_share_test;
-GRANT CREATE TYPE TO query_share_test;
-GRANT CREATE VIEW TO query_share_test;
-GRANT CREATE SEQUENCE TO query_share_test;
-GRANT CREATE SESSION TO query_share_test;
+GRANT CREATE TABLE TO query_share;
+GRANT CREATE INDEXTYPE TO query_share;
+GRANT CREATE PROCEDURE TO query_share;
+GRANT CREATE SYNONYM TO query_share;
+GRANT CREATE TABLE TO query_share;
+GRANT CREATE TRIGGER TO query_share;
+GRANT CREATE TYPE TO query_share;
+GRANT CREATE VIEW TO query_share;
+GRANT CREATE SEQUENCE TO query_share;
+GRANT CREATE SESSION TO query_share;
 
-connect query_share_test/query_share_test;
+connect query_share/query_share;
 
 CREATE TABLE CATRIP_QUERY
 (

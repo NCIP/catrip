@@ -1,21 +1,21 @@
-create user cae_test identified by cae_test
+create user cae identified by cae
 default tablespace users
 temporary tablespace temp
 quota unlimited on users;
-grant connect to cae_test;
+grant connect to cae;
 
-GRANT CREATE TABLE TO cae_test;
-GRANT CREATE INDEXTYPE TO cae_test;
-GRANT CREATE PROCEDURE TO cae_test;
-GRANT CREATE SYNONYM TO cae_test;
-GRANT CREATE TABLE TO cae_test;
-GRANT CREATE TRIGGER TO cae_test;
-GRANT CREATE TYPE TO cae_test;
-GRANT CREATE VIEW TO cae_test;
-GRANT CREATE SEQUENCE TO cae_test;
-GRANT CREATE SESSION TO cae_test;
+GRANT CREATE TABLE TO cae;
+GRANT CREATE INDEXTYPE TO cae;
+GRANT CREATE PROCEDURE TO cae;
+GRANT CREATE SYNONYM TO cae;
+GRANT CREATE TABLE TO cae;
+GRANT CREATE TRIGGER TO cae;
+GRANT CREATE TYPE TO cae;
+GRANT CREATE VIEW TO cae;
+GRANT CREATE SEQUENCE TO cae;
+GRANT CREATE SESSION TO cae;
 
-connect cae_test/cae_test;
+connect cae/cae;
 
 
 

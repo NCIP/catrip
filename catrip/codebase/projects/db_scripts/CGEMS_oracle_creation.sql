@@ -1,21 +1,21 @@
-create user cgems_test identified by cgems_test
+create user cgems identified by cgems
 default tablespace users
 temporary tablespace temp
 quota unlimited on users;
-grant connect to cgems_test;
+grant connect to cgems;
 
-GRANT CREATE TABLE TO cgems_test;
-GRANT CREATE INDEXTYPE TO cgems_test;
-GRANT CREATE PROCEDURE TO cgems_test;
-GRANT CREATE SYNONYM TO cgems_test;
-GRANT CREATE TABLE TO cgems_test;
-GRANT CREATE TRIGGER TO cgems_test;
-GRANT CREATE TYPE TO cgems_test;
-GRANT CREATE VIEW TO cgems_test;
-GRANT CREATE SEQUENCE TO cgems_test;
-GRANT CREATE SESSION TO cgems_test;
+GRANT CREATE TABLE TO cgems;
+GRANT CREATE INDEXTYPE TO cgems;
+GRANT CREATE PROCEDURE TO cgems;
+GRANT CREATE SYNONYM TO cgems;
+GRANT CREATE TABLE TO cgems;
+GRANT CREATE TRIGGER TO cgems;
+GRANT CREATE TYPE TO cgems;
+GRANT CREATE VIEW TO cgems;
+GRANT CREATE SEQUENCE TO cgems;
+GRANT CREATE SESSION TO cgems;
 
-connect cgems_test/cgems_test;
+connect cgems/cgems;
 
 CREATE TABLE CHR_START_END
 (

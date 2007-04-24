@@ -1,10 +1,10 @@
-CREATE DATABASE catissuecore_test;
+CREATE DATABASE catissuecore;
 
-GRANT ALL PRIVILEGES ON *.* TO ‘catissuecore_test'@'localhost’ IDENTIFIED BY 'catissuecore_test' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO ‘catissuecore'@'localhost’ IDENTIFIED BY 'catissuecore' WITH GRANT OPTION;
 
-GRANT ALL PRIVILEGES ON *.* TO 'catissuecore_test'@'%' IDENTIFIED BY 'catissuecore_test' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'catissuecore'@'%' IDENTIFIED BY 'catissuecore' WITH GRANT OPTION;
 
-use catissuecore_test;
+use catissuecore;
 
 /* Formatted on 2007/04/23 09:39 (QP5 v5.50) */
 CREATE TABLE `CATISSUE_USER` (
