@@ -55,7 +55,7 @@ public class HibernateUtil {
 		}
 	}
 	
-	public static List selectPatientIds() throws HibernateException{
+/*	public static List selectPatientIds() throws HibernateException{
 		Transaction tx = null;
 		List<Patient> result = new ArrayList<Patient>();
 		List<Long> ids = new ArrayList<Long>();
@@ -78,7 +78,7 @@ public class HibernateUtil {
 		}
 		return ids;
 	}
-
+*/
 	public static void delete(Object obj) {
 		Transaction tx = null;
 		Session session = HibernateUtil.currentSession();

@@ -46,9 +46,9 @@ public class TestCaTIESServiceData extends TestCase {
 	}
 
 	public void testPatientSelect() throws Exception{
-		CQLQueryResultsIterator iter = query("edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl");
+		CQLQueryResultsIterator iter = query("edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient");
 		while (iter.hasNext()) {
-			edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl de = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl) iter.next();
+			edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient de = (edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient) iter.next();
 			if (de == null)
 				System.out.println("object is null");
 			else{
@@ -71,27 +71,12 @@ public class TestCaTIESServiceData extends TestCase {
 		}
 	}
 
-	public void testOrganizationSelect() throws Exception{
-		CQLQueryResultsIterator iter = query("edu.upmc.opi.caBIG.caTIES.database.domain.impl.OrganizationImpl");
-		while (iter.hasNext()) {
-			edu.upmc.opi.caBIG.caTIES.database.domain.impl.OrganizationImpl de = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.OrganizationImpl) iter.next();
-			if (de == null)
-				System.out.println("object is null");
-			else{
-				System.out.println("*******  Organization " + (count++) +"  *******");
-				System.out.println(" id : " + de.getId());
-				System.out.println(" version : " + de.getVersion());
-				System.out.println(" uuid : " + de.getUuid());
-				System.out.println(" Name : " + de.getName());
-				System.out.println(" Abbreviation Name : " + de.getAbbreviationName());
-			}
-		}
-	}
+
 
 	public void testIdentifiedPathologyReportSelect() throws Exception{
-		CQLQueryResultsIterator iter = query("edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPathologyReportImpl");
+		CQLQueryResultsIterator iter = query("edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport");
 		while (iter.hasNext()) {
-			edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPathologyReportImpl de = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPathologyReportImpl) iter.next();
+			edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport de = (edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport) iter.next();
 			if (de == null)
 				System.out.println("object is null");
 			else{
@@ -125,9 +110,9 @@ public class TestCaTIESServiceData extends TestCase {
 		Session session = HibernateUtil.currentSession();
 
 		List result = new ArrayList();
-		result = session.createQuery("FROM IdentifiedPathologyReportImpl").list();
+		result = session.createQuery("FROM IdentifiedPathologyReport").list();
 		for (int i = 0; i < result.size(); i++) {
-			edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPathologyReportImpl obj = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPathologyReportImpl) result.get(i);
+			edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport obj = (edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport) result.get(i);
 			System.out.println(" email address : " + (obj.getDocumentText()));
 			//System.out.println(" patientCollection : " + (obj.getPatientCollection().size()));
 		}

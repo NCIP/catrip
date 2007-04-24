@@ -105,13 +105,13 @@ public class CaTIESClient extends ServiceSecurityClient implements CaTIESI {
 			CQLQuery cqlQuery = new CQLQuery();
 
 			gov.nih.nci.cagrid.cqlquery.Object target = new gov.nih.nci.cagrid.cqlquery.Object();
-			target.setName("edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl");
+			target.setName("edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient");
 			cqlQuery.setTarget(target);
 			CQLQueryResults results = client.query(cqlQuery);
 			CQLQueryResultsIterator iter = new CQLQueryResultsIterator(results, new FileInputStream(new File(wsdd)));
 			while (iter.hasNext()) {
 				Object o = iter.next();
-				edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl de = (edu.upmc.opi.caBIG.caTIES.database.domain.impl.IdentifiedPatientImpl) o;
+				edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient de = (edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient) o;
 				if (de == null)
 					System.out.println("object is null");
 				else{
