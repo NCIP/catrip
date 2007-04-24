@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<project name="Software Installer" default="zipall" basedir=".">
+  <!-- destination directories -->
+  <property name="srcdir" value="."/>
+  <property name="unzipdir" value="temp"/>
+  <property name="projectsdir" value="codebase/projects"/>
+  <property name="codebasedir" value="codebase"/>
+  <property name="runantdir" value="${srcdir}/codebase"/>
+  <property name="deployTomcatdir" value="${srcdir}/${projectsdir}"/>
+
+<target name="zipall">
+	<zip destfile="catrip_1.0_Install.zip"
+       basedir="${srcdir}"
+       excludes="${projectsdir}/**/ext/, ${projectsdir}/**/build/, ${projectsdir}/**/backup/,
+                 ${projectsdir}/**/bin/, ${projectsdir}/**/junk/,  ${projectsdir}/**/tortoise/,
+                 ${projectsdir}/gui/.hibernateSynchronizer3/,     ${projectsdir}/**/*.log, 
+                 ${projectsdir}/**/*classpath,                    ${projectsdir}/**/*project,
+                 ${projectsdir}/ctom/, ${projectsdir}/queryengine/, ${projectsdir}/catrip-caeGenerateData/,
+                 ${projectsdir}/catrip-catissuecoreGenerateData/, ${projectsdir}/test-report/, ${projectsdir}/test-system/,
+                 ${projectsdir}/xmi2model/, ${projectsdir}/cae_reengineering/, ${projectsdir}/catissuecore-beans/,
+                 ${projectsdir}/cgems-beans/, ${projectsdir}/gridclient-test/, 
+                 ${projectsdir}/coretests/, documentation/, meetings/,
+                 ${projectsdir}/caties/, ${projectsdir}/deid/, ${projectsdir}/tumor registry/, catrip_1.0_Install.zip"
+        
+       update="true"
+  />
+</target>
+
+<target name="unzip">
+ <unzip src="${srcdir}/catripInstall.zip"
+       dest="${unzipdir}">
+</unzip>
+</target>
+
+<target name="deployTomcat">
+
+<!--	<echo message="Deploying CAE"/>
+	<ant antfile="build.xml" dir="${deployTomcatdir}/CAEDataServiceV2" target="deployTomcat" inheritAll="false"/>
+	-->
+	<echo message="Deploying caTissueCore"/>
+	<ant antfile="build.xml" dir="${deployTomcatdir}/CaTissueCoreDataServiceV2" target="deployTomcat" inheritAll="false"/>
+	<echo message="Deploying CGEMS"/>
+	<ant antfile="build.xml" dir="${deployTomcatdir}/CGEMSDataServiceV2" target="deployTomcat" inheritAll="false"/>
+	<echo message="Deploying TumorRegistry"/>
+	<ant antfile="build.xml" dir="${deployTomcatdir}/TumorRegistryDataService" target="deployTomcat" inheritAll="false"/>
+	<echo message="Deploying queryservice"/>
+	<ant antfile="build.xml" dir="${deployTomcatdir}/queryservice" target="deployTomcat" inheritAll="false"/>
+	<echo message="Deploying caties"/>
+	<ant antfile="build.xml" dir="${deployTomcatdir}/caTIESDataService" target="deployTomcat" inheritAll="false"/>
+</target>
+
+  <target name="clean" description="Removes all files created by this buildfile">
+    
+    <delete file="${srcdir}/catrip_1.0_Install.zip"/>
+  <!--  <delete dir="${srcdir}/catrip"/> -->
+  </target>
+ 
+ <target name="all" description="builds all services">
+	<echo message="Building all services"/>
+	<ant antfile="build.xml" dir="${runantdir}/" target="all" inheritAll="false"/>
+  </target>
+
+</project>
