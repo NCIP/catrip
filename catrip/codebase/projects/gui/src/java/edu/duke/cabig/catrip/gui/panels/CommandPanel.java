@@ -432,6 +432,7 @@ public class CommandPanel extends CPanel {
             System.out.println("Total time taken in Query Execution: "+  (queryExecutionTime-dcqlGenerationTime) +" Milli Seconds" );
             
             if ( (results == null) || (results.getObjectResult() == null) || (results.getObjectResult().length == 0) ){
+                afterExecution();
                 JOptionPane.showMessageDialog(getMainFrame(), "No results found. Please check your query.");
                 resultCountLbl.setText("   ");
             } else {

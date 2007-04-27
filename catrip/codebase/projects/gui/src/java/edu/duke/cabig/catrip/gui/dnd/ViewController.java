@@ -61,12 +61,12 @@ public class ViewController extends DefaultViewController implements ActionListe
         miViewProp.addActionListener(this);
         singleNodePopup.add(miViewProp);
         
-        singleNodePopup.add(new JMenuItem("Get Associated Domain Model Classes"));
-        singleNodePopup.add(new JMenuItem("Get All Domain Model Classes"));
-        
-        miShowClass = new JMenuItem("Retrieve Semantically Equivalent Classes");
-        miShowClass.addActionListener(this);
-        singleNodePopup.add(miShowClass);
+//        singleNodePopup.add(new JMenuItem("Get Associated Domain Model Classes"));
+//        singleNodePopup.add(new JMenuItem("Get All Domain Model Classes"));
+//        
+//        miShowClass = new JMenuItem("Retrieve Semantically Equivalent Classes");
+//        miShowClass.addActionListener(this);
+//        singleNodePopup.add(miShowClass);
         
         
         miSetTarget = new JMenuItem("Set object as Target Object.");
@@ -74,10 +74,10 @@ public class ViewController extends DefaultViewController implements ActionListe
         singleNodePopup.add(miSetTarget);
         
         
-        twoNodePopup = new JPopupMenu();
-        miLinkCDE = new JMenuItem("Link Classes via CDE");
-        miLinkCDE.addActionListener(this);
-        twoNodePopup.add(miLinkCDE);
+//        twoNodePopup = new JPopupMenu();
+//        miLinkCDE = new JMenuItem("Link Classes via CDE");
+//        miLinkCDE.addActionListener(this);
+//        twoNodePopup.add(miLinkCDE);
         
         
         graphPopup = new JPopupMenu();
