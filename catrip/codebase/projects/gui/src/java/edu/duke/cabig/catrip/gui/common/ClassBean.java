@@ -221,11 +221,20 @@ public class ClassBean{
         cBean.setServiceName(getServiceName());
         cBean.setServiceUrl(getServiceUrl());
         cBean.setVersion(getVersion());
-        cBean.removeAllUniqueAssociations();//setAssociationRoleNameMap(this.getAssociationRoleNameMap());
+        cBean.removeAllUniqueAssociations();
+        //cBean.setAssociationRoleNameMap(this.getAssociationRoleNameMap()); It was removed to solve bug: 4330. It needs to be enabled to fix bug: 4667
         cBean.needImpl(needImpl());
         
         return cBean;
     }
+    
+    
+    public ClassBean clone2(){
+        ClassBean cBean = clone();
+        cBean.setAssociationRoleNameMap(this.getAssociationRoleNameMap());  // bug Id : 4667.
+        return cBean;
+    } 
+    
     
     /** The service URL of the grid service. Required in DCQL generation from the class instance. */
     public String getServiceUrl() {
@@ -408,7 +417,7 @@ public class ClassBean{
     public void removeAllUniqueAssociations(){
         hasAssociations = false;
         associations = new ArrayList(20);
-        associationRoleNameMap = new HashMap(20);
+//        associationRoleNameMap = new HashMap(20);
         foreignAssociations = new ArrayList(10);
         hasForeignAssociations = false;
     }

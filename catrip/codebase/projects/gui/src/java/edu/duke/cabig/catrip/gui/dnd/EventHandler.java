@@ -168,7 +168,7 @@ public class EventHandler extends IGraphEventHandler {
             e.printStackTrace(); // TODO
         }
         
-        ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(value).clone();
+        ClassBean cBean = DomainModelMetaDataRegistry.lookupClassByRefId(value).clone2(); // bug Id : 4667. 
         
         if (cBean != null){
             ClassNode node = null;//GraphNode node = null;
