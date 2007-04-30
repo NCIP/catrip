@@ -49,7 +49,7 @@
 <jar download="eager" href="lib0216/caGrid-1.0-dorian-service.jar"/>
 
 <jar download="eager" href="lib0216/caGrid-1.0-gridca.jar"/>
-
+<jar download="eager" href="lib0216/rootCA_cert.jar"/>
 
 <jar download="eager" href="lib0216/QueryService-client.jar"/>
 <jar download="eager" href="lib0216/QueryService-common.jar"/>
