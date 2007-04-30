@@ -37,9 +37,9 @@ public class WebstartConfigurator {
             String versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
             File confDir = new File(CATRIP_HOME);
             
-            if (confDir.exists() && isOldVersion()){ 
-//                confDir.renameTo(new File(CATRIP_HOME+"_backup_"+GUIConstants.caTRIPVersion)); 
-                deleteDir(confDir); 
+            if (confDir.exists() && isOldVersion()){
+//                confDir.renameTo(new File(CATRIP_HOME+"_backup_"+GUIConstants.caTRIPVersion));
+                deleteDir(confDir);
 //                confDir.mkdir();
                 configureForWebstart();
                 File verFile = new File(versionFile);
@@ -51,19 +51,19 @@ public class WebstartConfigurator {
                 File verFile = new File(versionFile);
                 verFile.createNewFile();
             }
- 
-            File certDir = new File(ROOT_CERT_LOCATION);
-           // versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
             
-            if (certDir.exists()){ 
-                deleteDir(certDir); 
+            File certDir = new File(ROOT_CERT_LOCATION);
+            // versionFile = CATRIP_HOME + File.separator + GUIConstants.caTRIPVersion;
+            
+            if (certDir.exists()){
+                deleteDir(certDir);
 //                confDir.mkdir();
                 copyCertificate();
             }
             
             if (!certDir.exists()){
                 copyCertificate();
-            } 
+            }
             
             
         } catch (IOException ex) {
@@ -72,13 +72,17 @@ public class WebstartConfigurator {
     }
     
     
-        private static void copyCertificate(){
+    private static void copyCertificate(){
         try {
             File certDir = new File(ROOT_CERT_LOCATION);
             certDir.mkdir();
+            
             InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("rootCA_cert.0");
             String outFilename = ROOT_CERT_LOCATION+File.separator+"rootCA_cert.0";
-            OutputStream out = new FileOutputStream(outFilename);
+            File certFile = new File(outFilename);
+            certFile.createNewFile();
+            
+            OutputStream out = new FileOutputStream(certFile);
             
             byte[] buf = new byte[1024];
             int len;
@@ -93,7 +97,7 @@ public class WebstartConfigurator {
         }
         
     }
-        
+    
     public static void configureForWebstart(){
         try {
             
@@ -199,7 +203,7 @@ public class WebstartConfigurator {
                 }
             }
         }
-    
+        
         // The directory is now empty so delete it
         return dir.delete();
     }
