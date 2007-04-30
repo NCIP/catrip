@@ -469,6 +469,7 @@
 		<delete file="${webstart.build.dir}/lib/_conf_files.jar"/>
         <jar destfile="${webstart.build.dir}/lib/_conf_files.jar" basedir=".">
             <include name="conf.zip"/>
+			<include name="${webstart.conf.dir}/rootCA_cert.0"/>
             <manifest>
                 <attribute name="Built-By" value="Sanjeev Agarwal"/>
             </manifest>
