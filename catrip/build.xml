@@ -34,9 +34,9 @@
 
 <target name="deployTomcat">
 
-<!--	<echo message="Deploying CAE"/>
+	<echo message="Deploying CAE"/>
 	<ant antfile="build.xml" dir="${deployTomcatdir}/CAEDataServiceV2" target="deployTomcat" inheritAll="false"/>
-	-->
+	
 	<echo message="Deploying caTissueCore"/>
 	<ant antfile="build.xml" dir="${deployTomcatdir}/CaTissueCoreDataServiceV2" target="deployTomcat" inheritAll="false"/>
 	<echo message="Deploying CGEMS"/>
