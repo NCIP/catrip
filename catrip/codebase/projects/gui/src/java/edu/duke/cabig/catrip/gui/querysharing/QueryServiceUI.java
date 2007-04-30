@@ -36,9 +36,11 @@ import org.xml.sax.InputSource;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.CDEComboboxBeanComparator;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
+import edu.duke.cabig.catrip.gui.components.CJDialog;
 import edu.duke.cabig.catrip.gui.components.CPanel;
 import edu.duke.cabig.catrip.gui.components.PreferredHeightMarginBorderBoxLayout;
 import edu.duke.cabig.catrip.gui.config.GUIConfigurationLoader;
+import edu.duke.cabig.catrip.gui.panels.CQLDesignerPanel;
 import edu.duke.cabig.catrip.gui.simplegui.CDEComboboxBean;
 import edu.duke.cabig.catrip.gui.simplegui.SimpleGuiRegistry;
 import edu.duke.cabig.catrip.gui.simplegui.objectgraph.GraphObject;
@@ -49,6 +51,10 @@ import gov.nih.nci.cagrid.dcql.DCQLQuery;
 import gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient;
 import gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb;
 import gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb;
+import javax.xml.XMLConstants;
+
+import javax.xml.namespace.QName;
+import org.globus.wsrf.encoding.ObjectSerializer;
 
 /**
  *
@@ -460,7 +466,26 @@ public class QueryServiceUI extends CPanel {
         getMainFrame().getCommandPanel().runExternalDcql(dcql);
     }
     
-    
+    private void displayDCQL(String dcql) {
+        String frmtDcqlText = "";
+        
+        System.out.println("Formatting saved DCQL for display. " + dcql);
+        java.io.Reader reader = new java.io.StringReader(dcql);
+        InputSource source = new InputSource(reader);//source.setEncoding();
+        DCQLQuery dcqlObj = null;
+        try {
+            dcqlObj = (DCQLQuery) ObjectDeserializer.deserialize(source,DCQLQuery.class);
+            frmtDcqlText = ObjectSerializer.toString(dcqlObj,new QName("http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql","DCQLQuery", XMLConstants.NULL_NS_URI));//xmlText(xmlOptions);
+        } catch (Exception e){e.printStackTrace();}
+        
+        CQLDesignerPanel  dcqlPanel = new CQLDesignerPanel(); 
+        dcqlPanel.setDcqlQueryText(frmtDcqlText);
+        CJDialog jd = new CJDialog(this.mainFrame, "View the Saved DCQL Query");  
+        jd.add(dcqlPanel);
+        jd.setBounds(0,0,1000, 500);
+        jd.center();jd.setModal(true);
+        jd.setVisible(true);
+    }
     
     private void populateTable(Vector collection) {
         String firstName = "";
@@ -490,14 +515,14 @@ public class QueryServiceUI extends CPanel {
                 lastName = e.getLastName();
             rowData.add(firstName + " " + lastName) ;
             rowData.add(e.getDescription()) ;
-            rowData.add("View/Modify") ;
+            rowData.add("View") ;//rowData.add("View/Modify") ;
             rowData.add("Run") ;
             // add row to model
             tableModel.addRow(rowData) ;
         }
         resultTable.getColumnModel();
         resultTable.setModel(tableModel);
-        new ButtonColumn(resultTable, 3, collection, false);
+        new ButtonColumn(resultTable, 3, collection, true);
         new ButtonColumn(resultTable, 4, collection, true);
         
         
@@ -587,6 +612,9 @@ public class QueryServiceUI extends CPanel {
             if (e.getActionCommand().equalsIgnoreCase("run")){
                 String dcql = data.get(table.getSelectedRow()).getDcql();
                 executeDcql(dcql);
+            } else if (e.getActionCommand().equalsIgnoreCase("View")){
+                String dcql = data.get(table.getSelectedRow()).getDcql();
+                displayDCQL(dcql);
             } else if(e.getActionCommand().equalsIgnoreCase("x")){
                 DefaultTableModel t = (DefaultTableModel) table.getModel();
                 t.removeRow(table.getSelectedRow());
