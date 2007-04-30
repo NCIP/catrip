@@ -25,6 +25,7 @@ public class WebstartConfigurator {
     public static final String CATRIP_CONFIG_FILE_LOCATION = CATRIP_HOME + File.separator + "catrip-config.xml";
     public static final String CATRIP_CONF_HOME = CATRIP_HOME + File.separator + "conf";
     
+    private static String GLOBUS_ROOT_LOCATION = System.getProperty("user.home") + File.separator + ".globus";
     private static String ROOT_CERT_LOCATION = System.getProperty("user.home") + File.separator + ".globus" + File.separator+ "certificates";
     
     /** Creates a new instance of WebstartConfigurator */
@@ -74,6 +75,12 @@ public class WebstartConfigurator {
     
     private static void copyCertificate(){
         try {
+            
+            File globusDir = new File(GLOBUS_ROOT_LOCATION);
+            if (!globusDir.exists()){
+                globusDir.mkdir();
+            }
+            
             File certDir = new File(ROOT_CERT_LOCATION);
             certDir.mkdir();
             
