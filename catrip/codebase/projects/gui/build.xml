@@ -441,7 +441,7 @@
     
     
     
-    <target name="catrip_conf_zip" >
+    <target name="catrip_conf_zip" description="Build the GUI conf zip." >
         
         <delete dir="conf_tmp"/>
 		<delete file="conf.zip"/>
