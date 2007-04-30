@@ -29,7 +29,7 @@
 
 
 <jar download="eager" href="lib0216/catrip-gui-1.0.jar" main="true"/>
-<jar download="eager" href="lib0216/_conf_files_0216.jar"/>
+<jar download="eager" href="lib0216/_conf_files.jar"/>
 <jar download="eager" href="lib0216/_xml-mapping.jar"/>
 
 <property name="java.security.policy" value="@codebase@/catrip_webstart.policy" />
