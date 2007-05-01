@@ -79,6 +79,9 @@ public class LoginScreen extends CJFrame {
         identityProviderLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER")); // NOI18N
 
         userId.setText("guest");
+        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        userId.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.userId.name")); // NOI18N
+        userId.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.userId.description")); // NOI18N
 
         identityProvider.setModel(getComboBoxModel());
         identityProvider.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +90,12 @@ public class LoginScreen extends CJFrame {
             }
         });
 
+        identityProvider.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.identityProvider.name")); // NOI18N
+        identityProvider.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.identityProvider.description")); // NOI18N
+
         password.setText("catrip1");
+        password.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.password.name")); // NOI18N
+        password.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.password.description")); // NOI18N
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/login.gif")));
         loginBtn.setText("Login");
@@ -97,6 +105,9 @@ public class LoginScreen extends CJFrame {
             }
         });
 
+        loginBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.loginBtn.name")); // NOI18N
+        loginBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.loginBtn.description")); // NOI18N
+
         clearBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
         clearBtn.setText("Clear");
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +115,9 @@ public class LoginScreen extends CJFrame {
                 clearBtnActionPerformed(evt);
             }
         });
+
+        clearBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.clearBtn.name")); // NOI18N
+        clearBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.clearBtn.description")); // NOI18N
 
         exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/exit.gif")));
         exitBtn.setText("Exit");
@@ -113,9 +127,14 @@ public class LoginScreen extends CJFrame {
             }
         });
 
+        exitBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.exitBtn.name")); // NOI18N
+        exitBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.exitBtn.description")); // NOI18N
+
         visualGuiChkBox.setText(bundle.getString("LOGIN_SCREEN_RADIO_BTN_LBL")); // NOI18N
         visualGuiChkBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         visualGuiChkBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        visualGuiChkBox.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.visualGuiChkBox.name")); // NOI18N
+        visualGuiChkBox.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.visualGuiChkBox.description")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,7 +223,7 @@ public class LoginScreen extends CJFrame {
             IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
             try {
                 log.info("\n Trying to authenticate the user: "+userIdStr +"\n IDP url: "+idpBean.getIdpUrl()+"\n Dorian URL:"+idpBean.getDorianUrl()+"\n");
-                System.out.println("xxxx"+userId.getText().trim()+" : "+ password.getText().trim()+" : "+ idpBean.getIdpUrl()+" : "+idpBean.getDorianUrl());
+                System.out.println("xxxx"+userId.getText().trim()+" : "+ idpBean.getIdpUrl()+" : "+idpBean.getDorianUrl());
                 AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
                 authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
             } catch (AuthenticationErrorException ex) {
