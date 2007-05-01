@@ -64,6 +64,9 @@
           </Border>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Query Details Panel"/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -146,10 +149,22 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtQueryName">
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Query Name text input field"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="The Saved Query Name."/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFirstName">
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="First Name text input field"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="First Name of the person who created the DCQl query."/>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLastName">
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Last  Name text input field"/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Last Name of the person who created the DCQl query."/>
+          </AccessibilityProperties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -164,6 +179,13 @@
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="2"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Query Description text input field"/>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Description of the saved query."/>
+                <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+                  <ComponentRef name="jPanel1"/>
+                </Property>
+              </AccessibilityProperties>
             </Component>
           </SubComponents>
         </Container>

@@ -17,10 +17,16 @@ import edu.duke.cabig.catrip.gui.util.Logger;
 public class FilterGroupRowPanel extends javax.swing.JPanel {
     // Define Logger..
     static Log log = Logger.getDefaultLogger();
+    private FilterGroupPanel containerPanel;
 
     /** Creates new form FilterGroupRowPanel */
     public FilterGroupRowPanel() {
         initComponents();
+    }
+    
+    public FilterGroupRowPanel(FilterGroupPanel fgp) {
+        initComponents();
+        containerPanel = fgp;
     }
     
     /** This method is called from within the constructor to
@@ -69,6 +75,10 @@ public class FilterGroupRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void delFilterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delFilterBtnActionPerformed
+        log.info(" Deleting the row : "+getFilterValueCombo().getSelectedItem()); 
+        this.removeAll();
+        containerPanel.removeRow(this);
+        
         
     }//GEN-LAST:event_delFilterBtnActionPerformed
     

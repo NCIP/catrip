@@ -54,6 +54,16 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     }
     
     
+    public void removeRow(FilterGroupRowPanel frp){
+        filterValuePanel.remove(frp);
+        filterValuePanel.revalidate();
+        filterValuePanel.repaint();
+        
+        numEntities--;
+    }
+    
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -130,6 +140,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
 
         delGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/delete.gif")));
         delGroupBtn.setText("Delete Group");
+        delGroupBtn.setEnabled(false);
 
         okBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif")));
         okBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.okBtn.text")); // NOI18N
@@ -250,7 +261,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
     private void addFilterOrGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFilterOrGroupBtnActionPerformed
         if (numEntities < SimpleGuiRegistry.getNumGroupableEntities()){
             
-            FilterGroupRowPanel frp = new FilterGroupRowPanel();
+            FilterGroupRowPanel frp = new FilterGroupRowPanel(this);
             
             ArrayList<FilterRowPanel> filters = SimpleGuiRegistry.getNonGroupFilters();
             for (int i = 0; i < filters.size(); i++) {

@@ -168,10 +168,22 @@ public class QueryServiceUI extends CPanel {
 
         jLabel4.setText("Description:");
 
+        txtQueryName.getAccessibleContext().setAccessibleName("Query Name text input field");
+        txtQueryName.getAccessibleContext().setAccessibleDescription("The Saved Query Name.");
+
+        txtFirstName.getAccessibleContext().setAccessibleName("First Name text input field");
+        txtFirstName.getAccessibleContext().setAccessibleDescription("First Name of the person who created the DCQl query.");
+
+        txtLastName.getAccessibleContext().setAccessibleName("Last  Name text input field");
+        txtLastName.getAccessibleContext().setAccessibleDescription("Last Name of the person who created the DCQl query.");
+
         txtDescription.setColumns(20);
         txtDescription.setLineWrap(true);
         txtDescription.setRows(2);
         jScrollPane1.setViewportView(txtDescription);
+        txtDescription.getAccessibleContext().setAccessibleName("Query Description text input field");
+        txtDescription.getAccessibleContext().setAccessibleDescription("Description of the saved query.");
+        txtDescription.getAccessibleContext().setAccessibleParent(jPanel1);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,6 +231,7 @@ public class QueryServiceUI extends CPanel {
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jPanel1.getAccessibleContext().setAccessibleName("Query Details Panel");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Filters"));
         jScrollPane2.setBorder(null);

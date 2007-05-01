@@ -165,6 +165,7 @@
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/delete.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Delete Group"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="okBtn">
