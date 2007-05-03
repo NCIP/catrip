@@ -98,6 +98,7 @@ public class LoginScreen extends CJFrame {
         password.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.password.description")); // NOI18N
 
         loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/login.gif")));
+        loginBtn.setMnemonic('l');
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,7 @@ public class LoginScreen extends CJFrame {
         loginBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.loginBtn.description")); // NOI18N
 
         clearBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
+        clearBtn.setMnemonic('c');
         clearBtn.setText("Clear");
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +122,7 @@ public class LoginScreen extends CJFrame {
         clearBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.clearBtn.description")); // NOI18N
 
         exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/exit.gif")));
+        exitBtn.setMnemonic('e');
         exitBtn.setText("Exit");
         exitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
