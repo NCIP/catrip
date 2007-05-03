@@ -2,7 +2,7 @@
 <simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
 	
 	
-	<service displayName="Tissue Bank" url="http://localhost:8181/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
+	<service displayName="Tissue Bank" url="https://cagrid2.duhs.duke.edu:443/wsrf/services/cagrid/CaTissueCore" metadataXml="caTissueCore_domainModel.xml" impls="true">
 		<targets>
 			<objectElement className="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl"   
 					displaybleAttributes="type,available,positionDimensionOne,positionDimensionTwo,barcode,activityStatus,quantityInGram,availableQuantityInGram" 
@@ -39,7 +39,7 @@
 	
 
 	
-	<service displayName="Clinical Annotation Engine" url="http://localhost:8181/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
+	<service displayName="Clinical Annotation Engine" url="https://cagrid2.duhs.duke.edu:443/wsrf/services/cagrid/CAE" metadataXml="CAE_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="edu.duke.catrip.cae.domain.general.Participant" selectable="true" 
 				displaybleAttributes="firstName,gender,race,ethnicity" 
@@ -110,7 +110,7 @@
 
 
 
-<service displayName="CGEMS" url="http://localhost:8181/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
+<service displayName="CGEMS" url="https://cagrid2.duhs.duke.edu:443/wsrf/services/cagrid/CGEMS" metadataXml="CGEMS_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" displaybleAttributes="studySubjectIdentifier,administrativeGenderCode,caseControlStatus,daysOffStudy,daysOnStudy,ethnicGroupCode,familyHistory,institutionName,isOffStudy,raceCode"  selectable="true" display="true">
 				<associatedObjectTree>
@@ -195,7 +195,7 @@
 
 
 
-<service displayName="Tumor Registry" url="http://localhost:8181/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
+<service displayName="Tumor Registry" url="https://cagrid2.duhs.duke.edu:443/wsrf/services/cagrid/CaTRIPTumorRegistry" metadataXml="Tumor_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="edu.duke.cabig.tumorregistry.domain.Patient" 
 			displaybleAttributes="race,sex,ethnicGroup,dateOfDeath" 
@@ -398,7 +398,7 @@
 -->
 
 
-<service displayName="caTIES" url="http://localhost:8181/wsrf/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="false">
+<service displayName="caTIES" url="https://cagrid2.duhs.duke.edu:443/wsrf/services/cagrid/CaTIES" metadataXml="caTIES_domainModel.xml" impls="false">
 		<targets>
 			<objectElement className="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient"  displaybleAttributes="firstName,lastName,race,ethincity"  display="true"  supportReturnAttributes="true" selectable="true">
 				<associatedObjectTree>
