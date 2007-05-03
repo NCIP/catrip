@@ -78,7 +78,7 @@ public class LoginScreen extends CJFrame {
         identityProviderLbl.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         identityProviderLbl.setText(bundle.getString("LOGIN_SCREEN_WIZARD_LBL_ID_PROVIDER")); // NOI18N
 
-        userId.setText("guest");
+        userId.setText("catrip");
         java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
         userId.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.userId.name")); // NOI18N
         userId.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.userId.description")); // NOI18N
