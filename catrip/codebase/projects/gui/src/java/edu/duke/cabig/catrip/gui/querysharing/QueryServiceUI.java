@@ -168,14 +168,18 @@ public class QueryServiceUI extends CPanel {
 
         jLabel4.setText("Description:");
 
-        txtQueryName.getAccessibleContext().setAccessibleName("Query Name text input field");
-        txtQueryName.getAccessibleContext().setAccessibleDescription("The Saved Query Name.");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        txtQueryName.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.txtQueryName.name")); // NOI18N
+        txtQueryName.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.txtQueryName.description")); // NOI18N
+        txtQueryName.getAccessibleContext().setAccessibleParent(this);
 
-        txtFirstName.getAccessibleContext().setAccessibleName("First Name text input field");
-        txtFirstName.getAccessibleContext().setAccessibleDescription("First Name of the person who created the DCQl query.");
+        txtFirstName.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.txtFirstName.name")); // NOI18N
+        txtFirstName.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.txtFirstName.description")); // NOI18N
+        txtFirstName.getAccessibleContext().setAccessibleParent(this);
 
-        txtLastName.getAccessibleContext().setAccessibleName("Last  Name text input field");
-        txtLastName.getAccessibleContext().setAccessibleDescription("Last Name of the person who created the DCQl query.");
+        txtLastName.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.txtLastName.name")); // NOI18N
+        txtLastName.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.txtLastName.description")); // NOI18N
+        txtLastName.getAccessibleContext().setAccessibleParent(this);
 
         txtDescription.setColumns(20);
         txtDescription.setLineWrap(true);
@@ -247,6 +251,9 @@ public class QueryServiceUI extends CPanel {
             .add(0, 243, Short.MAX_VALUE)
         );
         jScrollPane2.setViewportView(filterPanel);
+        filterPanel.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.filterPanel.name")); // NOI18N
+        filterPanel.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.filterPanel.description")); // NOI18N
+        filterPanel.getAccessibleContext().setAccessibleParent(this);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -276,6 +283,9 @@ public class QueryServiceUI extends CPanel {
             }
         ));
         jScrollPane3.setViewportView(resultTable);
+        resultTable.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.resultTable.name")); // NOI18N
+        resultTable.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.resultTable.description")); // NOI18N
+        resultTable.getAccessibleContext().setAccessibleParent(this);
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -294,6 +304,7 @@ public class QueryServiceUI extends CPanel {
         );
 
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/search.gif")));
+        btnSearch.setMnemonic('e');
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,7 +312,11 @@ public class QueryServiceUI extends CPanel {
             }
         });
 
+        btnSearch.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.btnSearch.name")); // NOI18N
+        btnSearch.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.btnSearch.description")); // NOI18N
+
         btnAddFilter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
+        btnAddFilter.setMnemonic('a');
         btnAddFilter.setText("Add Filter");
         btnAddFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,13 +324,20 @@ public class QueryServiceUI extends CPanel {
             }
         });
 
+        btnAddFilter.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.btnAddFilter.name")); // NOI18N
+        btnAddFilter.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.btnAddFilter.description")); // NOI18N
+
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
+        btnClear.setMnemonic('c');
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
             }
         });
+
+        btnClear.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.btnClear.name")); // NOI18N
+        btnClear.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.btnClear.description")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

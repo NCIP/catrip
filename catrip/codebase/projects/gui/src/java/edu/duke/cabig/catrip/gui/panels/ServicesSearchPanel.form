@@ -61,6 +61,14 @@
           </Border>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchPanel.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchPanel.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -118,6 +126,17 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Search"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchBtn.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchBtn.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
           </Events>
@@ -127,8 +146,20 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/showall.png"/>
             </Property>
+            <Property name="mnemonic" type="int" value="97"/>
             <Property name="text" type="java.lang.String" value="Show All"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.showAllBtn.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.showAllBtn.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showAllBtnActionPerformed"/>
           </Events>
@@ -138,8 +169,20 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif"/>
             </Property>
+            <Property name="mnemonic" type="int" value="99"/>
             <Property name="text" type="java.lang.String" value="Clear"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.clearBtn.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.clearBtn.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearBtnActionPerformed"/>
           </Events>
@@ -159,8 +202,30 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="concept">
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.concept.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.concept.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="commonDataElement">
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.commonDataElement.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.commonDataElement.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
@@ -174,6 +239,14 @@
           </Border>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultPanel.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultPanel.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -209,6 +282,17 @@
                 </Property>
                 <Property name="autoResizeMode" type="int" value="0"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultTable.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultTable.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
+                <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+                  <ComponentRef name="resultPanel"/>
+                </Property>
+              </AccessibilityProperties>
             </Component>
           </SubComponents>
         </Container>
@@ -219,8 +303,17 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif"/>
         </Property>
+        <Property name="mnemonic" type="int" value="115"/>
         <Property name="text" type="java.lang.String" value="Select"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.selectBtn.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.selectBtn.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectBtnActionPerformed"/>
       </Events>
@@ -230,8 +323,17 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/exit.gif"/>
         </Property>
+        <Property name="mnemonic" type="int" value="101"/>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.exitBtn.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.exitBtn.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitBtnActionPerformed"/>
       </Events>

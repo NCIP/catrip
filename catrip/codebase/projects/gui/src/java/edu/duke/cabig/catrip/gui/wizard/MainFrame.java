@@ -43,8 +43,23 @@ public class MainFrame extends CJFrame {
         
         setExtendedState(MAXIMIZED_BOTH);
         
-        
+        setMenuMnemonic();
     }
+    
+    
+    
+    
+    private void setMenuMnemonic(){
+        preferencesMenu.setMnemonic('p');
+        queryMenu.setMnemonic('q');
+        resultMenu.setMnemonic('r');
+        servicesMenu.setMnemonic('s');
+    }
+    
+    
+    
+    
+    
     
     
     
@@ -302,18 +317,18 @@ public class MainFrame extends CJFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void exportResultCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultCSVActionPerformed
-    // Ask user for the delimeter in a option pane then export the results..  
+        // Ask user for the delimeter in a option pane then export the results..
         try {
             CSVResultExporter.exportToCSV( getOutputPanel().getOutputTable(), this);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_exportResultCSVActionPerformed
-
+    
     private void exportResultExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportResultExcelActionPerformed
-    // call the APIs to export results to a Excel format..
+        // call the APIs to export results to a Excel format..
         try {
             ExcelResultExporter.exportToExcel( getOutputPanel().getOutputTable(), this);
         } catch (Exception e) {
@@ -321,44 +336,44 @@ public class MainFrame extends CJFrame {
         }
         
     }//GEN-LAST:event_exportResultExcelActionPerformed
-
+    
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_deleteActionPerformed
-
+    
     private void executeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executeActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_executeActionPerformed
-
+    
     private void deleteQueryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteQueryActionPerformed
 // TODO add your handling code here:
         // TODO - tmp remove this code later on..
         getOutputPanel().cleanResults();
     }//GEN-LAST:event_deleteQueryActionPerformed
-
+    
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_createActionPerformed
-
+    
     private void retrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_retrieveActionPerformed
-
+    
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-
+        
         // save query..
         
         // First Take the DCQL from the Registry..
-        String dcql; 
-        if (GUIConstants.simpleGui){ 
+        String dcql;
+        if (GUIConstants.simpleGui){
             dcql = GroupDCQLGenerator.getDCQLText();
         } else {
-           dcql = DCQLGenerator.getDCQLText();
+            dcql = DCQLGenerator.getDCQLText();
         }
         
-        QueryEditUI savePnl = new QueryEditUI(dcql);  
+        QueryEditUI savePnl = new QueryEditUI(dcql);
         savePnl.setMainFrame(this);
-        CJDialog jd = new CJDialog(this, "Save the Query"); 
+        CJDialog jd = new CJDialog(this, "Save the Query");
         jd.add(savePnl);
         jd.setBounds(10,10,570, 250);
         jd.center();jd.setModal(true);
@@ -456,10 +471,10 @@ public class MainFrame extends CJFrame {
     
     // added added
     public javax.swing.JSplitPane getCentralSplitPane(){
-       return  jSplitPane1; // 1 is main 2 is left and 3 is right..
+        return  jSplitPane1; // 1 is main 2 is left and 3 is right..
     }
     public javax.swing.JSplitPane getRightSplitPane(){
-       return  jSplitPane3; // 1 is main 2 is left and 3 is right..
+        return  jSplitPane3; // 1 is main 2 is left and 3 is right..
     }
     // added added
     

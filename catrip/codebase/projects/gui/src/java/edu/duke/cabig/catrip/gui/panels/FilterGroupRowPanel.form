@@ -37,6 +37,14 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.filterValueCombo.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.filterValueCombo.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filterValueComboItemStateChanged"/>
       </Events>
@@ -59,6 +67,14 @@
           <Insets value="[1, 1, 1, 1]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.delFilterBtn.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.delFilterBtn.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delFilterBtnActionPerformed"/>
       </Events>

@@ -23,7 +23,6 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
               <Component id="delFilterButton" alignment="3" min="-2" max="-2" attributes="0"/>
               <Component id="cbFilter" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -48,6 +47,14 @@
           <Insets value="[1, 1, 1, 1]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.delFilterButton.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.delFilterButton.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delFilterButtonActionPerformed"/>
       </Events>
@@ -58,6 +65,14 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.cbFilter.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.cbFilter.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbFilterActionPerformed"/>
       </Events>

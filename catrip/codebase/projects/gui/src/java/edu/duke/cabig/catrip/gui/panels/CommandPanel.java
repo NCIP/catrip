@@ -76,6 +76,7 @@ public class CommandPanel extends CPanel {
         add(pnlOne);
 
         ExecuteCommand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/execute.gif")));
+        ExecuteCommand.setMnemonic('x');
         ExecuteCommand.setText("Execute Query");
         ExecuteCommand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

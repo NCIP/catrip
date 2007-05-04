@@ -53,6 +53,7 @@ public class MessageDisplayPanel extends javax.swing.JPanel {
         textArea.setMargin(new java.awt.Insets(4, 4, 4, 4));
         jScrollPane1.setViewportView(textArea);
 
+        ok.setMnemonic('o');
         ok.setText(org.openide.util.NbBundle.getMessage(MessageDisplayPanel.class, "MessageDisplayPanel.ok.text")); // NOI18N
         ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

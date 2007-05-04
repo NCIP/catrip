@@ -133,6 +133,7 @@ public class LoginScreen extends CJFrame {
         exitBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.exitBtn.name")); // NOI18N
         exitBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.wizard.LoginScreen.exitBtn.description")); // NOI18N
 
+        visualGuiChkBox.setMnemonic('a');
         visualGuiChkBox.setText(bundle.getString("LOGIN_SCREEN_RADIO_BTN_LBL")); // NOI18N
         visualGuiChkBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         visualGuiChkBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -226,7 +227,7 @@ public class LoginScreen extends CJFrame {
             IndentityProviderBean idpBean = getIdpBeans().get(identityProvider.getSelectedItem().toString());
             try {
                 log.info("\n Trying to authenticate the user: "+userIdStr +"\n IDP url: "+idpBean.getIdpUrl()+"\n Dorian URL:"+idpBean.getDorianUrl()+"\n");
-                System.out.println("xxxx"+userId.getText().trim()+" : "+ idpBean.getIdpUrl()+" : "+idpBean.getDorianUrl());
+                System.out.println("userID: "+userId.getText().trim()+" IDP URL: "+ idpBean.getIdpUrl()+" Dorian URL: "+idpBean.getDorianUrl());
                 AuthenticationManager authenticationManager = AuthenticationManagerFactory.getAuthenticationManager(idpBean.getDisplayName());
                 authenticate = authenticationManager.authenticate(userId.getText().trim(), password.getText().trim(), idpBean.getIdpUrl(),idpBean.getDorianUrl());
             } catch (AuthenticationErrorException ex) {

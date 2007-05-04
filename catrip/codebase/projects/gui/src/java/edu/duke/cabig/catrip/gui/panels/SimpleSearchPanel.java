@@ -157,6 +157,11 @@ public class SimpleSearchPanel extends CPanel {
             }
         });
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        targetObjCombo.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetObjCombo.name")); // NOI18N
+        targetObjCombo.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetObjCombo.description")); // NOI18N
+        targetObjCombo.getAccessibleContext().setAccessibleParent(this);
+
         jLabel2.setText("from");
 
         targetServiceCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +169,10 @@ public class SimpleSearchPanel extends CPanel {
                 targetServiceComboActionPerformed(evt);
             }
         });
+
+        targetServiceCombo.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetServiceCombo.name")); // NOI18N
+        targetServiceCombo.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetServiceCombo.description")); // NOI18N
+        targetServiceCombo.getAccessibleContext().setAccessibleParent(this);
 
         org.jdesktop.layout.GroupLayout targetPanelLayout = new org.jdesktop.layout.GroupLayout(targetPanel);
         targetPanel.setLayout(targetPanelLayout);
@@ -178,7 +187,7 @@ public class SimpleSearchPanel extends CPanel {
                 .add(jLabel2)
                 .add(23, 23, 23)
                 .add(targetServiceCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 227, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addContainerGap(414, Short.MAX_VALUE))
         );
         targetPanelLayout.setVerticalGroup(
             targetPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -198,6 +207,9 @@ public class SimpleSearchPanel extends CPanel {
         filterPanel.setLayout(new java.awt.GridLayout(2, 1));
 
         filterPanelScrollPane.setViewportView(filterPanel);
+        filterPanel.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.filterPanel.name")); // NOI18N
+        filterPanel.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.filterPanel.description")); // NOI18N
+        filterPanel.getAccessibleContext().setAccessibleParent(this);
 
         jLabel4.setText("Attribute");
 
@@ -212,9 +224,9 @@ public class SimpleSearchPanel extends CPanel {
             .add(jpanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jpanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(filterPanelScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+                    .add(filterPanelScrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
                     .add(jpanelLayout.createSequentialGroup()
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                         .add(84, 84, 84)
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(63, 63, 63)
@@ -236,6 +248,7 @@ public class SimpleSearchPanel extends CPanel {
         );
 
         addFilterBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
+        addFilterBtn.setMnemonic('a');
         addFilterBtn.setText("Add Filter");
         addFilterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +257,7 @@ public class SimpleSearchPanel extends CPanel {
         });
 
         clearFilterBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
+        clearFilterBtn.setMnemonic('c');
         clearFilterBtn.setText("Clear Filters");
         clearFilterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +266,7 @@ public class SimpleSearchPanel extends CPanel {
         });
 
         addGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
+        addGroupBtn.setMnemonic('g');
         addGroupBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.addGroupBtn.text")); // NOI18N
         addGroupBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +275,7 @@ public class SimpleSearchPanel extends CPanel {
         });
 
         returnAttributeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/select_attribute.gif")));
+        returnAttributeBtn.setMnemonic('v');
         returnAttributeBtn.setText(org.openide.util.NbBundle.getMessage(SimpleSearchPanel.class, "SimpleSearchPanel.returnAttributeBtn.text")); // NOI18N
         returnAttributeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,7 +298,7 @@ public class SimpleSearchPanel extends CPanel {
                         .add(clearFilterBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(addGroupBtn)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 86, Short.MAX_VALUE)
                         .add(returnAttributeBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 195, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );

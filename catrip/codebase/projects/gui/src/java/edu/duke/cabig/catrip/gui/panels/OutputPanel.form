@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.0" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.2" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
@@ -28,6 +28,17 @@
               <Connection code="getTableModel()" type="code"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.OutputPanel.outputTable.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.OutputPanel.outputTable.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="outputTable = new ColoredJTable();"/>
           </AuxValues>

@@ -169,17 +169,27 @@ public class FilterRowPanel extends javax.swing.JPanel {
         distinctValueBtn = new javax.swing.JButton();
         valueComboBox = new edu.duke.cabig.catrip.gui.components.SteppedComboBox();
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.panel.name")); // NOI18N
+        getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.panel.description")); // NOI18N
+        getAccessibleContext().setAccessibleParent(this);
         cdeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cdeComboItemStateChanged(evt);
             }
         });
 
+        cdeCombo.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.cdeCombo.name")); // NOI18N
+        cdeCombo.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.cdeCombo.description")); // NOI18N
+
         predicateCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 predicateComboItemStateChanged(evt);
             }
         });
+
+        predicateCombo.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.predicateCombo.name")); // NOI18N
+        predicateCombo.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.predicateCombo.description")); // NOI18N
 
         delFilterBtn.setFont(new java.awt.Font("Tahoma", 1, 11));
         delFilterBtn.setForeground(new java.awt.Color(255, 0, 0));
@@ -192,6 +202,9 @@ public class FilterRowPanel extends javax.swing.JPanel {
             }
         });
 
+        delFilterBtn.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.delFilterBtn.name")); // NOI18N
+        delFilterBtn.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.delFilterBtn.description")); // NOI18N
+
         distinctValueBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/find.gif")));
         distinctValueBtn.setText(org.openide.util.NbBundle.getMessage(FilterRowPanel.class, "FilterRowPanel.distinctValueBtn.text")); // NOI18N
         distinctValueBtn.setToolTipText(org.openide.util.NbBundle.getMessage(FilterRowPanel.class, "FilterRowPanel.distinctValueBtn.toolTipText")); // NOI18N
@@ -201,12 +214,18 @@ public class FilterRowPanel extends javax.swing.JPanel {
             }
         });
 
+        distinctValueBtn.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.distinctValueBtn.name")); // NOI18N
+        distinctValueBtn.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.distinctValueBtn.description")); // NOI18N
+
         valueComboBox.setEditable(true);
         valueComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 valueComboBoxItemStateChanged(evt);
             }
         });
+
+        valueComboBox.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.valueComboBox.name")); // NOI18N
+        valueComboBox.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterRowPanel.valueComboBox.description")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

@@ -24,7 +24,7 @@
                       <Component id="clearFilterBtn" min="-2" pref="213" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addGroupBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
                       <Component id="returnAttributeBtn" min="-2" pref="195" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -66,7 +66,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="targetServiceCombo" min="-2" pref="227" max="-2" attributes="0"/>
-                  <EmptySpace pref="409" max="32767" attributes="0"/>
+                  <EmptySpace pref="414" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -97,6 +97,17 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetObjCombo.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetObjCombo.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="targetObjComboActionPerformed"/>
           </Events>
@@ -115,6 +126,17 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetServiceCombo.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.targetServiceCombo.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+              <ComponentRef name="Form"/>
+            </Property>
+          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="targetServiceComboActionPerformed"/>
           </Events>
@@ -181,6 +203,17 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="filterPanel">
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.filterPanel.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="edu/duke/cabig/catrip/gui/a11y/a11yBundle.properties" key="edu.duke.cabig.catrip.gui.panels.SimpleSearchPanel.filterPanel.description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
+                <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.RADVisualComponent$AccessibleParentEditor">
+                  <ComponentRef name="Form"/>
+                </Property>
+              </AccessibilityProperties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                 <Property name="columns" type="int" value="1"/>
@@ -211,6 +244,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif"/>
         </Property>
+        <Property name="mnemonic" type="int" value="97"/>
         <Property name="text" type="java.lang.String" value="Add Filter"/>
       </Properties>
       <Events>
@@ -222,6 +256,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif"/>
         </Property>
+        <Property name="mnemonic" type="int" value="99"/>
         <Property name="text" type="java.lang.String" value="Clear Filters"/>
       </Properties>
       <Events>
@@ -233,6 +268,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif"/>
         </Property>
+        <Property name="mnemonic" type="int" value="103"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="SimpleSearchPanel.addGroupBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>
@@ -246,6 +282,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/edu/duke/cabig/catrip/gui/resources/btn_icons/select_attribute.gif"/>
         </Property>
+        <Property name="mnemonic" type="int" value="118"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="edu/duke/cabig/catrip/gui/panels/Bundle.properties" key="SimpleSearchPanel.returnAttributeBtn.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>

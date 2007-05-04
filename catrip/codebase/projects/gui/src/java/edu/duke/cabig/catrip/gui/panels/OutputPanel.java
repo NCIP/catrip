@@ -127,8 +127,11 @@ public class OutputPanel extends CPanel {
         setLayout(new java.awt.GridLayout(1, 0));
 
         outputTable.setModel(getTableModel());
-
         jScrollPane1.setViewportView(outputTable);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        outputTable.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.OutputPanel.outputTable.name")); // NOI18N
+        outputTable.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.OutputPanel.outputTable.description")); // NOI18N
+        outputTable.getAccessibleContext().setAccessibleParent(this);
 
         add(jScrollPane1);
 

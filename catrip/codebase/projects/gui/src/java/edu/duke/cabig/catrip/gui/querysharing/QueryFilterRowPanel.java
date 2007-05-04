@@ -67,11 +67,18 @@ public class QueryFilterRowPanel extends javax.swing.JPanel {
             }
         });
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        delFilterButton.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.delFilterButton.name")); // NOI18N
+        delFilterButton.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.delFilterButton.description")); // NOI18N
+
         cbFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFilterActionPerformed(evt);
             }
         });
+
+        cbFilter.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.cbFilter.name")); // NOI18N
+        cbFilter.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.querysharing.QueryFilterRowPanel.cbFilter.description")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -85,7 +92,6 @@ public class QueryFilterRowPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 22, Short.MAX_VALUE)
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                 .add(delFilterButton)
                 .add(cbFilter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))

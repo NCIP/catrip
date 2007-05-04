@@ -212,6 +212,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="visualGuiChkBox">
       <Properties>
+        <Property name="mnemonic" type="int" value="97"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="edu/duke/cabig/catrip/gui/resources/ResourceBundle.properties" key="LOGIN_SCREEN_RADIO_BTN_LBL" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>

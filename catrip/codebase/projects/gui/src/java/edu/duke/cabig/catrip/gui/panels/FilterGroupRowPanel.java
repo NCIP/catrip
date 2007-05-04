@@ -45,6 +45,10 @@ public class FilterGroupRowPanel extends javax.swing.JPanel {
             }
         });
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        filterValueCombo.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.filterValueCombo.name")); // NOI18N
+        filterValueCombo.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.filterValueCombo.description")); // NOI18N
+
         delFilterBtn.setFont(new java.awt.Font("Tahoma", 1, 11));
         delFilterBtn.setForeground(new java.awt.Color(255, 0, 0));
         delFilterBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupRowPanel.class, "FilterGroupRowPanel.delFilterBtn.text")); // NOI18N
@@ -55,6 +59,9 @@ public class FilterGroupRowPanel extends javax.swing.JPanel {
                 delFilterBtnActionPerformed(evt);
             }
         });
+
+        delFilterBtn.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.delFilterBtn.name")); // NOI18N
+        delFilterBtn.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupRowPanel.delFilterBtn.description")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

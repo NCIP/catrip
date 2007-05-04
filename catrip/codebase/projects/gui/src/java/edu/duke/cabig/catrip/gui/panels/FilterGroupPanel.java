@@ -99,6 +99,11 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             }
         });
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        conditionCombo.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.conditionCombo.name")); // NOI18N
+        conditionCombo.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.conditionCombo.description")); // NOI18N
+        conditionCombo.getAccessibleContext().setAccessibleParent(this);
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -131,6 +136,7 @@ public class FilterGroupPanel extends javax.swing.JPanel {
         );
 
         addFilterOrGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/add.gif")));
+        addFilterOrGroupBtn.setMnemonic('a');
         addFilterOrGroupBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.addFilterOrGroupBtn.text")); // NOI18N
         addFilterOrGroupBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,11 +144,18 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             }
         });
 
+        addFilterOrGroupBtn.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.addFilterOrGroupBtn.name")); // NOI18N
+        addFilterOrGroupBtn.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.addFilterOrGroupBtn.description")); // NOI18N
+
         delGroupBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/delete.gif")));
+        delGroupBtn.setMnemonic('d');
         delGroupBtn.setText("Delete Group");
         delGroupBtn.setEnabled(false);
+        delGroupBtn.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.delGroupBtn.name")); // NOI18N
+        delGroupBtn.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.delGroupBtn.description")); // NOI18N
 
         okBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif")));
+        okBtn.setMnemonic('o');
         okBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.okBtn.text")); // NOI18N
         okBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +163,11 @@ public class FilterGroupPanel extends javax.swing.JPanel {
             }
         });
 
+        okBtn.getAccessibleContext().setAccessibleName(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.okBtn.name")); // NOI18N
+        okBtn.getAccessibleContext().setAccessibleDescription(bundle.getString("edu.duke.cabig.catrip.gui.panels.FilterGroupPanel.okBtn.description")); // NOI18N
+
         cancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/cancel.gif")));
+        cancelBtn.setMnemonic('c');
         cancelBtn.setText(org.openide.util.NbBundle.getMessage(FilterGroupPanel.class, "FilterGroupPanel.cancelBtn.text")); // NOI18N
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

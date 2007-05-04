@@ -106,7 +106,13 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             }
         });
 
+        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("edu/duke/cabig/catrip/gui/a11y/a11yBundle"); // NOI18N
+        searchBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchBtn.name")); // NOI18N
+        searchBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchBtn.description")); // NOI18N
+        searchBtn.getAccessibleContext().setAccessibleParent(this);
+
         showAllBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/showall.png")));
+        showAllBtn.setMnemonic('a');
         showAllBtn.setText("Show All");
         showAllBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +120,12 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             }
         });
 
+        showAllBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.showAllBtn.name")); // NOI18N
+        showAllBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.showAllBtn.description")); // NOI18N
+        showAllBtn.getAccessibleContext().setAccessibleParent(this);
+
         clearBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/clear.gif")));
+        clearBtn.setMnemonic('c');
         clearBtn.setText("Clear");
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,9 +133,21 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             }
         });
 
+        clearBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.clearBtn.name")); // NOI18N
+        clearBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.clearBtn.description")); // NOI18N
+        clearBtn.getAccessibleContext().setAccessibleParent(this);
+
         lbl1.setText(bundle.getString("SEARCH_SERVICES_PANEL_STR_1")); // NOI18N
 
         lbl2.setText(bundle.getString("SEARCH_SERVICES_PANEL_STR_2")); // NOI18N
+
+        concept.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.concept.name")); // NOI18N
+        concept.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.concept.description")); // NOI18N
+        concept.getAccessibleContext().setAccessibleParent(this);
+
+        commonDataElement.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.commonDataElement.name")); // NOI18N
+        commonDataElement.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.commonDataElement.description")); // NOI18N
+        commonDataElement.getAccessibleContext().setAccessibleParent(this);
 
         org.jdesktop.layout.GroupLayout searchPanelLayout = new org.jdesktop.layout.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -167,10 +190,16 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
 
         searchPanelLayout.linkSize(new java.awt.Component[] {clearBtn, showAllBtn}, org.jdesktop.layout.GroupLayout.VERTICAL);
 
+        searchPanel.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchPanel.name")); // NOI18N
+        searchPanel.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.searchPanel.description")); // NOI18N
+
         resultPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("SEARCH_SERVICES_PANEL_BORDER_STR_2"))); // NOI18N
         resultTable.setModel(getTableModel());
         resultTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scrollPane.setViewportView(resultTable);
+        resultTable.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultTable.name")); // NOI18N
+        resultTable.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultTable.description")); // NOI18N
+        resultTable.getAccessibleContext().setAccessibleParent(resultPanel);
 
         org.jdesktop.layout.GroupLayout resultPanelLayout = new org.jdesktop.layout.GroupLayout(resultPanel);
         resultPanel.setLayout(resultPanelLayout);
@@ -187,8 +216,11 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
                 .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
+        resultPanel.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultPanel.name")); // NOI18N
+        resultPanel.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.resultPanel.description")); // NOI18N
 
         selectBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/ok.gif")));
+        selectBtn.setMnemonic('s');
         selectBtn.setText("Select");
         selectBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,13 +228,20 @@ public class ServicesSearchPanel extends javax.swing.JPanel {
             }
         });
 
+        selectBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.selectBtn.name")); // NOI18N
+        selectBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.selectBtn.description")); // NOI18N
+
         exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/duke/cabig/catrip/gui/resources/btn_icons/exit.gif")));
+        exitBtn.setMnemonic('e');
         exitBtn.setText("Exit");
         exitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitBtnActionPerformed(evt);
             }
         });
+
+        exitBtn.getAccessibleContext().setAccessibleName(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.exitBtn.name")); // NOI18N
+        exitBtn.getAccessibleContext().setAccessibleDescription(bundle1.getString("edu.duke.cabig.catrip.gui.panels.ServicesSearchPanel.exitBtn.description")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
