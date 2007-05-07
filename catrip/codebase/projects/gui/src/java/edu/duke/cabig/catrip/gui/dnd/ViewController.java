@@ -63,7 +63,7 @@ public class ViewController extends DefaultViewController implements ActionListe
         
 //        singleNodePopup.add(new JMenuItem("Get Associated Domain Model Classes"));
 //        singleNodePopup.add(new JMenuItem("Get All Domain Model Classes"));
-//        
+//
 //        miShowClass = new JMenuItem("Retrieve Semantically Equivalent Classes");
 //        miShowClass.addActionListener(this);
 //        singleNodePopup.add(miShowClass);
@@ -109,6 +109,7 @@ public class ViewController extends DefaultViewController implements ActionListe
     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == miDelete) {
+            boolean targetNodeDeleted = false;
             final Object[] selectedComponents = getHelper().getSelectedComponents();
             
             ArrayList nodes = new ArrayList();
@@ -116,6 +117,12 @@ public class ViewController extends DefaultViewController implements ActionListe
             if (selectedComponents != null)
                 for (int i = 0; i < selectedComponents.length; i++) {
                 Object selectedComponent = getHelper().getModelComponent(selectedComponents[i]);
+                
+                if ( (selectedComponent instanceof ClassNode) && !targetNodeDeleted) {
+                    ClassNode cNode = (ClassNode)selectedComponent;
+                    targetNodeDeleted = cNode.isTargetNode();
+                }
+                
                 if (selectedComponent instanceof IGraphNode) {
                     nodes.add(selectedComponent);
                     // sanjeev  // DONE - delete all links that leads in or out from any ports of the node
@@ -146,7 +153,32 @@ public class ViewController extends DefaultViewController implements ActionListe
             final IGraphLink[] _links = (IGraphLink[]) links.toArray(new IGraphLink[links.size()]);
             visualQueryDesignerPanel.getDocument().removeComponents(GraphEvent.create(_nodes, _links));
             
+            
+            // check if you have deleted all the GraphNodes from the Graph. If yes then clean the Graph properly and reset the Registry as well.
+            int comps_left = visualQueryDesignerPanel.getDocument().getComponents().getNodes().length;
+            if(comps_left == 0){
+                visualQueryDesignerPanel.getDocument().removeComponents(visualQueryDesignerPanel.getDocument().getComponents());
+                visualQueryDesignerPanel.resetID();
+                DCQLRegistry.clean();
+            } else if (comps_left == 1){ // make the remaining Node as Graph Node.
+                Object selectedComponent = visualQueryDesignerPanel.getDocument().getComponents().getNodes()[0];
+                if (selectedComponent instanceof ClassNode) {
+                    ClassNode cNode = (ClassNode)selectedComponent;
+//                    System.out.println("xxxxx TargetObject is:"+cNode.getAssociatedClassObject().getFullyQualifiedName());
+                    // first get the old target node from Registry. remove target status from it
+                    DCQLRegistry.getTargetNode().isNotTargetNode();
+                    visualQueryDesignerPanel.repaint();  // to re-render the old Target node..
+                    // set the new node as Target node.. both in the Node and in the registry..
+                    cNode.setAsTargetNode();
+                    DCQLRegistry.setTargetNode(cNode);
+                }
+            } else if ( (comps_left > 1)   && targetNodeDeleted){  // more than 1 nodes left on the Graph.. check if the deleted one is Tareget Node or not, and warn the user accordingly.
+                new JOptionPane().showMessageDialog(visualQueryDesignerPanel ,"The Target Node was deleted. \nPlease mark any remaining Node as Target Node.");
+            }
+            
+            
         }
+        
         //sanjeev : not required as properties are shown on click only..
         else if(e.getSource() == miViewProp){
             // show the properties in the properties pane..
