@@ -54,11 +54,15 @@ public class DistinctValues {
             CQLObjectResult[] objectResult = cqlResults.getObjectResult();
             for (int i = 0; i < objectResult.length; i++) {
                 CQLObjectResult objResult = objectResult[i];
-                MessageElement msgsElement = objResult.get_any()[0];                            
+                
+                    MessageElement msgsElement = objResult.get_any()[0];                            
                            // System.out.println(msgsElement);
-                String value = msgsElement.getAttributeValue(attributeName).trim();
+                    String value = msgsElement.getAttributeValue(attributeName);
                 //MessageElement msgsElement = objResult.get_any()[0];  
-                results.add(value);
+                    if (value != null) {
+                     results.add(value.trim());
+                    }
+
             }
         }        
         return results;
@@ -66,9 +70,9 @@ public class DistinctValues {
     
     public static void main(String[] args) {
         try {
-        Set results = DistinctValues.getDistinctValues("http://152.16.96.114/wsrf-0216/services/cagrid/CAE",
-                    "edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade",
-                    "totalScore");
+        Set results = DistinctValues.getDistinctValues("https://152.16.96.114:443/wsrf/services/cagrid/CAE",
+                    "edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers",
+                    "estrogenReceptor");
         for (Object i:results) {
             System.out.println(i);
         }
