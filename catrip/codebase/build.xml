@@ -48,9 +48,9 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
-	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp," />
+	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice" />
 	<!-- The name should be the path relative from projects.dir.  -->
-	<property name="services.list" value="CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, queryservice " />
+	<property name="services.list" value="CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice " />
 
 	<!-- ================================================================================ -->
 	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
@@ -176,10 +176,10 @@
 	</target>
 
 	<!-- =============================================================== -->
-	<!-- caTissueCAEDataService                                          -->
+	<!-- CAEDataServiceV2                                          -->
 	<!-- =============================================================== -->
 
-	<target name="build-caTissueCAEDataService" depends="prepare" description="Builds the caTissueCAEDataService project">
+	<target name="build-CAEDataServiceV2" depends="prepare" description="Builds the CAEDataServiceV2 project">
 		<resolveDependencies extdir="${projects.dir}/CAEDataServiceV2">
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
@@ -190,7 +190,7 @@
 	<!-- caTissueCoreDataService                                         -->
 	<!-- =============================================================== -->
 
-	<target name="build-caTissueCoreDataService" depends="prepare" description="Builds the caTissueCoreDataService project">
+	<target name="build-CaTissueCoreDataServiceV2" depends="prepare" description="Builds the CaTissueCoreDataServiceV2 project">
 		<resolveDependencies extdir="${projects.dir}/CaTissueCoreDataServiceV2">
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
@@ -198,10 +198,10 @@
 	</target>
 
 	<!-- =============================================================== -->
-	<!-- CGEMSDataService                                         -->
+	<!-- CGEMSDataServiceV2                                         -->
 	<!-- =============================================================== -->
 
-	<target name="build-CGEMSDataService" depends="prepare" description="Builds the CGEMSDataService project">
+	<target name="build-CGEMSDataServiceV2" depends="prepare" description="Builds the CGEMSDataServiceV2 project">
 		<resolveDependencies extdir="${projects.dir}/CGEMSDataServiceV2">
 			<artifact refid="localsqkquery.jars"/>
 		</resolveDependencies>
@@ -219,6 +219,16 @@
 		<ant dir="${projects.dir}/TumorRegistryDataService" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
+	<!-- =============================================================== -->
+	<!-- caTIESDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-caTIESDataService" depends="prepare" description="Builds the caTIESDataService project">
+		<resolveDependencies extdir="${projects.dir}/caTIESDataService">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/caTIESDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
 
 	<!-- =============================================================== -->
 	<!-- QuerySharingService                                         -->
@@ -230,8 +240,6 @@
 		</resolveDependencies>
 		<ant dir="${projects.dir}/queryservice" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
-
-
 
 	<!-- =============================================================== -->
 	<!-- queryengine2                                         -->
