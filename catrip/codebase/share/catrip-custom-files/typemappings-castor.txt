@@ -1,0 +1,6 @@
+<ns3:typeMapping xmlns:ns3="http://xml.apache.org/axis/wsdd/" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://Qbt.nhlbi/1.0/gov.nih.nhlbi.icbl.qbt.datamodel.pubchem" encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nhlbi.icbl.qbt.datamodel.pubchem.Substance" qname="ns2:Substance" />
+<ns3:typeMapping xmlns:ns3="http://xml.apache.org/axis/wsdd/" xmlns:ns1="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns2="gme://Qbt.nhlbi/1.0/gov.nih.nhlbi.icbl.qbt.datamodel.pubchem" encodingStyle="" serializer="gov.nih.nci.cagrid.encoding.SDKSerializerFactory" deserializer="gov.nih.nci.cagrid.encoding.SDKDeserializerFactory" type="ns1:gov.nih.nhlbi.icbl.qbt.datamodel.pubchem.SubstanceSynonym" qname="ns2:SubstanceSynonym" />
+
+
+
+<parameter name="castorMapping" value="qbt-castor-mappings.xml" />

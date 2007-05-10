@@ -1,0 +1,41 @@
+1. start globus with -nosec option in console mode.
+   look at the list of services.
+   stop globus
+2. deploy Index service projects>index>ant deployIndexGlobus
+   start globus 
+   look at list for Default index service.
+   stop globus
+3. Create Service with Introduce	
+	configure hibernate config qbt-hibernate.cfg.xml
+4. Post Config (in service folder)
+	replace /schema/<service>/1_gov.nih.nci.cagrid.CQLQuery.xsd with catrip-custom-files\schema\1_gov.nih.nci.cagrid.CQLQuery.xsd		
+	copy catrip-custom-files\catrip-extended-jars to lib (replace any existing jars)
+	copy  domain jar from catrip-custom-files\domain-model to lib
+	update server-config.wsdd and client-config.wsdd with type mappings and with castor mappings (type mappings are in catrip-custom-files/typemappings-castor.txt)
+	update etc/registration.xml with index service http://localhost:8181/wsrf/services/DefaultIndexService
+
+	ant all
+	ant deployGlobus
+	
+   	start globus 
+   	look at list for our data service
+
+5. Service Discovery
+	projects>discovery>DiscoveryClient.java
+	In main method
+	specify index service URL in else class
+	change the flag to false 
+
+	ant all and ant runClient 
+	u should get the list of services avialable ..
+	
+6. Invoke the discovered service and execute some CQL ... 
+	
+	Introduction to CQL ...
+	Go thru CQL files catrip-custom-files/cql 
+	update client class
+	ant all
+	run client ...
+
+
+
