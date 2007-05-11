@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.upmc.opi.caBIG.caTIES.database.domain">
+  <class name="IdentifiedPathologyReport"
+  	table="IDENTIFIED_PATHOLOGY_REPORT" mutable="true" lazy="true"
+  	dynamic-update="false">
+  	<!--    <cache usage="read-write" /> -->
+  	<id name="id" type="java.lang.Long" column="ID">
+  		<generator class="hilo" />
+  	</id>
+  	<version name="version" type="java.lang.Long" column="VERSION" />
+  	<property name="uuid" type="java.lang.String" column="UUID" length="45" />
+  	<property name="deidentifiedId" type="java.lang.String"	column="DEIDENTIFIED_ID" length="45" />
+  	<property name="documentText" type="java.lang.String" column="DOCUMENT_TEXT" length="65537" />
+  	<property name="accessionNumber" type="java.lang.String" column="ACCESSION_NUMBER" />
+  	<property name="collectionDateTime" type="java.util.Date" column="COLLECTION_DATE_TIME" />
+  	<property name="orderingPhysicianId" type="java.lang.String" column="ORDERING_PHYSICIAN_ID" />
+  	<property name="honestBrokerComment" type="java.lang.String" column="HONEST_BROKER_COMMENT" length="65537" />
+  	<many-to-one name="identifiedPatient"
+  		class="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient"
+  		column="PATIENT_ID" lazy="proxy" cascade="none" />
+  </class>
+</hibernate-mapping>
+
