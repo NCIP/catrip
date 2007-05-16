@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 import java.util.regex.Pattern;
-
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -23,9 +21,11 @@ import javax.swing.table.TableModel;
 import edu.duke.cabig.catrip.gui.common.AttributeBean;
 import edu.duke.cabig.catrip.gui.common.ClassBean;
 import edu.duke.cabig.catrip.gui.components.CPanel;
+import edu.duke.cabig.catrip.gui.query.OnDemandCQLExecutor;
 import edu.duke.cabig.catrip.gui.util.GUIConstants;
 import edu.duke.cabig.catrip.gui.util.LargeTextDialog;
 import edu.duke.cabig.catrip.gui.util.TableSorter;
+import java.util.Set;
 
 /**
  * Out Panel to show the results from the DCQL Query execution.
@@ -45,17 +45,30 @@ public class OutputPanel extends CPanel {
         }
         outputTable.addMouseListener(new java.awt.event.MouseListener() {
         	public void mouseClicked(java.awt.event.MouseEvent e) {
-        		if (e.getClickCount() == 2)  {
-        		String columnName = outputTable.getColumnName(outputTable.getSelectedColumn());
-        		String strValue = (String)outputTable.getValueAt(outputTable.getSelectedRow(), outputTable.getSelectedColumn());
-        		boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
-        		if (bigText){
-	        		LargeTextDialog  f = new LargeTextDialog(columnName, strValue);
-	        		f.setLocationRelativeTo(null); 
-	        		// f.setLocation(e.getX(), e.getY());
-	        	    f.setVisible(true);
-        		}
-        		}
+        	  if (e.getClickCount() == 2)  {
+                    String columnName = outputTable.getColumnName(outputTable.getSelectedColumn());
+                    String strValue = (String)outputTable.getValueAt(outputTable.getSelectedRow(), outputTable.getSelectedColumn());
+                    //boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
+                    boolean bigText = strValue.startsWith("bigId:")?true:false;
+                    if (bigText){
+                        String report = "";
+                        try {
+                                //LargeTextDialog  f = new LargeTextDialog(columnName, strValue);
+                            //get id data from caTIES service
+                            String url = "https://localhost:8443/wsrf/services/cagrid/CaTIES";
+                            Set results = OnDemandCQLExecutor.execute(url,OnDemandCQLExecutor.getCaTIESCQL(strValue),"documentText");
+                            for (Object i:results) {
+                                report = i.toString(); 
+                            }                            
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        LargeTextDialog  f = new LargeTextDialog(columnName, report);
+                        f.setLocationRelativeTo(null); 
+                        // f.setLocation(e.getX(), e.getY());
+                        f.setVisible(true);
+                    }
+        	  }
         	}
         	public void mousePressed(java.awt.event.MouseEvent e) {
         	}
@@ -311,7 +324,8 @@ class TextWithIconCellRenderer extends DefaultTableCellRenderer {
 
         if (value != null ) {
             String strValue = value.toString().trim();
-            boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
+            //boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
+            boolean bigText = strValue.startsWith("bigId:")?true:false;
             if (bigText){
                 origRet.setIcon(new javax.swing.ImageIcon(GUIConstants.LARGE_TEXT_ICON) );
                 origRet.setHorizontalTextPosition(SwingConstants.RIGHT);
