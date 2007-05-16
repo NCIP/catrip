@@ -111,15 +111,15 @@ public class IdentifiedPathologyReport implements java.io.Serializable
     }
 
 
-    private edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient patient;
+    private edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient identifiedPatient;
 
     public edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient getIdentifiedPatient() {
-        return patient;
+        return identifiedPatient;
     }
 
     public void setIdentifiedPatient(
-            edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient patient) {
-        this.patient = patient;
+            edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient identifiedPatient) {
+        this.identifiedPatient = identifiedPatient;
     }
 
 

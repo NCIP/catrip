@@ -12,7 +12,7 @@
   	<version name="version" type="java.lang.Long" column="VERSION" />
   	<property name="uuid" type="java.lang.String" column="UUID" length="45" />
   	<property name="deidentifiedId" type="java.lang.String"	column="DEIDENTIFIED_ID" length="45" />
-  	<property name="documentText" type="java.lang.String" column="DOCUMENT_TEXT" length="65537" />
+  	<property name="documentText" type="java.lang.String" column="DOCUMENT_TEXT" length="50" />
   	<property name="accessionNumber" type="java.lang.String" column="ACCESSION_NUMBER" />
   	<property name="collectionDateTime" type="java.util.Date" column="COLLECTION_DATE_TIME" />
   	<property name="orderingPhysicianId" type="java.lang.String" column="ORDERING_PHYSICIAN_ID" />

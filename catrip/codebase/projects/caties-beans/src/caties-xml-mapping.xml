@@ -1,210 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN" "http://www.castor.org/mapping.dtd">
-
 <mapping>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.DistributionProtocol">
-    <map-to xml="DistributionProtocol" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="title" type="string">
-      <bind-xml name="title" node="attribute" />
-    </field>
-    <field name="shortTitle" type="string">
-      <bind-xml name="shortTitle" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Application">
-    <map-to xml="Application" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="string">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-    <field name="revision" type="string">
-      <bind-xml name="revision" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport">
-    <map-to xml="IdentifiedPathologyReport" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="organizationId" type="long">
-      <bind-xml name="organizationId" node="attribute" />
-    </field>
-    <field name="patientId" type="long">
-      <bind-xml name="patientId" node="attribute" />
-    </field>
-    <field name="deidentifiedId" type="string">
-      <bind-xml name="deidentifiedId" node="attribute" />
-    </field>
-    <field name="documentText" type="string">
-      <bind-xml name="documentText" node="attribute" />
-    </field>
-    <field name="accessionNumber" type="string">
-      <bind-xml name="accessionNumber" node="attribute" />
-    </field>
-    <field name="collectionDateTime" type="date">
-      <bind-xml name="collectionDateTime" node="attribute" />
-    </field>
-    <field name="honestBrokerComment" type="string">
-      <bind-xml name="honestBrokerComment" node="attribute" />
-    </field>
-    <field name="orderingPhysicianId" type="string">
-      <bind-xml name="orderingPhysicianId" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.ReportSection">
-    <map-to xml="ReportSection" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="pathologyReportId" type="long">
-      <bind-xml name="pathologyReportId" node="attribute" />
-    </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-    <field name="startOffset" type="long">
-      <bind-xml name="startOffset" node="attribute" />
-    </field>
-    <field name="endOffset" type="long">
-      <bind-xml name="endOffset" node="attribute" />
-    </field>
-    <field name="documentFragment" type="string">
-      <bind-xml name="documentFragment" node="attribute" />
-    </field>
-    <field name="conceptCodeSet" type="string">
-      <bind-xml name="conceptCodeSet" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Diagnosis">
-    <map-to xml="Diagnosis" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="specimenId" type="long">
-      <bind-xml name="specimenId" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.OrderItem">
-    <map-to xml="OrderItem" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="orderSetId" type="long">
-      <bind-xml name="orderSetId" node="attribute" />
-    </field>
-    <field name="requestId" type="long">
-      <bind-xml name="requestId" node="attribute" />
-    </field>
-    <field name="fillId" type="long">
-      <bind-xml name="fillId" node="attribute" />
-    </field>
-    <field name="pathologyReportId" type="long">
-      <bind-xml name="pathologyReportId" node="attribute" />
-    </field>
-    <field name="status" type="string">
-      <bind-xml name="status" node="attribute" />
-    </field>
-    <field name="comment" type="string">
-      <bind-xml name="comment" node="attribute" />
-    </field>
-    <field name="orderItemSequence" type="integer">
-      <bind-xml name="orderItemSequence" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.ConceptReferent">
-    <map-to xml="ConceptReferent" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="patientId" type="long">
-      <bind-xml name="patientId" node="attribute" />
-    </field>
-    <field name="pathologyReportId" type="long">
-      <bind-xml name="pathologyReportId" node="attribute" />
-    </field>
-    <field name="specimenId" type="long">
-      <bind-xml name="specimenId" node="attribute" />
-    </field>
-    <field name="acquisitionProcedureId" type="long">
-      <bind-xml name="acquisitionProcedureId" node="attribute" />
-    </field>
-    <field name="diagnosisId" type="long">
-      <bind-xml name="diagnosisId" node="attribute" />
-    </field>
-    <field name="topologyId" type="long">
-      <bind-xml name="topologyId" node="attribute" />
-    </field>
-    <field name="conceptClassificationId" type="long">
-      <bind-xml name="conceptClassificationId" node="attribute" />
-    </field>
-    <field name="conceptId" type="long">
-      <bind-xml name="conceptId" node="attribute" />
-    </field>
-    <field name="documentFragment" type="string">
-      <bind-xml name="documentFragment" node="attribute" />
-    </field>
-    <field name="startOffset" type="long">
-      <bind-xml name="startOffset" node="attribute" />
-    </field>
-    <field name="endOffset" type="long">
-      <bind-xml name="endOffset" node="attribute" />
-    </field>
-    <field name="isModifier" type="boolean">
-      <bind-xml name="isModifier" node="attribute" />
-    </field>
-    <field name="isNegated" type="boolean">
-      <bind-xml name="isNegated" node="attribute" />
-    </field>
-  </class>
+
   <class name="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient">
-    <map-to xml="IdentifiedPatient" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
+    <map-to xml="IdentifiedPatientImpl" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -214,9 +13,10 @@
     <field name="uuid" type="string">
       <bind-xml name="uuid" node="attribute" />
     </field>
-    <field name="organizationId" type="long">
+  <!--  <field name="organizationId" type="long">
       <bind-xml name="organizationId" node="attribute" />
     </field>
+    -->
     <field name="deidentifiedId" type="string">
       <bind-xml name="deidentifiedId" node="attribute" />
     </field>
@@ -250,21 +50,12 @@
     <field name="maritalStatus" type="string">
       <bind-xml name="maritalStatus" node="attribute" />
     </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.AcquisitionProcedure">
-    <map-to xml="AcquisitionProcedure" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
+     <field name="identifiedPathologyReportCollection" type="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport" collection="collection">
+         <bind-xml name="identifiedPathologyReportCollection"/>
     </field>
   </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.ConceptClassification">
-    <map-to xml="ConceptClassification" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
+  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReport">
+    <map-to xml="IdentifiedPathologyReportImpl" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
@@ -274,465 +65,56 @@
     <field name="uuid" type="string">
       <bind-xml name="uuid" node="attribute" />
     </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Concept">
-    <map-to xml="Concept" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="cui" type="string">
-      <bind-xml name="cui" node="attribute" />
-    </field>
-    <field name="tui" type="string">
-      <bind-xml name="tui" node="attribute" />
-    </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-    <field name="semanticType" type="string">
-      <bind-xml name="semanticType" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.PathologyReport">
-    <map-to xml="PathologyReport" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="organizationId" type="long">
+ <!--   <field name="organizationId" type="long">
       <bind-xml name="organizationId" node="attribute" />
     </field>
+    
     <field name="patientId" type="long">
       <bind-xml name="patientId" node="attribute" />
-    </field>
-    <field name="originalId" type="string">
-      <bind-xml name="originalId" node="attribute" />
-    </field>
-    <field name="collectionDateTime" type="date">
-      <bind-xml name="collectionDateTime" node="attribute" />
-    </field>
-    <field name="patientAgeAtCollection" type="integer">
-      <bind-xml name="patientAgeAtCollection" node="attribute" />
-    </field>
-    <field name="patientAgeAtCollectionMvr" type="string">
-      <bind-xml name="patientAgeAtCollectionMvr" node="attribute" />
+    </field> 
+    -->
+    <field name="deidentifiedId" type="string">
+      <bind-xml name="deidentifiedId" node="attribute" />
     </field>
     <field name="documentText" type="string">
       <bind-xml name="documentText" node="attribute" />
     </field>
-    <field name="documentXml" type="string">
-      <bind-xml name="documentXml" node="attribute" />
+    <field name="accessionNumber" type="string">
+      <bind-xml name="accessionNumber" node="attribute" />
     </field>
-    <field name="documentBinary" type="string">
-      <bind-xml name="documentBinary" node="attribute" />
-    </field>
-    <field name="conceptCodeSet" type="string">
-      <bind-xml name="conceptCodeSet" node="attribute" />
-    </field>
-    <field name="classifiedConceptCodeSet" type="string">
-      <bind-xml name="classifiedConceptCodeSet" node="attribute" />
-    </field>
-    <field name="isFlaggedForReview" type="boolean">
-      <bind-xml name="isFlaggedForReview" node="attribute" />
-    </field>
-    <field name="isTissueAvailable" type="boolean">
-      <bind-xml name="isTissueAvailable" node="attribute" />
-    </field>
-    <field name="isQuarantined" type="boolean">
-      <bind-xml name="isQuarantined" node="attribute" />
-    </field>
-    <field name="reviewComment" type="string">
-      <bind-xml name="reviewComment" node="attribute" />
+    <field name="collectionDateTime" type="date">
+      <bind-xml name="collectionDateTime" node="attribute" />
     </field>
     <field name="honestBrokerComment" type="string">
       <bind-xml name="honestBrokerComment" node="attribute" />
     </field>
-    <field name="primaryDiagnosis" type="string">
-      <bind-xml name="primaryDiagnosis" node="attribute" />
+    <field name="orderingPhysicianId" type="string">
+      <bind-xml name="orderingPhysicianId" node="attribute" />
     </field>
-    <field name="primaryBodyPart" type="string">
-      <bind-xml name="primaryBodyPart" node="attribute" />
-    </field>
-    <field name="primaryProcedure" type="string">
-      <bind-xml name="primaryProcedure" node="attribute" />
+    <field name="identifiedPatient" type="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient">
+           <bind-xml name="identifiedPatient"/>
     </field>
   </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Specimen">
-    <map-to xml="Specimen" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
+
+    
+    
+    
+    
+
+
+  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPathologyReportDocument">
+    <map-to xml="IdentifiedPathologyReportDocument" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
     <field name="id" type="long">
       <bind-xml name="id" node="attribute" />
     </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="parentId" type="long">
-      <bind-xml name="parentId" node="attribute" />
-    </field>
-    <field name="pathologyReportId" type="long">
-      <bind-xml name="pathologyReportId" node="attribute" />
-    </field>
-    <field name="partNumber" type="integer">
-      <bind-xml name="partNumber" node="attribute" />
-    </field>
-    <field name="conceptCodeSet" type="string">
-      <bind-xml name="conceptCodeSet" node="attribute" />
+   <field name="documentText" type="string">
+      <bind-xml name="documentText" node="attribute" />
+   </field>
+   <field name="documentId" type="string">
+      <bind-xml name="documentId" node="attribute" />
     </field>
   </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.OrderSet">
-    <map-to xml="OrderSet" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="distributionProtocolAssignmentId" type="long">
-      <bind-xml name="distributionProtocolAssignmentId" node="attribute" />
-    </field>
-    <field name="submissionDate" type="date">
-      <bind-xml name="submissionDate" node="attribute" />
-    </field>
-    <field name="completionDate" type="date">
-      <bind-xml name="completionDate" node="attribute" />
-    </field>
-    <field name="status" type="string">
-      <bind-xml name="status" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.User">
-    <map-to xml="User" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="lastName" type="string">
-      <bind-xml name="lastName" node="attribute" />
-    </field>
-    <field name="firstName" type="string">
-      <bind-xml name="firstName" node="attribute" />
-    </field>
-    <field name="distinguishedName" type="string">
-      <bind-xml name="distinguishedName" node="attribute" />
-    </field>
-    <field name="addressId" type="long">
-      <bind-xml name="addressId" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Execution">
-    <map-to xml="Execution" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="applicationId" type="long">
-      <bind-xml name="applicationId" node="attribute" />
-    </field>
-    <field name="pathologyReportId" type="long">
-      <bind-xml name="pathologyReportId" node="attribute" />
-    </field>
-    <field name="identifiedPathologyReportId" type="long">
-      <bind-xml name="identifiedPathologyReportId" node="attribute" />
-    </field>
-    <field name="startTime" type="date">
-      <bind-xml name="startTime" node="attribute" />
-    </field>
-    <field name="endTime" type="date">
-      <bind-xml name="endTime" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Organization">
-    <map-to xml="Organization" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="parentId" type="long">
-      <bind-xml name="parentId" node="attribute" />
-    </field>
-    <field name="addressId" type="long">
-      <bind-xml name="addressId" node="attribute" />
-    </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-    <field name="abbreviationName" type="string">
-      <bind-xml name="abbreviationName" node="attribute" />
-    </field>
-    <field name="publicHandle" type="string">
-      <bind-xml name="publicHandle" node="attribute" />
-    </field>
-    <field name="privateHandle" type="string">
-      <bind-xml name="privateHandle" node="attribute" />
-    </field>
-    <field name="indexHandle" type="string">
-      <bind-xml name="indexHandle" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.UserOrganization">
-    <map-to xml="UserOrganization" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="userId" type="long">
-      <bind-xml name="userId" node="attribute" />
-    </field>
-    <field name="organizationId" type="long">
-      <bind-xml name="organizationId" node="attribute" />
-    </field>
-    <field name="role" type="string">
-      <bind-xml name="role" node="attribute" />
-    </field>
-    <field name="startDate" type="date">
-      <bind-xml name="startDate" node="attribute" />
-    </field>
-    <field name="endDate" type="date">
-      <bind-xml name="endDate" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.DistributionProtocolAssignment">
-    <map-to xml="DistributionProtocolAssignment" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="distributionProtocolOrganizationId" type="long">
-      <bind-xml name="distributionProtocolOrganizationId" node="attribute" />
-    </field>
-    <field name="userId" type="long">
-      <bind-xml name="userId" node="attribute" />
-    </field>
-    <field name="role" type="string">
-      <bind-xml name="role" node="attribute" />
-    </field>
-    <field name="startDate" type="date">
-      <bind-xml name="startDate" node="attribute" />
-    </field>
-    <field name="endDate" type="date">
-      <bind-xml name="endDate" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.DistributionProtocolOrganization">
-    <map-to xml="DistributionProtocolOrganization" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="distributionProtocolId" type="long">
-      <bind-xml name="distributionProtocolId" node="attribute" />
-    </field>
-    <field name="organizationId" type="long">
-      <bind-xml name="organizationId" node="attribute" />
-    </field>
-    <field name="role" type="string">
-      <bind-xml name="role" node="attribute" />
-    </field>
-    <field name="irbIdentifier" type="string">
-      <bind-xml name="irbIdentifier" node="attribute" />
-    </field>
-    <field name="irbApprovalDate" type="date">
-      <bind-xml name="irbApprovalDate" node="attribute" />
-    </field>
-    <field name="irbExpirationDate" type="date">
-      <bind-xml name="irbExpirationDate" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Query">
-    <map-to xml="Query" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="distributionProtocolAssignmentId" type="long">
-      <bind-xml name="distributionProtocolAssignmentId" node="attribute" />
-    </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-    <field name="description" type="string">
-      <bind-xml name="description" node="attribute" />
-    </field>
-    <field name="sqlText" type="string">
-      <bind-xml name="sqlText" node="attribute" />
-    </field>
-    <field name="xmlText" type="string">
-      <bind-xml name="xmlText" node="attribute" />
-    </field>
-    <field name="startDate" type="date">
-      <bind-xml name="startDate" node="attribute" />
-    </field>
-    <field name="endDate" type="date">
-      <bind-xml name="endDate" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Patient">
-    <map-to xml="Patient" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="organizationId" type="long">
-      <bind-xml name="organizationId" node="attribute" />
-    </field>
-    <field name="race" type="string">
-      <bind-xml name="race" node="attribute" />
-    </field>
-    <field name="ethnicity" type="string">
-      <bind-xml name="ethnicity" node="attribute" />
-    </field>
-    <field name="birthDate" type="date">
-      <bind-xml name="birthDate" node="attribute" />
-    </field>
-    <field name="gender" type="string">
-      <bind-xml name="gender" node="attribute" />
-    </field>
-    <field name="conceptCodeSet" type="string">
-      <bind-xml name="conceptCodeSet" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedSection">
-    <map-to xml="IdentifiedSection" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="pathologyReportId" type="long">
-      <bind-xml name="pathologyReportId" node="attribute" />
-    </field>
-    <field name="name" type="string">
-      <bind-xml name="name" node="attribute" />
-    </field>
-    <field name="documentFragment" type="string">
-      <bind-xml name="documentFragment" node="attribute" />
-    </field>
-    <field name="startOffset" type="long">
-      <bind-xml name="startOffset" node="attribute" />
-    </field>
-    <field name="endOffset" type="long">
-      <bind-xml name="endOffset" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Topology">
-    <map-to xml="Topology" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="specimenId" type="long">
-      <bind-xml name="specimenId" node="attribute" />
-    </field>
-    <field name="reportSectionId" type="long">
-      <bind-xml name="reportSectionId" node="attribute" />
-    </field>
-    <field name="diagnosisId" type="long">
-      <bind-xml name="diagnosisId" node="attribute" />
-    </field>
-  </class>
-  <class name="edu.upmc.opi.caBIG.caTIES.database.domain.Address">
-    <map-to xml="Address" ns-uri="gme://caTIES2.0.caBIG/2.0/edu.upmc.opi.caBIG.caTIES.database.domain" />
-    <field name="id" type="long">
-      <bind-xml name="id" node="attribute" />
-    </field>
-    <field name="version" type="long">
-      <bind-xml name="version" node="attribute" />
-    </field>
-    <field name="uuid" type="string">
-      <bind-xml name="uuid" node="attribute" />
-    </field>
-    <field name="street" type="string">
-      <bind-xml name="street" node="attribute" />
-    </field>
-    <field name="city" type="string">
-      <bind-xml name="city" node="attribute" />
-    </field>
-    <field name="state" type="string">
-      <bind-xml name="state" node="attribute" />
-    </field>
-    <field name="country" type="string">
-      <bind-xml name="country" node="attribute" />
-    </field>
-    <field name="zipCode" type="string">
-      <bind-xml name="zipCode" node="attribute" />
-    </field>
-    <field name="phoneNumber" type="string">
-      <bind-xml name="phoneNumber" node="attribute" />
-    </field>
-    <field name="faxNumber" type="string">
-      <bind-xml name="faxNumber" node="attribute" />
-    </field>
-    <field name="emailAddress" type="string">
-      <bind-xml name="emailAddress" node="attribute" />
-    </field>
-  </class>
+  
+
 </mapping>
 
