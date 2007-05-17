@@ -69,6 +69,17 @@
    <ns2:SemanticMetadata conceptCode="C12345" conceptDefinition="Pathology Report." conceptName="Pathology Report" order="0" xsi:type="ns2:SemanticMetadata"/>
   </ns2:UMLClass>
 
+  <ns2:UMLClass className="IdentifiedPathologyReportDocument" id="EAID_90D59C96_1A3F_4e1e_9A15_D7553C50F933-CATIES" packageName="edu.upmc.opi.caBIG.caTIES.database.domain" projectName="caTIES" projectVersion="1" xsi:type="ns2:UMLClass" xmlns:ns2="gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common">
+   <ns2:umlAttributeCollection>
+    <ns2:UMLAttribute dataTypeName="java.lang.Long" name="id" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Identifier" order="0" xsi:type="ns2:SemanticMetadata"/>
+    </ns2:UMLAttribute>
+   <ns2:UMLAttribute dataTypeName="java.lang.String" name="documentText" publicID="270979220" version="1.0" xsi:type="ns2:UMLAttribute">
+     <ns2:SemanticMetadata conceptCode="c12345" conceptDefinition="description." conceptName="Document Text" order="0" xsi:type="ns2:SemanticMetadata"/>
+   </ns2:UMLAttribute>
+  </ns2:umlAttributeCollection>
+   <ns2:SemanticMetadata conceptCode="C12345" conceptDefinition="Pathology Report." conceptName="Pathology Report" order="0" xsi:type="ns2:SemanticMetadata"/>
+  </ns2:UMLClass>
 
  </ns1:exposedUMLClassCollection>
  
