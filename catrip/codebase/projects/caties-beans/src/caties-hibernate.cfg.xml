@@ -15,7 +15,7 @@
 	<property name="show_sql">true</property>
 
 	 <property name="connection.url">
-		jdbc:mysql://catrip1:3306/caties_test
+		jdbc:mysql://catrip1:3306/caties
 	</property> 
 
 	<property name="connection.username">root</property>
