@@ -11,5 +11,9 @@
   	</id>
   	<property name="documentText" type="java.lang.String" column="DOCUMENT_TEXT" length="65537" />
         <property name="documentId" type="java.lang.String" column="DOC_ID" length="50"/>
+        
+              	<one-to-one name="identifiedPathologyReport"
+  		class="IdentifiedPathologyReport"
+  		outer-join="false" cascade="all" fetch="join" />  
   </class>
 </hibernate-mapping>

@@ -122,7 +122,16 @@ public class IdentifiedPathologyReport implements java.io.Serializable
         this.identifiedPatient = identifiedPatient;
     }
 
+    private IdentifiedPathologyReportDocument identifiedPathologyReportDocument;
+    
+    public IdentifiedPathologyReportDocument getIdentifiedPathologyReportDocument() {
+        return identifiedPathologyReportDocument;
+    }
 
+    public void setIdentifiedPathologyReportDocument(IdentifiedPathologyReportDocument identifiedPathologyReportDocument) {
+        this.identifiedPathologyReportDocument = identifiedPathologyReportDocument;
+    }    
+    
  
     public int hashCode() {
         int h = 0;

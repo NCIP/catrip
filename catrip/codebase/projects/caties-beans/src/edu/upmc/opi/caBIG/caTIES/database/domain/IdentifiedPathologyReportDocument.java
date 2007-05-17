@@ -52,4 +52,16 @@ public class IdentifiedPathologyReportDocument {
         this.documentId = documentId;
     }
     
+    
+    private IdentifiedPathologyReport identifiedPathologyReport;
+    
+    public IdentifiedPathologyReport getIdentifiedPathologyReport() {
+        return identifiedPathologyReport;
+    }
+
+    public void setIdentifiedPathologyReport(
+            IdentifiedPathologyReport identifiedPathologyReport) {
+        this.identifiedPathologyReport = identifiedPathologyReport;
+    } 
+    
 }

@@ -17,9 +17,15 @@
   	<property name="collectionDateTime" type="java.util.Date" column="COLLECTION_DATE_TIME" />
   	<property name="orderingPhysicianId" type="java.lang.String" column="ORDERING_PHYSICIAN_ID" />
   	<property name="honestBrokerComment" type="java.lang.String" column="HONEST_BROKER_COMMENT" length="65537" />
-  	<many-to-one name="identifiedPatient"
+  	
+        <many-to-one name="identifiedPatient"
   		class="edu.upmc.opi.caBIG.caTIES.database.domain.IdentifiedPatient"
   		column="PATIENT_ID" lazy="proxy" cascade="none" />
-  </class>
+                
+	<one-to-one name="identifiedPathologyReportDocument" class="IdentifiedPathologyReportDocument" 
+                lazy="proxy" constrained="true"/>
+
+            
+         </class>
 </hibernate-mapping>
 
