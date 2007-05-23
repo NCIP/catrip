@@ -328,6 +328,8 @@ public class CommandPanel extends CPanel {
             HashMap cMap = SimpleGuiRegistry.getClassNameReturnedAttributeMap();
             String[] compositMapKeys = new String[SimpleGuiRegistry.getNumReturnedAttribute()];
             HashMap colNamesMap = new HashMap();
+            HashMap<String, String> serviceURLsMap = new HashMap<String, String>();
+            
             
             int k = 0;
             Iterator keys = cMap.keySet().iterator();
@@ -344,6 +346,7 @@ public class CommandPanel extends CPanel {
                     AttributeBean aBean = (AttributeBean)cBean.getAttributes().get(i) ;
                     compositMapKeys[k] = cBean.getFullyQualifiedName()+"-"+ attArray[i];
                     colNamesMap.put(compositMapKeys[k], aBean.getCDEName());//cBean.getCDEName()+" "+aBean.getCDEName());  // TODO - show the class CDE name also..
+                    serviceURLsMap.put(compositMapKeys[k], cBean.getServiceUrl());
                     k++;
                 }
             }
@@ -355,13 +358,15 @@ public class CommandPanel extends CPanel {
             // final variables just for the inner class.
             final List _resultList = resultList;
             final HashMap _colNamesMap = colNamesMap;
+            final HashMap _serviceURLsMap = serviceURLsMap;
             final String[] _compositMapKeys = compositMapKeys;
             final boolean[] _atlertaneCols = atlertaneCols;
             final String txt = "   Total Row Count : "+resultList.size();
             
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    getMainFrame().getOutputPanel().setMapResults(_resultList, _colNamesMap, _compositMapKeys, _atlertaneCols);
+//                    getMainFrame().getOutputPanel().setMapResults(_resultList, _colNamesMap, _compositMapKeys, _atlertaneCols);
+                    getMainFrame().getOutputPanel().setMapResults(_resultList, _colNamesMap, _compositMapKeys, _atlertaneCols, _serviceURLsMap);
                     resultCountLbl.setText(txt);
                     GUIConstants.resultAvailable = true;
                     

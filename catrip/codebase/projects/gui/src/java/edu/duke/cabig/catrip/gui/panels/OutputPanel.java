@@ -39,45 +39,53 @@ public class OutputPanel extends CPanel {
     public OutputPanel() {
         initComponents();
         if (SORT_ON){
-        //Set up tool tips for column headers.
-        getOutputTable().getTableHeader().setToolTipText(
-                "Click to specify sorting; Control-Click to specify secondary sorting");
+            //Set up tool tips for column headers.
+            getOutputTable().getTableHeader().setToolTipText(
+                    "Click to specify sorting; Control-Click to specify secondary sorting");
         }
         outputTable.addMouseListener(new java.awt.event.MouseListener() {
-        	public void mouseClicked(java.awt.event.MouseEvent e) {
-        	  if (e.getClickCount() == 2)  {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                if (e.getClickCount() == 2)  {
                     String columnName = outputTable.getColumnName(outputTable.getSelectedColumn());
                     String strValue = (String)outputTable.getValueAt(outputTable.getSelectedRow(), outputTable.getSelectedColumn());
+                    
                     //boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
                     boolean bigText = strValue.startsWith("bigId:")?true:false;
                     if (bigText){
+                        
                         String report = "";
+                        
                         try {
-                                //LargeTextDialog  f = new LargeTextDialog(columnName, strValue);
+                            //LargeTextDialog  f = new LargeTextDialog(columnName, strValue);
                             //get id data from caTIES service
+                            
+                            // get the service URL from table model for that column..
                             String url = "https://localhost:8443/wsrf/services/cagrid/CaTIES";
+                            ColoredDefaultTableModel colModel = (ColoredDefaultTableModel) outputTable.getModel();
+                            url = colModel.getServiceURL( outputTable.getSelectedColumn() );
+                            
                             Set results = OnDemandCQLExecutor.execute(url,OnDemandCQLExecutor.getCaTIESCQL(strValue),"documentText");
                             for (Object i:results) {
-                                report = i.toString(); 
-                            }                            
+                                report = i.toString();
+                            }
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
                         LargeTextDialog  f = new LargeTextDialog(columnName, report);
-                        f.setLocationRelativeTo(null); 
+                        f.setLocationRelativeTo(null);
                         // f.setLocation(e.getX(), e.getY());
                         f.setVisible(true);
                     }
-        	  }
-        	}
-        	public void mousePressed(java.awt.event.MouseEvent e) {
-        	}
-        	public void mouseReleased(java.awt.event.MouseEvent e) {
-        	}
-        	public void mouseEntered(java.awt.event.MouseEvent e) {
-        	}
-        	public void mouseExited(java.awt.event.MouseEvent e) {
-        	}
+                }
+            }
+            public void mousePressed(java.awt.event.MouseEvent e) {
+            }
+            public void mouseReleased(java.awt.event.MouseEvent e) {
+            }
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+            }
+            public void mouseExited(java.awt.event.MouseEvent e) {
+            }
         });
     }
     
@@ -121,6 +129,23 @@ public class OutputPanel extends CPanel {
         }
         
     }
+    
+    
+    // show results with column binding to the service URLs for those CDEs.
+    public void setMapResults(List resultArray, HashMap colNamesMap, String[] keys, boolean[] alternate, HashMap serviceURLsMap){
+        ColoredDefaultTableModel colModel = (ColoredDefaultTableModel)getMapTableModel(resultArray, colNamesMap, keys, alternate, serviceURLsMap);
+        
+        ((ColoredJTable)getOutputTable()).setModel(colModel, colModel.getRowColors());
+        
+        TextWithIconCellRenderer renderer = new TextWithIconCellRenderer();
+        int numColumns = getOutputTable().getColumnCount();
+        for (int i = 0; i < numColumns; i++) {
+            getOutputTable().getColumnModel().getColumn(i).setCellRenderer(renderer);
+        }
+    }
+    
+    
+    
     
     public void cleanResults(){
         getOutputTable().setModel(getTableModel());
@@ -204,9 +229,18 @@ public class OutputPanel extends CPanel {
         return getMapTableModel(array, colNamesMap, keys, alternates);
     }
     
+    private DefaultTableModel getMapTableModel(List array, HashMap colNamesMap, String[] keys, boolean[] alternates ){
+        HashMap serviceURLsMap = new HashMap();
+        for (int i = 0; i < keys.length; i++) {
+            serviceURLsMap.put(keys[i],"ServiceUrl");
+        }
+        return getMapTableModel( array,  colNamesMap,  keys,  alternates,  serviceURLsMap );
+    }
     
-    private DefaultTableModel getMapTableModel(List array, HashMap colNamesMap, String[] keys, boolean[] alternates){
+    private DefaultTableModel getMapTableModel(List array, HashMap colNamesMap, String[] keys, boolean[] alternates, HashMap serviceURLsMap ){
         Color[] rowColors = new Color[alternates.length];
+        String[] serviceURLs = new String[keys.length];
+        
         for (int i = 0; i < alternates.length; i++) {
             if (alternates[i]){
                 rowColors[i]=new Color(235, 235, 235);
@@ -220,6 +254,7 @@ public class OutputPanel extends CPanel {
         
         for (int i = 0; i < keys.length; i++) {
             colNames.add(colNamesMap.get(keys[i]));
+            serviceURLs[i] = (String)serviceURLsMap.get(keys[i]);
         }
         
         for (int i = 0; i < array.size(); i++){
@@ -248,7 +283,8 @@ public class OutputPanel extends CPanel {
             rowV.add(colV);
         }
         
-        ColoredDefaultTableModel tb = new ColoredDefaultTableModel(rowV, colNames, rowColors);
+//        ColoredDefaultTableModel tb = new ColoredDefaultTableModel(rowV, colNames, rowColors);
+        ColoredDefaultTableModel tb = new ColoredDefaultTableModel(rowV, colNames, rowColors, serviceURLs);
         
 //        DefaultTableModel tb = new javax.swing.table.DefaultTableModel(rowV, colNames){
 //            public boolean isCellEditable(int row, int col) {
@@ -264,9 +300,15 @@ public class OutputPanel extends CPanel {
 
 class ColoredDefaultTableModel extends javax.swing.table.DefaultTableModel{
     private Color[] rowColors;
+    private String[] serviceURLs;
     public ColoredDefaultTableModel(Vector rowV, Vector colNames, Color[] rColors){
         super(rowV, colNames);
         rowColors = rColors;
+    }
+    public ColoredDefaultTableModel(Vector rowV, Vector colNames, Color[] rColors, String[] sURLs){
+        super(rowV, colNames);
+        rowColors = rColors;
+        serviceURLs =  sURLs;
     }
     public boolean isCellEditable(int row, int col) {
         return false;
@@ -278,7 +320,11 @@ class ColoredDefaultTableModel extends javax.swing.table.DefaultTableModel{
     public Color[] getRowColors(){
         return rowColors;
     }
- }
+    
+    public String getServiceURL(int i){
+        return serviceURLs[i];
+    }
+}
 
 
 
@@ -287,15 +333,14 @@ class ColoredJTable extends JTable {
     private final boolean SORT_ON = false;
     
     public void setModel(TableModel model, Color[] rColors ){
-    	this.setRowColors(rColors);
-    	if (SORT_ON){
-    		TableSorter sorter = new TableSorter(model);
-    		sorter.setTableHeader(this.getTableHeader());
-    		super.setModel(sorter);
-    	}
-    	else
-    		super.setModel(model);
-    	}
+        this.setRowColors(rColors);
+        if (SORT_ON){
+            TableSorter sorter = new TableSorter(model);
+            sorter.setTableHeader(this.getTableHeader());
+            super.setModel(sorter);
+        } else
+            super.setModel(model);
+    }
     
     public Color  getRowColor(int row){
         return rowColors[row];
@@ -321,7 +366,7 @@ class TextWithIconCellRenderer extends DefaultTableCellRenderer {
     
     public Component getTableCellRendererComponent(JTable tblDataTable, Object value, boolean isSelected, boolean hasFocus, int markedRow, int col){
         JLabel origRet=(JLabel)super.getTableCellRendererComponent(tblDataTable,value,isSelected,hasFocus,markedRow,col);
-
+        
         if (value != null ) {
             String strValue = value.toString().trim();
             //boolean bigText = (strValue.length() > GUIConstants.LARGE_TEXT_LIMIT)?true:false;
@@ -332,35 +377,6 @@ class TextWithIconCellRenderer extends DefaultTableCellRenderer {
                 origRet.setVerticalTextPosition(SwingConstants.CENTER);
                 origRet.setHorizontalAlignment(SwingConstants.LEFT);
                 origRet.setVerticalAlignment(SwingConstants.CENTER);
-                
-                // set an action handler also..
-                
-                String str = "<html> **REVISED DIAGNOSIS**:<BR>C. \"\"<?xml:namespace prefix = " +
-                        "maw3 ns = \"\"http://maw3.duhs.duke.edu\"\" />USNCB RIGHT BREAST, NUMBER OF " +
-                        "CORES FIVE, 9:00 POSITION\"\":<BR><BR>&nbsp;&nbsp;&nbsp; INVASIVE DUCTAL CARCINOMA." +
-                        "<BR>&nbsp;&nbsp;&nbsp;&nbsp; NOTTINGHAM COMBINED HISTOLOGIC GRADE, AT LEAST 2 OF 3.<BR>" +
-                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TUBULE FORMATION SCORE: 3.<BR>&nbsp;&nbsp;&nbsp;" +
-                        "&nbsp;&nbsp;&nbsp; NUCLEAR PLEOMORPHISM SCORE: 3.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-                        " MITOTIC ACTIVITY SCORE: TOO LIMITED TO PERFORM.<BR>&nbsp;&nbsp;&nbsp; DUCTAL CARCINOMA " +
-                        "IN-SITU, NUCLEAR GRADE 3.<BR>&nbsp;&nbsp;&nbsp; INTRADUCTAL PAPILLOMA.<BR><BR>COMMENT:&nbsp; " +
-                        "Diagnosis C has been revised secondary to inadvertent verification<BR>with the incorrect " +
-                        "biopsy site. The original diagnosis indicated the biopsy<BR>was obtained from the left side. " +
-                        "The diagnosis has been changed reflect that<BR>the biopsy material was obtained from the right " +
-                        "breast as indicated in the<BR>mammography report. Otherwise, the diagnosis remains unchanged." +
-                        "&nbsp; <BR><BR>A. \"\"STNCB RIGHT BREAST, NUMBER OF CORES THREE WITH CALCIUM 10:00 POSITION\"\":" +
-                        "<BR><BR>&nbsp;&nbsp;&nbsp; DUCTAL CARCINOMA IN SITU, MICROPAPILLARY TYPE, FOCALLY SUSPICIOUS FOR" +
-                        "<BR>&nbsp;&nbsp;&nbsp; INVASION.<BR>&nbsp;&nbsp;&nbsp; NUCLEAR GRADE 3 WITH NECROSIS.<BR>&nbsp;" +
-                        "&nbsp;&nbsp; MICROCALCIFICATIONS ASSOCIATED WITH DCIS.<BR><BR><BR><BR>B. \"\"STNCB RIGHT BREAST, " +
-                        "NUMBER OF CORES FIVE WITHOUT CALCIUM 10:00 POSITION\"\":<BR><BR>&nbsp;&nbsp;&nbsp; DUCTAL " +
-                        "CARCINOMA IN SITU, CRIBIFORM TYPE.<BR>&nbsp;&nbsp;&nbsp; NUCLEAR GRADE 3 WITH NECROSIS.<BR>" +
-                        "&nbsp;&nbsp;&nbsp; NO INVASIVE CARCINOMA IS SEEN.<BR>&nbsp;&nbsp;&nbsp; NO CALCIFICATINS ARE SEEN." +
-                        "<BR><BR><BR>C. *** SEE REVISION ***<BR>REPORT REVISED ON [__Apr.2004] AT 1519 BY [__unrecognizedName]" +
-                        "<BR><BR>COMMENT:<BR>Ancillary studies have been requested on specimen C. The results will be<BR>issued " +
-                        "in an addendum.<BR><BR>CI ADDENDUM 1:<BR>Please see Image Cytometry Report [__accession] for results of " +
-                        "supplementary<BR>tests.<BR><br></html>";
-                
-                
-                
             } else {
                 origRet.setIcon(null);
             }
