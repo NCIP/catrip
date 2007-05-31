@@ -20,6 +20,7 @@
 	<property name="cagrid.dir" location="${share.dir}/cagrid" />
 	<property name="xmlbeans.dir" location="${share.dir}/xmlbeans"/>
 	<property name="junit.results.dir" location="${test.dir}/logs"/>
+		<property name="ant.library.dir" location="C:/apache-ant-1.6.0/lib"/>
 	
 
 	<!-- import testing properties -->
@@ -48,7 +49,7 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
-	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice" />
+	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp, authentication-service, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice" />
 	<!-- The name should be the path relative from projects.dir.  -->
 	<property name="services.list" value="CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice " />
 
@@ -351,6 +352,14 @@
 			<artifact refid="security-password.antfiles" />
 		</resolveDependencies>
 		<ant dir="${projects.dir}/security-dukeidp" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- EXTENDED-AUTHENTICATION_SERVICE                                               -->
+	<!-- =============================================================== -->
+
+	<target name="build-authentication-service" depends="prepare" description="Builds the authentication service">
+		<ant dir="${projects.dir}/authentication-service" inheritAll="false" antfile="build.xml" target="all" />
 	</target>
 
 	<!-- =============================================================== -->
