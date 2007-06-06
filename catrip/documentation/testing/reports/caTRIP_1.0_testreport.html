@@ -1,0 +1,348 @@
+<html><head><title>JUnitHtmlReport</title><head>
+     <style type='text/css'>
+
+    body { background-color:white; }
+
+    p,td,div,span                      {font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+
+    p.title                   { font-size: 14pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+    p.header,div.header       { font-size: 14pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+    td.nav                    { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: black; text-decoration: none;}
+
+    
+      a:link                         { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: underline;}
+      a:link:hover                   { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a:link:active                  { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: underline;}
+      a:link:visited                 { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800080; text-decoration: underline;}
+      a:link:visited:hover           { font-size: 10pt; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+    
+      a.nav:link                     { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: none;}
+      a.nav:link:hover               { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a.nav:link:active              { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: none;}
+      a.nav:link:visited             { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #000080; text-decoration: none;}
+      a.nav:link:visited:hover       { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+    td.navActive              { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+
+    
+      a.navActive:link          { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+      a.navActive:link:hover         { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+      a.navActive:link:active        { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #800000; text-decoration: none;}
+      a.navActive:link:visited       { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: none;}
+      a.navActive:link:visited:hover { font-size: 10pt; font-weight: bold; font-family: Arial, Verdana, Helvetica, sans-serif; color: #008000; text-decoration: underline;}
+    
+    
+
+
+   </style>
+
+<body>
+<p><center><h1>JUnitHtmlReport</h1></center></p>
+<p><h2>Summary</h2>
+<table border="1">
+<tr><td valign="top"><b>Test Suite</b></td><td valign="top"><b>Tests</b></td><td valign="top"><b>Failures</b></td><td valign="top"><b>Errors</b></td><td valign="top"><b>Time (sec)</b></td></tr>
+<tr>
+<td valign="top"><b>1. <a href="#1">unit tests</b></a></td>
+<td valign="top">7</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">9</td>
+</tr>
+<tr>
+<td valign="top">1.1. <a href="#1.1">edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategyTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.641</td>
+</tr>
+<tr>
+<td valign="top">1.2. <a href="#1.2">edu.duke.cabig.catrip.gui.discovery.XMLFileServiceLocatorTest</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">3.156</td>
+</tr>
+<tr>
+<td valign="top">1.3. <a href="#1.3">edu.duke.cabig.catrip.gui.simplegui.objectgraph.SimpleGuiObjectGraphTest</a></td>
+<td valign="top">5</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">2.078</td>
+</tr>
+<tr>
+<td valign="top"><b>2. <a href="#2">system tests</b></a></td>
+<td valign="top">5</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">26</td>
+</tr>
+<tr>
+<td valign="top">2.1. <a href="#2.1">gov.nih.nci.catrip.cagrid.catripquery.TestQueryService</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">10.313</td>
+</tr>
+<tr>
+<td valign="top">2.2. <a href="#2.2">gov.nih.nci.catrip.service.test.TestCAEService</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.0</td>
+</tr>
+<tr>
+<td valign="top">2.3. <a href="#2.3">gov.nih.nci.catrip.service.test.TestCGEMSService</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.781</td>
+</tr>
+<tr>
+<td valign="top">2.4. <a href="#2.4">gov.nih.nci.catrip.service.test.TestCaTissueCoreService</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.515</td>
+</tr>
+<tr>
+<td valign="top">2.5. <a href="#2.5">gov.nih.nci.catrip.service.test.TestTumorRegistryService</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">4.719</td>
+</tr>
+<tr>
+<td valign="top"><b>3. <a href="#3">miscellaneous tests</b></a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">5</td>
+</tr>
+<tr>
+<td valign="top">3.1. <a href="#3.1">edu.upmc.opi.caBIG.caTIES.TestCaTiesService</a></td>
+<td valign="top">1</td>
+<td valign="top">0</td>
+<td valign="top">0</td>
+<td valign="top">5.0</td>
+</tr>
+<tr><td valign="top"><b>Total:</b></td><td valign="top">13</td><td valign="top">0</td><td valign="top">0</td><td valign="top">40 (sec)</td></tr>
+</table>
+</p>
+<p><a name="1"><h2>1. unit tests</h2></a></p>
+<p><a name="1.1"><h3>1.1. edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategyTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Unit test that tests whether a domain model can be retrieved.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.641</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.1.1"><h4>1.1.1. testRetrievDomainModel</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test of retrievDomainModel method, of class edu.duke.cabig.catrip.gui.discovery.XMLDomainModelRetrievalStrategy.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.313</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2"><h3>1.2. edu.duke.cabig.catrip.gui.discovery.XMLFileServiceLocatorTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Unit test that tests whether local services can be discovered</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>3.156</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.2.1"><h4>1.2.1. testDiscoverAllLocalServices</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test of discoverAllLocalServices method, of class edu.duke.cabig.catrip.gui.discovery.XMLFileServiceLocator.</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>2.828</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3"><h3>1.3. edu.duke.cabig.catrip.gui.simplegui.objectgraph.SimpleGuiObjectGraphTest</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This is a unit test that validates the ability to parse configuration files and walk through
+ object graphs.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>5</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>2.078</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.1"><h4>1.3.1. testGetAllServices</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests whether services are there</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.0</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.2"><h4>1.3.2. testGetAllTargetObjects</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests getting the target objects</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.204</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.3"><h4>1.3.3. testGetAllTargetObjectsForAGivenService</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests getting the target objects for a service</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.015</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.4"><h4>1.3.4. testGetAllAssociatedObjectsForAGivenTragetObject</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests whether there are associations for a target object</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>0.0</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="1.3.5"><h4>1.3.5. testGetAvialbleTragetObjectsToAssociateInRemoteServices</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests getting the target objects for a remote service</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>1.75</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2"><h2>2. system tests</h2></a></p>
+<p><a name="2.1"><h3>2.1. gov.nih.nci.catrip.cagrid.catripquery.TestQueryService</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This system test validates an existing Query Sharing service by submitting CQL to it and 
+ calling the other methods on the service.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>10.313</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.1.1"><h4>2.1.1. testQuery</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Tests querying of the service</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>10.063</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2"><h3>2.2. gov.nih.nci.catrip.service.test.TestCAEService</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This system test validates an existing CAE service by submitting CQL to it.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.0</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.2.1"><h4>2.2.1. testGetParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test getting participants</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>3.687</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3"><h3>2.3. gov.nih.nci.catrip.service.test.TestCGEMSService</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This system test validates an existing CGEMS service by submitting CQL to it.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.781</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.3.1"><h4>2.3.1. testGetParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test getting participants</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.469</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4"><h3>2.4. gov.nih.nci.catrip.service.test.TestCaTissueCoreService</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This system test validates an existing caTissue CORE service by submitting CQL to it.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.515</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.4.1"><h4>2.4.1. testGetParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test getting participants</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.187</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.5"><h3>2.5. gov.nih.nci.catrip.service.test.TestTumorRegistryService</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>This system test validates an existing Tumor Registry service by submitting CQL to it.</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.719</td>
+</table>
+</dt></dl></dl>
+<p><a name="2.5.1"><h4>2.5.1. testGetParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>Test getting participants</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.406</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+<p><a name="3"><h2>3. miscellaneous tests</h2></a></p>
+<p><a name="3.1"><h3>3.1. edu.upmc.opi.caBIG.caTIES.TestCaTiesService</h3></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+<tr><td valign="top"><b>Tests:</b></td><td>1</td>
+<tr><td valign="top"><b>Failures:</b></td><td>0</td>
+<tr><td valign="top"><b>Errors:</b></td><td>0</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>5.0</td>
+</table>
+</dt></dl></dl>
+<p><a name="3.1.1"><h4>3.1.1. testGetParticipants</h4></a></p>
+<dl><dl><dt>
+<table border="0">
+<tr><td valign="top"><b>Description:</b></td><td>NA</td>
+<tr><td valign="top"><b>Time&nbsp;(sec):</b></td><td>4.625</td>
+<tr><td valign="top"><b>Status:</b></td><td>SUCCESS
+</td>
+</table>
+</dt></dl></dl>
+</body></html>
