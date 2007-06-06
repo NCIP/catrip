@@ -1,0 +1,154 @@
+
+
+              caTRIP 1.0 Release Notes
+
+National Cancer Institute Center for Bioinformatics
+
+================================================================
+                            Contents
+================================================================
+
+    1.0         Introduction
+        1.1     Description
+        1.2     History
+    2.0         Features for this release
+    3.0         Known Issues
+    4.0         Bug fixes since last release
+    5.0         Bug Reports and Support
+    6.0         Documentation
+    7.0         NCICB Web Pages
+
+================================================================
+               Introduction
+================================================================
+
+This document contains the release notes for the caTRIP 1.0 release.
+
+
+----------------------------------------------------------------
+                1.1 Description
+----------------------------------------------------------------
+
+For information, refer to:
+https://gforge.nci.nih.gov/projects/catrip/
+
+
+----------------------------------------------------------------
+                1.2 History
+----------------------------------------------------------------
+
+caTRIP has been developed in two phases.
+
+
+================================================================
+                2.0 Features for this Release
+================================================================
+
+2.1 Implemented Data Services.
+
+    Tumor Registry : 
+	A clinical system that is used to collect endpoint data.
+
+    The Cancer Text Information Extraction System (caTIES) :
+	a locator of tissue resources that works via the extraction of clinical information 
+	from free text surgical pathology reports while using controlled terminologies to populate 
+	caBIG-compliant data structures.
+  
+    caTissue CORE :
+	A tissue bank repository tool for biospecimen inventory, tracking, and basic annotation.
+
+    Cancer Annotation Engine (CAE) :
+	A system for storing and searching pathology annotations.
+
+    caIntegrator (CGEMS) : 
+	A tool for storing, querying, and analyzing translational data, including SNP data.
+
+2.2 Basic Query Builder: 
+	Targeted towards non technical users, who are not familiar with UML models.  
+	Clinicians and basic science researchers are the primary users of this interface.
+
+2.3 Advanced Query Builder: 
+	Targeted towards advanced users who are familiar with the UML domain modeling and technologies 
+	such as drag-and-drop. Data Managers and developers are the primary users of this interface.
+
+2.4 Federated Query Engine
+	The primary responsibility of federated query engine is to execute federated queries across the chosen caGRID data services. 
+	Queries written in the DCQL (distributed caBIG query language CQL) are the primary input to the engine. 
+	Federated Query Engine decomposes DCQL queries into individual CQL queries . These CQL queries are passed to individual 
+	data services where they get executed and results are passed back to federated query engine. The federated query engine 
+	aggregates the results from multiple services and sends back the result to client. 
+
+2.5 Returning attributes from associated Objects
+	Queries can be built not only to return the attributes from target object , but also from associated objects by clicking on 
+	"Return Attributes" button in Basic Query Builder.
+
+2.6 "OR" Groupings
+	Results can be filtered with "AND" and "OR" conditions by clicking "Add AND/OR Condition Group" button in Basic Query Builder
+
+2.7 Permissible Values
+	Permissible values to set filters can be retrieved by clicking on binoculars icon next to each filed when setting filters in 
+	Basic Query Builder
+
+2.8 Query Sharing
+	Queries can be saved and shared among the users. "Query sharing" service is implemented.
+
+
+
+================================================================
+                3.0 Known Issues
+================================================================
+1. Return attributes can be retrieved only from the associated objects which has bidirectional relation ship with the target object.
+2. We need association role names when building queries to fetch return attributes. These role names are built using java reflection.
+   Object model needs to follow caCORE naming conventions. 
+   Getting these role names from domain model extract would free from this restriction. This can be an enhancement.
+3. Cannot apply "OR" condition on foreign services.
+4. Return attributes can be requested from only one foreign Service.
+5. Cannot delete saved queries
+6. Cannot update the attributes of a saved query
+7. Cannot change the underling query.  In other words, you can't keep the same attributes but change the query.
+8. Cannot synch the query with either the basic or advanced gui.
+9. Nested AND/OR groups not supporting
+10. No AND/OR group in Advance GUI
+11. delete of the Filters from a AND/OR group is not working.
+12. deletion of a AND/OR group is not there, you can add more filters but can't delete the group, have to do a clean all.
+13. search services via CDE and Concept is not working in Advance GUI. only Show All works.
+
+
+
+
+================================================================
+                4.0 Bug fixes
+================================================================
+Several Bugs have been fixed for this release.
+For a complete list of fixed, open bugs,
+
+Please refer the Gforge Bug Tracker
+
+http://gforge.nci.nih.gov/tracker/?group_id=131
+
+
+================================================================
+                5.0 Bug Reports and Support
+================================================================
+
+Send email to catrip-developers@gforge.nci.nih.gov to request support
+or report a bug.
+
+
+================================================================
+                6.0 Documentation
+================================================================
+
+To download the caTRIP documentation from 
+
+http://gforge.nci.nih.gov/plugins/scmcvs/cvsweb.php/catrip/documentation/training/?cvsroot=catrip
+
+
+================================================================
+                    7.0 NCICB Web Pages
+================================================================
+
+For information, refer to caTRIP homepage on GForge:
+
+http://gforge.nci.nih.gov/projects/catrip/
+
