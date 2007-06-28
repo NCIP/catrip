@@ -49,7 +49,7 @@
 	<!--                          DEFINE THE SUB PROJECTS                                 -->
 	<!-- ================================================================================ -->
 	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
-	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp, authentication-service, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice" />
+	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice" />
 	<!-- The name should be the path relative from projects.dir.  -->
 	<property name="services.list" value="CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice " />
 
