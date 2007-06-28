@@ -291,7 +291,7 @@
 
 
     <!-- Empty target, in case we simply want to generate the JAR files -->
-    <target name="jars" depends="jarStubs, jar, jarTests" />
+    <target name="jars" depends="jarStubs, jar" />
 
 
     <!-- call the test target for each project and aggregates the log resutls  -->
