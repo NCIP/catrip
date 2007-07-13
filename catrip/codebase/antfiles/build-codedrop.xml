@@ -11,7 +11,7 @@
 		<property name="app.name" value="catrip"/>
 
 		<tempfile property="temp.dir" suffix="dir"/>
-		<delete file="${temp.dir}"/>
+		<delete dir="${temp.dir}"/>
 		<mkdir dir="${temp.dir}"/>
 
 		<tstamp><format property="tstamp" pattern="yyyyMMdd"/></tstamp>
