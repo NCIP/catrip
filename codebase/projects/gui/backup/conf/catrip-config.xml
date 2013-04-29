@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<catripConfiguration xmlns="config.catrip.duke.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="config.catrip.duke.edu
+C:\work\fqe\xmlbeans-2.1.0\BeanGeneration\gui\catripConfig.xsd">
+	<guiConfiguration rootDirectory="@conf.dir@">
+		<indexService use="false" name="Local Index Service" url="http://localhost:8080/wsrf/services/DefaultIndexService"/>
+		<federatedQueryEngineService name="Local" url="http://localhost:8080/wsrf/services/cagrid/FederatedQeueryEngineService"/>
+		<gridIndentityProviders>
+			<indentityProvider name="Local IDP." url="localhost" type="dummy" keystore="none"/>
+			<indentityProvider name="Duke IDP" url="localhost" type="dummy" keystore="none"/>
+			<indentityProvider name="NCICB IDP" url="localhost" type="dummy" keystore="none"/>
+		</gridIndentityProviders>
+		<metadataCache serviceMetadataLocation="services" domainModelMetadataLocation="domainModels" metadataMappingFilename="metadataMappings.properties"/>
+	</guiConfiguration>
+</catripConfiguration>

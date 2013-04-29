@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!-- =========================================================================================================== -->
+<!-- BUILDS "catissuecoreGenerateData" PROJECT AND INSERTS DATA INTO DB (according to where hibernate.cfg.xml is pointing) -->
+<!-- created: 11/2/2006                                                                                         -->
+<!-- by:      mark s peedin                                                                                      -->
+<!-- =========================================================================================================== -->
+  
+  <project name="catissuecoreGenerateData" default="jarup" basedir=".">
+  <property file="build.properties"/>
+  <property name="project.name" value="catrip-catissuecoreGenerateData" />
+  <property name="src.dir" value="./src" />
+  <property name="classes.dir" value="./classes" /> 
+  <property name="test.src.dir" value="./test" />
+  <property name="test.classes.dir" value="./test/classes" /> 
+  <property name="lib.dir" value="./lib" />
+  <property name="build.dir" value="./build" />
+  <property name="data.dir" value="./data" />
+  <property name="jar.dir" value="${build.dir}/jars" />
+  <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
+  
+	<!-- =============================================================== -->
+	<!-- The compile Classpath                                           -->
+	<!-- =============================================================== -->
+  	<path id="compile.classpath">
+    		<fileset dir="${lib.dir}">
+      		<include name="**/*.jar"/>
+    		</fileset>
+  	</path>
+
+	<!-- =============================================================== -->
+	<!-- The test.compile Classpath                                      -->
+	<!-- =============================================================== -->
+   	<path id="test.compile.classpath">
+    		<fileset dir="${lib.dir}">
+      		<include name="**/*.jar"/>
+    		</fileset>
+    		<pathelement location="${test.classes.dir}"/>
+    		<pathelement location="${classes.dir}"/>
+  	</path> 
+
+	<!-- =============================================================== -->
+	<!-- The run Classpath                                               -->
+	<!-- =============================================================== -->
+	<path id="run.classpath">
+		<fileset dir="${jar.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<!-- ============================================================== -->
+	<!-- Cleans the classes and build dirs                              -->
+	<!-- ============================================================== -->
+  	<target name="clean"> 
+    		<delete dir="${classes.dir}" failonerror="true" />
+    		<delete dir="${build.dir}" failonerror="true" />
+ 	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the classes and build dirs                             -->
+	<!-- ============================================================== -->
+ 	<target name="init">
+    		<mkdir dir="${classes.dir}"/> 
+    		<mkdir dir="${build.dir}"/> 
+ 	</target>
+
+
+	<!-- ============================================================== -->
+	<!-- Compiles the src files                                         -->
+	<!-- ============================================================== -->
+  	<target name="compilesrc">
+  			<mkdir dir="${classes.dir}"/>
+    		<javac
+      		destdir="${classes.dir}"
+      		debug="on"
+      		srcdir="${src.dir}"
+      		deprecation="true"
+      		>
+      		<classpath refid="compile.classpath"/>
+    		</javac>
+    		<copy todir="${classes.dir}">
+          		<fileset dir="${src.dir}">
+				<include name="*.xml"/>
+          		</fileset>
+    		</copy>
+  	</target>
+
+	<!-- ============================================================== -->
+	<!-- Compiles the test src files                                    -->
+	<!-- ============================================================== -->
+  	<target name="compiletestsrc">
+    		<javac
+      		destdir="${classes.dir}"
+      		debug="on"
+      		srcdir="${test.src.dir}"
+      		deprecation="true"
+      		>
+      		<classpath refid="compile.classpath"/>
+    		</javac>
+  	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates a jar file of src classes                              -->
+	<!-- ============================================================== -->
+	<target name="jarup" depends="compilesrc,compiletestsrc" description="Builds the Jar Files">
+		<mkdir dir="${jar.dir}" />
+		<!--
+		<copy todir="${classes.dir}">
+			<fileset dir="${lib.dir}">
+            	<include name="**/*.jar"/>
+        	</fileset>
+		</copy>
+		<copy todir="${classes.dir}">
+			<fileset dir="${lib.dir}">
+            	<include name="**/*.jar"/>
+        	</fileset>
+		</copy>
+		-->
+		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="${main.class}" />
+			</manifest>
+		</jar>
+	</target>
+
+
+
+	<!-- ============================================================== -->
+	<!-- Creates the Participant related recs in the database           -->
+	<!-- ============================================================== -->
+	<target name="ParticipantInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.catissuecore.general.ParticipantInsertTest">
+		</java>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the Specimen related recs in the database              -->
+	<!-- ============================================================== -->
+	<target name="SpecimenInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.catissuecore.general.SpecimenInsertTest">
+		</java>
+
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Creates the User related recs in the database                  -->
+	<!-- ============================================================== -->
+	<target name="UserInsertTest" depends="" description="Creates the recs in the database">
+		<java fork="true" classpathref="run.classpath" classname="edu.duke.catrip.catissuecore.general.UserInsertTest">
+		</java>
+	</target>
+
+  <target name="all" description="Sets up for the db builds" depends="clean,init,compilesrc,compiletestsrc,jarup" />
+	<target name="setup" description="Sets up for the db builds"/>
+  <target name="insert1" description="Builds recs in a db table" depends="setup,UserInsertTest" />
+
+  <target name="insert2" description="Builds recs in a db table" depends="setup,ParticipantInsertTest" />
+
+  <target name="insert3" description="Builds recs in a db table" depends="setup,SpecimenInsertTest" />
+
+ <!-- <target name="all" description="Builds the entire db" depends="setup,UserInsertTest,ParticipantInsertTest,SpecimenInsertTest" />
+ -->
+
+
+</project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.FemaleReproductiveCharacteristic" table="female_reproductve_charactrstc">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">FEMALE_REPRDCTVE_CHRCTRSTC_SEQ</param>
+        	</generator>
+		</id>
+
+        <property name="firstLiveBirthAge" column="first_Live_Birth_Age" type="int"/>
+        <property name="liveBirthCount" column="live_Birth_Count" type="int"/>
+        <property name="menopauseAge" column="menopause_Age" type="int"/>
+        <property name="menopauseReasonCode" column="menopause_Reason_Code" type="string"/>
+        <property name="menopauseReasonOtherText" column="menopause_Reason_Other_Text" type="string"/>
+        <property name="menopauseStartDate" column="menopause_Start_Date" type="date"/>
+        <property name="stillBirthCount" column="still_Birth_Count" type="int"/>
+        <property name="abortionIndicator" column="abortion_Indicator" type="boolean"/>
+    </class>
+
+</hibernate-mapping>

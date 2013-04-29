@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Activity.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/ActivityImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Diagnosis.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/DiagnosisImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Followup.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/FollowupImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/DistantSite.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/DistantSiteImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Recurrence.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/RecurrenceImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/CollaborativeStaging.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/CollaborativeStagingImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/PatientIdentifier.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/PatientIdentifierImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/DiseaseExtent.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/DiseaseExtentImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/FirstCourseTreatmentSummary.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/FirstCourseTreatmentSummaryImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Patient.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/PatientImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/Address.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/AddressImpl.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/ActivitySummary.hbm.xml" />
+    <mapping resource="edu/duke/cabig/tumorregistry/domain/impl/ActivitySummaryImpl.hbm.xml" />
+  </session-factory>
+</hibernate-configuration>
+

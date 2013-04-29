@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl"
+        table="CATISSUE_SPECIMEN_CHAR"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <property
+            name="tissueSite"
+            type="string"
+            update="true"
+            insert="true"
+            column="TISSUE_SITE"
+            length="150"
+        />
+
+        <property
+            name="tissueSide"
+            type="string"
+            update="true"
+            insert="true"
+            column="TISSUE_SIDE"
+            length="50"
+        />
+
+        <property
+            name="pathologicalStatus"
+            type="string"
+            update="true"
+            insert="true"
+            column="PATHOLOGICAL_STATUS"
+            length="50"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-SpecimenCharacteristics.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

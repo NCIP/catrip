@@ -1,0 +1,18 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<project name="run-tools file" basedir="." default="runClient">
+     <target name="runClient" depends="checkGlobus, defineClasspaths" description="Run the sample Client">
+        <property name="service.url" value="http://localhost:8181/wsrf/services/cagrid/QueryService" />
+        <echo message="Connecting to service: ${service.url}" />
+        <java classname="gov.nih.nci.catrip.cagrid.catripquery.client.QueryServiceClient" classpathref="run.classpath" fork="no">
+            <jvmarg value="-DGLOBUS_LOCATION=${ext.globus.dir}" />
+            <arg value="-url" />
+            <arg value="${service.url}" />
+        </java>
+    </target>
+</project>

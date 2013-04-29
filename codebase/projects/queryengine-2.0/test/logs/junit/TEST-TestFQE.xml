@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<testsuite errors="0" failures="0" name="TestFQE" tests="1" time="6.125">
+  <properties>
+    <property name="file.encoding.pkg" value="sun.io"></property>
+    <property name="env.PROMPT" value="$P$G"></property>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.5.0_03\jre"></property>
+    <property name="test.src.dir" value="test/src"></property>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.5.0_03\jre\lib\endorsed"></property>
+    <property name="env.USERNAME" value="srini"></property>
+    <property name="src.dir" value="src"></property>
+    <property name="ext.globus.dir" value="C:\ws-core-4.0.3"></property>
+    <property name="sun.os.patch.level" value="Service Pack 2"></property>
+    <property name="tomcat.common.lib.dir" value="C:\jakarta-tomcat-5.0.28/common/lib"></property>
+    <property name="java.vendor.url" value="http://java.sun.com/"></property>
+    <property name="env.COMPUTERNAME" value="VICK"></property>
+    <property name="java.version" value="1.5.0_03"></property>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"></property>
+    <property name="env.USERPROFILE" value="C:\Documents and Settings\srini"></property>
+    <property name="javadoc.dir" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\javadoc"></property>
+    <property name="introduce.skeleton.namespace.domain" value="http://fqp.cagrid.nci.nih.gov/FederatedQueryProcessor"></property>
+    <property name="test.lib.dir" value="test/lib"></property>
+    <property name="env.SystemRoot" value="C:\WINDOWS"></property>
+    <property name="introduce.ns.excludes" value=" -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.service -x http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata -x http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLResultSet -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.security -x gme://caGrid.caBIG/1.0/gov.nih.nci.cagrid.metadata.common"></property>
+    <property name="user.name" value="srini"></property>
+    <property name="tomcat.deploy.lib.dir" value="C:\jakarta-tomcat-5.0.28/webapps/wsrf/WEB-INF/lib"></property>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
+    <property name="sun.jnu.encoding" value="Cp1252"></property>
+    <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
+    <property name="schema.dest" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\schema"></property>
+    <property name="env.WF_RESOURCES" value="C:\oracle\ora92\WF\RES\WFus.RES"></property>
+    <property name="lib.dir" value="lib"></property>
+    <property name="java.specification.name" value="Java Platform API Specification"></property>
+    <property name="test.jar.name" value="caGrid-1.0-fqp-tests.jar"></property>
+    <property name="user.timezone" value=""></property>
+    <property name="path.separator" value=";"></property>
+    <property name="client.jar.name" value="caGrid-1.0-fqp-client.jar"></property>
+    <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 14 Stepping 8, GenuineIntel"></property>
+    <property name="env._JAVACMD" value="C:\Program Files\Java\jdk1.5.0_03\bin\java.exe"></property>
+    <property name="project.name" value="caGrid-1.0-fqp"></property>
+    <property name="file.encoding" value="Cp1252"></property>
+    <property name="junit.results.dir" value="test/logs/junit"></property>
+    <property name="env.NUMBER_OF_PROCESSORS" value="2"></property>
+    <property name="env.APPDATA" value="C:\Documents and Settings\srini\Application Data"></property>
+    <property name="ant.file" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build.xml"></property>
+    <property name="env.QTJAVA" value="C:\Program Files\Java\j2re1.4.2_11\lib\ext\QTJava.zip"></property>
+    <property name="test.log.dir" value="test/logs"></property>
+    <property name="service.deployment.path" value="cagrid/FederatedQueryProcessor"></property>
+    <property name="java.io.tmpdir" value="C:\WINDOWS\TEMP\"></property>
+    <property name="user.language" value="en"></property>
+    <property name="env.SystemDrive" value="C:"></property>
+    <property name="line.separator" value="
+"></property>
+    <property name="garjars.id" value="garjars"></property>
+    <property name="java.debug" value="on"></property>
+    <property name="ant.file.build-deploy file" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build-deploy.xml"></property>
+    <property name="introduce.skeleton.service.name" value="FederatedQueryProcessor"></property>
+    <property name="env.JSERV" value="C:\oracle\ora92/Apache/Jserv/conf"></property>
+    <property name="schema.src" value="C:\ws-core-4.0.3\share\schema"></property>
+    <property name="java.vm.info" value="mixed mode, sharing"></property>
+    <property name="sun.desktop" value="windows"></property>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
+    <property name="ant.file.run-tools file" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\run-tools.xml"></property>
+    <property name="common.jar.name" value="caGrid-1.0-fqp-common.jar"></property>
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH"></property>
+    <property name="build.stubs" value="C:\ws-core-4.0.3\share\globus_wsrf_tools\build-stubs.xml"></property>
+    <property name="env.LOGONSERVER" value="\\VICK"></property>
+    <property name="introduce.skeleton.timestamp" value="1163002571140"></property>
+    <property name="stubs.src" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\stubs-FederatedQueryProcessor\src"></property>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"></property>
+    <property name="build.dest" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\classes"></property>
+    <property name="test.build.dest" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build/test/classes"></property>
+    <property name="ant.version" value="Apache Ant version 1.6.5 compiled on June 2 2005"></property>
+    <property name="env.USERDOMAIN" value="VICK"></property>
+    <property name="env.PROCESSOR_LEVEL" value="6"></property>
+    <property name="env.windir" value="C:\WINDOWS"></property>
+    <property name="env.CLASSPATH" value="C:\tools\mocha-b1\MOCHA.zip;C:\temp\commons-daemon-20061112\commons-daemon-20061112.jar"></property>
+    <property name="env.CYGWIN" value="tty"></property>
+    <property name="os.name" value="Windows XP"></property>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="stubs.dest" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\stubs-FederatedQueryProcessor\classes"></property>
+    <property name="index.service.url" value="http://cagrid01.bmi.ohio-state.edu:8080/wsrf/services/DefaultIndexService"></property>
+    <property name="env.TMP" value="C:\WINDOWS\TEMP"></property>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"></property>
+    <property name="service.properties.file" value="service.properties"></property>
+    <property name="env.OS" value="Windows_NT"></property>
+    <property name="gar.name" value="cagrid_FederatedQueryProcessor.gar"></property>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.5.0_03\jre\bin;.;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32;C:\tools\plink;C:\oracle\ora92\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\OpenSSH\bin;C:\tools\apache-ant-1.6.5\bin;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\TortoiseCVS;C:\tools\xmlbeans-2.1.0\bin;C:\Program Files\Java\jdk1.5.0_03\bin;C:\tools\mysql\bin;C:\tools\jadnt158;C:\tools\mtail"></property>
+    <property name="ant.java.version" value="1.5"></property>
+    <property name="env.AXIS2_HOME" value="C:\tools\Axis2"></property>
+    <property name="basedir" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0"></property>
+    <property name="java.class.version" value="49.0"></property>
+    <property name="ext.lib.dir" value="ext/lib"></property>
+    <property name="env.XMLBEANS_HOME" value="C:\tools\xmlbeans-2.1.0"></property>
+    <property name="ant.home" value="C:\tools\apache-ant-1.6.5"></property>
+    <property name="introduce.skeleton.services.list" value="FederatedQueryProcessor,FederatedQueryResults"></property>
+    <property name="env.JBOSS_HOME" value="C:\tools\jboss-4.0.0"></property>
+    <property name="tomcat.wsrf.schema.dir" value="C:\jakarta-tomcat-5.0.28/webapps/wsrf/share/schema"></property>
+    <property name="env.Path" value="C:\WINDOWS\System32;C:\tools\plink;C:\oracle\ora92\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\OpenSSH\bin;C:\tools\apache-ant-1.6.5\bin;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\TortoiseCVS;C:\tools\xmlbeans-2.1.0\bin;C:\Program Files\Java\jdk1.5.0_03\bin;C:\tools\mysql\bin;C:\tools\jadnt158;C:\tools\mtail"></property>
+    <property name="ext.test.lib.dir" value="ext/test/lib"></property>
+    <property name="env.HOMEDRIVE" value="C:"></property>
+    <property name="service.deployment.prefix" value="cagrid"></property>
+    <property name="env.WV_GATEWAY_CFG" value="C:\oracle\ora92\Apache\modplsql\cfg\wdbsvr.app"></property>
+    <property name="build.packages" value="C:\ws-core-4.0.3\share\globus_wsrf_common\build-packages.xml"></property>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.5.0_03\jre\bin"></property>
+    <property name="build.dir" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\classes"></property>
+    <property name="env.PROCESSOR_REVISION" value="0e08"></property>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"></property>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"></property>
+    <property name="user.variant" value=""></property>
+    <property name="stubs.jar.name" value="caGrid-1.0-fqp-stubs.jar"></property>
+    <property name="ant.project.name" value="Introduce Build File"></property>
+    <property name="schema.dir" value="schema"></property>
+    <property name="GT4.ns.excludes" value="-x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.wsdl -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ServiceGroup-1.2-draft-01.xsd -x http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ServiceGroup-1.2-draft-01.wsdl -x http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.xsd -x http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.wsdl -x http://schemas.xmlsoap.org/ws/2004/04/trust -x http://schemas.xmlsoap.org/ws/2002/12/policy -x http://schemas.xmlsoap.org/ws/2002/07/utility -x http://schemas.xmlsoap.org/ws/2004/04/sc -x http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd -x http://www.w3.org/2000/09/xmldsig# -x http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd -x http://schemas.xmlsoap.org/ws/2004/09/enumeration"></property>
+    <property name="introduce.skeleton.destination.dir" value="C:\projects\caBIG\cagrid-1-0\caGrid\projects\fqp"></property>
+    <property name="java.vm.specification.version" value="1.0"></property>
+    <property name="env.GLOBUS_LOCATION" value="C:\ws-core-4.0.3"></property>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"></property>
+    <property name="introduce.skeleton.extensions" value="cagrid_metadata"></property>
+    <property name="build.lib.dir" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\lib"></property>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"></property>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.5.0_03\jre\lib\ext"></property>
+    <property name="garschema.id" value="garschema"></property>
+    <property name="os.version" value="5.1"></property>
+    <property name="user.home" value="C:\Documents and Settings\srini"></property>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."></property>
+    <property name="mappings.file" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0/namespace2package.mappings"></property>
+    <property name="garetc.id" value="garetc"></property>
+    <property name="ant.file.Introduce Build File" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build.xml"></property>
+    <property name="env.JAVA_HOME" value="C:\Program Files\Java\jdk1.5.0_03"></property>
+    <property name="java.source" value="1.4"></property>
+    <property name="stubs.dir" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\stubs-FederatedQueryProcessor"></property>
+    <property name="user.dir" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0"></property>
+    <property name="schema.path" value="FederatedQueryProcessor"></property>
+    <property name="env.FP_NO_HOST_CHECK" value="NO"></property>
+    <property name="test.dir" value="test"></property>
+    <property name="tomcat.dir" value="C:\jakarta-tomcat-5.0.28"></property>
+    <property name="sun.cpu.endian" value="little"></property>
+    <property name="env._USE_CLASSPATH" value="yes"></property>
+    <property name="env.ALLUSERSPROFILE" value="C:\Documents and Settings\All Users"></property>
+    <property name="env.PROCESSOR_ARCHITECTURE" value="x86"></property>
+    <property name="java.vm.version" value="1.5.0_03-b07"></property>
+    <property name="java.class.path" value="C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\test\classes;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\asm-2.2.1.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\caGrid-1.0-core-tests.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\cobertura.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\jakarta-oro-2.0.8.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\jdepend-2.7-patched.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\junit-addons-1.4.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\junit.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\log4j-1.2.9.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\test\lib\xmlunit1.0.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\classes;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\build\stubs-FederatedQueryProcessor\classes;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\lib\ant-contrib.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\lib\jdom-1.0.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-ServiceSecurityProvider-client.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-ServiceSecurityProvider-common.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-ServiceSecurityProvider-service.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-ServiceSecurityProvider-stubs.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-core.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-common.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-cql.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-extension.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-service.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-stubs.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-tests.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-tools.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-utils.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-data-validation.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-metadata-common.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-1.0-metadata-security.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\caGrid-caTrip-sdkQuery-1.0.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\castor-0.9.9.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\globus_wsrf_mds_aggregator.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\globus_wsrf_mds_aggregator_stubs.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\globus_wsrf_servicegroup.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\globus_wsrf_servicegroup_stubs.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\mobius_common_client-1.1.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\mobius_factories-1.1.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\mobius_gme_client-1.1.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\mobius_mako_client-1.1.jar;C:\CVS-CodeBase\catrip\codebase\projects\queryengine-2.0\ext\lib\mobius_tools-1.1.jar;C:\ws-core-4.0.3\lib\addressing-1.0.jar;C:\ws-core-4.0.3\lib\axis-url.jar;C:\ws-core-4.0.3\lib\axis.jar;C:\ws-core-4.0.3\lib\bootstrap.jar;C:\ws-core-4.0.3\lib\cog-axis.jar;C:\ws-core-4.0.3\lib\cog-jglobus.jar;C:\ws-core-4.0.3\lib\cog-tomcat.jar;C:\ws-core-4.0.3\lib\cog-url.jar;C:\ws-core-4.0.3\lib\commonj.jar;C:\ws-core-4.0.3\lib\commons-beanutils.jar;C:\ws-core-4.0.3\lib\commons-cli-2.0.jar;C:\ws-core-4.0.3\lib\commons-collections-3.0.jar;C:\ws-core-4.0.3\lib\commons-digester.jar;C:\ws-core-4.0.3\lib\commons-discovery.jar;C:\ws-core-4.0.3\lib\commons-logging.jar;C:\ws-core-4.0.3\lib\concurrent.jar;C:\ws-core-4.0.3\lib\cryptix-asn1.jar;C:\ws-core-4.0.3\lib\cryptix.jar;C:\ws-core-4.0.3\lib\cryptix32.jar;C:\ws-core-4.0.3\lib\globus_usage_core.jar;C:\ws-core-4.0.3\lib\globus_usage_packets_common.jar;C:\ws-core-4.0.3\lib\globus_wsrf_tools_test.jar;C:\ws-core-4.0.3\lib\jaxrpc.jar;C:\ws-core-4.0.3\lib\jce-jdk13-125.jar;C:\ws-core-4.0.3\lib\jgss.jar;C:\ws-core-4.0.3\lib\junit.jar;C:\ws-core-4.0.3\lib\log4j-1.2.8.jar;C:\ws-core-4.0.3\lib\naming-common.jar;C:\ws-core-4.0.3\lib\naming-factory.jar;C:\ws-core-4.0.3\lib\naming-java.jar;C:\ws-core-4.0.3\lib\naming-resources.jar;C:\ws-core-4.0.3\lib\opensaml.jar;C:\ws-core-4.0.3\lib\puretls.jar;C:\ws-core-4.0.3\lib\resolver.jar;C:\ws-core-4.0.3\lib\saaj.jar;C:\ws-core-4.0.3\lib\wsdl4j.jar;C:\ws-core-4.0.3\lib\wsrf_common.jar;C:\ws-core-4.0.3\lib\wsrf_core.jar;C:\ws-core-4.0.3\lib\wsrf_core_registry.jar;C:\ws-core-4.0.3\lib\wsrf_core_registry_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_authzService.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_authzService_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_counter.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_counter_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_mgmt.jar;C:\ws-core-4.0.3\lib\wsrf_core_samples_mgmt_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_core_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_provider_jce.jar;C:\ws-core-4.0.3\lib\wsrf_test.jar;C:\ws-core-4.0.3\lib\wsrf_test_interop.jar;C:\ws-core-4.0.3\lib\wsrf_test_interop_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_test_unit.jar;C:\ws-core-4.0.3\lib\wsrf_test_unit_stubs.jar;C:\ws-core-4.0.3\lib\wsrf_tools.jar;C:\ws-core-4.0.3\lib\wss4j.jar;C:\ws-core-4.0.3\lib\xalan.jar;C:\ws-core-4.0.3\lib\xercesImpl.jar;C:\ws-core-4.0.3\lib\xml-apis.jar;C:\ws-core-4.0.3\lib\xmlsec.jar;C:\tools\mocha-b1\MOCHA.zip;C:\temp\commons-daemon-20061112\commons-daemon-20061112.jar;C:\tools\apache-ant-1.6.5\lib\junit-3.8.1.jar;C:\tools\apache-ant-1.6.5\lib\ant-launcher.jar;C:\tools\apache-ant-1.6.5\lib\ant.jar;C:\tools\apache-ant-1.6.5\lib\ant-junit.jar"></property>
+    <property name="env.HOMEPATH" value="\Documents and Settings\srini"></property>
+    <property name="env.SonicCentral" value="C:\Program Files\Common Files\Sonic Shared\Sonic Central\"></property>
+    <property name="ant.library.dir" value="C:\tools\apache-ant-1.6.5\lib"></property>
+    <property name="os.arch" value="x86"></property>
+    <property name="env.SESSIONNAME" value="Console"></property>
+    <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files"></property>
+    <property name="env.ProgramFiles" value="C:\Program Files"></property>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="file.separator" value="\"></property>
+    <property name="java.runtime.version" value="1.5.0_03-b07"></property>
+    <property name="env.ANT_CMD_LINE_ARGS" value="test"></property>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.5.0_03\jre\lib\rt.jar;C:\Program Files\Java\jdk1.5.0_03\jre\lib\i18n.jar;C:\Program Files\Java\jdk1.5.0_03\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.5.0_03\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.5.0_03\jre\lib\jce.jar;C:\Program Files\Java\jdk1.5.0_03\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.5.0_03\jre\classes"></property>
+    <property name="env.ComSpec" value="C:\WINDOWS\system32\cmd.exe"></property>
+    <property name="env.TEMP" value="C:\WINDOWS\TEMP"></property>
+    <property name="user.country" value="US"></property>
+    <property name="env.ANT_HOME" value="C:\tools\apache-ant-1.6.5"></property>
+    <property name="etc.dir" value="etc"></property>
+    <property name="env.CLIENTNAME" value="Console"></property>
+    <property name="service.jar.name" value="caGrid-1.0-fqp-service.jar"></property>
+    <property name="service.name" value="FederatedQueryProcessor"></property>
+    <property name="java.vendor" value="Sun Microsystems Inc."></property>
+    <property name="service.deployment.dir.name" value="cagrid_FederatedQueryProcessor"></property>
+    <property name="tomcat.deploy.dir" value="C:\jakarta-tomcat-5.0.28/webapps/wsrf/WEB-INF"></property>
+    <property name="env.CATALINA_HOME" value="C:\jakarta-tomcat-5.0.28"></property>
+    <property name="java.specification.version" value="1.5"></property>
+    <property name="sun.arch.data.model" value="32"></property>
+  </properties>
+  <testcase classname="TestFQE" name="testFQE" time="5.812"></testcase>
+  <system-out><![CDATA[WARN   isAttachmentSupported, Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+57
+ParticipantMedicalIdentifier-id 25962 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber P81708 annotationSetCollection-totalScore 8 annotationSetCollection-id 28260     
+ParticipantMedicalIdentifier-id 24506 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber ZS5360 annotationSetCollection-totalScore 8 annotationSetCollection-id 28045     
+ParticipantMedicalIdentifier-id 27299 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber S94101 annotationSetCollection-totalScore 8 annotationSetCollection-id 27951     
+ParticipantMedicalIdentifier-id 24646 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YX4353 annotationSetCollection-totalScore 8 annotationSetCollection-id 27822     
+ParticipantMedicalIdentifier-id 25486 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber ZT3480 annotationSetCollection-totalScore 8 annotationSetCollection-id 27819     
+ParticipantMedicalIdentifier-id 24856 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber W24818 annotationSetCollection-totalScore 8 annotationSetCollection-id 27890     
+ParticipantMedicalIdentifier-id 25542 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber T29750 annotationSetCollection-totalScore 9 annotationSetCollection-id 27833     
+ParticipantMedicalIdentifier-id 25080 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber Q91234 annotationSetCollection-totalScore 9 annotationSetCollection-id 28134     
+ParticipantMedicalIdentifier-id 25619 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber Y64104 annotationSetCollection-totalScore 8 annotationSetCollection-id 27853     
+ParticipantMedicalIdentifier-id 27656 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber P97636 annotationSetCollection-totalScore 8 annotationSetCollection-id 28002     
+ParticipantMedicalIdentifier-id 25017 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber Y87263 annotationSetCollection-totalScore 8 annotationSetCollection-id 28125     
+ParticipantMedicalIdentifier-id 27404 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber ZQ8567 annotationSetCollection-totalScore 9 annotationSetCollection-id 27966     
+ParticipantMedicalIdentifier-id 24779 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XU9561 annotationSetCollection-totalScore 9 annotationSetCollection-id 27865     
+ParticipantMedicalIdentifier-id 27565 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YS4499 annotationSetCollection-totalScore 8 annotationSetCollection-id 27989     
+ParticipantMedicalIdentifier-id 27432 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber U81356 annotationSetCollection-totalScore 8 annotationSetCollection-id 27970     
+ParticipantMedicalIdentifier-id 24695 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber W63332 annotationSetCollection-totalScore 9 annotationSetCollection-id 28072     
+ParticipantMedicalIdentifier-id 25122 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YV2638 annotationSetCollection-totalScore 9 annotationSetCollection-id 28140     
+ParticipantMedicalIdentifier-id 25724 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber YS9344 annotationSetCollection-totalScore 8 annotationSetCollection-id 27880     
+ParticipantMedicalIdentifier-id 25570 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber P51246 annotationSetCollection-totalScore 8 annotationSetCollection-id 28204     
+ParticipantMedicalIdentifier-id 26046 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YZ0665 annotationSetCollection-totalScore 8 annotationSetCollection-id 28272     
+ParticipantMedicalIdentifier-id 27579 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YP9651 annotationSetCollection-totalScore 8 annotationSetCollection-id 27991     
+ParticipantMedicalIdentifier-id 25423 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YU3178 annotationSetCollection-totalScore 8 annotationSetCollection-id 28183     
+ParticipantMedicalIdentifier-id 24597 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber T94557 annotationSetCollection-totalScore 8 annotationSetCollection-id 27807     
+ParticipantMedicalIdentifier-id 24751 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber T74718 annotationSetCollection-totalScore 8 annotationSetCollection-id 28080     
+ParticipantMedicalIdentifier-id 24751 annotationSetCollection-type ns4:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber T74718 annotationSetCollection-totalScore 9 annotationSetCollection-id 27856     
+ParticipantMedicalIdentifier-id 24422 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XX2647 annotationSetCollection-totalScore 8 annotationSetCollection-id 28033     
+ParticipantMedicalIdentifier-id 26025 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber W22809 annotationSetCollection-totalScore 8 annotationSetCollection-id 28269     
+ParticipantMedicalIdentifier-id 25332 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber ZW5755 annotationSetCollection-totalScore 8 annotationSetCollection-id 28170     
+ParticipantMedicalIdentifier-id 25766 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YV1452 annotationSetCollection-totalScore 9 annotationSetCollection-id 27891     
+ParticipantMedicalIdentifier-id 27628 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber T81054 annotationSetCollection-totalScore 8 annotationSetCollection-id 27998     
+ParticipantMedicalIdentifier-id 24730 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber W10120 annotationSetCollection-totalScore 8 annotationSetCollection-id 27849     
+ParticipantMedicalIdentifier-id 24912 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber R35706 annotationSetCollection-totalScore 8 annotationSetCollection-id 27908     
+ParticipantMedicalIdentifier-id 24513 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber ZR1952 annotationSetCollection-totalScore 8 annotationSetCollection-id 27780     
+ParticipantMedicalIdentifier-id 25843 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber X19047 annotationSetCollection-totalScore 8 annotationSetCollection-id 27911     
+ParticipantMedicalIdentifier-id 25605 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber W56722 annotationSetCollection-totalScore 8 annotationSetCollection-id 27850     
+ParticipantMedicalIdentifier-id 25024 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber W85405 annotationSetCollection-totalScore 8 annotationSetCollection-id 28126     
+ParticipantMedicalIdentifier-id 25892 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YP7255 annotationSetCollection-totalScore 8 annotationSetCollection-id 27923     
+ParticipantMedicalIdentifier-id 25689 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber ZV3436 annotationSetCollection-totalScore 8 annotationSetCollection-id 27871     
+ParticipantMedicalIdentifier-id 25780 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber W63332 annotationSetCollection-totalScore 8 annotationSetCollection-id 28234     
+ParticipantMedicalIdentifier-id 27663 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber V23795 annotationSetCollection-totalScore 8 annotationSetCollection-id 28003     
+ParticipantMedicalIdentifier-id 25612 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber R35706 annotationSetCollection-totalScore 9 annotationSetCollection-id 28210     
+ParticipantMedicalIdentifier-id 27551 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber P76847 annotationSetCollection-totalScore 8 annotationSetCollection-id 27987     
+ParticipantMedicalIdentifier-id 25395 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber X34813 annotationSetCollection-totalScore 8 annotationSetCollection-id 28179     
+ParticipantMedicalIdentifier-id 25563 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber W47993 annotationSetCollection-totalScore 8 annotationSetCollection-id 28203     
+ParticipantMedicalIdentifier-id 25087 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber ZS8403 annotationSetCollection-totalScore 8 annotationSetCollection-id 28135     
+ParticipantMedicalIdentifier-id 25381 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XQ7785 annotationSetCollection-totalScore 8 annotationSetCollection-id 27792     
+ParticipantMedicalIdentifier-id 24884 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YR8434 annotationSetCollection-totalScore 9 annotationSetCollection-id 28099     
+ParticipantMedicalIdentifier-id 25927 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YP5903 annotationSetCollection-totalScore 9 annotationSetCollection-id 27932     
+ParticipantMedicalIdentifier-id 24765 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YW2886 annotationSetCollection-totalScore 9 annotationSetCollection-id 28082     
+ParticipantMedicalIdentifier-id 24674 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber YV1452 annotationSetCollection-totalScore 9 annotationSetCollection-id 28069     
+ParticipantMedicalIdentifier-id 25528 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XV6966 annotationSetCollection-totalScore 9 annotationSetCollection-id 28198     
+ParticipantMedicalIdentifier-id 25528 annotationSetCollection-type ns4:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber XV6966 annotationSetCollection-totalScore 8 annotationSetCollection-id 27830     
+ParticipantMedicalIdentifier-id 24681 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XZ9097 annotationSetCollection-totalScore 8 annotationSetCollection-id 28070     
+ParticipantMedicalIdentifier-id 25941 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber M20548 annotationSetCollection-totalScore 8 annotationSetCollection-id 27936     
+ParticipantMedicalIdentifier-id 25710 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber R73508 annotationSetCollection-totalScore 8 annotationSetCollection-id 28224     
+ParticipantMedicalIdentifier-id 25710 annotationSetCollection-type ns4:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber R73508 annotationSetCollection-totalScore 8 annotationSetCollection-id 27877     
+ParticipantMedicalIdentifier-id 27705 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber ZW9765 annotationSetCollection-totalScore 9 annotationSetCollection-id 28009     
+ParticipantMedicalIdentifier-id 24541 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XX2084 annotationSetCollection-totalScore 8 annotationSetCollection-id 28050     
+ParticipantMedicalIdentifier-id 24352 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 3 ParticipantMedicalIdentifier-medicalRecordNumber XP4509 annotationSetCollection-totalScore 8 annotationSetCollection-id 28023     
+ParticipantMedicalIdentifier-id 27537 annotationSetCollection-type ns2:NottinghamHistopathologicGrade annotationSetCollection-mitoticCount 2 ParticipantMedicalIdentifier-medicalRecordNumber P82651 annotationSetCollection-totalScore 8 annotationSetCollection-id 27985     
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

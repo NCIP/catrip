@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.SpecimenRequirementImpl"
+        table="CATISSUE_SPECIMEN_REQUIREMENT"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <discriminator
+            column="SPECIMEN_CLASS"
+            type="string"
+        />
+
+        <property
+            name="specimenType"
+            type="string"
+            update="true"
+            insert="true"
+            column="SPECIMEN_TYPE"
+            length="50"
+        />
+
+        <property
+            name="tissueSite"
+            type="string"
+            update="true"
+            insert="true"
+            column="TISSUE_SITE"
+            length="150"
+        />
+
+        <property
+            name="pathologyStatus"
+            type="string"
+            update="true"
+            insert="true"
+            column="PATHOLOGY_STATUS"
+            length="50"
+        />
+
+        <set
+            name="distributionProtocolCollection"
+            table="CATISSUE_DISTRIBUTION_SPE_REQ"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="SPECIMEN_REQUIREMENT_ID"
+              />
+
+              <many-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.DistributionProtocolImpl"
+                  column="DISTRIBUTION_PROTOCOL_ID"
+                  outer-join="auto"
+              />
+
+        </set>
+
+        <set
+            name="collectionProtocolEventCollection"
+            table="CATISSUE_COLL_SPECIMEN_REQ"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="SPECIMEN_REQUIREMENT_ID"
+              />
+
+              <many-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.CollectionProtocolEventImpl"
+                  column="COLLECTION_PROTOCOL_EVENT_ID"
+                  outer-join="auto"
+              />
+
+        </set>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-SpecimenRequirement.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.FluidSpecimenRequirementImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Fluid"
+        >
+        <property
+            name="quantityInMilliliter"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-FluidSpecimenRequirement.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.MolecularSpecimenRequirementImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Molecular"
+        >
+        <property
+            name="quantityInMicrogram"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-MolecularSpecimenRequirement.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.CellSpecimenRequirementImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Cell"
+        >
+        <property
+            name="quantityInCellCount"
+            type="int"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-CellSpecimenRequirement.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+        <subclass
+            name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenRequirementImpl"
+            dynamic-update="false"
+            dynamic-insert="false"
+            discriminator-value="Tissue"
+        >
+        <property
+            name="quantityInGram"
+            type="double"
+            update="true"
+            insert="true"
+            column="QUANTITY"
+            length="50"
+        />
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-TissueSpecimenRequirement.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

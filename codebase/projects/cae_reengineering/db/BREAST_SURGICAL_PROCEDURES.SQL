@@ -1,0 +1,20 @@
+/*L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L*/
+
+CREATE TABLE BREAST_SURGICAL_PROCEDURES ( 
+	ID NUMERIC(10,2),
+	SURGICAL_PROCEDURE VARCHAR(255)
+) 
+;
+
+
+ALTER TABLE BREAST_SURGICAL_PROCEDURES ADD CONSTRAINT FK_SURGICAL_PROCEDURES 
+FOREIGN KEY (ID) REFERENCES BREAST_SUR_PATHO_SPECIMANS (ID)
+;
+
+
+

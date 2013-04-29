@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl"
+        table="CATISSUE_CLINICAL_REPORT"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+            </generator>
+        </id>
+
+        <property
+            name="surgicalPathologyNumber"
+            type="string"
+            update="true"
+            insert="true"
+            column="SURGICAL_PATHOLOGICAL_NUMBER"
+            length="50"
+        />
+
+        <many-to-one
+            name="participantMedicalIdentifier"
+            class="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="PARTICIPENT_MEDI_IDENTIFIER_ID"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-ClinicalReport.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

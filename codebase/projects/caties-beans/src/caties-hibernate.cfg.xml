@@ -1,0 +1,44 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<property name="hibernate.connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+
+
+	<!-- Print SQL to stdout. -->
+	<property name="show_sql">true</property>
+
+	 <property name="connection.url">
+		jdbc:mysql://catrip1:3306/caties
+	</property> 
+
+	<property name="connection.username">root</property>
+	<property name="connection.password"></property>
+	
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+
+
+	<mapping resource="edu/upmc/opi/caBIG/caTIES/database/domain/IdentifiedPatient.hbm.xml" />
+	<mapping resource="edu/upmc/opi/caBIG/caTIES/database/domain/IdentifiedPathologyReport.hbm.xml" />
+	<mapping resource="edu/upmc/opi/caBIG/caTIES/database/domain/IdentifiedPathologyReportDocument.hbm.xml" />
+
+</session-factory>
+</hibernate-configuration>

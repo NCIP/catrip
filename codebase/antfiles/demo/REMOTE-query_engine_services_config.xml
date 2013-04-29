@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="clientConfigWsdd">C:\caBIG\catrip\codebase\projects\gui\conf\qe-client-config.wsdd</entry>
+<entry key="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CaTissueCore_Full">gov.nih.nci.cagrid.catissuecorefull.client.CaTissueCore_FullClient</entry>
+<entry key="http://catrip1.duhs.duke.edu:8080/wsrf_cae/services/cagrid/CAE">gov.nih.nci.cagrid.cae.client.CAEClient</entry>
+
+</properties>

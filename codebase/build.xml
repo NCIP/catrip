@@ -1,0 +1,470 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!-- ================================================================= -->
+<!-- caTRIP master build file                                          -->
+<!-- ================================================================= -->
+
+<project name="catrip-1.0" default="all" basedir=".">
+	<!-- Give user the chance to override properties -->
+	<property environment="env" />
+	<property file="build.properties" />
+
+	<!-- layout info -->
+	<property name="antfiles.dir" location="${basedir}/antfiles" />
+	<property name="management.dir" location="${antfiles.dir}/management" />
+	<property name="projects.dir" location="${basedir}/projects" />
+	<property name="reports.dir" location="${basedir}/reports" />
+	<property name="share.dir" location="${basedir}/share" />
+	<property name="test.dir" location="${basedir}/test" />
+	<property name="junit.dir" location="${share.dir}/junit" />
+	<property name="cagrid.dir" location="${share.dir}/cagrid" />
+	<property name="xmlbeans.dir" location="${share.dir}/xmlbeans"/>
+	<property name="junit.results.dir" location="${test.dir}/logs"/>
+		<property name="ant.library.dir" location="C:/apache-ant-1.6.0/lib"/>
+	
+
+	<!-- import testing properties -->
+	<property file="${antfiles.dir}/test.properties" />
+
+	<!-- import other ant scripts -->
+	<import file="${antfiles.dir}/build-artifacts.xml" />
+	<import file="${antfiles.dir}/build-test.xml" />
+	<import file="${antfiles.dir}/build-reports.xml" />
+	<import file="${antfiles.dir}/build-deploy.xml" />
+	<import file="${antfiles.dir}/build-demo.xml" />
+	<import file="${antfiles.dir}/build-docs.xml" />
+	<import file="${antfiles.dir}/build-codedrop.xml" />
+
+	<!-- define global properties -->
+	<property name="cobertura.home" location="${basedir}/share/cobertura-1.8"/>
+	<path id="cobertura.classpath">
+	    <fileset dir="${cobertura.home}">
+	        <include name="cobertura.jar" />
+	        <include name="lib/**/*.jar" />
+	    </fileset>
+	</path>
+
+
+	<!-- ================================================================================ -->
+	<!--                          DEFINE THE SUB PROJECTS                                 -->
+	<!-- ================================================================================ -->
+	<!-- The name should be the path relative from projects.dir.  Its strongly encouraged you use a flat layout caTissueCAEDataService, caTissueCoreDataService,  -->
+	<property name="projects.list" value="localsdkquery, data, queryengine-2.0, queryservice, gui,  security-password, security-dukeidp, authentication-service, CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice" />
+	<!-- The name should be the path relative from projects.dir.  -->
+	<property name="services.list" value="CAEDataServiceV2, CaTissueCoreDataServiceV2,  CGEMSDataServiceV2, TumorRegistryDataService, caTIESDataService, queryservice " />
+
+	<!-- ================================================================================ -->
+	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT TESTING                    -->
+	<!-- ================================================================================ -->
+	<!-- This should be a subset of the projects above -->
+	<property name="testable.projects.list" value="xmi2model, gui, queryengine, security-password, test-report, security-dukeidp" />
+
+	<!-- ======================================================================================= -->
+	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT SYSTEM TESTING                    -->
+	<!-- ======================================================================================= -->
+	<!-- This should be a subset of the projects above -->
+	<property name="system.testable.projects.list" value="test-system" />
+
+	<!-- ================================================================================ -->
+	<!--                  DEFINE THE SUB PROJECTS THAT SUPPORT REPORTING                  -->
+	<!-- ================================================================================ -->
+	<!-- This should be a subset of the projects above -->
+	<property name="reportable.projects.list" value="xmi2model, ctom, gui, queryengine, caTissueCAEDataService, caTissueCoreDataService, cae_reengineering, security-password, security-dukeidp, test-report, test-system" />
+
+
+	<!-- =============================================================== -->
+	<!-- Bootstrap the build by setting up the structure and building    -->
+	<!-- our custom ant tasks.                                           -->
+	<!-- =============================================================== -->
+	<target name="prepare">
+		<tstamp />
+		<mkdir dir="${management.dir}/build" />
+		<javac srcdir="${management.dir}/src" destdir="${management.dir}/build" debug="on" deprecation="off" optimize="off">
+			<classpath>
+				<fileset dir="${ant.library.dir}">
+					<include name="ant.jar" />
+				</fileset>
+				<path refid="cobertura.classpath"/>
+			</classpath>
+		</javac>
+
+		<typedef name="artifact" classname="gov.nih.nci.cagrid.ant.Artifact" loaderref="artifact">
+			<classpath>
+				<pathelement location="${management.dir}/build" />
+				<path refid="cobertura.classpath"/>
+			</classpath>
+		</typedef>
+		<taskdef name="resolveDependencies" classname="gov.nih.nci.cagrid.ant.ResolveDependencies" loaderref="artifact">
+			<classpath>
+				<pathelement location="${management.dir}/build" />
+				<path refid="cobertura.classpath"/>
+			</classpath>
+		</taskdef>
+
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement location="${share.dir}/ant-contrib/ant-contrib.jar" />
+			</classpath>
+		</taskdef>
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- XMI2MODEL                                                       -->
+	<!-- =============================================================== -->
+
+	<target name="build-xmi2model" depends="prepare" description="Builds the xmi2model project">
+		<resolveDependencies extdir="${projects.dir}/xmi2model/ext">
+			<artifact refid="common.test.jars" />
+			
+			<artifact refid="cagrid.data.jars" />
+			<artifact refid="cagrid.metadata.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/xmi2model" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- LOCAL SDK QUERY                                                      -->
+	<!-- =============================================================== -->
+
+	<target name="build-localsdkquery" depends="prepare" description="Builds the localsdkquery project">
+		<resolveDependencies extdir="${projects.dir}/localsdkquery/ext">
+			<artifact refid="common.test.jars" />
+			
+			<artifact refid="cagrid.cadsr.jars" />
+			<artifact refid="cagrid.data.jars" />
+			<artifact refid="cagrid.metadata.jars" />
+			<artifact refid="cagrid.misc.jars" />
+
+
+		</resolveDependencies>
+		<ant dir="${projects.dir}/localsdkquery" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- DATA - dcql beans                                                       -->
+	<!-- =============================================================== -->
+
+	<target name="build-data" depends="prepare" description="Builds the data project">
+		<resolveDependencies extdir="${projects.dir}/data/ext">
+			<artifact refid="common.test.jars" />
+			
+			<artifact refid="xmlbeans.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/data" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
+	
+	<!-- =============================================================== -->
+	<!-- CTOM                                                            -->
+	<!-- =============================================================== -->
+
+	<target name="build-ctom" depends="prepare" description="Builds the ctom project">
+		<resolveDependencies extdir="${projects.dir}/ctom/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/ctom" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- CAE_REENGINEERING                                               -->
+	<!-- =============================================================== -->
+
+	<target name="build-cae_reengineering" depends="prepare" description="Builds the cae_reengineering project">
+		<resolveDependencies extdir="${projects.dir}/cae_reengineering/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/cae_reengineering" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- CAEDataServiceV2                                          -->
+	<!-- =============================================================== -->
+
+	<target name="build-CAEDataServiceV2" depends="prepare" description="Builds the CAEDataServiceV2 project">
+		<resolveDependencies extdir="${projects.dir}/CAEDataServiceV2">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/CAEDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- caTissueCoreDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-CaTissueCoreDataServiceV2" depends="prepare" description="Builds the CaTissueCoreDataServiceV2 project">
+		<resolveDependencies extdir="${projects.dir}/CaTissueCoreDataServiceV2">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/CaTissueCoreDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- CGEMSDataServiceV2                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-CGEMSDataServiceV2" depends="prepare" description="Builds the CGEMSDataServiceV2 project">
+		<resolveDependencies extdir="${projects.dir}/CGEMSDataServiceV2">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/CGEMSDataServiceV2" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- TumorRegistryDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-TumorRegistryDataService" depends="prepare" description="Builds the TumorRegistryDataService project">
+		<resolveDependencies extdir="${projects.dir}/TumorRegistryDataService">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/TumorRegistryDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- caTIESDataService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-caTIESDataService" depends="prepare" description="Builds the caTIESDataService project">
+		<resolveDependencies extdir="${projects.dir}/caTIESDataService">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/caTIESDataService" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- QuerySharingService                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-queryservice" depends="prepare" description="Builds the queryservice project">
+		<resolveDependencies extdir="${projects.dir}/queryservice">
+			<artifact refid="localsqkquery.jars"/>
+		</resolveDependencies>
+		<ant dir="${projects.dir}/queryservice" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- queryengine2                                         -->
+	<!-- =============================================================== -->
+
+	<target name="build-queryengine-2.0" depends="prepare" description="Builds the queryengine 2 project">
+		<resolveDependencies extdir="${projects.dir}/queryengine-2.0/ext">
+			<artifact refid="localsqkquery.jars"/>
+			<artifact refid="cagrid.fqe2.jars" />
+		</resolveDependencies>
+		<resolveDependencies extdir="${projects.dir}/queryengine-2.0/ext/test">
+			<artifact refid="cagrid.fqe2.test.jars"/>
+		</resolveDependencies>
+
+		<ant dir="${projects.dir}/queryengine-2.0" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
+
+	<!-- =============================================================== -->
+	<!-- catrip-caeGenerateData                                 -->
+	<!-- =============================================================== -->
+
+	<target name="build-catrip-caeGenerateData" depends="prepare" description="Builds the catrip-caeGenerateData project">
+		<ant dir="${projects.dir}/catrip-caeGenerateData" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- catrip-catissuecoreGenerateData                                 -->
+	<!-- =============================================================== -->
+
+	<target name="build-catrip-catissuecoreGenerateData" depends="prepare" description="Builds the catrip-catissuecoreGenerateData project">
+		<ant dir="${projects.dir}/catrip-catissuecoreGenerateData" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+	
+	<!-- =============================================================== -->
+	<!-- GUI                                                             -->
+	<!-- =============================================================== -->
+
+	<target name="build-gui" depends="prepare" description="Builds the gui project">
+		<resolveDependencies extdir="${projects.dir}/gui/ext">
+			<artifact refid="common.test.jars" />
+			<!-- artifact refid="queryengine.jars" />
+			<artifact refid="queryengine.schemas" / !-->
+			<!-- artifact refid="data.jars" / -->   <!-- The old dcql schema beans..	 -->
+			<artifact refid="queryengine2.jars" />   <!-- The new FQE including the dcql beans..	 -->
+			<!-- artifact refid="caTissueCoreDataService.jars" / -->  <!-- Old jars..	 -->
+			<artifact refid="cagrid.cadsr.jars" />
+			<artifact refid="cagrid.data.jars" />
+			<artifact refid="cagrid.discovery.jars" />
+			<artifact refid="cagrid.introduce.jars" />
+			<artifact refid="cagrid.metadata.jars" />
+			<artifact refid="cagrid.misc.jars" />  <!-- New jars that have been added in caGRID..	 -->
+			<artifact refid="ant-contrib.jars" />
+			<artifact refid="xmlbeans.jars" />
+			
+			<artifact refid="cagrid.gridca.jars" />
+			<artifact refid="cagrid.coretests.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+		
+	<!-- =============================================================== -->
+	<!-- QUERYENGINE                                                     -->
+	<!-- =============================================================== -->
+
+	<target name="build-queryengine" depends="prepare" description="Builds the queryengine project">
+		<resolveDependencies extdir="${projects.dir}/queryengine/ext">
+			<artifact refid="xml.mapping.jars" />
+			<artifact refid="common.test.jars" />
+			<artifact refid="xmlbeans.jars" />
+			<artifact refid="data.jars" />
+			<artifact refid="cagrid.cadsr.jars" />
+			<artifact refid="cagrid.data.jars" />
+
+			<artifact refid="cagrid.metadata.jars" />
+			<artifact refid="cagrid.misc.jars" />
+
+			<artifact refid="caTissueCAEDataService.jars" />
+			<artifact refid="caTissueCoreDataService.jars" />
+			<artifact refid="CGEMSDataService.jars" />
+			<artifact refid="TumorRegistryDataService.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/queryengine" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+
+	
+	<!-- =============================================================== -->
+	<!-- SECURITY-PASSWORD                                               -->
+	<!-- =============================================================== -->
+
+	<target name="build-security-password" depends="prepare" description="Builds the security-password project">
+		<resolveDependencies extdir="${projects.dir}/security-password/ext">
+			<artifact refid="common.test.jars" />
+			<artifact refid="cagrid.gridca.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/security-password" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- SECURITY-DUKEIDP                                                -->
+	<!-- =============================================================== -->
+
+	<target name="build-security-dukeidp" depends="prepare" description="Builds the security-dukeidp project">
+		<resolveDependencies extdir="${projects.dir}/security-dukeidp/ext">
+			<artifact refid="common.test.jars" />
+			<artifact refid="cagrid.gridca.jars" />
+			<artifact refid="security-password.jars" />
+			<artifact refid="security-password.antfiles" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/security-dukeidp" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- EXTENDED-AUTHENTICATION_SERVICE                                               -->
+	<!-- =============================================================== -->
+
+	<target name="build-authentication-service" depends="prepare" description="Builds the authentication service">
+		<ant dir="${projects.dir}/authentication-service" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- TEST-REPORT                                                     -->
+	<!-- =============================================================== -->
+
+	<target name="build-test-report" depends="prepare" description="Builds the test-report project">
+		<resolveDependencies extdir="${projects.dir}/test-report/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/test-report" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- TEST-SYSTEM                                                     -->
+	<!-- =============================================================== -->
+
+	<target name="build-test-system" depends="prepare" description="Builds the test-system project">
+		<resolveDependencies extdir="${projects.dir}/test-system/ext">
+			<artifact refid="common.test.jars" />
+			<artifact refid="cagrid.coretests.jars" />
+            		<artifact refid="data.jars" />
+			<artifact refid="cagrid.data.jars" />
+            		<artifact refid="queryengine.jars" />
+			<artifact refid="queryengine.schemas" />
+			<artifact refid="xmlbeans.jars" />
+			<artifact refid="caTissueCAEDataService.jars" />
+			<artifact refid="caTissueCoreDataService.jars" />
+			<artifact refid="CGEMSDataService.jars" />
+			<artifact refid="TumorRegistryDataService.jars" />
+			<artifact refid="xml.mapping.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/test-system" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- =============================================================== -->
+	<!-- DEID                                                            -->
+	<!-- =============================================================== -->
+
+	<target name="build-deid" depends="prepare" description="Builds the deid project">
+		<resolveDependencies extdir="${projects.dir}/deid/ext">
+			<artifact refid="common.test.jars" />
+		</resolveDependencies>
+		<ant dir="${projects.dir}/deid" inheritAll="false" antfile="build.xml" target="all" />
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Cleans up generated stuff                                      -->
+	<!-- ============================================================== -->
+	<target name="clean" depends="prepare" description="Cleans all projects.">
+		<for list="${projects.list}" parallel="true" param="project.name" trim="true">
+			<sequential>
+				<echo message="Cleaning project @{project.name}." />
+				<delete dir="${projects.dir}/@{project.name}/ext" />
+				<ant dir="${projects.dir}/@{project.name}" inheritAll="false" antfile="build.xml" target="clean" />
+			</sequential>
+		</for>
+		<!-- Clean the services -->
+        <for list="${services.list}" parallel="true" param="project.name" trim="true">
+			<sequential>
+				<echo message="Cleaning project @{project.name}." />
+				<delete dir="${projects.dir}/@{project.name}/ext" />
+				<ant dir="${projects.dir}/@{project.name}" inheritAll="false" antfile="build.xml" target="clean" />
+				<delete file="${projects.dir}/@{project.name}/lib/caGrid-caTrip-sdkQuery-1.0.jar" />
+			</sequential>
+		</for>
+
+		<delete failonerror="false">
+			<fileset dir="${junit.results.dir}">
+				<include name="*" />
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Builds the projects                                            -->
+	<!-- ============================================================== -->
+	<target name="build" depends="prepare" description="Builds all projects.">
+		<for list="${projects.list}" parallel="false" param="project.name" trim="true">
+			<sequential>
+				<echo message="Building project @{project.name}." />
+				<runtarget target="build-@{project.name}" />
+				<echo message="Built project @{project.name}." />
+			</sequential>
+		</for>
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Builds the projects                                            -->
+	<!-- ============================================================== -->
+	<target name="gui" depends="" description="Runs the caTRIP GUI.">
+		<ant dir="${projects.dir}/gui" inheritAll="false" antfile="build.xml" target="run" />
+	</target>
+
+	<!-- ============================================================== -->
+	<!-- Builds caTRIP from scratch                                     -->
+	<!-- ============================================================== -->
+	<target name="all" depends="clean, build" description="Cleans and builds all the projects."/>
+
+</project>
+

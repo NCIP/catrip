@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.MetastasisSite" table="metastasis_site">
+		<id name="id" type="long" column="id">
+        	<generator class="sequence">
+                <param name="sequence">metastasis_site_Seq</param>
+        	</generator>
+		</id>
+        <property name="anatomicSiteCode" column="anatomic_Site_Code" type="string"/>
+        <property name="anatomicSiteCodeSystem" column="anatomic_Site_Code_System" type="string"/>
+
+    </class>
+
+</hibernate-mapping>

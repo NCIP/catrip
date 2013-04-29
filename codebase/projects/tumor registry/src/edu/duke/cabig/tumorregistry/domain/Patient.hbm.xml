@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class
+		name="Patient"
+		table="PATIENT" polymorphism="explicit"
+	>
+		<id name="id" type="long" column="ID"></id>
+
+
+		<property
+			name="firstName"
+			column="FIRST_NAME"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="middleName"
+			column="MIDDLE_NAME"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="lastName"
+			column="LAST_NAME"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="suffix"
+			column="SUFFIX"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="dateOfBirth"
+			column="BIRTH_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="dateOfDeath"
+			column="DEATH_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="race"
+			column="RACE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="sex"
+			column="SEX"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="ethnicGroup"
+			column="ETHNIC_GROUP"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="autopsy"
+			column="AUTOPSY"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		
+		<one-to-one name="patientIdentifier" outer-join="false" class="PatientIdentifier" cascade="all"/>
+
+		<many-to-one name="address" class="Address" column="address_id" not-null="false" unique="true" lazy="false" cascade="all"/> 
+
+
+		<set name="diagnosisCollection" lazy="false" inverse="true" cascade="all">
+			<key column="PATIENT_ID"/>
+			<one-to-many class="Diagnosis"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

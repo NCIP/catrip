@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<simpleGuiServices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simpleQueryInterface-config.xsd">
+	<service displayName="Clinical Annotation Engine" url="http://localhost:8080/wsrf_cae/services/cagrid/CAE" metadataXml="_SimpleGUI_CAE_domainModel.xml" impls="false">
+		<targets>
+			<objectElement className="edu.duke.catrip.cae.domain.general.Participant"   displaybleAttributes="gender,race,ethnicity" display="true">
+				<associatedObjectTree>
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier"   roleName="medicalRecordNumberCollection" display="false"/>
+					<Association className="edu.duke.catrip.cae.domain.general.Accession"   roleName="accession" display="false">
+						<Association className="edu.duke.catrip.cae.domain.general.Specimen"   roleName="specimen" display="false">
+							<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters"   roleName="annotationEventParameters" display="false">
+								<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" displaybleAttributes="greatestDimension,MVR"   roleName="annotationSetCollection" display="true"/>
+								<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR"   roleName="annotationSetCollection" display="true"/>
+ 								<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus"   roleName="annotationSetCollection" display="true"/>
+ 								<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR"   roleName="annotationSetCollection" display="true"/>
+							</Association>
+						</Association>
+					</Association>
+				</associatedObjectTree>
+				<foreignAssociationOutboundPath cdeName="medicalRecordNumber">
+					<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" roleName="medicalRecordNumberCollection"/>
+				</foreignAssociationOutboundPath>
+			</objectElement>
+		</targets>
+
+		<foreignAssociationInboundTree>
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade"   cdeName="medicalRecordNumber" displaybleAttributes="tubuleFormation,nuclearPleomorphism,totalScore,totalScoreMVR" display="true">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+							<Association className="edu.pitt.cabig.cae.domain.breast.NottinghamHistopathologicGrade" roleName="annotationSetCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+<!-- new CAE1.2 classes. -->
+
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize"   cdeName="medicalRecordNumber" displaybleAttributes="greatestDimension,MVR" display="true">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+							<Association className="edu.pitt.cabig.cae.domain.general.ThreeDimensionalTumorSize" roleName="annotationSetCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics"   cdeName="medicalRecordNumber" displaybleAttributes="lymphNodeSamplingProcedure,laterality,lateralityMVR" display="true">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+							<Association className="edu.pitt.cabig.cae.domain.breast.BreastSpecimenCharacteristics" roleName="annotationSetCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+			<foreignAssociationInboundPath className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers"   cdeName="medicalRecordNumber" displaybleAttributes="estrogenReceptor,progesteroneReceptor,HER2Status,HER2TestType,EGFRStatus" display="true">
+				<Association className="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier">
+					<Association className="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+						<Association className="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+							<Association className="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" roleName="annotationSetCollection"/>
+						</Association>
+					</Association>
+				</Association>
+			</foreignAssociationInboundPath>
+
+<!-- new CAE1.2 classes. -->
+
+		</foreignAssociationInboundTree>
+	</service>
+</simpleGuiServices>

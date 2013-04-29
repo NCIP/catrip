@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.StudyInvestigator" table="study_investigator">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">study_investigator_seq</param>
+        	</generator>
+		</id>
+
+        <property name="responsibilityRoleCode" column="responsibility_Role_Code" type="string"/>
+        <property name="signatureText" column="signature_Text" type="string"/>
+        <property name="startDate" column="start_Date" type="date"/>
+        <property name="statusCode" column="status_Code" type="string"/>
+        <property name="stopDate" column="stop_Date" type="date"/>
+        <property name="signatureIndicator" column="signature_Indicator" type="boolean"/>
+    </class>
+
+</hibernate-mapping>
+<!-- parsed in 0ms -->

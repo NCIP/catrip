@@ -1,0 +1,112 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!-- ======================================================================= -->
+<!-- caTRIP queryengine test                                                 -->
+<!-- ======================================================================= -->
+<project name="catrip-1.0-test-report-test" basedir=".">
+
+	<property name="test.dir" location="${basedir}/test"/>
+	<property name="test.logs.dir" location="${test.dir}/logs"/>
+	<property name="junit.results.dir" value="${test.logs.dir}/junit"/>
+
+	<!-- call the test target for each project and aggregates the log resutls  -->
+	<target name="test" description="Runs the tests">
+		<property name="cobertura.home" location="../../share/cobertura-1.8"/>
+		<property name="testcoverage.datafile" location="${test.logs.dir}/queryengine.ser"/>
+		
+		<mkdir dir="${junit.results.dir}"/>
+		<junit dir="${basedir}" printsummary="yes" haltonfailure="true" showoutput="true" fork="yes">
+			<classpath refid="test.classpath"/>
+			<classpath>
+			    <fileset dir="${cobertura.home}">
+			        <include name="cobertura.jar" />
+			        <include name="lib/**/*.jar" />
+			    </fileset>
+			</classpath>
+
+			<sysproperty key="basedir" value="${basedir}"/>
+			<sysproperty key="net.sourceforge.cobertura.datafile" value="${testcoverage.datafile}" />
+
+			<formatter type="xml" usefile="true" />
+			<formatter type="plain" usefile="false" />
+
+			<batchtest fork="yes" todir="${junit.results.dir}">
+				<fileset dir="${test.src.dir}">
+					<include name="**/*TestCase.java"/>
+					<include name="**/*Test.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
+	<path id="junitDocReport.cp">
+		<path refid="run.classpath"/>
+		<pathelement location="build/classes"/>
+		
+		<fileset dir="../security-password/ext/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../security-password/build/jars">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../security-dukeidp/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../security-dukeidp/build/jars">
+			<include name="*.jar"/>
+		</fileset>
+
+		<fileset dir=".">
+			<include name="src/java"/>
+			<include name="test/src/java"/>
+		</fileset>
+		<fileset dir="../security-password">
+			<include name="src/java"/>
+			<include name="test/src/java"/>
+		</fileset>
+		<fileset dir="../security-dukeidp">
+			<include name="src/java"/>
+			<include name="test/src/java"/>
+		</fileset>
+	
+	</path>
+	
+	<target name="test-target" depends="all">
+		<taskdef name="junitDocReport" classname="edu.duke.cabig.catrip.test.report.ant.JUnitDocReport"
+			classpathref="junitDocReport.cp"
+		/>
+		
+		<junitDocReport format="html" useTestType="true" destfile="test/logs/junitDocReport.html">
+			<junitResults>
+				<fileset dir=".">
+					<include name="test/logs/junit/*.xml"/>
+				</fileset>
+				<fileset dir="../security-password">
+					<include name="test/logs/junit/*.xml"/>
+				</fileset>
+				<fileset dir="../security-dukeidp">
+					<include name="test/logs/junit/*.xml"/>
+				</fileset>				
+			</junitResults>
+			<junitDocs>
+				<fileset dir=".">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="../security-password">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+				<fileset dir="../security-dukeidp">
+					<include name="src/java"/>
+					<include name="test/src/java"/>
+				</fileset>
+			</junitDocs>
+		</junitDocReport>
+	</target>
+</project>

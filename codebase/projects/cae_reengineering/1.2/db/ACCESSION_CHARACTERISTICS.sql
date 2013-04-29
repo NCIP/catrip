@@ -1,0 +1,23 @@
+/*L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L*/
+
+CREATE TABLE ACCESSION_CHARACTERISTICS
+(
+  ID                        NUMBER(10,2),
+  OTHER_SURGICAL_PROCEDURE  VARCHAR2(255 BYTE)
+);
+
+
+CREATE UNIQUE INDEX PK_ACCESSION_CHARACTERISTICS ON ACCESSION_CHARACTERISTICS
+(ID);
+
+
+ALTER TABLE ACCESSION_CHARACTERISTICS ADD (
+  CONSTRAINT PK_ACCESSION_CHARACTERISTICS PRIMARY KEY (ID));
+
+
+

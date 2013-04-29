@@ -1,0 +1,17 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<DCQLQuery xmlns="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">
+    <TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" serviceURL="http://localhost:8080/wsrf/services/cagrid/CaTissueCore">
+        <Group logicRelation="AND">
+            <Attribute name="available" predicate="EQUAL_TO" value="true"/>
+            <Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl" roleName="specimenCharacteristics">
+                <Attribute name="tissueSite" predicate="LIKE" value="breast%"/>
+            </Association>
+        </Group>
+    </TargetObject>
+</DCQLQuery>

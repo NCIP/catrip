@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<CQLQuery xmlns="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery
+C:\CVS-CodeBase\catrip\codebase\projects\data\schema\1_gov.nih.nci.cagrid.CQLQuery.xsd">
+
+	 <Target name="gov.nih.nci.caintegrator.domain.study.bean.Specimen">
+	  	<Association name="gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant" roleName="studyParticipant" >
+	   		<Attribute name="raceCode" predicate="EQUAL_TO" value="W"/>
+	  	</Association>
+	 </Target>	 
+	 
+</CQLQuery>
+
+
+<!--
+Gnerated HQL from LocalHQLQueryProcessor..
+
+From gov.nih.nci.caintegrator.domain.study.bean.Specimen as xxTargetAliasxx where 
+xxTargetAliasxx.class = gov.nih.nci.caintegrator.domain.study.bean.Specimen and 
+xxTargetAliasxx.studyParticipant.id in (select id From gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant 
+where raceCode = 'W')
+
+	
+
+Converted SQL .. 
+
+select specimen0_.SPECIMEN_ID as SPECIMEN1_14_, specimen0_.SPECIMEN_TYPE as SPECIMEN2_14_, specimen0_.COLLECTION_METHOD as COLLECTION3_14_, specimen0_.PARTICIPANT_DID as PARTICIP4_14_, specimen0_.TIMECOURSE_ID as TIMECOURSE5_14_, specimen0_1_.DNA_AMPLICATION_METHOD as DNA2_15_, specimen0_1_.DNA_EXTRACTION_METHOD as DNA3_15_, specimen0_1_.DNA_MATERIAL_TYPE as DNA4_15_, 
+	case when specimen0_1_.SPECIMEN_ID is not null then 1 when specimen0_.SPECIMEN_ID is not null then 0 end as clazz_ from 
+SPECIMEN specimen0_ left outer join DNA_SPECIMEN specimen0_1_ on specimen0_.SPECIMEN_ID=specimen0_1_.SPECIMEN_ID 
+where 
+	case when specimen0_1_.SPECIMEN_ID is not null then 1 
+	     when specimen0_.SPECIMEN_ID is not null then 0 
+	end=0 and (specimen0_.PARTICIPANT_DID in 
+	(select studyparti1_.PARTICIPANT_DID from STUDY_PARTICIPANT studyparti1_ where studyparti1_.RACE_CODE='W'))
+
+Converted SQL based Critera LocalQueryProcessor 
+
+select this_.SPECIMEN_ID as SPECIMEN1_14_1_, this_.SPECIMEN_TYPE as SPECIMEN2_14_1_, this_.COLLECTION_METHOD as COLLECTION3_14_1_, this_.PARTICIPANT_DID as PARTICIP4_14_1_, this_.TIMECOURSE_ID as TIMECOURSE5_14_1_, this_1_.DNA_AMPLICATION_METHOD as DNA2_15_1_, this_1_.DNA_EXTRACTION_METHOD as DNA3_15_1_, this_1_.DNA_MATERIAL_TYPE as DNA4_15_1_, 
+	case when this_1_.SPECIMEN_ID is not null then 1 when this_.SPECIMEN_ID is not null then 0 end as clazz_1_, studyparti1_.PARTICIPANT_DID as PARTICIP1_18_0_, studyparti1_.CASE_CONTROL_STATUS as CASE2_18_0_, studyparti1_.GENDER as GENDER18_0_, studyparti1_.AGE_AT_DIAGNOSIS as AGE4_18_0_, studyparti1_.AGE_AT_DIAGNOSIS_MIN as AGE5_18_0_, studyparti1_.AGE_AT_DIAGNOSIS_MAX as AGE6_18_0_, studyparti1_.AGE_AT_DEATH as AGE7_18_0_, studyparti1_.AGE_AT_DEATH_MIN as AGE8_18_0_, studyparti1_.AGE_AT_DEATH_MAX as AGE9_18_0_, studyparti1_.AGE_AT_ENROLL as AGE10_18_0_, studyparti1_.AGE_AT_ENROLL_MIN as AGE11_18_0_, studyparti1_.AGE_AT_ENROLL_MAX as AGE12_18_0_, studyparti1_.DAYS_ON_STUDY as DAYS13_18_0_, studyparti1_.ETHNIC_GROUP_CODE as ETHNIC14_18_0_, studyparti1_.FAMILY_HISTORY as FAMILY15_18_0_, studyparti1_.INSTITUTION_NAME as INSTITU16_18_0_, studyparti1_.DAYS_OFF_STUDY as DAYS17_18_0_, studyparti1_.RACE_CODE as RACE18_18_0_, studyparti1_.SURVIVAL_STATUS as SURVIVAL19_18_0_, studyparti1_.OFF_STUDY as OFF20_18_0_, studyparti1_.STUDY_NAME as STUDY21_18_0_, studyparti1_.POPULATION_ID as POPULATION22_18_0_ from 
+SPECIMEN this_ left outer join DNA_SPECIMEN this_1_ on this_.SPECIMEN_ID=this_1_.SPECIMEN_ID inner join STUDY_PARTICIPANT studyparti1_ on this_.PARTICIPANT_DID=studyparti1_.PARTICIPANT_DID 
+where studyparti1_.RACE_CODE=?
+
+
+-->
+
+

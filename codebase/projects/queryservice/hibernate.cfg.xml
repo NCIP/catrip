@@ -1,0 +1,46 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+      <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+      <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
+      
+     
+      <property name="connection.url">jdbc:oracle:thin:@monkey8:1521:homer</property>
+      <property name="connection.username">catrip</property>
+      <property name="connection.password">catrip</property>
+	  <property name="hibernate.default_schema">catrip</property>
+	  <!--
+	  		<property name="hibernate.connection.url">jdbc:oracle:thin:@pparker.duhs.duke.edu:1521:trip</property>
+		<property name="hibernate.connection.username">tr_prod</property>
+		<property name="hibernate.connection.password">catrip</property>
+		<property name="hibernate.default_schema">tr_prod</property>
+	  
+ -->
+      <!-- Use the C3P0 connection pool.  -->
+      <property name="c3p0.min_size">3</property>
+      <property name="c3p0.max_size">5</property>
+      <property name="c3p0.timeout">2800</property>
+   
+      <!-- Print SQL to stdout. -->
+      <property name="show_sql">true</property>
+         
+      <!--  mapping files. -->
+       
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/server/QueryDb.hbm.xml"/> 
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/server/ClassDb.hbm.xml"/> 
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/server/AttributeDb.hbm.xml"/> 
+      <mapping resource="gov/nih/nci/catrip/cagrid/catripquery/server/DcqlDb.hbm.xml"/> 
+    </session-factory>
+</hibernate-configuration>
+

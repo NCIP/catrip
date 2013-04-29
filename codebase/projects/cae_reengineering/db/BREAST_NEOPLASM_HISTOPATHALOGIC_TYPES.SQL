@@ -1,0 +1,25 @@
+/*L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L*/
+
+CREATE TABLE BREAST_NEO_HSTOPTHLGC_TYPES ( 
+	ID NUMERIC(10,2) NOT NULL,
+	NAME VARCHAR(255),
+	NAME_MVR VARCHAR(255),
+	OTHER_NAME VARCHAR(255),
+	PRIMARY KEY(ID)
+) 
+;
+
+ALTER TABLE BREAST_NEO_HSTOPTHLGC_TYPES ADD CONSTRAINT FK_BREAST_NEO_HST_TYPES 
+FOREIGN KEY (ID) REFERENCES ANNOTATION_SET (ID)
+;
+
+
+
+
+
+

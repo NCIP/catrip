@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+<!-- ==================================================================== -->
+<!--        only the administrator should edit this file                  -->
+<!-- ==================================================================== -->
+
+    <!-- appender:controls the output of log operations -->
+	<appender name="STANDARD_FILE" class="org.apache.log4j.FileAppender">		<!-- org.apache.log4j.DailyRollingFileAppender -->
+		<param name="File" value="C:/caTRIP_logs.txt" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="append" value="true" />
+		<param name="Threshold" value="DEBUG" /> <!-- Possible values: ERROR, WARN, INFO, DEBUG -->
+		<!-- layout: Responsible for fomatting the output for appender -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- for formatting options see: http://logging.apache.org/log4j/docs/api/org/apache/log4j/PatternLayout.html -->
+			<param name="ConversionPattern" value="%d{MMM dd yyyy HH:mm:ss} [%-5p]  %L %M %C %x - %m%n" />
+			<!-- <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} [%-5p]  %L %M %C %x - %m%n" /> -->
+		</layout>
+	</appender>
+
+	
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="DEBUG" /> <!-- Possible values: FATAL, ERROR, WARN, INFO, DEBUG -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- for formatting options see: http://logging.apache.org/log4j/docs/api/org/apache/log4j/PatternLayout.html -->
+			<param name="ConversionPattern" value="%d{MMM dd yyyy HH:mm:ss} [%-5p]  %L %M %C %x - %m%n" />
+			<!--  -->
+		</layout>
+	</appender>
+
+
+<!-- ==================================================================== -->
+<!--        only the administrator should edit this file                  -->
+<!-- ==================================================================== -->
+
+	<!-- Default logger name for which appender reference is STANDARD_FILE -->
+	<logger name="caTRIPLogger" additivity="true">
+		<!--    delete this appenders for production use  -->
+		<!--    choose HTML or STANDARD_FILE like layout  -->
+		<!--    by commenting the appender in or out:  -->
+   		
+   		<appender-ref ref="STANDARD_FILE" />		
+		<appender-ref ref="CONSOLE" />
+	</logger>
+ 
+	<root>
+		<priority value="DEBUG"/>
+	</root>
+</log4j:configuration>

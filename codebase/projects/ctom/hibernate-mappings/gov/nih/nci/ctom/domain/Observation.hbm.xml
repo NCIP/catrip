@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.Observation" table="observation">
+ 		<id name="id" type="long" column="id">
+        	<generator class="sequence">
+                <param name="sequence">observation_seq</param>
+        	</generator>
+		</id>
+
+        <property name="confidentialityCode" column="confidentiality_Code" type="string"/>
+        <property name="reportingDate" column="reporting_Date" type="date"/>
+        <property name="statusCode" column="status_Code" type="string"/>
+        <property name="uncertaintyCode" column="uncertainty_Code" type="string"/>
+        
+    	<joined-subclass name="gov.nih.nci.ctom.domain.LesionDescription" table="LESION_DESCRIPTION">
+      		<key column="id"/>
+ 			<property name="anatomicSiteCode" column="anatomic_Site_Code" type="string"/>
+        	<property name="anatomicSiteCodeSystem" column="anatomic_Site_Code_System" type="string"/>
+        	<property name="appearanceTypeCode" column="appearance_Type_Code" type="string"/>
+        	<property name="contactAnatomicSiteCode" column="contact_Anatomic_Site_Code" type="string"/>
+        	<property name="contactAnatomicSiteCodeSystem" column="contact_Anatomic_Ste_Cd_System" type="string"/>
+        	<property name="dimensionProduct" column="dimension_Product" type="int"/>
+        	<property name="evaluationNumber" column="evaluation_Number" type="int"/>
+        	<property name="lesionNumber" column="lesion_Number" type="string"/>
+        	<property name="methodCode" column="method_Code" type="string"/>
+        	<property name="previouslyIrradiatedSiteIndicator" column="previously_Irradiated_Site_Ind" type="string"/>
+        	<property name="targetNonTargetCode" column="target_Non_Target_Code" type="string"/>
+        	<property name="measurableIndicator" column="measurable_Indicator" type="string"/>
+        	<property name="XDimension" column="x_Dimension" type="int"/>
+        	<property name="YDimension" column="y_Dimension" type="int"/>
+        	<property name="ZDimension" column="z_Dimension" type="int"/>    
+       </joined-subclass>
+    	<joined-subclass name="gov.nih.nci.ctom.domain.ClinicalResult" table="CLINICAL_RESULT">
+      		<key column="id"/>
+            <property name="bodyPositionCode" column="body_Position_Code" type="string"/>
+	        <property name="labReferenceRangeCode" column="lab_Reference_Range_Code" type="string"/>
+        	<property name="labTechniqueCode" column="lab_Technique_Code" type="string"/>
+        	<property name="meansVitalStatusObtainedCode" column="means_Vital_Status_Obtained_Cd" type="string"/>
+        	<property name="biomarkerIndicator" column="bioMarker_Indicator" type="boolean"/>
+        	<property name="significanceIndicator" column="significance_Indicator" type="boolean"/>
+        	<property name="normalAbnormalIndicator" column="normal_Abnormal_Indicator" type="string"/>
+			<property name="panelName" column="panel_Name" type="string"/>
+       		<property name="value" column="value" type="string"/>
+        	<property name="valueUnitOfMeasureCode" column="value_Unit_Of_Measure_Code" type="string"/>
+ 	</joined-subclass>
+    	<joined-subclass name="gov.nih.nci.ctom.domain.Histopathology" table="Histopathology">
+      		<key column="id"/>
+       		<set name="histopathologyGradeCollection" lazy="false"  inverse="false" cascade="all">
+        		<key column="histopathology_id" not-null="false"/>
+        		<one-to-many class="gov.nih.nci.ctom.domain.HistopathologyGrade" />
+      		</set>
+       		<set name="neoplasmCollection" lazy="false"  inverse="false" cascade="all">
+        		<key column="histopathology_id" not-null="false"/>
+        		<one-to-many class="gov.nih.nci.ctom.domain.Neoplasm" />
+      		</set>
+      		
+            <property name="grossExamResultCode" column="gross_Exam_Result_Code" type="string"/>
+	        <property name="involvedSurgicalMarginIndicator" column="involved_Surgical_Margin_Ind" type="boolean"/>
+	        <property name="reportDescriptiveText" column="report_Descriptive_Text" type="string"/>
+ 	</joined-subclass>
+    </class>
+
+</hibernate-mapping>
+<!-- parsed in 0ms -->

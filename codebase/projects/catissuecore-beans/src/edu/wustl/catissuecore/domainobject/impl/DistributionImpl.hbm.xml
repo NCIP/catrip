@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="edu.wustl.catissuecore.domainobject.impl.DistributionImpl"
+        table="CATISSUE_DISTRIBUTION"
+        dynamic-update="false"
+        dynamic-insert="false"
+    >
+
+        <id
+            name="id"
+            column="IDENTIFIER"
+            type="long"
+            length="30"
+            unsaved-value="null"
+        >
+            <generator class="native">
+                <param name="sequence">CATISSUE_DISTRIBUTION_SEQ</param>
+            </generator>
+        </id>
+
+        <many-to-one
+            name="toSite"
+            class="edu.wustl.catissuecore.domainobject.impl.SiteImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="TO_SITE_ID"
+        />
+
+        <many-to-one
+            name="distributionProtocol"
+            class="edu.wustl.catissuecore.domainobject.impl.DistributionProtocolImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="DISTRIBUTION_PROTOCOL_ID"
+        />
+
+        <set
+            name="distributedItemCollection"
+            table="CATISSUE_DISTRIBUTED_ITEM"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="DISTRIBUTION_ID"
+              />
+
+              <one-to-many
+                  class="edu.wustl.catissuecore.domainobject.impl.DistributedItemImpl"
+              />
+        </set>
+
+        <property
+            name="activityStatus"
+            type="string"
+            update="true"
+            insert="true"
+            column="ACTIVITY_STATUS"
+            length="50"
+        />
+
+        <many-to-one
+            name="specimen"
+            class="edu.wustl.catissuecore.domainobject.impl.SpecimenImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="SPECIMEN_ID"
+        />
+
+        <property
+            name="timestamp"
+            type="timestamp"
+            update="true"
+            insert="true"
+            column="EVENT_TIMESTAMP"
+        />
+
+        <many-to-one
+            name="user"
+            class="edu.wustl.catissuecore.domainobject.impl.UserImpl"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="USER_ID"
+        />
+
+        <property
+            name="comments"
+            type="string"
+            update="true"
+            insert="true"
+            column="COMMENTS"
+            length="500"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Distribution.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!-- ================================================================= -->
+<!-- caTRIP Master codedrop build file                                 -->
+<!-- ================================================================= -->
+
+<project name="catrip-1.0-codedrop" default="test" basedir=".">
+	<target name="codedrop" depends="prepare">
+		<property name="cvs.rsh" location="c:/putty/ssh_cagrid.bat"/>
+		<property name="temp.dir" location="../temp"/>
+		<property name="app.name" value="catrip"/>
+
+		<tempfile property="temp.dir" suffix="dir"/>
+		<delete file="${temp.dir}"/>
+		<mkdir dir="${temp.dir}"/>
+
+		<tstamp><format property="tstamp" pattern="yyyyMMdd"/></tstamp>
+		<cvs failonerror="true" dest="${temp.dir}" cvsRsh="${cvs.rsh}" 
+			command="-d:ext:anonymous@cbiocvs2.nci.nih.gov:/share/content/gforge/${app.name} export -r HEAD ${app.name}/codebase"
+		/>
+
+		
+		<zip basedir="${temp.dir}/${app.name}/codebase" destfile="../${app.name}_codebase_${tstamp}.zip"/>
+		<delete dir="${temp.dir}"/>
+	</target>
+</project>

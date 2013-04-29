@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.Activity" table="activity">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">activity_seq</param>
+        	</generator>
+		</id>
+		<set name="studyTimePoint" lazy="false"  inverse="false" cascade="all">
+      		<key column="activity_id" not-null="true"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.StudyTimePoint" />
+    	</set>
+<!--     	<set name="activityRelationshipCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="activity_id_1" not-null="true"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.ActivityRelationship" />
+    	</set>
+    	-->
+     	<set name="observationCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="activity_id" not-null="false"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.Observation" />
+    	</set>
+        <property name="descriptionText" column="description_Text" type="string"/>
+        <property name="durationUnitOfMeasureCode" column="duration_Unit_Of_Measure_Code" type="string"/>
+        <property name="durationValue" column="duration_Value" type="int"/>
+
+        <property name="name" column="name" type="string"/>
+		<property name="reasonCode" column="reason_code" type="string"/>
+        <property name="startDate" column="start_date" type="date"/>
+        <property name="stopDate" column="stop_date" type="date"/>
+        <property name="type" column="type" type="string"/>
+       	<joined-subclass name="gov.nih.nci.ctom.domain.SubstanceAdministration" table="SUBSTANCE_ADMINISTRATION">
+       		<key column="id"/>
+     		<set name="agentOccurranceCollection" lazy="false"  inverse="false" cascade="all">
+      			<key column="substance_administration_id" not-null="true"/>
+      			<one-to-many class="gov.nih.nci.ctom.domain.AgentOccurrence" />
+    		</set>
+    		
+        	<property name="doseChangeCode" column="dose_Change_Code" type="string"/>
+        	<property name="doseChangeIndicatorCode" column="dose_Change_Indicator_Code" type="int"/>
+        	<property name="doseFrequencyCode" column="dose_Frequency_Code" type="string"/>
+        	<property name="doseFrequencyText" column="dose_Frequency_Text" type="string"/>
+        	<property name="routeCode" column="route_Code" type="string"/>
+        	<property name="singleDose" column="single_Dose" type="int"/>
+        	<property name="singleDoseUnitOfMeasureCode" column="single_Dose_Unit_Of_Measure_cd" type="string"/>
+        	<!-- <many-to-one name="studyAgent"/> -->
+        	<property name="totalDose" column="total_Dose" type="int"/>
+        	<property name="totalDoseUnitOfMeasureCode" column="total_Dose_Unit_Of_Measure_Cd" type="string"/>
+     	</joined-subclass>
+    	<joined-subclass name="gov.nih.nci.ctom.domain.Procedure" table="PROCEDURE">
+      		<key column="id"/>
+        	<property name="anatomicSiteCode" column="anatomic_Site_Code" type="string"/>
+        	<property name="anatomicSiteCodeSystem" column="anatomic_Site_Code_System" type="string"/>
+     		<joined-subclass name="gov.nih.nci.ctom.domain.Radiation" table="RADIATION">
+      			<key column="id"/>
+        		<property name="dose" column="dose" type="string"/>
+        		<property name="doseUnitOfMeasureCode" column="dose_Unit_Of_Measure_Code" type="string"/>
+        		<property name="scheduleText" column="schedule_Text" type="string"/>
+        		<property name="therapyExtentCode" column="therapy_Extent_Code" type="string"/>
+    		</joined-subclass>
+    		<joined-subclass name="gov.nih.nci.ctom.domain.Imaging" table="IMAGING">
+    			<key column="id"/>
+    			<property name="enhancementDescriptionText" column="enhancement_Description_Text" type="string"/>
+        		<property name="enhancementRateValue" column="enhancement_Rate_Value" type="int"/>
+        		<property name="imageIdentifier" column="image_Identifier" type="string"/>
+        		<property name="contrastAgentEnhancementIndicator" column="contrast_Agent_Enhancement_Ind" type="boolean"/>
+        	</joined-subclass>
+    		<joined-subclass name="gov.nih.nci.ctom.domain.Surgery" table="SURGERY">
+    			<key column="id"/>
+        	</joined-subclass>
+     		<joined-subclass name="gov.nih.nci.ctom.domain.SpecimenCollection" table="SPECIMEN_COLLECTION">
+    			<key column="id"/>
+    		        <property name="methodCode" column="method_Code" type="string"/>
+        			<property name="siteConditionCode" column="site_Condition_Code" type="string"/>
+     				<set name="specimenCollection" lazy="false"  inverse="false" cascade="all">
+      					<key column="specimen_collection_id" not-null="true"/>
+      					<one-to-many class="gov.nih.nci.ctom.domain.Specimen" />
+    				</set>
+        	</joined-subclass>
+    		
+    	</joined-subclass>
+         
+    </class>
+
+</hibernate-mapping>
+

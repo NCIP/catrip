@@ -1,0 +1,26 @@
+/*L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L*/
+
+
+CREATE TABLE BREAST_SPECMN_CHARACTERSTIC
+(
+  ID                             NUMBER(10,2),
+  LYMPH_NODE_SAMPLING_PROCEDURE  VARCHAR2(255 BYTE),
+  LATERALITY                     VARCHAR2(255 BYTE),
+  LATERALITY_MVR                 VARCHAR2(255 BYTE)
+);
+
+
+CREATE UNIQUE INDEX PK_BREAST_SPECMN_CHARACTERSTIC ON BREAST_SPECMN_CHARACTERSTIC
+(ID);
+
+
+ALTER TABLE BREAST_SPECMN_CHARACTERSTIC ADD (
+  CONSTRAINT PK_BREAST_SPECMN_CHARACTERSTIC PRIMARY KEY (ID));
+
+
+

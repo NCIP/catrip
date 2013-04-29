@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.AdverseEventTherapy" table="adverse_event_therapy">
+ 	<id name="id" type="long" column="id">
+        <generator class="sequence">
+                <param name="sequence">Adverse_Event_Therapy_Seq</param>
+        </generator>
+	</id>
+        <property name="delayDuration" column="delay_Duration" type="int" />
+        <property name="delayDurationUnitOfMeasureCode" column="delay_Duration_uom_Code" type="string" />
+        <property name="intensityCode" column="intensity_Code" type="string" />
+        <property name="treatmentDate" column="treatment_date" type="date" />
+    </class>
+
+</hibernate-mapping>

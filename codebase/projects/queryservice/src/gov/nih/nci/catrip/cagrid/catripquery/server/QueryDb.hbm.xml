@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping auto-import="false">
+    <class  name="gov.nih.nci.catrip.cagrid.catripquery.server.QueryDb" lazy="false" table="CATRIP_QUERY">
+        <id name="id" column="ID" type="int">
+			<generator class="sequence">
+			    <param name="sequence">hibernate</param>
+			</generator>
+        </id>
+        <property name="firstName" column="FIRST_NAME" type="string"/>
+		<property name="lastName" column="LAST_NAME" type="string"/>
+		<property name="userName" column="USER_NAME" type="string"/>
+		<property name="description" column="DESCRIPTION" type="string"/>
+		<property name="name" column="NAME" type="string"/>
+		<property name="creationDate" column="DATE_CREATED" type="date"/>
+		<property name="dateUpdated" column="DATE_UPDATED" type="date"/>
+		<property name="source" column="SOURCE" type="string"/>
+		<property name="version" column="VERSION" type="string"/>
+		<property name="instance" column="INSTANCE" type="string"/>
+<!--		<property name="dcql" column="DCQL" type="string"/>
+		<property name="dcql_2" column="DCQL_2" type="string"/>
+		-->
+		 <set name="classCollection" inverse="false" cascade="all" lazy="false">
+			<key column="CATRIP_QUERY_ID"/>
+			<one-to-many class="gov.nih.nci.catrip.cagrid.catripquery.server.ClassDb"/>
+		</set>
+		 <set name="dcqlCollection" inverse="false" cascade="all" lazy="false" order-by="sequence">
+			<key column="CATRIP_QUERY_ID"/>
+			<one-to-many class="gov.nih.nci.catrip.cagrid.catripquery.server.DcqlDb"/>
+		</set>
+		
+   </class>
+</hibernate-mapping>
