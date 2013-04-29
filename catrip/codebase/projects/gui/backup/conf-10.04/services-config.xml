@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<catripServicesConfiguration xmlns="config.catrip.duke.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="config.catrip.duke.edu
-C:\work\fqe\xmlbeans-2.1.0\BeanGeneration\gui\servicesConfig.xsd">
-	<catripService url="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CaTissueCore_Full" serviceMetadataFileName="CaTissueCore_Demo_serviceMetadata.xml" domainModelFileName="caTissueCore_new.xml"/>
-	<catripService url="http://catrip1.duhs.duke.edu:8080/wsrf_cae/services/cagrid/CAE" serviceMetadataFileName="CaTRIPcaTissueCAE_serviceMetadata.xml" domainModelFileName="cae_new.xml"/>
-</catripServicesConfiguration>
