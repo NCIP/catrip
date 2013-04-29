@@ -1,0 +1,57 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<ns1:DCQLQuery xmlns:ns1="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">
+ <ns1:TargetObject name="edu.duke.cabig.tumorregistry.domain.Patient" xsi:type="ns1:Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ns1:ReturnAttributes xsi:type="ns2:ReturnAttributes" xmlns:ns2="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+   <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">dateOfDeath</ns2:ReturnAttribute>
+   <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">race</ns2:ReturnAttribute>
+   <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">sex</ns2:ReturnAttribute>
+   <ns2:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">ethnicGroup</ns2:ReturnAttribute>
+  </ns1:ReturnAttributes>
+  <ns1:Group logicRelation="AND" xsi:type="ns1:Group">
+   <ns1:Association name="edu.duke.cabig.tumorregistry.domain.Diagnosis" roleName="diagnosisCollection" xsi:type="ns1:Association">
+    <ns1:ReturnAttributes xsi:type="ns3:ReturnAttributes" xmlns:ns3="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+     <ns3:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">histologicGrade</ns3:ReturnAttribute>
+    </ns1:ReturnAttributes>
+    <ns1:Group logicRelation="AND" xsi:type="ns1:Group">
+     <ns1:Association name="edu.duke.cabig.tumorregistry.domain.Followup" roleName="followUpCollection" xsi:type="ns1:Association">
+      <ns1:Association name="edu.duke.cabig.tumorregistry.domain.Recurrence" roleName="recurrence" xsi:type="ns1:Association">
+       <ns1:ReturnAttributes xsi:type="ns4:ReturnAttributes" xmlns:ns4="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+        <ns4:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">type</ns4:ReturnAttribute>
+       </ns1:ReturnAttributes>
+      </ns1:Association>
+     </ns1:Association>
+     <ns1:Attribute name="histology" predicate="LIKE" value="lobular carcinoma%" xsi:type="ns5:Attribute" xmlns:ns5="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery"/>
+    </ns1:Group>
+   </ns1:Association>
+   <ns1:Association name="edu.duke.cabig.tumorregistry.domain.PatientIdentifier" roleName="patientIdentifier" xsi:type="ns1:Association">
+    <ns1:ReturnAttributes xsi:type="ns6:ReturnAttributes" xmlns:ns6="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+     <ns6:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">medicalRecordNumber</ns6:ReturnAttribute>
+    </ns1:ReturnAttributes>
+    <ns1:ForeignAssociation targetServiceURL="https://152.16.96.114:443/wsrf/services/cagrid/CAE" xsi:type="ns1:ForeignAssociation">
+     <ns1:JoinCondition foreignAttributeName="medicalRecordNumber" localAttributeName="medicalRecordNumber" predicate="EQUAL_TO" xsi:type="ns1:JoinCondition"/>
+     <ns1:ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" xsi:type="ns1:Object">
+      <ns1:ReturnAttributes xsi:type="ns7:ReturnAttributes" xmlns:ns7="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+       <ns7:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">medicalRecordNumber</ns7:ReturnAttribute>
+      </ns1:ReturnAttributes>
+      <ns1:Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant" xsi:type="ns1:Association">
+       <ns1:Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection" xsi:type="ns1:Association">
+        <ns1:Association name="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" roleName="annotationSetCollection" xsi:type="ns1:Association">
+         <ns1:ReturnAttributes xsi:type="ns8:ReturnAttributes" xmlns:ns8="http://CQL.caBIG/1/gov.nih.nci.cagrid.CQLQuery">
+          <ns8:ReturnAttribute xsi:type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema">HER2Status</ns8:ReturnAttribute>
+         </ns1:ReturnAttributes>
+        </ns1:Association>
+       </ns1:Association>
+      </ns1:Association>
+     </ns1:ForeignObject>
+    </ns1:ForeignAssociation>
+   </ns1:Association>
+  </ns1:Group>
+ </ns1:TargetObject>
+ <ns1:targetServiceURL xsi:type="xsd:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">https://152.16.96.114:443/wsrf/services/cagrid/CaTRIPTumorRegistry</ns1:targetServiceURL>
+</ns1:DCQLQuery>

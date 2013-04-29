@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<project name="cae_domain" default="compile" basedir=".">
+
+  <property file="build.properties"/>
+  <property name="project.name" value="cae_domain" />
+  <property name="src.dir" value="./src" />
+  <property name="class.dir" value="./classes" /> 
+  <property name="test.src.dir" value="./test/src" />
+  <property name="test.class.dir" value="./test/classes" /> 
+  <property name="lib.dir" value="./lib" />
+  <property name="build.dir" value="./build" />
+  <property name="docs.dir" value="./docs" />
+  <property name="config.dir" value="properties" />
+  <property name="test.report.dir" value="./test/reports" />
+  <property name="jar.dir" value="${build.dir}/jars" />
+  <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
+  
+  <path id="xdoclet.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="xdoclet/*.jar"/>
+    </fileset>
+  </path>
+
+  
+  <path id="compile.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="hibernate/*.jar"/>
+    </fileset>
+  </path>
+  
+   <path id="test.compile.classpath">
+    <fileset dir="${lib.dir}">
+      <include name="hibernate/*.jar"/>
+    </fileset>
+    <pathelement location="${test.class.dir}"/>
+    <pathelement location="${class.dir}"/>
+  </path> 
+
+  <target name="all" description="Builds the entire application" depends="init,compile,jar" />
+  <target name="db" description="Builds the entire application" depends="create-cae-tables,insert-sample-data" />
+
+  <target name="clean"> 
+    <delete dir="${class.dir}" failonerror="true" />
+ </target>
+
+ <target name="init">
+    <mkdir dir="${class.dir}"/> 
+    <mkdir dir="${build.dir}"/> 
+ </target>
+ 
+
+ <target name="doc">
+   <mkdir dir="${docs.dir}"/>
+   <mkdir dir="${docs.dir}/api"/>
+
+  <javadoc
+    destdir="{$docs}/api"
+    author="true"
+    version="true"
+    use="true"
+    windowtitle="caDSR API">
+
+    <packageset dir="src" defaultexcludes="yes">
+      <include name="edu/pitt/cabig/cae/domain/general/*" />
+      <include name="edu/pitt/cabig/cae/domain/breast/*" />
+    </packageset>
+
+    <doctitle><![CDATA[<h1>cae API</h1>]]></doctitle>
+    <bottom><![CDATA[<i>Support OSS.</i>]]></bottom>
+    <tag name="todo" scope="all" description="To do:" />
+    <link href="http://java.sun.com/products/jdk/1.4/docs/api/" />
+    <link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+  </javadoc>
+
+ </target>
+
+  <target name="hibernate" depends="init" description="Standard Hibernate">
+    <taskdef classpathref="xdoclet.classpath"
+      classname="xdoclet.modules.hibernate.HibernateDocletTask" 
+      name="hibernatedoclet"/>
+    
+    
+    <hibernatedoclet excludedTags="@version,@author,@todo,@see" 
+      destDir="${hibernate.mapping}"
+      addedTags="@xdoclet-generated at ${TODAY}, @author cludet" >
+      
+      <fileset dir="${src.dir}"  includes="**/*.java"/>
+      <hibernate version="3.0" >
+        
+      </hibernate>
+    </hibernatedoclet>
+  </target>
+
+  <target name="compile">
+    <javac
+      destdir="${class.dir}"
+      debug="on"
+      srcdir="${src.dir}"
+      deprecation="true"
+      >
+      <classpath refid="compile.classpath"/>
+    </javac>
+    
+  
+    <copy todir="${class.dir}">
+      <fileset dir="${src.dir}">
+        <include name="**/*.hbm.xml"/>
+      </fileset>
+    </copy>
+    <copy todir="${class.dir}">
+      <fileset dir="${src.dir}">
+        <include name="**/cae-xml-mapping.xml"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="compiletests" depends="hibernate">
+    <javac
+      destdir="${test.class.dir}"
+      debug="on"
+      srcdir="${test.src.dir}"
+      deprecation="true"
+      >
+      <classpath refid="test.compile.classpath"/>
+    </javac>
+    <copy todir="${test.class.dir}">
+          <fileset dir="${src.dir}">
+            <include name="**/*.hbm.xml"/>
+            <include name="hibernate.cfg.xml"/>
+          </fileset>
+    </copy>
+  </target>
+ 
+	<target name="jar" depends="compile" description="Builds the Jar Files">
+		<mkdir dir="${jar.dir}" />
+		<jar jarfile="${project.jarfile}" basedir="${class.dir}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="${main.class}" />
+			</manifest>
+		</jar>
+	</target>
+  
+<target name="junit" depends="compiletests,hibernate" description="Execute Unit Tests">
+    <junit printsummary="yes" haltonfailure="yes">
+	  <classpath refid="test.compile.classpath"/>
+	  
+	  <formatter type="plain" />
+
+	  <batchtest fork="yes" todir="${test.report.dir}">
+	   <fileset dir="${test.src.dir}">
+	      <include name="**/*Test.java"/>
+	    </fileset>
+	   </batchtest>
+    </junit>
+
+</target>
+
+<target name="update-db-scripts">	
+	<replaceregexp file="db/cae_catrip_tables.sql"
+				match="@CAEDBA.USERNAME"
+				replace="${cae.db.user.name}"
+				byline="true"/>
+	<replaceregexp file="db/cae_catrip_tables.sql"
+				match="@CAEDBA.PASSWORD"
+				replace="${cae.db.user.password}"
+				byline="true"/>
+</target>
+
+<target name="create-cae-tables" description="Create cae catrip tables .">
+	<exec executable="${oracle.sqlplus.path}" dir="db" failonerror="true">
+		<arg line="${cae.db.user.name}/${cae.db.user.password}@${db.server} @cae_catrip_tables.sql"/>
+	</exec>
+</target>
+<target name="insert-sample-data" description="dummy data .">
+	<exec executable="${oracle.sqlplus.path}" dir="db" failonerror="true">
+		<arg line="${cae.db.user.name}/${cae.db.user.password}@${db.server} @InsertSampleData.sql"/>
+	</exec>
+</target>
+
+</project>

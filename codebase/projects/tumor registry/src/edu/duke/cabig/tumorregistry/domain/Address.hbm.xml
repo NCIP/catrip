@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class name="Address" table="ADDRESS" polymorphism="explicit">
+		
+		<id
+			name="id"
+			type="long"
+			column="ID">
+			
+		</id>
+ 
+		<property
+			name="address1"
+			column="ADDRESS_1"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="address2"
+			column="ADDRESS_2"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="zipcode"
+			column="ZIPCODE"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="city"
+			column="CITY"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="state"
+			column="STATE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="county"
+			column="COUNTY"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="country"
+			column="COUNTRY"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+	<one-to-one name="patient" property-ref="address" outer-join="false" class="Patient" cascade="all"/>
+	<one-to-one name="diagnosis" property-ref="address" outer-join="false" class="Diagnosis" cascade="all"/> 
+	<!-- <many-to-one name="diagnosis" class="Diagnosis" column="ADDRESS_ID" not-null="false" unique="true" lazy="false" cascade="all"/>
+	-->
+	</class>	
+</hibernate-mapping>

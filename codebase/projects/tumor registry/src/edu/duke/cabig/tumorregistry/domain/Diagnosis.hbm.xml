@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class
+		name="Diagnosis"
+		table="DIAGNOSIS" polymorphism="explicit"
+	>
+		
+		<id
+			name="id"
+			type="long"
+			column="ID"
+		>
+		
+		</id>
+
+		<property
+			name="firstContactDate"
+			column="FIRST_CONTACT_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="initialDiagnosisDate"
+			column="INITIAL_DIAGNOSIS_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="ageAtDiagnosis"
+			column="AGE_AT_DIAGNOSIS"
+			type="integer"
+			not-null="false"
+			length="8"
+		/>
+		<property
+			name="causeOfDeath"
+			column="CAUSE_OF_DEATH"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="behavior"
+			column="BEHAVIOR"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="histology"
+			column="HISTOLOGY"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="histologyCode"
+			column="HISTOLOGY_CODE"
+			type="integer"
+			not-null="false"
+			length="8"
+		/>
+		<property
+			name="histologicGrade"
+			column="HISTOLOGIC_GRADE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="laterality"
+			column="LATERALITY"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="primarySite"
+			column="PRIMARY_SITE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="primarySiteCode"
+			column="PRIMARY_SITE_CODE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="classOfCase"
+			column="CLASS_OF_CASE"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="classOfCaseCode"
+			column="CLASS_OF_CASE_CODE"
+			type="integer"
+			not-null="false"
+		/>
+	
+		<set name="followUpCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="DIAGNOSIS_ID"/>
+			<one-to-many class="Followup"/>
+		</set>
+
+		<set name="diseaseExtentCollection" lazy="false"  inverse="true" cascade="all">
+			<key column="DIAGNOSIS_ID"/>
+			<one-to-many class="DiseaseExtent"/>
+		</set>
+
+		<set name="activityCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="DIAGNOSIS_ID"/>
+			<one-to-many class="Activity"/>
+		</set>
+
+		<one-to-one name="collaborativeStaging" outer-join="false" class="CollaborativeStaging" cascade="all"/>
+		<one-to-one name="firstTreatment" outer-join="false" class="FirstCourseTreatmentSummary" cascade="all"/>
+		<many-to-one name="address" class="Address" column="ADDRESS_ID" not-null="false" unique="true" lazy="false" cascade="all"/>
+		<one-to-one name="activitySummary" class="ActivitySummary" cascade="all" outer-join="false" />
+		<many-to-one name="patient" class="Patient" column="patient_id" not-null="false" lazy="false" cascade="all"/> 
+		
+	</class>	
+</hibernate-mapping>

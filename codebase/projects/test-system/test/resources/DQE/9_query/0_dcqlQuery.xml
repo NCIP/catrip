@@ -1,0 +1,44 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<DCQLQuery xmlns="http://caGrid.caBIG/1.0/gov.nih.nci.cagrid.dcql">
+    <TargetObject name="edu.wustl.catissuecore.domainobject.impl.TissueSpecimenImpl" serviceURL="http://localhost:8080/wsrf/services/cagrid/CaTissueCore">
+        <Group logicRelation="AND">
+            <Attribute name="available" predicate="EQUAL_TO" value="true"/>
+            <Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCharacteristicsImpl" roleName="specimenCharacteristics">
+                <Attribute name="tissueSite" predicate="LIKE" value="breast%"/>
+            </Association>
+            <Association name="edu.wustl.catissuecore.domainobject.impl.SpecimenCollectionGroupImpl" roleName="specimenCollectionGroup">
+                <Association name="edu.wustl.catissuecore.domainobject.impl.ClinicalReportImpl" roleName="clinicalReport">
+                    <Association name="edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl" roleName="participantMedicalIdentifier">
+                        <ForeignAssociation>
+                            <JoinCondition>
+                                <LeftJoin>
+                                    <Object>edu.wustl.catissuecore.domainobject.impl.ParticipantMedicalIdentifierImpl</Object>
+                                    <Property>medicalRecordNumber</Property>
+                                </LeftJoin>
+                                <RightJoin>
+                                    <Object>edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier</Object>
+                                    <Property>medicalRecordNumber</Property>
+                                </RightJoin>
+                            </JoinCondition>
+                            <ForeignObject name="edu.duke.catrip.cae.domain.general.ParticipantMedicalIdentifier" serviceURL="http://localhost:8080/wsrf/services/cagrid/CAE">
+                                <Association name="edu.duke.catrip.cae.domain.general.Participant" roleName="participant">
+                                    <Association name="edu.pitt.cabig.cae.domain.general.AnnotationEventParameters" roleName="annotationEventParametersCollection">
+                                        <Association name="edu.pitt.cabig.cae.domain.breast.BreastCancerBiomarkers" roleName="annotationSetCollection">
+                                            <Attribute name="estrogenReceptor" predicate="LIKE" value="POSITIVE%"/>
+                                        </Association>
+                                    </Association>
+                                </Association>
+                            </ForeignObject>
+                        </ForeignAssociation>
+                    </Association>
+                </Association>
+            </Association>
+        </Group>
+    </TargetObject>
+</DCQLQuery>

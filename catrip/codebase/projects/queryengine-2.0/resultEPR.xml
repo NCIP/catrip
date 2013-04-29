@@ -1,7 +1,0 @@
-<ns1:EndPointReference xsi:type="ns1:EndpointReferenceType" xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/03/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- <ns1:Address xsi:type="xsd:anyURI" xmlns:xsd="http://www.w3.org/2001/XMLSchema">http://localhost:8181/wsrf/services/cagrid/FederatedQueryResults</ns1:Address>
- <ns1:ReferenceProperties xsi:type="ns1:ReferencePropertiesType">
-  <ns2:FederatedQueryResultsKey xmlns:ns2="http://fqp.cagrid.nci.nih.gov/FederatedResults">6d10b7b0-7441-11db-9e64-f1fedbf9b31d</ns2:FederatedQueryResultsKey>
- </ns1:ReferenceProperties>
- <ns1:ReferenceParameters xsi:type="ns1:ReferenceParametersType"/>
-</ns1:EndPointReference>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN" "http://www.castor.org/mapping.dtd">
+
+<mapping>
+  <class name="edu.duke.cabig.tumorregistry.domain.Diagnosis">
+    <map-to xml="Diagnosis" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="firstContactDate" type="date">
+      <bind-xml name="firstContactDate" node="attribute" />
+    </field>
+    <field name="initialDiagnosisDate" type="date">
+      <bind-xml name="initialDiagnosisDate" node="attribute" />
+    </field>
+    <field name="ageAtDiagnosis" type="integer">
+      <bind-xml name="ageAtDiagnosis" node="attribute" />
+    </field>
+    <field name="causeOfDeath" type="string">
+      <bind-xml name="causeOfDeath" node="attribute" />
+    </field>
+    <field name="behavior" type="string">
+      <bind-xml name="behavior" node="attribute" />
+    </field>
+    <field name="histology" type="string">
+      <bind-xml name="histology" node="attribute" />
+    </field>
+    <field name="histologyCode" type="integer">
+      <bind-xml name="histologyCode" node="attribute" />
+    </field>
+    <field name="histologicGrade" type="string">
+      <bind-xml name="histologicGrade" node="attribute" />
+    </field>
+    <field name="laterality" type="string">
+      <bind-xml name="laterality" node="attribute" />
+    </field>
+    <field name="primarySite" type="string">
+      <bind-xml name="primarySite" node="attribute" />
+    </field>
+    <field name="classOfCase" type="string">
+      <bind-xml name="classOfCase" node="attribute" />
+    </field>
+    <field name="classOfCaseCode" type="integer">
+      <bind-xml name="classOfCaseCode" node="attribute" />
+    </field>
+    <field name="primarySiteCode" type="string">
+      <bind-xml name="primarySiteCode" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Radiation" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
+    <map-to xml="Radiation" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Activity">
+    <map-to xml="Activity" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="course" type="integer">
+      <bind-xml name="course" node="attribute" />
+    </field>
+    <field name="atLocalFacility" type="boolean">
+      <bind-xml name="atLocalFacility" node="attribute" />
+    </field>
+    <field name="startDate" type="date">
+      <bind-xml name="startDate" node="attribute" />
+    </field>
+    <field name="characterization" type="string">
+      <bind-xml name="characterization" node="attribute" />
+    </field>
+    <field name="performedIndicator" type="integer">
+      <bind-xml name="performedIndicator" node="attribute" />
+    </field>
+    <field name="treatmentType" type="string">
+      <bind-xml name="treatmentType" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.PrimarySiteSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
+    <map-to xml="PrimarySiteSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Chemotherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
+    <map-to xml="Chemotherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Patient">
+    <map-to xml="Patient" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="firstName" type="string">
+      <bind-xml name="firstName" node="attribute" />
+    </field>
+    <field name="middleName" type="string">
+      <bind-xml name="middleName" node="attribute" />
+    </field>
+    <field name="lastName" type="string">
+      <bind-xml name="lastName" node="attribute" />
+    </field>
+    <field name="suffix" type="string">
+      <bind-xml name="suffix" node="attribute" />
+    </field>
+    <field name="dateOfBirth" type="date">
+      <bind-xml name="dateOfBirth" node="attribute" />
+    </field>
+    <field name="dateOfDeath" type="date">
+      <bind-xml name="dateOfDeath" node="attribute" />
+    </field>
+    <field name="race" type="string">
+      <bind-xml name="race" node="attribute" />
+    </field>
+    <field name="sex" type="string">
+      <bind-xml name="sex" node="attribute" />
+    </field>
+    <field name="ethnicGroup" type="string">
+      <bind-xml name="ethnicGroup" node="attribute" />
+    </field>
+    <field name="autopsy" type="string">
+      <bind-xml name="autopsy" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.FirstCourseRadiation" extends="edu.duke.cabig.tumorregistry.domain.Radiation">
+    <map-to xml="FirstCourseRadiation" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="stopDate" type="date">
+      <bind-xml name="stopDate" node="attribute" />
+    </field>
+    <field name="numberOfTreatments" type="string">
+      <bind-xml name="numberOfTreatments" node="attribute" />
+    </field>
+    <field name="location" type="string">
+      <bind-xml name="location" node="attribute" />
+    </field>
+    <field name="volume" type="string">
+      <bind-xml name="volume" node="attribute" />
+    </field>
+    <field name="regionalDose" type="integer">
+      <bind-xml name="regionalDose" node="attribute" />
+    </field>
+    <field name="boostDose" type="integer">
+      <bind-xml name="boostDose" node="attribute" />
+    </field>
+    <field name="boostModality" type="string">
+      <bind-xml name="boostModality" node="attribute" />
+    </field>
+    <field name="regionalModality" type="string">
+      <bind-xml name="regionalModality" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Recurrence">
+    <map-to xml="Recurrence" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="date" type="date">
+      <bind-xml name="date" node="attribute" />
+    </field>
+    <field name="type" type="string">
+      <bind-xml name="type" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.OtherProcedure" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
+    <map-to xml="OtherProcedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.RegionalLymphNodeSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
+    <map-to xml="RegionalLymphNodeSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.HormoneTherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
+    <map-to xml="HormoneTherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Immunotherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
+    <map-to xml="Immunotherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.HemTransplantEndocrineProcedure" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
+    <map-to xml="HemTransplantEndocrineProcedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.RegionalDistantSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
+    <map-to xml="RegionalDistantSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Address">
+    <map-to xml="Address" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="address1" type="string">
+      <bind-xml name="address1" node="attribute" />
+    </field>
+    <field name="address2" type="string">
+      <bind-xml name="address2" node="attribute" />
+    </field>
+    <field name="zipcode" type="string">
+      <bind-xml name="zipcode" node="attribute" />
+    </field>
+    <field name="city" type="string">
+      <bind-xml name="city" node="attribute" />
+    </field>
+    <field name="state" type="string">
+      <bind-xml name="state" node="attribute" />
+    </field>
+    <field name="county" type="string">
+      <bind-xml name="county" node="attribute" />
+    </field>
+    <field name="country" type="string">
+      <bind-xml name="country" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.OtherTherapy" extends="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration">
+    <map-to xml="OtherTherapy" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.CollaborativeStaging">
+    <map-to xml="CollaborativeStaging" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="extension" type="string">
+      <bind-xml name="extension" node="attribute" />
+    </field>
+    <field name="tumorSize" type="string">
+      <bind-xml name="tumorSize" node="attribute" />
+    </field>
+    <field name="tumorSizeExtEvaluation" type="string">
+      <bind-xml name="tumorSizeExtEvaluation" node="attribute" />
+    </field>
+    <field name="lymphNodes" type="string">
+      <bind-xml name="lymphNodes" node="attribute" />
+    </field>
+    <field name="lymphNodesAtEvaluation" type="string">
+      <bind-xml name="lymphNodesAtEvaluation" node="attribute" />
+    </field>
+    <field name="metEvaluation" type="string">
+      <bind-xml name="metEvaluation" node="attribute" />
+    </field>
+    <field name="metAtDiagnosis" type="string">
+      <bind-xml name="metAtDiagnosis" node="attribute" />
+    </field>
+    <field name="derivedTumorStage" type="string">
+      <bind-xml name="derivedTumorStage" node="attribute" />
+    </field>
+    <field name="derivedTumorDescriptor" type="string">
+      <bind-xml name="derivedTumorDescriptor" node="attribute" />
+    </field>
+    <field name="derivedNodeStage" type="string">
+      <bind-xml name="derivedNodeStage" node="attribute" />
+    </field>
+    <field name="derivedNodeDescriptor" type="string">
+      <bind-xml name="derivedNodeDescriptor" node="attribute" />
+    </field>
+    <field name="derivedMetStage" type="string">
+      <bind-xml name="derivedMetStage" node="attribute" />
+    </field>
+    <field name="derivedMetDescriptor" type="string">
+      <bind-xml name="derivedMetDescriptor" node="attribute" />
+    </field>
+    <field name="derivedAJCCStage" type="string">
+      <bind-xml name="derivedAJCCStage" node="attribute" />
+    </field>
+    <field name="derivedSEERSummary1977" type="string">
+      <bind-xml name="derivedSEERSummary1977" node="attribute" />
+    </field>
+    <field name="derivedSEERSummary2000" type="string">
+      <bind-xml name="derivedSEERSummary2000" node="attribute" />
+    </field>
+    <field name="siteSpecificFactor1" type="string">
+      <bind-xml name="siteSpecificFactor1" node="attribute" />
+    </field>
+    <field name="siteSpecificFactor2" type="string">
+      <bind-xml name="siteSpecificFactor2" node="attribute" />
+    </field>
+    <field name="siteSpecificFactor3" type="string">
+      <bind-xml name="siteSpecificFactor3" node="attribute" />
+    </field>
+    <field name="siteSpecificFactor4" type="string">
+      <bind-xml name="siteSpecificFactor4" node="attribute" />
+    </field>
+    <field name="siteSpecificFactor5" type="string">
+      <bind-xml name="siteSpecificFactor5" node="attribute" />
+    </field>
+    <field name="siteSpecificFactor6" type="string">
+      <bind-xml name="siteSpecificFactor6" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.PatientIdentifier">
+    <map-to xml="PatientIdentifier" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="medicalRecordNumber" type="string">
+      <bind-xml name="medicalRecordNumber" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.FirstCourseTreatmentSummary">
+    <map-to xml="FirstCourseTreatmentSummary" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="firstSurgeryDate" type="date">
+      <bind-xml name="firstSurgeryDate" node="attribute" />
+    </field>
+    <field name="mostDefinitiveSurgeryDate" type="date">
+      <bind-xml name="mostDefinitiveSurgeryDate" node="attribute" />
+    </field>
+    <field name="firstTreatmentDate" type="date">
+      <bind-xml name="firstTreatmentDate" node="attribute" />
+    </field>
+    <field name="firstSystemicTreatmentDate" type="date">
+      <bind-xml name="firstSystemicTreatmentDate" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.ActivitySummary">
+    <map-to xml="ActivitySummary" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="localDate" type="date">
+      <bind-xml name="localDate" node="attribute" />
+    </field>
+    <field name="summaryDate" type="date">
+      <bind-xml name="summaryDate" node="attribute" />
+    </field>
+    <field name="localCharacterization" type="string">
+      <bind-xml name="localCharacterization" node="attribute" />
+    </field>
+    <field name="summaryCharacterization" type="string">
+      <bind-xml name="summaryCharacterization" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Surgery" extends="edu.duke.cabig.tumorregistry.domain.Procedure">
+    <map-to xml="Surgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.NonCancerDirectedSurgery" extends="edu.duke.cabig.tumorregistry.domain.Surgery">
+    <map-to xml="NonCancerDirectedSurgery" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Followup">
+    <map-to xml="Followup" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="cancerStatus" type="string">
+      <bind-xml name="cancerStatus" node="attribute" />
+    </field>
+    <field name="contactMethod" type="string">
+      <bind-xml name="contactMethod" node="attribute" />
+    </field>
+    <field name="date" type="date">
+      <bind-xml name="date" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.DistantSite">
+    <map-to xml="DistantSite" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="name" type="string">
+      <bind-xml name="name" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.Procedure" extends="edu.duke.cabig.tumorregistry.domain.Activity">
+    <map-to xml="Procedure" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.SubstanceAdministration" extends="edu.duke.cabig.tumorregistry.domain.Activity">
+    <map-to xml="SubstanceAdministration" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="stopDate" type="date">
+      <bind-xml name="stopDate" node="attribute" />
+    </field>
+  </class>
+  <class name="edu.duke.cabig.tumorregistry.domain.DiseaseExtent">
+    <map-to xml="DiseaseExtent" ns-uri="gme://caCORE.cabig/3.0/edu.duke.cabig.tumorregistry.domain" />
+    <field name="id" type="long">
+      <bind-xml name="id" node="attribute" />
+    </field>
+    <field name="clinicalMetStage" type="string">
+      <bind-xml name="clinicalMetStage" node="attribute" />
+    </field>
+    <field name="clinicalNodeStage" type="string">
+      <bind-xml name="clinicalNodeStage" node="attribute" />
+    </field>
+    <field name="clinicalTumorStage" type="string">
+      <bind-xml name="clinicalTumorStage" node="attribute" />
+    </field>
+    <field name="pathologicMetStage" type="string">
+      <bind-xml name="pathologicMetStage" node="attribute" />
+    </field>
+    <field name="pathologicNodeStage" type="string">
+      <bind-xml name="pathologicNodeStage" node="attribute" />
+    </field>
+    <field name="pathologicTumorStage" type="string">
+      <bind-xml name="pathologicTumorStage" node="attribute" />
+    </field>
+    <field name="tnmEdition" type="string">
+      <bind-xml name="tnmEdition" node="attribute" />
+    </field>
+    <field name="tumorSize" type="float">
+      <bind-xml name="tumorSize" node="attribute" />
+    </field>
+    <field name="pathologicAJCCStage" type="string">
+      <bind-xml name="pathologicAJCCStage" node="attribute" />
+    </field>
+    <field name="pathologicAJCCStageDescriptor" type="string">
+      <bind-xml name="pathologicAJCCStageDescriptor" node="attribute" />
+    </field>
+    <field name="clinicalAJCCStage" type="string">
+      <bind-xml name="clinicalAJCCStage" node="attribute" />
+    </field>
+    <field name="clinicalAJCCStageDescriptor" type="string">
+      <bind-xml name="clinicalAJCCStageDescriptor" node="attribute" />
+    </field>
+    <field name="regionalNodesPositive" type="integer">
+      <bind-xml name="regionalNodesPositive" node="attribute" />
+    </field>
+    <field name="regionalNodesExamined" type="integer">
+      <bind-xml name="regionalNodesExamined" node="attribute" />
+    </field>
+    <field name="bestAJCCStage" type="string">
+      <bind-xml name="bestAJCCStage" node="attribute" />
+    </field>
+    <field name="bestSEERSummaryStage" type="string">
+      <bind-xml name="bestSEERSummaryStage" node="attribute" />
+    </field>
+    <field name="tumorMarker1" type="string">
+      <bind-xml name="tumorMarker1" node="attribute" />
+    </field>
+    <field name="tumorMarker2" type="string">
+      <bind-xml name="tumorMarker2" node="attribute" />
+    </field>
+    <field name="tumorMarker3" type="string">
+      <bind-xml name="tumorMarker3" node="attribute" />
+    </field>
+    <field name="regionalNodesExaminedQualifier" type="string">
+      <bind-xml name="regionalNodesExaminedQualifier" node="attribute" />
+    </field>
+    <field name="regionalNodesPositiveQualifier" type="string">
+      <bind-xml name="regionalNodesPositiveQualifier" node="attribute" />
+    </field>
+  </class>
+</mapping>
+

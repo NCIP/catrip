@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<catripServicesConfiguration xmlns="config.catrip.duke.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="config.catrip.duke.edu
+C:\work\fqe\xmlbeans-2.1.0\BeanGeneration\gui\servicesConfig.xsd">
+
+	<catripService url="http://152.16.96.114/wsrf/services/cagrid/CaTissueCore" serviceMetadataFileName="CaTissueCore_serviceMetadata.xml" domainModelFileName="caTissueCore_domainModel.xml"/>
+	<catripService url="http://152.16.96.114/wsrf/services/cagrid/CAE" serviceMetadataFileName="CAE_serviceMetadata.xml" domainModelFileName="CAE_domainModel.xml"/>
+	<catripService url="http://152.16.96.114/wsrf/services/cagrid/CGEMS" serviceMetadataFileName="CGEMS_serviceMetadata.xml" domainModelFileName="CGEMS_domainModel.xml"/>
+	<catripService url="http://152.16.96.114/wsrf/services/cagrid/CaTRIPTumorRegistry" serviceMetadataFileName="Tumor_serviceMetadata.xml" domainModelFileName="Tumor_domainModel.xml"/>
+	<catripService url="http://152.16.96.114/wsrf/services/cagrid/caTIES" serviceMetadataFileName="caTIES_serviceMetadata.xml" domainModelFileName="caTIES_domainModel.xml"/>
+	<!--
+	<catripService url="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CaTissueCore" serviceMetadataFileName="catrip1_CaTissueCore_serviceMetadata.xml" domainModelFileName="caTissueCore_domainModel.xml"/>
+	<catripService url="http://catrip1.duhs.duke.edu:8080/wsrf/services/cagrid/CAE" serviceMetadataFileName="catrip1_CAE_serviceMetadata.xml" domainModelFileName="CAE_domainModel.xml"/>
+	-->
+</catripServicesConfiguration>
+<!-- cagrid2.duhs.duke.edu = 152.16.96.114 -->

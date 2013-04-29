@@ -1,0 +1,60 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!-- TEST -->
+<hibernate-configuration>
+    <session-factory>
+
+      <!-- Settings for a remote Oracle9/10g database.  -->
+      <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+      <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
+ 
+   
+      <property name="connection.url">jdbc:oracle:thin:@pparker:1521:trip</property>
+     
+   
+      <property name="connection.username">cgems</property>
+      <property name="connection.password">cgems</property>
+             
+      <!-- Use the C3P0 connection pool.  -->
+      <property name="c3p0.min_size">3</property>
+      <property name="c3p0.max_size">5</property>
+      <property name="c3p0.timeout">2800</property>
+   
+      <!-- Print SQL to stdout. -->
+      <property name="show_sql">true</property>
+         
+      <!--  mapping files. -->
+       
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Activity.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Agent.hbm.xml"/> 
+	<!-- <mapping resource="gov/nih/nci/caintegrator/domain/finding/clinical/bean/ClinicalFinding.hbm.xml"/> -->
+	<!-- <mapping resource="gov/nih/nci/caintegrator/domain/finding/clinical/breastCancer/bean/BreastCancerClinicalFinding.hbm.xml"/> -->
+	<mapping resource="gov/nih/nci/caintegrator/domain/annotation/gene/bean/GeneBiomarker.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/finding/variation/germline/bean/GenotypeFinding.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Histology.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Population.hbm.xml"/> 
+	<!-- <mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Procedure.hbm.xml"/> -->
+	<mapping resource="gov/nih/nci/caintegrator/domain/analysis/snp/bean/SNPAnalysisGroup.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/annotation/snp/bean/SNPAnnotation.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/annotation/snp/bean/SNPAssay.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/analysis/snp/bean/SNPAssociationAnalysis.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/analysis/snp/bean/SNPAssociationFinding.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/finding/variation/snpFrequency/bean/SNPFrequencyFinding.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/annotation/snp/bean/SNPPanel.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Specimen.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Study.hbm.xml"/> 
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/StudyParticipant.hbm.xml"/> 
+	<!-- <mapping resource="gov/nih/nci/caintegrator/domain/study/bean/SubstanceAdministration.hbm.xml"/> -->
+	<!-- <mapping resource="gov/nih/nci/caintegrator/domain/study/bean/Surgery.hbm.xml"/> -->
+	<mapping resource="gov/nih/nci/caintegrator/domain/study/bean/TimeCourse.hbm.xml"/> 
+    </session-factory>
+</hibernate-configuration>
+

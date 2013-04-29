@@ -1,0 +1,14 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<FindBugsFilter>
+     <Match classregex="edu.duke.cabig.rproteomics.data.aml.*"/>
+     <Match classregex="edu.duke.cabig.rproteomics.data.mzxml.*"/>
+     <Match classregex="edu.duke.cabig.rproteomics.data.runtime.*"/>
+     <Match classregex="edu.duke.cabig.rproteomics.data.scanfeatures.*"/>
+     <Match classregex="edu.duke.cabig.rproteomics.data.statml.*"/>
+</FindBugsFilter>

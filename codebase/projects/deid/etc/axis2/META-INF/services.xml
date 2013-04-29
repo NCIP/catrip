@@ -1,0 +1,29 @@
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<service name="DeIdService">
+    <description>
+        The is the DeId service provided by caTRIP
+    </description>
+    <messageReceivers>
+		<messageReceiver 
+				mep="http://www.w3.org/2004/08/wsdl/in-out"
+	 			class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"
+	 	/>
+    </messageReceivers>
+    <parameter name="ServiceClass" locked="false">edu.duke.cabig.catrip.deid.DeIdServiceImpl</parameter>
+    <!-- 
+    <parameter name="InflowSecurity">
+    	<action>
+    		<items>Signature</items>
+    		<passwordCallbackClass>org.apache.axis2.security.PWCallback</passwordCallbackClass>
+    		<signaturePropFile>interop.properties</signaturePropFile>
+    	</action>
+    </parameter>
+    -->
+    <operation name="deid"/>    
+</service>

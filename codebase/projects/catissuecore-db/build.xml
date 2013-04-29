@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!-- ================================================================= -->
+<!-- caTRIP 1.0 catissuecore build file                                -->
+<!-- ================================================================= -->
+<project name="catrip-1.0-catissuecore-db" default="all" basedir=".">
+
+	<target name="create" description="Creates a database">
+		<property name="sql.dir" location="etc/sql"/>
+		<exec executable="${mysql.path}" dir="${sql.dir}" failonerror="true" input="${sql.dir}/catissuecore_db.sql">
+			<arg line="--force --host=${mysql.host} --user=${mysql.user} --password=${mysql.password}"/>
+		</exec>
+		<exec executable="${mysql.path}" dir="${sql.dir}" failonerror="true" input="${sql.dir}/catissuecore.sql">
+			<arg line="--database=catissuecore --host=${mysql.host} --user=${mysql.user} --password=${mysql.password}"/>
+		</exec>
+	</target>
+
+	<target name="clean" description="Cleans the entire application" depends="" />
+	
+	<!-- ============================================================== -->
+	<!-- Builds from scratch                                                -->
+	<!-- ============================================================== -->
+	<target name="all" description="Builds the entire application" depends="" />
+</project>
+

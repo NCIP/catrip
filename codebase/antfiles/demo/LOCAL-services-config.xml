@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<catripServicesConfiguration xmlns="config.catrip.duke.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="config.catrip.duke.edu
+C:\work\fqe\xmlbeans-2.1.0\BeanGeneration\gui\servicesConfig.xsd">
+	<catripService url="http://localhost:8282/wsrf/services/cagrid/CaTissueCore_Full" serviceMetadataFileName="CaTissueCore_Demo_serviceMetadata.xml" domainModelFileName="CaTissueCore_Demo_domainModel.xml"/>
+	<catripService url="http://localhost:8181/wsrf/services/cagrid/CAE" serviceMetadataFileName="CaTRIPcaTissueCAE_serviceMetadata.xml" domainModelFileName="CaTRIPcaTissueCAE_domainModel.xml"/>
+</catripServicesConfiguration>

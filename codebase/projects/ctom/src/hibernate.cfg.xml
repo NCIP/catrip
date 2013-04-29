@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.password">ctom</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:caesid</property>
+        <property name="hibernate.connection.username">ctom</property>
+        <property name="hibernate.default_schema">ctom</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</property>
+<property
+name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+<!-- thread is the short name for
+org.hibernate.context.ThreadLocalSessionContext
+and let Hibernate bind the session automatically to the thread
+-->
+<property name="current_session_context_class">thread</property>
+<!-- this will show us all sql statements -->
+<property name="hibernate.show_sql">true</property>
+<!-- mapping files -->
+<mapping resource="gov/nih/nci/ctom/domain/Assessment.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/AssessmentRelationship.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/AdverseEventTherapy.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/AdverseEventReport.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/CancerStage.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/MetastasisSite.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Observation.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/HistopathologyGrade.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Neoplasm.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Activity.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Specimen.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/AgentOccurrence.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Agent.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Person.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/PersonOccupation.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/FemaleReproductiveCharacteristic.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/StudyParticipantAssignment.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/HealthcareSiteParticipant.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Organization.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/StudySite.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/StudyInvestigator.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/Protocol.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/ProtocolStatus.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/StudyAgent.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/EligibilityCriteria.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/ParticipantEligibilityAnswer.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/StudyTimePoint.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/ActivityRelationship.hbm.xml" />
+<mapping resource="gov/nih/nci/ctom/domain/ObservationRelationship.hbm.xml" />
+</session-factory>
+</hibernate-configuration>

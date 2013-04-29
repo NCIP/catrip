@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <class name="gov.nih.nci.ctom.domain.Protocol" table="protocol">
+ 		<id name="id" type="int" column="id">
+        	<generator class="sequence">
+                <param name="sequence">protocol_seq</param>
+        	</generator>
+		</id>
+        <property name="amendmentDate" column="amendment_Date" type="date"/>
+        <property name="amendmentIdentifier" column="amendment_Identifier" type="int"/>
+        <property name="descriptionText" column="description_Text" type="string"/>
+        <property name="diseaseCode" column="disease_Code" type="string"/>
+        <property name="intentCode" column="intent_Code" type="string"/>
+        <property name="longTitleText" column="long_Title_Text" type="string"/>
+        <property name="monitorCode" column="monitor_Code" type="string"/>
+        <property name="navyNCIIdentifier" column="navy_NCI_Identifier" type="string"/>
+        <property name="nciIdentifier" column="nci_Identifier" type="string"/>
+        <property name="phaseCode" column="phase_Code" type="string"/>
+        <property name="precisText" column="precis_Text" type="string"/>
+        <property name="shortTitleText" column="short_Title_Text" type="string"/>
+        <property name="sponsorCode" column="sponsor_Code" type="string"/>
+        <property name="targetAccrualNumber" column="target_Accrual_Number" type="int"/>
+        <property name="multiInstitutionIndicator" column="multi_Institution_Indicator" type="boolean"/>
+        <property name="blindedIndicator" column="blinded_Indicator" type="boolean"/>
+      	<set name="studyInvestigatorCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="protocol_id" not-null="false"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.StudyInvestigator" />
+    	</set>
+    	<set name="protocolStatusCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="protocol_id" not-null="true"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.ProtocolStatus" />
+    	</set>
+     	<set name="studySiteCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="protocol_id" not-null="false"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.StudySite" />
+    	</set>
+     	<set name="studyAgentCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="protocol_id" not-null="true"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.StudyAgent" />
+    	</set>
+    	<!--
+     	<set name="eligibilityCriteriaCollection" lazy="false"  inverse="false" cascade="all">
+      		<key column="protocol_id" not-null="false"/>
+      		<one-to-many class="gov.nih.nci.ctom.domain.EligibilityCriteria" />
+    	</set>
+     	-->
+   </class>
+
+</hibernate-mapping>
+<!-- parsed in 0ms -->

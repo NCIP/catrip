@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<project name="cgems_domain" default="compile" basedir=".">
+
+  <property file="build.properties"/>
+  <property name="project.name" value="cgems_domain" />
+  <property name="src.dir" value="./src" />
+  <property name="classes.dir" value="./classes" /> 
+  <property name="lib.dir" value="./lib" />
+  <property name="build.dir" value="./build" />
+  <property name="docs.dir" value="./docs" />
+  <property name="config.dir" value="properties" />
+  <property name="test.report.dir" value="./test/reports" />
+  <property name="jar.dir" value="${build.dir}/jars" />
+  <property name="project.jarfile" value="${jar.dir}/${project.name}.jar" />
+  
+  
+	<!-- =============================================================== -->
+	<!-- The Build Classpath                                             -->
+	<!-- =============================================================== -->
+	<path id="build.classpath">
+
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+
+	</path>
+
+  <target name="all" description="Builds the entire application" depends="init,compile,jar" />
+  
+  <target name="clean"> 
+    <delete dir="${classes.dir}" failonerror="true" />
+ </target>
+
+ <target name="init">
+    <mkdir dir="${classes.dir}"/> 
+    <mkdir dir="${build.dir}"/> 
+ </target>
+ 
+
+ <target name="doc">
+   <mkdir dir="${docs.dir}"/>
+   <mkdir dir="${docs.dir}/api"/>
+
+  <javadoc
+    destdir="{$docs}/api"
+    author="true"
+    version="true"
+    use="true"
+    windowtitle="caDSR API">
+
+    <packageset dir="src" defaultexcludes="yes">
+      <include name="edu/pitt/cabig/cae/domain/general/*" />
+      <include name="edu/pitt/cabig/cae/domain/breast/*" />
+    </packageset>
+
+    <doctitle><![CDATA[<h1>cae API</h1>]]></doctitle>
+    <bottom><![CDATA[<i>Support OSS.</i>]]></bottom>
+    <tag name="todo" scope="all" description="To do:" />
+    <link href="http://java.sun.com/products/jdk/1.4/docs/api/" />
+    <link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+  </javadoc>
+
+ </target>
+
+
+
+  <target name="compile">
+
+	<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${debug}" deprecation="off" optimize="off">
+		<classpath refid="build.classpath" />
+	</javac>
+
+
+
+  </target>
+
+
+ 
+	<target name="jar" depends="compile" description="Builds the Jar Files">
+		<mkdir dir="${jar.dir}" />
+		<jar jarfile="${project.jarfile}" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="${main.class}" />
+			</manifest>
+		</jar>
+	</target>
+  
+
+
+
+
+</project>

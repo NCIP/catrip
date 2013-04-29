@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<!--L
+  Copyright Duke Comprehensive Cancer Center
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See http://ncip.github.com/catrip/LICENSE.txt for details.
+L-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.duke.cabig.tumorregistry.domain">
+	<class name="ActivitySummary" table="ACTIVITY_SUMMARY" polymorphism="explicit">
+		
+		<id name="id" column="ID" type="long">
+			<generator class="foreign">
+				<param name="property">diagnosis</param>
+			</generator>
+		</id>
+		<one-to-one name="diagnosis" class="Diagnosis" constrained="true"/>
+		<property
+			name="localDate"
+			column="LOCAL_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="summaryDate"
+			column="SUMMARY_DATE"
+			type="date"
+			not-null="false"
+			length="7"
+		/>
+		<property
+			name="localCharacterization"
+			column="LOCAL_CHARACTERIZATION"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="summaryCharacterization"
+			column="SUMMARY_CHARACTERIZATION"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+
+		<set name="summaryActivityCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="summary_activity_id"/>
+			<one-to-many class="Activity"/>
+		</set>
+		<set name="localActivityCollection"  lazy="false"  inverse="false" cascade="all">
+			<key column="local_activity_id"/>
+			<one-to-many class="Activity"/>
+		</set>
+
+	</class>
+</hibernate-mapping>
