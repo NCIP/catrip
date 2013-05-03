@@ -17,15 +17,15 @@ Getting Started
 
 * Fork the repository on GitHub to publish any proposed changes
 
-* Submit a ticket for your issue at http://gforge.nci.nih.gov/tracker/?atid=609&group_id=131&func=browse,
-  assuming one does not already exist.
+* Submit a ticket for your issue at `tracker`_, assuming one does not already exist.
 
-  - Visit https://gforge.nci.nih.gov/account/register.php to get an account.
+  - Visit `here`_ to get an account.
   - Clearly describe the issue including steps to reproduce when it is a bug.
   - Make sure you fill in the earliest version that you know has the issue.
 
 .. _`GitHub Account`: https://github.com/signup/free
-
+.. _`tracker`: http://gforge.nci.nih.gov/tracker/?atid=609&group_id=131&func=browse
+.. _`here`: https://gforge.nci.nih.gov/account/register.php
 --------------
 Making Changes
 --------------
@@ -66,13 +66,13 @@ Submitting Changes
 
 * Submit a pull request to the repository in the NCIP organization.
 
-* Update your http://gforge.nci.nih.gov/tracker/?atid=609&group_id=131&func=browse ticket to mark that you have submitted
+* Update your `tracker`_ ticket to mark that you have submitted
   code and are ready for it to be reviewed.
 
   - Include a link to the pull request in the ticket
 
 .. _`BSD 3-Clause License`: http://opensource.org/licenses/BSD-3-Clause
-
+.. _`tracker`: http://gforge.nci.nih.gov/tracker/?atid=609&group_id=131&func=browse
 --------------------
 Additional Resources
 --------------------
