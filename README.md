@@ -10,7 +10,7 @@ You will find more details about caTRIP in the following links:
 
  * [Code Repository](https://github.com/NCIP/catrip)
  * [Issue Tracker](http://gforge.nci.nih.gov/tracker/?atid=609&group_id=131&func=browse)
- * [Documentation](https://cabig.nci.nih.gov/community/tools/caTRIP)
+ * [Documentation](https://gforge.nci.nih.gov/docman/?group_id=131)
  * [Installation Package](https://gforge.nci.nih.gov/frs/?group_id=131&release_id=1225)
  
 Please join us in further developing and improving caTRIP. 
